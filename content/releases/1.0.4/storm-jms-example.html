@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <title>Storm JMS Integration</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/assets/css/owl.theme.css" rel="stylesheet">
+    <link href="/assets/css/owl.carousel.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/js/storm.js"></script>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+
+  <body>
+    <header>
+  <div class="container-fluid">
+     <div class="row">
+          <div class="col-md-5">
+            <a href="/index.html"><img src="/images/logo.png" class="logo" /></a>
+          </div>
+          <div class="col-md-5">
+            
+              <h1>Version: 1.0.4</h1>
+            
+          </div>
+          <div class="col-md-2">
+            <a href="/downloads.html" class="btn-std btn-block btn-download">Download</a>
+          </div>
+        </div>
+    </div>
+</header>
+<!--Header End-->
+<!--Navigation Begin-->
+<div class="navbar" role="banner">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav">
+              <li><a href="/index.html" id="home">Home</a></li>
+                <li><a href="/getting-help.html" id="getting-help">Getting Help</a></li>
+                <li><a href="/about/integrates.html" id="project-info">Project Information</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="documentation">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      
+                        
+                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/1.1.1/index.html">1.1.1</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/1.0.4/index.html">1.0.4</a></li>
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/0.10.2/index.html">0.10.2</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/0.10.1/index.html">0.10.1</a></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/0.9.7/index.html">0.9.7</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/0.9.6/index.html">0.9.6</a></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                </li>
+                <li><a href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="contribute">Community <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a href="/contribute/People.html">People</a></li>
+                        <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
+                    </ul>
+                </li>
+                <li><a href="/2017/08/01/storm111-released.html" id="news">News</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+    <div class="container-fluid">
+    <h1 class="page-title">Storm JMS Integration</h1>
+          <div class="row">
+           	<div class="col-md-12">
+	             <!-- Documentation -->
+
+<p class="post-meta"></p>
+
+<h2 id="example-storm-jms-topology">Example Storm JMS Topology</h2>
+
+<p>The storm-jms source code contains an example project (in the &quot;examples&quot; directory) 
+builds a multi-bolt/multi-spout topology (depicted below) that uses the JMS Spout and JMS Bolt components.</p>
+
+<p><img src="images/Storm-JMS-Example.png" alt="picture alt" title="Example JMS Topology"></p>
+
+<p>The green components represent instances of the storm-jms components. White components represent
+&quot;standard&quot; Storm bolts (in the example these bolts are instances of <code>GenericBolt</code> which simply logs 
+information about the tuples it receives and emits).</p>
+
+<p>Grey arrows represent JMS messages, while black arrows represent the flow of Storm tuple objects.</p>
+
+<h3 id="jms-transactions-and-gauranteed-processing">JMS Transactions and Gauranteed Processing</h3>
+
+<p>The example is set up to be &quot;transactional,&quot; meaning the JMS Spout will use Storm&#39;s guranteed 
+processing capabilities to determine if a JMS Message should be acknowledged. Each bolt in the 
+topology will anchor to each tuple it receives. If every bolt successfully processes and acks
+each tuple in the chain, the original JMS Message will be acknowledged, and the underlying
+JMS implementation will not attempt re-delivery of the message. If a bolt fails to process/ack
+a tuple, the JMS message will not be acknowledged, and the JMS implementation will queue the 
+message for redelivery.</p>
+
+<h3 id="data-flow">Data Flow</h3>
+
+<p>The topology contains two chains: One originating from a JMS Spout connected to a Queue, and 
+another originating from a JMS Spout connected to a Topic.</p>
+
+<p><strong>Chain #1</strong></p>
+
+<ol>
+<li>The &quot;JMS Queue Spout&quot; receives a JMS Message object from the queue, and emits a
+tuple to the &quot;Intermediate Bolt&quot;</li>
+<li>The &quot;Intermediate Bolt&quot; emits a tuple to the &quot;Final Bolt&quot; and the &quot;JMS Topic Bolt&quot;, and acks
+the tuple it recieved.</li>
+<li>The &quot;Final Bolt&quot; receives the tuple and simply acks it, it does not emit anything.</li>
+<li>The &quot;JMS Topic Bolt&quot; receives a tuple, constructs a JMS Message from the tuple&#39;s values, 
+and publishes the message to a JMS Topic.</li>
+<li>If the &quot;JMS Topic Bolt&quot; successfully publishes the JMS message, it will ack the tuple.</li>
+<li>The &quot;JMS Queue Spout&quot; will recieve notification if all bolts in the chain have acked 
+and acknowledge the original JMS Message. If one or more bolts in the chain fail to ack a tuple, the 
+&quot;JMS Queue Spout&quot; will not acknowledge the JMS message.</li>
+</ol>
+
+<p><strong>Chain #2</strong></p>
+
+<ol>
+<li>The &quot;JMS Topic Spout&quot; receives a JMS message from the topic and emits a tuple to &quot;Another Bolt.&quot;</li>
+<li>The &quot;Another Bolt&quot; receives and acks the tuple.</li>
+<li>The &quot;JMS Topic Spout&quot; acknowledges the JMS message.</li>
+</ol>
+
+<h3 id="building-the-example-topology">Building the Example Topology</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">$ cd storm-jms
+$ mvn clean install
+</code></pre></div>
+<h3 id="running-the-example-topology-locally">Running the Example Topology Locally</h3>
+
+<p>The example uses ApacheMQ 5.4.0 for JMS. Download and install it from 
+<a href="http://activemq.apache.org/download.html">Apache ActiveMQ Downloads</a>.</p>
+
+<p>There is no specific configuration required, simply start ActiveMQ:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ [ACTIVEMQ_HOME]/bin/activemq
+</code></pre></div>
+<p>Run the example topology from the <code>examples</code> directory:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$ mvn exec:java
+</code></pre></div>
+<p>When the topology runs, it will connect to ActiveMQ and the following JMS Destinations will be created:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">backtype.storm.contrib.example.queue
+backtype.storm.contrib.example.topic
+</code></pre></div>
+<p>To publish a message to the <code>backtype.storm.contrib.example.queue</code> queue:</p>
+
+<ol>
+<li>Open the ActiveMQ Queue admin console: <a href="http://localhost:8161/admin/queues.jsp">http://localhost:8161/admin/queues.jsp</a></li>
+<li>Click the <a href="http://localhost:8161/admin/send.jsp?JMSDestination=backtype.storm.contrib.example.queue&amp;JMSDestinationType=queue">Send To</a>
+link for the <code>backtupe.storm.example.queue</code> queue entry.</li>
+<li>On the &quot;Send a JMS Message&quot; form, select the &quot;Persistent Delivery&quot; checkbox, enter
+some text for the message body, and click &quot;Send&quot;.</li>
+</ol>
+
+<p>In the terminal you should see the following among the output:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">DEBUG (backtype.storm.contrib.jms.bolt.JmsBolt:183) - Connecting JMS..
+DEBUG (backtype.storm.contrib.jms.spout.JmsSpout:213) - sending tuple: ActiveMQTextMessage {commandId = 5, responseRequired = true, messageId = ID:budreau.home-51286-1321074044423-2:4:1:1:1, originalDestination = null, originalTransactionId = null, producerId = ID:budreau.home-51286-1321074044423-2:4:1:1, destination = queue://backtype.storm.contrib.example.queue, transactionId = null, expiration = 0, timestamp = 1321735055910, arrival = 0, brokerInTime = 1321735055910, brokerOutTime = 1321735055921, correlationId = , replyTo = null, persistent = true, type = , priority = 0, groupID = null, groupSequence = 0, targetConsumerId = null, compressed = false, userID = null, content = null, marshalledProperties = org.apache.activemq.util.ByteSequence@6c27ca12, dataStructure = null, redeliveryCounter = 0, size = 0, properties = {secret=880412b7-de71-45dd-8a80-8132589ccd22}, readOnlyProperties = true, readOnlyBody = true, droppable = false, text = Hello storm-jms!}
+DEBUG (backtype.storm.contrib.jms.spout.JmsSpout:219) - Requested deliveryMode: CLIENT_ACKNOWLEDGE
+DEBUG (backtype.storm.contrib.jms.spout.JmsSpout:220) - Our deliveryMode: CLIENT_ACKNOWLEDGE
+DEBUG (backtype.storm.contrib.jms.spout.JmsSpout:224) - Requesting acks.
+DEBUG (backtype.storm.contrib.jms.example.GenericBolt:60) - [INTERMEDIATE_BOLT] Received message: source: 1:10, stream: 1, id: {-7100026097570233628=-7100026097570233628}, [Hello storm-jms!]
+DEBUG (backtype.storm.contrib.jms.example.GenericBolt:66) - [INTERMEDIATE_BOLT] emitting: source: 1:10, stream: 1, id: {-7100026097570233628=-7100026097570233628}, [Hello storm-jms!]
+DEBUG (backtype.storm.contrib.jms.example.GenericBolt:75) - [INTERMEDIATE_BOLT] ACKing tuple: source: 1:10, stream: 1, id: {-7100026097570233628=-7100026097570233628}, [Hello storm-jms!]
+DEBUG (backtype.storm.contrib.jms.bolt.JmsBolt:136) - Tuple received. Sending JMS message.
+DEBUG (backtype.storm.contrib.jms.example.GenericBolt:60) - [FINAL_BOLT] Received message: source: 2:2, stream: 1, id: {-7100026097570233628=-5393763013502927792}, [Hello storm-jms!]
+DEBUG (backtype.storm.contrib.jms.example.GenericBolt:75) - [FINAL_BOLT] ACKing tuple: source: 2:2, stream: 1, id: {-7100026097570233628=-5393763013502927792}, [Hello storm-jms!]
+DEBUG (backtype.storm.contrib.jms.bolt.JmsBolt:144) - ACKing tuple: source: 2:2, stream: 1, id: {-7100026097570233628=-9118586029611278300}, [Hello storm-jms!]
+DEBUG (backtype.storm.contrib.jms.spout.JmsSpout:251) - JMS Message acked: ID:budreau.home-51286-1321074044423-2:4:1:1:1
+DEBUG (backtype.storm.contrib.jms.spout.JmsSpout:213) - sending tuple: ActiveMQTextMessage {commandId = 5, responseRequired = true, messageId = ID:budreau.home-60117-1321735025796-0:0:1:1:1, originalDestination = null, originalTransactionId = null, producerId = ID:budreau.home-60117-1321735025796-0:0:1:1, destination = topic://backtype.storm.contrib.example.topic, transactionId = null, expiration = 0, timestamp = 1321735056258, arrival = 0, brokerInTime = 1321735056260, brokerOutTime = 1321735056260, correlationId = null, replyTo = null, persistent = true, type = null, priority = 4, groupID = null, groupSequence = 0, targetConsumerId = null, compressed = false, userID = null, content = null, marshalledProperties = null, dataStructure = null, redeliveryCounter = 0, size = 0, properties = null, readOnlyProperties = true, readOnlyBody = true, droppable = false, text = source: 2:2, stream: 1, id: {-710002609757023... storm-jms!]}
+DEBUG (backtype.storm.contrib.jms.spout.JmsSpout:219) - Requested deliveryMode: CLIENT_ACKNOWLEDGE
+DEBUG (backtype.storm.contrib.jms.spout.JmsSpout:220) - Our deliveryMode: CLIENT_ACKNOWLEDGE
+DEBUG (backtype.storm.contrib.jms.spout.JmsSpout:224) - Requesting acks.
+DEBUG (backtype.storm.contrib.jms.example.GenericBolt:60) - [ANOTHER_BOLT] Received message: source: 5:9, stream: 1, id: {-5117078009445186058=-5117078009445186058}, [source: 2:2, stream: 1, id: {-7100026097570233628=-9118586029611278300}, [Hello storm-jms!]]
+DEBUG (backtype.storm.contrib.jms.example.GenericBolt:75) - [ANOTHER_BOLT] ACKing tuple: source: 5:9, stream: 1, id: {-5117078009445186058=-5117078009445186058}, [source: 2:2, stream: 1, id: {-7100026097570233628=-9118586029611278300}, [Hello storm-jms!]]
+DEBUG (backtype.storm.contrib.jms.spout.JmsSpout:251) - JMS Message acked: ID:budreau.home-60117-1321735025796-0:0:1:1:1
+</code></pre></div>
+<p>The topology will run for 2 minutes, then gracefully shut down.</p>
+
+
+
+	          </div>
+	       </div>
+	  </div>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>Meetups</h5>
+                    <ul class="latest-news">
+                        
+                        <li><a href="http://www.meetup.com/Apache-Storm-Apache-Kafka/">Apache Storm & Apache Kafka</a> <span class="small">(Sunnyvale, CA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/Apache-Storm-Kafka-Users/">Apache Storm & Kafka Users</a> <span class="small">(Seattle, WA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/New-York-City-Storm-User-Group/">NYC Storm User Group</a> <span class="small">(New York, NY)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/Bay-Area-Stream-Processing">Bay Area Stream Processing</a> <span class="small">(Emeryville, CA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/Boston-Storm-Users/">Boston Realtime Data</a> <span class="small">(Boston, MA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/storm-london">London Storm User Group</a> <span class="small">(London, UK)</span></li>
+                        
+                        <!-- <li><a href="http://www.meetup.com/Apache-Storm-Kafka-Users/">Seatle, WA</a> <span class="small">(27 Jun 2015)</span></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>About Storm</h5>
+                    <p>Storm integrates with any queueing system and any database system. Storm's spout abstraction makes it easy to integrate a new queuing system. Likewise, integrating Storm with database systems is easy.</p>
+               </div>
+            </div>
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>First Look</h5>
+                    <ul class="footer-list">
+                        <li><a href="/releases/current/Rationale.html">Rationale</a></li>
+                        <li><a href="/releases/current/Tutorial.html">Tutorial</a></li>
+                        <li><a href="/releases/current/Setting-up-development-environment.html">Setting up development environment</a></li>
+                        <li><a href="/releases/current/Creating-a-new-Storm-project.html">Creating a new Storm project</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>Documentation</h5>
+                    <ul class="footer-list">
+                        <li><a href="/releases/current/index.html">Index</a></li>
+                        <li><a href="/releases/current/javadocs/index.html">Javadoc</a></li>
+                        <li><a href="/releases/current/FAQ.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">   
+            <div class="col-md-12">
+                <p align="center">Copyright © 2015 <a href="http://www.apache.org">Apache Software Foundation</a>. All Rights Reserved. 
+                    <br>Apache Storm, Apache, the Apache feather logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation. 
+                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-angle-up"></i></a></span> 
+
+</body>
+
+</html>
+

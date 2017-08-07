@@ -1,0 +1,4 @@
+---
+---
+<meta http-equiv="refresh" content="0; url=http://storm.apache.org/releases/current/Creating-a-new-Storm-project.html">
+<link rel="canonical" href="http://storm.apache.org/releases/current/Creating-a-new-Storm-project.html" />

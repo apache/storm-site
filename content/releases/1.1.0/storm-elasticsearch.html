@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <title>Storm Elasticsearch Integration</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/assets/css/owl.theme.css" rel="stylesheet">
+    <link href="/assets/css/owl.carousel.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/js/storm.js"></script>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+
+  <body>
+    <header>
+  <div class="container-fluid">
+     <div class="row">
+          <div class="col-md-5">
+            <a href="/index.html"><img src="/images/logo.png" class="logo" /></a>
+          </div>
+          <div class="col-md-5">
+            
+              <h1>Version: 1.1.0</h1>
+            
+          </div>
+          <div class="col-md-2">
+            <a href="/downloads.html" class="btn-std btn-block btn-download">Download</a>
+          </div>
+        </div>
+    </div>
+</header>
+<!--Header End-->
+<!--Navigation Begin-->
+<div class="navbar" role="banner">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav">
+              <li><a href="/index.html" id="home">Home</a></li>
+                <li><a href="/getting-help.html" id="getting-help">Getting Help</a></li>
+                <li><a href="/about/integrates.html" id="project-info">Project Information</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="documentation">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      
+                        
+                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/1.1.1/index.html">1.1.1</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/1.0.4/index.html">1.0.4</a></li>
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/0.10.2/index.html">0.10.2</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/0.10.1/index.html">0.10.1</a></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/0.9.7/index.html">0.9.7</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/0.9.6/index.html">0.9.6</a></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                </li>
+                <li><a href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="contribute">Community <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a href="/contribute/People.html">People</a></li>
+                        <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
+                    </ul>
+                </li>
+                <li><a href="/2017/08/01/storm111-released.html" id="news">News</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+    <div class="container-fluid">
+    <h1 class="page-title">Storm Elasticsearch Integration</h1>
+          <div class="row">
+           	<div class="col-md-12">
+	             <!-- Documentation -->
+
+<p class="post-meta"></p>
+
+<h1 id="storm-elasticsearch-bolt-amp-trident-state">Storm Elasticsearch Bolt &amp; Trident State</h1>
+
+<p>EsIndexBolt, EsPercolateBolt and EsState allows users to stream data from storm into Elasticsearch directly.
+  For detailed description, please refer to the following.</p>
+
+<h2 id="esindexbolt-org-apache-storm-elasticsearch-bolt-esindexbolt">EsIndexBolt (org.apache.storm.elasticsearch.bolt.EsIndexBolt)</h2>
+
+<p>EsIndexBolt streams tuples directly into Elasticsearch. Tuples are indexed in specified index &amp; type combination. 
+Users should make sure that <code>EsTupleMapper</code> can extract &quot;source&quot;, &quot;index&quot;, &quot;type&quot;, and &quot;id&quot; from input tuple.
+&quot;index&quot; and &quot;type&quot; are used for identifying target index and type.
+&quot;source&quot; is a document in JSON format string that will be indexed in Elasticsearch.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EsConfig</span><span class="o">(</span><span class="n">clusterName</span><span class="o">,</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"localhost:9300"</span><span class="o">});</span>
+<span class="n">EsTupleMapper</span> <span class="n">tupleMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultEsTupleMapper</span><span class="o">();</span>
+<span class="n">EsIndexBolt</span> <span class="n">indexBolt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EsIndexBolt</span><span class="o">(</span><span class="n">esConfig</span><span class="o">,</span> <span class="n">tupleMapper</span><span class="o">);</span>
+</code></pre></div>
+<h2 id="espercolatebolt-org-apache-storm-elasticsearch-bolt-espercolatebolt">EsPercolateBolt (org.apache.storm.elasticsearch.bolt.EsPercolateBolt)</h2>
+
+<p>EsPercolateBolt streams tuples directly into Elasticsearch. Tuples are used to send percolate request to specified index &amp; type combination. 
+User should make sure <code>EsTupleMapper</code> can extract &quot;source&quot;, &quot;index&quot;, &quot;type&quot; from input tuple.
+&quot;index&quot; and &quot;type&quot; are used for identifying target index and type.
+&quot;source&quot; is a document in JSON format string that will be sent in percolate request to Elasticsearch.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EsConfig</span><span class="o">(</span><span class="n">clusterName</span><span class="o">,</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"localhost:9300"</span><span class="o">});</span>
+<span class="n">EsTupleMapper</span> <span class="n">tupleMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultEsTupleMapper</span><span class="o">();</span>
+<span class="n">EsPercolateBolt</span> <span class="n">percolateBolt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EsPercolateBolt</span><span class="o">(</span><span class="n">esConfig</span><span class="o">,</span> <span class="n">tupleMapper</span><span class="o">);</span>
+</code></pre></div>
+<p>If there exists non-empty percolate response, EsPercolateBolt will emit tuple with original source and Percolate.Match
+for each Percolate.Match in PercolateResponse.</p>
+
+<h2 id="esstate-org-apache-storm-elasticsearch-trident-esstate">EsState (org.apache.storm.elasticsearch.trident.EsState)</h2>
+
+<p>Elasticsearch Trident state also follows similar pattern to EsBolts. It takes in EsConfig and EsTupleMapper as an arg.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EsConfig</span><span class="o">(</span><span class="n">clusterName</span><span class="o">,</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"localhost:9300"</span><span class="o">});</span>
+<span class="n">EsTupleMapper</span> <span class="n">tupleMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultEsTupleMapper</span><span class="o">();</span>
+
+<span class="n">StateFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EsStateFactory</span><span class="o">(</span><span class="n">esConfig</span><span class="o">,</span> <span class="n">tupleMapper</span><span class="o">);</span>
+<span class="n">TridentState</span> <span class="n">state</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="na">partitionPersist</span><span class="o">(</span><span class="n">factory</span><span class="o">,</span> <span class="n">esFields</span><span class="o">,</span> <span class="k">new</span> <span class="n">EsUpdater</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">());</span>
+</code></pre></div>
+<h2 id="eslookupbolt-org-apache-storm-elasticsearch-bolt-eslookupbolt">EsLookupBolt (org.apache.storm.elasticsearch.bolt.EsLookupBolt)</h2>
+
+<p>EsLookupBolt performs a get request to Elasticsearch. 
+In order to do that, three dependencies need to be satisfied. Apart from usual EsConfig, two other dependencies must be provided:
+    ElasticsearchGetRequest is used to convert the incoming Tuple to the GetRequest that will be executed against Elasticsearch.
+    EsLookupResultOutput is used to declare the output fields and convert the GetResponse to values that are emited by the bolt.</p>
+
+<p>Incoming tuple is passed to provided GetRequest creator and the result of that execution is passed to Elasticsearch client.
+The bolt then uses the provider output adapter (EsLookupResultOutput) to convert the GetResponse to Values to emit.
+The output fields are also specified by the user of the bolt via the output adapter (EsLookupResultOutput).</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="n">createEsConfig</span><span class="o">();</span>
+<span class="n">ElasticsearchGetRequest</span> <span class="n">getRequestAdapter</span> <span class="o">=</span> <span class="n">createElasticsearchGetRequest</span><span class="o">();</span>
+<span class="n">EsLookupResultOutput</span> <span class="n">output</span> <span class="o">=</span> <span class="n">createOutput</span><span class="o">();</span>
+<span class="n">EsLookupBolt</span> <span class="n">lookupBolt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EsLookupBolt</span><span class="o">(</span><span class="n">esConfig</span><span class="o">,</span> <span class="n">getRequestAdapter</span><span class="o">,</span> <span class="n">output</span><span class="o">);</span>
+</code></pre></div>
+<h2 id="esconfig-org-apache-storm-elasticsearch-common-esconfig">EsConfig (org.apache.storm.elasticsearch.common.EsConfig)</h2>
+
+<p>Provided components (Bolt, State) takes in EsConfig as a constructor arg.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EsConfig</span><span class="o">(</span><span class="n">clusterName</span><span class="o">,</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"localhost:9300"</span><span class="o">});</span>
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">additionalParameters</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="n">additionalParameters</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"client.transport.sniff"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">);</span>
+<span class="n">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EsConfig</span><span class="o">(</span><span class="n">clusterName</span><span class="o">,</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]{</span><span class="s">"localhost:9300"</span><span class="o">},</span> <span class="n">additionalParameters</span><span class="o">);</span>
+</code></pre></div>
+<h3 id="esconfig-params">EsConfig params</h3>
+
+<table><thead>
+<tr>
+<th>Arg</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clusterName</td>
+<td>Elasticsearch cluster name</td>
+<td>String (required)</td>
+</tr>
+<tr>
+<td>nodes</td>
+<td>Elasticsearch nodes in a String array, each element should follow {host}:{port} pattern</td>
+<td>String array (required)</td>
+</tr>
+<tr>
+<td>additionalParameters</td>
+<td>Additional Elasticsearch Transport Client configuration parameters</td>
+<td>Map<String, String> (optional)</td>
+</tr>
+</tbody></table>
+
+<h2 id="estuplemapper-org-apache-storm-elasticsearch-common-estuplemapper">EsTupleMapper (org.apache.storm.elasticsearch.common.EsTupleMapper)</h2>
+
+<p>For storing tuple to Elasticsearch or percolating tuple from Elasticsearch, we need to define which fields are used for.
+Users need to define your own by implementing <code>EsTupleMapper</code>.
+Storm-elasticsearch presents default mapper <code>org.apache.storm.elasticsearch.common.DefaultEsTupleMapper</code>, which extracts its source, index, type, id values from identical fields.
+You can refer implementation of DefaultEsTupleMapper to see how to implement your own.</p>
+
+<h2 id="committer-sponsors">Committer Sponsors</h2>
+
+<ul>
+<li>Sriharsha Chintalapani (<a href="https://github.com/harshach">@harshach</a>)</li>
+<li>Jungtaek Lim (<a href="https://github.com/HeartSaVioR">@HeartSaVioR</a>)</li>
+</ul>
+
+
+
+	          </div>
+	       </div>
+	  </div>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>Meetups</h5>
+                    <ul class="latest-news">
+                        
+                        <li><a href="http://www.meetup.com/Apache-Storm-Apache-Kafka/">Apache Storm & Apache Kafka</a> <span class="small">(Sunnyvale, CA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/Apache-Storm-Kafka-Users/">Apache Storm & Kafka Users</a> <span class="small">(Seattle, WA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/New-York-City-Storm-User-Group/">NYC Storm User Group</a> <span class="small">(New York, NY)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/Bay-Area-Stream-Processing">Bay Area Stream Processing</a> <span class="small">(Emeryville, CA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/Boston-Storm-Users/">Boston Realtime Data</a> <span class="small">(Boston, MA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/storm-london">London Storm User Group</a> <span class="small">(London, UK)</span></li>
+                        
+                        <!-- <li><a href="http://www.meetup.com/Apache-Storm-Kafka-Users/">Seatle, WA</a> <span class="small">(27 Jun 2015)</span></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>About Storm</h5>
+                    <p>Storm integrates with any queueing system and any database system. Storm's spout abstraction makes it easy to integrate a new queuing system. Likewise, integrating Storm with database systems is easy.</p>
+               </div>
+            </div>
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>First Look</h5>
+                    <ul class="footer-list">
+                        <li><a href="/releases/current/Rationale.html">Rationale</a></li>
+                        <li><a href="/releases/current/Tutorial.html">Tutorial</a></li>
+                        <li><a href="/releases/current/Setting-up-development-environment.html">Setting up development environment</a></li>
+                        <li><a href="/releases/current/Creating-a-new-Storm-project.html">Creating a new Storm project</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>Documentation</h5>
+                    <ul class="footer-list">
+                        <li><a href="/releases/current/index.html">Index</a></li>
+                        <li><a href="/releases/current/javadocs/index.html">Javadoc</a></li>
+                        <li><a href="/releases/current/FAQ.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">   
+            <div class="col-md-12">
+                <p align="center">Copyright © 2015 <a href="http://www.apache.org">Apache Software Foundation</a>. All Rights Reserved. 
+                    <br>Apache Storm, Apache, the Apache feather logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation. 
+                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-angle-up"></i></a></span> 
+
+</body>
+
+</html>
+
