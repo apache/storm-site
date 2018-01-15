@@ -1,28 +1,21 @@
 # Apache Storm Website and Documentation
 This is the source for the Release specific part of the Apache Storm website and documentation. It is statically generated using [jekyll](http://jekyllrb.com).
 
-## Generate Javadoc
-
-You have to generate javadoc on project root before generating document site.
-
-```
-mvn javadoc:javadoc -Dnotimestamp=true
-mvn javadoc:aggregate -DreportOutputDirectory=./docs/ -DdestDir=javadocs -Dnotimestamp=true
-```
-
-You need to create distribution package with gpg certificate. Please refer [here](https://github.com/apache/storm/blob/master/DEVELOPER.md#packaging).
-
 ## Site Generation
-First install jekyll (assuming you have ruby installed):
+First install jekyll and bundler (assuming you have ruby installed):
 
 ```
-gem install jekyll
+gem install jekyll bundler
+```
+
+Fetch/update site dependencies
+```
+bundle install
 ```
 
 Generate the site, and start a server locally:
 ```
-cd docs
-jekyll serve -w
+bundle exec jekyll serve -w
 ```
 
 The `-w` option tells jekyll to watch for changes to files and regenerate the site automatically when any content changes.
@@ -31,48 +24,47 @@ Point your browser to http://localhost:4000
 
 By default, jekyll will generate the site in a `_site` directory.
 
-This will only show the portion of the documentation that is specific to this release.
-
 ## Adding a new release to the website
-In order to add a new relase, you must have committer access to Storm's subversion repository at https://svn.apache.org/repos/asf/storm/site.
+In order to add a new release, you must have committer access to the storm-site repository at https://github.com/apache/storm-site.
 
-Release documentation is placed under the releases directory named after the release version.  Most metadata about the release will be generated automatically from the name using a jekyll plugin.  Or by plaing them in the _data/releases.yml file.
+You must first generate Javadoc for the new release. Check out the Storm repository from https://github.com/apache/storm, and check out the version of the code you are releasing.
 
-To create a new release run the following from the main git directory
-
+In the Storm project root run
 ```
 mvn javadoc:javadoc -Dnotimestamp=true
 mvn javadoc:aggregate -DreportOutputDirectory=./docs/ -DdestDir=javadocs -Dnotimestamp=true
-mkdir ${path_to_svn}/releases/${release_name}
+```
+
+In the storm-site project, release documentation is placed under the releases directory named after the release version. See [below](#how-release-specific-docs-work) for details about release specific documentation.
+
+To add documentation for a new release, run the following from the Storm project root
+
+```
+mkdir ${path_to_storm_site}/releases/${release_name}
 #Copy everything over, and compare checksums, except for things that are part of the site,
 # and are not release specific like the _* directories that are jekyll specific
 # assests/ css/ and README.md
 rsync -ac --delete --exclude _\* --exclude assets --exclude css --exclude README.md ./docs/ ${path_to_svn}/releases/${release_name}
-cd ${path_to_svn}
-svn add releases/${release_name}
-svn commit
+cd ${path_to_storm_site}
+git add releases/${release_name}
+git commit
 ```
 
-to publish a new release run
-
+To publish the site, run the following from the storm-site root
 ```
-cd ${path_to_svn}
-jekyll build -d publish/
-svn add publish/ #Add any new files
-svn commit
+bundle exec jekyll build -d content
+git add content
+git commit
 ```
+and push the commit to the asf-site branch.
 
 ## How release specific docs work
 
-Release specific documentation is controlled by a jekyll plugin [releases.rb](./_plugins/releases.rb)
+Release specific documentation is controlled by a jekyll plugin [releases.rb](./_plugins/releases.rb).
 
-If the plugin is running from the git repo the config `storm_release_only` is set and teh plugin will treat all of the markdown files as release sepcific file.
+The plugin will look in the [releases](https://github.com/apache/storm-site/tree/asf-site/releases) directory for release specific docs.
 
-If it is running from the subversion repositiory it will look in the releases driectory for release sepcific docs.
-
-http://svn.apache.org/viewvc/storm/site/releases/
-
-Each sub directory named after the release in question. The "current" release is pointed to by a symlink in that directory called `current`.
+Each sub directory is named after the release in question. The "current" release is pointed to by a symlink in that directory called `current`.
 
 The plugin sets three configs for each release page.
 
@@ -80,7 +72,7 @@ The plugin sets three configs for each release page.
  * git-tree-base - a link to a directory in github that this version is on
  * git-blob-base - a link to to where on github that this version is on, but should be used when pointing to files.
 
-If `storm_release_only` is set for the project the version is determined from the maven pom.xml and the branch is the current branch in git.  If it is not set the version is determined by the name of the sub-directory and branch is assumed to be a `"v#{version}"` which corresponds with our naming conventions.  For SNAPSHOT releases you will need to override this in `_data/releases.yml`
+The version is determined by the name of the `releases/${release_name}` sub-directory and branch is assumed to be a `"v#{version}"` which corresponds with our naming conventions.  For SNAPSHOT releases you will need to override this in `_data/releases.yml`
 
 The plugin also augments the `site.data.releases` dataset.
 Each release in the list includes the following, and each can be set in `_data/releases.yml` to override what is automatically generated by the plugin.
