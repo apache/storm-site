@@ -25,20 +25,3 @@ documentation: true
   </tr>
 {% endfor %}
 </table>
-
-
-## Contributors
-
-<table class="table table-striped table-bordered table-responsive">
-  <thead>
-    <th class="">Name</th>
-    <th class="">Github</th>
-  </thead>
-{% for contributor in site.data.contributors %}
-  <tr>
-    <td class="">{{ contributor.name}}</td>
-    <td class=""><a href="https://github.com/{{contributor.github}}">@{{contributor.github}}</td>
-  </tr>
-{% endfor %}
-</table>
-
