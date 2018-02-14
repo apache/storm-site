@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -214,20 +214,20 @@ in the extlib directory.</p></li>
 <li><p>The state provider properties can be overridden by setting <code>topology.state.provider.config</code>. For Redis state this is a
 json config with the following properties.</p></li>
 </ol>
-<div class="highlight"><pre><code class="language-" data-lang=""><span class="p">{</span><span class="w">
-  </span><span class="nt">"keyClass"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Optional fully qualified class name of the Key type."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"valueClass"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Optional fully qualified class name of the Value type."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"keySerializerClass"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Optional Key serializer implementation class."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"valueSerializerClass"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Optional Value Serializer implementation class."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"jedisPoolConfig"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"localhost"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">6379</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"timeout"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"database"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xyz"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre><code class="language-" data-lang="">{
+  "keyClass": "Optional fully qualified class name of the Key type.",
+  "valueClass": "Optional fully qualified class name of the Value type.",
+  "keySerializerClass": "Optional Key serializer implementation class.",
+  "valueSerializerClass": "Optional Value Serializer implementation class.",
+  "jedisPoolConfig": {
+    "host": "localhost",
+    "port": 6379,
+    "timeout": 2000,
+    "database": 0,
+    "password": "xyz"
+    }
+}
+</code></pre></div>
 <h2 id="checkpoint-mechanism">Checkpoint mechanism</h2>
 
 <p>Checkpoint is triggered by an internal checkpoint spout at the specified <code>topology.state.checkpoint.interval.ms</code>. If there is
@@ -284,19 +284,19 @@ duplicate state updates during recovery.</p>
      * This is a hook for the component to perform some actions just before the
      * framework commits its state.
      */</span>
-    <span class="kt">void</span> <span class="n">preCommit</span><span class="o">(</span><span class="kt">long</span> <span class="n">txid</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">preCommit</span><span class="o">(</span><span class="kt">long</span> <span class="n">txid</span><span class="o">);</span>
 
     <span class="cm">/**
      * This is a hook for the component to perform some actions just before the
      * framework prepares its state.
      */</span>
-    <span class="kt">void</span> <span class="n">prePrepare</span><span class="o">(</span><span class="kt">long</span> <span class="n">txid</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">prePrepare</span><span class="o">(</span><span class="kt">long</span> <span class="n">txid</span><span class="o">);</span>
 
     <span class="cm">/**
      * This is a hook for the component to perform some actions just before the
      * framework rolls back the prepared state.
      */</span>
-    <span class="kt">void</span> <span class="n">preRollback</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">preRollback</span><span class="o">();</span>
 </code></pre></div>
 <p>This is optional and stateful bolts are not expected to provide any implementation. This is provided so that other
 system level components can be built on top of the stateful abstractions where we might want to take some actions before the

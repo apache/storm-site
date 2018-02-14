@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -178,7 +178,7 @@
 <div class="highlight"><pre><code class="language-" data-lang="">python topology.py arg1 arg2 {nimbus-host} {nimbus-port} {uploaded-jar-location}
 </code></pre></div>
 <p>Then you can connect to Nimbus using the Thrift API and submit the topology, passing {uploaded-jar-location} into the submitTopology method. For reference, here&#39;s the submitTopology definition:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kt">void</span> <span class="nf">submitTopology</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span> <span class="n">string</span> <span class="n">name</span><span class="o">,</span> <span class="mi">2</span><span class="o">:</span> <span class="n">string</span> <span class="n">uploadedJarLocation</span><span class="o">,</span> <span class="mi">3</span><span class="o">:</span> <span class="n">string</span> <span class="n">jsonConf</span><span class="o">,</span> <span class="mi">4</span><span class="o">:</span> <span class="n">StormTopology</span> <span class="n">topology</span><span class="o">)</span> <span class="kd">throws</span> <span class="o">(</span><span class="mi">1</span><span class="o">:</span> <span class="n">AlreadyAliveException</span> <span class="n">e</span><span class="o">,</span> <span class="mi">2</span><span class="o">:</span> <span class="n">InvalidTopologyException</span> <span class="n">ite</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kt">void</span> <span class="nf">submitTopology</span><span class="o">(</span><span class="mi">1</span><span class="o">:</span> <span class="n">string</span> <span class="n">name</span><span class="o">,</span> <span class="mi">2</span><span class="o">:</span> <span class="n">string</span> <span class="n">uploadedJarLocation</span><span class="o">,</span> <span class="mi">3</span><span class="o">:</span> <span class="n">string</span> <span class="n">jsonConf</span><span class="o">,</span> <span class="mi">4</span><span class="o">:</span> <span class="n">StormTopology</span> <span class="n">topology</span><span class="o">)</span> <span class="kd">throws</span> <span class="o">(</span><span class="mi">1</span><span class="o">:</span> <span class="n">AlreadyAliveException</span> <span class="n">e</span><span class="o">,</span> <span class="mi">2</span><span class="o">:</span> <span class="n">InvalidTopologyException</span> <span class="n">ite</span><span class="o">);</span>
 </code></pre></div>
 <p>Finally, one of the key things to do in a non-JVM DSL is make it easy to define the entire topology in one file (the bolts, spouts, and the definition of the topology).</p>
 

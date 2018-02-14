@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -188,31 +188,31 @@ the list of potential leaders automatically. </li>
      * queue up for leadership lock. The call returns immediately and the caller                     
      * must check isLeader() to perform any leadership action.
      */</span>
-    <span class="kt">void</span> <span class="n">addToLeaderLockQueue</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">addToLeaderLockQueue</span><span class="o">();</span>
 
     <span class="cm">/**
      * Removes the caller from the leader lock queue. If the caller is leader
      * also releases the lock.
      */</span>
-    <span class="kt">void</span> <span class="n">removeFromLeaderLockQueue</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">removeFromLeaderLockQueue</span><span class="o">();</span>
 
     <span class="cm">/**
      *
      * @return true if the caller currently has the leader lock.
      */</span>
-    <span class="kt">boolean</span> <span class="n">isLeader</span><span class="o">();</span>
+    <span class="kt">boolean</span> <span class="nf">isLeader</span><span class="o">();</span>
 
     <span class="cm">/**
      *
      * @return the current leader's address , throws exception if noone has has    lock.
      */</span>
-    <span class="n">InetSocketAddress</span> <span class="n">getLeaderAddress</span><span class="o">();</span>
+    <span class="n">InetSocketAddress</span> <span class="nf">getLeaderAddress</span><span class="o">();</span>
 
     <span class="cm">/**
      * 
      * @return list of current nimbus addresses, includes leader.
      */</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">InetSocketAddress</span><span class="o">&gt;</span> <span class="n">getAllNimbusAddresses</span><span class="o">();</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">InetSocketAddress</span><span class="o">&gt;</span> <span class="nf">getAllNimbusAddresses</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>On startup nimbus will check if it has code for all active topologies available locally. Once it gets to this state it 
@@ -267,7 +267,7 @@ system based replicated storage systems we propose the following interface:</p>
      * Prepare this code distributor.
      * @param conf
      */</span>
-    <span class="kt">void</span> <span class="n">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">);</span>
 
     <span class="cm">/**
      * This API will perform the actual upload of the code to the distributed implementation.
@@ -278,7 +278,7 @@ system based replicated storage systems we propose the following interface:</p>
      * @param topologyId the topologyId for which the meta file needs to be created.
      * @return metaFile
      */</span>
-    <span class="n">File</span> <span class="n">upload</span><span class="o">(</span><span class="n">Path</span> <span class="n">dirPath</span><span class="o">,</span> <span class="n">String</span> <span class="n">topologyId</span><span class="o">);</span>
+    <span class="n">File</span> <span class="nf">upload</span><span class="o">(</span><span class="n">Path</span> <span class="n">dirPath</span><span class="o">,</span> <span class="n">String</span> <span class="n">topologyId</span><span class="o">);</span>
 
     <span class="cm">/**
      * Given the topologyId and metafile, download the actual code and return the downloaded file's list.
@@ -287,24 +287,24 @@ system based replicated storage systems we propose the following interface:</p>
      * @param destDirPath the folder where all the files will be downloaded.
      * @return
      */</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span> <span class="n">download</span><span class="o">(</span><span class="n">Path</span> <span class="n">destDirPath</span><span class="o">,</span> <span class="n">String</span> <span class="n">topologyid</span><span class="o">,</span> <span class="n">File</span> <span class="n">metafile</span><span class="o">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">File</span><span class="o">&gt;</span> <span class="nf">download</span><span class="o">(</span><span class="n">Path</span> <span class="n">destDirPath</span><span class="o">,</span> <span class="n">String</span> <span class="n">topologyid</span><span class="o">,</span> <span class="n">File</span> <span class="n">metafile</span><span class="o">);</span>
 
     <span class="cm">/**
       * Given the topologyId, returns number of hosts where the code has been replicated.
       */</span>
-    <span class="kt">int</span> <span class="n">getReplicationCount</span><span class="o">(</span><span class="n">String</span> <span class="n">topologyId</span><span class="o">);</span>
+    <span class="kt">int</span> <span class="nf">getReplicationCount</span><span class="o">(</span><span class="n">String</span> <span class="n">topologyId</span><span class="o">);</span>
 
    <span class="cm">/**
      * Performs the cleanup.
      * @param topologyid
      */</span>
-    <span class="kt">void</span> <span class="n">cleanup</span><span class="o">(</span><span class="n">String</span> <span class="n">topologyid</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">cleanup</span><span class="o">(</span><span class="n">String</span> <span class="n">topologyid</span><span class="o">);</span>
 
     <span class="cm">/**
      * Close this distributor.
      * @param conf
      */</span>
-    <span class="kt">void</span> <span class="n">close</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">close</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>To support replication we will allow the user to define a code replication factor which would reflect number of nimbus 

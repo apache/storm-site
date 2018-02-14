@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -176,8 +176,8 @@ Currently, we support the following two implementations:</p>
 
 <p>ZkHosts is what you should use if you want to dynamically track Kafka broker to partition mapping. This class uses
 Kafka&#39;s ZooKeeper entries to track brokerHost -&gt; partition mapping. You can instantiate an object by calling</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nf">ZkHosts</span><span class="p">(</span><span class="n">String</span> <span class="n">brokerZkStr</span><span class="o">,</span> <span class="n">String</span> <span class="n">brokerZkPath</span><span class="o">)</span>
-<span class="kd">public</span> <span class="nf">ZkHosts</span><span class="p">(</span><span class="n">String</span> <span class="n">brokerZkStr</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nf">ZkHosts</span><span class="o">(</span><span class="n">String</span> <span class="n">brokerZkStr</span><span class="o">,</span> <span class="n">String</span> <span class="n">brokerZkPath</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nf">ZkHosts</span><span class="o">(</span><span class="n">String</span> <span class="n">brokerZkStr</span><span class="o">)</span>
 </code></pre></div>
 <p>Where brokerZkStr is just ip:port (e.g. localhost:2181). brokerZkPath is the root directory under which all the topics and
 partition information is stored. By default this is /brokers which is what the default Kafka implementation uses.</p>
@@ -201,8 +201,8 @@ of this class, you need to first construct an instance of GlobalPartitionInforma
 <h3 id="kafkaconfig">KafkaConfig</h3>
 
 <p>The second thing needed for constructing a kafkaSpout is an instance of KafkaConfig.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nf">KafkaConfig</span><span class="p">(</span><span class="n">BrokerHosts</span> <span class="n">hosts</span><span class="o">,</span> <span class="n">String</span> <span class="n">topic</span><span class="o">)</span>
-<span class="kd">public</span> <span class="nf">KafkaConfig</span><span class="p">(</span><span class="n">BrokerHosts</span> <span class="n">hosts</span><span class="o">,</span> <span class="n">String</span> <span class="n">topic</span><span class="o">,</span> <span class="n">String</span> <span class="n">clientId</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nf">KafkaConfig</span><span class="o">(</span><span class="n">BrokerHosts</span> <span class="n">hosts</span><span class="o">,</span> <span class="n">String</span> <span class="n">topic</span><span class="o">)</span>
+<span class="kd">public</span> <span class="nf">KafkaConfig</span><span class="o">(</span><span class="n">BrokerHosts</span> <span class="n">hosts</span><span class="o">,</span> <span class="n">String</span> <span class="n">topic</span><span class="o">,</span> <span class="n">String</span> <span class="n">clientId</span><span class="o">)</span>
 </code></pre></div>
 <p>The BrokerHosts can be any implementation of BrokerHosts interface as described above. The topic is name of Kafka topic.
 The optional ClientId is used as a part of the ZooKeeper path where the spout&#39;s current consumption offset is stored.</p>
@@ -212,8 +212,8 @@ The optional ClientId is used as a part of the ZooKeeper path where the spout&#3
 <p>Spoutconfig is an extension of KafkaConfig that supports additional fields with ZooKeeper connection info and for controlling
 behavior specific to KafkaSpout. The Zkroot will be used as root to store your consumer&#39;s offset. The id should uniquely
 identify your spout.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nf">SpoutConfig</span><span class="p">(</span><span class="n">BrokerHosts</span> <span class="n">hosts</span><span class="o">,</span> <span class="n">String</span> <span class="n">topic</span><span class="o">,</span> <span class="n">String</span> <span class="n">zkRoot</span><span class="o">,</span> <span class="n">String</span> <span class="n">id</span><span class="o">);</span>
-<span class="kd">public</span> <span class="nf">SpoutConfig</span><span class="p">(</span><span class="n">BrokerHosts</span> <span class="n">hosts</span><span class="o">,</span> <span class="n">String</span> <span class="n">topic</span><span class="o">,</span> <span class="n">String</span> <span class="n">id</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="nf">SpoutConfig</span><span class="o">(</span><span class="n">BrokerHosts</span> <span class="n">hosts</span><span class="o">,</span> <span class="n">String</span> <span class="n">topic</span><span class="o">,</span> <span class="n">String</span> <span class="n">zkRoot</span><span class="o">,</span> <span class="n">String</span> <span class="n">id</span><span class="o">);</span>
+<span class="kd">public</span> <span class="nf">SpoutConfig</span><span class="o">(</span><span class="n">BrokerHosts</span> <span class="n">hosts</span><span class="o">,</span> <span class="n">String</span> <span class="n">topic</span><span class="o">,</span> <span class="n">String</span> <span class="n">id</span><span class="o">);</span>
 </code></pre></div>
 <p>In addition to these parameters, SpoutConfig contains the following fields that control how KafkaSpout behaves:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// setting for how often to save the current Kafka offset to ZooKeeper</span>
@@ -256,14 +256,14 @@ TridentKafkaEmitter only accepts TridentKafkaConfig.</p>
 
 <p>MultiScheme is an interface that dictates how the ByteBuffer consumed from Kafka gets transformed into a storm tuple. It
 also controls the naming of your output field.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">deserialize</span><span class="o">(</span><span class="n">ByteBuffer</span> <span class="n">ser</span><span class="o">);</span>
-<span class="kd">public</span> <span class="n">Fields</span> <span class="nf">getOutputFields</span><span class="p">(</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="nf">deserialize</span><span class="o">(</span><span class="n">ByteBuffer</span> <span class="n">ser</span><span class="o">);</span>
+<span class="kd">public</span> <span class="n">Fields</span> <span class="nf">getOutputFields</span><span class="o">();</span>
 </code></pre></div>
 <p>The default <code>RawMultiScheme</code> just takes the <code>ByteBuffer</code> and returns a tuple with the ByteBuffer converted to a <code>byte[]</code>. The name of the outputField is &quot;bytes&quot;. There are alternative implementations like <code>SchemeAsMultiScheme</code> and <code>KeyValueSchemeAsMultiScheme</code> which can convert the <code>ByteBuffer</code> to <code>String</code>.</p>
 
 <p>There is also an extension of <code>SchemeAsMultiScheme</code>, <code>MessageMetadataSchemeAsMultiScheme</code>,
 which has an additional deserialize method that accepts the message <code>ByteBuffer</code> in addition to the <code>Partition</code> and <code>offset</code> associated with the message.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">deserializeMessageWithMetadata</span><span class="o">(</span><span class="n">ByteBuffer</span> <span class="n">message</span><span class="o">,</span> <span class="n">Partition</span> <span class="n">partition</span><span class="o">,</span> <span class="kt">long</span> <span class="n">offset</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="nf">deserializeMessageWithMetadata</span><span class="o">(</span><span class="n">ByteBuffer</span> <span class="n">message</span><span class="o">,</span> <span class="n">Partition</span> <span class="n">partition</span><span class="o">,</span> <span class="kt">long</span> <span class="n">offset</span><span class="o">)</span>
 </code></pre></div>
 <p>This is useful for auditing/replaying messages from arbitrary points on a Kafka topic, saving the partition and offset of each message of a discrete stream instead of persisting the entire message.</p>
 
@@ -273,38 +273,38 @@ which has an additional deserialize method that accepts the message <code>ByteBu
 between consecutive retries. To use a custom implementation, set SpoutConfig.failedMsgRetryManagerClass to the full classname
 of implementation. Here is the interface </p>
 <div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="c1">// Spout initialization can go here. This can be called multiple times during lifecycle of a worker. </span>
-    <span class="kt">void</span> <span class="n">prepare</span><span class="o">(</span><span class="n">SpoutConfig</span> <span class="n">spoutConfig</span><span class="o">,</span> <span class="n">Map</span> <span class="n">stormConf</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">SpoutConfig</span> <span class="n">spoutConfig</span><span class="o">,</span> <span class="n">Map</span> <span class="n">stormConf</span><span class="o">);</span>
 
     <span class="c1">// Message corresponding to offset has failed. This method is called only if retryFurther returns true for offset.</span>
-    <span class="kt">void</span> <span class="n">failed</span><span class="o">(</span><span class="n">Long</span> <span class="n">offset</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">failed</span><span class="o">(</span><span class="n">Long</span> <span class="n">offset</span><span class="o">);</span>
 
     <span class="c1">// Message corresponding to offset has been acked.  </span>
-    <span class="kt">void</span> <span class="n">acked</span><span class="o">(</span><span class="n">Long</span> <span class="n">offset</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">acked</span><span class="o">(</span><span class="n">Long</span> <span class="n">offset</span><span class="o">);</span>
 
     <span class="c1">// Message corresponding to the offset, has been re-emitted and under transit.</span>
-    <span class="kt">void</span> <span class="n">retryStarted</span><span class="o">(</span><span class="n">Long</span> <span class="n">offset</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">retryStarted</span><span class="o">(</span><span class="n">Long</span> <span class="n">offset</span><span class="o">);</span>
 
     <span class="cm">/**
      * The offset of message, which is to be re-emitted. Spout will fetch messages starting from this offset
      * and resend them, except completed messages.
      */</span>
-    <span class="n">Long</span> <span class="n">nextFailedMessageToRetry</span><span class="o">();</span>
+    <span class="n">Long</span> <span class="nf">nextFailedMessageToRetry</span><span class="o">();</span>
 
     <span class="cm">/**
      * @return True if the message corresponding to the offset should be emitted NOW. False otherwise.
      */</span>
-    <span class="kt">boolean</span> <span class="n">shouldReEmitMsg</span><span class="o">(</span><span class="n">Long</span> <span class="n">offset</span><span class="o">);</span>
+    <span class="kt">boolean</span> <span class="nf">shouldReEmitMsg</span><span class="o">(</span><span class="n">Long</span> <span class="n">offset</span><span class="o">);</span>
 
     <span class="cm">/**
      * Spout will clean up the state for this offset if false is returned. If retryFurther is set to true,
      * spout will called failed(offset) in next call and acked(offset) otherwise 
      */</span>
-    <span class="kt">boolean</span> <span class="n">retryFurther</span><span class="o">(</span><span class="n">Long</span> <span class="n">offset</span><span class="o">);</span>
+    <span class="kt">boolean</span> <span class="nf">retryFurther</span><span class="o">(</span><span class="n">Long</span> <span class="n">offset</span><span class="o">);</span>
 
     <span class="cm">/**
      * Clear any offsets before kafkaOffset. These offsets are no longer available in kafka.
      */</span>
-    <span class="n">Set</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">clearOffsetsBefore</span><span class="o">(</span><span class="n">Long</span> <span class="n">kafkaOffset</span><span class="o">);</span>
+    <span class="n">Set</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="nf">clearOffsetsBefore</span><span class="o">(</span><span class="n">Long</span> <span class="n">kafkaOffset</span><span class="o">);</span>
 </code></pre></div>
 <h4 id="version-incompatibility">Version incompatibility</h4>
 
@@ -407,8 +407,8 @@ org.apache.storm.kafka.trident.TridentKafkaUpdater.</p>
 <h3 id="tupletokafkamapper-and-tridenttupletokafkamapper">TupleToKafkaMapper and TridentTupleToKafkaMapper</h3>
 
 <p>These interfaces have 2 methods defined:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">K</span> <span class="nf">getKeyFromTuple</span><span class="p">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
-<span class="n">V</span> <span class="nf">getMessageFromTuple</span><span class="p">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">K</span> <span class="nf">getKeyFromTuple</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
+<span class="n">V</span> <span class="nf">getMessageFromTuple</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
 </code></pre></div>
 <p>As the name suggests, these methods are called to map a tuple to Kafka key and Kafka message. If you just want one field
 as key and one field as value, then you can use the provided FieldNameBasedTupleToKafkaMapper.java
@@ -422,7 +422,7 @@ These should be specified while constructing and instance of FieldNameBasedTuple
 
 <p>This interface has only one method</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">KafkaTopicSelector</span> <span class="o">{</span>
-    <span class="n">String</span> <span class="n">getTopics</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="n">String</span> <span class="nf">getTopics</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>The implementation of this interface should return the topic to which the tuple&#39;s key/message mapping needs to be published
@@ -453,10 +453,10 @@ Section &quot;Important configuration properties for the producer&quot; for more
 
 <span class="n">Fields</span> <span class="n">fields</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"message"</span><span class="o">);</span>
 <span class="n">FixedBatchSpout</span> <span class="n">spout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FixedBatchSpout</span><span class="o">(</span><span class="n">fields</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span>
-            <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"storm"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-            <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"trident"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-            <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"needs"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-            <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"javadoc"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">)</span>
+            <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"storm"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"trident"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"needs"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"javadoc"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">)</span>
 <span class="o">);</span>
 <span class="n">spout</span><span class="o">.</span><span class="na">setCycle</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 <span class="n">builder</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="s">"spout"</span><span class="o">,</span> <span class="n">spout</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
@@ -480,10 +480,10 @@ Section &quot;Important configuration properties for the producer&quot; for more
 <p>For Trident:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">Fields</span> <span class="n">fields</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word"</span><span class="o">,</span> <span class="s">"count"</span><span class="o">);</span>
 <span class="n">FixedBatchSpout</span> <span class="n">spout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FixedBatchSpout</span><span class="o">(</span><span class="n">fields</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span>
-        <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"storm"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-        <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"trident"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-        <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"needs"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-        <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"javadoc"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">)</span>
+        <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"storm"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"trident"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"needs"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+        <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"javadoc"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">)</span>
 <span class="o">);</span>
 <span class="n">spout</span><span class="o">.</span><span class="na">setCycle</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 

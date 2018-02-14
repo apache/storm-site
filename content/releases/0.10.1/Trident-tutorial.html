@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -173,10 +173,10 @@
 
 <p>For the purposes of illustration, this example will read an infinite stream of sentences from the following source:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">FixedBatchSpout</span> <span class="n">spout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FixedBatchSpout</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">),</span> <span class="mi">3</span><span class="o">,</span>
-               <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"the cow jumped over the moon"</span><span class="o">),</span>
-               <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"the man went to the store and bought some candy"</span><span class="o">),</span>
-               <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"four score and seven years ago"</span><span class="o">),</span>
-               <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"how many apples can you eat"</span><span class="o">));</span>
+               <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"the cow jumped over the moon"</span><span class="o">),</span>
+               <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"the man went to the store and bought some candy"</span><span class="o">),</span>
+               <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"four score and seven years ago"</span><span class="o">),</span>
+               <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"how many apples can you eat"</span><span class="o">));</span>
 <span class="n">spout</span><span class="o">.</span><span class="na">setCycle</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 </code></pre></div>
 <p>This spout cycles through that set of sentences over and over to produce the sentence stream. Here&#39;s the code to do the streaming word count part of the computation:</p>
@@ -200,7 +200,7 @@
 
 <p>Back to the example, the spout emits a stream containing one field called &quot;sentence&quot;. The next line of the topology definition applies the Split function to each tuple in the stream, taking the &quot;sentence&quot; field and splitting it into words. Each sentence tuple creates potentially many word tuples – for instance, the sentence &quot;the cow jumped over the moon&quot; creates six &quot;word&quot; tuples. Here&#39;s the definition of Split:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Split</span> <span class="kd">extends</span> <span class="n">BaseFunction</span> <span class="o">{</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="n">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
        <span class="n">String</span> <span class="n">sentence</span> <span class="o">=</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
        <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">word:</span> <span class="n">sentence</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">))</span> <span class="o">{</span>
            <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">word</span><span class="o">));</span>                
@@ -282,15 +282,15 @@
 
 <p>Next, the set of followers is uniqued and counted. This is done in two steps. First a &quot;group by&quot; is done on the batch by &quot;follower&quot;, running the &quot;One&quot; aggregator on each group. The &quot;One&quot; aggregator simply emits a single tuple containing the number one for each group. Then, the ones are summed together to get the unique count of the followers set. Here&#39;s the definition of the &quot;One&quot; aggregator:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">One</span> <span class="kd">implements</span> <span class="n">CombinerAggregator</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="o">{</span>
-   <span class="kd">public</span> <span class="n">Integer</span> <span class="n">init</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">init</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
        <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
    <span class="o">}</span>
 
-   <span class="kd">public</span> <span class="n">Integer</span> <span class="n">combine</span><span class="o">(</span><span class="n">Integer</span> <span class="n">val1</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">val2</span><span class="o">)</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">combine</span><span class="o">(</span><span class="n">Integer</span> <span class="n">val1</span><span class="o">,</span> <span class="n">Integer</span> <span class="n">val2</span><span class="o">)</span> <span class="o">{</span>
        <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
    <span class="o">}</span>
 
-   <span class="kd">public</span> <span class="n">Integer</span> <span class="n">zero</span><span class="o">()</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">zero</span><span class="o">()</span> <span class="o">{</span>
        <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
    <span class="o">}</span>        
 <span class="o">}</span>
@@ -308,7 +308,7 @@
 </code></pre></div>
 <p>Suppose the implementation of MyFilter is this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFilter</span> <span class="kd">extends</span> <span class="n">BaseFilter</span> <span class="o">{</span>
-   <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">isKeep</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isKeep</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
        <span class="k">return</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getInteger</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span>
    <span class="o">}</span>
 <span class="o">}</span>
@@ -317,7 +317,7 @@
 
 <p>Let&#39;s now look at how &quot;function fields&quot; work. Suppose you had this function:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AddAndMultiply</span> <span class="kd">extends</span> <span class="n">BaseFunction</span> <span class="o">{</span>
-   <span class="kd">public</span> <span class="kt">void</span> <span class="n">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
        <span class="kt">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getInteger</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
        <span class="kt">int</span> <span class="n">i2</span> <span class="o">=</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getInteger</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
        <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">i1</span> <span class="o">+</span> <span class="n">i2</span><span class="o">,</span> <span class="n">i1</span> <span class="o">*</span> <span class="n">i2</span><span class="o">));</span>

@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -216,7 +216,7 @@ is a Windowed Bolt, we can also use the <code>withWindow</code> method to config
 <li>Stream names must be introduced (in constructor or as 1st arg to various join methods) before being referred
 to (in the 3rd argument of the join methods). Forward referencing of stream names, as shown below, is not allowed:</li>
 </ul>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">new</span> <span class="nf">JoinBolt</span><span class="p">(</span> <span class="s">"spout1"</span><span class="o">,</span> <span class="s">"key1"</span><span class="o">)</span>                 
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">new</span> <span class="n">JoinBolt</span><span class="o">(</span> <span class="s">"spout1"</span><span class="o">,</span> <span class="s">"key1"</span><span class="o">)</span>                 
   <span class="o">.</span><span class="na">join</span>     <span class="o">(</span> <span class="s">"spout2"</span><span class="o">,</span> <span class="s">"userId"</span><span class="o">,</span>  <span class="s">"spout3"</span><span class="o">)</span> <span class="c1">//not allowed. spout3 not yet introduced</span>
   <span class="o">.</span><span class="na">join</span>     <span class="o">(</span> <span class="s">"spout3"</span><span class="o">,</span> <span class="s">"key3"</span><span class="o">,</span>    <span class="s">"spout1"</span><span class="o">)</span>
 </code></pre></div>
@@ -229,7 +229,7 @@ to (in the 3rd argument of the join methods). Forward referencing of stream name
 <p>For simplicity, Storm topologies often use the <code>default</code> stream. Topologies can also use named streams 
 instead of <code>default</code> streams.  To support such topologies, <code>JoinBolt</code> can be configured to use stream
 names,  instead of source component (spout/bolt) names, via the constructor&#39;s first argument:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">new</span> <span class="nf">JoinBolt</span><span class="p">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="na">Selector</span><span class="o">.</span><span class="na">STREAM</span><span class="o">,</span>  <span class="s">"stream1"</span><span class="o">,</span> <span class="s">"key1"</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">new</span> <span class="n">JoinBolt</span><span class="o">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="na">Selector</span><span class="o">.</span><span class="na">STREAM</span><span class="o">,</span>  <span class="s">"stream1"</span><span class="o">,</span> <span class="s">"key1"</span><span class="o">)</span>
                                   <span class="o">.</span><span class="na">join</span><span class="o">(</span><span class="s">"stream2"</span><span class="o">,</span> <span class="s">"key2"</span><span class="o">)</span>
     <span class="o">...</span>
 </code></pre></div>
@@ -237,7 +237,7 @@ names,  instead of source component (spout/bolt) names, via the constructor&#39;
 (as opposed to names of upstream spouts/bolts).</p>
 
 <p>The below example joins two named streams from four spouts:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">new</span> <span class="nf">JoinBolt</span><span class="p">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="na">Selector</span><span class="o">.</span><span class="na">STREAM</span><span class="o">,</span>  <span class="s">"stream1"</span><span class="o">,</span> <span class="s">"key1"</span><span class="o">)</span> 
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">new</span> <span class="n">JoinBolt</span><span class="o">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="na">Selector</span><span class="o">.</span><span class="na">STREAM</span><span class="o">,</span>  <span class="s">"stream1"</span><span class="o">,</span> <span class="s">"key1"</span><span class="o">)</span> 
                              <span class="o">.</span><span class="na">join</span>     <span class="o">(</span><span class="s">"stream2"</span><span class="o">,</span> <span class="s">"userId"</span><span class="o">,</span>  <span class="s">"stream1"</span> <span class="o">)</span>
                              <span class="o">.</span><span class="na">select</span> <span class="o">(</span><span class="s">"userId, key1, key2"</span><span class="o">)</span>
                              <span class="o">.</span><span class="na">withTumblingWindow</span><span class="o">(</span> <span class="k">new</span> <span class="n">Duration</span><span class="o">(</span><span class="mi">10</span><span class="o">,</span> <span class="n">TimeUnit</span><span class="o">.</span><span class="na">MINUTES</span><span class="o">)</span> <span class="o">)</span> <span class="o">;</span>

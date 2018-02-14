@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -196,7 +196,7 @@ It&#39;s used internally to track the numbers you see in the Nimbus UI console: 
 
 <p>Otherwise edit the storm.yaml config file:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">topology.metrics.consumer.register</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">class</span><span class="pi">:</span> <span class="s2">"</span><span class="s">backtype.storm.metric.LoggingMetricsConsumer"</span>
+  <span class="pi">-</span> <span class="na">class</span><span class="pi">:</span> <span class="s2">"</span><span class="s">backtype.storm.metric.LoggingMetricsConsumer"</span>
     <span class="s">parallelism.hint</span><span class="pi">:</span> <span class="s">1</span>
 </code></pre></div>
 <p>Storm appends MetricsConsumerBolt to your topology per each registered metrics consumer internally, and each MetricsConsumerBolt subscribes to receive metrics from all tasks. The parallelism for that Bolt is set to <code>parallelism.hint</code> and <code>component id</code> for that Bolt is set to <code>__metrics_&lt;metrics consumer class name&gt;</code>. If you register same class name more than once, postfix <code>#&lt;sequence number&gt;</code> is appended to component id.</p>
@@ -224,7 +224,7 @@ It&#39;s used internally to track the numbers you see in the Nimbus UI console: 
 
 <p>Next, let&#39;s initialize and register the metric instance.</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nd">@Override</span>
-<span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="p">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
     <span class="c1">// other intialization here.</span>
     <span class="n">countMetric</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CountMetric</span><span class="o">();</span>
     <span class="n">context</span><span class="o">.</span><span class="na">registerMetric</span><span class="o">(</span><span class="s">"execute_count"</span><span class="o">,</span> <span class="n">countMetric</span><span class="o">,</span> <span class="mi">60</span><span class="o">);</span>
@@ -233,7 +233,7 @@ It&#39;s used internally to track the numbers you see in the Nimbus UI console: 
 <p>The meaning of first and second parameters are straightforward, metric name and instance of IMetric. Third parameter of <a href="javadocs/backtype/storm/task/TopologyContext.html#registerMetric-java.lang.String-T-int-">TopologyContext#registerMetric</a> is the period (seconds) to publish and reset the metric.</p>
 
 <p>Last, let&#39;s increment the value when Bolt.execute() is executed.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="p">(</span><span class="n">Tuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">countMetric</span><span class="o">.</span><span class="na">incr</span><span class="o">();</span>
     <span class="c1">// handle tuple here.   </span>
 <span class="o">}</span>

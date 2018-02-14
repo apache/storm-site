@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -174,7 +174,7 @@ responsible for making the update calls to Solr, thus updating the index of the 
 describe in detail the two key components of the Storm Solr integration, the <code>SolrUpdateBolt</code>, and the <code>Mappers</code>, <code>SolrFieldsMapper</code>, and <code>SolrJsonMapper</code>.</p>
 
 <h2 id="storm-bolt-with-json-mapper-and-count-based-commit-strategy">Storm Bolt With JSON Mapper and Count Based Commit Strategy</h2>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="nf">SolrUpdateBolt</span><span class="p">(</span><span class="n">solrConfig</span><span class="o">,</span> <span class="n">solrMapper</span><span class="o">,</span> <span class="n">solrCommitStgy</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">SolrUpdateBolt</span><span class="o">(</span><span class="n">solrConfig</span><span class="o">,</span> <span class="n">solrMapper</span><span class="o">,</span> <span class="n">solrCommitStgy</span><span class="o">)</span>
 
     <span class="c1">// zkHostString for Solr 'gettingstarted' example</span>
     <span class="n">SolrConfig</span> <span class="n">solrConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SolrConfig</span><span class="o">(</span><span class="s">"127.0.0.1:9983"</span><span class="o">);</span>
@@ -186,7 +186,7 @@ describe in detail the two key components of the Storm Solr integration, the <co
     <span class="n">SolrCommitStrategy</span> <span class="n">solrCommitStgy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CountBasedCommit</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>          
 </code></pre></div>
 <h2 id="trident-topology-with-fields-mapper">Trident Topology With Fields Mapper</h2>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="nf">SolrStateFactory</span><span class="p">(</span><span class="n">solrConfig</span><span class="o">,</span> <span class="n">solrMapper</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">SolrStateFactory</span><span class="o">(</span><span class="n">solrConfig</span><span class="o">,</span> <span class="n">solrMapper</span><span class="o">);</span>
 
     <span class="c1">// zkHostString for Solr 'gettingstarted' example</span>
     <span class="n">SolrConfig</span> <span class="n">solrConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SolrConfig</span><span class="o">(</span><span class="s">"127.0.0.1:9983"</span><span class="o">);</span>
@@ -247,7 +247,7 @@ that is part of the <code>SolrFieldsMapper.Builder</code> builder class. </p>
 field separates each value with the token % instead of the default | . To use the default token you can ommit the call to the method
 <code>setMultiValueFieldToken</code>.</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">SolrFieldsMapper</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span>
-            <span class="k">new</span> <span class="n">RestJsonSchemaBuilder</span><span class="o">(</span><span class="s">"localhost"</span><span class="o">,</span> <span class="s">"8983"</span><span class="o">,</span> <span class="s">"gettingstarted"</span><span class="o">),</span> <span class="s">"gettingstarted"</span><span class="o">)</span>
+            <span class="k">new</span> <span class="nf">RestJsonSchemaBuilder</span><span class="o">(</span><span class="s">"localhost"</span><span class="o">,</span> <span class="s">"8983"</span><span class="o">,</span> <span class="s">"gettingstarted"</span><span class="o">),</span> <span class="s">"gettingstarted"</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">setMultiValueFieldToken</span><span class="o">(</span><span class="s">"%"</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
 </code></pre></div>
 <h1 id="build-and-run-bundled-examples">Build And Run Bundled Examples</h1>
@@ -317,9 +317,9 @@ and then generate an uber jar with all the dependencies.</p>
 
 <p>Querying  Solr for these patterns, you will see the values that have been indexed by the Storm Apache Solr integration: </p>
 
-<p>curl -X GET -H &quot;Content-type:application/json&quot; -H &quot;Accept:application/json&quot; <a href="http://localhost:8983/solr/gettingstarted_shard1_replica2/select?q=*id_fields_test_val*&amp;wt=json&amp;indent=true">http://localhost:8983/solr/gettingstarted_shard1_replica2/select?q=*id_fields_test_val*&amp;wt=json&amp;indent=true</a></p>
+<p>curl -X GET -H &quot;Content-type:application/json&quot; -H &quot;Accept:application/json&quot; <a href="http://localhost:8983/solr/gettingstarted_shard1_replica2/select?q=*id_fields_test_val*&wt=json&indent=true">http://localhost:8983/solr/gettingstarted_shard1_replica2/select?q=*id_fields_test_val*&amp;wt=json&amp;indent=true</a></p>
 
-<p>curl -X GET -H &quot;Content-type: application/json&quot; -H &quot;Accept: application/json&quot; <a href="http://localhost:8983/solr/gettingstarted_shard1_replica2/select?q=*id_fields_test_val*&amp;wt=json&amp;indent=true">http://localhost:8983/solr/gettingstarted_shard1_replica2/select?q=*id_fields_test_val*&amp;wt=json&amp;indent=true</a></p>
+<p>curl -X GET -H &quot;Content-type: application/json&quot; -H &quot;Accept: application/json&quot; <a href="http://localhost:8983/solr/gettingstarted_shard1_replica2/select?q=*id_fields_test_val*&wt=json&indent=true">http://localhost:8983/solr/gettingstarted_shard1_replica2/select?q=*id_fields_test_val*&amp;wt=json&amp;indent=true</a></p>
 
 <p>You can also see the results by opening the Apache Solr UI and pasting the <code>id</code> pattern in the <code>q</code> textbox in the queries page</p>
 

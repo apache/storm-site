@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -251,7 +251,7 @@ The time to allow any given healthcheck script to run before it is marked failed
 
 <p>If you need support from external libraries or custom plugins, you can place such jars into the extlib/ and extlib-daemon/ directories. Note that the extlib-daemon/ directory stores jars used only by daemons (Nimbus, Supervisor, DRPC, UI, Logviewer), e.g., HDFS and customized scheduling libraries. Accordingly, two environmental variables STORM_EXT_CLASSPATH and STORM_EXT_CLASSPATH_DAEMON can be configured by users for including the external classpath and daemon-only external classpath.</p>
 
-<h3 id="launch-daemons-under-supervision-using-quot-storm-quot-script-and-a-supervisor-of-your-choice">Launch daemons under supervision using &quot;storm&quot; script and a supervisor of your choice</h3>
+<h3 id="launch-daemons-under-supervision-using-storm-script-and-a-supervisor-of-your-choice">Launch daemons under supervision using &quot;storm&quot; script and a supervisor of your choice</h3>
 
 <p>The last step is to launch all the Storm daemons. It is critical that you run each of these daemons under supervision. Storm is a <strong>fail-fast</strong> system which means the processes will halt whenever an unexpected error is encountered. Storm is designed so that it can safely halt at any point and recover correctly when the process is restarted. This is why Storm keeps no state in-process -- if Nimbus or the Supervisors restart, the running topologies are unaffected. Here&#39;s how to run the Storm daemons:</p>
 

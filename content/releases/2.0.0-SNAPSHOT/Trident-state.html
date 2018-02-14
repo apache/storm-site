@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -230,23 +230,23 @@ apple =&gt; [count=10, txid=2]
 <p>With opaque transactional spouts, it&#39;s no longer possible to use the trick of skipping state updates if the transaction id in the database is the same as the transaction id for the current batch. This is because the batch may have changed between state updates.</p>
 
 <p>What you can do is store more state in the database. Rather than store a value and transaction id in the database, you instead store a value, transaction id, and the previous value in the database. Let&#39;s again use the example of storing a count in the database. Suppose the partial count for your batch is &quot;2&quot; and it&#39;s time to apply a state update. Suppose the value in the database looks like this:</p>
-<div class="highlight"><pre><code class="language-" data-lang=""><span class="p">{</span><span class="w"> </span><span class="err">value</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">4,</span><span class="w">
-  </span><span class="err">prevValue</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">1,</span><span class="w">
-  </span><span class="err">txid</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">2</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre><code class="language-" data-lang="">{ value = 4,
+  prevValue = 1,
+  txid = 2
+}
+</code></pre></div>
 <p>Suppose your current txid is 3, different than what&#39;s in the database. In this case, you set &quot;prevValue&quot; equal to &quot;value&quot;, increment &quot;value&quot; by your partial count, and update the txid. The new database value will look like this:</p>
-<div class="highlight"><pre><code class="language-" data-lang=""><span class="p">{</span><span class="w"> </span><span class="err">value</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">6,</span><span class="w">
-  </span><span class="err">prevValue</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">4,</span><span class="w">
-  </span><span class="err">txid</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">3</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre><code class="language-" data-lang="">{ value = 6,
+  prevValue = 4,
+  txid = 3
+}
+</code></pre></div>
 <p>Now suppose your current txid is 2, equal to what&#39;s in the database. Now you know that the &quot;value&quot; in the database contains an update from a previous batch for your current txid, but that batch may have been different so you have to ignore it. What you do in this case is increment &quot;prevValue&quot; by your partial count to compute the new &quot;value&quot;. You then set the value in the database to this:</p>
-<div class="highlight"><pre><code class="language-" data-lang=""><span class="p">{</span><span class="w"> </span><span class="err">value</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">3,</span><span class="w">
-  </span><span class="err">prevValue</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">1,</span><span class="w">
-  </span><span class="err">txid</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">2</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre><code class="language-" data-lang="">{ value = 3,
+  prevValue = 1,
+  txid = 2
+}
+</code></pre></div>
 <p>This works because of the strong ordering of batches provided by Trident. Once Trident moves onto a new batch for state updates, it will never go back to a previous batch. And since opaque transactional spouts guarantee no overlap between batches – that each tuple is successfully processed by one batch – you can safely update based on the previous value.</p>
 
 <h2 id="non-transactional-spouts">Non-transactional spouts</h2>
@@ -278,33 +278,33 @@ apple =&gt; [count=10, txid=2]
 
 <p>The base State interface just has two methods:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">State</span> <span class="o">{</span>
-    <span class="kt">void</span> <span class="n">beginCommit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">);</span> <span class="c1">// can be null for things like partitionPersist occurring off a DRPC stream</span>
-    <span class="kt">void</span> <span class="n">commit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">beginCommit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">);</span> <span class="c1">// can be null for things like partitionPersist occurring off a DRPC stream</span>
+    <span class="kt">void</span> <span class="nf">commit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>You&#39;re told when a state update is beginning, when a state update is ending, and you&#39;re given the txid in each case. Trident assumes nothing about how your state works, what kind of methods there are to update it, and what kind of methods there are to read from it.</p>
 
 <p>Suppose you have a home-grown database that contains user location information and you want to be able to access it from Trident. Your State implementation would have methods for getting and setting user information:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocationDB</span> <span class="kd">implements</span> <span class="n">State</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">beginCommit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">)</span> <span class="o">{</span>    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">beginCommit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">)</span> <span class="o">{</span>    
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">commit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">)</span> <span class="o">{</span>    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">commit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">)</span> <span class="o">{</span>    
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setLocation</span><span class="o">(</span><span class="kt">long</span> <span class="n">userId</span><span class="o">,</span> <span class="n">String</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setLocation</span><span class="o">(</span><span class="kt">long</span> <span class="n">userId</span><span class="o">,</span> <span class="n">String</span> <span class="n">location</span><span class="o">)</span> <span class="o">{</span>
       <span class="c1">// code to access database and set location</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="n">String</span> <span class="n">getLocation</span><span class="o">(</span><span class="kt">long</span> <span class="n">userId</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getLocation</span><span class="o">(</span><span class="kt">long</span> <span class="n">userId</span><span class="o">)</span> <span class="o">{</span>
       <span class="c1">// code to get location from database</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>You then provide Trident a StateFactory that can create instances of your State object within Trident tasks. The StateFactory for your LocationDB might look something like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocationDBFactory</span> <span class="kd">implements</span> <span class="n">StateFactory</span> <span class="o">{</span>
-   <span class="kd">public</span> <span class="n">State</span> <span class="n">makeState</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="kt">int</span> <span class="n">partitionIndex</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numPartitions</span><span class="o">)</span> <span class="o">{</span>
-      <span class="k">return</span> <span class="k">new</span> <span class="n">LocationDB</span><span class="o">();</span>
+   <span class="kd">public</span> <span class="n">State</span> <span class="nf">makeState</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="kt">int</span> <span class="n">partitionIndex</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numPartitions</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="k">new</span> <span class="nf">LocationDB</span><span class="o">();</span>
    <span class="o">}</span> 
 <span class="o">}</span>
 </code></pre></div>
@@ -316,7 +316,7 @@ apple =&gt; [count=10, txid=2]
 </code></pre></div>
 <p>Now let&#39;s take a look at what the implementation of QueryLocation would look like:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">QueryLocation</span> <span class="kd">extends</span> <span class="n">BaseQueryFunction</span><span class="o">&lt;</span><span class="n">LocationDB</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">batchRetrieve</span><span class="o">(</span><span class="n">LocationDB</span> <span class="n">state</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">TridentTuple</span><span class="o">&gt;</span> <span class="n">inputs</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">batchRetrieve</span><span class="o">(</span><span class="n">LocationDB</span> <span class="n">state</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">TridentTuple</span><span class="o">&gt;</span> <span class="n">inputs</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">ret</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
         <span class="k">for</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="nl">input:</span> <span class="n">inputs</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">ret</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">state</span><span class="o">.</span><span class="na">getLocation</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getLong</span><span class="o">(</span><span class="mi">0</span><span class="o">)));</span>
@@ -324,7 +324,7 @@ apple =&gt; [count=10, txid=2]
         <span class="k">return</span> <span class="n">ret</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">String</span> <span class="n">location</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">String</span> <span class="n">location</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">location</span><span class="o">));</span>
     <span class="o">}</span>    
 <span class="o">}</span>
@@ -333,24 +333,24 @@ apple =&gt; [count=10, txid=2]
 
 <p>You can see that this code doesn&#39;t take advantage of the batching that Trident does, since it just queries the LocationDB one at a time. So a better way to write the LocationDB would be like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocationDB</span> <span class="kd">implements</span> <span class="n">State</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">beginCommit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">)</span> <span class="o">{</span>    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">beginCommit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">)</span> <span class="o">{</span>    
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">commit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">)</span> <span class="o">{</span>    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">commit</span><span class="o">(</span><span class="n">Long</span> <span class="n">txid</span><span class="o">)</span> <span class="o">{</span>    
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">setLocationsBulk</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">userIds</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">locations</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setLocationsBulk</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">userIds</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">locations</span><span class="o">)</span> <span class="o">{</span>
       <span class="c1">// set locations in bulk</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">bulkGetLocations</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">userIds</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">bulkGetLocations</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">userIds</span><span class="o">)</span> <span class="o">{</span>
       <span class="c1">// get locations in bulk</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>Then, you can write the QueryLocation function like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">QueryLocation</span> <span class="kd">extends</span> <span class="n">BaseQueryFunction</span><span class="o">&lt;</span><span class="n">LocationDB</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">batchRetrieve</span><span class="o">(</span><span class="n">LocationDB</span> <span class="n">state</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">TridentTuple</span><span class="o">&gt;</span> <span class="n">inputs</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">batchRetrieve</span><span class="o">(</span><span class="n">LocationDB</span> <span class="n">state</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">TridentTuple</span><span class="o">&gt;</span> <span class="n">inputs</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">userIds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;();</span>
         <span class="k">for</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="nl">input:</span> <span class="n">inputs</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">userIds</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getLong</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
@@ -358,7 +358,7 @@ apple =&gt; [count=10, txid=2]
         <span class="k">return</span> <span class="n">state</span><span class="o">.</span><span class="na">bulkGetLocations</span><span class="o">(</span><span class="n">userIds</span><span class="o">);</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">String</span> <span class="n">location</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">String</span> <span class="n">location</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">location</span><span class="o">));</span>
     <span class="o">}</span>    
 <span class="o">}</span>
@@ -367,7 +367,7 @@ apple =&gt; [count=10, txid=2]
 
 <p>To update state, you make use of the StateUpdater interface. Here&#39;s a StateUpdater that updates a LocationDB with new location information:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LocationUpdater</span> <span class="kd">extends</span> <span class="n">BaseStateUpdater</span><span class="o">&lt;</span><span class="n">LocationDB</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">updateState</span><span class="o">(</span><span class="n">LocationDB</span> <span class="n">state</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">TridentTuple</span><span class="o">&gt;</span> <span class="n">tuples</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateState</span><span class="o">(</span><span class="n">LocationDB</span> <span class="n">state</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">TridentTuple</span><span class="o">&gt;</span> <span class="n">tuples</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">List</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="n">ids</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;();</span>
         <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">locations</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
         <span class="k">for</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="nl">t:</span> <span class="n">tuples</span><span class="o">)</span> <span class="o">{</span>
@@ -402,16 +402,16 @@ apple =&gt; [count=10, txid=2]
 </code></pre></div>
 <p>persistentAggregate is an additional abstraction built on top of partitionPersist that knows how to take a Trident aggregator and use it to apply updates to the source of state. In this case, since this is a grouped stream, Trident expects the state you provide to implement the &quot;MapState&quot; interface. The grouping fields will be the keys in the state, and the aggregation result will be the values in the state. The &quot;MapState&quot; interface looks like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MapState</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">State</span> <span class="o">{</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">multiGet</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">);</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">multiUpdate</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">ValueUpdater</span><span class="o">&gt;</span> <span class="n">updaters</span><span class="o">);</span>
-    <span class="kt">void</span> <span class="n">multiPut</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">vals</span><span class="o">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">multiGet</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">multiUpdate</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">ValueUpdater</span><span class="o">&gt;</span> <span class="n">updaters</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">multiPut</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">vals</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>When you do aggregations on non-grouped streams (a global aggregation), Trident expects your State object to implement the &quot;Snapshottable&quot; interface:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Snapshottable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">State</span> <span class="o">{</span>
-    <span class="n">T</span> <span class="n">get</span><span class="o">();</span>
-    <span class="n">T</span> <span class="n">update</span><span class="o">(</span><span class="n">ValueUpdater</span> <span class="n">updater</span><span class="o">);</span>
-    <span class="kt">void</span> <span class="n">set</span><span class="o">(</span><span class="n">T</span> <span class="n">o</span><span class="o">);</span>
+    <span class="n">T</span> <span class="nf">get</span><span class="o">();</span>
+    <span class="n">T</span> <span class="nf">update</span><span class="o">(</span><span class="n">ValueUpdater</span> <span class="n">updater</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">set</span><span class="o">(</span><span class="n">T</span> <span class="n">o</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p><a href="http://github.com/apache/storm/blob/master/storm-core/src/jvm/org/apache/storm/trident/testing/MemoryMapState.java">MemoryMapState</a> and <a href="https://github.com/nathanmarz/trident-memcached/blob/2.0.0-SNAPSHOT/src/jvm/trident/memcached/MemcachedState.java">MemcachedState</a> each implement both of these interfaces.</p>
@@ -420,8 +420,8 @@ apple =&gt; [count=10, txid=2]
 
 <p>Trident makes it easy to implement MapState&#39;s, doing almost all the work for you. The OpaqueMap, TransactionalMap, and NonTransactionalMap classes implement all the logic for doing the respective fault-tolerance logic. You simply provide these classes with an IBackingMap implementation that knows how to do multiGets and multiPuts of the respective key/values. IBackingMap looks like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IBackingMap</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">multiGet</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">);</span> 
-    <span class="kt">void</span> <span class="n">multiPut</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">vals</span><span class="o">);</span> 
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">multiGet</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">);</span> 
+    <span class="kt">void</span> <span class="nf">multiPut</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">vals</span><span class="o">);</span> 
 <span class="o">}</span>
 </code></pre></div>
 <p>OpaqueMap&#39;s will call multiPut with <a href="http://github.com/apache/storm/blob/master/storm-core/src/jvm/org/apache/storm/trident/state/OpaqueValue.java">OpaqueValue</a>&#39;s for the vals, TransactionalMap&#39;s will give <a href="http://github.com/apache/storm/blob/master/storm-core/src/jvm/org/apache/storm/trident/state/TransactionalValue.java">TransactionalValue</a>&#39;s for the vals, and NonTransactionalMaps will just pass the objects from the topology through.</p>

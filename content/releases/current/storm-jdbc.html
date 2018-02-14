@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -177,18 +177,18 @@ in a storm topology.</p>
     <span class="cm">/**
      * method must be idempotent.
      */</span>
-    <span class="kt">void</span> <span class="n">prepare</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">prepare</span><span class="o">();</span>
 
     <span class="cm">/**
      *
      * @return a DB connection over which the queries can be executed.
      */</span>
-    <span class="n">Connection</span> <span class="n">getConnection</span><span class="o">();</span>
+    <span class="n">Connection</span> <span class="nf">getConnection</span><span class="o">();</span>
 
     <span class="cm">/**
      * called once when the system is shutting down, should be idempotent.
      */</span>
-    <span class="kt">void</span> <span class="n">cleanup</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">cleanup</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>Out of the box we support <code>org.apache.storm.jdbc.common.HikariCPConnectionProvider</code> which is an implementation that uses HikariCP.</p>
@@ -197,7 +197,7 @@ in a storm topology.</p>
 
 <p>The main API for inserting data in a table using JDBC is the <code>org.apache.storm.jdbc.mapper.JdbcMapper</code> interface:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">JdbcMapper</span>  <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="n">getColumns</span><span class="o">(</span><span class="n">ITuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="nf">getColumns</span><span class="o">(</span><span class="n">ITuple</span> <span class="n">tuple</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>The <code>getColumns()</code> method defines how a storm tuple maps to a list of columns representing a row in a database. 
@@ -265,8 +265,8 @@ method will return the columns in the order in which Jdbc connection instance&#3
 <p><strong>If you specified your own insert query to <code>JdbcInsertBolt</code> you must initialize <code>SimpleJdbcMapper</code> with explicit columnschema such that the schema has columns in the same order as your insert queries.</strong>
 For example if your insert query is <code>Insert into user (user_id, user_name) values (?,?)</code> then your <code>SimpleJdbcMapper</code> should be initialized with the following statements:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="n">columnSchema</span> <span class="o">=</span> <span class="n">Lists</span><span class="o">.</span><span class="na">newArrayList</span><span class="o">(</span>
-    <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"user_id"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">INTEGER</span><span class="o">),</span>
-    <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"user_name"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">VARCHAR</span><span class="o">));</span>
+    <span class="k">new</span> <span class="nf">Column</span><span class="o">(</span><span class="s">"user_id"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">INTEGER</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nf">Column</span><span class="o">(</span><span class="s">"user_name"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">VARCHAR</span><span class="o">));</span>
 <span class="n">JdbcMapper</span> <span class="n">simpleJdbcMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleJdbcMapper</span><span class="o">(</span><span class="n">columnSchema</span><span class="o">);</span>
 </code></pre></div>
 <p>If your storm tuple only has fields for a subset of columns i.e. if some of the columns in your table have default values and you want to only insert values for columns with no default values you can enforce the behavior by initializing the 
@@ -274,9 +274,9 @@ For example if your insert query is <code>Insert into user (user_id, user_name) 
 In this table the create_time column has a default value. To ensure only the columns with no default values are inserted 
 you can initialize the <code>jdbcMapper</code> as below:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="n">columnSchema</span> <span class="o">=</span> <span class="n">Lists</span><span class="o">.</span><span class="na">newArrayList</span><span class="o">(</span>
-    <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"user_id"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">INTEGER</span><span class="o">),</span>
-    <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"user_name"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">VARCHAR</span><span class="o">),</span>
-    <span class="k">new</span> <span class="n">Column</span><span class="o">(</span><span class="s">"dept_name"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">VARCHAR</span><span class="o">));</span>
+    <span class="k">new</span> <span class="nf">Column</span><span class="o">(</span><span class="s">"user_id"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">INTEGER</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nf">Column</span><span class="o">(</span><span class="s">"user_name"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">VARCHAR</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nf">Column</span><span class="o">(</span><span class="s">"dept_name"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">VARCHAR</span><span class="o">));</span>
 <span class="n">JdbcMapper</span> <span class="n">simpleJdbcMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleJdbcMapper</span><span class="o">(</span><span class="n">columnSchema</span><span class="o">);</span>
 </code></pre></div>
 <h3 id="jdbctridentstate">JdbcTridentState</h3>
@@ -297,9 +297,9 @@ See the example below:</p>
 
 <p>We support <code>select</code> queries from databases to allow enrichment of storm tuples in a topology. The main API for 
 executing select queries against a database using JDBC is the <code>org.apache.storm.jdbc.mapper.JdbcLookupMapper</code> interface:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="p">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">);</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="n">getColumns</span><span class="o">(</span><span class="n">ITuple</span> <span class="n">tuple</span><span class="o">);</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">Values</span><span class="o">&gt;</span> <span class="n">toTuple</span><span class="o">(</span><span class="n">ITuple</span> <span class="n">input</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="n">columns</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="nf">getColumns</span><span class="o">(</span><span class="n">ITuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Values</span><span class="o">&gt;</span> <span class="nf">toTuple</span><span class="o">(</span><span class="n">ITuple</span> <span class="n">input</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="n">columns</span><span class="o">);</span>
 </code></pre></div>
 <p>The <code>declareOutputFields</code> method is used to indicate what fields will be emitted as part of output tuple of processing a storm 
 tuple. </p>

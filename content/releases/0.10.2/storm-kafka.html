@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -257,8 +257,8 @@ The KafkaConfig class also has bunch of public variables that controls your appl
 
 <p>MultiScheme is an interface that dictates how the byte[] consumed from Kafka gets transformed into a storm tuple. It
 also controls the naming of your output field.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java">  <span class="kd">public</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">deserialize</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">ser</span><span class="o">);</span>
-  <span class="kd">public</span> <span class="n">Fields</span> <span class="n">getOutputFields</span><span class="o">();</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">  <span class="kd">public</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="nf">deserialize</span><span class="o">(</span><span class="kt">byte</span><span class="o">[]</span> <span class="n">ser</span><span class="o">);</span>
+  <span class="kd">public</span> <span class="n">Fields</span> <span class="nf">getOutputFields</span><span class="o">();</span>
 </code></pre></div>
 <p>The default <code>RawMultiScheme</code> just takes the <code>byte[]</code> and returns a tuple with <code>byte[]</code> as is. The name of the
 outputField is &quot;bytes&quot;.  There are alternative implementation like <code>SchemeAsMultiScheme</code> and
@@ -344,8 +344,8 @@ storm.kafka.trident.TridentKafkaUpdater.</p>
 <h3 id="tupletokafkamapper-and-tridenttupletokafkamapper">TupleToKafkaMapper and TridentTupleToKafkaMapper</h3>
 
 <p>These interfaces have 2 methods defined:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="n">K</span> <span class="nf">getKeyFromTuple</span><span class="p">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
-    <span class="n">V</span> <span class="n">getMessageFromTuple</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="n">K</span> <span class="nf">getKeyFromTuple</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="n">V</span> <span class="nf">getMessageFromTuple</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
 </code></pre></div>
 <p>As the name suggests, these methods are called to map a tuple to Kafka key and Kafka message. If you just want one field
 as key and one field as value, then you can use the provided FieldNameBasedTupleToKafkaMapper.java 

@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -326,31 +326,31 @@ the list of potential leaders automatically. </li>
      * queue up for leadership lock. The call returns immediately and the caller                     
      * must check isLeader() to perform any leadership action.
      */</span>
-    <span class="kt">void</span> <span class="n">addToLeaderLockQueue</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">addToLeaderLockQueue</span><span class="o">();</span>
 
     <span class="cm">/**
      * Removes the caller from the leader lock queue. If the caller is leader
      * also releases the lock.
      */</span>
-    <span class="kt">void</span> <span class="n">removeFromLeaderLockQueue</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">removeFromLeaderLockQueue</span><span class="o">();</span>
 
     <span class="cm">/**
      *
      * @return true if the caller currently has the leader lock.
      */</span>
-    <span class="kt">boolean</span> <span class="n">isLeader</span><span class="o">();</span>
+    <span class="kt">boolean</span> <span class="nf">isLeader</span><span class="o">();</span>
 
     <span class="cm">/**
      *
      * @return the current leader's address , throws exception if noone has has    lock.
      */</span>
-    <span class="n">InetSocketAddress</span> <span class="n">getLeaderAddress</span><span class="o">();</span>
+    <span class="n">InetSocketAddress</span> <span class="nf">getLeaderAddress</span><span class="o">();</span>
 
     <span class="cm">/**
      * 
      * @return list of current nimbus addresses, includes leader.
      */</span>
-    <span class="n">List</span><span class="o">&lt;</span><span class="n">InetSocketAddress</span><span class="o">&gt;</span> <span class="n">getAllNimbusAddresses</span><span class="o">();</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">InetSocketAddress</span><span class="o">&gt;</span> <span class="nf">getAllNimbusAddresses</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>Once a nimbus comes up it calls addToLeaderLockQueue() function. The leader election code selects a leader from the queue.
@@ -688,50 +688,50 @@ It is recommended that for very large files, the user writes the bytes in smalle
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">Iterator</span> <span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">stringIterator</span> <span class="o">=</span> <span class="n">clientBlobStore</span><span class="o">.</span><span class="na">listKeys</span><span class="o">();</span>
 </code></pre></div>
 <h2 id="appendix-a">Appendix A</h2>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="p">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">String</span> <span class="n">baseDir</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">String</span> <span class="n">baseDir</span><span class="o">);</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">AtomicOutputStream</span> <span class="nf">createBlob</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">SettableBlobMeta</span> <span class="n">meta</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyAlreadyExistsException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">AtomicOutputStream</span> <span class="nf">createBlob</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">SettableBlobMeta</span> <span class="n">meta</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyAlreadyExistsException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">AtomicOutputStream</span> <span class="nf">updateBlob</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">AtomicOutputStream</span> <span class="nf">updateBlob</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">ReadableBlobMeta</span> <span class="nf">getBlobMeta</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">ReadableBlobMeta</span> <span class="nf">getBlobMeta</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">setBlobMeta</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">SettableBlobMeta</span> <span class="n">meta</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">setBlobMeta</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">SettableBlobMeta</span> <span class="n">meta</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">deleteBlob</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">deleteBlob</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">InputStreamWithMeta</span> <span class="nf">getBlob</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">InputStreamWithMeta</span> <span class="nf">getBlob</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listKeys</span><span class="o">(</span><span class="n">Subject</span> <span class="n">who</span><span class="o">);</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">listKeys</span><span class="o">(</span><span class="n">Subject</span> <span class="n">who</span><span class="o">);</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">BlobReplication</span> <span class="nf">getBlobReplication</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">BlobReplication</span> <span class="nf">getBlobReplication</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">BlobReplication</span> <span class="nf">updateBlobReplication</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="kt">int</span> <span class="n">replication</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">,</span> <span class="n">IOException</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">BlobReplication</span> <span class="nf">updateBlobReplication</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="kt">int</span> <span class="n">replication</span><span class="o">,</span> <span class="n">Subject</span> <span class="n">who</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">,</span> <span class="n">IOException</span>
 </code></pre></div>
 <h2 id="appendix-b">Appendix B</h2>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="p">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">);</span>
 
-<span class="kd">protected</span> <span class="kd">abstract</span> <span class="n">AtomicOutputStream</span> <span class="nf">createBlobToExtend</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">SettableBlobMeta</span> <span class="n">meta</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyAlreadyExistsException</span><span class="o">;</span>
+<span class="kd">protected</span> <span class="kd">abstract</span> <span class="n">AtomicOutputStream</span> <span class="nf">createBlobToExtend</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">SettableBlobMeta</span> <span class="n">meta</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyAlreadyExistsException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">AtomicOutputStream</span> <span class="nf">updateBlob</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">AtomicOutputStream</span> <span class="nf">updateBlob</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">ReadableBlobMeta</span> <span class="nf">getBlobMeta</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">ReadableBlobMeta</span> <span class="nf">getBlobMeta</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
 
-<span class="kd">protected</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">setBlobMetaToExtend</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">SettableBlobMeta</span> <span class="n">meta</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
+<span class="kd">protected</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">setBlobMetaToExtend</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">SettableBlobMeta</span> <span class="n">meta</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">deleteBlob</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">deleteBlob</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">InputStreamWithMeta</span> <span class="nf">getBlob</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">InputStreamWithMeta</span> <span class="nf">getBlob</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">listKeys</span><span class="o">();</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">listKeys</span><span class="o">();</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">watchBlob</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">IBlobWatcher</span> <span class="n">watcher</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">watchBlob</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">,</span> <span class="n">IBlobWatcher</span> <span class="n">watcher</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">stopWatchingBlob</span><span class="p">(</span><span class="n">String</span> <span class="n">key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">stopWatchingBlob</span><span class="o">(</span><span class="n">String</span> <span class="n">key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">BlobReplication</span> <span class="nf">getBlobReplication</span><span class="p">(</span><span class="n">String</span> <span class="n">Key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">BlobReplication</span> <span class="nf">getBlobReplication</span><span class="o">(</span><span class="n">String</span> <span class="n">Key</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span><span class="o">;</span>
 
-<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">BlobReplication</span> <span class="nf">updateBlobReplication</span><span class="p">(</span><span class="n">String</span> <span class="n">Key</span><span class="o">,</span> <span class="kt">int</span> <span class="n">replication</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">BlobReplication</span> <span class="nf">updateBlobReplication</span><span class="o">(</span><span class="n">String</span> <span class="n">Key</span><span class="o">,</span> <span class="kt">int</span> <span class="n">replication</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AuthorizationException</span><span class="o">,</span> <span class="n">KeyNotFoundException</span>
 </code></pre></div>
 <h2 id="appendix-c">Appendix C</h2>
 <div class="highlight"><pre><code class="language-" data-lang="">service Nimbus {

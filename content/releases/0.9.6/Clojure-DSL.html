@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -289,7 +289,7 @@
      </span><span class="p">(</span><span class="nf">execute</span><span class="w"> </span><span class="p">[</span><span class="n">tuple</span><span class="p">]</span><span class="w">
        </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">word</span><span class="w"> </span><span class="p">(</span><span class="nf">.getString</span><span class="w"> </span><span class="n">tuple</span><span class="w"> </span><span class="mi">0</span><span class="p">)]</span><span class="w">
          </span><span class="p">(</span><span class="nf">swap!</span><span class="w"> </span><span class="n">counts</span><span class="w"> </span><span class="p">(</span><span class="nb">partial</span><span class="w"> </span><span class="nb">merge-with</span><span class="w"> </span><span class="nb">+</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="n">word</span><span class="w"> </span><span class="mi">1</span><span class="p">})</span><span class="w">
-         </span><span class="p">(</span><span class="nf">emit-bolt!</span><span class="w"> </span><span class="n">collector</span><span class="w"> </span><span class="p">[</span><span class="n">word</span><span class="w"> </span><span class="p">(</span><span class="err">@</span><span class="n">counts</span><span class="w"> </span><span class="n">word</span><span class="p">)]</span><span class="w"> </span><span class="no">:anchor</span><span class="w"> </span><span class="n">tuple</span><span class="p">)</span><span class="w">
+         </span><span class="p">(</span><span class="nf">emit-bolt!</span><span class="w"> </span><span class="n">collector</span><span class="w"> </span><span class="p">[</span><span class="n">word</span><span class="w"> </span><span class="p">(</span><span class="o">@</span><span class="n">counts</span><span class="w"> </span><span class="n">word</span><span class="p">)]</span><span class="w"> </span><span class="no">:anchor</span><span class="w"> </span><span class="n">tuple</span><span class="p">)</span><span class="w">
          </span><span class="p">(</span><span class="nf">ack!</span><span class="w"> </span><span class="n">collector</span><span class="w"> </span><span class="n">tuple</span><span class="p">)</span><span class="w">
          </span><span class="p">)))))</span><span class="w">
 </span></code></pre></div>
@@ -351,10 +351,10 @@
        </span><span class="p">(</span><span class="nf">emit-spout!</span><span class="w"> </span><span class="n">collector</span><span class="w"> </span><span class="p">[(</span><span class="nf">rand-nth</span><span class="w"> </span><span class="n">sentences</span><span class="p">)])</span><span class="w">         
        </span><span class="p">)</span><span class="w">
      </span><span class="p">(</span><span class="nf">ack</span><span class="w"> </span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w">
-        </span><span class="c1">;; You only need to define this method for reliable spouts
-</span><span class="w">        </span><span class="c1">;; (such as one that reads off of a queue like Kestrel)
-</span><span class="w">        </span><span class="c1">;; This is an unreliable spout, so it does nothing here
-</span><span class="w">        </span><span class="p">))))</span><span class="w">
+        </span><span class="c1">;; You only need to define this method for reliable spouts</span><span class="w">
+        </span><span class="c1">;; (such as one that reads off of a queue like Kestrel)</span><span class="w">
+        </span><span class="c1">;; This is an unreliable spout, so it does nothing here</span><span class="w">
+        </span><span class="p">))))</span><span class="w">
 </span></code></pre></div>
 <p>The implementation takes in as input the topology config, <code>TopologyContext</code>, and <code>SpoutOutputCollector</code>. The implementation returns an <code>ISpout</code> object. Here, the <code>nextTuple</code> function emits a random sentence from <code>sentences</code>. </p>
 

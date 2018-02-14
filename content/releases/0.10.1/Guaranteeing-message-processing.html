@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -163,14 +163,14 @@
 <p>Storm offers several different levels of guaranteed message processing, includeing best effort, at least once, and exactly once through <a href="Trident-tutorial.html">Trident</a>. 
 This page describes how Storm can guarantee at least once processing.</p>
 
-<h3 id="what-does-it-mean-for-a-message-to-be-quot-fully-processed-quot">What does it mean for a message to be &quot;fully processed&quot;?</h3>
+<h3 id="what-does-it-mean-for-a-message-to-be-fully-processed">What does it mean for a message to be &quot;fully processed&quot;?</h3>
 
 <p>A tuple coming off a spout can trigger thousands of tuples to be created based on it. Consider, for example, the streaming word count topology:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">TopologyBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TopologyBuilder</span><span class="o">();</span>
 <span class="n">builder</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">,</span> <span class="k">new</span> <span class="n">KestrelSpout</span><span class="o">(</span><span class="s">"kestrel.backtype.com"</span><span class="o">,</span>
                                                <span class="mi">22133</span><span class="o">,</span>
                                                <span class="s">"sentence_queue"</span><span class="o">,</span>
-                                               <span class="k">new</span> <span class="n">StringScheme</span><span class="o">()));</span>
+                                               <span class="k">new</span> <span class="nf">StringScheme</span><span class="o">()));</span>
 <span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"split"</span><span class="o">,</span> <span class="k">new</span> <span class="n">SplitSentence</span><span class="o">(),</span> <span class="mi">10</span><span class="o">)</span>
         <span class="o">.</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">);</span>
 <span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"count"</span><span class="o">,</span> <span class="k">new</span> <span class="n">WordCount</span><span class="o">(),</span> <span class="mi">20</span><span class="o">)</span>
@@ -186,11 +186,11 @@ This page describes how Storm can guarantee at least once processing.</p>
 
 <p>To understand this question, let&#39;s take a look at the lifecycle of a tuple coming off of a spout. For reference, here is the interface that spouts implement (see the <a href="javadocs/backtype/storm/spout/ISpout.html">Javadoc</a> for more information):</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ISpout</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="kt">void</span> <span class="n">open</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">SpoutOutputCollector</span> <span class="n">collector</span><span class="o">);</span>
-    <span class="kt">void</span> <span class="n">close</span><span class="o">();</span>
-    <span class="kt">void</span> <span class="n">nextTuple</span><span class="o">();</span>
-    <span class="kt">void</span> <span class="n">ack</span><span class="o">(</span><span class="n">Object</span> <span class="n">msgId</span><span class="o">);</span>
-    <span class="kt">void</span> <span class="n">fail</span><span class="o">(</span><span class="n">Object</span> <span class="n">msgId</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">open</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">SpoutOutputCollector</span> <span class="n">collector</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">close</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">nextTuple</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">ack</span><span class="o">(</span><span class="n">Object</span> <span class="n">msgId</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">fail</span><span class="o">(</span><span class="n">Object</span> <span class="n">msgId</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>First, Storm requests a tuple from the <code>Spout</code> by calling the <code>nextTuple</code> method on the <code>Spout</code>. The <code>Spout</code> uses the <code>SpoutOutputCollector</code> provided in the <code>open</code> method to emit a tuple to one of its output streams. When emitting a tuple, the <code>Spout</code> provides a &quot;message id&quot; that will be used to identify the tuple later. For example, the <code>KestrelSpout</code> reads a message off of the kestrel queue and emits as the &quot;message id&quot; the id provided by Kestrel for the message. Emitting a message to the <code>SpoutOutputCollector</code> looks like this:</p>
@@ -200,7 +200,7 @@ This page describes how Storm can guarantee at least once processing.</p>
 
 <p>Let&#39;s use <code>KestrelSpout</code> again to see what a <code>Spout</code> needs to do to guarantee message processing. When <code>KestrelSpout</code> takes a message off the Kestrel queue, it &quot;opens&quot; the message. This means the message is not actually taken off the queue yet, but instead placed in a &quot;pending&quot; state waiting for acknowledgement that the message is completed. While in the pending state, a message will not be sent to other consumers of the queue. Additionally, if a client disconnects all pending messages for that client are put back on the queue. When a message is opened, Kestrel provides the client with the data for the message as well as a unique id for the message. The <code>KestrelSpout</code> uses that exact id as the &quot;message id&quot; for the tuple when emitting the tuple to the <code>SpoutOutputCollector</code>. Sometime later on, when <code>ack</code> or <code>fail</code> are called on the <code>KestrelSpout</code>, the <code>KestrelSpout</code> sends an ack or fail message to Kestrel with the message id to take the message off the queue or have it put back on.</p>
 
-<h3 id="what-is-storm-39-s-reliability-api">What is Storm&#39;s reliability API?</h3>
+<h3 id="what-is-storms-reliability-api">What is Storm&#39;s reliability API?</h3>
 
 <p>There&#39;s two things you have to do as a user to benefit from Storm&#39;s reliability capabilities. First, you need to tell Storm whenever you&#39;re creating a new link in the tree of tuples. Second, you need to tell Storm when you have finished processing an individual tuple. By doing both these things, Storm can detect when the tree of tuples is fully processed and can ack or fail the spout tuple appropriately. Storm&#39;s API provides a concise way of doing both of these tasks. </p>
 
@@ -208,11 +208,11 @@ This page describes how Storm can guarantee at least once processing.</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SplitSentence</span> <span class="kd">extends</span> <span class="n">BaseRichBolt</span> <span class="o">{</span>
         <span class="n">OutputCollector</span> <span class="n">_collector</span><span class="o">;</span>
 
-        <span class="kd">public</span> <span class="kt">void</span> <span class="n">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">_collector</span> <span class="o">=</span> <span class="n">collector</span><span class="o">;</span>
         <span class="o">}</span>
 
-        <span class="kd">public</span> <span class="kt">void</span> <span class="n">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">String</span> <span class="n">sentence</span> <span class="o">=</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
             <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">word:</span> <span class="n">sentence</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">))</span> <span class="o">{</span>
                 <span class="n">_collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="n">tuple</span><span class="o">,</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">word</span><span class="o">));</span>
@@ -220,7 +220,7 @@ This page describes how Storm can guarantee at least once processing.</p>
             <span class="n">_collector</span><span class="o">.</span><span class="na">ack</span><span class="o">(</span><span class="n">tuple</span><span class="o">);</span>
         <span class="o">}</span>
 
-        <span class="kd">public</span> <span class="kt">void</span> <span class="n">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">declarer</span><span class="o">.</span><span class="na">declare</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word"</span><span class="o">));</span>
         <span class="o">}</span>        
     <span class="o">}</span>
@@ -250,14 +250,14 @@ This page describes how Storm can guarantee at least once processing.</p>
 
 <p>A lot of bolts follow a common pattern of reading an input tuple, emitting tuples based on it, and then acking the tuple at the end of the <code>execute</code> method. These bolts fall into the categories of filters and simple functions. Storm has an interface called <code>BasicBolt</code> that encapsulates this pattern for you. The <code>SplitSentence</code> example can be written as a <code>BasicBolt</code> like follows:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SplitSentence</span> <span class="kd">extends</span> <span class="n">BaseBasicBolt</span> <span class="o">{</span>
-        <span class="kd">public</span> <span class="kt">void</span> <span class="n">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">BasicOutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">BasicOutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">String</span> <span class="n">sentence</span> <span class="o">=</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
             <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">word:</span> <span class="n">sentence</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">))</span> <span class="o">{</span>
                 <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">word</span><span class="o">));</span>
             <span class="o">}</span>
         <span class="o">}</span>
 
-        <span class="kd">public</span> <span class="kt">void</span> <span class="n">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">declarer</span><span class="o">.</span><span class="na">declare</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word"</span><span class="o">));</span>
         <span class="o">}</span>        
     <span class="o">}</span>

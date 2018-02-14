@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -282,7 +282,7 @@ curl  -i --negotiate -u:anyUser  -b ~/cookiejar.txt -c ~/cookiejar.txt  <a href=
 
 <ol>
 <li>Firefox: Goto about:config and search for network.negotiate-auth.trusted-uris double-click to  add value &quot;<a href="http://storm-ui-hostname:8080">http://storm-ui-hostname:8080</a>&quot;</li>
-<li>Google-chrome:  start from command line with: google-chrome --auth-server-whitelist=&quot;<em>storm-ui-hostname&quot; --auth-negotiate-delegate-whitelist=&quot;</em>storm-ui-hostname&quot;<br></li>
+<li>Google-chrome:  start from command line with: google-chrome --auth-server-whitelist=&quot;*storm-ui-hostname&quot; --auth-negotiate-delegate-whitelist=&quot;*storm-ui-hostname&quot;<br></li>
 <li>IE:  Configure trusted websites to include &quot;storm-ui-hostname&quot; and allow negotiation for that website</li>
 </ol>
 
@@ -352,14 +352,14 @@ The supervisors and UI also need a principal to run as, but because they are out
 The following is an example of how to setup kerberos principals, but the
 details may vary depending on your KDC and OS.</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Zookeeper (Will need one of these for each box in teh Zk ensamble)</span>
-sudo kadmin.local -q <span class="s1">'addprinc zookeeper/zk1.example.com@STORM.EXAMPLE.COM'</span>
-sudo kadmin.local -q <span class="s2">"ktadd -k /tmp/zk.keytab  zookeeper/zk1.example.com@STORM.EXAMPLE.COM"</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s1">'addprinc zookeeper/zk1.example.com@STORM.EXAMPLE.COM'</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s2">"ktadd -k /tmp/zk.keytab  zookeeper/zk1.example.com@STORM.EXAMPLE.COM"</span>
 <span class="c"># Nimbus and DRPC</span>
-sudo kadmin.local -q <span class="s1">'addprinc storm/storm.example.com@STORM.EXAMPLE.COM'</span>
-sudo kadmin.local -q <span class="s2">"ktadd -k /tmp/storm.keytab storm/storm.example.com@STORM.EXAMPLE.COM"</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s1">'addprinc storm/storm.example.com@STORM.EXAMPLE.COM'</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s2">"ktadd -k /tmp/storm.keytab storm/storm.example.com@STORM.EXAMPLE.COM"</span>
 <span class="c"># All UI logviewer and Supervisors</span>
-sudo kadmin.local -q <span class="s1">'addprinc storm@STORM.EXAMPLE.COM'</span>
-sudo kadmin.local -q <span class="s2">"ktadd -k /tmp/storm.keytab storm@STORM.EXAMPLE.COM"</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s1">'addprinc storm@STORM.EXAMPLE.COM'</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s2">"ktadd -k /tmp/storm.keytab storm@STORM.EXAMPLE.COM"</span>
 </code></pre></div>
 <p>be sure to distribute the keytab(s) to the appropriate boxes and set the FS permissions so that only the headless user running ZK, or storm has access to them.</p>
 
@@ -543,7 +543,7 @@ Be aware that many of the features of this scheduler rely on storm authenticatio
 <h3 id="run-worker-processes-as-user-who-submitted-the-topology">Run worker processes as user who submitted the topology</h3>
 
 <p>By default storm runs workers as the user that is running the supervisor.  This is not ideal for security.  To make storm run the topologies as the user that launched them set.</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">supervisor.run.worker.as.user</span><span class="pi">:</span> <span class="s">true</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">supervisor.run.worker.as.user</span><span class="pi">:</span> <span class="no">true</span>
 </code></pre></div>
 <p>There are several files that go along with this that are needed to be configured properly to make storm secure.</p>
 
@@ -566,15 +566,15 @@ to get a nimbus client as some other user and perform any nimbus action(i.e. kil
 The <code>ImpersonationAuthorizer</code> uses <code>nimbus.impersonation.acl</code> as the acl to authorize users. Following is a sample nimbus config for supporting impersonation:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">nimbus.impersonation.authorizer</span><span class="pi">:</span> <span class="s">org.apache.storm.security.auth.authorizer.ImpersonationAuthorizer</span>
 <span class="s">nimbus.impersonation.acl</span><span class="pi">:</span>
-    <span class="s">impersonating_user1</span><span class="pi">:</span>
-        <span class="s">hosts</span><span class="pi">:</span>
+    <span class="na">impersonating_user1</span><span class="pi">:</span>
+        <span class="na">hosts</span><span class="pi">:</span>
             <span class="pi">[</span><span class="nv">comma separated list of hosts from which impersonating_user1 is allowed to impersonate other users</span><span class="pi">]</span>
-        <span class="s">groups</span><span class="pi">:</span>
+        <span class="na">groups</span><span class="pi">:</span>
             <span class="pi">[</span><span class="nv">comma separated list of groups whose users impersonating_user1 is allowed to impersonate</span><span class="pi">]</span>
-    <span class="s">impersonating_user2</span><span class="pi">:</span>
-        <span class="s">hosts</span><span class="pi">:</span>
+    <span class="na">impersonating_user2</span><span class="pi">:</span>
+        <span class="na">hosts</span><span class="pi">:</span>
             <span class="pi">[</span><span class="nv">comma separated list of hosts from which impersonating_user2 is allowed to impersonate other users</span><span class="pi">]</span>
-        <span class="s">groups</span><span class="pi">:</span>
+        <span class="na">groups</span><span class="pi">:</span>
             <span class="pi">[</span><span class="nv">comma separated list of groups whose users impersonating_user2 is allowed to impersonate</span><span class="pi">]</span>
 </code></pre></div>
 <p>To support the oozie use case following config can be supplied:

@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -269,7 +269,7 @@ and add the dependencies for your preferred version in your pom.</p>
 <p>Record format can be controlled by providing an implementation of the <code>org.apache.storm.hdfs.format.RecordFormat</code>
 interface:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">RecordFormat</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="kt">byte</span><span class="o">[]</span> <span class="n">format</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="kt">byte</span><span class="o">[]</span> <span class="nf">format</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>The provided <code>org.apache.storm.hdfs.format.DelimitedRecordFormat</code> is capable of producing formats such as CSV and
@@ -280,14 +280,14 @@ tab-delimited files.</p>
 <p>File naming can be controlled by providing an implementation of the <code>org.apache.storm.hdfs.format.FileNameFormat</code>
 interface:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">FileNameFormat</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="kt">void</span> <span class="n">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">topologyContext</span><span class="o">);</span>
-    <span class="n">String</span> <span class="n">getName</span><span class="o">(</span><span class="kt">long</span> <span class="n">rotation</span><span class="o">,</span> <span class="kt">long</span> <span class="n">timeStamp</span><span class="o">);</span>
-    <span class="n">String</span> <span class="n">getPath</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">topologyContext</span><span class="o">);</span>
+    <span class="n">String</span> <span class="nf">getName</span><span class="o">(</span><span class="kt">long</span> <span class="n">rotation</span><span class="o">,</span> <span class="kt">long</span> <span class="n">timeStamp</span><span class="o">);</span>
+    <span class="n">String</span> <span class="nf">getPath</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>The provided <code>org.apache.storm.hdfs.format.DefaultFileNameFormat</code>  will create file names with the following format:</p>
-<div class="highlight"><pre><code class="language-" data-lang=""><span class="w"> </span><span class="p">{</span><span class="err">prefix</span><span class="p">}{</span><span class="err">componentId</span><span class="p">}</span><span class="err">-</span><span class="p">{</span><span class="err">taskId</span><span class="p">}</span><span class="err">-</span><span class="p">{</span><span class="err">rotationNum</span><span class="p">}</span><span class="err">-</span><span class="p">{</span><span class="err">timestamp</span><span class="p">}{</span><span class="err">extension</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre><code class="language-" data-lang=""> {prefix}{componentId}-{taskId}-{rotationNum}-{timestamp}{extension}
+</code></pre></div>
 <p>For example:</p>
 <div class="highlight"><pre><code class="language-" data-lang=""> MyBolt-5-7-1390579837830.txt
 </code></pre></div>
@@ -298,8 +298,8 @@ interface:</p>
 <p>Sync policies allow you to control when buffered data is flushed to the underlying filesystem (thus making it available
 to clients reading the data) by implementing the <code>org.apache.storm.hdfs.sync.SyncPolicy</code> interface:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">SyncPolicy</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="kt">boolean</span> <span class="n">mark</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="kt">long</span> <span class="n">offset</span><span class="o">);</span>
-    <span class="kt">void</span> <span class="n">reset</span><span class="o">();</span>
+    <span class="kt">boolean</span> <span class="nf">mark</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="kt">long</span> <span class="n">offset</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">reset</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>The <code>HdfsBolt</code> will call the <code>mark()</code> method for every tuple it processes. Returning <code>true</code> will trigger the <code>HdfsBolt</code>
@@ -313,8 +313,8 @@ been processed.</p>
 <p>Similar to sync policies, file rotation policies allow you to control when data files are rotated by providing a
 <code>org.apache.storm.hdfs.rotation.FileRotation</code> interface:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">FileRotationPolicy</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="kt">boolean</span> <span class="n">mark</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="kt">long</span> <span class="n">offset</span><span class="o">);</span>
-    <span class="kt">void</span> <span class="n">reset</span><span class="o">();</span>
+    <span class="kt">boolean</span> <span class="nf">mark</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="kt">long</span> <span class="n">offset</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">reset</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>The <code>org.apache.storm.hdfs.rotation.FileSizeRotationPolicy</code> implementation allows you to trigger file rotation when
@@ -327,7 +327,7 @@ data files reach a specific file size:</p>
 What <code>RotationAction</code>s do is provide a hook to allow you to perform some action right after a file is rotated. For
 example, moving a file to a different location or renaming it.</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">RotationAction</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="kt">void</span> <span class="n">execute</span><span class="o">(</span><span class="n">FileSystem</span> <span class="n">fileSystem</span><span class="o">,</span> <span class="n">Path</span> <span class="n">filePath</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">;</span>
+    <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">FileSystem</span> <span class="n">fileSystem</span><span class="o">,</span> <span class="n">Path</span> <span class="n">filePath</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>Storm-HDFS includes a simple action that will move a file after rotation:</p>
@@ -336,13 +336,13 @@ example, moving a file to a different location or renaming it.</p>
 
     <span class="kd">private</span> <span class="n">String</span> <span class="n">destination</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="n">MoveFileAction</span> <span class="n">withDestination</span><span class="o">(</span><span class="n">String</span> <span class="n">destDir</span><span class="o">){</span>
+    <span class="kd">public</span> <span class="n">MoveFileAction</span> <span class="nf">withDestination</span><span class="o">(</span><span class="n">String</span> <span class="n">destDir</span><span class="o">){</span>
         <span class="n">destination</span> <span class="o">=</span> <span class="n">destDir</span><span class="o">;</span>
         <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">execute</span><span class="o">(</span><span class="n">FileSystem</span> <span class="n">fileSystem</span><span class="o">,</span> <span class="n">Path</span> <span class="n">filePath</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">FileSystem</span> <span class="n">fileSystem</span><span class="o">,</span> <span class="n">Path</span> <span class="n">filePath</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
         <span class="n">Path</span> <span class="n">destPath</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Path</span><span class="o">(</span><span class="n">destination</span><span class="o">,</span> <span class="n">filePath</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
         <span class="n">LOG</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Moving file {} to {}"</span><span class="o">,</span> <span class="n">filePath</span><span class="o">,</span> <span class="n">destPath</span><span class="o">);</span>
         <span class="kt">boolean</span> <span class="n">success</span> <span class="o">=</span> <span class="n">fileSystem</span><span class="o">.</span><span class="na">rename</span><span class="o">(</span><span class="n">filePath</span><span class="o">,</span> <span class="n">destPath</span><span class="o">);</span>
@@ -386,11 +386,11 @@ example, moving a file to a different location or renaming it.</p>
 <p>The <code>SequenceFileBolt</code> requires that you provide a <code>org.apache.storm.hdfs.bolt.format.SequenceFormat</code> that maps tuples to
 key/value pairs:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">SequenceFormat</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="n">Class</span> <span class="n">keyClass</span><span class="o">();</span>
-    <span class="n">Class</span> <span class="n">valueClass</span><span class="o">();</span>
+    <span class="n">Class</span> <span class="nf">keyClass</span><span class="o">();</span>
+    <span class="n">Class</span> <span class="nf">valueClass</span><span class="o">();</span>
 
-    <span class="n">Writable</span> <span class="n">key</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
-    <span class="n">Writable</span> <span class="n">value</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="n">Writable</span> <span class="nf">key</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="n">Writable</span> <span class="nf">value</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <h2 id="trident-api">Trident API</h2>

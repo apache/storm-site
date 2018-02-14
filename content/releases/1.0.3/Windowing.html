@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -198,13 +198,13 @@ following two parameters,</p>
 
 <p>The bolt interface <code>IWindowedBolt</code> is implemented by bolts that needs windowing support.</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IWindowedBolt</span> <span class="kd">extends</span> <span class="n">IComponent</span> <span class="o">{</span>
-    <span class="kt">void</span> <span class="n">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">stormConf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">stormConf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">);</span>
     <span class="cm">/**
      * Process tuples falling within the window and optionally emit 
      * new tuples based on the tuples in the input window.
      */</span>
-    <span class="kt">void</span> <span class="n">execute</span><span class="o">(</span><span class="n">TupleWindow</span> <span class="n">inputWindow</span><span class="o">);</span>
-    <span class="kt">void</span> <span class="n">cleanup</span><span class="o">();</span>
+    <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">TupleWindow</span> <span class="n">inputWindow</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">cleanup</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>Every time the window activates, the <code>execute</code> method is invoked. The TupleWindow parameter gives access to the current tuples
@@ -219,12 +219,12 @@ window length and sliding intervals.</p>
     <span class="kd">private</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">;</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">stormConf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">stormConf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">this</span><span class="o">.</span><span class="na">collector</span> <span class="o">=</span> <span class="n">collector</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="nd">@Override</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">execute</span><span class="o">(</span><span class="n">TupleWindow</span> <span class="n">inputWindow</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">TupleWindow</span> <span class="n">inputWindow</span><span class="o">)</span> <span class="o">{</span>
       <span class="k">for</span><span class="o">(</span><span class="n">Tuple</span> <span class="nl">tuple:</span> <span class="n">inputWindow</span><span class="o">.</span><span class="na">get</span><span class="o">())</span> <span class="o">{</span>
         <span class="c1">// do the windowing computation</span>
         <span class="o">...</span>
@@ -234,11 +234,11 @@ window length and sliding intervals.</p>
     <span class="o">}</span>
 <span class="o">}</span>
 
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">TopologyBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TopologyBuilder</span><span class="o">();</span>
      <span class="n">builder</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="s">"spout"</span><span class="o">,</span> <span class="k">new</span> <span class="n">RandomSentenceSpout</span><span class="o">(),</span> <span class="mi">1</span><span class="o">);</span>
      <span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"slidingwindowbolt"</span><span class="o">,</span> 
-                     <span class="k">new</span> <span class="n">SlidingWindowBolt</span><span class="o">().</span><span class="na">withWindow</span><span class="o">(</span><span class="k">new</span> <span class="n">Count</span><span class="o">(</span><span class="mi">30</span><span class="o">),</span> <span class="k">new</span> <span class="n">Count</span><span class="o">(</span><span class="mi">10</span><span class="o">)),</span>
+                     <span class="k">new</span> <span class="nf">SlidingWindowBolt</span><span class="o">().</span><span class="na">withWindow</span><span class="o">(</span><span class="k">new</span> <span class="n">Count</span><span class="o">(</span><span class="mi">30</span><span class="o">),</span> <span class="k">new</span> <span class="n">Count</span><span class="o">(</span><span class="mi">10</span><span class="o">)),</span>
                      <span class="mi">1</span><span class="o">).</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="s">"spout"</span><span class="o">);</span>
     <span class="n">Config</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span>
     <span class="n">conf</span><span class="o">.</span><span class="na">setDebug</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
@@ -252,25 +252,25 @@ window length and sliding intervals.</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">withWindow</span><span class="o">(</span><span class="n">Count</span> <span class="n">windowLength</span><span class="o">,</span> <span class="n">Count</span> <span class="n">slidingInterval</span><span class="o">)</span>
 <span class="n">Tuple</span> <span class="n">count</span> <span class="n">based</span> <span class="n">sliding</span> <span class="n">window</span> <span class="n">that</span> <span class="n">slides</span> <span class="n">after</span> <span class="err">`</span><span class="n">slidingInterval</span><span class="err">`</span> <span class="n">number</span> <span class="n">of</span> <span class="n">tuples</span><span class="o">.</span>
 
-<span class="n">withWindow</span><span class="o">(</span><span class="n">Count</span> <span class="n">windowLength</span><span class="o">)</span>
+<span class="nf">withWindow</span><span class="o">(</span><span class="n">Count</span> <span class="n">windowLength</span><span class="o">)</span>
 <span class="n">Tuple</span> <span class="n">count</span> <span class="n">based</span> <span class="n">window</span> <span class="n">that</span> <span class="n">slides</span> <span class="n">with</span> <span class="n">every</span> <span class="n">incoming</span> <span class="n">tuple</span><span class="o">.</span>
 
-<span class="nf">withWindow</span><span class="p">(</span><span class="n">Count</span> <span class="n">windowLength</span><span class="o">,</span> <span class="n">Duration</span> <span class="n">slidingInterval</span><span class="o">)</span>
+<span class="nf">withWindow</span><span class="o">(</span><span class="n">Count</span> <span class="n">windowLength</span><span class="o">,</span> <span class="n">Duration</span> <span class="n">slidingInterval</span><span class="o">)</span>
 <span class="n">Tuple</span> <span class="n">count</span> <span class="n">based</span> <span class="n">sliding</span> <span class="n">window</span> <span class="n">that</span> <span class="n">slides</span> <span class="n">after</span> <span class="err">`</span><span class="n">slidingInterval</span><span class="err">`</span> <span class="n">time</span> <span class="n">duration</span><span class="o">.</span>
 
-<span class="n">withWindow</span><span class="o">(</span><span class="n">Duration</span> <span class="n">windowLength</span><span class="o">,</span> <span class="n">Duration</span> <span class="n">slidingInterval</span><span class="o">)</span>
+<span class="nf">withWindow</span><span class="o">(</span><span class="n">Duration</span> <span class="n">windowLength</span><span class="o">,</span> <span class="n">Duration</span> <span class="n">slidingInterval</span><span class="o">)</span>
 <span class="n">Time</span> <span class="n">duration</span> <span class="n">based</span> <span class="n">sliding</span> <span class="n">window</span> <span class="n">that</span> <span class="n">slides</span> <span class="n">after</span> <span class="err">`</span><span class="n">slidingInterval</span><span class="err">`</span> <span class="n">time</span> <span class="n">duration</span><span class="o">.</span>
 
-<span class="n">withWindow</span><span class="o">(</span><span class="n">Duration</span> <span class="n">windowLength</span><span class="o">)</span>
+<span class="nf">withWindow</span><span class="o">(</span><span class="n">Duration</span> <span class="n">windowLength</span><span class="o">)</span>
 <span class="n">Time</span> <span class="n">duration</span> <span class="n">based</span> <span class="n">window</span> <span class="n">that</span> <span class="n">slides</span> <span class="n">with</span> <span class="n">every</span> <span class="n">incoming</span> <span class="n">tuple</span><span class="o">.</span>
 
-<span class="nf">withWindow</span><span class="p">(</span><span class="n">Duration</span> <span class="n">windowLength</span><span class="o">,</span> <span class="n">Count</span> <span class="n">slidingInterval</span><span class="o">)</span>
+<span class="nf">withWindow</span><span class="o">(</span><span class="n">Duration</span> <span class="n">windowLength</span><span class="o">,</span> <span class="n">Count</span> <span class="n">slidingInterval</span><span class="o">)</span>
 <span class="n">Time</span> <span class="n">duration</span> <span class="n">based</span> <span class="n">sliding</span> <span class="n">window</span> <span class="n">configuration</span> <span class="n">that</span> <span class="n">slides</span> <span class="n">after</span> <span class="err">`</span><span class="n">slidingInterval</span><span class="err">`</span> <span class="n">number</span> <span class="n">of</span> <span class="n">tuples</span><span class="o">.</span>
 
-<span class="n">withTumblingWindow</span><span class="o">(</span><span class="n">BaseWindowedBolt</span><span class="o">.</span><span class="na">Count</span> <span class="n">count</span><span class="o">)</span>
+<span class="nf">withTumblingWindow</span><span class="o">(</span><span class="n">BaseWindowedBolt</span><span class="o">.</span><span class="na">Count</span> <span class="n">count</span><span class="o">)</span>
 <span class="n">Count</span> <span class="n">based</span> <span class="n">tumbling</span> <span class="n">window</span> <span class="n">that</span> <span class="n">tumbles</span> <span class="n">after</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">count</span> <span class="n">of</span> <span class="n">tuples</span><span class="o">.</span>
 
-<span class="nf">withTumblingWindow</span><span class="p">(</span><span class="n">BaseWindowedBolt</span><span class="o">.</span><span class="na">Duration</span> <span class="n">duration</span><span class="o">)</span>
+<span class="nf">withTumblingWindow</span><span class="o">(</span><span class="n">BaseWindowedBolt</span><span class="o">.</span><span class="na">Duration</span> <span class="n">duration</span><span class="o">)</span>
 <span class="n">Time</span> <span class="n">duration</span> <span class="n">based</span> <span class="n">tumbling</span> <span class="n">window</span> <span class="n">that</span> <span class="n">tumbles</span> <span class="n">after</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">time</span> <span class="n">duration</span><span class="o">.</span>
 
 </code></pre></div>
@@ -284,7 +284,7 @@ are performed based on the processing timestamp. Storm has support for tracking 
 *
 * @param fieldName the name of the field that contains the timestamp
 */</span>
-<span class="kd">public</span> <span class="n">BaseWindowedBolt</span> <span class="nf">withTimestampField</span><span class="p">(</span><span class="n">String</span> <span class="n">fieldName</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">BaseWindowedBolt</span> <span class="nf">withTimestampField</span><span class="o">(</span><span class="n">String</span> <span class="n">fieldName</span><span class="o">)</span>
 </code></pre></div>
 <p>The value for the above <code>fieldName</code> will be looked up from the incoming tuple and considered for windowing calculations. 
 If the field is not present in the tuple an exception will be thrown. Along with the timestamp field name, a time lag parameter 
@@ -299,7 +299,7 @@ arrives with timestamp 05:59:59 after <code>t1</code> and the window has moved p
 *
 * @param duration the max lag duration
 */</span>
-<span class="kd">public</span> <span class="n">BaseWindowedBolt</span> <span class="nf">withLag</span><span class="p">(</span><span class="n">Duration</span> <span class="n">duration</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">BaseWindowedBolt</span> <span class="nf">withLag</span><span class="o">(</span><span class="n">Duration</span> <span class="n">duration</span><span class="o">)</span>
 </code></pre></div>
 <h3 id="watermarks">Watermarks</h3>
 
@@ -315,7 +315,7 @@ tuple based timestamps are in use. The interval at which watermarks are emitted 
 *
 * @param interval the interval at which watermark events are generated
 */</span>
-<span class="kd">public</span> <span class="n">BaseWindowedBolt</span> <span class="nf">withWatermarkInterval</span><span class="p">(</span><span class="n">Duration</span> <span class="n">interval</span><span class="o">)</span>
+<span class="kd">public</span> <span class="n">BaseWindowedBolt</span> <span class="nf">withWatermarkInterval</span><span class="o">(</span><span class="n">Duration</span> <span class="n">interval</span><span class="o">)</span>
 </code></pre></div>
 <p>When a watermark is received, all windows up to that timestamp will be evaluated.</p>
 

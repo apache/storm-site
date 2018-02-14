@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -179,8 +179,8 @@ org.apache.storm.kafka.trident.TridentKafkaUpdater.</p>
 <h3 id="tupletokafkamapper-and-tridenttupletokafkamapper">TupleToKafkaMapper and TridentTupleToKafkaMapper</h3>
 
 <p>These interfaces have 2 methods defined:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="n">K</span> <span class="nf">getKeyFromTuple</span><span class="p">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
-    <span class="n">V</span> <span class="n">getMessageFromTuple</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="n">K</span> <span class="nf">getKeyFromTuple</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="n">V</span> <span class="nf">getMessageFromTuple</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
 </code></pre></div>
 <p>As the name suggests, these methods are called to map a tuple to a Kafka key and a Kafka message. If you just want one field
 as key and one field as value, then you can use the provided FieldNameBasedTupleToKafkaMapper.java
@@ -194,7 +194,7 @@ These should be specified while constructing an instance of FieldNameBasedTupleT
 
 <p>This interface has only one method</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">KafkaTopicSelector</span> <span class="o">{</span>
-    <span class="n">String</span> <span class="n">getTopics</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="n">String</span> <span class="nf">getTopics</span><span class="o">(</span><span class="n">Tuple</span><span class="o">/</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>The implementation of this interface should return the topic to which the tuple&#39;s key/message mapping needs to be published
@@ -227,10 +227,10 @@ These are also defined in <code>org.apache.kafka.clients.producer.ProducerConfig
 
         <span class="n">Fields</span> <span class="n">fields</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"message"</span><span class="o">);</span>
         <span class="n">FixedBatchSpout</span> <span class="n">spout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FixedBatchSpout</span><span class="o">(</span><span class="n">fields</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span>
-                    <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"storm"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-                    <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"trident"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-                    <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"needs"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-                    <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"javadoc"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">)</span>
+                    <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"storm"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+                    <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"trident"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+                    <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"needs"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+                    <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"javadoc"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">)</span>
         <span class="o">);</span>
         <span class="n">spout</span><span class="o">.</span><span class="na">setCycle</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
         <span class="n">builder</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="s">"spout"</span><span class="o">,</span> <span class="n">spout</span><span class="o">,</span> <span class="mi">5</span><span class="o">);</span>
@@ -254,10 +254,10 @@ These are also defined in <code>org.apache.kafka.clients.producer.ProducerConfig
 <p>For Trident:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java">        <span class="n">Fields</span> <span class="n">fields</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word"</span><span class="o">,</span> <span class="s">"count"</span><span class="o">);</span>
         <span class="n">FixedBatchSpout</span> <span class="n">spout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FixedBatchSpout</span><span class="o">(</span><span class="n">fields</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span>
-                <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"storm"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-                <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"trident"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-                <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"needs"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
-                <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"javadoc"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">)</span>
+                <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"storm"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+                <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"trident"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+                <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"needs"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">),</span>
+                <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"javadoc"</span><span class="o">,</span> <span class="s">"1"</span><span class="o">)</span>
         <span class="o">);</span>
         <span class="n">spout</span><span class="o">.</span><span class="na">setCycle</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 
@@ -383,7 +383,7 @@ specific stream.  To do this you will need to return an instance of <code>org.ap
 specific stream the tuple should go to.</p>
 
 <p>For Example:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">return</span> <span class="k">new</span> <span class="nf">KafkaTuple</span><span class="p">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">).</span><span class="na">routedTo</span><span class="o">(</span><span class="s">"bar"</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="k">return</span> <span class="k">new</span> <span class="n">KafkaTuple</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">).</span><span class="na">routedTo</span><span class="o">(</span><span class="s">"bar"</span><span class="o">);</span>
 </code></pre></div>
 <p>Will cause the tuple to be emitted on the &quot;bar&quot; stream.</p>
 

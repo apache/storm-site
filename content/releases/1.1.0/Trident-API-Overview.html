@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -180,7 +180,7 @@
 
 <p>A function takes in a set of input fields and emits zero or more tuples as output. The fields of the output tuple are appended to the original input tuple in the stream. If a function emits no tuples, the original input tuple is filtered out. Otherwise, the input tuple is duplicated for each output tuple. Suppose you have this function:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFunction</span> <span class="kd">extends</span> <span class="n">BaseFunction</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getInteger</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
             <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
         <span class="o">}</span>
@@ -204,7 +204,7 @@
 
 <p>Filters take in a tuple as input and decide whether or not to keep that tuple or not. Suppose you had this filter:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyFilter</span> <span class="kd">extends</span> <span class="n">BaseFilter</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">isKeep</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isKeep</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getInteger</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getInteger</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="mi">2</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
@@ -229,8 +229,8 @@ can be used to apply a one-one transformation to the tuples.</p>
 you could define a mapping function as follows,</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">UpperCase</span> <span class="kd">extends</span> <span class="n">MapFunction</span> <span class="o">{</span>
  <span class="nd">@Override</span>
- <span class="kd">public</span> <span class="n">Values</span> <span class="n">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
-   <span class="k">return</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">toUpperCase</span><span class="o">());</span>
+ <span class="kd">public</span> <span class="n">Values</span> <span class="nf">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+   <span class="k">return</span> <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">toUpperCase</span><span class="o">());</span>
  <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -244,7 +244,7 @@ and then flattening the resulting elements into a new stream.</p>
 you could define a flatMap function as follows,</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Split</span> <span class="kd">extends</span> <span class="n">FlatMapFunction</span> <span class="o">{</span>
   <span class="nd">@Override</span>
-  <span class="kd">public</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">Values</span><span class="o">&gt;</span> <span class="n">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">Values</span><span class="o">&gt;</span> <span class="nf">execute</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
     <span class="n">List</span><span class="o">&lt;</span><span class="n">Values</span><span class="o">&gt;</span> <span class="n">valuesList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
     <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">word</span> <span class="o">:</span> <span class="n">input</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">).</span><span class="na">split</span><span class="o">(</span><span class="s">" "</span><span class="o">))</span> <span class="o">{</span>
       <span class="n">valuesList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">word</span><span class="o">));</span>
@@ -386,8 +386,8 @@ Partition 2:
 </code></pre></div>
 <p>You can look at other <code>max</code> and <code>maxBy</code> functions on Stream</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java">
-      <span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">Stream</span> <span class="n">maxBy</span><span class="o">(</span><span class="n">String</span> <span class="n">inputFieldName</span><span class="o">,</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">comparator</span><span class="o">)</span> 
-      <span class="kd">public</span> <span class="n">Stream</span> <span class="n">max</span><span class="o">(</span><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">TridentTuple</span><span class="o">&gt;</span> <span class="n">comparator</span><span class="o">)</span> 
+      <span class="kd">public</span> <span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">Stream</span> <span class="nf">maxBy</span><span class="o">(</span><span class="n">String</span> <span class="n">inputFieldName</span><span class="o">,</span> <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">comparator</span><span class="o">)</span> 
+      <span class="kd">public</span> <span class="n">Stream</span> <span class="nf">max</span><span class="o">(</span><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">TridentTuple</span><span class="o">&gt;</span> <span class="n">comparator</span><span class="o">)</span> 
 
 </code></pre></div>
 <p>Below example shows how these APIs can be used to find maximum using respective Comparators on a tuple.</p>
@@ -425,13 +425,13 @@ There are two kinds of windowing supported which are based on processing time or
     <span class="cm">/**
      * Returns a stream of tuples which are aggregated results of a tumbling window with every {@code windowCount} of tuples.
      */</span>
-    <span class="kd">public</span> <span class="n">Stream</span> <span class="n">tumblingWindow</span><span class="o">(</span><span class="kt">int</span> <span class="n">windowCount</span><span class="o">,</span> <span class="n">WindowsStoreFactory</span> <span class="n">windowStoreFactory</span><span class="o">,</span>
+    <span class="kd">public</span> <span class="n">Stream</span> <span class="nf">tumblingWindow</span><span class="o">(</span><span class="kt">int</span> <span class="n">windowCount</span><span class="o">,</span> <span class="n">WindowsStoreFactory</span> <span class="n">windowStoreFactory</span><span class="o">,</span>
                                       <span class="n">Fields</span> <span class="n">inputFields</span><span class="o">,</span> <span class="n">Aggregator</span> <span class="n">aggregator</span><span class="o">,</span> <span class="n">Fields</span> <span class="n">functionFields</span><span class="o">);</span>
 
     <span class="cm">/**
      * Returns a stream of tuples which are aggregated results of a window that tumbles at duration of {@code windowDuration}
      */</span>
-    <span class="kd">public</span> <span class="n">Stream</span> <span class="n">tumblingWindow</span><span class="o">(</span><span class="n">BaseWindowedBolt</span><span class="o">.</span><span class="na">Duration</span> <span class="n">windowDuration</span><span class="o">,</span> <span class="n">WindowsStoreFactory</span> <span class="n">windowStoreFactory</span><span class="o">,</span>
+    <span class="kd">public</span> <span class="n">Stream</span> <span class="nf">tumblingWindow</span><span class="o">(</span><span class="n">BaseWindowedBolt</span><span class="o">.</span><span class="na">Duration</span> <span class="n">windowDuration</span><span class="o">,</span> <span class="n">WindowsStoreFactory</span> <span class="n">windowStoreFactory</span><span class="o">,</span>
                                      <span class="n">Fields</span> <span class="n">inputFields</span><span class="o">,</span> <span class="n">Aggregator</span> <span class="n">aggregator</span><span class="o">,</span> <span class="n">Fields</span> <span class="n">functionFields</span><span class="o">);</span>
 
 </code></pre></div>
@@ -443,14 +443,14 @@ There are two kinds of windowing supported which are based on processing time or
      * Returns a stream of tuples which are aggregated results of a sliding window with every {@code windowCount} of tuples
      * and slides the window after {@code slideCount}.
      */</span>
-    <span class="kd">public</span> <span class="n">Stream</span> <span class="n">slidingWindow</span><span class="o">(</span><span class="kt">int</span> <span class="n">windowCount</span><span class="o">,</span> <span class="kt">int</span> <span class="n">slideCount</span><span class="o">,</span> <span class="n">WindowsStoreFactory</span> <span class="n">windowStoreFactory</span><span class="o">,</span>
+    <span class="kd">public</span> <span class="n">Stream</span> <span class="nf">slidingWindow</span><span class="o">(</span><span class="kt">int</span> <span class="n">windowCount</span><span class="o">,</span> <span class="kt">int</span> <span class="n">slideCount</span><span class="o">,</span> <span class="n">WindowsStoreFactory</span> <span class="n">windowStoreFactory</span><span class="o">,</span>
                                       <span class="n">Fields</span> <span class="n">inputFields</span><span class="o">,</span> <span class="n">Aggregator</span> <span class="n">aggregator</span><span class="o">,</span> <span class="n">Fields</span> <span class="n">functionFields</span><span class="o">);</span>
 
     <span class="cm">/**
      * Returns a stream of tuples which are aggregated results of a window which slides at duration of {@code slidingInterval}
      * and completes a window at {@code windowDuration}
      */</span>
-    <span class="kd">public</span> <span class="n">Stream</span> <span class="n">slidingWindow</span><span class="o">(</span><span class="n">BaseWindowedBolt</span><span class="o">.</span><span class="na">Duration</span> <span class="n">windowDuration</span><span class="o">,</span> <span class="n">BaseWindowedBolt</span><span class="o">.</span><span class="na">Duration</span> <span class="n">slidingInterval</span><span class="o">,</span>
+    <span class="kd">public</span> <span class="n">Stream</span> <span class="nf">slidingWindow</span><span class="o">(</span><span class="n">BaseWindowedBolt</span><span class="o">.</span><span class="na">Duration</span> <span class="n">windowDuration</span><span class="o">,</span> <span class="n">BaseWindowedBolt</span><span class="o">.</span><span class="na">Duration</span> <span class="n">slidingInterval</span><span class="o">,</span>
                                     <span class="n">WindowsStoreFactory</span> <span class="n">windowStoreFactory</span><span class="o">,</span> <span class="n">Fields</span> <span class="n">inputFields</span><span class="o">,</span> <span class="n">Aggregator</span> <span class="n">aggregator</span><span class="o">,</span> <span class="n">Fields</span> <span class="n">functionFields</span><span class="o">);</span>
 </code></pre></div>
 <p>Examples of tumbling and sliding windows can be found <a href="Windowing.html">here</a></p>
@@ -459,7 +459,7 @@ There are two kinds of windowing supported which are based on processing time or
 
 <p>Below is the common windowing API which takes <code>WindowConfig</code> for any supported windowing configurations. </p>
 <div class="highlight"><pre><code class="language-java" data-lang="java">
-    <span class="kd">public</span> <span class="n">Stream</span> <span class="nf">window</span><span class="p">(</span><span class="n">WindowConfig</span> <span class="n">windowConfig</span><span class="o">,</span> <span class="n">WindowsStoreFactory</span> <span class="n">windowStoreFactory</span><span class="o">,</span> <span class="n">Fields</span> <span class="n">inputFields</span><span class="o">,</span>
+    <span class="kd">public</span> <span class="n">Stream</span> <span class="nf">window</span><span class="o">(</span><span class="n">WindowConfig</span> <span class="n">windowConfig</span><span class="o">,</span> <span class="n">WindowsStoreFactory</span> <span class="n">windowStoreFactory</span><span class="o">,</span> <span class="n">Fields</span> <span class="n">inputFields</span><span class="o">,</span>
                          <span class="n">Aggregator</span> <span class="n">aggregator</span><span class="o">,</span> <span class="n">Fields</span> <span class="n">functionFields</span><span class="o">)</span>
 
 </code></pre></div>
@@ -476,18 +476,18 @@ Example of using <code>HBaseWindowStoreFactory</code> for windowing can be seen 
     <span class="c1">// window-state table should already be created with cf:tuples column</span>
     <span class="n">HBaseWindowsStoreFactory</span> <span class="n">windowStoreFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HBaseWindowsStoreFactory</span><span class="o">(</span><span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;(),</span> <span class="s">"window-state"</span><span class="o">,</span> <span class="s">"cf"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">),</span> <span class="s">"tuples"</span><span class="o">.</span><span class="na">getBytes</span><span class="o">(</span><span class="s">"UTF-8"</span><span class="o">));</span>
     <span class="n">FixedBatchSpout</span> <span class="n">spout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FixedBatchSpout</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">),</span> <span class="mi">3</span><span class="o">,</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"the cow jumped over the moon"</span><span class="o">),</span>
-            <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"the man went to the store and bought some candy"</span><span class="o">),</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"four score and seven years ago"</span><span class="o">),</span>
-            <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"how many apples can you eat"</span><span class="o">),</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"to be or not to be the person"</span><span class="o">));</span>
+            <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"the man went to the store and bought some candy"</span><span class="o">),</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"four score and seven years ago"</span><span class="o">),</span>
+            <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="s">"how many apples can you eat"</span><span class="o">),</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="s">"to be or not to be the person"</span><span class="o">));</span>
     <span class="n">spout</span><span class="o">.</span><span class="na">setCycle</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
 
     <span class="n">TridentTopology</span> <span class="n">topology</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TridentTopology</span><span class="o">();</span>
 
     <span class="n">Stream</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="na">newStream</span><span class="o">(</span><span class="s">"spout1"</span><span class="o">,</span> <span class="n">spout</span><span class="o">).</span><span class="na">parallelismHint</span><span class="o">(</span><span class="mi">16</span><span class="o">).</span><span class="na">each</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">),</span>
-            <span class="k">new</span> <span class="n">Split</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word"</span><span class="o">))</span>
+            <span class="k">new</span> <span class="nf">Split</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">window</span><span class="o">(</span><span class="n">TumblingCountWindow</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">1000</span><span class="o">),</span> <span class="n">windowStoreFactory</span><span class="o">,</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word"</span><span class="o">),</span> <span class="k">new</span> <span class="n">CountAsAggregator</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"count"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">peek</span><span class="o">(</span><span class="k">new</span> <span class="n">Consumer</span><span class="o">()</span> <span class="o">{</span>
                 <span class="nd">@Override</span>
-                <span class="kd">public</span> <span class="kt">void</span> <span class="n">accept</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">accept</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
                     <span class="n">LOG</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Received tuple: [{}]"</span><span class="o">,</span> <span class="n">input</span><span class="o">);</span>
                 <span class="o">}</span>
             <span class="o">});</span>
@@ -535,22 +535,22 @@ Partition 2:
 
 <p>Here&#39;s the interface for CombinerAggregator:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CombinerAggregator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="n">T</span> <span class="n">init</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
-    <span class="n">T</span> <span class="n">combine</span><span class="o">(</span><span class="n">T</span> <span class="n">val1</span><span class="o">,</span> <span class="n">T</span> <span class="n">val2</span><span class="o">);</span>
-    <span class="n">T</span> <span class="n">zero</span><span class="o">();</span>
+    <span class="n">T</span> <span class="nf">init</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="n">T</span> <span class="nf">combine</span><span class="o">(</span><span class="n">T</span> <span class="n">val1</span><span class="o">,</span> <span class="n">T</span> <span class="n">val2</span><span class="o">);</span>
+    <span class="n">T</span> <span class="nf">zero</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>A CombinerAggregator returns a single tuple with a single field as output. CombinerAggregators run the init function on each input tuple and use the combine function to combine values until there&#39;s only one value left. If there&#39;s no tuples in the partition, the CombinerAggregator emits the output of the zero function. For example, here&#39;s the implementation of Count:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Count</span> <span class="kd">implements</span> <span class="n">CombinerAggregator</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">Long</span> <span class="n">init</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">init</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">return</span> <span class="mi">1L</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="n">Long</span> <span class="n">combine</span><span class="o">(</span><span class="n">Long</span> <span class="n">val1</span><span class="o">,</span> <span class="n">Long</span> <span class="n">val2</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">combine</span><span class="o">(</span><span class="n">Long</span> <span class="n">val1</span><span class="o">,</span> <span class="n">Long</span> <span class="n">val2</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">val1</span> <span class="o">+</span> <span class="n">val2</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="n">Long</span> <span class="n">zero</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">zero</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="mi">0L</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
@@ -559,17 +559,17 @@ Partition 2:
 
 <p>A ReducerAggregator has the following interface:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ReducerAggregator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="n">T</span> <span class="n">init</span><span class="o">();</span>
-    <span class="n">T</span> <span class="n">reduce</span><span class="o">(</span><span class="n">T</span> <span class="n">curr</span><span class="o">,</span> <span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="n">T</span> <span class="nf">init</span><span class="o">();</span>
+    <span class="n">T</span> <span class="nf">reduce</span><span class="o">(</span><span class="n">T</span> <span class="n">curr</span><span class="o">,</span> <span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>A ReducerAggregator produces an initial value with init, and then it iterates on that value for each input tuple to produce a single tuple with a single value as output. For example, here&#39;s how you would define Count as a ReducerAggregator:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Count</span> <span class="kd">implements</span> <span class="n">ReducerAggregator</span><span class="o">&lt;</span><span class="n">Long</span><span class="o">&gt;</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">Long</span> <span class="n">init</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
         <span class="k">return</span> <span class="mi">0L</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="n">Long</span> <span class="n">reduce</span><span class="o">(</span><span class="n">Long</span> <span class="n">curr</span><span class="o">,</span> <span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Long</span> <span class="nf">reduce</span><span class="o">(</span><span class="n">Long</span> <span class="n">curr</span><span class="o">,</span> <span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
         <span class="k">return</span> <span class="n">curr</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
@@ -578,9 +578,9 @@ Partition 2:
 
 <p>The most general interface for performing aggregations is Aggregator, which looks like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Aggregator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">Operation</span> <span class="o">{</span>
-    <span class="n">T</span> <span class="n">init</span><span class="o">(</span><span class="n">Object</span> <span class="n">batchId</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">);</span>
-    <span class="kt">void</span> <span class="n">aggregate</span><span class="o">(</span><span class="n">T</span> <span class="n">state</span><span class="o">,</span> <span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">);</span>
-    <span class="kt">void</span> <span class="n">complete</span><span class="o">(</span><span class="n">T</span> <span class="n">state</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">);</span>
+    <span class="n">T</span> <span class="nf">init</span><span class="o">(</span><span class="n">Object</span> <span class="n">batchId</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">aggregate</span><span class="o">(</span><span class="n">T</span> <span class="n">state</span><span class="o">,</span> <span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">complete</span><span class="o">(</span><span class="n">T</span> <span class="n">state</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>Aggregators can emit any number of tuples with any number of fields. They can emit tuples at any point during execution. Aggregators execute in the following way:</p>
@@ -597,15 +597,15 @@ Partition 2:
         <span class="kt">long</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="n">CountState</span> <span class="n">init</span><span class="o">(</span><span class="n">Object</span> <span class="n">batchId</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">CountState</span><span class="o">();</span>
+    <span class="kd">public</span> <span class="n">CountState</span> <span class="nf">init</span><span class="o">(</span><span class="n">Object</span> <span class="n">batchId</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">CountState</span><span class="o">();</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">aggregate</span><span class="o">(</span><span class="n">CountState</span> <span class="n">state</span><span class="o">,</span> <span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">aggregate</span><span class="o">(</span><span class="n">CountState</span> <span class="n">state</span><span class="o">,</span> <span class="n">TridentTuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">state</span><span class="o">.</span><span class="na">count</span><span class="o">+=</span><span class="mi">1</span><span class="o">;</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="n">complete</span><span class="o">(</span><span class="n">CountState</span> <span class="n">state</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">complete</span><span class="o">(</span><span class="n">CountState</span> <span class="n">state</span><span class="o">,</span> <span class="n">TridentCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">state</span><span class="o">.</span><span class="na">count</span><span class="o">));</span>
     <span class="o">}</span>
 <span class="o">}</span>

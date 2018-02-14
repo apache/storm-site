@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -189,7 +189,7 @@
 temperature/humidity values to an MQTT topic.</p>
 
 <p>Open a terminal and execute the following command (change the path as necessary):</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">java -cp examples/target/storm-mqtt-examples-<span class="k">*</span>-SNAPSHOT.jar org.apache.storm.mqtt.examples.MqttBrokerPublisher
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">java <span class="nt">-cp</span> examples/target/storm-mqtt-examples-<span class="k">*</span><span class="nt">-SNAPSHOT</span>.jar org.apache.storm.mqtt.examples.MqttBrokerPublisher
 </code></pre></div>
 <p><strong>Run the example toplogy</strong></p>
 
@@ -197,7 +197,7 @@ temperature/humidity values to an MQTT topic.</p>
 publishing to a bolt that simply logs the information it receives.</p>
 
 <p>In a separate terminal, run the following command (Note that the <code>storm</code> executable must be on your PATH):</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">storm jar ./examples/target/storm-mqtt-examples-<span class="k">*</span>-SNAPSHOT.jar org.apache.storm.flux.Flux ./examples/src/main/flux/sample.yaml --local
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">storm jar ./examples/target/storm-mqtt-examples-<span class="k">*</span><span class="nt">-SNAPSHOT</span>.jar org.apache.storm.flux.Flux ./examples/src/main/flux/sample.yaml <span class="nt">--local</span>
 </code></pre></div>
 <p>You should see data from MQTT being logged by the bolt:</p>
 <div class="highlight"><pre><code class="language-" data-lang="">27020 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {user=tgoetz, deviceId=1234, location=office, temperature=67.0, humidity=65.0}
@@ -269,9 +269,9 @@ man-made disasters and network partitions. Incineration and destruction happens.
 <code>org.apache.storm.mqtt.MqttMessageMapper</code> interface, which looks like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MqttMessageMapper</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
 
-    <span class="n">Values</span> <span class="n">toValues</span><span class="o">(</span><span class="n">MqttMessage</span> <span class="n">message</span><span class="o">);</span>
+    <span class="n">Values</span> <span class="nf">toValues</span><span class="o">(</span><span class="n">MqttMessage</span> <span class="n">message</span><span class="o">);</span>
 
-    <span class="n">Fields</span> <span class="n">outputFields</span><span class="o">();</span>
+    <span class="n">Fields</span> <span class="nf">outputFields</span><span class="o">();</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>The <code>MqttMessage</code> class contains the topic to which the message was published (<code>String</code>) and the message payload 
@@ -287,17 +287,17 @@ the message topic and payload:</p>
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Logger</span> <span class="n">LOG</span> <span class="o">=</span> <span class="n">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="n">CustomMessageMapper</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 
 
-    <span class="kd">public</span> <span class="n">Values</span> <span class="n">toValues</span><span class="o">(</span><span class="n">MqttMessage</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Values</span> <span class="nf">toValues</span><span class="o">(</span><span class="n">MqttMessage</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">String</span> <span class="n">topic</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="na">getTopic</span><span class="o">();</span>
         <span class="n">String</span><span class="o">[]</span> <span class="n">topicElements</span> <span class="o">=</span> <span class="n">topic</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">"/"</span><span class="o">);</span>
         <span class="n">String</span><span class="o">[]</span> <span class="n">payloadElements</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">message</span><span class="o">.</span><span class="na">getMessage</span><span class="o">()).</span><span class="na">split</span><span class="o">(</span><span class="s">"/"</span><span class="o">);</span>
 
-        <span class="k">return</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">topicElements</span><span class="o">[</span><span class="mi">2</span><span class="o">],</span> <span class="n">topicElements</span><span class="o">[</span><span class="mi">4</span><span class="o">],</span> <span class="n">topicElements</span><span class="o">[</span><span class="mi">3</span><span class="o">],</span> <span class="n">Float</span><span class="o">.</span><span class="na">parseFloat</span><span class="o">(</span><span class="n">payloadElements</span><span class="o">[</span><span class="mi">0</span><span class="o">]),</span> 
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Values</span><span class="o">(</span><span class="n">topicElements</span><span class="o">[</span><span class="mi">2</span><span class="o">],</span> <span class="n">topicElements</span><span class="o">[</span><span class="mi">4</span><span class="o">],</span> <span class="n">topicElements</span><span class="o">[</span><span class="mi">3</span><span class="o">],</span> <span class="n">Float</span><span class="o">.</span><span class="na">parseFloat</span><span class="o">(</span><span class="n">payloadElements</span><span class="o">[</span><span class="mi">0</span><span class="o">]),</span> 
                 <span class="n">Float</span><span class="o">.</span><span class="na">parseFloat</span><span class="o">(</span><span class="n">payloadElements</span><span class="o">[</span><span class="mi">1</span><span class="o">]));</span>
     <span class="o">}</span>
 
-    <span class="kd">public</span> <span class="n">Fields</span> <span class="n">outputFields</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"user"</span><span class="o">,</span> <span class="s">"deviceId"</span><span class="o">,</span> <span class="s">"location"</span><span class="o">,</span> <span class="s">"temperature"</span><span class="o">,</span> <span class="s">"humidity"</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="n">Fields</span> <span class="nf">outputFields</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Fields</span><span class="o">(</span><span class="s">"user"</span><span class="o">,</span> <span class="s">"deviceId"</span><span class="o">,</span> <span class="s">"location"</span><span class="o">,</span> <span class="s">"temperature"</span><span class="o">,</span> <span class="s">"humidity"</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -307,16 +307,16 @@ the message topic and payload:</p>
 (topic/payload). This is done by implementing the <code>org.apache.storm.mqtt.MqttTupleMapper</code> interface:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MqttTupleMapper</span> <span class="kd">extends</span> <span class="n">Serializable</span><span class="o">{</span>
 
-    <span class="n">MqttMessage</span> <span class="n">toMessage</span><span class="o">(</span><span class="n">ITuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="n">MqttMessage</span> <span class="nf">toMessage</span><span class="o">(</span><span class="n">ITuple</span> <span class="n">tuple</span><span class="o">);</span>
 
 <span class="o">}</span>
 </code></pre></div>
 <p>For example, a simple <code>MqttTupleMapper</code> implementation might look like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyTupleMapper</span> <span class="kd">implements</span> <span class="n">MqttTupleMapper</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="n">MqttMessage</span> <span class="n">toMessage</span><span class="o">(</span><span class="n">ITuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">MqttMessage</span> <span class="nf">toMessage</span><span class="o">(</span><span class="n">ITuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">String</span> <span class="n">topic</span> <span class="o">=</span> <span class="s">"users/"</span> <span class="o">+</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getStringByField</span><span class="o">(</span><span class="s">"userId"</span><span class="o">)</span> <span class="o">+</span> <span class="s">"/"</span> <span class="o">+</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getStringByField</span><span class="o">(</span><span class="s">"device"</span><span class="o">);</span>
         <span class="kt">byte</span><span class="o">[]</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getStringByField</span><span class="o">(</span><span class="s">"message"</span><span class="o">).</span><span class="na">getBytes</span><span class="o">();</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="n">MqttMessage</span><span class="o">(</span><span class="n">topic</span><span class="o">,</span> <span class="n">payload</span><span class="o">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">MqttMessage</span><span class="o">(</span><span class="n">topic</span><span class="o">,</span> <span class="n">payload</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
@@ -337,48 +337,48 @@ something like the following:</p>
 <h3 id="using-flux">Using Flux</h3>
 
 <p>The following Flux YAML configuration creates the toplolgy used in the example:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-topology"</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-topology"</span>
 
-<span class="s">components</span><span class="pi">:</span>
+<span class="na">components</span><span class="pi">:</span>
    <span class="c1">########## MQTT Spout Config ############</span>
-  <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-type"</span>
-    <span class="s">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.examples.CustomMessageMapper"</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-type"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.examples.CustomMessageMapper"</span>
 
-  <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-options"</span>
-    <span class="s">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.common.MqttOptions"</span>
-    <span class="s">properties</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">url"</span>
-        <span class="s">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">tcp://localhost:1883"</span>
-      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">topics"</span>
-        <span class="s">value</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-options"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.common.MqttOptions"</span>
+    <span class="na">properties</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">url"</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">tcp://localhost:1883"</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">topics"</span>
+        <span class="na">value</span><span class="pi">:</span>
           <span class="pi">-</span> <span class="s2">"</span><span class="s">/users/tgoetz/#"</span>
 
 <span class="c1"># topology configuration</span>
-<span class="s">config</span><span class="pi">:</span>
+<span class="na">config</span><span class="pi">:</span>
   <span class="s">topology.workers</span><span class="pi">:</span> <span class="s">1</span>
   <span class="s">topology.max.spout.pending</span><span class="pi">:</span> <span class="s">1000</span>
 
 <span class="c1"># spout definitions</span>
-<span class="s">spouts</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-spout"</span>
-    <span class="s">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.spout.MqttSpout"</span>
-    <span class="s">constructorArgs</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-type"</span>
-      <span class="pi">-</span> <span class="s">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-options"</span>
-    <span class="s">parallelism</span><span class="pi">:</span> <span class="s">1</span>
+<span class="na">spouts</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-spout"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.spout.MqttSpout"</span>
+    <span class="na">constructorArgs</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-type"</span>
+      <span class="pi">-</span> <span class="na">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-options"</span>
+    <span class="na">parallelism</span><span class="pi">:</span> <span class="s">1</span>
 
 <span class="c1"># bolt definitions</span>
-<span class="s">bolts</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">log"</span>
-    <span class="s">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.flux.wrappers.bolts.LogInfoBolt"</span>
-    <span class="s">parallelism</span><span class="pi">:</span> <span class="s">1</span>
+<span class="na">bolts</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">log"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.flux.wrappers.bolts.LogInfoBolt"</span>
+    <span class="na">parallelism</span><span class="pi">:</span> <span class="s">1</span>
 
 
-<span class="s">streams</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">from</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-spout"</span>
-    <span class="s">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">log"</span>
-    <span class="s">grouping</span><span class="pi">:</span>
-      <span class="s">type</span><span class="pi">:</span> <span class="s">SHUFFLE</span>
+<span class="na">streams</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">from</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-spout"</span>
+    <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">log"</span>
+    <span class="na">grouping</span><span class="pi">:</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">SHUFFLE</span>
 
 </code></pre></div>
 <h3 id="using-java">Using Java</h3>
@@ -418,7 +418,7 @@ the algorithm, you can specify a specific protocol:</p>
 
 <p>The <code>MqttSpout</code>, <code>MqttBolt</code> and <code>MqttPublishFunction</code> all have constructors that take a <code>KeyStoreLoader</code> instance that
  is used to load the certificates required for TLS/SSL connections. For example:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"> <span class="kd">public</span> <span class="nf">MqttSpout</span><span class="p">(</span><span class="n">MqttMessageMapper</span> <span class="n">type</span><span class="o">,</span> <span class="n">MqttOptions</span> <span class="n">options</span><span class="o">,</span> <span class="n">KeyStoreLoader</span> <span class="n">keyStoreLoader</span><span class="o">)</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"> <span class="kd">public</span> <span class="nf">MqttSpout</span><span class="o">(</span><span class="n">MqttMessageMapper</span> <span class="n">type</span><span class="o">,</span> <span class="n">MqttOptions</span> <span class="n">options</span><span class="o">,</span> <span class="n">KeyStoreLoader</span> <span class="n">keyStoreLoader</span><span class="o">)</span>
 </code></pre></div>
 <p>The <code>DefaultKeyStoreLoader</code> class can be used to load certificates from the local filesystem. Note that the 
 keystore/truststore need to be available on all worker nodes where the spout/bolt might be executed. To use 
@@ -434,64 +434,64 @@ keystore/truststore need to be available on all worker nodes where the spout/bol
 <span class="c1">//...</span>
 </code></pre></div>
 <p>SSL/TLS can also be configured using Flux:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-topology"</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-topology"</span>
 
-<span class="s">components</span><span class="pi">:</span>
+<span class="na">components</span><span class="pi">:</span>
    <span class="c1">########## MQTT Spout Config ############</span>
-  <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-type"</span>
-    <span class="s">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.examples.CustomMessageMapper"</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-type"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.examples.CustomMessageMapper"</span>
 
-  <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">keystore-loader"</span>
-    <span class="s">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.ssl.DefaultKeyStoreLoader"</span>
-    <span class="s">constructorArgs</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">keystore-loader"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.ssl.DefaultKeyStoreLoader"</span>
+    <span class="na">constructorArgs</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s2">"</span><span class="s">keystore.jks"</span>
       <span class="pi">-</span> <span class="s2">"</span><span class="s">truststore.jks"</span>
-    <span class="s">properties</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">keyPassword"</span>
-        <span class="s">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">password"</span>
-      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">keyStorePassword"</span>
-        <span class="s">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">password"</span>
-      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">trustStorePassword"</span>
-        <span class="s">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">password"</span>
+    <span class="na">properties</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">keyPassword"</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">password"</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">keyStorePassword"</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">password"</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">trustStorePassword"</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">password"</span>
 
-  <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-options"</span>
-    <span class="s">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.common.MqttOptions"</span>
-    <span class="s">properties</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">url"</span>
-        <span class="s">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ssl://raspberrypi.local:8883"</span>
-      <span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">topics"</span>
-        <span class="s">value</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-options"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.common.MqttOptions"</span>
+    <span class="na">properties</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">url"</span>
+        <span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ssl://raspberrypi.local:8883"</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">topics"</span>
+        <span class="na">value</span><span class="pi">:</span>
           <span class="pi">-</span> <span class="s2">"</span><span class="s">/users/tgoetz/#"</span>
 
 <span class="c1"># topology configuration</span>
-<span class="s">config</span><span class="pi">:</span>
+<span class="na">config</span><span class="pi">:</span>
   <span class="s">topology.workers</span><span class="pi">:</span> <span class="s">1</span>
   <span class="s">topology.max.spout.pending</span><span class="pi">:</span> <span class="s">1000</span>
 
 <span class="c1"># spout definitions</span>
-<span class="s">spouts</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-spout"</span>
-    <span class="s">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.spout.MqttSpout"</span>
-    <span class="s">constructorArgs</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-type"</span>
-      <span class="pi">-</span> <span class="s">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-options"</span>
-      <span class="pi">-</span> <span class="s">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">keystore-loader"</span>
-    <span class="s">parallelism</span><span class="pi">:</span> <span class="s">1</span>
+<span class="na">spouts</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-spout"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.mqtt.spout.MqttSpout"</span>
+    <span class="na">constructorArgs</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-type"</span>
+      <span class="pi">-</span> <span class="na">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-options"</span>
+      <span class="pi">-</span> <span class="na">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">keystore-loader"</span>
+    <span class="na">parallelism</span><span class="pi">:</span> <span class="s">1</span>
 
 <span class="c1"># bolt definitions</span>
-<span class="s">bolts</span><span class="pi">:</span>
+<span class="na">bolts</span><span class="pi">:</span>
 
-  <span class="pi">-</span> <span class="s">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">log"</span>
-    <span class="s">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.flux.wrappers.bolts.LogInfoBolt"</span>
-    <span class="s">parallelism</span><span class="pi">:</span> <span class="s">1</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">log"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.flux.wrappers.bolts.LogInfoBolt"</span>
+    <span class="na">parallelism</span><span class="pi">:</span> <span class="s">1</span>
 
 
-<span class="s">streams</span><span class="pi">:</span>
+<span class="na">streams</span><span class="pi">:</span>
 
-  <span class="pi">-</span> <span class="s">from</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-spout"</span>
-    <span class="s">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">log"</span>
-    <span class="s">grouping</span><span class="pi">:</span>
-      <span class="s">type</span><span class="pi">:</span> <span class="s">SHUFFLE</span>
+  <span class="pi">-</span> <span class="na">from</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mqtt-spout"</span>
+    <span class="na">to</span><span class="pi">:</span> <span class="s2">"</span><span class="s">log"</span>
+    <span class="na">grouping</span><span class="pi">:</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">SHUFFLE</span>
 
 </code></pre></div>
 <h2 id="committer-sponsors">Committer Sponsors</h2>

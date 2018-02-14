@@ -82,9 +82,9 @@
                         
                       
                         
-                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
-                        
                       
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
                         
                       
                         
@@ -92,9 +92,9 @@
                         
                       
                         
-                      
-                        
                           <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
                         
                       
                         
@@ -144,7 +144,7 @@
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
                     </ul>
                 </li>
-                <li><a href="/2017/09/15/storm105-released.html" id="news">News</a></li>
+                <li><a href="/2018/02/14/storm106-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -237,7 +237,7 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
 
 <h5 id="insert-query-including-only-the-specified-tuple-fields">Insert query including only the specified tuple fields.</h5>
 <div class="highlight"><pre><code class="language-java" data-lang="java">
-    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="o">(</span>
         <span class="n">async</span><span class="o">(</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO album (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">with</span><span class="o">(</span>
@@ -248,7 +248,7 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
 </code></pre></div>
 <h5 id="insert-query-including-all-tuple-fields">Insert query including all tuple fields.</h5>
 <div class="highlight"><pre><code class="language-java" data-lang="java">
-    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="p">(</span>
+    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="o">(</span>
         <span class="n">async</span><span class="o">(</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO album (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">with</span><span class="o">(</span> <span class="n">all</span><span class="o">()</span> <span class="o">)</span>
@@ -256,7 +256,7 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
     <span class="o">);</span>
 </code></pre></div>
 <h5 id="insert-multiple-queries-from-one-input-tuple">Insert multiple queries from one input tuple.</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="p">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
         <span class="n">async</span><span class="o">(</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO titles_per_album (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">())),</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO titles_per_performer (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">()))</span>
@@ -264,7 +264,7 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
     <span class="o">);</span>
 </code></pre></div>
 <h5 id="insert-query-using-querybuilder">Insert query using QueryBuilder</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="p">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
         <span class="n">async</span><span class="o">(</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO album (title,year,perfomer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">()))</span>
@@ -272,7 +272,7 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
     <span class="o">)</span>
 </code></pre></div>
 <h5 id="insert-query-with-static-bound-query">Insert query with static bound query</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="p">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
          <span class="n">async</span><span class="o">(</span>
             <span class="n">boundQuery</span><span class="o">(</span><span class="s">"INSERT INTO album (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="n">all</span><span class="o">());</span>
@@ -280,7 +280,7 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
     <span class="o">);</span>
 </code></pre></div>
 <h5 id="insert-query-with-static-bound-query-using-named-setters-and-aliases">Insert query with static bound query using named setters and aliases</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="p">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
          <span class="n">async</span><span class="o">(</span>
             <span class="n">boundQuery</span><span class="o">(</span><span class="s">"INSERT INTO album (title,year,performer,genre,tracks) VALUES (:ti, :ye, :pe, :ge, :tr);"</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">bind</span><span class="o">(</span>
@@ -294,24 +294,24 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
     <span class="o">);</span>
 </code></pre></div>
 <h5 id="insert-query-with-bound-statement-load-from-storm-configuration">Insert query with bound statement load from storm configuration</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="p">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
          <span class="n">boundQuery</span><span class="o">(</span><span class="n">named</span><span class="o">(</span><span class="s">"insertIntoAlbum"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="n">all</span><span class="o">());</span>
 </code></pre></div>
 <h5 id="insert-query-with-bound-statement-load-from-tuple-field">Insert query with bound statement load from tuple field</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="p">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
          <span class="n">boundQuery</span><span class="o">(</span><span class="n">namedByField</span><span class="o">(</span><span class="s">"cql"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="n">all</span><span class="o">());</span>
 </code></pre></div>
 <h5 id="insert-query-with-batch-statement">Insert query with batch statement</h5>
 <div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="c1">// Logged</span>
-    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span><span class="n">loggedBatch</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="o">(</span><span class="n">loggedBatch</span><span class="o">(</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO titles_per_album (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">())),</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO titles_per_performer (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">()))</span>
         <span class="o">)</span>
     <span class="o">);</span>
 <span class="c1">// UnLogged</span>
-    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span><span class="n">unLoggedBatch</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="o">(</span><span class="n">unLoggedBatch</span><span class="o">(</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO titles_per_album (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">())),</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO titles_per_performer (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">()))</span>
         <span class="o">)</span>
@@ -321,32 +321,32 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
 
 <p>The interface <em>ExecutionResultHandler</em> can be used to custom how an execution result should be handle.</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ExecutionResultHandler</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
-    <span class="kt">void</span> <span class="n">onQueryValidationException</span><span class="o">(</span><span class="n">QueryValidationException</span> <span class="n">e</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">onQueryValidationException</span><span class="o">(</span><span class="n">QueryValidationException</span> <span class="n">e</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
 
-    <span class="kt">void</span> <span class="n">onReadTimeoutException</span><span class="o">(</span><span class="n">ReadTimeoutException</span> <span class="n">e</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">onReadTimeoutException</span><span class="o">(</span><span class="n">ReadTimeoutException</span> <span class="n">e</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
 
-    <span class="kt">void</span> <span class="n">onWriteTimeoutException</span><span class="o">(</span><span class="n">WriteTimeoutException</span> <span class="n">e</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">onWriteTimeoutException</span><span class="o">(</span><span class="n">WriteTimeoutException</span> <span class="n">e</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
 
-    <span class="kt">void</span> <span class="n">onUnavailableException</span><span class="o">(</span><span class="n">UnavailableException</span> <span class="n">e</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">onUnavailableException</span><span class="o">(</span><span class="n">UnavailableException</span> <span class="n">e</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
 
-    <span class="kt">void</span> <span class="n">onQuerySuccess</span><span class="o">(</span><span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">onQuerySuccess</span><span class="o">(</span><span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
 <p>By default, the CassandraBolt fails a tuple on all Cassandra Exception (see <a href="https://github.com/apache/storm/tree/master/external/storm-cassandra/blob/master/src/main/java/org/apache/storm/cassandra/BaseExecutionResultHandler.java">BaseExecutionResultHandler</a>) .</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="p">(</span><span class="n">insertInto</span><span class="o">(</span><span class="s">"album"</span><span class="o">).</span><span class="na">values</span><span class="o">(</span><span class="n">with</span><span class="o">(</span><span class="n">all</span><span class="o">()).</span><span class="na">build</span><span class="o">())</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span><span class="n">insertInto</span><span class="o">(</span><span class="s">"album"</span><span class="o">).</span><span class="na">values</span><span class="o">(</span><span class="n">with</span><span class="o">(</span><span class="n">all</span><span class="o">()).</span><span class="na">build</span><span class="o">())</span>
             <span class="o">.</span><span class="na">withResultHandler</span><span class="o">(</span><span class="k">new</span> <span class="n">MyCustomResultHandler</span><span class="o">());</span>
 </code></pre></div>
 <h3 id="declare-output-fields">Declare Output fields</h3>
 
 <p>A CassandraBolt can declare output fields / stream output fields.
 For instance, this may be used to remit a new tuple on error, or to chain queries.</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="p">(</span><span class="n">insertInto</span><span class="o">(</span><span class="s">"album"</span><span class="o">).</span><span class="na">values</span><span class="o">(</span><span class="n">withFields</span><span class="o">(</span><span class="n">all</span><span class="o">()).</span><span class="na">build</span><span class="o">())</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span><span class="n">insertInto</span><span class="o">(</span><span class="s">"album"</span><span class="o">).</span><span class="na">values</span><span class="o">(</span><span class="n">withFields</span><span class="o">(</span><span class="n">all</span><span class="o">()).</span><span class="na">build</span><span class="o">())</span>
             <span class="o">.</span><span class="na">withResultHandler</span><span class="o">(</span><span class="k">new</span> <span class="n">EmitOnDriverExceptionResultHandler</span><span class="o">());</span>
             <span class="o">.</span><span class="na">withStreamOutputFields</span><span class="o">(</span><span class="s">"stream_error"</span><span class="o">,</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"message"</span><span class="o">);</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">EmitOnDriverExceptionResultHandler</span> <span class="kd">extends</span> <span class="n">BaseExecutionResultHandler</span> <span class="o">{</span>
         <span class="nd">@Override</span>
-        <span class="kd">protected</span> <span class="kt">void</span> <span class="n">onDriverException</span><span class="o">(</span><span class="n">DriverException</span> <span class="n">e</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onDriverException</span><span class="o">(</span><span class="n">DriverException</span> <span class="n">e</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="n">Tuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
             <span class="n">LOG</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="s">"An error occurred while executing cassandra statement"</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
             <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="s">"stream_error"</span><span class="o">,</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">()));</span>
             <span class="n">collector</span><span class="o">.</span><span class="na">ack</span><span class="o">(</span><span class="n">tuple</span><span class="o">);</span>
