@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <title>Resource Aware Scheduler</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/assets/css/owl.theme.css" rel="stylesheet">
+    <link href="/assets/css/owl.carousel.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/js/storm.js"></script>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+
+  <body>
+    <header>
+  <div class="container-fluid">
+     <div class="row">
+          <div class="col-md-5">
+            <a href="/index.html"><img src="/images/logo.png" class="logo" /></a>
+          </div>
+          <div class="col-md-5">
+            
+              <h1>Version: 1.0.6</h1>
+            
+          </div>
+          <div class="col-md-2">
+            <a href="/downloads.html" class="btn-std btn-block btn-download">Download</a>
+          </div>
+        </div>
+    </div>
+</header>
+<!--Header End-->
+<!--Navigation Begin-->
+<div class="navbar" role="banner">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav">
+              <li><a href="/index.html" id="home">Home</a></li>
+                <li><a href="/getting-help.html" id="getting-help">Getting Help</a></li>
+                <li><a href="/about/integrates.html" id="project-info">Project Information</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="documentation">Documentation <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      
+                        
+                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/1.2.0/index.html">1.2.0</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/1.1.2/index.html">1.1.2</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/1.1.1/index.html">1.1.1</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/1.1.0/index.html">1.1.0</a></li>
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/1.0.6/index.html">1.0.6</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/1.0.4/index.html">1.0.4</a></li>
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/1.0.3/index.html">1.0.3</a></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/0.10.2/index.html">0.10.2</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/0.10.1/index.html">0.10.1</a></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                          <li><a href="/releases/0.9.7/index.html">0.9.7</a></li>
+                        
+                      
+                        
+                          <li><a href="/releases/0.9.6/index.html">0.9.6</a></li>
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </ul>
+                </li>
+                <li><a href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="contribute">Community <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a href="/contribute/People.html">People</a></li>
+                        <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
+                    </ul>
+                </li>
+                <li><a href="/2018/02/15/storm120-released.html" id="news">News</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+    <div class="container-fluid">
+    <h1 class="page-title">Resource Aware Scheduler</h1>
+          <div class="row">
+           	<div class="col-md-12">
+	             <!-- Documentation -->
+
+<p class="post-meta"></p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>The purpose of this document is to provide a description of the Resource Aware Scheduler for the Storm distributed real-time computation system.  This document will provide you with both a high level description of the resource aware scheduler in Storm</p>
+
+<h2 id="using-resource-aware-scheduler">Using Resource Aware Scheduler</h2>
+
+<p>The user can switch to using the Resource Aware Scheduler by setting the following in <em>conf/storm.yaml</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">storm.scheduler: “org.apache.storm.scheduler.resource.ResourceAwareScheduler”
+</code></pre></div>
+<h2 id="api-overview">API Overview</h2>
+
+<p>For use with Trident, please see the <a href="Trident-RAS-API.html">Trident RAS API</a></p>
+
+<p>For a Storm Topology, the user can now specify the amount of resources a topology component (i.e. Spout or Bolt) is required to run a single instance of the component.  The user can specify the resource requirement for a topology component by using the following API calls.</p>
+
+<h3 id="setting-memory-requirement">Setting Memory Requirement</h3>
+
+<p>API to set component memory requirement:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">public T setMemoryLoad(Number onHeap, Number offHeap)
+</code></pre></div>
+<p>Parameters:
+* Number onHeap – The amount of on heap memory an instance of this component will consume in megabytes
+* Number offHeap – The amount of off heap memory an instance of this component will consume in megabytes</p>
+
+<p>The user also has to option to just specify the on heap memory requirement if the component does not have an off heap memory need.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">public T setMemoryLoad(Number onHeap)
+</code></pre></div>
+<p>Parameters:
+* Number onHeap – The amount of on heap memory an instance of this component will consume</p>
+
+<p>If no value is provided for offHeap, 0.0 will be used. If no value is provided for onHeap, or if the API is never called for a component, the default value will be used.</p>
+
+<p>Example of Usage:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">SpoutDeclarer s1 = builder.setSpout("word", new TestWordSpout(), 10);
+s1.setMemoryLoad(1024.0, 512.0);
+builder.setBolt("exclaim1", new ExclamationBolt(), 3)
+            .shuffleGrouping("word").setMemoryLoad(512.0);
+</code></pre></div>
+<p>The entire memory requested for this topology is 16.5 GB. That is from 10 spouts with 1GB on heap memory and 0.5 GB off heap memory each and 3 bolts with 0.5 GB on heap memory each.</p>
+
+<h3 id="setting-cpu-requirement">Setting CPU Requirement</h3>
+
+<p>API to set component CPU requirement:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">public T setCPULoad(Double amount)
+</code></pre></div>
+<p>Parameters:
+* Number amount – The amount of on CPU an instance of this component will consume.</p>
+
+<p>Currently, the amount of CPU resources a component requires or is available on a node is represented by a point system. CPU usage is a difficult concept to define. Different CPU architectures perform differently depending on the task at hand. They are so complex that expressing all of that in a single precise portable number is impossible. Instead we take a convention over configuration approach and are primarily concerned with rough level of CPU usage while still providing the possibility to specify amounts more fine grained.</p>
+
+<p>By convention a CPU core typically will get 100 points. If you feel that your processors are more or less powerful you can adjust this accordingly. Heavy tasks that are CPU bound will get 100 points, as they can consume an entire core. Medium tasks should get 50, light tasks 25, and tiny tasks 10. In some cases you have a task that spawns other threads to help with processing. These tasks may need to go above 100 points to express the amount of CPU they are using. If these conventions are followed the common case for a single threaded task the reported Capacity * 100 should be the number of CPU points that the task needs.</p>
+
+<p>Example of Usage:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">SpoutDeclarer s1 = builder.setSpout("word", new TestWordSpout(), 10);
+s1.setCPULoad(15.0);
+builder.setBolt("exclaim1", new ExclamationBolt(), 3)
+            .shuffleGrouping("word").setCPULoad(10.0);
+builder.setBolt("exclaim2", new HeavyBolt(), 1)
+                .shuffleGrouping("exclaim1").setCPULoad(450.0);
+</code></pre></div>
+<h3 id="limiting-the-heap-size-per-worker-jvm-process">Limiting the Heap Size per Worker (JVM) Process</h3>
+<div class="highlight"><pre><code class="language-" data-lang="">public void setTopologyWorkerMaxHeapSize(Number size)
+</code></pre></div>
+<p>Parameters:
+* Number size – The memory limit a worker process will be allocated in megabytes</p>
+
+<p>The user can limit the amount of memory resources the resource aware scheduler allocates to a single worker on a per topology basis by using the above API.  This API is in place so that the users can spread executors to multiple workers.  However, spreading executors to multiple workers may increase the communication latency since executors will not be able to use Disruptor Queue for intra-process communication.</p>
+
+<p>Example of Usage:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">Config conf = new Config();
+conf.setTopologyWorkerMaxHeapSize(512.0);
+</code></pre></div>
+<h3 id="setting-available-resources-on-node">Setting Available Resources on Node</h3>
+
+<p>A storm administrator can specify node resource availability by modifying the <em>conf/storm.yaml</em> file located in the storm home directory of that node.</p>
+
+<p>A storm administrator can specify how much available memory a node has in megabytes adding the following to <em>storm.yaml</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">supervisor.memory.capacity.mb: [amount&lt;Double&gt;]
+</code></pre></div>
+<p>A storm administrator can also specify how much available CPU resources a node has available adding the following to <em>storm.yaml</em></p>
+<div class="highlight"><pre><code class="language-" data-lang="">supervisor.cpu.capacity: [amount&lt;Double&gt;]
+</code></pre></div>
+<p>Note: that the amount the user can specify for the available CPU is represented using a point system like discussed earlier.</p>
+
+<p>Example of Usage:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">supervisor.memory.capacity.mb: 20480.0
+supervisor.cpu.capacity: 100.0
+</code></pre></div>
+<h3 id="other-configurations">Other Configurations</h3>
+
+<p>The user can set some default configurations for the Resource Aware Scheduler in <em>conf/storm.yaml</em>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">//default value if on heap memory requirement is not specified for a component 
+topology.component.resources.onheap.memory.mb: 128.0
+
+//default value if off heap memory requirement is not specified for a component 
+topology.component.resources.offheap.memory.mb: 0.0
+
+//default value if CPU requirement is not specified for a component 
+topology.component.cpu.pcore.percent: 10.0
+
+//default value for the max heap size for a worker  
+topology.worker.max.heap.size.mb: 768.0
+</code></pre></div>
+<h1 id="topology-priorities-and-per-user-resource">Topology Priorities and Per User Resource</h1>
+
+<p>The Resource Aware Scheduler or RAS also has multitenant capabilities since many Storm users typically share a Storm cluster.  Resource Aware Scheduler can allocate resources on a per user basis.  Each user can be guaranteed a certain amount of resources to run his or her topologies and the Resource Aware Scheduler will meet those guarantees when possible.  When the Storm cluster has extra free resources, Resource Aware Scheduler will to be able allocate additional resources to user in a fair manner. The importance of topologies can also vary.  Topologies can be used for actual production or just experimentation, thus Resource Aware Scheduler will take into account the importance of a topology when determining the order in which to schedule topologies or when to evict topologies</p>
+
+<h2 id="setup">Setup</h2>
+
+<p>The resource guarantees of a user can be specified <em>conf/user-resource-pools.yaml</em>.  Specify the resource guarantees of a user in the following format:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">resource.aware.scheduler.user.pools:
+[UserId]
+    cpu: [Amount of Guarantee CPU Resources]
+    memory: [Amount of Guarantee Memory Resources]
+</code></pre></div>
+<p>An example of what <em>user-resource-pools.yaml</em> can look like:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">resource.aware.scheduler.user.pools:
+    jerry:
+        cpu: 1000
+        memory: 8192.0
+    derek:
+        cpu: 10000.0
+        memory: 32768
+    bobby:
+        cpu: 5000.0
+        memory: 16384.0
+</code></pre></div>
+<p>Please note that the specified amount of Guaranteed CPU and Memory can be either a integer or double</p>
+
+<h2 id="api-overview">API Overview</h2>
+
+<h3 id="specifying-topology-priority">Specifying Topology Priority</h3>
+
+<p>The range of topology priorities can range form 0-29.  The topologies priorities will be partitioned into several priority levels that may contain a range of priorities. 
+For example we can create a priority level mapping:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">PRODUCTION =&gt; 0 – 9
+STAGING =&gt; 10 – 19
+DEV =&gt; 20 – 29
+</code></pre></div>
+<p>Thus, each priority level contains 10 sub priorities. Users can set the priority level of a topology by using the following API</p>
+<div class="highlight"><pre><code class="language-" data-lang="">conf.setTopologyPriority(int priority)
+</code></pre></div>
+<p>Parameters:
+* priority – an integer representing the priority of the topology</p>
+
+<p>Please note that the 0-29 range is not a hard limit.  Thus, a user can set a priority number that is higher than 29. However, the property of higher the priority number, lower the importance still holds</p>
+
+<h3 id="specifying-scheduling-strategy">Specifying Scheduling Strategy:</h3>
+
+<p>A user can specify on a per topology basis what scheduling strategy to use.  Users can implement the IStrategy interface and define new strategies to schedule specific topologies.  This pluggable interface was created since we realize different topologies might have different scheduling needs.  A user can set the topology strategy within the topology definition by using the API:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">public void setTopologyStrategy(Class&lt;? extends IStrategy&gt; clazz)
+</code></pre></div>
+<p>Parameters:
+* clazz – The strategy class that implements the IStrategy interface</p>
+
+<p>Example Usage:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">conf.setTopologyStrategy(org.apache.storm.scheduler.resource.strategies.scheduling.DefaultResourceAwareStrategy.class);
+</code></pre></div>
+<p>A default scheduling is provided.  The DefaultResourceAwareStrategy is implemented based off the scheduling algorithm in the original paper describing resource aware scheduling in Storm:</p>
+
+<p><a href="http://web.engr.illinois.edu/%7Ebpeng/files/r-storm.pdf">http://web.engr.illinois.edu/~bpeng/files/r-storm.pdf</a></p>
+
+<h3 id="specifying-topology-prioritization-strategy">Specifying Topology Prioritization Strategy</h3>
+
+<p>The order of scheduling is a pluggable interface in which a user could define a strategy that prioritizes topologies.  For a user to define his or her own prioritization strategy, he or she needs to implement the ISchedulingPriorityStrategy interface.  A user can set the scheduling priority strategy by setting the <em>Config.RESOURCE_AWARE_SCHEDULER_PRIORITY_STRATEGY</em> to point to the class that implements the strategy. For instance:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">resource.aware.scheduler.priority.strategy: "org.apache.storm.scheduler.resource.strategies.priority.DefaultSchedulingPriorityStrategy"
+</code></pre></div>
+<p>A default strategy will be provided.  The following explains how the default scheduling priority strategy works.</p>
+
+<p><strong>DefaultSchedulingPriorityStrategy</strong></p>
+
+<p>The order of scheduling should be based on the distance between a user’s current resource allocation and his or her guaranteed allocation.  We should prioritize the users who are the furthest away from their resource guarantee. The difficulty of this problem is that a user may have multiple resource guarantees, and another user can have another set of resource guarantees, so how can we compare them in a fair manner?  Let&#39;s use the average percentage of resource guarantees satisfied as a method of comparison.</p>
+
+<p>For example:</p>
+
+<table><thead>
+<tr>
+<th>User</th>
+<th>Resource Guarantee</th>
+<th>Resource Allocated</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>A</td>
+<td><10 CPU, 50GB></td>
+<td><2 CPU, 40 GB></td>
+</tr>
+<tr>
+<td>B</td>
+<td>&lt; 20 CPU, 25GB&gt;</td>
+<td><15 CPU, 10 GB></td>
+</tr>
+</tbody></table>
+
+<p>User A’s average percentage satisfied of resource guarantee: </p>
+
+<p>(2/10+40/50)/2  = 0.5</p>
+
+<p>User B’s average percentage satisfied of resource guarantee: </p>
+
+<p>(15/20+10/25)/2  = 0.575</p>
+
+<p>Thus, in this example User A has a smaller average percentage of his or her resource guarantee satisfied than User B.  Thus, User A should get priority to be allocated more resource, i.e., schedule a topology submitted by User A.</p>
+
+<p>When scheduling, RAS sorts users by the average percentage satisfied of resource guarantee and schedule topologies from users based on that ordering starting from the users with the lowest average percentage satisfied of resource guarantee.  When a user’s resource guarantee is completely satisfied, the user’s average percentage satisfied of resource guarantee will be greater than or equal to 1.</p>
+
+<h3 id="specifying-eviction-strategy">Specifying Eviction Strategy</h3>
+
+<p>The eviction strategy is used when there are not enough free resources in the cluster to schedule new topologies. If the cluster is full, we need a mechanism to evict topologies so that user resource guarantees can be met and additional resource can be shared fairly among users. The strategy for evicting topologies is also a pluggable interface in which the user can implement his or her own topology eviction strategy.  For a user to implement his or her own eviction strategy, he or she needs to implement the IEvictionStrategy Interface and set <em>Config.RESOURCE_AWARE_SCHEDULER_EVICTION_STRATEGY</em> to point to the implemented strategy class. For instance:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">resource.aware.scheduler.eviction.strategy: "org.apache.storm.scheduler.resource.strategies.eviction.DefaultEvictionStrategy"
+</code></pre></div>
+<p>A default eviction strategy is provided.  The following explains how the default topology eviction strategy works</p>
+
+<p><strong>DefaultEvictionStrategy</strong></p>
+
+<p>To determine if topology eviction should occur we should take into account the priority of the topology that we are trying to schedule and whether the resource guarantees for the owner of the topology have been met.  </p>
+
+<p>We should never evict a topology from a user that does not have his or her resource guarantees satisfied.  The following flow chart should describe the logic for the eviction process.</p>
+
+<p><img src="images/resource_aware_scheduler_default_eviction_strategy.svg" alt="Viewing metrics with VisualVM"></p>
+
+
+
+	          </div>
+	       </div>
+	  </div>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>Meetups</h5>
+                    <ul class="latest-news">
+                        
+                        <li><a href="http://www.meetup.com/Apache-Storm-Apache-Kafka/">Apache Storm & Apache Kafka</a> <span class="small">(Sunnyvale, CA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/Apache-Storm-Kafka-Users/">Apache Storm & Kafka Users</a> <span class="small">(Seattle, WA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/New-York-City-Storm-User-Group/">NYC Storm User Group</a> <span class="small">(New York, NY)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/Bay-Area-Stream-Processing">Bay Area Stream Processing</a> <span class="small">(Emeryville, CA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/Boston-Storm-Users/">Boston Realtime Data</a> <span class="small">(Boston, MA)</span></li>
+                        
+                        <li><a href="http://www.meetup.com/storm-london">London Storm User Group</a> <span class="small">(London, UK)</span></li>
+                        
+                        <!-- <li><a href="http://www.meetup.com/Apache-Storm-Kafka-Users/">Seatle, WA</a> <span class="small">(27 Jun 2015)</span></li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>About Storm</h5>
+                    <p>Storm integrates with any queueing system and any database system. Storm's spout abstraction makes it easy to integrate a new queuing system. Likewise, integrating Storm with database systems is easy.</p>
+               </div>
+            </div>
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>First Look</h5>
+                    <ul class="footer-list">
+                        <li><a href="/releases/current/Rationale.html">Rationale</a></li>
+                        <li><a href="/releases/current/Tutorial.html">Tutorial</a></li>
+                        <li><a href="/releases/current/Setting-up-development-environment.html">Setting up development environment</a></li>
+                        <li><a href="/releases/current/Creating-a-new-Storm-project.html">Creating a new Storm project</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="footer-widget">
+                    <h5>Documentation</h5>
+                    <ul class="footer-list">
+                        <li><a href="/releases/current/index.html">Index</a></li>
+                        <li><a href="/releases/current/javadocs/index.html">Javadoc</a></li>
+                        <li><a href="/releases/current/FAQ.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">   
+            <div class="col-md-12">
+                <p align="center">Copyright © 2015 <a href="http://www.apache.org">Apache Software Foundation</a>. All Rights Reserved. 
+                    <br>Apache Storm, Apache, the Apache feather logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation. 
+                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-angle-up"></i></a></span> 
+
+</body>
+
+</html>
+

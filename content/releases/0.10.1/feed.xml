@@ -5,15 +5,24 @@
     <description></description>
     <link>http://storm.apache.org/</link>
     <atom:link href="http://storm.apache.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 14 Feb 2018 15:49:31 -0500</pubDate>
-    <lastBuildDate>Wed, 14 Feb 2018 15:49:31 -0500</lastBuildDate>
+    <pubDate>Thu, 15 Feb 2018 16:59:33 -0500</pubDate>
+    <lastBuildDate>Thu, 15 Feb 2018 16:59:33 -0500</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
-        <title>Storm 1.0.5 Released</title>
-        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 1.0.5 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+        <title>Storm 1.2.0 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 1.2.0 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;This is a maintenance release that includes a number of important bug fixes that improve Storm&amp;#39;s performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;apache-kafka-integration-improvements&quot;&gt;Apache Kafka Integration Improvements&lt;/h2&gt;
+
+&lt;p&gt;This release includes many improvements to Storm&amp;#39;s Kafka integration that improve stability, ease configuration, and expose new features. More details can be found in the
+&lt;a href=&quot;/releases/1.2.0/storm-kafka-client.html&quot;&gt;Kafka client documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;new-metrics-reporting-api&quot;&gt;New Metrics Reporting API&lt;/h2&gt;
+
+&lt;p&gt;This release introduces a new metrics system for reporting internal statistics (e.g. acked, failed, emitted, transferred, disruptor queue metrics, etc.) as well as a new API for user defined metrics based on the popular &lt;a href=&quot;&quot;&gt;Dropwizard Metrics library&lt;/a&gt;. Storm includes reporters for gathering metrics data with Ganglia, Graphite, JMX, CSV and the console. Additional metrics systems can be integrated by extending the &lt;code&gt;org.apache.storm.metrics2.reporters.ScheduledStormReporter&lt;/code&gt; class. Additional details can be found in the &lt;a href=&quot;/releases/1.2.0/metrics_v2.html&quot;&gt;metrics documentation&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
 
@@ -21,23 +30,372 @@
 
 &lt;h2 id=&quot;changes-in-this-release&quot;&gt;Changes in this Release&lt;/h2&gt;
 
-&lt;h4&gt;Improvement&lt;/h4&gt;
+&lt;h2&gt;New Feature&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2657&quot;&gt;STORM-2657&lt;/a&gt;] - Update SECURITY.MD &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2383&quot;&gt;STORM-2383&lt;/a&gt;] - [storm-hbase] Support HBase as state backend&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2484&quot;&gt;STORM-2484&lt;/a&gt;] - Flux: support bolt+spout memory configuration&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2648&quot;&gt;STORM-2648&lt;/a&gt;] - Kafka spout can't show acks/fails and complete latency when auto commit is enabled&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2694&quot;&gt;STORM-2694&lt;/a&gt;] - Create a listener to handle tuple state changes of the KafkaSpout&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4&gt;Bug&lt;/h4&gt;
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2153&quot;&gt;STORM-2153&lt;/a&gt;] - New Metrics Reporting API&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2160&quot;&gt;STORM-2160&lt;/a&gt;] - Expose interface to MetricRegistry via TopologyContext&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2164&quot;&gt;STORM-2164&lt;/a&gt;] - Create simple generic plugin system to register codahale reporters&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2369&quot;&gt;STORM-2369&lt;/a&gt;] - [storm-redis] Use binary type for State management&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2379&quot;&gt;STORM-2379&lt;/a&gt;] - [storm-elasticsearch] switch ES client to Java REST API&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2421&quot;&gt;STORM-2421&lt;/a&gt;] - Support lists of childopts beyond just worker&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2448&quot;&gt;STORM-2448&lt;/a&gt;] - Support running workers using older JVMs/storm versions&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2481&quot;&gt;STORM-2481&lt;/a&gt;] - Upgrade Aether version to resolve Aether bug BUG-451566&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2482&quot;&gt;STORM-2482&lt;/a&gt;] - Refactor the Storm auto credential plugins to be more usable&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2491&quot;&gt;STORM-2491&lt;/a&gt;] - Missing various configuration parameters to configure the Cassandra client used by the Cassandra Bolts&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2501&quot;&gt;STORM-2501&lt;/a&gt;] - Implement auto credential plugin for Hive&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2512&quot;&gt;STORM-2512&lt;/a&gt;] - Change KafkaSpoutConfig in storm-kafka-client to make it work with flux&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2519&quot;&gt;STORM-2519&lt;/a&gt;] - AbstractAutoCreds should look for configKeys in both nimbus and topology configs&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2524&quot;&gt;STORM-2524&lt;/a&gt;] - Set Kafka client.id with storm-kafka&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2527&quot;&gt;STORM-2527&lt;/a&gt;] - Initialize java.sql.DriverManager earlier to avoid deadlock between DriverManager static initializer and driver static initializer&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2528&quot;&gt;STORM-2528&lt;/a&gt;] - Bump log4j version to 2.8.2&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2548&quot;&gt;STORM-2548&lt;/a&gt;] - Simplify KafkaSpoutConfig&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2551&quot;&gt;STORM-2551&lt;/a&gt;] - Thrift client socket timeout&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2553&quot;&gt;STORM-2553&lt;/a&gt;] - JedisCluster does not support password&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2598&quot;&gt;STORM-2598&lt;/a&gt;] - Add proxy server option for dependency resolver&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2601&quot;&gt;STORM-2601&lt;/a&gt;] - the method of getting the nimbus cilent doenot accept timeout parameter&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2616&quot;&gt;STORM-2616&lt;/a&gt;] - Document the built in metrics (just in time to replace them???)&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2618&quot;&gt;STORM-2618&lt;/a&gt;] - Add TridentKafkaStateUpdater for storm-kafka-client&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2650&quot;&gt;STORM-2650&lt;/a&gt;] - Add test for non-string property substitution in Flux tests&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2657&quot;&gt;STORM-2657&lt;/a&gt;] - Update SECURITY.MD &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2663&quot;&gt;STORM-2663&lt;/a&gt;] - Backport STORM-2558 and deprecate storm.cmd on 1.x-branch&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2712&quot;&gt;STORM-2712&lt;/a&gt;] - accept arbitrary number of rows per tuple in storm-cassandra&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2775&quot;&gt;STORM-2775&lt;/a&gt;] - Improve KafkaPartition Metric Names&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2781&quot;&gt;STORM-2781&lt;/a&gt;] - Refactor storm-kafka-client KafkaSpout  Processing Guarantees&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2791&quot;&gt;STORM-2791&lt;/a&gt;] - Add support for multiple output fields to FixedTupleSpout&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2796&quot;&gt;STORM-2796&lt;/a&gt;] - Flux: Provide means for invoking static factory methods and improve non-primitive number handling&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2807&quot;&gt;STORM-2807&lt;/a&gt;] - Integration test should shut down topologies immediately after the test&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2854&quot;&gt;STORM-2854&lt;/a&gt;] - Expose IEventLogger to make event logging pluggable&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2860&quot;&gt;STORM-2860&lt;/a&gt;] - Add Kerberos support to Solr bolt&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2862&quot;&gt;STORM-2862&lt;/a&gt;] - More flexible logging in multilang (Python, Ruby, JS)&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2864&quot;&gt;STORM-2864&lt;/a&gt;] - Minor optimisation about trident kafka state&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2867&quot;&gt;STORM-2867&lt;/a&gt;] - Add Consumer lag metrics to Kafka Spout&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2877&quot;&gt;STORM-2877&lt;/a&gt;] - Introduce an option to configure pagination in Storm UI &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2901&quot;&gt;STORM-2901&lt;/a&gt;] - Reuse ZK connection for getKeySequenceNumber&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2914&quot;&gt;STORM-2914&lt;/a&gt;] - Remove enable.auto.commit support from storm-kafka-client&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2917&quot;&gt;STORM-2917&lt;/a&gt;] - Check the config(nimbus.host) before using it to connect&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-1114&quot;&gt;STORM-1114&lt;/a&gt;] - Racing condition in trident zookeeper zk-node create/delete&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2194&quot;&gt;STORM-2194&lt;/a&gt;] - ReportErrorAndDie doesn't always die&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2231&quot;&gt;STORM-2231&lt;/a&gt;] - NULL in DisruptorQueue while multi-threaded ack&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2315&quot;&gt;STORM-2315&lt;/a&gt;] - New kafka spout can't commit offset when ack is disabled. &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2343&quot;&gt;STORM-2343&lt;/a&gt;] - New Kafka spout can stop emitting tuples if more than maxUncommittedOffsets tuples fail at once&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2357&quot;&gt;STORM-2357&lt;/a&gt;] - add At-Most-Once guarantee in KafkaSpout&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2413&quot;&gt;STORM-2413&lt;/a&gt;] - New Kafka spout is ignoring retry limit&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2426&quot;&gt;STORM-2426&lt;/a&gt;] - First tuples fail after worker is respawn&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2429&quot;&gt;STORM-2429&lt;/a&gt;] - non-string values in supervisor.scheduler.meta cause crash&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2431&quot;&gt;STORM-2431&lt;/a&gt;] - the default blobstore.dir is storm.local.dir/blobs which is different from distcache-blobstore.md&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2432&quot;&gt;STORM-2432&lt;/a&gt;] - Storm-Kafka-Client Trident Spout Seeks Incorrect Offset With UNCOMMITTED_LATEST Strategy&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2435&quot;&gt;STORM-2435&lt;/a&gt;] - Logging in storm.js inconsistent to console.log and does not support log levels&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2440&quot;&gt;STORM-2440&lt;/a&gt;] - Kafka outage can lead to lockup of topology&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2449&quot;&gt;STORM-2449&lt;/a&gt;] - Iterator of Redis State may return same key multiple time, with different values&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2450&quot;&gt;STORM-2450&lt;/a&gt;] - supervisor v2 broke ShellBolt/Spout in local mode from storm jar&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2467&quot;&gt;STORM-2467&lt;/a&gt;] - Encoding issues in Kafka consumer&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2478&quot;&gt;STORM-2478&lt;/a&gt;] - BlobStoreTest.testDeleteAfterFailedCreate fails on Windows&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2486&quot;&gt;STORM-2486&lt;/a&gt;] - bin/storm launcher script can be broken if CDPATH is exported from environment&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2488&quot;&gt;STORM-2488&lt;/a&gt;] - The UI user Must be HTTP&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2489&quot;&gt;STORM-2489&lt;/a&gt;] - Overlap and data loss on WindowedBolt based on Duration&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2494&quot;&gt;STORM-2494&lt;/a&gt;] - KafkaSpout does not handle CommitFailedException&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2496&quot;&gt;STORM-2496&lt;/a&gt;] - Dependency artifacts should be uploaded to blobstore with READ permission for all&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2498&quot;&gt;STORM-2498&lt;/a&gt;] - Download Full File link broken in 1.x branch&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2500&quot;&gt;STORM-2500&lt;/a&gt;] - waitUntilReady in PacemakerClient cannot be invoked&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2503&quot;&gt;STORM-2503&lt;/a&gt;] - lgtm.com alerts: bugs in equality and comparison operations&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2505&quot;&gt;STORM-2505&lt;/a&gt;] - Kafka Spout doesn't support voids in the topic (topic compaction not supported)&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2511&quot;&gt;STORM-2511&lt;/a&gt;] - Submitting a topology with name containing unicode getting failed.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2516&quot;&gt;STORM-2516&lt;/a&gt;] - WindowedBoltExecutorTest.testExecuteWithLateTupleStream is flaky&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2517&quot;&gt;STORM-2517&lt;/a&gt;] - storm-hdfs writers can't be subclassed&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2518&quot;&gt;STORM-2518&lt;/a&gt;] - NPE during uploading dependency artifacts with secured cluster&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2520&quot;&gt;STORM-2520&lt;/a&gt;] - AutoHDFS should prefer cluster-wise hdfs kerberos principal to global hdfs kerberos principal&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2521&quot;&gt;STORM-2521&lt;/a&gt;] - &quot;storm sql&quot; fails since '--jars' can't handle wildcard&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2525&quot;&gt;STORM-2525&lt;/a&gt;] - Fix flaky integration tests&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2535&quot;&gt;STORM-2535&lt;/a&gt;] - test-reset-timeout is flaky. Replace with a more reliable test.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2536&quot;&gt;STORM-2536&lt;/a&gt;] - storm-autocreds adds jersey 1.x to worker classpath&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2541&quot;&gt;STORM-2541&lt;/a&gt;] - Manual partition assignment doesn't work&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2544&quot;&gt;STORM-2544&lt;/a&gt;] - Bugs in the Kafka Spout retry logic when using manual commit&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2546&quot;&gt;STORM-2546&lt;/a&gt;] - Kafka spout can stall / get stuck due to edge case with failing tuples&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2549&quot;&gt;STORM-2549&lt;/a&gt;] - The fix for STORM-2343 is incomplete, and the spout can still get stuck on failed tuples&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2552&quot;&gt;STORM-2552&lt;/a&gt;] - KafkaSpoutMessageId should be serializable&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2555&quot;&gt;STORM-2555&lt;/a&gt;] - storm-autocreds for HBase doesn't handle impersonation&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2557&quot;&gt;STORM-2557&lt;/a&gt;] - A bug in DisruptorQueue causing severe underestimation of queue arrival rates&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2562&quot;&gt;STORM-2562&lt;/a&gt;] - Use stronger key size for blow fish key generator and get rid of stack trace&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2563&quot;&gt;STORM-2563&lt;/a&gt;] - Remove the workaround to handle missing UGI.loginUserFromSubject&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2564&quot;&gt;STORM-2564&lt;/a&gt;] - We should provide a template for storm-cluster-auth.yaml&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2568&quot;&gt;STORM-2568&lt;/a&gt;] - 'api/vi/topology/:id/lag' returns empty json {}&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2597&quot;&gt;STORM-2597&lt;/a&gt;] - EXT_CLASSPATH strips out directories&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2599&quot;&gt;STORM-2599&lt;/a&gt;] - BasicContainer.getWildcardDir tries to resolve the wildcard character with Paths.get, which prevents workers from booting on Windows&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2602&quot;&gt;STORM-2602&lt;/a&gt;] - &quot;storm.zookeeper.topology.auth.payload&quot; doesn't work even you set it&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2607&quot;&gt;STORM-2607&lt;/a&gt;] - [kafka-client] Consumer group every time with lag 1&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2608&quot;&gt;STORM-2608&lt;/a&gt;] - Out Of Range Offsets Should Be Removed From Pending Queue&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2621&quot;&gt;STORM-2621&lt;/a&gt;] - STORM-2557 broke sojourn time estimation&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2627&quot;&gt;STORM-2627&lt;/a&gt;] - The annotation of &quot;storm.zookeeper.topology.auth.scheme&quot; in Config.java is wrong&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2639&quot;&gt;STORM-2639&lt;/a&gt;] - Kafka Spout incorrectly computes numCommittedOffsets due to voids in the topic (topic compaction)&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2642&quot;&gt;STORM-2642&lt;/a&gt;] - Storm-kafka-client spout cannot be serialized when using manual partition assignment&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2645&quot;&gt;STORM-2645&lt;/a&gt;] - update storm.py to be python3 compatible &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2652&quot;&gt;STORM-2652&lt;/a&gt;] - Exception thrown in JmsSpout open method&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2660&quot;&gt;STORM-2660&lt;/a&gt;] - The Nimbus storm-local directory is relative to the working directory of the shell executing &quot;storm nimbus&quot;&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2666&quot;&gt;STORM-2666&lt;/a&gt;] - Storm-kafka-client spout can sometimes emit messages that were already committed. &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2674&quot;&gt;STORM-2674&lt;/a&gt;] - NoNodeException when ZooKeeper tries to delete nodes&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2675&quot;&gt;STORM-2675&lt;/a&gt;] - KafkaTridentSpoutOpaque not committing offsets to Kafka&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2677&quot;&gt;STORM-2677&lt;/a&gt;] - consider all sampled tuples which took greater than 0 ms processing time&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2682&quot;&gt;STORM-2682&lt;/a&gt;] - Supervisor crashes with NullPointerException&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2690&quot;&gt;STORM-2690&lt;/a&gt;] - resurrect invocation of ISupervisor.assigned() &amp; make Supervisor.launchDaemon() accessible&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2692&quot;&gt;STORM-2692&lt;/a&gt;] - Load only configs specific to the topology in populateCredentials&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2695&quot;&gt;STORM-2695&lt;/a&gt;] - BlobStore uncompress argument should be Boolean&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2705&quot;&gt;STORM-2705&lt;/a&gt;] - DRPCSpout sleeps twice when idle&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2706&quot;&gt;STORM-2706&lt;/a&gt;] - Nimbus stuck in exception and does not fail fast&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2722&quot;&gt;STORM-2722&lt;/a&gt;] - JMSSpout test fails way too often&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2724&quot;&gt;STORM-2724&lt;/a&gt;] - ExecutorService in WaterMarkEventGenerator never shutdown&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2736&quot;&gt;STORM-2736&lt;/a&gt;] - o.a.s.b.BlobStoreUtils [ERROR] Could not update the blob with key&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2751&quot;&gt;STORM-2751&lt;/a&gt;] - Remove AsyncLoggingContext from Supervisor&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2756&quot;&gt;STORM-2756&lt;/a&gt;] - STORM-2548 on 1.x-branch broke setting key/value deserializers with the now deprecated setKey/setValue methods&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2764&quot;&gt;STORM-2764&lt;/a&gt;] - HDFSBlobStore leaks file system objects&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2769&quot;&gt;STORM-2769&lt;/a&gt;] - Fast-fail if output stream Id is null &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2771&quot;&gt;STORM-2771&lt;/a&gt;] - Some tests are being run twice&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2779&quot;&gt;STORM-2779&lt;/a&gt;] - NPE on shutting down WindowedBoltExecutor&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2784&quot;&gt;STORM-2784&lt;/a&gt;] -  storm-kafka-client KafkaTupleListener method onPartitionsReassigned() should be called after initialization is complete&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2786&quot;&gt;STORM-2786&lt;/a&gt;] - Ackers leak tracking info on failure and lots of other cases.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2787&quot;&gt;STORM-2787&lt;/a&gt;] - storm-kafka-client KafkaSpout should set 'initialized' flag independently of processing guarantees&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2810&quot;&gt;STORM-2810&lt;/a&gt;] - Storm-hdfs tests are leaking resources&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2811&quot;&gt;STORM-2811&lt;/a&gt;] - Nimbus may throw NPE if the same topology is killed multiple times, and the integration test kills the same topology multiple times&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2814&quot;&gt;STORM-2814&lt;/a&gt;] - Logviewer HTTP server should return 403 instead of 200 if the user is unauthorized&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2815&quot;&gt;STORM-2815&lt;/a&gt;] - UI HTTP server should return 403 if the user is unauthorized&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2825&quot;&gt;STORM-2825&lt;/a&gt;] - storm-kafka-client configuration fails with a ClassCastException if &quot;enable.auto.commit&quot; is present in the consumer config map, and the value is a string&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2826&quot;&gt;STORM-2826&lt;/a&gt;] - KafkaSpoutConfig.builder doesn't set key/value deserializer properties in storm-kafka-client&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2833&quot;&gt;STORM-2833&lt;/a&gt;] - Cached Netty Connections can have different keys for the same thing.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2835&quot;&gt;STORM-2835&lt;/a&gt;] - storm-kafka-client KafkaSpout can fail to remove all tuples from waitingToEmit&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2843&quot;&gt;STORM-2843&lt;/a&gt;] - Flux: properties file not found when loading resources from classpath&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2844&quot;&gt;STORM-2844&lt;/a&gt;] - KafkaSpout Throws IllegalStateException After Committing to Kafka When First Poll Strategy Set to EARLIEST&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2847&quot;&gt;STORM-2847&lt;/a&gt;] - Exception thrown after rebalance IllegalArgumentException&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2850&quot;&gt;STORM-2850&lt;/a&gt;] - ManualPartitionSubscription assigns new partitions before calling onPartitionsRevoked&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2851&quot;&gt;STORM-2851&lt;/a&gt;] - org.apache.storm.kafka.spout.KafkaSpout.doSeekRetriableTopicPartitions sometimes throws ConcurrentModificationException&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2853&quot;&gt;STORM-2853&lt;/a&gt;] - Deactivated topologies cause high cpu utilization&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2855&quot;&gt;STORM-2855&lt;/a&gt;] - Travis build doesn't work after update of Ubuntu image&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2856&quot;&gt;STORM-2856&lt;/a&gt;] - Make Storm build work on post 2017Q4 Travis Trusty image&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2868&quot;&gt;STORM-2868&lt;/a&gt;] - Address handling activate/deactivate in multilang module files&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2869&quot;&gt;STORM-2869&lt;/a&gt;] - KafkaSpout discards all pending records when adjusting the consumer position after a commit&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2870&quot;&gt;STORM-2870&lt;/a&gt;] - FileBasedEventLogger leaks non-daemon ExecutorService which prevents process to be finished&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2873&quot;&gt;STORM-2873&lt;/a&gt;] - Backpressure implentation delete ephemeral too frequently&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2876&quot;&gt;STORM-2876&lt;/a&gt;] - Some storm-hdfs tests fail with out of memory periodically&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2879&quot;&gt;STORM-2879&lt;/a&gt;] - Supervisor collapse continuously when there is a expired assignment for overdue storm&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2881&quot;&gt;STORM-2881&lt;/a&gt;] - Storm-druid topologies fail with NoSuchMethodError&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2892&quot;&gt;STORM-2892&lt;/a&gt;] - Flux test fails to parse valid PATH environment variable&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2894&quot;&gt;STORM-2894&lt;/a&gt;] - fix some random typos in tests&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2900&quot;&gt;STORM-2900&lt;/a&gt;] - Subject is not populated and NPE is thrown while populating credentials in nimbus.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2903&quot;&gt;STORM-2903&lt;/a&gt;] - Fix possible NullPointerException in AbstractAutoCreds&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2906&quot;&gt;STORM-2906&lt;/a&gt;] - HDFS and HBase bolt on the same worker fails with GSS no valid credentials exception&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2907&quot;&gt;STORM-2907&lt;/a&gt;] - In a secure cluster with storm-autocreds enabled storm-druid can fail with NoSuchMethodError&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2912&quot;&gt;STORM-2912&lt;/a&gt;] - Tick tuple is being shared without resetting start time and incur side-effect to break metrics&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2913&quot;&gt;STORM-2913&lt;/a&gt;] - STORM-2844 made autocommit and at-most-once storm-kafka-client spouts log warnings on every emit, because those modes don't commit the right metadata to Kafka&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2918&quot;&gt;STORM-2918&lt;/a&gt;] - Upgrade Netty version&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2942&quot;&gt;STORM-2942&lt;/a&gt;] - Remove javadoc and source jars from toollib directory in binary distribution&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2620&quot;&gt;STORM-2620&lt;/a&gt;] - Update the docs to better indicate the versions of java tested&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2191&quot;&gt;STORM-2191&lt;/a&gt;] - shorten classpaths in worker and LogWriter commands&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2506&quot;&gt;STORM-2506&lt;/a&gt;] - Make Kafka Spout log its assigned partition&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2874&quot;&gt;STORM-2874&lt;/a&gt;] - Minor style improvements to backpressure code&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2904&quot;&gt;STORM-2904&lt;/a&gt;] - Document Metrics V2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Sub-task&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2161&quot;&gt;STORM-2161&lt;/a&gt;] - Stop shading the codahale metrics library so that it is available to users&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2640&quot;&gt;STORM-2640&lt;/a&gt;] - Deprecate KafkaConsumer.subscribe APIs on 1.x, and make KafkaConsumer.assign the default&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2858&quot;&gt;STORM-2858&lt;/a&gt;] - Fix worker-launcher build&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 15 Feb 2018 00:00:00 -0500</pubDate>
+        <link>http://storm.apache.org/2018/02/15/storm120-released.html</link>
+        <guid isPermaLink="true">http://storm.apache.org/2018/02/15/storm120-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Storm 1.1.2 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 1.1.2 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is a maintenance release that includes a number of important bug fixes that improve Storm&amp;#39;s performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;apache-kafka-integration-improvements&quot;&gt;Apache Kafka Integration Improvements&lt;/h2&gt;
+
+&lt;p&gt;This release includes many improvements to Storm&amp;#39;s Kafka integration that improve stability, ease configuration, and expose new features. More details can be found in the
+&lt;a href=&quot;/releases/1.1.2/storm-kafka-client.html&quot;&gt;Kafka client documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release&quot;&gt;Changes in this Release&lt;/h2&gt;
+
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2512&quot;&gt;STORM-2512&lt;/a&gt;] - Change KafkaSpoutConfig in storm-kafka-client to make it work with flux&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2616&quot;&gt;STORM-2616&lt;/a&gt;] - Document the built in metrics (just in time to replace them???)&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2657&quot;&gt;STORM-2657&lt;/a&gt;] - Update SECURITY.MD &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2663&quot;&gt;STORM-2663&lt;/a&gt;] - Backport STORM-2558 and deprecate storm.cmd on 1.x-branch&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2712&quot;&gt;STORM-2712&lt;/a&gt;] - accept arbitrary number of rows per tuple in storm-cassandra&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2775&quot;&gt;STORM-2775&lt;/a&gt;] - Improve KafkaPartition Metric Names&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2807&quot;&gt;STORM-2807&lt;/a&gt;] - Integration test should shut down topologies immediately after the test&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2862&quot;&gt;STORM-2862&lt;/a&gt;] - More flexible logging in multilang (Python, Ruby, JS)&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2877&quot;&gt;STORM-2877&lt;/a&gt;] - Introduce an option to configure pagination in Storm UI &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2917&quot;&gt;STORM-2917&lt;/a&gt;] - Check the config(nimbus.host) before using it to connect&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2231&quot;&gt;STORM-2231&lt;/a&gt;] - NULL in DisruptorQueue while multi-threaded ack&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2426&quot;&gt;STORM-2426&lt;/a&gt;] - First tuples fail after worker is respawn&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2500&quot;&gt;STORM-2500&lt;/a&gt;] - waitUntilReady in PacemakerClient cannot be invoked&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2525&quot;&gt;STORM-2525&lt;/a&gt;] - Fix flaky integration tests&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2535&quot;&gt;STORM-2535&lt;/a&gt;] - test-reset-timeout is flaky. Replace with a more reliable test.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2541&quot;&gt;STORM-2541&lt;/a&gt;] - Manual partition assignment doesn't work&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2607&quot;&gt;STORM-2607&lt;/a&gt;] - [kafka-client] Consumer group every time with lag 1&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2642&quot;&gt;STORM-2642&lt;/a&gt;] - Storm-kafka-client spout cannot be serialized when using manual partition assignment&lt;/li&gt;
 &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2660&quot;&gt;STORM-2660&lt;/a&gt;] - The Nimbus storm-local directory is relative to the working directory of the shell executing &quot;storm nimbus&quot;&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2666&quot;&gt;STORM-2666&lt;/a&gt;] - Storm-kafka-client spout can sometimes emit messages that were already committed. &lt;/li&gt;
 &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2674&quot;&gt;STORM-2674&lt;/a&gt;] - NoNodeException when ZooKeeper tries to delete nodes&lt;/li&gt;
 &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2677&quot;&gt;STORM-2677&lt;/a&gt;] - consider all sampled tuples which took greater than 0 ms processing time&lt;/li&gt;
 &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2682&quot;&gt;STORM-2682&lt;/a&gt;] - Supervisor crashes with NullPointerException&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2690&quot;&gt;STORM-2690&lt;/a&gt;] - resurrect invocation of ISupervisor.assigned() &amp; make Supervisor.launchDaemon() accessible&lt;/li&gt;
 &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2695&quot;&gt;STORM-2695&lt;/a&gt;] - BlobStore uncompress argument should be Boolean&lt;/li&gt;
 &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2705&quot;&gt;STORM-2705&lt;/a&gt;] - DRPCSpout sleeps twice when idle&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2706&quot;&gt;STORM-2706&lt;/a&gt;] - Nimbus stuck in exception and does not fail fast&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2724&quot;&gt;STORM-2724&lt;/a&gt;] - ExecutorService in WaterMarkEventGenerator never shutdown&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2736&quot;&gt;STORM-2736&lt;/a&gt;] - o.a.s.b.BlobStoreUtils [ERROR] Could not update the blob with key&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2750&quot;&gt;STORM-2750&lt;/a&gt;] - fix double_checked locking&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2751&quot;&gt;STORM-2751&lt;/a&gt;] - Remove AsyncLoggingContext from Supervisor&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2764&quot;&gt;STORM-2764&lt;/a&gt;] - HDFSBlobStore leaks file system objects&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2769&quot;&gt;STORM-2769&lt;/a&gt;] - Fast-fail if output stream Id is null &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2771&quot;&gt;STORM-2771&lt;/a&gt;] - Some tests are being run twice&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2779&quot;&gt;STORM-2779&lt;/a&gt;] - NPE on shutting down WindowedBoltExecutor&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2786&quot;&gt;STORM-2786&lt;/a&gt;] - Ackers leak tracking info on failure and lots of other cases.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2810&quot;&gt;STORM-2810&lt;/a&gt;] - Storm-hdfs tests are leaking resources&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2811&quot;&gt;STORM-2811&lt;/a&gt;] - Nimbus may throw NPE if the same topology is killed multiple times, and the integration test kills the same topology multiple times&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2814&quot;&gt;STORM-2814&lt;/a&gt;] - Logviewer HTTP server should return 403 instead of 200 if the user is unauthorized&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2815&quot;&gt;STORM-2815&lt;/a&gt;] - UI HTTP server should return 403 if the user is unauthorized&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2833&quot;&gt;STORM-2833&lt;/a&gt;] - Cached Netty Connections can have different keys for the same thing.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2853&quot;&gt;STORM-2853&lt;/a&gt;] - Deactivated topologies cause high cpu utilization&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2855&quot;&gt;STORM-2855&lt;/a&gt;] - Travis build doesn't work after update of Ubuntu image&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2856&quot;&gt;STORM-2856&lt;/a&gt;] - Make Storm build work on post 2017Q4 Travis Trusty image&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2868&quot;&gt;STORM-2868&lt;/a&gt;] - Address handling activate/deactivate in multilang module files&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2870&quot;&gt;STORM-2870&lt;/a&gt;] - FileBasedEventLogger leaks non-daemon ExecutorService which prevents process to be finished&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2876&quot;&gt;STORM-2876&lt;/a&gt;] - Some storm-hdfs tests fail with out of memory periodically&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2879&quot;&gt;STORM-2879&lt;/a&gt;] - Supervisor collapse continuously when there is a expired assignment for overdue storm&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2892&quot;&gt;STORM-2892&lt;/a&gt;] - Flux test fails to parse valid PATH environment variable&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2894&quot;&gt;STORM-2894&lt;/a&gt;] - fix some random typos in tests&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2912&quot;&gt;STORM-2912&lt;/a&gt;] - Tick tuple is being shared without resetting start time and incur side-effect to break metrics&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2918&quot;&gt;STORM-2918&lt;/a&gt;] - Upgrade Netty version&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2942&quot;&gt;STORM-2942&lt;/a&gt;] - Remove javadoc and source jars from toollib directory in binary distribution&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2874&quot;&gt;STORM-2874&lt;/a&gt;] - Minor style improvements to backpressure code&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Sub-task&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2858&quot;&gt;STORM-2858&lt;/a&gt;] - Fix worker-launcher build&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 15 Feb 2018 00:00:00 -0500</pubDate>
+        <link>http://storm.apache.org/2018/02/15/storm112-released.html</link>
+        <guid isPermaLink="true">http://storm.apache.org/2018/02/15/storm112-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Storm 1.0.6 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 1.0.5 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is a maintenance release that includes a number of important bug fixes that improve Storm&amp;#39;s performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;apache-kafka-integration-improvements&quot;&gt;Apache Kafka Integration Improvements&lt;/h2&gt;
+
+&lt;p&gt;This release includes many improvements to Storm&amp;#39;s Kafka integration that improve stability, ease configuration, and expose new features. More details can be found in the
+&lt;a href=&quot;/releases/1.0.6/storm-kafka-client.html&quot;&gt;Kafka client documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release&quot;&gt;Changes in this Release&lt;/h2&gt;
+
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2877&quot;&gt;STORM-2877&lt;/a&gt;] - Introduce an option to configure pagination in Storm UI &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2917&quot;&gt;STORM-2917&lt;/a&gt;] - Check the config(nimbus.host) before using it to connect&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2451&quot;&gt;STORM-2451&lt;/a&gt;] - windows storm.cmd does not set log4j2 config file correctly by default&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2690&quot;&gt;STORM-2690&lt;/a&gt;] - resurrect invocation of ISupervisor.assigned() &amp; make Supervisor.launchDaemon() accessible&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2751&quot;&gt;STORM-2751&lt;/a&gt;] - Remove AsyncLoggingContext from Supervisor&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2764&quot;&gt;STORM-2764&lt;/a&gt;] - HDFSBlobStore leaks file system objects&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2771&quot;&gt;STORM-2771&lt;/a&gt;] - Some tests are being run twice&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2786&quot;&gt;STORM-2786&lt;/a&gt;] - Ackers leak tracking info on failure and lots of other cases.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2853&quot;&gt;STORM-2853&lt;/a&gt;] - Deactivated topologies cause high cpu utilization&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2856&quot;&gt;STORM-2856&lt;/a&gt;] - Make Storm build work on post 2017Q4 Travis Trusty image&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2870&quot;&gt;STORM-2870&lt;/a&gt;] - FileBasedEventLogger leaks non-daemon ExecutorService which prevents process to be finished&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2879&quot;&gt;STORM-2879&lt;/a&gt;] - Supervisor collapse continuously when there is a expired assignment for overdue storm&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2892&quot;&gt;STORM-2892&lt;/a&gt;] - Flux test fails to parse valid PATH environment variable&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2894&quot;&gt;STORM-2894&lt;/a&gt;] - fix some random typos in tests&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2912&quot;&gt;STORM-2912&lt;/a&gt;] - Tick tuple is being shared without resetting start time and incur side-effect to break metrics&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2918&quot;&gt;STORM-2918&lt;/a&gt;] - Upgrade Netty version&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2874&quot;&gt;STORM-2874&lt;/a&gt;] - Minor style improvements to backpressure code&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2937&quot;&gt;STORM-2937&lt;/a&gt;] - Overwrite storm-kafka-client 1.x-branch into 1.0.x-branch&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Sub-task&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2858&quot;&gt;STORM-2858&lt;/a&gt;] - Fix worker-launcher build&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 14 Feb 2018 00:00:00 -0500</pubDate>
         <link>http://storm.apache.org/2018/02/14/storm106-released.html</link>
@@ -681,126 +1039,6 @@ Version: 1.1.0&lt;/p&gt;
         <pubDate>Wed, 07 Sep 2016 00:00:00 -0400</pubDate>
         <link>http://storm.apache.org/2016/09/07/storm097-released.html</link>
         <guid isPermaLink="true">http://storm.apache.org/2016/09/07/storm097-released.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Storm 1.0.2 Released</title>
-        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 1.0.2 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;This is a maintenance release that includes a number of important bug fixes that improve Storm&amp;#39;s performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
-
-&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
-
-&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
-
-&lt;h2 id=&quot;full-changelog&quot;&gt;Full Changelog&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;STORM-1939: Frequent InterruptedException raised by ShellBoltMessageQueue.poll&lt;/li&gt;
-&lt;li&gt;STORM-1968: Storm logviewer does not work for nimbus.log in secure cluster&lt;/li&gt;
-&lt;li&gt;STORM-1928: ShellSpout should check heartbeat while ShellSpout is waiting for subprocess to sync&lt;/li&gt;
-&lt;li&gt;STORM-1922: Supervisor summary default order by host&lt;/li&gt;
-&lt;li&gt;STORM-1956: Disabling Backpressure by default&lt;/li&gt;
-&lt;li&gt;STORM-1934: Fix race condition between sync-supervisor and sync-processes&lt;/li&gt;
-&lt;li&gt;STORM-1895: blobstore replication-factor argument&lt;/li&gt;
-&lt;li&gt;STORM-118: Docs: typo in transactional-commit-flow.png&lt;/li&gt;
-&lt;li&gt;STORM-1633: Document blobstore to command-line-client.md&lt;/li&gt;
-&lt;li&gt;STORM-1899: Release HBase connection when topology shutdown&lt;/li&gt;
-&lt;li&gt;STORM-1844: Some tests are flaky due to low timeout&lt;/li&gt;
-&lt;li&gt;STORM-1946: initialize lastHeartbeatTimestamp before starting heartbeat task&lt;/li&gt;
-&lt;li&gt;STORM-1941 Nimbus discovery can fail when zookeeper reconnect happens&lt;/li&gt;
-&lt;li&gt;STORM-1937 Fix WindowTridentProcessor cause NullPointerException&lt;/li&gt;
-&lt;li&gt;STORM-1924: Add a config file parameter to HDFS test topologies&lt;/li&gt;
-&lt;li&gt;STORM-1705: Cap number of retries for a failed message&lt;/li&gt;
-&lt;li&gt;STORM-1884: Prioritize pendingPrepare over pendingCommit&lt;/li&gt;
-&lt;li&gt;STORM-1575: fix TwitterSampleSpout NPE on close&lt;/li&gt;
-&lt;li&gt;STORM-1874: Update logger private permissions&lt;/li&gt;
-&lt;li&gt;STORM-1865: update command line client document&lt;/li&gt;
-&lt;li&gt;STORM-1771: HiveState should flushAndClose before closing old or idle Hive connections&lt;/li&gt;
-&lt;li&gt;STORM-1882: Expose TextFileReader public&lt;/li&gt;
-&lt;li&gt;STORM-1864 : StormSubmitter should throw respective exceptions and log respective errors for registered submitter hook invocation&lt;/li&gt;
-&lt;li&gt;STORM-1887: Fixed help message for set_log_level command&lt;/li&gt;
-&lt;li&gt;STORM-1878: Flux can now handle IStatefulBolts&lt;/li&gt;
-&lt;li&gt;STORM-1861: Storm submit command returns exit code of 0 even when it fails.&lt;/li&gt;
-&lt;li&gt;STORM-1755: Revert the kafka client version upgrade in storm-kafka module&lt;/li&gt;
-&lt;li&gt;STORM-1853: Replace ClassLoaderObjectInputStream with ObjectInputStream&lt;/li&gt;
-&lt;li&gt;STORM-1868: Modify TridentKafkaWordCount to run in distributed mode&lt;/li&gt;
-&lt;li&gt;STORM-1859: Ack late tuples in windowed mode&lt;/li&gt;
-&lt;li&gt;STORM-1851: Fix default nimbus impersonation authorizer config&lt;/li&gt;
-&lt;li&gt;STORM-1848: Make KafkaMessageId and Partition serializable to support event logging&lt;/li&gt;
-&lt;li&gt;STORM-1862: Flux ShellSpout and ShellBolt can&amp;#39;t emit to named streams&lt;/li&gt;
-&lt;li&gt;Storm-1728: TransactionalTridentKafkaSpout error&lt;/li&gt;
-&lt;li&gt;STORM-1850: State Checkpointing Documentation update&lt;/li&gt;
-&lt;li&gt;STORM-1674: Idle KafkaSpout consumes more bandwidth than needed&lt;/li&gt;
-&lt;li&gt;STORM-1842: Forward references in storm.thrift cause tooling issues&lt;/li&gt;
-&lt;li&gt;STORM-1745: Add partition to log output in PartitionManager&lt;/li&gt;
-&lt;li&gt;STORM-1735: Nimbus should log that replication succeeded when min replicas was reached exactly&lt;/li&gt;
-&lt;li&gt;STORM-1835: add lock info in thread dump&lt;/li&gt;
-&lt;li&gt;STORM-1749: Fix storm-starter github links&lt;/li&gt;
-&lt;li&gt;STORM-1764: Pacemaker is throwing some stack traces&lt;/li&gt;
-&lt;li&gt;STORM-1761: Storm-Solr Example Throws ArrayIndexOutOfBoundsException in Remote Cluster Mode&lt;/li&gt;
-&lt;li&gt;STORM-1756: Explicitly null KafkaServer reference in KafkaTestBroker to prevent out of memory on large test classes.&lt;/li&gt;
-&lt;li&gt;STORM-1750: Ensure worker dies when report-error-and-die is called.&lt;/li&gt;
-&lt;li&gt;STORM-1715: using Jedis Protocol.DEFAULT_HOST to replace DEFAULT_HOST&lt;/li&gt;
-&lt;li&gt;STORM-1713: Replace NotImplementedException with UnsupportedOperationException&lt;/li&gt;
-&lt;li&gt;STORM-1678: abstract batch processing to common api &lt;code&gt;BatchHelper&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;STORM-1773: Utils.javaDeserialize() doesn&amp;#39;t work with primitive types&lt;/li&gt;
-&lt;li&gt;STORM-1661: Introduce a config to turn off blobstore acl validation in insecure mode&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 10 Aug 2016 00:00:00 -0400</pubDate>
-        <link>http://storm.apache.org/2016/08/10/storm102-released.html</link>
-        <guid isPermaLink="true">http://storm.apache.org/2016/08/10/storm102-released.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Storm 1.0.1 Released</title>
-        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 1.0.1 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;This is a maintenance release that includes a number of important bug fixes that improve Storm&amp;#39;s performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
-
-&lt;h2 id=&quot;performance-improvements&quot;&gt;Performance Improvements&lt;/h2&gt;
-
-&lt;p&gt;This release includes performance improvements to Storm&amp;#39;s internal messaging system. The maximum rate at which spouts can emit data has nearly doubled, and performance of inter-task communication has improved.&lt;/p&gt;
-
-&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
-
-&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
-
-&lt;h2 id=&quot;full-changelog&quot;&gt;Full Changelog&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;STORM-1741: remove unconditional setting of JAVA_HOME from storm-env.sh&lt;/li&gt;
-&lt;li&gt;STORM-1739: update the minor JAVA version dependency in 0.10.0 and above&lt;/li&gt;
-&lt;li&gt;STORM-1727: document 1.0 package renaming and how to use the migration tool&lt;/li&gt;
-&lt;li&gt;STORM-1733: Flush stdout and stderr before calling &amp;quot;os.execvp&amp;quot; to prevent log loss.&lt;/li&gt;
-&lt;li&gt;STORM-1729: Get rid of reflections while recording stats&lt;/li&gt;
-&lt;li&gt;STORM-1731: Avoid looking up debug / backpressure enable flags within critical path&lt;/li&gt;
-&lt;li&gt;STORM-1535: Make sure hdfs key tab login happens only once for multiple bolts/executors.&lt;/li&gt;
-&lt;li&gt;STORM-1725: Kafka Spout New Consumer API - KafkaSpoutRetryExponential Backoff method should use HashMap instead of TreeMap not to throw Exception&lt;/li&gt;
-&lt;li&gt;STORM-1544: Document Debug/Sampling of Topologies&lt;/li&gt;
-&lt;li&gt;STORM-1679: add storm Scheduler documents&lt;/li&gt;
-&lt;li&gt;STORM-1704: When logviewer_search.html opens daemon file, next search always show no result&lt;/li&gt;
-&lt;li&gt;STORM-1714: StatefulBolts ends up as normal bolts while using TopologyBuilder.setBolt without parallelism&lt;/li&gt;
-&lt;li&gt;STORM-1683: only check non-system streams by default&lt;/li&gt;
-&lt;li&gt;STORM-1680: Provide configuration to set min fetch size in KafkaSpout&lt;/li&gt;
-&lt;li&gt;STORM-1649: Optimize Kryo instaces creation in HBaseWindowsStore&lt;/li&gt;
-&lt;li&gt;STORM-1696: status not sync if zk fails in backpressure&lt;/li&gt;
-&lt;li&gt;STORM-1693: Move stats cleanup to executor shutdown&lt;/li&gt;
-&lt;li&gt;STORM-1585: Add DDL support for UDFs in storm-sql&lt;/li&gt;
-&lt;li&gt;STORM-1681: Bug in scheduling cyclic topologies when scheduling with RAS&lt;/li&gt;
-&lt;li&gt;STORM-1706: Add RELEASE and storm-env.sh to storm-diet assembly&lt;/li&gt;
-&lt;li&gt;STORM-1613: Upgraded HBase version to 1.1.0&lt;/li&gt;
-&lt;li&gt;STORM-1687: divide by zero in stats&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Fri, 06 May 2016 00:00:00 -0400</pubDate>
-        <link>http://storm.apache.org/2016/05/06/storm101-released.html</link>
-        <guid isPermaLink="true">http://storm.apache.org/2016/05/06/storm101-released.html</guid>
         
         
       </item>
