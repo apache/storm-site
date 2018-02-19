@@ -6,7 +6,6 @@ author: P. Taylor Goetz
 
 The Apache Storm community is pleased to announce that version 1.2.0 has been released and is available from [the downloads page](/downloads.html).
 
-This is a maintenance release that includes a number of important bug fixes that improve Storm's performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.
 
 Apache Kafka Integration Improvements
 ------------------------------
