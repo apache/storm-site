@@ -15,6 +15,7 @@ documentation: true
     <th class="">Role</th>
     <th class="">Apache ID</th>
     <th class="">Github</th>
+    <th class="">Organization</th>
   </thead>
 {% for committer in site.data.committers %}
   <tr>
@@ -22,6 +23,7 @@ documentation: true
     <td class="">{{committer.roles}}</td>
     <td class="">{{committer.asfid}}</td>
     <td class=""><a href="https://github.com/{{committer.github}}">@{{committer.github}}</td>
+    <td class="">{{committer.organization}}</td>
   </tr>
 {% endfor %}
 </table>
