@@ -43,8 +43,8 @@ To add documentation for a new release, run the following from the Storm project
 mkdir ${path_to_storm_site}/releases/${release_name}
 #Copy everything over, and compare checksums, except for things that are part of the site,
 # and are not release specific like the _* directories that are jekyll specific
-# assests/ css/ and README.md
-rsync -ac --delete --exclude _\* --exclude assets --exclude css --exclude README.md ./docs/ ${path_to_svn}/releases/${release_name}
+# assets/ css/ and README.md
+rsync -ac --delete --exclude _\* --exclude assets --exclude css --exclude README.md ./docs/ ${path_to_storm_site}/releases/${release_name}
 cd ${path_to_storm_site}
 git add releases/${release_name}
 git commit
