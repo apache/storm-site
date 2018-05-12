@@ -97,13 +97,16 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../../org/apache/storm/topology/base/BaseComponent.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseComponent</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseRichBolt</a></li>
+<li>
+<ul class="inheritance">
+<li><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseTickTupleAwareRichBolt</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../../org/apache/storm/redis/bolt/AbstractRedisBolt.html" title="class in org.apache.storm.redis.bolt">org.apache.storm.redis.bolt.AbstractRedisBolt</a></li>
@@ -119,12 +122,14 @@ var activeTableTab = "activeTableTab";
 </ul>
 </li>
 </ul>
+</li>
+</ul>
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/task/IBolt.html" title="interface in org.apache.storm.task">IBolt</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichBolt.html" title="interface in org.apache.storm.topology">IRichBolt</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/task/IBolt.html" title="interface in org.apache.storm.task">IBolt</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichBolt.html" title="interface in org.apache.storm.topology">IRichBolt</a></dd>
 </dl>
 <hr>
 <br>
@@ -202,8 +207,8 @@ extends <a href="../../../../../org/apache/storm/redis/bolt/AbstractRedisBolt.ht
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/bolt/RedisStoreBolt.html#execute-org.apache.storm.tuple.Tuple-">execute</a></span>(<a href="../../../../../org/apache/storm/tuple/Tuple.html" title="interface in org.apache.storm.tuple">Tuple</a>&nbsp;input)</code>
-<div class="block">Process a single tuple of input.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/bolt/RedisStoreBolt.html#process-org.apache.storm.tuple.Tuple-">process</a></span>(<a href="../../../../../org/apache/storm/tuple/Tuple.html" title="interface in org.apache.storm.tuple">Tuple</a>&nbsp;input)</code>
+<div class="block">Process a single non-tick tuple of input.</div>
 </td>
 </tr>
 </table>
@@ -213,6 +218,13 @@ extends <a href="../../../../../org/apache/storm/redis/bolt/AbstractRedisBolt.ht
 </a>
 <h3>Methods inherited from class&nbsp;org.apache.storm.redis.bolt.<a href="../../../../../org/apache/storm/redis/bolt/AbstractRedisBolt.html" title="class in org.apache.storm.redis.bolt">AbstractRedisBolt</a></h3>
 <code><a href="../../../../../org/apache/storm/redis/bolt/AbstractRedisBolt.html#cleanup--">cleanup</a>, <a href="../../../../../org/apache/storm/redis/bolt/AbstractRedisBolt.html#getInstance--">getInstance</a>, <a href="../../../../../org/apache/storm/redis/bolt/AbstractRedisBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a>, <a href="../../../../../org/apache/storm/redis/bolt/AbstractRedisBolt.html#returnInstance-redis.clients.jedis.JedisCommands-">returnInstance</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.base.BaseTickTupleAwareRichBolt">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.storm.topology.base.<a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base">BaseTickTupleAwareRichBolt</a></h3>
+<code><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html#execute-org.apache.storm.tuple.Tuple-">execute</a>, <a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html#onTickTuple-org.apache.storm.tuple.Tuple-">onTickTuple</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.base.BaseComponent">
@@ -225,8 +237,8 @@ extends <a href="../../../../../org/apache/storm/redis/bolt/AbstractRedisBolt.ht
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.IComponent">
@@ -289,15 +301,17 @@ extends <a href="../../../../../org/apache/storm/redis/bolt/AbstractRedisBolt.ht
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="execute-org.apache.storm.tuple.Tuple-">
+<a name="process-org.apache.storm.tuple.Tuple-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>execute</h4>
-<pre>public&nbsp;void&nbsp;execute(<a href="../../../../../org/apache/storm/tuple/Tuple.html" title="interface in org.apache.storm.tuple">Tuple</a>&nbsp;input)</pre>
-<div class="block"><p><p>Process a single tuple of input. The Tuple object contains metadata on it about which component/stream/task it came from. The values of the Tuple can be accessed using Tuple#getValue. The IBolt does not have to process the Tuple immediately. It is perfectly fine to hang onto a tuple and process it later (for instance, to do an aggregation or join).</p><p>Tuples should be emitted using the OutputCollector provided through the prepare method. It is required that all input tuples are acked or failed at some point using the OutputCollector. Otherwise, Storm will be unable to determine when tuples coming off the spouts have been completed.</p><p>For the common case of acking an input tuple at the end of the execute method, see IBasicBolt which automates this.</p></p></div>
+<h4>process</h4>
+<pre>public&nbsp;void&nbsp;process(<a href="../../../../../org/apache/storm/tuple/Tuple.html" title="interface in org.apache.storm.tuple">Tuple</a>&nbsp;input)</pre>
+<div class="block"><p><p>Process a single non-tick tuple of input. Implementation needs to handle ack manually. More details on <a href="../../../../../org/apache/storm/task/IBolt.html#execute-org.apache.storm.tuple.Tuple-"><code>IBolt.execute(Tuple)</code></a>.</p></p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html#process-org.apache.storm.tuple.Tuple-">process</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base">BaseTickTupleAwareRichBolt</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>input</code> - The input tuple to be processed.</dd>
 </dl>
@@ -390,6 +404,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

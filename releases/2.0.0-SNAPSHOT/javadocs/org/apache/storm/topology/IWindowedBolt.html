@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd><a href="../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
+<dd><a href="../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
 </dl>
 <dl>
 <dt>All Known Subinterfaces:</dt>
@@ -109,7 +109,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>, <a href="../../../../org/apache/storm/topology/base/BaseWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt</a>, <a href="../../../../org/apache/storm/starter/bolt/SlidingWindowSumBolt.html" title="class in org.apache.storm.starter.bolt">SlidingWindowSumBolt</a>, <a href="../../../../org/apache/storm/flux/examples/TestWindowBolt.html" title="class in org.apache.storm.flux.examples">TestWindowBolt</a></dd>
+<dd><a href="../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>, <a href="../../../../org/apache/storm/topology/base/BaseWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt</a>, <a href="../../../../org/apache/storm/bolt/JoinBolt.html" title="class in org.apache.storm.bolt">JoinBolt</a>, <a href="../../../../org/apache/storm/st/topology/window/SlidingTimeCorrectness.VerificationBolt.html" title="class in org.apache.storm.st.topology.window">SlidingTimeCorrectness.VerificationBolt</a>, <a href="../../../../org/apache/storm/st/topology/window/SlidingWindowCorrectness.VerificationBolt.html" title="class in org.apache.storm.st.topology.window">SlidingWindowCorrectness.VerificationBolt</a>, <a href="../../../../org/apache/storm/starter/bolt/SlidingWindowSumBolt.html" title="class in org.apache.storm.starter.bolt">SlidingWindowSumBolt</a>, <a href="../../../../org/apache/storm/flux/examples/TestWindowBolt.html" title="class in org.apache.storm.flux.examples">TestWindowBolt</a>, <a href="../../../../org/apache/storm/st/topology/window/TumblingTimeCorrectness.VerificationBolt.html" title="class in org.apache.storm.st.topology.window">TumblingTimeCorrectness.VerificationBolt</a>, <a href="../../../../org/apache/storm/st/topology/window/TumblingWindowCorrectness.VerificationBolt.html" title="class in org.apache.storm.st.topology.window">TumblingWindowCorrectness.VerificationBolt</a></dd>
 </dl>
 <hr>
 <br>
@@ -145,8 +145,14 @@ extends <a href="../../../../org/apache/storm/topology/IComponent.html" title="i
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/windowing/TimestampExtractor.html" title="interface in org.apache.storm.windowing">TimestampExtractor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/IWindowedBolt.html#getTimestampExtractor--">getTimestampExtractor</a></span>()</code>
+<div class="block">Return a <a href="../../../../org/apache/storm/windowing/TimestampExtractor.html" title="interface in org.apache.storm.windowing"><code>TimestampExtractor</code></a> for extracting timestamps from a tuple for event time based processing, or null for processing time.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/IWindowedBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/IWindowedBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
        <a href="../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
        <a href="../../../../org/apache/storm/task/OutputCollector.html" title="class in org.apache.storm.task">OutputCollector</a>&nbsp;collector)</code>
 <div class="block">This is similar to the <a href="../../../../org/apache/storm/task/IBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-"><code>IBolt.prepare(Map, TopologyContext, OutputCollector)</code></a> except that while emitting, the tuples are automatically anchored to the tuples in the inputWindow.</div>
@@ -180,7 +186,7 @@ extends <a href="../../../../org/apache/storm/topology/IComponent.html" title="i
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
              <a href="../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
              <a href="../../../../org/apache/storm/task/OutputCollector.html" title="class in org.apache.storm.task">OutputCollector</a>&nbsp;collector)</pre>
 <div class="block"><p>This is similar to the <a href="../../../../org/apache/storm/task/IBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-"><code>IBolt.prepare(Map, TopologyContext, OutputCollector)</code></a> except that while emitting, the tuples are automatically anchored to the tuples in the inputWindow.</p></div>
@@ -199,10 +205,24 @@ extends <a href="../../../../org/apache/storm/topology/IComponent.html" title="i
 <a name="cleanup--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>cleanup</h4>
 <pre>void&nbsp;cleanup()</pre>
+</li>
+</ul>
+<a name="getTimestampExtractor--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getTimestampExtractor</h4>
+<pre><a href="../../../../org/apache/storm/windowing/TimestampExtractor.html" title="interface in org.apache.storm.windowing">TimestampExtractor</a>&nbsp;getTimestampExtractor()</pre>
+<div class="block"><p>Return a <a href="../../../../org/apache/storm/windowing/TimestampExtractor.html" title="interface in org.apache.storm.windowing"><code>TimestampExtractor</code></a> for extracting timestamps from a tuple for event time based processing, or null for processing time.</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the timestamp extractor</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -278,6 +298,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -18,8 +18,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var methods = {"i0":18,"i1":6,"i2":6,"i3":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
@@ -110,7 +110,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">SolrMapper</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></pre>
 </li>
 </ul>
 </div>
@@ -124,22 +124,26 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t5" class="tableTab"><span><a href="javascript:show(16);">Default Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrMapper.html#getCollection--">getCollection</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>default void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrMapper.html#configure--">configure</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>org.apache.solr.client.solrj.SolrRequest</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrMapper.html#toSolrRequest-org.apache.storm.tuple.ITuple-">toSolrRequest</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrMapper.html#getCollection--">getCollection</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>org.apache.solr.client.solrj.SolrRequest</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrMapper.html#toSolrRequest-java.util.List-">toSolrRequest</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrMapper.html#toSolrRequest-org.apache.storm.tuple.ITuple-">toSolrRequest</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>org.apache.solr.client.solrj.SolrRequest</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrMapper.html#toSolrRequest-java.util.List-">toSolrRequest</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -156,13 +160,22 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="configure--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>configure</h4>
+<pre>default&nbsp;void&nbsp;configure()</pre>
+</li>
+</ul>
 <a name="getCollection--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getCollection</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getCollection()</pre>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getCollection()</pre>
 </li>
 </ul>
 <a name="toSolrRequest-org.apache.storm.tuple.ITuple-">
@@ -185,7 +198,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <ul class="blockListLast">
 <li class="blockList">
 <h4>toSolrRequest</h4>
-<pre>org.apache.solr.client.solrj.SolrRequest&nbsp;toSolrRequest(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)
+<pre>org.apache.solr.client.solrj.SolrRequest&nbsp;toSolrRequest(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)
                                                 throws <a href="../../../../../org/apache/storm/solr/mapper/SolrMapperException.html" title="class in org.apache.storm.solr.mapper">SolrMapperException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -266,6 +279,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

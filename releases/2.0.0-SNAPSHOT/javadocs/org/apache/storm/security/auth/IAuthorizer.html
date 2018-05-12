@@ -49,7 +49,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../org/apache/storm/security/auth/DefaultPrincipalToLocal.html" title="class in org.apache.storm.security.auth"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/security/auth/FixedGroupsMapping.html" title="class in org.apache.storm.security.auth"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../org/apache/storm/security/auth/IAutoCredentials.html" title="interface in org.apache.storm.security.auth"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -101,15 +101,14 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../../org/apache/storm/security/auth/authorizer/DenyAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">DenyAuthorizer</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/DRPCAuthorizerBase.html" title="class in org.apache.storm.security.auth.authorizer">DRPCAuthorizerBase</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/DRPCSimpleACLAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">DRPCSimpleACLAuthorizer</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/ImpersonationAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">ImpersonationAuthorizer</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/NoopAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">NoopAuthorizer</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/SimpleACLAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">SimpleACLAuthorizer</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/SimpleWhitelistAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">SimpleWhitelistAuthorizer</a></dd>
+<dd><a href="../../../../../org/apache/storm/security/auth/authorizer/DenyAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">DenyAuthorizer</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/DRPCAuthorizerBase.html" title="class in org.apache.storm.security.auth.authorizer">DRPCAuthorizerBase</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/DRPCSimpleACLAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">DRPCSimpleACLAuthorizer</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/ImpersonationAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">ImpersonationAuthorizer</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/NoopAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">NoopAuthorizer</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/SimpleACLAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">SimpleACLAuthorizer</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/SimpleWhitelistAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">SimpleWhitelistAuthorizer</a>, <a href="../../../../../org/apache/storm/security/auth/authorizer/SupervisorSimpleACLAuthorizer.html" title="class in org.apache.storm.security.auth.authorizer">SupervisorSimpleACLAuthorizer</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">IAuthorizer</span></pre>
 <div class="block"><p>Nimbus could be configured with an authorization plugin. If not specified, all requests are authorized.</p><p>You could specify the authorization plugin via storm parameter. For example:</p>
-<pre><code class="no-highlight"> storm -c nimbus.authorization.class=org.apache.storm.security.auth.NoopAuthorizer ...
-</code></pre><p>You could also specify it via storm.yaml:</p>
-<pre><code class="yaml">  nimbus.authorization.class: org.apache.storm.security.auth.NoopAuthorizer
+<pre><code class="storm -c nimbus.authorization.class=org.apache.storm.security.auth.NoopAuthorizer ... ```"><br/>You could also specify it via storm.yaml:
+
 </code></pre></div>
 </li>
 </ul>
@@ -132,15 +131,15 @@ var activeTableTab = "activeTableTab";
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/IAuthorizer.html#permit-org.apache.storm.security.auth.ReqContext-java.lang.String-java.util.Map-">permit</a></span>(<a href="../../../../../org/apache/storm/security/auth/ReqContext.html" title="class in org.apache.storm.security.auth">ReqContext</a>&nbsp;context,
-      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operation,
-      <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;topology_conf)</code>
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operation,
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf)</code>
 <div class="block">permit() method is invoked for each incoming Thrift request.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/IAuthorizer.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;storm_conf)</code>
-<div class="block">Invoked once immediately after construction</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/IAuthorizer.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>
+<div class="block">Invoked once immediately after construction.</div>
 </td>
 </tr>
 </table>
@@ -164,11 +163,11 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;storm_conf)</pre>
-<div class="block"><p>Invoked once immediately after construction</p></div>
+<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
+<div class="block"><p>Invoked once immediately after construction.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>storm_conf</code> - Storm configuration</dd>
+<dd><code>conf</code> - Storm cluster configuration</dd>
 </dl>
 </li>
 </ul>
@@ -179,14 +178,14 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>permit</h4>
 <pre>boolean&nbsp;permit(<a href="../../../../../org/apache/storm/security/auth/ReqContext.html" title="class in org.apache.storm.security.auth">ReqContext</a>&nbsp;context,
-               <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operation,
-               <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;topology_conf)</pre>
+               <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;operation,
+               <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf)</pre>
 <div class="block"><p>permit() method is invoked for each incoming Thrift request.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>context</code> - request context includes info about</dd>
 <dd><code>operation</code> - operation name</dd>
-<dd><code>topology_conf</code> - configuration of targeted topology</dd>
+<dd><code>topoConf</code> - configuration of targeted topology</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if the request is authorized, false if reject</dd>
 </dl>
@@ -224,7 +223,7 @@ hljs.initHighlightingOnLoad();
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../org/apache/storm/security/auth/DefaultPrincipalToLocal.html" title="class in org.apache.storm.security.auth"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/security/auth/FixedGroupsMapping.html" title="class in org.apache.storm.security.auth"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../org/apache/storm/security/auth/IAutoCredentials.html" title="interface in org.apache.storm.security.auth"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -265,6 +264,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

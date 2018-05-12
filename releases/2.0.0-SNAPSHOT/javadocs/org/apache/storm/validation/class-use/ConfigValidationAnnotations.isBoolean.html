@@ -86,6 +86,10 @@
 <td class="colFirst"><a href="#org.apache.storm">org.apache.storm</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.hdfs.spout">org.apache.storm.hdfs.spout</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
 </tbody>
 </table>
 </li>
@@ -103,145 +107,199 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#BLOBSTORE_CLEANUP_ENABLE">BLOBSTORE_CLEANUP_ENABLE</a></span></code>
 <div class="block">Enable the blobstore cleaner.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#DISABLE_SYMLINKS">DISABLE_SYMLINKS</a></span></code>
+<div class="block">On some systems (windows for example) symlinks require special privileges that not everyone wants to grant a headless user.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#DRPC_AUTHORIZER_ACL_STRICT">DRPC_AUTHORIZER_ACL_STRICT</a></span></code>
 <div class="block">Whether the DRPCSimpleAclAuthorizer should deny requests for operations involving functions that have no explicit ACL entry.</div>
 </td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#DRPC_HTTPS_NEED_CLIENT_AUTH">DRPC_HTTPS_NEED_CLIENT_AUTH</a></span></code>&nbsp;</td>
-</tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#DRPC_HTTPS_WANT_CLIENT_AUTH">DRPC_HTTPS_WANT_CLIENT_AUTH</a></span></code>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#DRPC_HTTPS_NEED_CLIENT_AUTH">DRPC_HTTPS_NEED_CLIENT_AUTH</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#DRPC_HTTPS_WANT_CLIENT_AUTH">DRPC_HTTPS_WANT_CLIENT_AUTH</a></span></code>
 <div class="block">Password to the truststore used by Storm DRPC setting up HTTPS (SSL).</div>
 </td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#LOGVIEWER_HTTPS_NEED_CLIENT_AUTH">LOGVIEWER_HTTPS_NEED_CLIENT_AUTH</a></span></code>&nbsp;</td>
-</tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#LOGVIEWER_HTTPS_WANT_CLIENT_AUTH">LOGVIEWER_HTTPS_WANT_CLIENT_AUTH</a></span></code>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#LOGVIEWER_HTTPS_NEED_CLIENT_AUTH">LOGVIEWER_HTTPS_NEED_CLIENT_AUTH</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#LOGVIEWER_HTTPS_WANT_CLIENT_AUTH">LOGVIEWER_HTTPS_WANT_CLIENT_AUTH</a></span></code>
 <div class="block">Password to the truststore used by Storm Logviewer setting up HTTPS (SSL).</div>
 </td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#SCHEDULER_DISPLAY_RESOURCE">SCHEDULER_DISPLAY_RESOURCE</a></span></code>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#SCHEDULER_DISPLAY_RESOURCE">SCHEDULER_DISPLAY_RESOURCE</a></span></code>
 <div class="block">Whether we want to display all the resource capacity and scheduled usage on the UI page.</div>
 </td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#STORM_BLOBSTORE_ACL_VALIDATION_ENABLED">STORM_BLOBSTORE_ACL_VALIDATION_ENABLED</a></span></code>
-<div class="block">For secure mode we would want to turn on this config  By default this is turned off assuming the default is insecure</div>
+<div class="block">For secure mode we would want to turn on this config By default this is turned off assuming the default is insecure</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#STORM_CGROUP_MEMORY_ENFORCEMENT_ENABLE">STORM_CGROUP_MEMORY_ENFORCEMENT_ENABLE</a></span></code>
+<div class="block">Java does not always play nicely with cgroups.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#STORM_LOCAL_MODE_ZMQ">STORM_LOCAL_MODE_ZMQ</a></span></code>
 <div class="block">Whether or not to use ZeroMQ for messaging in local mode.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#STORM_MESSAGING_NETTY_AUTHENTICATION">STORM_MESSAGING_NETTY_AUTHENTICATION</a></span></code>
 <div class="block">Netty based messaging: Is authentication required for Netty messaging from client worker process to server worker process.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#STORM_RESOURCE_ISOLATION_PLUGIN_ENABLE">STORM_RESOURCE_ISOLATION_PLUGIN_ENABLE</a></span></code>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#STORM_NIMBUS_ZOOKEEPER_ACLS_CHECK">STORM_NIMBUS_ZOOKEEPER_ACLS_CHECK</a></span></code>
+<div class="block">In nimbus on startup check if all of the zookeeper ACLs are correct before starting.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#STORM_NIMBUS_ZOOKEEPER_ACLS_FIXUP">STORM_NIMBUS_ZOOKEEPER_ACLS_FIXUP</a></span></code>
+<div class="block">In nimbus on startup check if all of the zookeeper ACLs are correct before starting.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#STORM_RESOURCE_ISOLATION_PLUGIN_ENABLE">STORM_RESOURCE_ISOLATION_PLUGIN_ENABLE</a></span></code>
 <div class="block">flag to determine whether to use a resource isolation plugin Also determines whether the unit tests for cgroup runs.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#STORM_TOPOLOGY_CLASSPATH_BEGINNING_ENABLED">STORM_TOPOLOGY_CLASSPATH_BEGINNING_ENABLED</a></span></code>
-<div class="block">Enables user-first classpath.</div>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#STORM_ROCKSDB_CREATE_IF_MISSING">STORM_ROCKSDB_CREATE_IF_MISSING</a></span></code>
+<div class="block">RocksDB create if missing flag.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#SUPERVISOR_ENABLE">SUPERVISOR_ENABLE</a></span></code>
-<div class="block">Whether or not the supervisor should launch workers assigned to it.</div>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#STORM_TOPOLOGY_CLASSPATH_BEGINNING_ENABLED">STORM_TOPOLOGY_CLASSPATH_BEGINNING_ENABLED</a></span></code>
+<div class="block">Enables user-first classpath.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#SUPERVISOR_ENABLE">SUPERVISOR_ENABLE</a></span></code>
+<div class="block">Whether or not the supervisor should launch workers assigned to it.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#SUPERVISOR_RUN_WORKER_AS_USER">SUPERVISOR_RUN_WORKER_AS_USER</a></span></code>
 <div class="block">Should the supervior try to run the worker as the lauching user or not.</div>
 </td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_BACKPRESSURE_ENABLE">TOPOLOGY_BACKPRESSURE_ENABLE</a></span></code>
-<div class="block">Whether to enable backpressure in for a certain topology</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 </td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_BOLTS_OUTGOING_OVERFLOW_BUFFER_ENABLE">TOPOLOGY_BOLTS_OUTGOING_OVERFLOW_BUFFER_ENABLE</a></span></code>&nbsp;</td>
-</tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_DEBUG">TOPOLOGY_DEBUG</a></span></code>
 <div class="block">When set to true, Storm will log every message that&rsquo;s emitted.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_DISABLE_LOADAWARE_MESSAGING">TOPOLOGY_DISABLE_LOADAWARE_MESSAGING</a></span></code>
 <div class="block">Disable load aware grouping support.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_ENABLE_MESSAGE_TIMEOUTS">TOPOLOGY_ENABLE_MESSAGE_TIMEOUTS</a></span></code>
 <div class="block">True if Storm should timeout messages or not.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION">TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION</a></span></code>
 <div class="block">Whether or not to use Java serialization in a topology.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_SERIALIZED_MESSAGE_SIZE_METRICS">TOPOLOGY_SERIALIZED_MESSAGE_SIZE_METRICS</a></span></code>
+<div class="block">Enable tracking of network message byte counts per source-destination task.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_SKIP_MISSING_KRYO_REGISTRATIONS">TOPOLOGY_SKIP_MISSING_KRYO_REGISTRATIONS</a></span></code>
 <div class="block">Whether or not Storm should skip the loading of kryo registrations for which it does not know the class or have the serializer implementation.</div>
 </td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_TESTING_ALWAYS_TRY_SERIALIZE">TOPOLOGY_TESTING_ALWAYS_TRY_SERIALIZE</a></span></code>
 <div class="block">Try to serialize all tuples, even for local transfers.</div>
 </td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#UI_HTTPS_NEED_CLIENT_AUTH">UI_HTTPS_NEED_CLIENT_AUTH</a></span></code>&nbsp;</td>
-</tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#UI_HTTPS_WANT_CLIENT_AUTH">UI_HTTPS_WANT_CLIENT_AUTH</a></span></code>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#UI_HTTPS_NEED_CLIENT_AUTH">UI_HTTPS_NEED_CLIENT_AUTH</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#UI_HTTPS_WANT_CLIENT_AUTH">UI_HTTPS_WANT_CLIENT_AUTH</a></span></code>
 <div class="block">Password to the truststore used by Storm DRPC setting up HTTPS (SSL).</div>
 </td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#WORKER_PROFILER_ENABLED">WORKER_PROFILER_ENABLED</a></span></code>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#WORKER_PROFILER_ENABLED">WORKER_PROFILER_ENABLED</a></span></code>
 <div class="block">Enable profiling of worker JVMs using Oracle&rsquo;s Java Flight Recorder.</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.hdfs.spout">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/validation/ConfigValidationAnnotations.isBoolean.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isBoolean</a> in <a href="../../../../../org/apache/storm/hdfs/spout/package-summary.html">org.apache.storm.hdfs.spout</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
+<caption><span>Fields in <a href="../../../../../org/apache/storm/hdfs/spout/package-summary.html">org.apache.storm.hdfs.spout</a> with annotations of type <a href="../../../../../org/apache/storm/validation/ConfigValidationAnnotations.isBoolean.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isBoolean</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Configs.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/Configs.html#CLOCKS_INSYNC">CLOCKS_INSYNC</a></span></code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">please use <a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setClocksInSync-boolean-"><code>HdfsSpout.setClocksInSync(boolean)</code></a></span></div>
+</div>
 </td>
 </tr>
 </tbody>
@@ -302,6 +360,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

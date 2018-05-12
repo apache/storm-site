@@ -88,6 +88,12 @@
 <div class="block">Declares methods for validating configuration values.</div>
 </td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/validation/Validated.html" title="interface in org.apache.storm.validation">Validated</a></td>
+<td class="colLast">
+<div class="block">An interface that is used to inform config validation what to look at</div>
+</td>
+</tr>
 </tbody>
 </table>
 </li>
@@ -114,13 +120,23 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.DerivedTypeValidator.html" title="class in org.apache.storm.validation">ConfigValidation.DerivedTypeValidator</a></td>
+<td class="colLast">
+<div class="block">Checks if the named type derives from the specified Class</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.DoubleValidator.html" title="class in org.apache.storm.validation">ConfigValidation.DoubleValidator</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.EventLoggerRegistryValidator.html" title="class in org.apache.storm.validation">ConfigValidation.EventLoggerRegistryValidator</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.ImpersonationAclUserEntryValidator.html" title="class in org.apache.storm.validation">ConfigValidation.ImpersonationAclUserEntryValidator</a></td>
 <td class="colLast">
-<div class="block">Validates an entry for ImpersonationAclUser</div>
+<div class="block">Validates an entry for ImpersonationAclUser.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -136,51 +152,61 @@
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.KryoRegValidator.html" title="class in org.apache.storm.validation">ConfigValidation.KryoRegValidator</a></td>
 <td class="colLast">
-<div class="block">Validates Kryo Registration</div>
+<div class="block">Validates Kryo Registration.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.ListEntryCustomValidator.html" title="class in org.apache.storm.validation">ConfigValidation.ListEntryCustomValidator</a></td>
 <td class="colLast">
-<div class="block">Validates each entry in a list against a list of custom Validators Each validator in the list of validators must inherit or be an instance of Validator class</div>
+<div class="block">Validates each entry in a list against a list of custom Validators.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.ListEntryTypeValidator.html" title="class in org.apache.storm.validation">ConfigValidation.ListEntryTypeValidator</a></td>
 <td class="colLast">
-<div class="block">Validates each entry in a list</div>
+<div class="block">Validates each entry in a list.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.MapEntryCustomValidator.html" title="class in org.apache.storm.validation">ConfigValidation.MapEntryCustomValidator</a></td>
+<td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.ListOfListOfStringValidator.html" title="class in org.apache.storm.validation">ConfigValidation.ListOfListOfStringValidator</a></td>
 <td class="colLast">
-<div class="block">validates each key and each value against the respective arrays of validators</div>
+<div class="block">Validates a list of a list of Strings.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.MapEntryTypeValidator.html" title="class in org.apache.storm.validation">ConfigValidation.MapEntryTypeValidator</a></td>
+<td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.MapEntryCustomValidator.html" title="class in org.apache.storm.validation">ConfigValidation.MapEntryCustomValidator</a></td>
 <td class="colLast">
-<div class="block">validates each key and value in a map of a certain type</div>
+<div class="block">validates each key and each value against the respective arrays of validators.</div>
 </td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.MapEntryTypeValidator.html" title="class in org.apache.storm.validation">ConfigValidation.MapEntryTypeValidator</a></td>
+<td class="colLast">
+<div class="block">validates each key and value in a map of a certain type.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.MapOfStringToMapOfStringToObjectValidator.html" title="class in org.apache.storm.validation">ConfigValidation.MapOfStringToMapOfStringToObjectValidator</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.MetricRegistryValidator.html" title="class in org.apache.storm.validation">ConfigValidation.MetricRegistryValidator</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.MetricReportersValidator.html" title="class in org.apache.storm.validation">ConfigValidation.MetricReportersValidator</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.NoDuplicateInListValidator.html" title="class in org.apache.storm.validation">ConfigValidation.NoDuplicateInListValidator</a></td>
 <td class="colLast">
-<div class="block">validates a list of has no duplicates</div>
+<div class="block">validates a list of has no duplicates.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.NotNullValidator.html" title="class in org.apache.storm.validation">ConfigValidation.NotNullValidator</a></td>
 <td class="colLast">
-<div class="block">Validates if an object is not null</div>
+<div class="block">Validates if an object is not null.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -194,25 +220,25 @@
 <tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.PositiveNumberValidator.html" title="class in org.apache.storm.validation">ConfigValidation.PositiveNumberValidator</a></td>
 <td class="colLast">
-<div class="block">Validates a positive number</div>
+<div class="block">Validates a positive number.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.PowerOf2Validator.html" title="class in org.apache.storm.validation">ConfigValidation.PowerOf2Validator</a></td>
 <td class="colLast">
-<div class="block">Validates if a number is a power of 2</div>
+<div class="block">Validates if a number is a power of 2.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.SimpleTypeValidator.html" title="class in org.apache.storm.validation">ConfigValidation.SimpleTypeValidator</a></td>
 <td class="colLast">
-<div class="block">Validates basic types</div>
+<div class="block">Validates basic types.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidation.StringOrStringListValidator.html" title="class in org.apache.storm.validation">ConfigValidation.StringOrStringListValidator</a></td>
 <td class="colLast">
-<div class="block">Validates a String or a list of Strings</div>
+<div class="block">Validates a String or a list of Strings.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -271,87 +297,97 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isDerivedFrom.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isDerivedFrom</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isImplementationOfClass.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isImplementationOfClass</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isInteger.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isInteger</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isKryoReg.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isKryoReg</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isListEntryCustom.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isListEntryCustom</a></td>
 <td class="colLast">
 <div class="block">Validates each entry in a list with a list of validators Validators with fields: validatorClass and entryValidatorClass</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isListEntryType.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isListEntryType</a></td>
 <td class="colLast">
 <div class="block">validates each entry in a list is of a certain type</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isMapEntryCustom.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isMapEntryCustom</a></td>
 <td class="colLast">
 <div class="block">Validates a each key and value in a Map with a list of validators Validator with fields: validatorClass, keyValidatorClasses, valueValidatorClasses</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isMapEntryType.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isMapEntryType</a></td>
 <td class="colLast">
 <div class="block">Validates the type of each key and value in a map Validator with fields: validatorClass, keyValidatorClass, valueValidatorClass</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isNoDuplicateInList.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isNoDuplicateInList</a></td>
 <td class="colLast">
 <div class="block">Validates that there are no duplicates in a list</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isNumber.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isNumber</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isPositiveNumber.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isPositiveNumber</a></td>
 <td class="colLast">
 <div class="block">Checks if a number is positive and whether zero inclusive Validator with fields: validatorClass, includeZero</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isPowerOf2.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isPowerOf2</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isString.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isString</a></td>
 <td class="colLast">
 <div class="block">Validators with fields: validatorClass</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isStringList.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isStringList</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isStringOrStringList.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isStringOrStringList</a></td>
 <td class="colLast">
 <div class="block">Complex/custom type validators</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isType.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isType</a></td>
 <td class="colLast">
 <div class="block">Validators with fields: validatorClass and type</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.NotNull.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.NotNull</a></td>
 <td class="colLast">
 <div class="block">Validates on object is not null</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/validation/NotConf.html" title="annotation in org.apache.storm.validation">NotConf</a></td>
+<td class="colLast">
+<div class="block">Annotation that can be used to explicitly call out public static final String fields that are not configs</div>
 </td>
 </tr>
 </tbody>
@@ -410,6 +446,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="class in org.apache.storm.windowing">org.apache.storm.windowing.TimeEvictionPolicy</a>&lt;T&gt;</li>
@@ -114,7 +114,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;T&gt;</dd>
+<dd><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;T,<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&gt;</dd>
 </dl>
 <hr>
 <br>
@@ -153,7 +153,7 @@ extends <a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html"
 <!--   -->
 </a>
 <h3>Fields inherited from class&nbsp;org.apache.storm.windowing.<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="class in org.apache.storm.windowing">TimeEvictionPolicy</a></h3>
-<code><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#referenceTime">referenceTime</a></code></li>
+<code><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#evictionContext">evictionContext</a></code></li>
 </ul>
 </li>
 </ul>
@@ -196,12 +196,12 @@ extends <a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html"
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.Action.html" title="enum in org.apache.storm.windowing">EvictionPolicy.Action</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeEvictionPolicy.html#evict-org.apache.storm.windowing.Event-">evict</a></span>(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeEvictionPolicy.html" title="type parameter in WatermarkTimeEvictionPolicy">T</a>&gt;&nbsp;event)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeEvictionPolicy.html#evict-org.apache.storm.windowing.Event-">evict</a></span>(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeEvictionPolicy.html" title="type parameter in WatermarkTimeEvictionPolicy">T</a>&gt;&nbsp;event)</code>
 <div class="block">Decides if an event should be expired from the window, processed in the current window or kept for later processing.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeEvictionPolicy.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
@@ -210,14 +210,14 @@ extends <a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html"
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;org.apache.storm.windowing.<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="class in org.apache.storm.windowing">TimeEvictionPolicy</a></h3>
-<code><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a>, <a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#track-org.apache.storm.windowing.Event-">track</a></code></li>
+<code><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#getContext--">getContext</a>, <a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#getState--">getState</a>, <a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#reset--">reset</a>, <a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#restoreState-org.apache.storm.windowing.EvictionContext-">restoreState</a>, <a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a>, <a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#track-org.apache.storm.windowing.Event-">track</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -277,11 +277,11 @@ extends <a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html"
 <ul class="blockList">
 <li class="blockList">
 <h4>evict</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.Action.html" title="enum in org.apache.storm.windowing">EvictionPolicy.Action</a>&nbsp;evict(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeEvictionPolicy.html" title="type parameter in WatermarkTimeEvictionPolicy">T</a>&gt;&nbsp;event)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.Action.html" title="enum in org.apache.storm.windowing">EvictionPolicy.Action</a>&nbsp;evict(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeEvictionPolicy.html" title="type parameter in WatermarkTimeEvictionPolicy">T</a>&gt;&nbsp;event)</pre>
 <div class="block"><p><p><p>Decides if an event should be expired from the window, processed in the current window or kept for later processing.</p></p> <p/> Keeps events with future ts in the queue for processing in the next window. If the ts difference is more than the lag, stops scanning the queue for the current window.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#evict-org.apache.storm.windowing.Event-">evict</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeEvictionPolicy.html" title="type parameter in WatermarkTimeEvictionPolicy">T</a>&gt;</code></dd>
+<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#evict-org.apache.storm.windowing.Event-">evict</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeEvictionPolicy.html" title="type parameter in WatermarkTimeEvictionPolicy">T</a>,<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&gt;</code></dd>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#evict-org.apache.storm.windowing.Event-">evict</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="class in org.apache.storm.windowing">TimeEvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeEvictionPolicy.html" title="type parameter in WatermarkTimeEvictionPolicy">T</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -297,7 +297,7 @@ extends <a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html"
 <ul class="blockListLast">
 <li class="blockList">
 <h4>toString</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#toString--">toString</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="class in org.apache.storm.windowing">TimeEvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeEvictionPolicy.html" title="type parameter in WatermarkTimeEvictionPolicy">T</a>&gt;</code></dd>
@@ -377,6 +377,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

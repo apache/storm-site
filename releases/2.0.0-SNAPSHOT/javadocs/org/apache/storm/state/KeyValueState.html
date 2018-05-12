@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -101,16 +101,16 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd><a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html?is-external=true" title="class or interface in java.util">Map.Entry</a>&lt;K,V&gt;&gt;, <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a></dd>
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="class in org.apache.storm.state">InMemoryKeyValueState</a>, <a href="../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="class in org.apache.storm.redis.state">RedisKeyValueState</a></dd>
+<dd><a href="../../../../org/apache/storm/hbase/state/HBaseKeyValueState.html" title="class in org.apache.storm.hbase.state">HBaseKeyValueState</a>, <a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="class in org.apache.storm.state">InMemoryKeyValueState</a>, <a href="../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="class in org.apache.storm.redis.state">RedisKeyValueState</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">KeyValueState&lt;K,V&gt;</span>
-extends <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a></pre>
+extends <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html?is-external=true" title="class or interface in java.util">Map.Entry</a>&lt;K,V&gt;&gt;</pre>
 <div class="block"><p>A state that supports key-value mappings.</p></div>
 </li>
 </ul>
@@ -132,18 +132,24 @@ extends <a href="../../../../org/apache/storm/state/State.html" title="interface
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">V</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/KeyValueState.html#delete-K-">delete</a></span>(<a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">K</a>&nbsp;key)</code>
+<div class="block">Deletes the value mapped to the key, if there is any</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">V</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/KeyValueState.html#get-K-">get</a></span>(<a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">K</a>&nbsp;key)</code>
 <div class="block">Returns the value mapped to the key</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">V</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/KeyValueState.html#get-K-V-">get</a></span>(<a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">K</a>&nbsp;key,
    <a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">V</a>&nbsp;defaultValue)</code>
 <div class="block">Returns the value mapped to the key or defaultValue if no mapping is found.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/KeyValueState.html#put-K-V-">put</a></span>(<a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">K</a>&nbsp;key,
    <a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">V</a>&nbsp;value)</code>
@@ -157,6 +163,13 @@ extends <a href="../../../../org/apache/storm/state/State.html" title="interface
 </a>
 <h3>Methods inherited from interface&nbsp;org.apache.storm.state.<a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a></h3>
 <code><a href="../../../../org/apache/storm/state/State.html#commit--">commit</a>, <a href="../../../../org/apache/storm/state/State.html#commit-long-">commit</a>, <a href="../../../../org/apache/storm/state/State.html#prepareCommit-long-">prepareCommit</a>, <a href="../../../../org/apache/storm/state/State.html#rollback--">rollback</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.java.lang.Iterable">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true#forEach-java.util.function.Consumer-" title="class or interface in java.lang">forEach</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true#iterator--" title="class or interface in java.lang">iterator</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true#spliterator--" title="class or interface in java.lang">spliterator</a></code></li>
 </ul>
 </li>
 </ul>
@@ -213,7 +226,7 @@ extends <a href="../../../../org/apache/storm/state/State.html" title="interface
 </a><a name="get-K-V-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>get</h4>
 <pre><a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">V</a>&nbsp;get(<a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">K</a>&nbsp;key,
@@ -225,6 +238,22 @@ extends <a href="../../../../org/apache/storm/state/State.html" title="interface
 <dd><code>defaultValue</code> - the value to return if no mapping is found</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the value or defaultValue if no mapping is found</dd>
+</dl>
+</li>
+</ul>
+<a name="delete-java.lang.Object-">
+<!--   -->
+</a><a name="delete-K-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>delete</h4>
+<pre><a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">V</a>&nbsp;delete(<a href="../../../../org/apache/storm/state/KeyValueState.html" title="type parameter in KeyValueState">K</a>&nbsp;key)</pre>
+<div class="block"><p>Deletes the value mapped to the key, if there is any</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - the key</dd>
 </dl>
 </li>
 </ul>
@@ -301,6 +330,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

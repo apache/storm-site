@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../org/apache/storm/localizer/ILocalizer.html" title="interface in org.apache.storm.localizer"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/localizer/BlobChangingCallback.html" title="interface in org.apache.storm.localizer"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/localizer/AsyncLocalizer.html" target="_top">Frames</a></li>
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.localizer.AsyncLocalizer</li>
@@ -109,20 +109,47 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../org/apache/storm/daemon/Shutdownable.html" title="interface in org.apache.storm.daemon">Shutdownable</a>, <a href="../../../../org/apache/storm/localizer/ILocalizer.html" title="interface in org.apache.storm.localizer">ILocalizer</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">AsyncLocalizer</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements <a href="../../../../org/apache/storm/localizer/ILocalizer.html" title="interface in org.apache.storm.localizer">ILocalizer</a>, <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title="interface in org.apache.storm.daemon">Shutdownable</a></pre>
-<div class="block"><p>This is a wrapper around the Localizer class that provides the desired async interface to Slot.</p></div>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+implements <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a></pre>
+<div class="block"><p>Downloads and caches blobs locally.</p></div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#cacheTargetSize">cacheTargetSize</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html?is-external=true" title="class or interface in java.util.concurrent">ConcurrentHashMap</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html?is-external=true" title="class or interface in java.util.concurrent">ConcurrentHashMap</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/apache/storm/localizer/LocalizedResource.html" title="class in org.apache.storm.localizer">LocalizedResource</a>&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#userArchives">userArchives</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html?is-external=true" title="class or interface in java.util.concurrent">ConcurrentHashMap</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html?is-external=true" title="class or interface in java.util.concurrent">ConcurrentHashMap</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/apache/storm/localizer/LocalizedResource.html" title="class in org.apache.storm.localizer">LocalizedResource</a>&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#userFiles">userFiles</a></span></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -135,8 +162,7 @@ implements <a href="../../../../org/apache/storm/localizer/ILocalizer.html" titl
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#AsyncLocalizer-java.util.Map-org.apache.storm.localizer.Localizer-">AsyncLocalizer</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
-              <a href="../../../../org/apache/storm/localizer/Localizer.html" title="class in org.apache.storm.localizer">Localizer</a>&nbsp;localizer)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#AsyncLocalizer-java.util.Map-">AsyncLocalizer</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -155,49 +181,48 @@ implements <a href="../../../../org/apache/storm/localizer/ILocalizer.html" titl
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#cleanupUnusedTopologies--">cleanupUnusedTopologies</a></span>()</code>
-<div class="block">Clean up any topologies that are not in use right now.</div>
-</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#close--">close</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#recoverRunningTopology-org.apache.storm.generated.LocalAssignment-int-">recoverRunningTopology</a></span>(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
-                      int&nbsp;port)</code>
-<div class="block">Recover a running topology by incrementing references for what it has already downloaded.</div>
-</td>
+<td class="colFirst"><code>protected <a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html" title="class in org.apache.storm.blobstore">ClientBlobStore</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#getClientBlobStore--">getClientBlobStore</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#releaseSlotFor-org.apache.storm.generated.LocalAssignment-int-">releaseSlotFor</a></span>(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
-              int&nbsp;port)</code>
-<div class="block">dec reference count on all blobs associated with this topology.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#recoverRunningTopology-org.apache.storm.generated.LocalAssignment-int-org.apache.storm.localizer.BlobChangingCallback-">recoverRunningTopology</a></span>(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;currentAssignment,
+                      int&nbsp;port,
+                      <a href="../../../../org/apache/storm/localizer/BlobChangingCallback.html" title="interface in org.apache.storm.localizer">BlobChangingCallback</a>&nbsp;cb)</code>
+<div class="block">Do everything needed to recover the state in the AsyncLocalizer for a running topology.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Future.html?is-external=true" title="class or interface in java.util.concurrent">Future</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#requestDownloadBaseTopologyBlobs-org.apache.storm.generated.LocalAssignment-int-">requestDownloadBaseTopologyBlobs</a></span>(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
-                                int&nbsp;port)</code>
-<div class="block">Download storm.jar, storm.conf, and storm.ser for this topology if not done so already, and inc a reference count on them.</div>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#releaseSlotFor-org.apache.storm.generated.LocalAssignment-int-">releaseSlotFor</a></span>(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
+              int&nbsp;port)</code>
+<div class="block">Remove this assignment/port as blocking resources from being cleaned up.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Future.html?is-external=true" title="class or interface in java.util.concurrent">Future</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#requestDownloadTopologyBlobs-org.apache.storm.generated.LocalAssignment-int-">requestDownloadTopologyBlobs</a></span>(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
-                            int&nbsp;port)</code>
-<div class="block">Download the blobs for this topology (reading in list in from the config) and inc reference count for these blobs.</div>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html?is-external=true" title="class or interface in java.util.concurrent">CompletableFuture</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#requestDownloadTopologyBlobs-org.apache.storm.generated.LocalAssignment-int-org.apache.storm.localizer.BlobChangingCallback-">requestDownloadTopologyBlobs</a></span>(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
+                            int&nbsp;port,
+                            <a href="../../../../org/apache/storm/localizer/BlobChangingCallback.html" title="interface in org.apache.storm.localizer">BlobChangingCallback</a>&nbsp;cb)</code>
+<div class="block">Request that all of the blobs necessary for this topology be downloaded.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#shutdown--">shutdown</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/localizer/AsyncLocalizer.html#start--">start</a></span>()</code>
+<div class="block">Start any background threads needed.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -207,20 +232,59 @@ implements <a href="../../../../org/apache/storm/localizer/ILocalizer.html" titl
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="userFiles">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>userFiles</h4>
+<pre>protected final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html?is-external=true" title="class or interface in java.util.concurrent">ConcurrentHashMap</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html?is-external=true" title="class or interface in java.util.concurrent">ConcurrentHashMap</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/apache/storm/localizer/LocalizedResource.html" title="class in org.apache.storm.localizer">LocalizedResource</a>&gt;&gt; userFiles</pre>
+</li>
+</ul>
+<a name="userArchives">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>userArchives</h4>
+<pre>protected final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html?is-external=true" title="class or interface in java.util.concurrent">ConcurrentHashMap</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html?is-external=true" title="class or interface in java.util.concurrent">ConcurrentHashMap</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/apache/storm/localizer/LocalizedResource.html" title="class in org.apache.storm.localizer">LocalizedResource</a>&gt;&gt; userArchives</pre>
+</li>
+</ul>
+<a name="cacheTargetSize">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>cacheTargetSize</h4>
+<pre>protected&nbsp;long cacheTargetSize</pre>
+</li>
+</ul>
+</li>
+</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="AsyncLocalizer-java.util.Map-org.apache.storm.localizer.Localizer-">
+<a name="AsyncLocalizer-java.util.Map-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>AsyncLocalizer</h4>
-<pre>public&nbsp;AsyncLocalizer(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
-                      <a href="../../../../org/apache/storm/localizer/Localizer.html" title="class in org.apache.storm.localizer">Localizer</a>&nbsp;localizer)</pre>
+<pre>public&nbsp;AsyncLocalizer(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)
+               throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -231,65 +295,73 @@ implements <a href="../../../../org/apache/storm/localizer/ILocalizer.html" titl
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="requestDownloadBaseTopologyBlobs-org.apache.storm.generated.LocalAssignment-int-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>requestDownloadBaseTopologyBlobs</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Future.html?is-external=true" title="class or interface in java.util.concurrent">Future</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;requestDownloadBaseTopologyBlobs(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
-                                                     int&nbsp;port)
-                                              throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/localizer/ILocalizer.html#requestDownloadBaseTopologyBlobs-org.apache.storm.generated.LocalAssignment-int-">ILocalizer</a></code></span></div>
-<div class="block"><p>Download storm.jar, storm.conf, and storm.ser for this topology if not done so already, and inc a reference count on them.</p></div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/localizer/ILocalizer.html#requestDownloadBaseTopologyBlobs-org.apache.storm.generated.LocalAssignment-int-">requestDownloadBaseTopologyBlobs</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/localizer/ILocalizer.html" title="interface in org.apache.storm.localizer">ILocalizer</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>assignment</code> - the assignment the resources are for</dd>
-<dd><code>port</code> - the port the topology is running on</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>a future to let you know when they are done.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on error</dd>
-</dl>
-</li>
-</ul>
-<a name="recoverRunningTopology-org.apache.storm.generated.LocalAssignment-int-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>recoverRunningTopology</h4>
-<pre>public&nbsp;void&nbsp;recoverRunningTopology(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
-                                   int&nbsp;port)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/localizer/ILocalizer.html#recoverRunningTopology-org.apache.storm.generated.LocalAssignment-int-">ILocalizer</a></code></span></div>
-<div class="block"><p>Recover a running topology by incrementing references for what it has already downloaded.</p></div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/localizer/ILocalizer.html#recoverRunningTopology-org.apache.storm.generated.LocalAssignment-int-">recoverRunningTopology</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/localizer/ILocalizer.html" title="interface in org.apache.storm.localizer">ILocalizer</a></code></dd>
-<dd><code>port</code> - the port the topology is running in.</dd>
-</dl>
-</li>
-</ul>
-<a name="requestDownloadTopologyBlobs-org.apache.storm.generated.LocalAssignment-int-">
+<a name="requestDownloadTopologyBlobs-org.apache.storm.generated.LocalAssignment-int-org.apache.storm.localizer.BlobChangingCallback-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>requestDownloadTopologyBlobs</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Future.html?is-external=true" title="class or interface in java.util.concurrent">Future</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;requestDownloadTopologyBlobs(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
-                                                 int&nbsp;port)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/localizer/ILocalizer.html#requestDownloadTopologyBlobs-org.apache.storm.generated.LocalAssignment-int-">ILocalizer</a></code></span></div>
-<div class="block"><p>Download the blobs for this topology (reading in list in from the config) and inc reference count for these blobs. PRECONDITION: requestDownloadBaseTopologyBlobs has completed downloading.</p></div>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html?is-external=true" title="class or interface in java.util.concurrent">CompletableFuture</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;requestDownloadTopologyBlobs(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
+                                                            int&nbsp;port,
+                                                            <a href="../../../../org/apache/storm/localizer/BlobChangingCallback.html" title="interface in org.apache.storm.localizer">BlobChangingCallback</a>&nbsp;cb)
+                                                     throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Request that all of the blobs necessary for this topology be downloaded.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>assignment</code> - the assignment that needs the blobs</dd>
+<dd><code>port</code> - the port the assignment is a part of</dd>
+<dd><code>cb</code> - a callback for when the blobs change. This is only for blobs that are tied to the lifetime of the worker.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a Future that indicates when they are all downloaded.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - if there was an error while trying doing it.</dd>
+</dl>
+</li>
+</ul>
+<a name="start--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>start</h4>
+<pre>public&nbsp;void&nbsp;start()</pre>
+<div class="block"><p>Start any background threads needed. This includes updating blobs and cleaning up unused blobs over the configured size limit.</p></div>
+</li>
+</ul>
+<a name="close--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>close</h4>
+<pre>public&nbsp;void&nbsp;close()
+           throws <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/localizer/ILocalizer.html#requestDownloadTopologyBlobs-org.apache.storm.generated.LocalAssignment-int-">requestDownloadTopologyBlobs</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/localizer/ILocalizer.html" title="interface in org.apache.storm.localizer">ILocalizer</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true#close--" title="class or interface in java.lang">close</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a></code></dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="recoverRunningTopology-org.apache.storm.generated.LocalAssignment-int-org.apache.storm.localizer.BlobChangingCallback-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>recoverRunningTopology</h4>
+<pre>public&nbsp;void&nbsp;recoverRunningTopology(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;currentAssignment,
+                                   int&nbsp;port,
+                                   <a href="../../../../org/apache/storm/localizer/BlobChangingCallback.html" title="interface in org.apache.storm.localizer">BlobChangingCallback</a>&nbsp;cb)
+                            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Do everything needed to recover the state in the AsyncLocalizer for a running topology.</p></div>
+<dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>assignment</code> - the assignment the resources are for</dd>
-<dd><code>port</code> - the port the topology is running on</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>a future to let you know when they are done.</dd>
+<dd><code>currentAssignment</code> - the assignment for the topology.</dd>
+<dd><code>port</code> - the port the assignment is on.</dd>
+<dd><code>cb</code> - a callback for when the blobs are updated. This will only be for blobs that indicate that if they change  the worker should be restarted.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error trying to recover the state.</dd>
 </dl>
 </li>
 </ul>
@@ -301,49 +373,24 @@ implements <a href="../../../../org/apache/storm/localizer/ILocalizer.html" titl
 <h4>releaseSlotFor</h4>
 <pre>public&nbsp;void&nbsp;releaseSlotFor(<a href="../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
                            int&nbsp;port)
-                    throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/localizer/ILocalizer.html#releaseSlotFor-org.apache.storm.generated.LocalAssignment-int-">ILocalizer</a></code></span></div>
-<div class="block"><p>dec reference count on all blobs associated with this topology.</p></div>
+                    throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Remove this assignment/port as blocking resources from being cleaned up.</p></div>
 <dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/localizer/ILocalizer.html#releaseSlotFor-org.apache.storm.generated.LocalAssignment-int-">releaseSlotFor</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/localizer/ILocalizer.html" title="interface in org.apache.storm.localizer">ILocalizer</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>assignment</code> - the assignment the resources are for</dd>
 <dd><code>port</code> - the port the topology is running on</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
-<a name="cleanupUnusedTopologies--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>cleanupUnusedTopologies</h4>
-<pre>public&nbsp;void&nbsp;cleanupUnusedTopologies()
-                             throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/localizer/ILocalizer.html#cleanupUnusedTopologies--">ILocalizer</a></code></span></div>
-<div class="block"><p>Clean up any topologies that are not in use right now.</p></div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/localizer/ILocalizer.html#cleanupUnusedTopologies--">cleanupUnusedTopologies</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/localizer/ILocalizer.html" title="interface in org.apache.storm.localizer">ILocalizer</a></code></dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
-</dl>
-</li>
-</ul>
-<a name="shutdown--">
+<a name="getClientBlobStore--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>shutdown</h4>
-<pre>public&nbsp;void&nbsp;shutdown()</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/daemon/Shutdownable.html#shutdown--">shutdown</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/daemon/Shutdownable.html" title="interface in org.apache.storm.daemon">Shutdownable</a></code></dd>
-</dl>
+<h4>getClientBlobStore</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html" title="class in org.apache.storm.blobstore">ClientBlobStore</a>&nbsp;getClientBlobStore()</pre>
 </li>
 </ul>
 </li>
@@ -379,7 +426,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../org/apache/storm/localizer/ILocalizer.html" title="interface in org.apache.storm.localizer"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/localizer/BlobChangingCallback.html" title="interface in org.apache.storm.localizer"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/localizer/AsyncLocalizer.html" target="_top">Frames</a></li>
@@ -404,13 +451,13 @@ hljs.initHighlightingOnLoad();
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -419,6 +466,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

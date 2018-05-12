@@ -92,7 +92,9 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.elasticsearch.bolt">org.apache.storm.elasticsearch.bolt</a></td>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">ElasticSearch examples classes.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.eventhubs.spout">org.apache.storm.eventhubs.spout</a></td>
@@ -127,11 +129,19 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="#org.apache.storm.kafka">org.apache.storm.kafka</a></td>
+<td class="colFirst"><a href="#org.apache.storm.kafka.spout">org.apache.storm.kafka.spout</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.kinesis.spout">org.apache.storm.kinesis.spout</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.lambda">org.apache.storm.lambda</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.loadgen">org.apache.storm.loadgen</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
@@ -147,11 +157,27 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><a href="#org.apache.storm.solr.spout">org.apache.storm.solr.spout</a></td>
+<td class="colFirst"><a href="#org.apache.storm.perf.spout">org.apache.storm.perf.spout</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.pmml">org.apache.storm.pmml</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.rocketmq.spout">org.apache.storm.rocketmq.spout</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.solr.spout">org.apache.storm.solr.spout</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.spout">org.apache.storm.spout</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.st.topology.window">org.apache.storm.st.topology.window</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
@@ -244,7 +270,9 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/bolt/EsIndexTopology.UserDataSpout.html" title="class in org.apache.storm.elasticsearch.bolt">EsIndexTopology.UserDataSpout</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/bolt/EsIndexTopology.UserDataSpout.html" title="class in org.apache.storm.elasticsearch.bolt">EsIndexTopology.UserDataSpout</a></span></code>
+<div class="block">The user data spout.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -278,16 +306,15 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/executor/spout/SpoutOutputCollectorImpl.html#SpoutOutputCollectorImpl-org.apache.storm.spout.ISpout-org.apache.storm.executor.spout.SpoutExecutor-org.apache.storm.daemon.Task-int-org.apache.storm.utils.MutableLong-boolean-java.util.Random-java.lang.Boolean-java.lang.Boolean-org.apache.storm.utils.RotatingMap-">SpoutOutputCollectorImpl</a></span>(<a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a>&nbsp;spout,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/executor/spout/SpoutOutputCollectorImpl.html#SpoutOutputCollectorImpl-org.apache.storm.spout.ISpout-org.apache.storm.executor.spout.SpoutExecutor-org.apache.storm.daemon.Task-org.apache.storm.utils.MutableLong-boolean-java.util.Random-java.lang.Boolean-java.lang.Boolean-org.apache.storm.utils.RotatingMap-">SpoutOutputCollectorImpl</a></span>(<a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a>&nbsp;spout,
                         <a href="../../../../../org/apache/storm/executor/spout/SpoutExecutor.html" title="class in org.apache.storm.executor.spout">SpoutExecutor</a>&nbsp;executor,
                         <a href="../../../../../org/apache/storm/daemon/Task.html" title="class in org.apache.storm.daemon">Task</a>&nbsp;taskData,
-                        int&nbsp;taskId,
                         <a href="../../../../../org/apache/storm/utils/MutableLong.html" title="class in org.apache.storm.utils">MutableLong</a>&nbsp;emittedCount,
                         boolean&nbsp;hasAckers,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Random.html?is-external=true" title="class or interface in java.util">Random</a>&nbsp;random,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;isEventLoggers,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;isDebug,
-                        <a href="../../../../../org/apache/storm/utils/RotatingMap.html" title="class in org.apache.storm.utils">RotatingMap</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>,<a href="../../../../../org/apache/storm/executor/TupleInfo.html" title="class in org.apache.storm.executor">TupleInfo</a>&gt;&nbsp;pending)</code>&nbsp;</td>
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Random.html?is-external=true" title="class or interface in java.util">Random</a>&nbsp;random,
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;isEventLoggers,
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;isDebug,
+                        <a href="../../../../../org/apache/storm/utils/RotatingMap.html" title="class in org.apache.storm.utils">RotatingMap</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>,<a href="../../../../../org/apache/storm/executor/TupleInfo.html" title="class in org.apache.storm.executor">TupleInfo</a>&gt;&nbsp;pending)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -416,12 +443,12 @@
 </tbody>
 </table>
 </li>
-<li class="blockList"><a name="org.apache.storm.kafka">
+<li class="blockList"><a name="org.apache.storm.kafka.spout">
 <!--   -->
 </a>
-<h3>Uses of <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a> in <a href="../../../../../org/apache/storm/kafka/package-summary.html">org.apache.storm.kafka</a></h3>
+<h3>Uses of <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a> in <a href="../../../../../org/apache/storm/kafka/spout/package-summary.html">org.apache.storm.kafka.spout</a></h3>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
-<caption><span>Classes in <a href="../../../../../org/apache/storm/kafka/package-summary.html">org.apache.storm.kafka</a> that implement <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>Classes in <a href="../../../../../org/apache/storm/kafka/spout/package-summary.html">org.apache.storm.kafka.spout</a> that implement <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Class and Description</th>
@@ -429,7 +456,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/KafkaSpout.html" title="class in org.apache.storm.kafka">KafkaSpout</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpout.html" title="class in org.apache.storm.kafka.spout">KafkaSpout</a>&lt;K,V&gt;</span></code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -448,6 +475,48 @@
 <tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kinesis/spout/KinesisSpout.html" title="class in org.apache.storm.kinesis.spout">KinesisSpout</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.lambda">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a> in <a href="../../../../../org/apache/storm/lambda/package-summary.html">org.apache.storm.lambda</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/lambda/package-summary.html">org.apache.storm.lambda</a> that implement <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/lambda/LambdaSpout.html" title="class in org.apache.storm.lambda">LambdaSpout</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.loadgen">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a> in <a href="../../../../../org/apache/storm/loadgen/package-summary.html">org.apache.storm.loadgen</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/loadgen/package-summary.html">org.apache.storm.loadgen</a> that implement <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/loadgen/LoadSpout.html" title="class in org.apache.storm.loadgen">LoadSpout</a></span></code>
+<div class="block">A spout that simulates a real world spout based off of statistics about it.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/loadgen/ThroughputVsLatency.FastRandomSentenceSpout.html" title="class in org.apache.storm.loadgen">ThroughputVsLatency.FastRandomSentenceSpout</a></span></code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -508,6 +577,76 @@
 </tbody>
 </table>
 </li>
+<li class="blockList"><a name="org.apache.storm.perf.spout">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a> in <a href="../../../../../org/apache/storm/perf/spout/package-summary.html">org.apache.storm.perf.spout</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/perf/spout/package-summary.html">org.apache.storm.perf.spout</a> that implement <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/perf/spout/ConstSpout.html" title="class in org.apache.storm.perf.spout">ConstSpout</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/perf/spout/FileReadSpout.html" title="class in org.apache.storm.perf.spout">FileReadSpout</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/perf/spout/StringGenSpout.html" title="class in org.apache.storm.perf.spout">StringGenSpout</a></span></code>
+<div class="block">Spout pre-computes a list with 30k fixed length random strings.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/perf/spout/WordGenSpout.html" title="class in org.apache.storm.perf.spout">WordGenSpout</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.pmml">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a> in <a href="../../../../../org/apache/storm/pmml/package-summary.html">org.apache.storm.pmml</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/pmml/package-summary.html">org.apache.storm.pmml</a> that implement <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/pmml/RawInputFromCSVSpout.html" title="class in org.apache.storm.pmml">RawInputFromCSVSpout</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.rocketmq.spout">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a> in <a href="../../../../../org/apache/storm/rocketmq/spout/package-summary.html">org.apache.storm.rocketmq.spout</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/rocketmq/spout/package-summary.html">org.apache.storm.rocketmq.spout</a> that implement <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/rocketmq/spout/RocketMqSpout.html" title="class in org.apache.storm.rocketmq.spout">RocketMqSpout</a></span></code>
+<div class="block">RocketMqSpout uses MQPushConsumer as the default implementation.</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li class="blockList"><a name="org.apache.storm.solr.spout">
 <!--   -->
 </a>
@@ -554,6 +693,36 @@
 </tbody>
 </table>
 </li>
+<li class="blockList"><a name="org.apache.storm.st.topology.window">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a> in <a href="../../../../../org/apache/storm/st/topology/window/package-summary.html">org.apache.storm.st.topology.window</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/st/topology/window/package-summary.html">org.apache.storm.st.topology.window</a> that implement <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/st/topology/window/SlidingTimeCorrectness.IncrementingSpout.html" title="class in org.apache.storm.st.topology.window">SlidingTimeCorrectness.IncrementingSpout</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/st/topology/window/SlidingWindowCorrectness.IncrementingSpout.html" title="class in org.apache.storm.st.topology.window">SlidingWindowCorrectness.IncrementingSpout</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/st/topology/window/TumblingTimeCorrectness.IncrementingSpout.html" title="class in org.apache.storm.st.topology.window">TumblingTimeCorrectness.IncrementingSpout</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/st/topology/window/TumblingWindowCorrectness.IncrementingSpout.html" title="class in org.apache.storm.st.topology.window">TumblingWindowCorrectness.IncrementingSpout</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li class="blockList"><a name="org.apache.storm.starter">
 <!--   -->
 </a>
@@ -567,19 +736,19 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/starter/BlobStoreAPIWordCountTopology.RandomSentenceSpout.html" title="class in org.apache.storm.starter">BlobStoreAPIWordCountTopology.RandomSentenceSpout</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/starter/AnchoredWordCount.RandomSentenceSpout.html" title="class in org.apache.storm.starter">AnchoredWordCount.RandomSentenceSpout</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/starter/FastWordCountTopology.FastRandomSentenceSpout.html" title="class in org.apache.storm.starter">FastWordCountTopology.FastRandomSentenceSpout</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/starter/BlobStoreAPIWordCountTopology.RandomSentenceSpout.html" title="class in org.apache.storm.starter">BlobStoreAPIWordCountTopology.RandomSentenceSpout</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/starter/InOrderDeliveryTest.InOrderSpout.html" title="class in org.apache.storm.starter">InOrderDeliveryTest.InOrderSpout</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/starter/FastWordCountTopology.FastRandomSentenceSpout.html" title="class in org.apache.storm.starter">FastWordCountTopology.FastRandomSentenceSpout</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/starter/ThroughputVsLatency.FastRandomSentenceSpout.html" title="class in org.apache.storm.starter">ThroughputVsLatency.FastRandomSentenceSpout</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/starter/InOrderDeliveryTest.InOrderSpout.html" title="class in org.apache.storm.starter">InOrderDeliveryTest.InOrderSpout</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
@@ -612,10 +781,6 @@
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/starter/spout/RandomSentenceSpout.TimeStamped.html" title="class in org.apache.storm.starter.spout">RandomSentenceSpout.TimeStamped</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/starter/spout/TwitterSampleSpout.html" title="class in org.apache.storm.starter.spout">TwitterSampleSpout</a></span></code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -809,6 +974,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

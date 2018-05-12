@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/topology/base/BaseStatefulBolt.html" title="class in org.apache.storm.topology.base"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/topology/base/BaseTransactionalBolt.html" title="class in org.apache.storm.topology.base"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" target="_top">Frames</a></li>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseWindowedBolt</a></li>
@@ -114,7 +114,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IStatefulComponent.html" title="interface in org.apache.storm.topology">IStatefulComponent</a>&lt;T&gt;, <a href="../../../../../org/apache/storm/topology/IStatefulWindowedBolt.html" title="interface in org.apache.storm.topology">IStatefulWindowedBolt</a>&lt;T&gt;, <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html" title="interface in org.apache.storm.topology">IWindowedBolt</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IStatefulComponent.html" title="interface in org.apache.storm.topology">IStatefulComponent</a>&lt;T&gt;, <a href="../../../../../org/apache/storm/topology/IStatefulWindowedBolt.html" title="interface in org.apache.storm.topology">IStatefulWindowedBolt</a>&lt;T&gt;, <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html" title="interface in org.apache.storm.topology">IWindowedBolt</a></dd>
 </dl>
 <hr>
 <br>
@@ -157,7 +157,7 @@ implements <a href="../../../../../org/apache/storm/topology/IStatefulWindowedBo
 <!--   -->
 </a>
 <h3>Fields inherited from class&nbsp;org.apache.storm.topology.base.<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt</a></h3>
-<code><a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#windowConfiguration">windowConfiguration</a></code></li>
+<code><a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#timestampExtractor">timestampExtractor</a>, <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#windowConfiguration">windowConfiguration</a></code></li>
 </ul>
 </li>
 </ul>
@@ -191,99 +191,129 @@ implements <a href="../../../../../org/apache/storm/topology/IStatefulWindowedBo
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#isPersistent--">isPersistent</a></span>()</code>
+<div class="block">If the stateful windowed bolt should have its windows persisted in state and maintain a subset of events in memory.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#maxEventsInMemory--">maxEventsInMemory</a></span>()</code>
+<div class="block">The maximum number of window events to keep in memory.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#preCommit-long-">preCommit</a></span>(long&nbsp;txid)</code>
 <div class="block">This is a hook for the component to perform some actions just before the framework commits its state.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#prePrepare-long-">prePrepare</a></span>(long&nbsp;txid)</code>
 <div class="block">This is a hook for the component to perform some actions just before the framework prepares its state.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#preRollback--">preRollback</a></span>()</code>
 <div class="block">This is a hook for the component to perform some actions just before the framework rolls back the prepared state.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withLag-org.apache.storm.topology.base.BaseWindowedBolt.Duration-">withLag</a></span>(<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Duration.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Duration</a>&nbsp;duration)</code>
 <div class="block">Specify the maximum time lag of the tuple timestamp in milliseconds.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withLateTupleStream-java.lang.String-">withLateTupleStream</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamName)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withLateTupleStream-java.lang.String-">withLateTupleStream</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamName)</code>
 <div class="block">Specify a stream id on which late tuples are going to be emitted.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withMessageIdField-java.lang.String-">withMessageIdField</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fieldName)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withMaxEventsInMemory-long-">withMaxEventsInMemory</a></span>(long&nbsp;maxEventsInMemory)</code>
+<div class="block">The maximum number of window events to keep in memory.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withMessageIdField-java.lang.String-">withMessageIdField</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fieldName)</code>
 <div class="block">Specify the name of the field in the tuple that holds the message id.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withTimestampField-java.lang.String-">withTimestampField</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fieldName)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withPersistence--">withPersistence</a></span>()</code>
+<div class="block">If set, the stateful windowed bolt would use the backend state for window persistence and only keep a sub-set of events in memory as specified by <a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withMaxEventsInMemory-long-"><code>withMaxEventsInMemory(long)</code></a>.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withTimestampExtractor-org.apache.storm.windowing.TimestampExtractor-">withTimestampExtractor</a></span>(<a href="../../../../../org/apache/storm/windowing/TimestampExtractor.html" title="interface in org.apache.storm.windowing">TimestampExtractor</a>&nbsp;timestampExtractor)</code>
+<div class="block">Specify the timestamp extractor implementation.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withTimestampField-java.lang.String-">withTimestampField</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fieldName)</code>
 <div class="block">Specify a field in the tuple that represents the timestamp as a long value.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withTumblingWindow-org.apache.storm.topology.base.BaseWindowedBolt.Count-">withTumblingWindow</a></span>(<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Count.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Count</a>&nbsp;count)</code>
 <div class="block">A count based tumbling window.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withTumblingWindow-org.apache.storm.topology.base.BaseWindowedBolt.Duration-">withTumblingWindow</a></span>(<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Duration.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Duration</a>&nbsp;duration)</code>
 <div class="block">A time duration based tumbling window.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withWatermarkInterval-org.apache.storm.topology.base.BaseWindowedBolt.Duration-">withWatermarkInterval</a></span>(<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Duration.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Duration</a>&nbsp;interval)</code>
 <div class="block">Specify the watermark event generation interval.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withWindow-org.apache.storm.topology.base.BaseWindowedBolt.Count-">withWindow</a></span>(<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Count.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Count</a>&nbsp;windowLength)</code>
 <div class="block">A tuple count based window that slides with every incoming tuple.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withWindow-org.apache.storm.topology.base.BaseWindowedBolt.Count-org.apache.storm.topology.base.BaseWindowedBolt.Count-">withWindow</a></span>(<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Count.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Count</a>&nbsp;windowLength,
           <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Count.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Count</a>&nbsp;slidingInterval)</code>
 <div class="block">Tuple count based sliding window configuration.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withWindow-org.apache.storm.topology.base.BaseWindowedBolt.Count-org.apache.storm.topology.base.BaseWindowedBolt.Duration-">withWindow</a></span>(<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Count.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Count</a>&nbsp;windowLength,
           <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Duration.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Duration</a>&nbsp;slidingInterval)</code>
 <div class="block">Tuple count and time duration based sliding window configuration.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withWindow-org.apache.storm.topology.base.BaseWindowedBolt.Duration-">withWindow</a></span>(<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Duration.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Duration</a>&nbsp;windowLength)</code>
 <div class="block">A time duration based window that slides with every incoming tuple.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withWindow-org.apache.storm.topology.base.BaseWindowedBolt.Duration-org.apache.storm.topology.base.BaseWindowedBolt.Count-">withWindow</a></span>(<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Duration.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Duration</a>&nbsp;windowLength,
           <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Count.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Count</a>&nbsp;slidingInterval)</code>
 <div class="block">Time duration and count based sliding window configuration.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withWindow-org.apache.storm.topology.base.BaseWindowedBolt.Duration-org.apache.storm.topology.base.BaseWindowedBolt.Duration-">withWindow</a></span>(<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Duration.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Duration</a>&nbsp;windowLength,
           <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.Duration.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Duration</a>&nbsp;slidingInterval)</code>
@@ -296,14 +326,14 @@ implements <a href="../../../../../org/apache/storm/topology/IStatefulWindowedBo
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;org.apache.storm.topology.base.<a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt</a></h3>
-<code><a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#cleanup--">cleanup</a>, <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#declareOutputFields-org.apache.storm.topology.OutputFieldsDeclarer-">declareOutputFields</a>, <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#getComponentConfiguration--">getComponentConfiguration</a>, <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></code></li>
+<code><a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#cleanup--">cleanup</a>, <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#declareOutputFields-org.apache.storm.topology.OutputFieldsDeclarer-">declareOutputFields</a>, <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#getComponentConfiguration--">getComponentConfiguration</a>, <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#getTimestampExtractor--">getTimestampExtractor</a>, <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.IStatefulComponent">
@@ -317,7 +347,7 @@ implements <a href="../../../../../org/apache/storm/topology/IStatefulWindowedBo
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;org.apache.storm.topology.<a href="../../../../../org/apache/storm/topology/IWindowedBolt.html" title="interface in org.apache.storm.topology">IWindowedBolt</a></h3>
-<code><a href="../../../../../org/apache/storm/topology/IWindowedBolt.html#cleanup--">cleanup</a>, <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html#execute-org.apache.storm.windowing.TupleWindow-">execute</a>, <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></code></li>
+<code><a href="../../../../../org/apache/storm/topology/IWindowedBolt.html#cleanup--">cleanup</a>, <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html#execute-org.apache.storm.windowing.TupleWindow-">execute</a>, <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html#getTimestampExtractor--">getTimestampExtractor</a>, <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.IComponent">
@@ -499,13 +529,29 @@ implements <a href="../../../../../org/apache/storm/topology/IStatefulWindowedBo
 <ul class="blockList">
 <li class="blockList">
 <h4>withTimestampField</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;&nbsp;withTimestampField(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fieldName)</pre>
-<div class="block"><p><p>Specify a field in the tuple that represents the timestamp as a long value. If this field is not present in the incoming tuple, an <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang"><code>IllegalArgumentException</code></a> will be thrown.</p></p></div>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;&nbsp;withTimestampField(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fieldName)</pre>
+<div class="block"><p><p>Specify a field in the tuple that represents the timestamp as a long value. If this field is not present in the incoming tuple, an <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang"><code>IllegalArgumentException</code></a> will be thrown. The field MUST contain a timestamp in milliseconds</p></p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#withTimestampField-java.lang.String-">withTimestampField</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>fieldName</code> - the name of the field that contains the timestamp</dd>
+</dl>
+</li>
+</ul>
+<a name="withTimestampExtractor-org.apache.storm.windowing.TimestampExtractor-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withTimestampExtractor</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;&nbsp;withTimestampExtractor(<a href="../../../../../org/apache/storm/windowing/TimestampExtractor.html" title="interface in org.apache.storm.windowing">TimestampExtractor</a>&nbsp;timestampExtractor)</pre>
+<div class="block"><p><p>Specify the timestamp extractor implementation.</p></p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#withTimestampExtractor-org.apache.storm.windowing.TimestampExtractor-">withTimestampExtractor</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>timestampExtractor</code> - the <a href="../../../../../org/apache/storm/windowing/TimestampExtractor.html" title="interface in org.apache.storm.windowing"><code>TimestampExtractor</code></a> implementation</dd>
 </dl>
 </li>
 </ul>
@@ -515,8 +561,8 @@ implements <a href="../../../../../org/apache/storm/topology/IStatefulWindowedBo
 <ul class="blockList">
 <li class="blockList">
 <h4>withLateTupleStream</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;&nbsp;withLateTupleStream(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamName)</pre>
-<div class="block"><p><p>Specify a stream id on which late tuples are going to be emitted. They are going to be accessible via the <a href="../../../../../org/apache/storm/topology/WindowedBoltExecutor.html#LATE_TUPLE_FIELD"><code>WindowedBoltExecutor.LATE_TUPLE_FIELD</code></a> field. It must be defined on a per-component basis, and in conjunction with the <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#withTimestampField-java.lang.String-"><code>BaseWindowedBolt.withTimestampField(java.lang.String)</code></a>, otherwise <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang"><code>IllegalArgumentException</code></a> will be thrown.</p></p></div>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;&nbsp;withLateTupleStream(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamName)</pre>
+<div class="block"><p><p>Specify a stream id on which late tuples are going to be emitted. They are going to be accessible via the <a href="../../../../../org/apache/storm/topology/WindowedBoltExecutor.html#LATE_TUPLE_FIELD"><code>WindowedBoltExecutor.LATE_TUPLE_FIELD</code></a> field. It must be defined on a per-component basis, and in conjunction with the <a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#withTimestampField-java.lang.String-"><code>BaseWindowedBolt.withTimestampField(java.lang.String)</code></a>, otherwise <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang"><code>IllegalArgumentException</code></a> will be thrown.</p></p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html#withLateTupleStream-java.lang.String-">withLateTupleStream</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/topology/base/BaseWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt</a></code></dd>
@@ -563,11 +609,67 @@ implements <a href="../../../../../org/apache/storm/topology/IStatefulWindowedBo
 <ul class="blockList">
 <li class="blockList">
 <h4>withMessageIdField</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;&nbsp;withMessageIdField(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fieldName)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;&nbsp;withMessageIdField(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fieldName)</pre>
 <div class="block"><p>Specify the name of the field in the tuple that holds the message id. This is used to track the windowing boundaries and re-evaluating the windowing operation during recovery of IStatefulWindowedBolt</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>fieldName</code> - the name of the field that contains the message id</dd>
+</dl>
+</li>
+</ul>
+<a name="withPersistence--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withPersistence</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;&nbsp;withPersistence()</pre>
+<div class="block"><p>If set, the stateful windowed bolt would use the backend state for window persistence and only keep a sub-set of events in memory as specified by <a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withMaxEventsInMemory-long-"><code>withMaxEventsInMemory(long)</code></a>.</p></div>
+</li>
+</ul>
+<a name="withMaxEventsInMemory-long-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withMaxEventsInMemory</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a>&gt;&nbsp;withMaxEventsInMemory(long&nbsp;maxEventsInMemory)</pre>
+<div class="block"><p>The maximum number of window events to keep in memory. This is meaningful only if <a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withPersistence--"><code>withPersistence()</code></a> is also set. As the number of events in memory grows close to the maximum, the events that are less likely to be used again are evicted and persisted. The default value for this is <code>1,000,000</code>.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>maxEventsInMemory</code> - the maximum number of window events to keep in memory</dd>
+</dl>
+</li>
+</ul>
+<a name="isPersistent--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isPersistent</h4>
+<pre>public&nbsp;boolean&nbsp;isPersistent()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/topology/IStatefulWindowedBolt.html#isPersistent--">IStatefulWindowedBolt</a></code></span></div>
+<div class="block"><p>If the stateful windowed bolt should have its windows persisted in state and maintain a subset of events in memory. <p> The default is to keep all the window events in memory. </p></p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/topology/IStatefulWindowedBolt.html#isPersistent--">isPersistent</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/topology/IStatefulWindowedBolt.html" title="interface in org.apache.storm.topology">IStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a> extends <a href="../../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if the windows should be persisted</dd>
+</dl>
+</li>
+</ul>
+<a name="maxEventsInMemory--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>maxEventsInMemory</h4>
+<pre>public&nbsp;long&nbsp;maxEventsInMemory()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/topology/IStatefulWindowedBolt.html#maxEventsInMemory--">IStatefulWindowedBolt</a></code></span></div>
+<div class="block"><p>The maximum number of window events to keep in memory.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/topology/IStatefulWindowedBolt.html#maxEventsInMemory--">maxEventsInMemory</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/topology/IStatefulWindowedBolt.html" title="interface in org.apache.storm.topology">IStatefulWindowedBolt</a>&lt;<a href="../../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" title="type parameter in BaseStatefulWindowedBolt">T</a> extends <a href="../../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -649,7 +751,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/topology/base/BaseStatefulBolt.html" title="class in org.apache.storm.topology.base"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/topology/base/BaseTransactionalBolt.html" title="class in org.apache.storm.topology.base"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/topology/base/BaseStatefulWindowedBolt.html" target="_top">Frames</a></li>
@@ -689,6 +791,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

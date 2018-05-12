@@ -92,7 +92,9 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.elasticsearch.trident">org.apache.storm.elasticsearch.trident</a></td>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">ElasticSearch Trident example classes.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.hbase.trident.state">org.apache.storm.hbase.trident.state</a></td>
@@ -131,11 +133,19 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><a href="#org.apache.storm.solr.trident">org.apache.storm.solr.trident</a></td>
+<td class="colFirst"><a href="#org.apache.storm.rocketmq.trident.state">org.apache.storm.rocketmq.trident.state</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.solr.trident">org.apache.storm.solr.trident</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.sql.runtime">org.apache.storm.sql.runtime</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.sql.runtime.datasource.socket.trident">org.apache.storm.sql.runtime.datasource.socket.trident</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
@@ -180,7 +190,26 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/cassandra/trident/state/CassandraMapStateFactory.html" title="class in org.apache.storm.cassandra.trident.state">CassandraMapStateFactory</a></span></code>
+<div class="block">A StateFactory implementation that creates a MapState backed by CassandraBackingMap.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/cassandra/trident/state/CassandraStateFactory.html" title="class in org.apache.storm.cassandra.trident.state">CassandraStateFactory</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/storm/cassandra/trident/state/package-summary.html">org.apache.storm.cassandra.trident.state</a> that return <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MapStateFactoryBuilder.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/cassandra/trident/state/MapStateFactoryBuilder.html#build--">build</a></span>()</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -257,7 +286,7 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
-<td class="colLast"><span class="typeNameLabel">HBaseMapState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/hbase/trident/state/HBaseMapState.html#nonTransactional-org.apache.storm.hbase.trident.state.HBaseMapState.Options-">nonTransactional</a></span>(<a href="../../../../../../org/apache/storm/hbase/trident/state/HBaseMapState.Options.html" title="class in org.apache.storm.hbase.trident.state">HBaseMapState.Options</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;opts)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">HBaseMapState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/hbase/trident/state/HBaseMapState.html#nonTransactional-org.apache.storm.hbase.trident.state.HBaseMapState.Options-">nonTransactional</a></span>(<a href="../../../../../../org/apache/storm/hbase/trident/state/HBaseMapState.Options.html" title="class in org.apache.storm.hbase.trident.state">HBaseMapState.Options</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;opts)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
@@ -363,7 +392,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaStateFactory.html" title="class in org.apache.storm.kafka.trident">TridentKafkaStateFactory</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaStateFactory.html" title="class in org.apache.storm.kafka.trident">TridentKafkaStateFactory</a>&lt;K,V&gt;</span></code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -380,8 +409,45 @@
 </tr>
 <tbody>
 <tr class="altColor">
+<td class="colFirst"><code>protected static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoMapState.Factory.html" title="class in org.apache.storm.mongodb.trident.state">MongoMapState.Factory</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoStateFactory.html" title="class in org.apache.storm.mongodb.trident.state">MongoStateFactory</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/storm/mongodb/trident/state/package-summary.html">org.apache.storm.mongodb.trident.state</a> that return <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MongoMapState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoMapState.html#nonTransactional--">nonTransactional</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MongoMapState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoMapState.html#nonTransactional-org.apache.storm.mongodb.trident.state.MongoMapState.Options-">nonTransactional</a></span>(<a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoMapState.Options.html" title="class in org.apache.storm.mongodb.trident.state">MongoMapState.Options</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;opts)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MongoMapState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoMapState.html#opaque--">opaque</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MongoMapState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoMapState.html#opaque-org.apache.storm.mongodb.trident.state.MongoMapState.Options-">opaque</a></span>(<a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoMapState.Options.html" title="class in org.apache.storm.mongodb.trident.state">MongoMapState.Options</a>&lt;<a href="../../../../../../org/apache/storm/trident/state/OpaqueValue.html" title="class in org.apache.storm.trident.state">OpaqueValue</a>&gt;&nbsp;opts)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MongoMapState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoMapState.html#transactional--">transactional</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MongoMapState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoMapState.html#transactional-org.apache.storm.mongodb.trident.state.MongoMapState.Options-">transactional</a></span>(<a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoMapState.Options.html" title="class in org.apache.storm.mongodb.trident.state">MongoMapState.Options</a>&lt;<a href="../../../../../../org/apache/storm/trident/state/TransactionalValue.html" title="class in org.apache.storm.trident.state">TransactionalValue</a>&gt;&nbsp;opts)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -466,7 +532,7 @@
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
 <td class="colLast"><span class="typeNameLabel">RedisClusterMapState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/redis/trident/state/RedisClusterMapState.html#nonTransactional-org.apache.storm.redis.common.config.JedisClusterConfig-org.apache.storm.redis.trident.state.Options-">nonTransactional</a></span>(<a href="../../../../../../org/apache/storm/redis/common/config/JedisClusterConfig.html" title="class in org.apache.storm.redis.common.config">JedisClusterConfig</a>&nbsp;jedisClusterConfig,
-                <a href="../../../../../../org/apache/storm/redis/trident/state/Options.html" title="class in org.apache.storm.redis.trident.state">Options</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;opts)</code>
+                <a href="../../../../../../org/apache/storm/redis/trident/state/Options.html" title="class in org.apache.storm.redis.trident.state">Options</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;opts)</code>
 <div class="block">Provides StateFactory for non transactional.</div>
 </td>
 </tr>
@@ -493,7 +559,7 @@
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
 <td class="colLast"><span class="typeNameLabel">RedisMapState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/redis/trident/state/RedisMapState.html#nonTransactional-org.apache.storm.redis.common.config.JedisPoolConfig-org.apache.storm.redis.trident.state.Options-">nonTransactional</a></span>(<a href="../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;jedisPoolConfig,
-                <a href="../../../../../../org/apache/storm/redis/trident/state/Options.html" title="class in org.apache.storm.redis.trident.state">Options</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;opts)</code>
+                <a href="../../../../../../org/apache/storm/redis/trident/state/Options.html" title="class in org.apache.storm.redis.trident.state">Options</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;opts)</code>
 <div class="block">Provides StateFactory for non transactional.</div>
 </td>
 </tr>
@@ -615,6 +681,24 @@
 </tbody>
 </table>
 </li>
+<li class="blockList"><a name="org.apache.storm.rocketmq.trident.state">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a> in <a href="../../../../../../org/apache/storm/rocketmq/trident/state/package-summary.html">org.apache.storm.rocketmq.trident.state</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../../org/apache/storm/rocketmq/trident/state/package-summary.html">org.apache.storm.rocketmq.trident.state</a> that implement <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/rocketmq/trident/state/RocketMqStateFactory.html" title="class in org.apache.storm.rocketmq.trident.state">RocketMqStateFactory</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li class="blockList"><a name="org.apache.storm.solr.trident">
 <!--   -->
 </a>
@@ -663,6 +747,24 @@
 <tr class="altColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/sql/runtime/SimpleSqlTridentConsumer.html#SimpleSqlTridentConsumer-org.apache.storm.trident.state.StateFactory-org.apache.storm.trident.state.StateUpdater-">SimpleSqlTridentConsumer</a></span>(<a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a>&nbsp;stateFactory,
                         <a href="../../../../../../org/apache/storm/trident/state/StateUpdater.html" title="interface in org.apache.storm.trident.state">StateUpdater</a>&nbsp;stateUpdater)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.sql.runtime.datasource.socket.trident">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a> in <a href="../../../../../../org/apache/storm/sql/runtime/datasource/socket/trident/package-summary.html">org.apache.storm.sql.runtime.datasource.socket.trident</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../../org/apache/storm/sql/runtime/datasource/socket/trident/package-summary.html">org.apache.storm.sql.runtime.datasource.socket.trident</a> that implement <a href="../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/sql/runtime/datasource/socket/trident/SocketState.Factory.html" title="class in org.apache.storm.sql.runtime.datasource.socket.trident">SocketState.Factory</a></span></code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -923,6 +1025,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

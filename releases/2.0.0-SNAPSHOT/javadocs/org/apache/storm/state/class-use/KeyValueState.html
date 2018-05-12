@@ -87,11 +87,23 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="#org.apache.storm.redis.state">org.apache.storm.redis.state</a></td>
+<td class="colFirst"><a href="#org.apache.storm.hbase.state">org.apache.storm.hbase.state</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.redis.state">org.apache.storm.redis.state</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.state">org.apache.storm.state</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.streams.processors">org.apache.storm.streams.processors</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.windowing.persistence">org.apache.storm.windowing.persistence</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 </tbody>
@@ -112,7 +124,27 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">StatefulWordCounter.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/flux/examples/StatefulWordCounter.html#initState-org.apache.storm.state.KeyValueState-">initState</a></span>(<a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;state)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">StatefulWordCounter.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/flux/examples/StatefulWordCounter.html#initState-org.apache.storm.state.KeyValueState-">initState</a></span>(<a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;state)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.hbase.state">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a> in <a href="../../../../../org/apache/storm/hbase/state/package-summary.html">org.apache.storm.hbase.state</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/hbase/state/package-summary.html">org.apache.storm.hbase.state</a> that implement <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hbase/state/HBaseKeyValueState.html" title="class in org.apache.storm.hbase.state">HBaseKeyValueState</a>&lt;K,V&gt;</span></code>
+<div class="block">A Hbase based implementation that persists the state in HBase.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -153,6 +185,68 @@
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="class in org.apache.storm.state">InMemoryKeyValueState</a>&lt;K,V&gt;</span></code>
 <div class="block">An in-memory implementation of the <a href="../../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state"><code>State</code></a></div>
 </td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.streams.processors">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a> in <a href="../../../../../org/apache/storm/streams/processors/package-summary.html">org.apache.storm.streams.processors</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/streams/processors/package-summary.html">org.apache.storm.streams.processors</a> with parameters of type <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">UpdateStateByKeyProcessor.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/streams/processors/UpdateStateByKeyProcessor.html#initState-org.apache.storm.state.KeyValueState-">initState</a></span>(<a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="../../../../../org/apache/storm/streams/processors/UpdateStateByKeyProcessor.html" title="type parameter in UpdateStateByKeyProcessor">K</a>,<a href="../../../../../org/apache/storm/streams/processors/UpdateStateByKeyProcessor.html" title="type parameter in UpdateStateByKeyProcessor">R</a>&gt;&nbsp;keyValueState)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">StatefulProcessor.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/streams/processors/StatefulProcessor.html#initState-org.apache.storm.state.KeyValueState-">initState</a></span>(<a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="../../../../../org/apache/storm/streams/processors/StatefulProcessor.html" title="type parameter in StatefulProcessor">K</a>,<a href="../../../../../org/apache/storm/streams/processors/StatefulProcessor.html" title="type parameter in StatefulProcessor">V</a>&gt;&nbsp;keyValueState)</code>
+<div class="block">Initialize the state of the processor with the given <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state"><code>KeyValueState</code></a></div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">StateQueryProcessor.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/streams/processors/StateQueryProcessor.html#initState-org.apache.storm.state.KeyValueState-">initState</a></span>(<a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="../../../../../org/apache/storm/streams/processors/StateQueryProcessor.html" title="type parameter in StateQueryProcessor">K</a>,<a href="../../../../../org/apache/storm/streams/processors/StateQueryProcessor.html" title="type parameter in StateQueryProcessor">V</a>&gt;&nbsp;keyValueState)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.windowing.persistence">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a> in <a href="../../../../../org/apache/storm/windowing/persistence/package-summary.html">org.apache.storm.windowing.persistence</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../../org/apache/storm/windowing/persistence/package-summary.html">org.apache.storm.windowing.persistence</a> with parameters of type <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/persistence/WindowState.html#WindowState-org.apache.storm.state.KeyValueState-org.apache.storm.state.KeyValueState-org.apache.storm.state.KeyValueState-java.util.function.Supplier-long-">WindowState</a></span>(<a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>,<a href="../../../../../org/apache/storm/windowing/persistence/WindowState.WindowPartition.html" title="class in org.apache.storm.windowing.persistence">WindowState.WindowPartition</a>&lt;<a href="../../../../../org/apache/storm/windowing/persistence/WindowState.html" title="type parameter in WindowState">T</a>&gt;&gt;&nbsp;windowPartitionsState,
+           <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Deque.html?is-external=true" title="class or interface in java.util">Deque</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&gt;&nbsp;partitionIdsState,
+           <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html?is-external=true" title="class or interface in java.util">Optional</a>&lt;?&gt;&gt;&nbsp;windowSystemState,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html?is-external=true" title="class or interface in java.util">Optional</a>&lt;?&gt;&gt;&gt;&nbsp;windowSystemStateSupplier,
+           long&nbsp;maxEventsInMemory)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/persistence/WindowState.html#WindowState-org.apache.storm.state.KeyValueState-org.apache.storm.state.KeyValueState-org.apache.storm.state.KeyValueState-java.util.function.Supplier-long-">WindowState</a></span>(<a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>,<a href="../../../../../org/apache/storm/windowing/persistence/WindowState.WindowPartition.html" title="class in org.apache.storm.windowing.persistence">WindowState.WindowPartition</a>&lt;<a href="../../../../../org/apache/storm/windowing/persistence/WindowState.html" title="type parameter in WindowState">T</a>&gt;&gt;&nbsp;windowPartitionsState,
+           <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Deque.html?is-external=true" title="class or interface in java.util">Deque</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&gt;&nbsp;partitionIdsState,
+           <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html?is-external=true" title="class or interface in java.util">Optional</a>&lt;?&gt;&gt;&nbsp;windowSystemState,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html?is-external=true" title="class or interface in java.util">Optional</a>&lt;?&gt;&gt;&gt;&nbsp;windowSystemStateSupplier,
+           long&nbsp;maxEventsInMemory)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/persistence/WindowState.html#WindowState-org.apache.storm.state.KeyValueState-org.apache.storm.state.KeyValueState-org.apache.storm.state.KeyValueState-java.util.function.Supplier-long-">WindowState</a></span>(<a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>,<a href="../../../../../org/apache/storm/windowing/persistence/WindowState.WindowPartition.html" title="class in org.apache.storm.windowing.persistence">WindowState.WindowPartition</a>&lt;<a href="../../../../../org/apache/storm/windowing/persistence/WindowState.html" title="type parameter in WindowState">T</a>&gt;&gt;&nbsp;windowPartitionsState,
+           <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Deque.html?is-external=true" title="class or interface in java.util">Deque</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&gt;&nbsp;partitionIdsState,
+           <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html?is-external=true" title="class or interface in java.util">Optional</a>&lt;?&gt;&gt;&nbsp;windowSystemState,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html?is-external=true" title="class or interface in java.util">Optional</a>&lt;?&gt;&gt;&gt;&nbsp;windowSystemStateSupplier,
+           long&nbsp;maxEventsInMemory)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -212,6 +306,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

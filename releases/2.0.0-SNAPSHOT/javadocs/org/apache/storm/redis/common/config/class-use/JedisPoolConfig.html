@@ -99,6 +99,10 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.redis.tools">org.apache.storm.redis.tools</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.redis.trident.state">org.apache.storm.redis.trident.state</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -119,7 +123,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/redis/bolt/AbstractRedisBolt.html#AbstractRedisBolt-org.apache.storm.redis.common.config.JedisPoolConfig-">AbstractRedisBolt</a></span>(<a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;config)</code>
-<div class="block">Constructor for single Redis environment (JedisPool)</div>
+<div class="block">Constructor for single Redis environment (JedisPool).</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -175,6 +179,12 @@
 </tr>
 <tbody>
 <tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../../../../org/apache/storm/redis/common/container/RedisCommandsInstanceContainer.html" title="interface in org.apache.storm.redis.common.container">RedisCommandsInstanceContainer</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RedisCommandsContainerBuilder.</span><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/redis/common/container/RedisCommandsContainerBuilder.html#build-org.apache.storm.redis.common.config.JedisPoolConfig-">build</a></span>(<a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;config)</code>
+<div class="block">Builds container for single Redis environment.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../../../../org/apache/storm/redis/common/container/JedisCommandsInstanceContainer.html" title="interface in org.apache.storm.redis.common.container">JedisCommandsInstanceContainer</a></code></td>
 <td class="colLast"><span class="typeNameLabel">JedisCommandsContainerBuilder.</span><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/redis/common/container/JedisCommandsContainerBuilder.html#build-org.apache.storm.redis.common.config.JedisPoolConfig-">build</a></span>(<a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;config)</code>
 <div class="block">Builds container for single Redis environment.</div>
@@ -187,6 +197,19 @@
 <!--   -->
 </a>
 <h3>Uses of <a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a> in <a href="../../../../../../../org/apache/storm/redis/state/package-summary.html">org.apache.storm.redis.state</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
+<caption><span>Fields in <a href="../../../../../../../org/apache/storm/redis/state/package-summary.html">org.apache.storm.redis.state</a> declared as <a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a></code></td>
+<td class="colLast"><span class="typeNameLabel">RedisKeyValueStateProvider.StateConfig.</span><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/redis/state/RedisKeyValueStateProvider.StateConfig.html#jedisPoolConfig">jedisPoolConfig</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
 <caption><span>Constructors in <a href="../../../../../../../org/apache/storm/redis/state/package-summary.html">org.apache.storm.redis.state</a> with parameters of type <a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -194,14 +217,30 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.config.JedisPoolConfig-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.config.JedisPoolConfig-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                   <a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;poolConfig)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.config.JedisPoolConfig-org.apache.storm.state.Serializer-org.apache.storm.state.Serializer-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.config.JedisPoolConfig-org.apache.storm.state.Serializer-org.apache.storm.state.Serializer-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                   <a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;poolConfig,
                   <a href="../../../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&gt;&nbsp;keySerializer,
                   <a href="../../../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&gt;&nbsp;valueSerializer)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.redis.tools">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a> in <a href="../../../../../../../org/apache/storm/redis/tools/package-summary.html">org.apache.storm.redis.tools</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../../../../org/apache/storm/redis/tools/package-summary.html">org.apache.storm.redis.tools</a> with parameters of type <a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/redis/tools/Base64ToBinaryStateMigrationUtil.html#Base64ToBinaryStateMigrationUtil-org.apache.storm.redis.common.config.JedisPoolConfig-">Base64ToBinaryStateMigrationUtil</a></span>(<a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;poolConfig)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -233,7 +272,7 @@
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a></code></td>
 <td class="colLast"><span class="typeNameLabel">RedisMapState.</span><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/redis/trident/state/RedisMapState.html#nonTransactional-org.apache.storm.redis.common.config.JedisPoolConfig-org.apache.storm.redis.trident.state.Options-">nonTransactional</a></span>(<a href="../../../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;jedisPoolConfig,
-                <a href="../../../../../../../org/apache/storm/redis/trident/state/Options.html" title="class in org.apache.storm.redis.trident.state">Options</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;opts)</code>
+                <a href="../../../../../../../org/apache/storm/redis/trident/state/Options.html" title="class in org.apache.storm.redis.trident.state">Options</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;opts)</code>
 <div class="block">Provides StateFactory for non transactional.</div>
 </td>
 </tr>
@@ -376,6 +415,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

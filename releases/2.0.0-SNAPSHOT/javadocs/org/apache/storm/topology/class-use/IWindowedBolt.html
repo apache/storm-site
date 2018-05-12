@@ -83,7 +83,15 @@
 </tr>
 <tbody>
 <tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.bolt">org.apache.storm.bolt</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.flux.examples">org.apache.storm.flux.examples</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.st.topology.window">org.apache.storm.st.topology.window</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
@@ -103,6 +111,24 @@
 </li>
 <li class="blockList">
 <ul class="blockList">
+<li class="blockList"><a name="org.apache.storm.bolt">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html" title="interface in org.apache.storm.topology">IWindowedBolt</a> in <a href="../../../../../org/apache/storm/bolt/package-summary.html">org.apache.storm.bolt</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/bolt/package-summary.html">org.apache.storm.bolt</a> that implement <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html" title="interface in org.apache.storm.topology">IWindowedBolt</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/bolt/JoinBolt.html" title="class in org.apache.storm.bolt">JoinBolt</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li class="blockList"><a name="org.apache.storm.flux.examples">
 <!--   -->
 </a>
@@ -117,6 +143,36 @@
 <tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/flux/examples/TestWindowBolt.html" title="class in org.apache.storm.flux.examples">TestWindowBolt</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.st.topology.window">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html" title="interface in org.apache.storm.topology">IWindowedBolt</a> in <a href="../../../../../org/apache/storm/st/topology/window/package-summary.html">org.apache.storm.st.topology.window</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/st/topology/window/package-summary.html">org.apache.storm.st.topology.window</a> that implement <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html" title="interface in org.apache.storm.topology">IWindowedBolt</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/st/topology/window/SlidingTimeCorrectness.VerificationBolt.html" title="class in org.apache.storm.st.topology.window">SlidingTimeCorrectness.VerificationBolt</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/st/topology/window/SlidingWindowCorrectness.VerificationBolt.html" title="class in org.apache.storm.st.topology.window">SlidingWindowCorrectness.VerificationBolt</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/st/topology/window/TumblingTimeCorrectness.VerificationBolt.html" title="class in org.apache.storm.st.topology.window">TumblingTimeCorrectness.VerificationBolt</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/st/topology/window/TumblingWindowCorrectness.VerificationBolt.html" title="class in org.apache.storm.st.topology.window">TumblingWindowCorrectness.VerificationBolt</a></span></code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -155,7 +211,7 @@
 <tr class="altColor">
 <td class="colFirst"><code>interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/IStatefulWindowedBolt.html" title="interface in org.apache.storm.topology">IStatefulWindowedBolt</a>&lt;T extends <a href="../../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>&gt;</span></code>
-<div class="block">A windowed bolt abstraction for supporting windowing operation with state</div>
+<div class="block">A windowed bolt abstraction for supporting windowing operation with state.</div>
 </td>
 </tr>
 </tbody>
@@ -169,16 +225,16 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/BoltDeclarer.html" title="interface in org.apache.storm.topology">BoltDeclarer</a></code></td>
-<td class="colLast"><span class="typeNameLabel">TopologyBuilder.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/TopologyBuilder.html#setBolt-java.lang.String-org.apache.storm.topology.IWindowedBolt-">setBolt</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
+<td class="colLast"><span class="typeNameLabel">TopologyBuilder.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/TopologyBuilder.html#setBolt-java.lang.String-org.apache.storm.topology.IWindowedBolt-">setBolt</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
        <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html" title="interface in org.apache.storm.topology">IWindowedBolt</a>&nbsp;bolt)</code>
 <div class="block">Define a new bolt in this topology.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/topology/BoltDeclarer.html" title="interface in org.apache.storm.topology">BoltDeclarer</a></code></td>
-<td class="colLast"><span class="typeNameLabel">TopologyBuilder.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/TopologyBuilder.html#setBolt-java.lang.String-org.apache.storm.topology.IWindowedBolt-java.lang.Number-">setBolt</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
+<td class="colLast"><span class="typeNameLabel">TopologyBuilder.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/topology/TopologyBuilder.html#setBolt-java.lang.String-org.apache.storm.topology.IWindowedBolt-java.lang.Number-">setBolt</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
        <a href="../../../../../org/apache/storm/topology/IWindowedBolt.html" title="interface in org.apache.storm.topology">IWindowedBolt</a>&nbsp;bolt,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;parallelism_hint)</code>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;parallelism_hint)</code>
 <div class="block">Define a new bolt in this topology.</div>
 </td>
 </tr>
@@ -273,6 +329,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

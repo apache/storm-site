@@ -86,6 +86,10 @@
 <td class="colFirst"><a href="#org.apache.storm.kafka.spout">org.apache.storm.kafka.spout</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.kafka.spout.internal">org.apache.storm.kafka.spout.internal</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
 </tbody>
 </table>
 </li>
@@ -96,6 +100,27 @@
 </a>
 <h3>Uses of <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a> in <a href="../../../../../../org/apache/storm/kafka/spout/package-summary.html">org.apache.storm.kafka.spout</a></h3>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/storm/kafka/spout/package-summary.html">org.apache.storm.kafka.spout</a> that return <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a></code></td>
+<td class="colLast"><span class="typeNameLabel">KafkaSpoutRetryService.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#getMessageId-org.apache.kafka.common.TopicPartition-long-">getMessageId</a></span>(org.apache.kafka.common.TopicPartition&nbsp;topicPartition,
+            long&nbsp;offset)</code>
+<div class="block">Gets the <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> for the record on the given topic partition and offset.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a></code></td>
+<td class="colLast"><span class="typeNameLabel">KafkaSpoutRetryExponentialBackoff.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryExponentialBackoff.html#getMessageId-org.apache.kafka.common.TopicPartition-long-">getMessageId</a></span>(org.apache.kafka.common.TopicPartition&nbsp;tp,
+            long&nbsp;offset)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
 <caption><span>Methods in <a href="../../../../../../org/apache/storm/kafka/spout/package-summary.html">org.apache.storm.kafka.spout</a> with parameters of type <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
@@ -103,33 +128,9 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">KafkaSpoutStreamsWildcardTopics.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutStreamsWildcardTopics.html#emit-org.apache.storm.spout.SpoutOutputCollector-java.util.List-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">emit</a></span>(<a href="../../../../../../org/apache/storm/spout/SpoutOutputCollector.html" title="class in org.apache.storm.spout">SpoutOutputCollector</a>&nbsp;collector,
-    <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;tuple,
-    <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;messageId)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">KafkaSpoutStreamsNamedTopics.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutStreamsNamedTopics.html#emit-org.apache.storm.spout.SpoutOutputCollector-java.util.List-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">emit</a></span>(<a href="../../../../../../org/apache/storm/spout/SpoutOutputCollector.html" title="class in org.apache.storm.spout">SpoutOutputCollector</a>&nbsp;collector,
-    <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;tuple,
-    <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;messageId)</code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">KafkaSpoutStreams.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutStreams.html#emit-org.apache.storm.spout.SpoutOutputCollector-java.util.List-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">emit</a></span>(<a href="../../../../../../org/apache/storm/spout/SpoutOutputCollector.html" title="class in org.apache.storm.spout">SpoutOutputCollector</a>&nbsp;collector,
-    <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;tuple,
-    <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;messageId)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">KafkaSpoutStream.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutStream.html#emit-org.apache.storm.spout.SpoutOutputCollector-java.util.List-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">emit</a></span>(<a href="../../../../../../org/apache/storm/spout/SpoutOutputCollector.html" title="class in org.apache.storm.spout">SpoutOutputCollector</a>&nbsp;collector,
-    <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;tuple,
-    <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;messageId)</code>&nbsp;</td>
-</tr>
-<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><span class="typeNameLabel">KafkaSpoutRetryService.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#isReady-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">isReady</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
-<div class="block">Checks if a specific failed <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> is is ready to be retried, i.e is scheduled and has retry time that is less than current time.</div>
+<div class="block">Checks if a specific failed <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> is ready to be retried, i.e is scheduled and has retry time that is less than current time.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -147,9 +148,51 @@
 <td class="colLast"><span class="typeNameLabel">KafkaSpoutRetryExponentialBackoff.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryExponentialBackoff.html#isScheduled-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">isScheduled</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">KafkaTupleListener.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaTupleListener.html#onAck-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">onAck</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
+<div class="block">Called when a tuple is acked.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">EmptyKafkaTupleListener.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/EmptyKafkaTupleListener.html#onAck-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">onAck</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">KafkaTupleListener.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaTupleListener.html#onEmit-java.util.List-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">onEmit</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;tuple,
+      <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
+<div class="block">Called when the tuple is emitted and auto commit is disabled.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">EmptyKafkaTupleListener.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/EmptyKafkaTupleListener.html#onEmit-java.util.List-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">onEmit</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;tuple,
+      <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">KafkaTupleListener.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaTupleListener.html#onMaxRetryReached-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">onMaxRetryReached</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
+<div class="block">Called when the maximum number of retries have been reached.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">EmptyKafkaTupleListener.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/EmptyKafkaTupleListener.html#onMaxRetryReached-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">onMaxRetryReached</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">KafkaTupleListener.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaTupleListener.html#onRetry-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">onRetry</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
+<div class="block">Called when the Kafka spout sets a record for retry.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">EmptyKafkaTupleListener.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/EmptyKafkaTupleListener.html#onRetry-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">onRetry</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><span class="typeNameLabel">KafkaSpoutRetryService.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#remove-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">remove</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
-<div class="block">Removes a message from the list of messages scheduled for retrial</div>
+<div class="block">Removes a message from the list of messages scheduled for retrial.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -157,14 +200,36 @@
 <td class="colLast"><span class="typeNameLabel">KafkaSpoutRetryExponentialBackoff.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryExponentialBackoff.html#remove-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">remove</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>void</code></td>
+<td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><span class="typeNameLabel">KafkaSpoutRetryService.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#schedule-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">schedule</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
 <div class="block">Schedules this <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> if not yet scheduled, or updates retry time if it has already been scheduled.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
+<td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><span class="typeNameLabel">KafkaSpoutRetryExponentialBackoff.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryExponentialBackoff.html#schedule-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">schedule</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.kafka.spout.internal">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a> in <a href="../../../../../../org/apache/storm/kafka/spout/internal/package-summary.html">org.apache.storm.kafka.spout.internal</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/storm/kafka/spout/internal/package-summary.html">org.apache.storm.kafka.spout.internal</a> with parameters of type <a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">OffsetManager.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/internal/OffsetManager.html#addToAckMsgs-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">addToAckMsgs</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><span class="typeNameLabel">OffsetManager.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/spout/internal/OffsetManager.html#contains-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">contains</a></span>(<a href="../../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -224,6 +289,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

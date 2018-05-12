@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.html" title="class in org.apache.storm.sql.compiler"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/sql/compiler/PostOrderRelNodeVisitor.html" title="class in org.apache.storm.sql.compiler"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/sql/compiler/RexNodeToJavaCodeCompiler.html" title="class in org.apache.storm.sql.compiler"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" target="_top">Frames</a></li>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.sql.compiler.CompilerUtil.TableBuilderInfo</li>
@@ -114,7 +114,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public static class <span class="typeNameLabel">CompilerUtil.TableBuilderInfo</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
 </li>
 </ul>
 </div>
@@ -156,25 +156,29 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html#field-java.lang.String-org.apache.calcite.rel.type.RelDataType-">field</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html#field-java.lang.String-org.apache.calcite.rel.type.RelDataType-">field</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
      org.apache.calcite.rel.type.RelDataType&nbsp;type)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html#field-java.lang.String-org.apache.calcite.sql.SqlDataTypeSpec-org.apache.storm.sql.parser.ColumnConstraint-">field</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html#field-java.lang.String-org.apache.calcite.sql.SqlDataTypeSpec-org.apache.storm.sql.parser.ColumnConstraint-">field</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
      org.apache.calcite.sql.SqlDataTypeSpec&nbsp;type,
      <a href="../../../../../org/apache/storm/sql/parser/ColumnConstraint.html" title="class in org.apache.storm.sql.parser">ColumnConstraint</a>&nbsp;constraint)</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html#field-java.lang.String-org.apache.calcite.sql.type.SqlTypeName-">field</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html#field-java.lang.String-org.apache.calcite.sql.type.SqlTypeName-">field</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
      org.apache.calcite.sql.type.SqlTypeName&nbsp;type)</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html#rows-java.lang.Object:A-">rows</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;data)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html#parallelismHint-int-">parallelismHint</a></span>(int&nbsp;parallelismHint)</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html#rows-java.lang.Object:A-">rows</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;data)</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html#statistics-org.apache.calcite.schema.Statistic-">statistics</a></span>(org.apache.calcite.schema.Statistic&nbsp;stats)</code>&nbsp;</td>
 </tr>
@@ -183,8 +187,8 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -223,7 +227,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>field</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a>&nbsp;field(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a>&nbsp;field(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
                                            org.apache.calcite.sql.type.SqlTypeName&nbsp;type)</pre>
 </li>
 </ul>
@@ -233,7 +237,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>field</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a>&nbsp;field(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a>&nbsp;field(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
                                            org.apache.calcite.rel.type.RelDataType&nbsp;type)</pre>
 </li>
 </ul>
@@ -243,7 +247,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>field</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a>&nbsp;field(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a>&nbsp;field(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
                                            org.apache.calcite.sql.SqlDataTypeSpec&nbsp;type,
                                            <a href="../../../../../org/apache/storm/sql/parser/ColumnConstraint.html" title="class in org.apache.storm.sql.parser">ColumnConstraint</a>&nbsp;constraint)</pre>
 </li>
@@ -263,7 +267,16 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>rows</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a>&nbsp;rows(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;data)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a>&nbsp;rows(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>[]&nbsp;data)</pre>
+</li>
+</ul>
+<a name="parallelismHint-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>parallelismHint</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" title="class in org.apache.storm.sql.compiler">CompilerUtil.TableBuilderInfo</a>&nbsp;parallelismHint(int&nbsp;parallelismHint)</pre>
 </li>
 </ul>
 <a name="build--">
@@ -308,7 +321,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/sql/compiler/CompilerUtil.html" title="class in org.apache.storm.sql.compiler"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/sql/compiler/PostOrderRelNodeVisitor.html" title="class in org.apache.storm.sql.compiler"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/sql/compiler/RexNodeToJavaCodeCompiler.html" title="class in org.apache.storm.sql.compiler"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/sql/compiler/CompilerUtil.TableBuilderInfo.html" target="_top">Frames</a></li>
@@ -348,6 +361,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

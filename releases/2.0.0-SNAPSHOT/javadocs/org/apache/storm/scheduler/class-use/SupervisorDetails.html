@@ -83,10 +83,14 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><a href="#org.apache.storm.scheduler">org.apache.storm.scheduler</a></td>
+<td class="colFirst"><a href="#org.apache.storm.daemon.nimbus">org.apache.storm.daemon.nimbus</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.scheduler">org.apache.storm.scheduler</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.scheduler.resource">org.apache.storm.scheduler.resource</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -95,6 +99,31 @@
 </li>
 <li class="blockList">
 <ul class="blockList">
+<li class="blockList"><a name="org.apache.storm.daemon.nimbus">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a> in <a href="../../../../../org/apache/storm/daemon/nimbus/package-summary.html">org.apache.storm.daemon.nimbus</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Method parameters in <a href="../../../../../org/apache/storm/daemon/nimbus/package-summary.html">org.apache.storm.daemon.nimbus</a> with type arguments of type <a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/storm/scheduler/WorkerSlot.html" title="class in org.apache.storm.scheduler">WorkerSlot</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Nimbus.StandaloneINimbus.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/nimbus/Nimbus.StandaloneINimbus.html#allSlotsAvailableForScheduling-java.util.Collection-org.apache.storm.scheduler.Topologies-java.util.Set-">allSlotsAvailableForScheduling</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;&nbsp;supervisors,
+                              <a href="../../../../../org/apache/storm/scheduler/Topologies.html" title="class in org.apache.storm.scheduler">Topologies</a>&nbsp;topologies,
+                              <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;topologiesMissingAssignments)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Nimbus.StandaloneINimbus.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/nimbus/Nimbus.StandaloneINimbus.html#getHostName-java.util.Map-java.lang.String-">getHostName</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;&nbsp;supervisors,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nodeId)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li class="blockList"><a name="org.apache.storm.scheduler">
 <!--   -->
 </a>
@@ -108,9 +137,13 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getSupervisorById-java.lang.String-">getSupervisorById</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nodeId)</code>
-<div class="block">Get a specific supervisor with the <code>nodeId</code></div>
+<td class="colLast"><span class="typeNameLabel">ISchedulingState.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/ISchedulingState.html#getSupervisorById-java.lang.String-">getSupervisorById</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nodeId)</code>
+<div class="block">Get a specific supervisor with the <code>nodeId</code>.</div>
 </td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getSupervisorById-java.lang.String-">getSupervisorById</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nodeId)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -122,16 +155,24 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getSupervisors--">getSupervisors</a></span>()</code>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ISchedulingState.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/ISchedulingState.html#getSupervisors--">getSupervisors</a></span>()</code>
 <div class="block">Get all the supervisors.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getSupervisorsByHost-java.lang.String-">getSupervisorsByHost</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;host)</code>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getSupervisors--">getSupervisors</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ISchedulingState.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/ISchedulingState.html#getSupervisorsByHost-java.lang.String-">getSupervisorsByHost</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;host)</code>
 <div class="block">Get all the supervisors on the specified <code>host</code>.</div>
 </td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getSupervisorsByHost-java.lang.String-">getSupervisorsByHost</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;host)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -143,30 +184,54 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getAssignablePorts-org.apache.storm.scheduler.SupervisorDetails-">getAssignablePorts</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ISchedulingState.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/ISchedulingState.html#getAssignablePorts-org.apache.storm.scheduler.SupervisorDetails-">getAssignablePorts</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>
+<div class="block">Get the ports that are not blacklisted.</div>
+</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/scheduler/WorkerSlot.html" title="class in org.apache.storm.scheduler">WorkerSlot</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getAssignablePorts-org.apache.storm.scheduler.SupervisorDetails-">getAssignablePorts</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/scheduler/WorkerSlot.html" title="class in org.apache.storm.scheduler">WorkerSlot</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ISchedulingState.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/ISchedulingState.html#getAssignableSlots-org.apache.storm.scheduler.SupervisorDetails-">getAssignableSlots</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>
+<div class="block">Return all non-blacklisted slots on this supervisor.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/scheduler/WorkerSlot.html" title="class in org.apache.storm.scheduler">WorkerSlot</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getAssignableSlots-org.apache.storm.scheduler.SupervisorDetails-">getAssignableSlots</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getAvailablePorts-org.apache.storm.scheduler.SupervisorDetails-">getAvailablePorts</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ISchedulingState.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/ISchedulingState.html#getAvailablePorts-org.apache.storm.scheduler.SupervisorDetails-">getAvailablePorts</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>
 <div class="block">Return the available ports of this supervisor.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/scheduler/WorkerSlot.html" title="class in org.apache.storm.scheduler">WorkerSlot</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getAvailableSlots-org.apache.storm.scheduler.SupervisorDetails-">getAvailableSlots</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getAvailablePorts-org.apache.storm.scheduler.SupervisorDetails-">getAvailablePorts</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/scheduler/WorkerSlot.html" title="class in org.apache.storm.scheduler">WorkerSlot</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ISchedulingState.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/ISchedulingState.html#getAvailableSlots-org.apache.storm.scheduler.SupervisorDetails-">getAvailableSlots</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>
 <div class="block">Return all the available slots on this supervisor.</div>
 </td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/scheduler/WorkerSlot.html" title="class in org.apache.storm.scheduler">WorkerSlot</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getAvailableSlots-org.apache.storm.scheduler.SupervisorDetails-">getAvailableSlots</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>&nbsp;</td>
+</tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getUsedPorts-org.apache.storm.scheduler.SupervisorDetails-">getUsedPorts</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ISchedulingState.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/ISchedulingState.html#getUsedPorts-org.apache.storm.scheduler.SupervisorDetails-">getUsedPorts</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>
 <div class="block">Get all the used ports of this supervisor.</div>
 </td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Cluster.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#getUsedPorts-org.apache.storm.scheduler.SupervisorDetails-">getUsedPorts</a></span>(<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;supervisor)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -178,18 +243,18 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/storm/scheduler/WorkerSlot.html" title="class in org.apache.storm.scheduler">WorkerSlot</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">INimbus.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/INimbus.html#allSlotsAvailableForScheduling-java.util.Collection-org.apache.storm.scheduler.Topologies-java.util.Set-">allSlotsAvailableForScheduling</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;&nbsp;existingSupervisors,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/storm/scheduler/WorkerSlot.html" title="class in org.apache.storm.scheduler">WorkerSlot</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">INimbus.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/INimbus.html#allSlotsAvailableForScheduling-java.util.Collection-org.apache.storm.scheduler.Topologies-java.util.Set-">allSlotsAvailableForScheduling</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;&nbsp;existingSupervisors,
                               <a href="../../../../../org/apache/storm/scheduler/Topologies.html" title="class in org.apache.storm.scheduler">Topologies</a>&nbsp;topologies,
-                              <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;topologiesMissingAssignments)</code>
+                              <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;topologiesMissingAssignments)</code>
 <div class="block">Returns all slots that are available for the next round of scheduling.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">INimbus.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/INimbus.html#getHostName-java.util.Map-java.lang.String-">getHostName</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;&nbsp;existingSupervisors,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nodeId)</code>
-<div class="block">map from node id to supervisor details</div>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">INimbus.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/INimbus.html#getHostName-java.util.Map-java.lang.String-">getHostName</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;&nbsp;existingSupervisors,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nodeId)</code>
+<div class="block">map from node id to supervisor details.</div>
 </td>
 </tr>
 </tbody>
@@ -201,10 +266,11 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#Cluster-org.apache.storm.scheduler.INimbus-java.util.Map-java.util.Map-java.util.Map-">Cluster</a></span>(<a href="../../../../../org/apache/storm/scheduler/INimbus.html" title="interface in org.apache.storm.scheduler">INimbus</a>&nbsp;nimbus,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;&nbsp;supervisors,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/storm/scheduler/SchedulerAssignmentImpl.html" title="class in org.apache.storm.scheduler">SchedulerAssignmentImpl</a>&gt;&nbsp;assignments,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;storm_conf)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/Cluster.html#Cluster-org.apache.storm.scheduler.INimbus-java.util.Map-java.util.Map-org.apache.storm.scheduler.Topologies-java.util.Map-">Cluster</a></span>(<a href="../../../../../org/apache/storm/scheduler/INimbus.html" title="interface in org.apache.storm.scheduler">INimbus</a>&nbsp;nimbus,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&gt;&nbsp;supervisors,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,? extends <a href="../../../../../org/apache/storm/scheduler/SchedulerAssignment.html" title="interface in org.apache.storm.scheduler">SchedulerAssignment</a>&gt;&nbsp;map,
+       <a href="../../../../../org/apache/storm/scheduler/Topologies.html" title="class in org.apache.storm.scheduler">Topologies</a>&nbsp;topologies,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -220,12 +286,11 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/resource/RAS_Node.html#RAS_Node-java.lang.String-org.apache.storm.scheduler.SupervisorDetails-org.apache.storm.scheduler.Cluster-org.apache.storm.scheduler.Topologies-java.util.Map-java.util.Map-">RAS_Node</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nodeId,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/scheduler/resource/RAS_Node.html#RAS_Node-java.lang.String-org.apache.storm.scheduler.SupervisorDetails-org.apache.storm.scheduler.Cluster-java.util.Map-java.util.Map-">RAS_Node</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nodeId,
         <a href="../../../../../org/apache/storm/scheduler/SupervisorDetails.html" title="class in org.apache.storm.scheduler">SupervisorDetails</a>&nbsp;sup,
         <a href="../../../../../org/apache/storm/scheduler/Cluster.html" title="class in org.apache.storm.scheduler">Cluster</a>&nbsp;cluster,
-        <a href="../../../../../org/apache/storm/scheduler/Topologies.html" title="class in org.apache.storm.scheduler">Topologies</a>&nbsp;topologies,
-        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/storm/scheduler/WorkerSlot.html" title="class in org.apache.storm.scheduler">WorkerSlot</a>&gt;&nbsp;workerIdToWorker,
-        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/storm/scheduler/ExecutorDetails.html" title="class in org.apache.storm.scheduler">ExecutorDetails</a>&gt;&gt;&gt;&nbsp;assignmentMap)</code>&nbsp;</td>
+        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../../org/apache/storm/scheduler/WorkerSlot.html" title="class in org.apache.storm.scheduler">WorkerSlot</a>&gt;&nbsp;workerIdToWorker,
+        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/storm/scheduler/ExecutorDetails.html" title="class in org.apache.storm.scheduler">ExecutorDetails</a>&gt;&gt;&gt;&nbsp;assignmentMap)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -285,6 +350,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

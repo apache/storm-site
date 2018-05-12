@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":10,"i10":6,"i11":6,"i12":6,"i13":6,"i14":9};
+var methods = {"i0":6,"i1":10,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":10,"i11":6,"i12":6,"i13":6,"i14":6,"i15":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -49,7 +49,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../org/apache/storm/blobstore/BlobSynchronizer.html" title="class in org.apache.storm.blobstore"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/blobstore/BlobStoreUtils.html" title="class in org.apache.storm.blobstore"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.WithBlobstore.html" title="interface in org.apache.storm.blobstore"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.blobstore.ClientBlobStore</li>
@@ -109,24 +109,21 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../org/apache/storm/daemon/Shutdownable.html" title="interface in org.apache.storm.daemon">Shutdownable</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a>, <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title="interface in org.apache.storm.daemon">Shutdownable</a></dd>
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><a href="../../../../org/apache/storm/hdfs/blobstore/HdfsClientBlobStore.html" title="class in org.apache.storm.hdfs.blobstore">HdfsClientBlobStore</a>, <a href="../../../../org/apache/storm/blobstore/NimbusBlobStore.html" title="class in org.apache.storm.blobstore">NimbusBlobStore</a></dd>
+<dd><a href="../../../../org/apache/storm/hdfs/blobstore/HdfsClientBlobStore.html" title="class in org.apache.storm.hdfs.blobstore">HdfsClientBlobStore</a>, <a href="../../../../org/apache/storm/blobstore/LocalModeClientBlobStore.html" title="class in org.apache.storm.blobstore">LocalModeClientBlobStore</a>, <a href="../../../../org/apache/storm/blobstore/NimbusBlobStore.html" title="class in org.apache.storm.blobstore">NimbusBlobStore</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public abstract class <span class="typeNameLabel">ClientBlobStore</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title="interface in org.apache.storm.daemon">Shutdownable</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title="interface in org.apache.storm.daemon">Shutdownable</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a></pre>
 <div class="block"><p>The ClientBlobStore has two concrete implementations 1. NimbusBlobStore 2. HdfsClientBlobStore</p><p>Create, update, read and delete are some of the basic operations defined by this interface. Each operation is validated for permissions against an user. We currently have NIMBUS_ADMINS and SUPERVISOR_ADMINS configuration. NIMBUS_ADMINS are given READ, WRITE and ADMIN access whereas the SUPERVISOR_ADMINS are given READ access in order to read and download the blobs form the nimbus.</p><p>The ACLs for the blob store are validated against whether the subject is a NIMBUS_ADMIN, SUPERVISOR_ADMIN or USER who has read, write or admin privileges in order to perform respective operations on the blob.</p><p>For more detailed implementation</p></div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../org/apache/storm/blobstore/NimbusBlobStore.html" title="class in org.apache.storm.blobstore"><code>NimbusBlobStore</code></a>, 
-<a href="../../../../org/apache/storm/blobstore/LocalFsBlobStore.html" title="class in org.apache.storm.blobstore"><code>LocalFsBlobStore</code></a>, 
-<a href="../../../../org/apache/storm/hdfs/blobstore/HdfsClientBlobStore.html" title="class in org.apache.storm.hdfs.blobstore"><code>HdfsClientBlobStore</code></a>, 
-<a href="../../../../org/apache/storm/hdfs/blobstore/HdfsBlobStore.html" title="class in org.apache.storm.hdfs.blobstore"><code>HdfsBlobStore</code></a></dd>
+<dd><a href="../../../../org/apache/storm/blobstore/NimbusBlobStore.html" title="class in org.apache.storm.blobstore"><code>NimbusBlobStore</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -166,7 +163,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a></code></td>
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#conf">conf</a></span></code>&nbsp;</td>
 </tr>
 </table>
@@ -202,94 +199,98 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>abstract void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#close--">close</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/blobstore/AtomicOutputStream.html" title="class in org.apache.storm.blobstore">AtomicOutputStream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#createBlob-java.lang.String-org.apache.storm.generated.SettableBlobMeta-">createBlob</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#createBlob-java.lang.String-org.apache.storm.generated.SettableBlobMeta-">createBlob</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
           <a href="../../../../org/apache/storm/generated/SettableBlobMeta.html" title="class in org.apache.storm.generated">SettableBlobMeta</a>&nbsp;meta)</code>
 <div class="block">Client facing API to create a blob.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>protected abstract <a href="../../../../org/apache/storm/blobstore/AtomicOutputStream.html" title="class in org.apache.storm.blobstore">AtomicOutputStream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#createBlobToExtend-java.lang.String-org.apache.storm.generated.SettableBlobMeta-">createBlobToExtend</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#createBlobToExtend-java.lang.String-org.apache.storm.generated.SettableBlobMeta-">createBlobToExtend</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                   <a href="../../../../org/apache/storm/generated/SettableBlobMeta.html" title="class in org.apache.storm.generated">SettableBlobMeta</a>&nbsp;meta)</code>
 <div class="block">Client facing API to create a blob.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#createStateInZookeeper-java.lang.String-">createStateInZookeeper</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#createStateInZookeeper-java.lang.String-">createStateInZookeeper</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
 <div class="block">Creates state inside a zookeeper.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#deleteBlob-java.lang.String-">deleteBlob</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#deleteBlob-java.lang.String-">deleteBlob</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
 <div class="block">Client facing API to delete a blob.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>abstract <a href="../../../../org/apache/storm/blobstore/InputStreamWithMeta.html" title="class in org.apache.storm.blobstore">InputStreamWithMeta</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#getBlob-java.lang.String-">getBlob</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#getBlob-java.lang.String-">getBlob</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
 <div class="block">Client facing API to read a blob.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>abstract <a href="../../../../org/apache/storm/generated/ReadableBlobMeta.html" title="class in org.apache.storm.generated">ReadableBlobMeta</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#getBlobMeta-java.lang.String-">getBlobMeta</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#getBlobMeta-java.lang.String-">getBlobMeta</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
 <div class="block">Client facing API to read the metadata information.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>abstract int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#getBlobReplication-java.lang.String-">getBlobReplication</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#getBlobReplication-java.lang.String-">getBlobReplication</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
 <div class="block">Client facing API to read the replication of a blob.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>abstract <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>abstract <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#listKeys--">listKeys</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>
 <div class="block">Sets up the client API by parsing the configs.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#setBlobMeta-java.lang.String-org.apache.storm.generated.SettableBlobMeta-">setBlobMeta</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#setBlobMeta-java.lang.String-org.apache.storm.generated.SettableBlobMeta-">setBlobMeta</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
            <a href="../../../../org/apache/storm/generated/SettableBlobMeta.html" title="class in org.apache.storm.generated">SettableBlobMeta</a>&nbsp;meta)</code>
 <div class="block">Client facing API to set the metadata for a blob.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>protected abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#setBlobMetaToExtend-java.lang.String-org.apache.storm.generated.SettableBlobMeta-">setBlobMetaToExtend</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#setBlobMetaToExtend-java.lang.String-org.apache.storm.generated.SettableBlobMeta-">setBlobMetaToExtend</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                    <a href="../../../../org/apache/storm/generated/SettableBlobMeta.html" title="class in org.apache.storm.generated">SettableBlobMeta</a>&nbsp;meta)</code>
 <div class="block">Client facing API to set the metadata for a blob.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>abstract boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#setClient-java.util.Map-org.apache.storm.utils.NimbusClient-">setClient</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#setClient-java.util.Map-org.apache.storm.utils.NimbusClient-">setClient</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
          <a href="../../../../org/apache/storm/utils/NimbusClient.html" title="class in org.apache.storm.utils">NimbusClient</a>&nbsp;client)</code>
 <div class="block">Client facing API to set a nimbus client.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>abstract <a href="../../../../org/apache/storm/blobstore/AtomicOutputStream.html" title="class in org.apache.storm.blobstore">AtomicOutputStream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#updateBlob-java.lang.String-">updateBlob</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#updateBlob-java.lang.String-">updateBlob</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</code>
 <div class="block">Client facing API to update a blob.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>abstract int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#updateBlobReplication-java.lang.String-int-">updateBlobReplication</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#updateBlobReplication-java.lang.String-int-">updateBlobReplication</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                      int&nbsp;replication)</code>
 <div class="block">Client facing API to update the replication of a blob.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.html#withConfiguredClient-org.apache.storm.blobstore.ClientBlobStore.WithBlobstore-">withConfiguredClient</a></span>(<a href="../../../../org/apache/storm/blobstore/ClientBlobStore.WithBlobstore.html" title="interface in org.apache.storm.blobstore">ClientBlobStore.WithBlobstore</a>&nbsp;withBlobstore)</code>&nbsp;</td>
 </tr>
@@ -298,8 +299,8 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.daemon.Shutdownable">
@@ -328,7 +329,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockListLast">
 <li class="blockList">
 <h4>conf</h4>
-<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a> conf</pre>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt; conf</pre>
 </li>
 </ul>
 </li>
@@ -363,10 +364,10 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <li class="blockList">
 <h4>withConfiguredClient</h4>
 <pre>public static&nbsp;void&nbsp;withConfiguredClient(<a href="../../../../org/apache/storm/blobstore/ClientBlobStore.WithBlobstore.html" title="interface in org.apache.storm.blobstore">ClientBlobStore.WithBlobstore</a>&nbsp;withBlobstore)
-                                 throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+                                 throws <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -376,7 +377,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>public abstract&nbsp;void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</pre>
+<pre>public abstract&nbsp;void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
 <div class="block"><p>Sets up the client API by parsing the configs.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -390,7 +391,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>createBlobToExtend</h4>
-<pre>protected abstract&nbsp;<a href="../../../../org/apache/storm/blobstore/AtomicOutputStream.html" title="class in org.apache.storm.blobstore">AtomicOutputStream</a>&nbsp;createBlobToExtend(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<pre>protected abstract&nbsp;<a href="../../../../org/apache/storm/blobstore/AtomicOutputStream.html" title="class in org.apache.storm.blobstore">AtomicOutputStream</a>&nbsp;createBlobToExtend(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                                                          <a href="../../../../org/apache/storm/generated/SettableBlobMeta.html" title="class in org.apache.storm.generated">SettableBlobMeta</a>&nbsp;meta)
                                                   throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                                                          <a href="../../../../org/apache/storm/generated/KeyAlreadyExistsException.html" title="class in org.apache.storm.generated">KeyAlreadyExistsException</a></pre>
@@ -413,7 +414,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>updateBlob</h4>
-<pre>public abstract&nbsp;<a href="../../../../org/apache/storm/blobstore/AtomicOutputStream.html" title="class in org.apache.storm.blobstore">AtomicOutputStream</a>&nbsp;updateBlob(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)
+<pre>public abstract&nbsp;<a href="../../../../org/apache/storm/blobstore/AtomicOutputStream.html" title="class in org.apache.storm.blobstore">AtomicOutputStream</a>&nbsp;updateBlob(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)
                                        throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                                               <a href="../../../../org/apache/storm/generated/KeyNotFoundException.html" title="class in org.apache.storm.generated">KeyNotFoundException</a></pre>
 <div class="block"><p>Client facing API to update a blob.</p></div>
@@ -434,7 +435,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>getBlobMeta</h4>
-<pre>public abstract&nbsp;<a href="../../../../org/apache/storm/generated/ReadableBlobMeta.html" title="class in org.apache.storm.generated">ReadableBlobMeta</a>&nbsp;getBlobMeta(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)
+<pre>public abstract&nbsp;<a href="../../../../org/apache/storm/generated/ReadableBlobMeta.html" title="class in org.apache.storm.generated">ReadableBlobMeta</a>&nbsp;getBlobMeta(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)
                                       throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                                              <a href="../../../../org/apache/storm/generated/KeyNotFoundException.html" title="class in org.apache.storm.generated">KeyNotFoundException</a></pre>
 <div class="block"><p>Client facing API to read the metadata information.</p></div>
@@ -455,7 +456,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>setBlobMetaToExtend</h4>
-<pre>protected abstract&nbsp;void&nbsp;setBlobMetaToExtend(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<pre>protected abstract&nbsp;void&nbsp;setBlobMetaToExtend(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                                             <a href="../../../../org/apache/storm/generated/SettableBlobMeta.html" title="class in org.apache.storm.generated">SettableBlobMeta</a>&nbsp;meta)
                                      throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                                             <a href="../../../../org/apache/storm/generated/KeyNotFoundException.html" title="class in org.apache.storm.generated">KeyNotFoundException</a></pre>
@@ -476,7 +477,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteBlob</h4>
-<pre>public abstract&nbsp;void&nbsp;deleteBlob(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)
+<pre>public abstract&nbsp;void&nbsp;deleteBlob(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)
                          throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                                 <a href="../../../../org/apache/storm/generated/KeyNotFoundException.html" title="class in org.apache.storm.generated">KeyNotFoundException</a></pre>
 <div class="block"><p>Client facing API to delete a blob.</p></div>
@@ -495,7 +496,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>getBlob</h4>
-<pre>public abstract&nbsp;<a href="../../../../org/apache/storm/blobstore/InputStreamWithMeta.html" title="class in org.apache.storm.blobstore">InputStreamWithMeta</a>&nbsp;getBlob(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)
+<pre>public abstract&nbsp;<a href="../../../../org/apache/storm/blobstore/InputStreamWithMeta.html" title="class in org.apache.storm.blobstore">InputStreamWithMeta</a>&nbsp;getBlob(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)
                                      throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                                             <a href="../../../../org/apache/storm/generated/KeyNotFoundException.html" title="class in org.apache.storm.generated">KeyNotFoundException</a></pre>
 <div class="block"><p>Client facing API to read a blob.</p></div>
@@ -516,7 +517,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>listKeys</h4>
-<pre>public abstract&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;listKeys()</pre>
+<pre>public abstract&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;listKeys()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Iterator for a list of keys currently present in the blob store.</dd>
@@ -529,7 +530,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>getBlobReplication</h4>
-<pre>public abstract&nbsp;int&nbsp;getBlobReplication(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)
+<pre>public abstract&nbsp;int&nbsp;getBlobReplication(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)
                                 throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                                        <a href="../../../../org/apache/storm/generated/KeyNotFoundException.html" title="class in org.apache.storm.generated">KeyNotFoundException</a></pre>
 <div class="block"><p>Client facing API to read the replication of a blob.</p></div>
@@ -550,7 +551,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>updateBlobReplication</h4>
-<pre>public abstract&nbsp;int&nbsp;updateBlobReplication(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<pre>public abstract&nbsp;int&nbsp;updateBlobReplication(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                                           int&nbsp;replication)
                                    throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                                           <a href="../../../../org/apache/storm/generated/KeyNotFoundException.html" title="class in org.apache.storm.generated">KeyNotFoundException</a></pre>
@@ -573,7 +574,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>setClient</h4>
-<pre>public abstract&nbsp;boolean&nbsp;setClient(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<pre>public abstract&nbsp;boolean&nbsp;setClient(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
                                   <a href="../../../../org/apache/storm/utils/NimbusClient.html" title="class in org.apache.storm.utils">NimbusClient</a>&nbsp;client)</pre>
 <div class="block"><p>Client facing API to set a nimbus client.</p></div>
 <dl>
@@ -591,11 +592,24 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>createStateInZookeeper</h4>
-<pre>public abstract&nbsp;void&nbsp;createStateInZookeeper(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
+<pre>public abstract&nbsp;void&nbsp;createStateInZookeeper(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
 <div class="block"><p>Creates state inside a zookeeper. Required for blobstore to write to zookeeper when Nimbus HA is turned on in order to maintain state consistency</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>key</code> - </dd>
+</dl>
+</li>
+</ul>
+<a name="close--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>close</h4>
+<pre>public abstract&nbsp;void&nbsp;close()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true#close--" title="class or interface in java.lang">close</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -605,7 +619,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>createBlob</h4>
-<pre>public final&nbsp;<a href="../../../../org/apache/storm/blobstore/AtomicOutputStream.html" title="class in org.apache.storm.blobstore">AtomicOutputStream</a>&nbsp;createBlob(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<pre>public final&nbsp;<a href="../../../../org/apache/storm/blobstore/AtomicOutputStream.html" title="class in org.apache.storm.blobstore">AtomicOutputStream</a>&nbsp;createBlob(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                                            <a href="../../../../org/apache/storm/generated/SettableBlobMeta.html" title="class in org.apache.storm.generated">SettableBlobMeta</a>&nbsp;meta)
                                     throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                                            <a href="../../../../org/apache/storm/generated/KeyAlreadyExistsException.html" title="class in org.apache.storm.generated">KeyAlreadyExistsException</a></pre>
@@ -628,7 +642,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockListLast">
 <li class="blockList">
 <h4>setBlobMeta</h4>
-<pre>public final&nbsp;void&nbsp;setBlobMeta(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<pre>public final&nbsp;void&nbsp;setBlobMeta(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                               <a href="../../../../org/apache/storm/generated/SettableBlobMeta.html" title="class in org.apache.storm.generated">SettableBlobMeta</a>&nbsp;meta)
                        throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                               <a href="../../../../org/apache/storm/generated/KeyNotFoundException.html" title="class in org.apache.storm.generated">KeyNotFoundException</a></pre>
@@ -675,7 +689,7 @@ hljs.initHighlightingOnLoad();
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../org/apache/storm/blobstore/BlobSynchronizer.html" title="class in org.apache.storm.blobstore"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/blobstore/BlobStoreUtils.html" title="class in org.apache.storm.blobstore"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../org/apache/storm/blobstore/ClientBlobStore.WithBlobstore.html" title="interface in org.apache.storm.blobstore"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -716,6 +730,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

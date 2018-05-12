@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10};
+var methods = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,20 +97,10 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
-<li>
-<ul class="inheritance">
-<li><a href="../../../../../../../org/apache/storm/trident/operation/BaseOperation.html" title="class in org.apache.storm.trident.operation">org.apache.storm.trident.operation.BaseOperation</a></li>
-<li>
-<ul class="inheritance">
-<li><a href="../../../../../../../org/apache/storm/trident/operation/BaseFunction.html" title="class in org.apache.storm.trident.operation">org.apache.storm.trident.operation.BaseFunction</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.sql.runtime.trident.functions.EvaluationFunction</li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -119,12 +109,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../../../org/apache/storm/trident/operation/EachOperation.html" title="interface in org.apache.storm.trident.operation">EachOperation</a>, <a href="../../../../../../../org/apache/storm/trident/operation/Function.html" title="interface in org.apache.storm.trident.operation">Function</a>, <a href="../../../../../../../org/apache/storm/trident/operation/Operation.html" title="interface in org.apache.storm.trident.operation">Operation</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../../../org/apache/storm/trident/operation/MapFunction.html" title="interface in org.apache.storm.trident.operation">MapFunction</a>, <a href="../../../../../../../org/apache/storm/trident/operation/Operation.html" title="interface in org.apache.storm.trident.operation">Operation</a>, <a href="../../../../../../../org/apache/storm/trident/operation/OperationAwareMapFunction.html" title="interface in org.apache.storm.trident.operation">OperationAwareMapFunction</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">EvaluationFunction</span>
-extends <a href="../../../../../../../org/apache/storm/trident/operation/BaseFunction.html" title="class in org.apache.storm.trident.operation">BaseFunction</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+implements <a href="../../../../../../../org/apache/storm/trident/operation/OperationAwareMapFunction.html" title="interface in org.apache.storm.trident.operation">OperationAwareMapFunction</a></pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../../serialized-form.html#org.apache.storm.sql.runtime.trident.functions.EvaluationFunction">Serialized Form</a></dd>
@@ -147,9 +138,11 @@ extends <a href="../../../../../../../org/apache/storm/trident/operation/BaseFun
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/sql/runtime/trident/functions/EvaluationFunction.html#EvaluationFunction-java.lang.String-int-org.apache.calcite.DataContext-">EvaluationFunction</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;expression,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/sql/runtime/trident/functions/EvaluationFunction.html#EvaluationFunction-org.apache.storm.sql.runtime.calcite.ExecutableExpression-int-org.apache.calcite.DataContext-">EvaluationFunction</a></span>(<a href="../../../../../../../org/apache/storm/sql/runtime/calcite/ExecutableExpression.html" title="interface in org.apache.storm.sql.runtime.calcite">ExecutableExpression</a>&nbsp;projectionInstance,
                   int&nbsp;outputCount,
-                  org.apache.calcite.DataContext&nbsp;dataContext)</code>&nbsp;</td>
+                  org.apache.calcite.DataContext&nbsp;dataContext)</code>
+<div class="block">EvaluationFunction Constructor.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -168,39 +161,30 @@ extends <a href="../../../../../../../org/apache/storm/trident/operation/BaseFun
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/sql/runtime/trident/functions/EvaluationFunction.html#execute-org.apache.storm.trident.tuple.TridentTuple-org.apache.storm.trident.operation.TridentCollector-">execute</a></span>(<a href="../../../../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&nbsp;tuple,
-       <a href="../../../../../../../org/apache/storm/trident/operation/TridentCollector.html" title="interface in org.apache.storm.trident.operation">TridentCollector</a>&nbsp;collector)</code>
-<div class="block">Performs the function logic on an individual tuple and emits 0 or more tuples.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/sql/runtime/trident/functions/EvaluationFunction.html#cleanup--">cleanup</a></span>()</code>
+<div class="block">When running in local mode, called when the local cluster is being shut down.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/sql/runtime/trident/functions/EvaluationFunction.html#execute-org.apache.storm.trident.tuple.TridentTuple-">execute</a></span>(<a href="../../../../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&nbsp;input)</code>
+<div class="block">Invoked by the framework for each trident tuple in a stream.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/sql/runtime/trident/functions/EvaluationFunction.html#prepare-java.util.Map-org.apache.storm.trident.operation.TridentOperationContext-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/sql/runtime/trident/functions/EvaluationFunction.html#prepare-java.util.Map-org.apache.storm.trident.operation.TridentOperationContext-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
        <a href="../../../../../../../org/apache/storm/trident/operation/TridentOperationContext.html" title="class in org.apache.storm.trident.operation">TridentOperationContext</a>&nbsp;context)</code>
-<div class="block">No-op implementation.</div>
+<div class="block">Called when the <code>Operation</code> is first initialized.</div>
 </td>
 </tr>
 </table>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.trident.operation.BaseOperation">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;org.apache.storm.trident.operation.<a href="../../../../../../../org/apache/storm/trident/operation/BaseOperation.html" title="class in org.apache.storm.trident.operation">BaseOperation</a></h3>
-<code><a href="../../../../../../../org/apache/storm/trident/operation/BaseOperation.html#cleanup--">cleanup</a></code></li>
-</ul>
-<ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.trident.operation.Operation">
-<!--   -->
-</a>
-<h3>Methods inherited from interface&nbsp;org.apache.storm.trident.operation.<a href="../../../../../../../org/apache/storm/trident/operation/Operation.html" title="interface in org.apache.storm.trident.operation">Operation</a></h3>
-<code><a href="../../../../../../../org/apache/storm/trident/operation/Operation.html#cleanup--">cleanup</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -216,15 +200,22 @@ extends <a href="../../../../../../../org/apache/storm/trident/operation/BaseFun
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="EvaluationFunction-java.lang.String-int-org.apache.calcite.DataContext-">
+<a name="EvaluationFunction-org.apache.storm.sql.runtime.calcite.ExecutableExpression-int-org.apache.calcite.DataContext-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>EvaluationFunction</h4>
-<pre>public&nbsp;EvaluationFunction(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;expression,
+<pre>public&nbsp;EvaluationFunction(<a href="../../../../../../../org/apache/storm/sql/runtime/calcite/ExecutableExpression.html" title="interface in org.apache.storm.sql.runtime.calcite">ExecutableExpression</a>&nbsp;projectionInstance,
                           int&nbsp;outputCount,
                           org.apache.calcite.DataContext&nbsp;dataContext)</pre>
+<div class="block"><p>EvaluationFunction Constructor.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>projectionInstance</code> - ExecutableExpression</dd>
+<dd><code>outputCount</code> - output count</dd>
+<dd><code>dataContext</code> - DataContext</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -241,37 +232,52 @@ extends <a href="../../../../../../../org/apache/storm/trident/operation/BaseFun
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>public&nbsp;void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<pre>public&nbsp;void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
                     <a href="../../../../../../../org/apache/storm/trident/operation/TridentOperationContext.html" title="class in org.apache.storm.trident.operation">TridentOperationContext</a>&nbsp;context)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../../../org/apache/storm/trident/operation/BaseOperation.html#prepare-java.util.Map-org.apache.storm.trident.operation.TridentOperationContext-">BaseOperation</a></code></span></div>
-<div class="block"><p>No-op implementation.</p></div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../../org/apache/storm/trident/operation/Operation.html#prepare-java.util.Map-org.apache.storm.trident.operation.TridentOperationContext-">Operation</a></code></span></div>
+<div class="block"><p>Called when the <code>Operation</code> is first initialized.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../../org/apache/storm/trident/operation/Operation.html#prepare-java.util.Map-org.apache.storm.trident.operation.TridentOperationContext-">prepare</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../../org/apache/storm/trident/operation/Operation.html" title="interface in org.apache.storm.trident.operation">Operation</a></code></dd>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../../../../../../org/apache/storm/trident/operation/BaseOperation.html#prepare-java.util.Map-org.apache.storm.trident.operation.TridentOperationContext-">prepare</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../../org/apache/storm/trident/operation/BaseOperation.html" title="class in org.apache.storm.trident.operation">BaseOperation</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>conf</code> - the Storm configuration map</dd>
-<dd><code>context</code> - the operation context which provides information such as the number of partitions in the stream,  and the current partition index. It also provides methods for registering operation-specific  metrics.</dd>
+<dd><code>context</code> - the operation context which provides information such as the number of partitions in the stream, and the current  partition index. It also provides methods for registering operation-specific metrics.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../../../org/apache/storm/trident/operation/TridentOperationContext.html" title="class in org.apache.storm.trident.operation"><code>TridentOperationContext</code></a></dd>
 </dl>
 </li>
 </ul>
-<a name="execute-org.apache.storm.trident.tuple.TridentTuple-org.apache.storm.trident.operation.TridentCollector-">
+<a name="cleanup--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cleanup</h4>
+<pre>public&nbsp;void&nbsp;cleanup()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../../org/apache/storm/trident/operation/Operation.html#cleanup--">Operation</a></code></span></div>
+<div class="block"><p>When running in local mode, called when the local cluster is being shut down.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../../../org/apache/storm/trident/operation/Operation.html#cleanup--">cleanup</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../../org/apache/storm/trident/operation/Operation.html" title="interface in org.apache.storm.trident.operation">Operation</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="execute-org.apache.storm.trident.tuple.TridentTuple-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>execute</h4>
-<pre>public&nbsp;void&nbsp;execute(<a href="../../../../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&nbsp;tuple,
-                    <a href="../../../../../../../org/apache/storm/trident/operation/TridentCollector.html" title="interface in org.apache.storm.trident.operation">TridentCollector</a>&nbsp;collector)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../../org/apache/storm/trident/operation/Function.html#execute-org.apache.storm.trident.tuple.TridentTuple-org.apache.storm.trident.operation.TridentCollector-">Function</a></code></span></div>
-<div class="block"><p>Performs the function logic on an individual tuple and emits 0 or more tuples.</p></div>
+<pre>public&nbsp;<a href="../../../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&nbsp;execute(<a href="../../../../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&nbsp;input)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../../org/apache/storm/trident/operation/MapFunction.html#execute-org.apache.storm.trident.tuple.TridentTuple-">MapFunction</a></code></span></div>
+<div class="block"><p>Invoked by the framework for each trident tuple in a stream.</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../../../org/apache/storm/trident/operation/MapFunction.html#execute-org.apache.storm.trident.tuple.TridentTuple-">execute</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../../org/apache/storm/trident/operation/MapFunction.html" title="interface in org.apache.storm.trident.operation">MapFunction</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>tuple</code> - The incoming tuple</dd>
-<dd><code>collector</code> - A collector instance that can be used to emit tuples</dd>
+<dd><code>input</code> - the input trident tuple</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the transformed values</dd>
 </dl>
 </li>
 </ul>
@@ -348,6 +354,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

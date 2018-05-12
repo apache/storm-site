@@ -90,6 +90,10 @@
 <td class="colFirst"><a href="#org.apache.storm.mongodb.common">org.apache.storm.mongodb.common</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.mongodb.trident.state">org.apache.storm.mongodb.trident.state</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
 </tbody>
 </table>
 </li>
@@ -106,10 +110,20 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/bolt/MongoUpdateBolt.html#MongoUpdateBolt-java.lang.String-java.lang.String-org.apache.storm.mongodb.common.QueryFilterCreator-org.apache.storm.mongodb.common.mapper.MongoMapper-">MongoUpdateBolt</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;url,
-               <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;collectionName,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/bolt/MongoLookupBolt.html#MongoLookupBolt-java.lang.String-java.lang.String-org.apache.storm.mongodb.common.QueryFilterCreator-org.apache.storm.mongodb.common.mapper.MongoLookupMapper-">MongoLookupBolt</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;url,
+               <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;collectionName,
                <a href="../../../../../../org/apache/storm/mongodb/common/QueryFilterCreator.html" title="interface in org.apache.storm.mongodb.common">QueryFilterCreator</a>&nbsp;queryCreator,
-               <a href="../../../../../../org/apache/storm/mongodb/common/mapper/MongoMapper.html" title="interface in org.apache.storm.mongodb.common.mapper">MongoMapper</a>&nbsp;mapper)</code>&nbsp;</td>
+               <a href="../../../../../../org/apache/storm/mongodb/common/mapper/MongoLookupMapper.html" title="interface in org.apache.storm.mongodb.common.mapper">MongoLookupMapper</a>&nbsp;mapper)</code>
+<div class="block">MongoLookupBolt Constructor.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/bolt/MongoUpdateBolt.html#MongoUpdateBolt-java.lang.String-java.lang.String-org.apache.storm.mongodb.common.QueryFilterCreator-org.apache.storm.mongodb.common.mapper.MongoUpdateMapper-">MongoUpdateBolt</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;url,
+               <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;collectionName,
+               <a href="../../../../../../org/apache/storm/mongodb/common/QueryFilterCreator.html" title="interface in org.apache.storm.mongodb.common">QueryFilterCreator</a>&nbsp;queryCreator,
+               <a href="../../../../../../org/apache/storm/mongodb/common/mapper/MongoUpdateMapper.html" title="interface in org.apache.storm.mongodb.common.mapper">MongoUpdateMapper</a>&nbsp;mapper)</code>
+<div class="block">MongoUpdateBolt Constructor.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -128,6 +142,37 @@
 <tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/common/SimpleQueryFilterCreator.html" title="class in org.apache.storm.mongodb.common">SimpleQueryFilterCreator</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.mongodb.trident.state">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../org/apache/storm/mongodb/common/QueryFilterCreator.html" title="interface in org.apache.storm.mongodb.common">QueryFilterCreator</a> in <a href="../../../../../../org/apache/storm/mongodb/trident/state/package-summary.html">org.apache.storm.mongodb.trident.state</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
+<caption><span>Fields in <a href="../../../../../../org/apache/storm/mongodb/trident/state/package-summary.html">org.apache.storm.mongodb.trident.state</a> declared as <a href="../../../../../../org/apache/storm/mongodb/common/QueryFilterCreator.html" title="interface in org.apache.storm.mongodb.common">QueryFilterCreator</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../../org/apache/storm/mongodb/common/QueryFilterCreator.html" title="interface in org.apache.storm.mongodb.common">QueryFilterCreator</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MongoMapState.Options.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoMapState.Options.html#queryCreator">queryCreator</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/storm/mongodb/trident/state/package-summary.html">org.apache.storm.mongodb.trident.state</a> with parameters of type <a href="../../../../../../org/apache/storm/mongodb/common/QueryFilterCreator.html" title="interface in org.apache.storm.mongodb.common">QueryFilterCreator</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoState.Options.html" title="class in org.apache.storm.mongodb.trident.state">MongoState.Options</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MongoState.Options.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/mongodb/trident/state/MongoState.Options.html#withQueryFilterCreator-org.apache.storm.mongodb.common.QueryFilterCreator-">withQueryFilterCreator</a></span>(<a href="../../../../../../org/apache/storm/mongodb/common/QueryFilterCreator.html" title="interface in org.apache.storm.mongodb.common">QueryFilterCreator</a>&nbsp;queryCreator)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -187,6 +232,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

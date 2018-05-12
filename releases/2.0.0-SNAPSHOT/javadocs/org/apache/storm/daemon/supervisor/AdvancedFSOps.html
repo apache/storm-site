@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":9,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":9,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.daemon.supervisor.AdvancedFSOps</li>
@@ -107,16 +107,40 @@ var activeTableTab = "activeTableTab";
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></dd>
+</dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">AdvancedFSOps</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+implements <a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></pre>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#Z:Z_symlinksDisabled">_symlinksDisabled</a></span></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -131,7 +155,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected </code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#AdvancedFSOps--">AdvancedFSOps</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#AdvancedFSOps-java.util.Map-">AdvancedFSOps</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -150,123 +174,148 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#copyDirectory-java.io.File-java.io.File-">copyDirectory</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;fromDir,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;toDir)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#copyDirectory-java.io.File-java.io.File-">copyDirectory</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;fromDir,
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;toDir)</code>
 <div class="block">Copy a directory</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#createSymlink-java.io.File-java.io.File-">createSymlink</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;link,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;target)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#createSymlink-java.io.File-java.io.File-">createSymlink</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;link,
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;target)</code>
 <div class="block">Create a symbolic link pointing at target</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#deleteIfExists-java.io.File-">deleteIfExists</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#deleteIfExists-java.io.File-">deleteIfExists</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)</code>
 <div class="block">Delete a file or a directory and all of the children.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#deleteIfExists-java.io.File-java.lang.String-java.lang.String-">deleteIfExists</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path,
-              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user,
-              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;logPrefix)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#deleteIfExists-java.io.File-java.lang.String-java.lang.String-">deleteIfExists</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path,
+              <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user,
+              <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;logPrefix)</code>
 <div class="block">Delete a file or a directory and all of the children.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#doRequiredTopoFilesExist-java.util.Map-java.lang.String-">doRequiredTopoFilesExist</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyId)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#doRequiredTopoFilesExist-java.util.Map-java.lang.String-">doRequiredTopoFilesExist</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyId)</code>
 <div class="block">Sanity check if everything the topology needs is there for it to run.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#dump-java.io.File-java.lang.String-">dump</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location,
-    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;data)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#dump-java.io.File-java.lang.String-">dump</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location,
+    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;data)</code>
 <div class="block">Dump a string to a file</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#fileExists-java.io.File-">fileExists</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#fileExists-java.io.File-">fileExists</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)</code>
 <div class="block">Check if a file exists or not</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#forceMkdir-java.io.File-">forceMkdir</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)</code>
-<div class="block">Makes a directory, including any necessary but nonexistent parent directories.</div>
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#fileExists-java.nio.file.Path-">fileExists</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;path)</code>
+<div class="block">Check if a file exists or not</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#getOutputStream-java.io.File-">getOutputStream</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)</code>
-<div class="block">Get an output stream to write to a given file</div>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#forceMkdir-java.io.File-">forceMkdir</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)</code>
+<div class="block">Makes a directory, including any necessary but nonexistent parent directories.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Writer.html?is-external=true" title="class or interface in java.io">Writer</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#getWriter-java.io.File-">getWriter</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)</code>
-<div class="block">Get a writer for the given location</div>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#forceMkdir-java.nio.file.Path-">forceMkdir</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;path)</code>
+<div class="block">Makes a directory, including any necessary but nonexistent parent directories.</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
-<td class="colFirst"><code>static <a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html" title="class in org.apache.storm.daemon.supervisor">AdvancedFSOps</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#make-java.util.Map-">make</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>
-<div class="block">Factory to create a new AdvancedFSOps</div>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#getOutputStream-java.io.File-">getOutputStream</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)</code>
+<div class="block">Get an output stream to write to a given file</div>
 </td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#moveDirectoryPreferAtomic-java.io.File-java.io.File-">moveDirectoryPreferAtomic</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;fromDir,
-                         <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;toDir)</code>
-<div class="block">Move fromDir to toDir, and try to make it an atomic move if possible</div>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html?is-external=true" title="class or interface in java.io">Writer</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#getWriter-java.io.File-">getWriter</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)</code>
+<div class="block">Get a writer for the given location</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#restrictDirectoryPermissions-java.io.File-">restrictDirectoryPermissions</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;dir)</code>
-<div class="block">Set directory permissions to (OWNER)RWX (GROUP)R-X (OTHER)&mdash; On some systems that do not support this, it may become a noop</div>
+<td class="colFirst"><code>static <a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html" title="class in org.apache.storm.daemon.supervisor">AdvancedFSOps</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#make-java.util.Map-">make</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>
+<div class="block">Factory to create a new AdvancedFSOps</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#setupBlobPermissions-java.io.File-java.lang.String-">setupBlobPermissions</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)</code>
-<div class="block">Setup permissions properly for an internal blob store path</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#moveDirectoryPreferAtomic-java.io.File-java.io.File-">moveDirectoryPreferAtomic</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;fromDir,
+                         <a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;toDir)</code>
+<div class="block">Move fromDir to toDir, and try to make it an atomic move if possible</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#setupStormCodeDir-java.util.Map-java.io.File-">setupStormCodeDir</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topologyConf,
-                 <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)</code>
-<div class="block">Setup the permissions for the storm code dir</div>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.html?is-external=true" title="class or interface in java.nio.file">DirectoryStream</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#newDirectoryStream-java.nio.file.Path-">newDirectoryStream</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;dir)</code>
+<div class="block">List the contents of a directory.</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#setupWorkerArtifactsDir-java.util.Map-java.io.File-">setupWorkerArtifactsDir</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topologyConf,
-                       <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)</code>
-<div class="block">Setup the permissions for the worker artifacts dirs</div>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.html?is-external=true" title="class or interface in java.nio.file">DirectoryStream</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#newDirectoryStream-java.nio.file.Path-java.nio.file.DirectoryStream.Filter-">newDirectoryStream</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;dir,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.Filter.html?is-external=true" title="class or interface in java.nio.file">DirectoryStream.Filter</a>&lt;? super <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&gt;&nbsp;filter)</code>
+<div class="block">List the contents of a directory.</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
-<td class="colFirst"><code>byte[]</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#slurp-java.io.File-">slurp</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location)</code>
-<div class="block">Read the contents of a file into a byte array.</div>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#restrictDirectoryPermissions-java.io.File-">restrictDirectoryPermissions</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;dir)</code>
+<div class="block">Set directory permissions to (OWNER)RWX (GROUP)R-X (OTHER)&mdash; On some systems that do not support this, it may become a noop</div>
 </td>
 </tr>
 <tr id="i17" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#slurpString-java.io.File-">slurpString</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location)</code>
-<div class="block">Read the contents of a file into a String</div>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#setupBlobPermissions-java.io.File-java.lang.String-">setupBlobPermissions</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)</code>
+<div class="block">Setup permissions properly for an internal blob store path</div>
 </td>
 </tr>
 <tr id="i18" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#setupStormCodeDir-java.lang.String-java.io.File-">setupStormCodeDir</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user,
+                 <a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)</code>
+<div class="block">Setup the permissions for the storm code dir</div>
+</td>
+</tr>
+<tr id="i19" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#setupWorkerArtifactsDir-java.lang.String-java.io.File-">setupWorkerArtifactsDir</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user,
+                       <a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)</code>
+<div class="block">Setup the permissions for the worker artifacts dirs</div>
+</td>
+</tr>
+<tr id="i20" class="altColor">
+<td class="colFirst"><code>byte[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#slurp-java.io.File-">slurp</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location)</code>
+<div class="block">Read the contents of a file into a byte array.</div>
+</td>
+</tr>
+<tr id="i21" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#slurpString-java.io.File-">slurpString</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location)</code>
+<div class="block">Read the contents of a file into a String</div>
+</td>
+</tr>
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html#supportsAtomicDirectoryMove--">supportsAtomicDirectoryMove</a></span>()</code>&nbsp;</td>
 </tr>
@@ -275,8 +324,8 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -286,19 +335,36 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="Z:Z_symlinksDisabled">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>_symlinksDisabled</h4>
+<pre>protected final&nbsp;boolean _symlinksDisabled</pre>
+</li>
+</ul>
+</li>
+</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="AdvancedFSOps--">
+<a name="AdvancedFSOps-java.util.Map-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>AdvancedFSOps</h4>
-<pre>protected&nbsp;AdvancedFSOps()</pre>
+<pre>protected&nbsp;AdvancedFSOps(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
 </li>
 </ul>
 </li>
@@ -315,7 +381,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>make</h4>
-<pre>public static&nbsp;<a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html" title="class in org.apache.storm.daemon.supervisor">AdvancedFSOps</a>&nbsp;make(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
+<pre>public static&nbsp;<a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html" title="class in org.apache.storm.daemon.supervisor">AdvancedFSOps</a>&nbsp;make(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
 <div class="block"><p>Factory to create a new AdvancedFSOps</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -331,14 +397,16 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>restrictDirectoryPermissions</h4>
-<pre>public&nbsp;void&nbsp;restrictDirectoryPermissions(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;dir)
-                                  throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;void&nbsp;restrictDirectoryPermissions(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;dir)
+                                  throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Set directory permissions to (OWNER)RWX (GROUP)R-X (OTHER)&mdash; On some systems that do not support this, it may become a noop</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#restrictDirectoryPermissions-java.io.File-">restrictDirectoryPermissions</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>dir</code> - the directory to change permissions on</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -348,16 +416,18 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>moveDirectoryPreferAtomic</h4>
-<pre>public&nbsp;void&nbsp;moveDirectoryPreferAtomic(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;fromDir,
-                                      <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;toDir)
-                               throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;void&nbsp;moveDirectoryPreferAtomic(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;fromDir,
+                                      <a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;toDir)
+                               throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Move fromDir to toDir, and try to make it an atomic move if possible</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#moveDirectoryPreferAtomic-java.io.File-java.io.File-">moveDirectoryPreferAtomic</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>fromDir</code> - what to move</dd>
 <dd><code>toDir</code> - where to move it from</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -369,6 +439,8 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <h4>supportsAtomicDirectoryMove</h4>
 <pre>public&nbsp;boolean&nbsp;supportsAtomicDirectoryMove()</pre>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#supportsAtomicDirectoryMove--">supportsAtomicDirectoryMove</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if an atomic directory move works, else false.</dd>
 </dl>
@@ -380,16 +452,18 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>copyDirectory</h4>
-<pre>public&nbsp;void&nbsp;copyDirectory(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;fromDir,
-                          <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;toDir)
-                   throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;void&nbsp;copyDirectory(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;fromDir,
+                          <a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;toDir)
+                   throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Copy a directory</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#copyDirectory-java.io.File-java.io.File-">copyDirectory</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>fromDir</code> - from where</dd>
 <dd><code>toDir</code> - to where</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -399,16 +473,18 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>setupBlobPermissions</h4>
-<pre>public&nbsp;void&nbsp;setupBlobPermissions(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path,
-                                 <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)
-                          throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;void&nbsp;setupBlobPermissions(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path,
+                                 <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)
+                          throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Setup permissions properly for an internal blob store path</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#setupBlobPermissions-java.io.File-java.lang.String-">setupBlobPermissions</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - the path to set the permissions on</dd>
 <dd><code>user</code> - the user to change the permissions for</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -418,18 +494,20 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteIfExists</h4>
-<pre>public&nbsp;void&nbsp;deleteIfExists(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path,
-                           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user,
-                           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;logPrefix)
-                    throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;void&nbsp;deleteIfExists(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path,
+                           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user,
+                           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;logPrefix)
+                    throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Delete a file or a directory and all of the children. If it exists.</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#deleteIfExists-java.io.File-java.lang.String-java.lang.String-">deleteIfExists</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - what to delete</dd>
 <dd><code>user</code> - who to delete it as if doing it as someone else is supported</dd>
 <dd><code>logPrefix</code> - if an external process needs to be launched to delete the object what prefix to include in the logs</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
 </dl>
 </li>
 </ul>
@@ -439,52 +517,58 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>deleteIfExists</h4>
-<pre>public&nbsp;void&nbsp;deleteIfExists(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)
-                    throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;void&nbsp;deleteIfExists(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)
+                    throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Delete a file or a directory and all of the children. If it exists.</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#deleteIfExists-java.io.File-">deleteIfExists</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - what to delete</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
 </dl>
 </li>
 </ul>
-<a name="setupStormCodeDir-java.util.Map-java.io.File-">
+<a name="setupStormCodeDir-java.lang.String-java.io.File-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setupStormCodeDir</h4>
-<pre>public&nbsp;void&nbsp;setupStormCodeDir(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topologyConf,
-                              <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)
-                       throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;void&nbsp;setupStormCodeDir(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user,
+                              <a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)
+                       throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Setup the permissions for the storm code dir</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#setupStormCodeDir-java.lang.String-java.io.File-">setupStormCodeDir</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>topologyConf</code> - the config of the Topology</dd>
+<dd><code>user</code> - the user that owns the topology</dd>
 <dd><code>path</code> - the directory to set the permissions on</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
-<a name="setupWorkerArtifactsDir-java.util.Map-java.io.File-">
+<a name="setupWorkerArtifactsDir-java.lang.String-java.io.File-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setupWorkerArtifactsDir</h4>
-<pre>public&nbsp;void&nbsp;setupWorkerArtifactsDir(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topologyConf,
-                                    <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)
-                             throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;void&nbsp;setupWorkerArtifactsDir(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user,
+                                    <a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)
+                             throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Setup the permissions for the worker artifacts dirs</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#setupWorkerArtifactsDir-java.lang.String-java.io.File-">setupWorkerArtifactsDir</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>topologyConf</code> - the config of the Topology</dd>
+<dd><code>user</code> - the user that owns the topology</dd>
 <dd><code>path</code> - the directory to set the permissions on</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -494,18 +578,20 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>doRequiredTopoFilesExist</h4>
-<pre>public&nbsp;boolean&nbsp;doRequiredTopoFilesExist(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
-                                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyId)
-                                 throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;boolean&nbsp;doRequiredTopoFilesExist(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+                                        <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyId)
+                                 throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Sanity check if everything the topology needs is there for it to run.</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#doRequiredTopoFilesExist-java.util.Map-java.lang.String-">doRequiredTopoFilesExist</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>conf</code> - the config of the supervisor</dd>
 <dd><code>topologyId</code> - the ID of the topology</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if everything is there, else false</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -515,14 +601,81 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>forceMkdir</h4>
-<pre>public&nbsp;void&nbsp;forceMkdir(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)
-                throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;void&nbsp;forceMkdir(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)
+                throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Makes a directory, including any necessary but nonexistent parent directories.</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#forceMkdir-java.io.File-">forceMkdir</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - the directory to create</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+</dl>
+</li>
+</ul>
+<a name="forceMkdir-java.nio.file.Path-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>forceMkdir</h4>
+<pre>public&nbsp;void&nbsp;forceMkdir(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;path)
+                throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Makes a directory, including any necessary but nonexistent parent directories.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#forceMkdir-java.nio.file.Path-">forceMkdir</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>path</code> - the directory to create</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+</dl>
+</li>
+</ul>
+<a name="newDirectoryStream-java.nio.file.Path-java.nio.file.DirectoryStream.Filter-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>newDirectoryStream</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.html?is-external=true" title="class or interface in java.nio.file">DirectoryStream</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&gt;&nbsp;newDirectoryStream(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;dir,
+                                                <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.Filter.html?is-external=true" title="class or interface in java.nio.file">DirectoryStream.Filter</a>&lt;? super <a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&gt;&nbsp;filter)
+                                         throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#newDirectoryStream-java.nio.file.Path-java.nio.file.DirectoryStream.Filter-">IAdvancedFSOps</a></code></span></div>
+<div class="block"><p>List the contents of a directory.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#newDirectoryStream-java.nio.file.Path-java.nio.file.DirectoryStream.Filter-">newDirectoryStream</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dir</code> - the driectory to list the contents of</dd>
+<dd><code>filter</code> - a filter to decide if it should be included or not</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A stream of directory entries</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+</dl>
+</li>
+</ul>
+<a name="newDirectoryStream-java.nio.file.Path-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>newDirectoryStream</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/DirectoryStream.html?is-external=true" title="class or interface in java.nio.file">DirectoryStream</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&gt;&nbsp;newDirectoryStream(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;dir)
+                                         throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#newDirectoryStream-java.nio.file.Path-">IAdvancedFSOps</a></code></span></div>
+<div class="block"><p>List the contents of a directory.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#newDirectoryStream-java.nio.file.Path-">newDirectoryStream</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dir</code> - the driectory to list the contents of</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A stream of directory entries</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -532,16 +685,39 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>fileExists</h4>
-<pre>public&nbsp;boolean&nbsp;fileExists(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)
-                   throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;boolean&nbsp;fileExists(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;path)
+                   throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Check if a file exists or not</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#fileExists-java.io.File-">fileExists</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - the path to check</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if it exists else false</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
+</dl>
+</li>
+</ul>
+<a name="fileExists-java.nio.file.Path-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fileExists</h4>
+<pre>public&nbsp;boolean&nbsp;fileExists(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/file/Path.html?is-external=true" title="class or interface in java.nio.file">Path</a>&nbsp;path)
+                   throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Check if a file exists or not</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#fileExists-java.nio.file.Path-">fileExists</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>path</code> - the path to check</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if it exists else false</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
 </dl>
 </li>
 </ul>
@@ -551,16 +727,18 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>getWriter</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/io/Writer.html?is-external=true" title="class or interface in java.io">Writer</a>&nbsp;getWriter(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)
-                 throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/io/Writer.html?is-external=true" title="class or interface in java.io">Writer</a>&nbsp;getWriter(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)
+                 throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Get a writer for the given location</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#getWriter-java.io.File-">getWriter</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>file</code> - the file to write to</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the Writer to use.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -570,16 +748,18 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>getOutputStream</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;getOutputStream(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)
-                             throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html?is-external=true" title="class or interface in java.io">OutputStream</a>&nbsp;getOutputStream(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;file)
+                             throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Get an output stream to write to a given file</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#getOutputStream-java.io.File-">getOutputStream</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>file</code> - the file to write to</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>an OutputStream for that file</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -589,16 +769,18 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>dump</h4>
-<pre>public&nbsp;void&nbsp;dump(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location,
-                 <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;data)
-          throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;void&nbsp;dump(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location,
+                 <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;data)
+          throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Dump a string to a file</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#dump-java.io.File-java.lang.String-">dump</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>location</code> - where to write to</dd>
 <dd><code>data</code> - the data to write</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -608,16 +790,18 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>slurpString</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;slurpString(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location)
-                   throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;slurpString(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location)
+                   throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Read the contents of a file into a String</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#slurpString-java.io.File-">slurpString</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>location</code> - the file to read</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the contents of the file</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -627,16 +811,18 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>slurp</h4>
-<pre>public&nbsp;byte[]&nbsp;slurp(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location)
-             throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;byte[]&nbsp;slurp(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;location)
+             throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Read the contents of a file into a byte array.</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#slurp-java.io.File-">slurp</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>localtion</code> - the file to read</dd>
+<dd><code>location</code> - the file to read</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the contents of the file</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -646,16 +832,18 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockListLast">
 <li class="blockList">
 <h4>createSymlink</h4>
-<pre>public&nbsp;void&nbsp;createSymlink(<a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;link,
-                          <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;target)
-                   throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>public&nbsp;void&nbsp;createSymlink(<a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;link,
+                          <a href="http://docs.oracle.com/javase/8/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;target)
+                   throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Create a symbolic link pointing at target</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html#createSymlink-java.io.File-java.io.File-">createSymlink</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/IAdvancedFSOps.html" title="interface in org.apache.storm.daemon.supervisor">IAdvancedFSOps</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>link</code> - the link to create</dd>
 <dd><code>target</code> - where it should point to</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
 </dl>
 </li>
 </ul>
@@ -717,13 +905,13 @@ hljs.initHighlightingOnLoad();
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -732,6 +920,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

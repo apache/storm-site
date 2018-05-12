@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -126,21 +126,27 @@ var activeTableTab = "activeTableTab";
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionContext.html#getCurrentCount--">getCurrentCount</a></span>()</code>
-<div class="block">Returns the current count of events in the queue up to the reference tim based on which count based evictions can be performed.</div>
+<div class="block">Returns the current count of events in the queue up to the reference time based on which count based evictions can be performed.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionContext.html#getReferenceTime--">getReferenceTime</a></span>()</code>
 <div class="block">Returns the reference time that the eviction policy could use to evict the events.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionContext.html#getSlidingCount--">getSlidingCount</a></span>()</code>
 <div class="block">Returns the sliding count for count based windows</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionContext.html#getSlidingInterval--">getSlidingInterval</a></span>()</code>
+<div class="block">Returns the sliding interval for time based windows</div>
 </td>
 </tr>
 </table>
@@ -164,7 +170,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getReferenceTime</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getReferenceTime()</pre>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getReferenceTime()</pre>
 <div class="block"><p>Returns the reference time that the eviction policy could use to evict the events. In the case of event time processing, this would be the watermark time.</p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -178,11 +184,25 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getSlidingCount</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getSlidingCount()</pre>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getSlidingCount()</pre>
 <div class="block"><p>Returns the sliding count for count based windows</p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the sliding count</dd>
+</dl>
+</li>
+</ul>
+<a name="getSlidingInterval--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSlidingInterval</h4>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getSlidingInterval()</pre>
+<div class="block"><p>Returns the sliding interval for time based windows</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the sliding interval</dd>
 </dl>
 </li>
 </ul>
@@ -192,8 +212,8 @@ var activeTableTab = "activeTableTab";
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getCurrentCount</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getCurrentCount()</pre>
-<div class="block"><p>Returns the current count of events in the queue up to the reference tim based on which count based evictions can be performed.</p></div>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getCurrentCount()</pre>
+<div class="block"><p>Returns the current count of events in the queue up to the reference time based on which count based evictions can be performed.</p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the current count</dd>
@@ -273,6 +293,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -103,12 +103,12 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="class in org.apache.storm.kafka.trident">TridentKafkaState</a></code></td>
+<td class="colFirst"><code><a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="class in org.apache.storm.kafka.trident">TridentKafkaState</a>&lt;<a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="type parameter in TridentKafkaState">K</a>,<a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="type parameter in TridentKafkaState">V</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">TridentKafkaState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html#withKafkaTopicSelector-org.apache.storm.kafka.trident.selector.KafkaTopicSelector-">withKafkaTopicSelector</a></span>(<a href="../../../../../../org/apache/storm/kafka/trident/selector/KafkaTopicSelector.html" title="interface in org.apache.storm.kafka.trident.selector">KafkaTopicSelector</a>&nbsp;selector)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="class in org.apache.storm.kafka.trident">TridentKafkaState</a></code></td>
-<td class="colLast"><span class="typeNameLabel">TridentKafkaState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html#withTridentTupleToKafkaMapper-org.apache.storm.kafka.trident.mapper.TridentTupleToKafkaMapper-">withTridentTupleToKafkaMapper</a></span>(<a href="../../../../../../org/apache/storm/kafka/trident/mapper/TridentTupleToKafkaMapper.html" title="interface in org.apache.storm.kafka.trident.mapper">TridentTupleToKafkaMapper</a>&nbsp;mapper)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="class in org.apache.storm.kafka.trident">TridentKafkaState</a>&lt;<a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="type parameter in TridentKafkaState">K</a>,<a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="type parameter in TridentKafkaState">V</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">TridentKafkaState.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html#withTridentTupleToKafkaMapper-org.apache.storm.kafka.trident.mapper.TridentTupleToKafkaMapper-">withTridentTupleToKafkaMapper</a></span>(<a href="../../../../../../org/apache/storm/kafka/trident/mapper/TridentTupleToKafkaMapper.html" title="interface in org.apache.storm.kafka.trident.mapper">TridentTupleToKafkaMapper</a>&lt;<a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="type parameter in TridentKafkaState">K</a>,<a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="type parameter in TridentKafkaState">V</a>&gt;&nbsp;mapper)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -121,8 +121,14 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">TridentKafkaStateUpdater.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaStateUpdater.html#updateState-org.apache.storm.kafka.trident.TridentKafkaState-java.util.List-org.apache.storm.trident.operation.TridentCollector-">updateState</a></span>(<a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="class in org.apache.storm.kafka.trident">TridentKafkaState</a>&lt;<a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaStateUpdater.html" title="type parameter in TridentKafkaStateUpdater">K</a>,<a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaStateUpdater.html" title="type parameter in TridentKafkaStateUpdater">V</a>&gt;&nbsp;state,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&gt;&nbsp;tuples,
+           <a href="../../../../../../org/apache/storm/trident/operation/TridentCollector.html" title="interface in org.apache.storm.trident.operation">TridentCollector</a>&nbsp;collector)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">TridentKafkaUpdater.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaUpdater.html#updateState-org.apache.storm.kafka.trident.TridentKafkaState-java.util.List-org.apache.storm.trident.operation.TridentCollector-">updateState</a></span>(<a href="../../../../../../org/apache/storm/kafka/trident/TridentKafkaState.html" title="class in org.apache.storm.kafka.trident">TridentKafkaState</a>&nbsp;state,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&gt;&nbsp;tuples,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&gt;&nbsp;tuples,
            <a href="../../../../../../org/apache/storm/trident/operation/TridentCollector.html" title="interface in org.apache.storm.trident.operation">TridentCollector</a>&nbsp;collector)</code>&nbsp;</td>
 </tr>
 </tbody>
@@ -183,6 +189,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

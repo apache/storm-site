@@ -95,6 +95,30 @@
 <!--   -->
 </a>
 <h3>Uses of <a href="../../../../../../org/apache/storm/executor/spout/SpoutExecutor.html" title="class in org.apache.storm.executor.spout">SpoutExecutor</a> in <a href="../../../../../../org/apache/storm/executor/spout/package-summary.html">org.apache.storm.executor.spout</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../../org/apache/storm/executor/spout/package-summary.html">org.apache.storm.executor.spout</a> with parameters of type <a href="../../../../../../org/apache/storm/executor/spout/SpoutExecutor.html" title="class in org.apache.storm.executor.spout">SpoutExecutor</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">SpoutExecutor.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/executor/spout/SpoutExecutor.html#ackSpoutMsg-org.apache.storm.executor.spout.SpoutExecutor-org.apache.storm.daemon.Task-java.lang.Long-org.apache.storm.executor.TupleInfo-">ackSpoutMsg</a></span>(<a href="../../../../../../org/apache/storm/executor/spout/SpoutExecutor.html" title="class in org.apache.storm.executor.spout">SpoutExecutor</a>&nbsp;executor,
+           <a href="../../../../../../org/apache/storm/daemon/Task.html" title="class in org.apache.storm.daemon">Task</a>&nbsp;taskData,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;timeDelta,
+           <a href="../../../../../../org/apache/storm/executor/TupleInfo.html" title="class in org.apache.storm.executor">TupleInfo</a>&nbsp;tupleInfo)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">SpoutExecutor.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/executor/spout/SpoutExecutor.html#failSpoutMsg-org.apache.storm.executor.spout.SpoutExecutor-org.apache.storm.daemon.Task-java.lang.Long-org.apache.storm.executor.TupleInfo-java.lang.String-">failSpoutMsg</a></span>(<a href="../../../../../../org/apache/storm/executor/spout/SpoutExecutor.html" title="class in org.apache.storm.executor.spout">SpoutExecutor</a>&nbsp;executor,
+            <a href="../../../../../../org/apache/storm/daemon/Task.html" title="class in org.apache.storm.daemon">Task</a>&nbsp;taskData,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;timeDelta,
+            <a href="../../../../../../org/apache/storm/executor/TupleInfo.html" title="class in org.apache.storm.executor">TupleInfo</a>&nbsp;tupleInfo,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;reason)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
 <caption><span>Constructors in <a href="../../../../../../org/apache/storm/executor/spout/package-summary.html">org.apache.storm.executor.spout</a> with parameters of type <a href="../../../../../../org/apache/storm/executor/spout/SpoutExecutor.html" title="class in org.apache.storm.executor.spout">SpoutExecutor</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -102,16 +126,15 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/executor/spout/SpoutOutputCollectorImpl.html#SpoutOutputCollectorImpl-org.apache.storm.spout.ISpout-org.apache.storm.executor.spout.SpoutExecutor-org.apache.storm.daemon.Task-int-org.apache.storm.utils.MutableLong-boolean-java.util.Random-java.lang.Boolean-java.lang.Boolean-org.apache.storm.utils.RotatingMap-">SpoutOutputCollectorImpl</a></span>(<a href="../../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a>&nbsp;spout,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/executor/spout/SpoutOutputCollectorImpl.html#SpoutOutputCollectorImpl-org.apache.storm.spout.ISpout-org.apache.storm.executor.spout.SpoutExecutor-org.apache.storm.daemon.Task-org.apache.storm.utils.MutableLong-boolean-java.util.Random-java.lang.Boolean-java.lang.Boolean-org.apache.storm.utils.RotatingMap-">SpoutOutputCollectorImpl</a></span>(<a href="../../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a>&nbsp;spout,
                         <a href="../../../../../../org/apache/storm/executor/spout/SpoutExecutor.html" title="class in org.apache.storm.executor.spout">SpoutExecutor</a>&nbsp;executor,
                         <a href="../../../../../../org/apache/storm/daemon/Task.html" title="class in org.apache.storm.daemon">Task</a>&nbsp;taskData,
-                        int&nbsp;taskId,
                         <a href="../../../../../../org/apache/storm/utils/MutableLong.html" title="class in org.apache.storm.utils">MutableLong</a>&nbsp;emittedCount,
                         boolean&nbsp;hasAckers,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Random.html?is-external=true" title="class or interface in java.util">Random</a>&nbsp;random,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;isEventLoggers,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;isDebug,
-                        <a href="../../../../../../org/apache/storm/utils/RotatingMap.html" title="class in org.apache.storm.utils">RotatingMap</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>,<a href="../../../../../../org/apache/storm/executor/TupleInfo.html" title="class in org.apache.storm.executor">TupleInfo</a>&gt;&nbsp;pending)</code>&nbsp;</td>
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Random.html?is-external=true" title="class or interface in java.util">Random</a>&nbsp;random,
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;isEventLoggers,
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&nbsp;isDebug,
+                        <a href="../../../../../../org/apache/storm/utils/RotatingMap.html" title="class in org.apache.storm.utils">RotatingMap</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>,<a href="../../../../../../org/apache/storm/executor/TupleInfo.html" title="class in org.apache.storm.executor">TupleInfo</a>&gt;&nbsp;pending)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -171,6 +194,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -129,14 +129,22 @@ var activeTableTab = "activeTableTab";
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#credentialsChanged-org.apache.storm.generated.Credentials-">credentialsChanged</a></span>(<a href="../../../../org/apache/storm/generated/Credentials.html" title="class in org.apache.storm.generated">Credentials</a>&nbsp;credentials)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#getBackPressureFlag--">getBackPressureFlag</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#getExecutorId--">getExecutorId</a></span>()</code>&nbsp;</td>
 </tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/utils/JCQueue.html" title="class in org.apache.storm.utils">JCQueue</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#getReceiveQueue--">getReceiveQueue</a></span>()</code>&nbsp;</td>
+</tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#loadChanged-org.apache.storm.grouping.LoadMapping-">loadChanged</a></span>(<a href="../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;loadMapping)</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#publishFlushTuple--">publishFlushTuple</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/generated/ExecutorStats.html" title="class in org.apache.storm.generated">ExecutorStats</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#renderStats--">renderStats</a></span>()</code>&nbsp;</td>
 </tr>
@@ -170,7 +178,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getExecutorId</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;getExecutorId()</pre>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;getExecutorId()</pre>
 </li>
 </ul>
 <a name="credentialsChanged-org.apache.storm.generated.Credentials-">
@@ -182,13 +190,31 @@ var activeTableTab = "activeTableTab";
 <pre>void&nbsp;credentialsChanged(<a href="../../../../org/apache/storm/generated/Credentials.html" title="class in org.apache.storm.generated">Credentials</a>&nbsp;credentials)</pre>
 </li>
 </ul>
-<a name="getBackPressureFlag--">
+<a name="loadChanged-org.apache.storm.grouping.LoadMapping-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>loadChanged</h4>
+<pre>void&nbsp;loadChanged(<a href="../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;loadMapping)</pre>
+</li>
+</ul>
+<a name="getReceiveQueue--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getReceiveQueue</h4>
+<pre><a href="../../../../org/apache/storm/utils/JCQueue.html" title="class in org.apache.storm.utils">JCQueue</a>&nbsp;getReceiveQueue()</pre>
+</li>
+</ul>
+<a name="publishFlushTuple--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getBackPressureFlag</h4>
-<pre>boolean&nbsp;getBackPressureFlag()</pre>
+<h4>publishFlushTuple</h4>
+<pre>boolean&nbsp;publishFlushTuple()</pre>
 </li>
 </ul>
 </li>
@@ -264,6 +290,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li>Next&nbsp;Class</li>
+<li><a href="../../../../../org/apache/storm/kafka/bolt/KafkaProducerTopology.html" title="class in org.apache.storm.kafka.bolt"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/kafka/bolt/KafkaBolt.html" target="_top">Frames</a></li>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../../org/apache/storm/topology/base/BaseComponent.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseComponent</a></li>
@@ -106,7 +106,12 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseRichBolt</a></li>
 <li>
 <ul class="inheritance">
+<li><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseTickTupleAwareRichBolt</a></li>
+<li>
+<ul class="inheritance">
 <li>org.apache.storm.kafka.bolt.KafkaBolt&lt;K,V&gt;</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -119,13 +124,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/task/IBolt.html" title="interface in org.apache.storm.task">IBolt</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichBolt.html" title="interface in org.apache.storm.topology">IRichBolt</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/task/IBolt.html" title="interface in org.apache.storm.task">IBolt</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichBolt.html" title="interface in org.apache.storm.topology">IRichBolt</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">KafkaBolt&lt;K,V&gt;</span>
-extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html" title="class in org.apache.storm.topology.base">BaseRichBolt</a></pre>
-<div class="block"><p>Bolt implementation that can send Tuple data to Kafka <p/> It expects the producer configuration and topic in storm config under <p/> &lsquo;kafka.broker.properties&rsquo; and &lsquo;topic&rsquo; <p/> respectively. <p/> This bolt uses 0.8.2 Kafka Producer API. <p/> It works for sending tuples to older Kafka version (0.8.1).</p></div>
+extends <a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base">BaseTickTupleAwareRichBolt</a></pre>
+<div class="block"><p>Bolt implementation that can send Tuple data to Kafka. <p/> Most configuration for this bolt should be through the various setter methods in the bolt. For backwards compatibility it supports the producer configuration and topic to be placed in the storm config under <p/> &lsquo;kafka.broker.properties&rsquo; and &lsquo;topic&rsquo; <p/> respectively.</p></div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../serialized-form.html#org.apache.storm.kafka.bolt.KafkaBolt">Serialized Form</a></dd>
@@ -149,7 +154,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#TOPIC">TOPIC</a></span></code>&nbsp;</td>
 </tr>
 </table>
@@ -197,40 +202,67 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#execute-org.apache.storm.tuple.Tuple-">execute</a></span>(<a href="../../../../../org/apache/storm/tuple/Tuple.html" title="interface in org.apache.storm.tuple">Tuple</a>&nbsp;input)</code>
-<div class="block">Process a single tuple of input.</div>
+<td class="colFirst"><code>protected org.apache.kafka.clients.producer.KafkaProducer&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#mkProducer-java.util.Properties-">mkProducer</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;props)</code>
+<div class="block">Intended to be overridden for tests.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
        <a href="../../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/task/OutputCollector.html" title="class in org.apache.storm.task">OutputCollector</a>&nbsp;collector)</code>
 <div class="block">Called when a task for this component is initialized within a worker on the cluster.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#setAsync-boolean-">setAsync</a></span>(boolean&nbsp;async)</code>&nbsp;</td>
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#process-org.apache.storm.tuple.Tuple-">process</a></span>(<a href="../../../../../org/apache/storm/tuple/Tuple.html" title="interface in org.apache.storm.tuple">Tuple</a>&nbsp;input)</code>
+<div class="block">Process a single non-tick tuple of input.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#setFireAndForget-boolean-">setFireAndForget</a></span>(boolean&nbsp;fireAndForget)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#setAsync-boolean-">setAsync</a></span>(boolean&nbsp;async)</code>
+<div class="block">If set to true(the default) the bolt will not wait for the message to be fully sent to Kafka before getting another tuple to send.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="class in org.apache.storm.kafka.bolt">KafkaBolt</a>&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#withProducerProperties-java.util.Properties-">withProducerProperties</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;producerProperties)</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#setFireAndForget-boolean-">setFireAndForget</a></span>(boolean&nbsp;fireAndForget)</code>
+<div class="block">If set to true the bolt will assume that sending a message to kafka will succeed and will ack the tuple as soon as it has handed the message off to the producer API if false (the default) the message will be acked after it was successfully sent to kafka or failed if it was not successfully sent.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#toString--">toString</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="class in org.apache.storm.kafka.bolt">KafkaBolt</a>&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#withProducerProperties-java.util.Properties-">withProducerProperties</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;producerProperties)</code>&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="class in org.apache.storm.kafka.bolt">KafkaBolt</a>&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#withTopicSelector-org.apache.storm.kafka.bolt.selector.KafkaTopicSelector-">withTopicSelector</a></span>(<a href="../../../../../org/apache/storm/kafka/bolt/selector/KafkaTopicSelector.html" title="interface in org.apache.storm.kafka.bolt.selector">KafkaTopicSelector</a>&nbsp;selector)</code>&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i10" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="class in org.apache.storm.kafka.bolt">KafkaBolt</a>&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#withTopicSelector-java.lang.String-">withTopicSelector</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topic)</code>
+<div class="block">Set the messages to be published to a single topic.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="class in org.apache.storm.kafka.bolt">KafkaBolt</a>&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html#withTupleToKafkaMapper-org.apache.storm.kafka.bolt.mapper.TupleToKafkaMapper-">withTupleToKafkaMapper</a></span>(<a href="../../../../../org/apache/storm/kafka/bolt/mapper/TupleToKafkaMapper.html" title="interface in org.apache.storm.kafka.bolt.mapper">TupleToKafkaMapper</a>&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;&nbsp;mapper)</code>&nbsp;</td>
 </tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.base.BaseTickTupleAwareRichBolt">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.storm.topology.base.<a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base">BaseTickTupleAwareRichBolt</a></h3>
+<code><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html#execute-org.apache.storm.tuple.Tuple-">execute</a>, <a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html#onTickTuple-org.apache.storm.tuple.Tuple-">onTickTuple</a></code></li>
+</ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.base.BaseComponent">
 <!--   -->
@@ -242,8 +274,8 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.IComponent">
@@ -272,7 +304,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <ul class="blockListLast">
 <li class="blockList">
 <h4>TOPIC</h4>
-<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> TOPIC</pre>
+<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> TOPIC</pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../constant-values.html#org.apache.storm.kafka.bolt.KafkaBolt.TOPIC">Constant Field Values</a></dd>
@@ -313,6 +345,22 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="class in org.apache.storm.kafka.bolt">KafkaBolt</a>&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;&nbsp;withTupleToKafkaMapper(<a href="../../../../../org/apache/storm/kafka/bolt/mapper/TupleToKafkaMapper.html" title="interface in org.apache.storm.kafka.bolt.mapper">TupleToKafkaMapper</a>&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;&nbsp;mapper)</pre>
 </li>
 </ul>
+<a name="withTopicSelector-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withTopicSelector</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="class in org.apache.storm.kafka.bolt">KafkaBolt</a>&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;&nbsp;withTopicSelector(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topic)</pre>
+<div class="block"><p>Set the messages to be published to a single topic.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>topic</code> - the topic to publish to</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this</dd>
+</dl>
+</li>
+</ul>
 <a name="withTopicSelector-org.apache.storm.kafka.bolt.selector.KafkaTopicSelector-">
 <!--   -->
 </a>
@@ -328,7 +376,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <ul class="blockList">
 <li class="blockList">
 <h4>withProducerProperties</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="class in org.apache.storm.kafka.bolt">KafkaBolt</a>&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;&nbsp;withProducerProperties(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;producerProperties)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="class in org.apache.storm.kafka.bolt">KafkaBolt</a>&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;&nbsp;withProducerProperties(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;producerProperties)</pre>
 </li>
 </ul>
 <a name="prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">
@@ -337,29 +385,41 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>public&nbsp;void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<pre>public&nbsp;void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
                     <a href="../../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
                     <a href="../../../../../org/apache/storm/task/OutputCollector.html" title="class in org.apache.storm.task">OutputCollector</a>&nbsp;collector)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/task/IBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">IBolt</a></code></span></div>
 <div class="block"><p>Called when a task for this component is initialized within a worker on the cluster. It provides the bolt with the environment in which the bolt executes.</p><p>This includes the:</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>stormConf</code> - The Storm configuration for this bolt. This is the configuration provided to the topology merged in with cluster configuration on this machine.</dd>
-<dd><code>context</code> - This object can be used to get information about this task&rsquo;s place within the topology, including the task id and component id of this task, input and output information, etc.</dd>
-<dd><code>collector</code> - The collector is used to emit tuples from this bolt. Tuples can be emitted at any time, including the prepare and cleanup methods. The collector is thread-safe and should be saved as an instance variable of this bolt object.</dd>
+<dd><code>topoConf</code> - The Storm configuration for this bolt. This is the configuration provided to the topology merged in with cluster  configuration on this machine.</dd>
+<dd><code>context</code> - This object can be used to get information about this task&rsquo;s place within the topology, including the task id and  component id of this task, input and output information, etc.</dd>
+<dd><code>collector</code> - The collector is used to emit tuples from this bolt. Tuples can be emitted at any time, including the prepare and  cleanup methods. The collector is thread-safe and should be saved as an instance variable of this bolt object.</dd>
 </dl>
 </li>
 </ul>
-<a name="execute-org.apache.storm.tuple.Tuple-">
+<a name="mkProducer-java.util.Properties-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>execute</h4>
-<pre>public&nbsp;void&nbsp;execute(<a href="../../../../../org/apache/storm/tuple/Tuple.html" title="interface in org.apache.storm.tuple">Tuple</a>&nbsp;input)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/task/IBolt.html#execute-org.apache.storm.tuple.Tuple-">IBolt</a></code></span></div>
-<div class="block"><p>Process a single tuple of input. The Tuple object contains metadata on it about which component/stream/task it came from. The values of the Tuple can be accessed using Tuple#getValue. The IBolt does not have to process the Tuple immediately. It is perfectly fine to hang onto a tuple and process it later (for instance, to do an aggregation or join).</p><p>Tuples should be emitted using the OutputCollector provided through the prepare method. It is required that all input tuples are acked or failed at some point using the OutputCollector. Otherwise, Storm will be unable to determine when tuples coming off the spouts have been completed.</p><p>For the common case of acking an input tuple at the end of the execute method, see IBasicBolt which automates this.</p></div>
+<h4>mkProducer</h4>
+<pre>protected&nbsp;org.apache.kafka.clients.producer.KafkaProducer&lt;<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">K</a>,<a href="../../../../../org/apache/storm/kafka/bolt/KafkaBolt.html" title="type parameter in KafkaBolt">V</a>&gt;&nbsp;mkProducer(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;props)</pre>
+<div class="block"><p>Intended to be overridden for tests. Make the producer with the given props</p></div>
+</li>
+</ul>
+<a name="process-org.apache.storm.tuple.Tuple-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>process</h4>
+<pre>protected&nbsp;void&nbsp;process(<a href="../../../../../org/apache/storm/tuple/Tuple.html" title="interface in org.apache.storm.tuple">Tuple</a>&nbsp;input)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html#process-org.apache.storm.tuple.Tuple-">BaseTickTupleAwareRichBolt</a></code></span></div>
+<div class="block"><p>Process a single non-tick tuple of input. Implementation needs to handle ack manually. More details on <a href="../../../../../org/apache/storm/task/IBolt.html#execute-org.apache.storm.tuple.Tuple-"><code>IBolt.execute(Tuple)</code></a>.</p></div>
 <dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html#process-org.apache.storm.tuple.Tuple-">process</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base">BaseTickTupleAwareRichBolt</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>input</code> - The input tuple to be processed.</dd>
 </dl>
@@ -404,15 +464,38 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <li class="blockList">
 <h4>setFireAndForget</h4>
 <pre>public&nbsp;void&nbsp;setFireAndForget(boolean&nbsp;fireAndForget)</pre>
+<div class="block"><p>If set to true the bolt will assume that sending a message to kafka will succeed and will ack the tuple as soon as it has handed the message off to the producer API if false (the default) the message will be acked after it was successfully sent to kafka or failed if it was not successfully sent.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>fireAndForget</code> - whether the bolt should fire and forget</dd>
+</dl>
 </li>
 </ul>
 <a name="setAsync-boolean-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setAsync</h4>
 <pre>public&nbsp;void&nbsp;setAsync(boolean&nbsp;async)</pre>
+<div class="block"><p>If set to true(the default) the bolt will not wait for the message to be fully sent to Kafka before getting another tuple to send.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>async</code> - true to have multiple tuples in flight to kafka, else false.</dd>
+</dl>
+</li>
+</ul>
+<a name="toString--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -448,7 +531,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li>Next&nbsp;Class</li>
+<li><a href="../../../../../org/apache/storm/kafka/bolt/KafkaProducerTopology.html" title="class in org.apache.storm.kafka.bolt"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/kafka/bolt/KafkaBolt.html" target="_top">Frames</a></li>
@@ -488,6 +571,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -49,8 +49,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../org/apache/storm/windowing/EvictionPolicy.Action.html" title="enum in org.apache.storm.windowing"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/windowing/TimeTriggerPolicy.html" title="class in org.apache.storm.windowing"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/windowing/StatefulWindowManager.html" title="class in org.apache.storm.windowing"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/windowing/TimestampExtractor.html" title="interface in org.apache.storm.windowing"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/windowing/TimeEvictionPolicy.html" target="_top">Frames</a></li>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.windowing.TimeEvictionPolicy&lt;T&gt;</li>
@@ -109,7 +109,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;T&gt;</dd>
+<dd><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;T,<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&gt;</dd>
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
@@ -118,8 +118,8 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">TimeEvictionPolicy&lt;T&gt;</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;T&gt;</pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+implements <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;T,<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&gt;</pre>
 <div class="block"><p>Eviction policy that evicts events based on time duration.</p></div>
 </li>
 </ul>
@@ -155,10 +155,8 @@ implements <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" 
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#referenceTime">referenceTime</a></span></code>
-<div class="block">The reference time in millis for window calculations and expiring events.</div>
-</td>
+<td class="colFirst"><code>protected <a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#evictionContext">evictionContext</a></span></code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -196,23 +194,47 @@ implements <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" 
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.Action.html" title="enum in org.apache.storm.windowing">EvictionPolicy.Action</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#evict-org.apache.storm.windowing.Event-">evict</a></span>(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>&gt;&nbsp;event)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#evict-org.apache.storm.windowing.Event-">evict</a></span>(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>&gt;&nbsp;event)</code>
 <div class="block">Decides if an event should be expired from the window, processed in the current window or kept for later processing.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#getContext--">getContext</a></span>()</code>
+<div class="block">Returns the current context that is part of this eviction policy.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#getState--">getState</a></span>()</code>
+<div class="block">Return runtime state to be checkpointed by the framework for restoring the eviction policy in case of failures.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#reset--">reset</a></span>()</code>
+<div class="block">Resets the eviction policy.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#restoreState-org.apache.storm.windowing.EvictionContext-">restoreState</a></span>(<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;state)</code>
+<div class="block">Restore the eviction policy from the state that was earlier checkpointed by the framework.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a></span>(<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;context)</code>
 <div class="block">Sets a context in the eviction policy that can be used while evicting the events.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#track-org.apache.storm.windowing.Event-">track</a></span>(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>&gt;&nbsp;event)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#track-org.apache.storm.windowing.Event-">track</a></span>(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>&gt;&nbsp;event)</code>
 <div class="block">Tracks the event to later decide whether <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#evict-org.apache.storm.windowing.Event-"><code>EvictionPolicy.evict(Event)</code></a> should evict it or not.</div>
 </td>
 </tr>
@@ -221,8 +243,8 @@ implements <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" 
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -238,14 +260,13 @@ implements <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" 
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a name="referenceTime">
+<a name="evictionContext">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>referenceTime</h4>
-<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a> referenceTime</pre>
-<div class="block"><p>The reference time in millis for window calculations and expiring events. If not set it will default to System.currentTimeMillis()</p></div>
+<h4>evictionContext</h4>
+<pre>protected volatile&nbsp;<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a> evictionContext</pre>
 </li>
 </ul>
 </li>
@@ -284,11 +305,11 @@ implements <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" 
 <ul class="blockList">
 <li class="blockList">
 <h4>evict</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.Action.html" title="enum in org.apache.storm.windowing">EvictionPolicy.Action</a>&nbsp;evict(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>&gt;&nbsp;event)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.Action.html" title="enum in org.apache.storm.windowing">EvictionPolicy.Action</a>&nbsp;evict(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>&gt;&nbsp;event)</pre>
 <div class="block"><p><p>Decides if an event should be expired from the window, processed in the current window or kept for later processing.</p></p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#evict-org.apache.storm.windowing.Event-">evict</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>&gt;</code></dd>
+<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#evict-org.apache.storm.windowing.Event-">evict</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>,<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>event</code> - the input event</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -302,14 +323,31 @@ implements <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" 
 <ul class="blockList">
 <li class="blockList">
 <h4>track</h4>
-<pre>public&nbsp;void&nbsp;track(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>&gt;&nbsp;event)</pre>
+<pre>public&nbsp;void&nbsp;track(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>&gt;&nbsp;event)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#track-org.apache.storm.windowing.Event-">EvictionPolicy</a></code></span></div>
 <div class="block"><p>Tracks the event to later decide whether <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#evict-org.apache.storm.windowing.Event-"><code>EvictionPolicy.evict(Event)</code></a> should evict it or not.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#track-org.apache.storm.windowing.Event-">track</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>&gt;</code></dd>
+<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#track-org.apache.storm.windowing.Event-">track</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>,<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>event</code> - the input event to be tracked</dd>
+</dl>
+</li>
+</ul>
+<a name="getContext--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getContext</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;getContext()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#getContext--">EvictionPolicy</a></code></span></div>
+<div class="block"><p>Returns the current context that is part of this eviction policy.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#getContext--">getContext</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>,<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the eviction context</dd>
 </dl>
 </li>
 </ul>
@@ -324,7 +362,58 @@ implements <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" 
 <div class="block"><p>Sets a context in the eviction policy that can be used while evicting the events. E.g. For TimeEvictionPolicy, this could be used to set the reference timestamp.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>&gt;</code></dd>
+<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>,<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>context</code> - the eviction context</dd>
+</dl>
+</li>
+</ul>
+<a name="reset--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>reset</h4>
+<pre>public&nbsp;void&nbsp;reset()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#reset--">EvictionPolicy</a></code></span></div>
+<div class="block"><p>Resets the eviction policy.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#reset--">reset</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>,<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getState--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getState</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;getState()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#getState--">EvictionPolicy</a></code></span></div>
+<div class="block"><p>Return runtime state to be checkpointed by the framework for restoring the eviction policy in case of failures.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#getState--">getState</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>,<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the state</dd>
+</dl>
+</li>
+</ul>
+<a name="restoreState-org.apache.storm.windowing.EvictionContext-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>restoreState</h4>
+<pre>public&nbsp;void&nbsp;restoreState(<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;state)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#restoreState-S-">EvictionPolicy</a></code></span></div>
+<div class="block"><p>Restore the eviction policy from the state that was earlier checkpointed by the framework.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#restoreState-S-">restoreState</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="type parameter in TimeEvictionPolicy">T</a>,<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>state</code> - the state</dd>
 </dl>
 </li>
 </ul>
@@ -334,10 +423,10 @@ implements <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" 
 <ul class="blockListLast">
 <li class="blockList">
 <h4>toString</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -373,8 +462,8 @@ hljs.initHighlightingOnLoad();
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../org/apache/storm/windowing/EvictionPolicy.Action.html" title="enum in org.apache.storm.windowing"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/windowing/TimeTriggerPolicy.html" title="class in org.apache.storm.windowing"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/windowing/StatefulWindowManager.html" title="class in org.apache.storm.windowing"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/windowing/TimestampExtractor.html" title="interface in org.apache.storm.windowing"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/windowing/TimeEvictionPolicy.html" target="_top">Frames</a></li>
@@ -414,6 +503,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

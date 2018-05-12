@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/security/auth/NimbusPrincipal.html" title="class in org.apache.storm.security.auth"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/security/auth/SaslTransportPlugin.html" title="class in org.apache.storm.security.auth"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/security/auth/ShellBasedGroupsMapping.html" title="class in org.apache.storm.security.auth"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/security/auth/ReqContext.html" target="_top">Frames</a></li>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.security.auth.ReqContext</li>
@@ -110,12 +110,10 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">ReqContext</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
 <div class="block"><p>context request context includes info about:</p>
 <ol>
-  <li>remote address,</li>
-  <li>remote subject and primary principal</li>
-  <li>request ID</li>
+  <li>remote address, 2. remote subject and primary principal 3. request ID</li>
 </ol></div>
 </li>
 </ul>
@@ -135,10 +133,15 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#ReqContext-java.security.AccessControlContext-">ReqContext</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/security/AccessControlContext.html?is-external=true" title="class or interface in java.security">AccessControlContext</a>&nbsp;acl_ctxt)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#ReqContext-java.security.AccessControlContext-">ReqContext</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/security/AccessControlContext.html?is-external=true" title="class or interface in java.security">AccessControlContext</a>&nbsp;acl_ctxt)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#ReqContext-javax.security.auth.Subject-">ReqContext</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;sub)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#ReqContext-org.apache.storm.security.auth.ReqContext-">ReqContext</a></span>(<a href="../../../../../org/apache/storm/security/auth/ReqContext.html" title="class in org.apache.storm.security.auth">ReqContext</a>&nbsp;other)</code>
+<div class="block">Copy Constructor.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#ReqContext-javax.security.auth.Subject-">ReqContext</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;sub)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -164,23 +167,23 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#isImpersonating--">isImpersonating</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#principal--">principal</a></span>()</code>
 <div class="block">The primary principal associated current subject</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#realPrincipal--">realPrincipal</a></span>()</code>
 <div class="block">The real principal associated with the subject.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/net/InetAddress.html?is-external=true" title="class or interface in java.net">InetAddress</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/net/InetAddress.html?is-external=true" title="class or interface in java.net">InetAddress</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#remoteAddress--">remoteAddress</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#requestID--">requestID</a></span>()</code>
 <div class="block">request ID of this request</div>
 </td>
@@ -193,28 +196,28 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#setRealPrincipal-java.security.Principal-">setRealPrincipal</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a>&nbsp;realPrincipal)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#setRealPrincipal-java.security.Principal-">setRealPrincipal</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a>&nbsp;realPrincipal)</code>&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#setRemoteAddress-java.net.InetAddress-">setRemoteAddress</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/InetAddress.html?is-external=true" title="class or interface in java.net">InetAddress</a>&nbsp;addr)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#setRemoteAddress-java.net.InetAddress-">setRemoteAddress</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/net/InetAddress.html?is-external=true" title="class or interface in java.net">InetAddress</a>&nbsp;addr)</code>
 <div class="block">client address</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#setSubject-javax.security.auth.Subject-">setSubject</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;subject)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#setSubject-javax.security.auth.Subject-">setSubject</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;subject)</code>
 <div class="block">Set remote subject explicitly</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#subject--">subject</a></span>()</code>
 <div class="block">Retrieve client subject associated with this request context</div>
 </td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/ReqContext.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
@@ -222,8 +225,8 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -245,16 +248,26 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>ReqContext</h4>
-<pre>public&nbsp;ReqContext(<a href="http://docs.oracle.com/javase/7/docs/api/java/security/AccessControlContext.html?is-external=true" title="class or interface in java.security">AccessControlContext</a>&nbsp;acl_ctxt)</pre>
+<pre>public&nbsp;ReqContext(<a href="http://docs.oracle.com/javase/8/docs/api/java/security/AccessControlContext.html?is-external=true" title="class or interface in java.security">AccessControlContext</a>&nbsp;acl_ctxt)</pre>
 </li>
 </ul>
 <a name="ReqContext-javax.security.auth.Subject-">
 <!--   -->
 </a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ReqContext</h4>
+<pre>public&nbsp;ReqContext(<a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;sub)</pre>
+</li>
+</ul>
+<a name="ReqContext-org.apache.storm.security.auth.ReqContext-">
+<!--   -->
+</a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ReqContext</h4>
-<pre>public&nbsp;ReqContext(<a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;sub)</pre>
+<pre>public&nbsp;ReqContext(<a href="../../../../../org/apache/storm/security/auth/ReqContext.html" title="class in org.apache.storm.security.auth">ReqContext</a>&nbsp;other)</pre>
+<div class="block"><p>Copy Constructor.</p></div>
 </li>
 </ul>
 </li>
@@ -265,19 +278,6 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="toString--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>toString</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
-</dl>
-</li>
-</ul>
 <a name="context--">
 <!--   -->
 </a>
@@ -301,13 +301,26 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <div class="block"><p>Reset the context back to a default. used for testing.</p></div>
 </li>
 </ul>
+<a name="toString--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toString</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+</dl>
+</li>
+</ul>
 <a name="setRemoteAddress-java.net.InetAddress-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setRemoteAddress</h4>
-<pre>public&nbsp;void&nbsp;setRemoteAddress(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/InetAddress.html?is-external=true" title="class or interface in java.net">InetAddress</a>&nbsp;addr)</pre>
+<pre>public&nbsp;void&nbsp;setRemoteAddress(<a href="http://docs.oracle.com/javase/8/docs/api/java/net/InetAddress.html?is-external=true" title="class or interface in java.net">InetAddress</a>&nbsp;addr)</pre>
 <div class="block"><p>client address</p></div>
 </li>
 </ul>
@@ -317,7 +330,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>remoteAddress</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/net/InetAddress.html?is-external=true" title="class or interface in java.net">InetAddress</a>&nbsp;remoteAddress()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/net/InetAddress.html?is-external=true" title="class or interface in java.net">InetAddress</a>&nbsp;remoteAddress()</pre>
 </li>
 </ul>
 <a name="setSubject-javax.security.auth.Subject-">
@@ -326,7 +339,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>setSubject</h4>
-<pre>public&nbsp;void&nbsp;setSubject(<a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;subject)</pre>
+<pre>public&nbsp;void&nbsp;setSubject(<a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;subject)</pre>
 <div class="block"><p>Set remote subject explicitly</p></div>
 </li>
 </ul>
@@ -336,7 +349,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>subject</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;subject()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;subject()</pre>
 <div class="block"><p>Retrieve client subject associated with this request context</p></div>
 </li>
 </ul>
@@ -346,7 +359,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>principal</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a>&nbsp;principal()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a>&nbsp;principal()</pre>
 <div class="block"><p>The primary principal associated current subject</p></div>
 </li>
 </ul>
@@ -356,7 +369,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>setRealPrincipal</h4>
-<pre>public&nbsp;void&nbsp;setRealPrincipal(<a href="http://docs.oracle.com/javase/7/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a>&nbsp;realPrincipal)</pre>
+<pre>public&nbsp;void&nbsp;setRealPrincipal(<a href="http://docs.oracle.com/javase/8/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a>&nbsp;realPrincipal)</pre>
 </li>
 </ul>
 <a name="realPrincipal--">
@@ -365,7 +378,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>realPrincipal</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a>&nbsp;realPrincipal()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/security/Principal.html?is-external=true" title="class or interface in java.security">Principal</a>&nbsp;realPrincipal()</pre>
 <div class="block"><p>The real principal associated with the subject.</p></div>
 </li>
 </ul>
@@ -388,7 +401,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockListLast">
 <li class="blockList">
 <h4>requestID</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;requestID()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;requestID()</pre>
 <div class="block"><p>request ID of this request</p></div>
 </li>
 </ul>
@@ -425,7 +438,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/security/auth/NimbusPrincipal.html" title="class in org.apache.storm.security.auth"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/security/auth/SaslTransportPlugin.html" title="class in org.apache.storm.security.auth"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/security/auth/ShellBasedGroupsMapping.html" title="class in org.apache.storm.security.auth"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/security/auth/ReqContext.html" target="_top">Frames</a></li>
@@ -465,6 +478,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

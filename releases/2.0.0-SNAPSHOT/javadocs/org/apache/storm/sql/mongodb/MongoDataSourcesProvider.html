@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.sql.mongodb.MongoDataSourcesProvider</li>
@@ -114,7 +114,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">MongoDataSourcesProvider</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvider.html" title="interface in org.apache.storm.sql.runtime">DataSourcesProvider</a></pre>
 <div class="block"><p>Create a MongoDB sink based on the URI and properties. The URI has the format of <a href="mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]">mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]</a>. The properties are in JSON format which specifies the name of the MongoDB collection and etc.</p></div>
 </li>
@@ -153,33 +153,26 @@ implements <a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvi
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/sql/runtime/DataSource.html" title="interface in org.apache.storm.sql.runtime">DataSource</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/mongodb/MongoDataSourcesProvider.html#construct-java.net.URI-java.lang.String-java.lang.String-java.util.List-">construct</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;uri,
-         <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFormatClass,
-         <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;outputFormatClass,
-         <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/sql/runtime/FieldInfo.html" title="class in org.apache.storm.sql.runtime">FieldInfo</a>&gt;&nbsp;fields)</code>
-<div class="block">Construct a new data source.</div>
-</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/sql/runtime/ISqlTridentDataSource.html" title="interface in org.apache.storm.sql.runtime">ISqlTridentDataSource</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/mongodb/MongoDataSourcesProvider.html#constructTrident-java.net.URI-java.lang.String-java.lang.String-java.util.Properties-java.util.List-">constructTrident</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;uri,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFormatClass,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;outputFormatClass,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;properties,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/sql/runtime/FieldInfo.html" title="class in org.apache.storm.sql.runtime">FieldInfo</a>&gt;&nbsp;fields)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/sql/runtime/ISqlTridentDataSource.html" title="interface in org.apache.storm.sql.runtime">ISqlTridentDataSource</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/mongodb/MongoDataSourcesProvider.html#constructTrident-java.net.URI-java.lang.String-java.lang.String-java.util.Properties-java.util.List-">constructTrident</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;uri,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFormatClass,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;outputFormatClass,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;properties,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/sql/runtime/FieldInfo.html" title="class in org.apache.storm.sql.runtime">FieldInfo</a>&gt;&nbsp;fields)</code>&nbsp;</td>
-</tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/mongodb/MongoDataSourcesProvider.html#scheme--">scheme</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/sql/mongodb/MongoDataSourcesProvider.html#scheme--">scheme</a></span>()</code>
+<div class="block">Get the scheme of the data source.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -218,35 +211,14 @@ implements <a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvi
 <ul class="blockList">
 <li class="blockList">
 <h4>scheme</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;scheme()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;scheme()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvider.html#scheme--">DataSourcesProvider</a></code></span></div>
+<div class="block"><p>Get the scheme of the data source.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvider.html#scheme--">scheme</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvider.html" title="interface in org.apache.storm.sql.runtime">DataSourcesProvider</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the scheme of the data source</dd>
-</dl>
-</li>
-</ul>
-<a name="construct-java.net.URI-java.lang.String-java.lang.String-java.util.List-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>construct</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/runtime/DataSource.html" title="interface in org.apache.storm.sql.runtime">DataSource</a>&nbsp;construct(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;uri,
-                            <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFormatClass,
-                            <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;outputFormatClass,
-                            <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/sql/runtime/FieldInfo.html" title="class in org.apache.storm.sql.runtime">FieldInfo</a>&gt;&nbsp;fields)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvider.html#construct-java.net.URI-java.lang.String-java.lang.String-java.util.List-">DataSourcesProvider</a></code></span></div>
-<div class="block"><p>Construct a new data source.</p></div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvider.html#construct-java.net.URI-java.lang.String-java.lang.String-java.util.List-">construct</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvider.html" title="interface in org.apache.storm.sql.runtime">DataSourcesProvider</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>uri</code> - The URI that specifies the data source. The format of the URI  is fully customizable.</dd>
-<dd><code>inputFormatClass</code> - the name of the class that deserializes data.  It is null when unspecified.</dd>
-<dd><code>outputFormatClass</code> - the name of the class that serializes data. It  is null when unspecified.</dd>
-<dd><code>fields</code> - The name of the fields and the schema of the table.</dd>
 </dl>
 </li>
 </ul>
@@ -256,11 +228,11 @@ implements <a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvi
 <ul class="blockListLast">
 <li class="blockList">
 <h4>constructTrident</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/runtime/ISqlTridentDataSource.html" title="interface in org.apache.storm.sql.runtime">ISqlTridentDataSource</a>&nbsp;constructTrident(<a href="http://docs.oracle.com/javase/7/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;uri,
-                                              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFormatClass,
-                                              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;outputFormatClass,
-                                              <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;properties,
-                                              <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/sql/runtime/FieldInfo.html" title="class in org.apache.storm.sql.runtime">FieldInfo</a>&gt;&nbsp;fields)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/sql/runtime/ISqlTridentDataSource.html" title="interface in org.apache.storm.sql.runtime">ISqlTridentDataSource</a>&nbsp;constructTrident(<a href="http://docs.oracle.com/javase/8/docs/api/java/net/URI.html?is-external=true" title="class or interface in java.net">URI</a>&nbsp;uri,
+                                              <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFormatClass,
+                                              <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;outputFormatClass,
+                                              <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;properties,
+                                              <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/sql/runtime/FieldInfo.html" title="class in org.apache.storm.sql.runtime">FieldInfo</a>&gt;&nbsp;fields)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvider.html#constructTrident-java.net.URI-java.lang.String-java.lang.String-java.util.Properties-java.util.List-">constructTrident</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/sql/runtime/DataSourcesProvider.html" title="interface in org.apache.storm.sql.runtime">DataSourcesProvider</a></code></dd>
@@ -340,6 +312,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

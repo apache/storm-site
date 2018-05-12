@@ -18,8 +18,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":18,"i4":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -123,7 +123,7 @@ var activeTableTab = "activeTableTab";
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t5" class="tableTab"><span><a href="javascript:show(16);">Default Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -142,12 +142,22 @@ var activeTableTab = "activeTableTab";
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html#getOrderedPartitions-Partitions-">getOrderedPartitions</a></span>(<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partitions</a>&nbsp;allPartitionInfo)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html#getOrderedPartitions-Partitions-">getOrderedPartitions</a></span>(<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partitions</a>&nbsp;allPartitionInfo)</code>
+<div class="block">Sorts the partition info to produce an ordered list of partition.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>default <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html#getPartitionsForTask-int-int-java.util.List-">getPartitionsForTask</a></span>(int&nbsp;taskId,
+                    int&nbsp;numTasks,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;&nbsp;allPartitionInfoSorted)</code>
+<div class="block">Get the partitions assigned to this task.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html#refreshPartitions-java.util.List-">refreshPartitions</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;&nbsp;partitionResponsibilities)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html#refreshPartitions-java.util.List-">refreshPartitions</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;&nbsp;partitionResponsibilities)</code>
 <div class="block">This method is called when this task is responsible for a new set of partitions.</div>
 </td>
 </tr>
@@ -178,7 +188,7 @@ var activeTableTab = "activeTableTab";
                      <a href="../../../../../org/apache/storm/trident/operation/TridentCollector.html" title="interface in org.apache.storm.trident.operation">TridentCollector</a>&nbsp;collector,
                      <a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&nbsp;partition,
                      <a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">M</a>&nbsp;lastPartitionMeta)</pre>
-<div class="block"><p>Emit a batch of tuples for a partition/transaction. </p><p>Return the metadata describing this batch that will be used as lastPartitionMeta for defining the parameters of the next batch.</p></div>
+<div class="block"><p>Emit a batch of tuples for a partition/transaction.</p><p>Return the metadata describing this batch that will be used as lastPartitionMeta for defining the parameters of the next batch.</p></div>
 </li>
 </ul>
 <a name="refreshPartitions-java.util.List-">
@@ -187,8 +197,12 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>refreshPartitions</h4>
-<pre>void&nbsp;refreshPartitions(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;&nbsp;partitionResponsibilities)</pre>
+<pre>void&nbsp;refreshPartitions(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;&nbsp;partitionResponsibilities)</pre>
 <div class="block"><p>This method is called when this task is responsible for a new set of partitions. Should be used to manage things like connections to brokers.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>partitionResponsibilities</code> - The partitions assigned to this task</dd>
+</dl>
 </li>
 </ul>
 <a name="getOrderedPartitions-java.lang.Object-">
@@ -199,7 +213,34 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getOrderedPartitions</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;&nbsp;getOrderedPartitions(<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partitions</a>&nbsp;allPartitionInfo)</pre>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;&nbsp;getOrderedPartitions(<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partitions</a>&nbsp;allPartitionInfo)</pre>
+<div class="block"><p>Sorts the partition info to produce an ordered list of partition.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>allPartitionInfo</code> - The partition info for all partitions being processed by all spout tasks</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The ordered list of partitions being processed by all the tasks. The ordering must be consistent for all tasks.</dd>
+</dl>
+</li>
+</ul>
+<a name="getPartitionsForTask-int-int-java.util.List-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPartitionsForTask</h4>
+<pre>default&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;&nbsp;getPartitionsForTask(int&nbsp;taskId,
+                                             int&nbsp;numTasks,
+                                             <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="type parameter in IOpaquePartitionedTridentSpout.Emitter">Partition</a>&gt;&nbsp;allPartitionInfoSorted)</pre>
+<div class="block"><p>Get the partitions assigned to this task.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>taskId</code> - The id of this task</dd>
+<dd><code>numTasks</code> - The number of tasks for this spout</dd>
+<dd><code>allPartitionInfoSorted</code> - The partition info for all partitions being processed by all spout tasks, sorted according to  <a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html#getOrderedPartitions-Partitions-"><code>getOrderedPartitions(java.lang.Object)</code></a></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The list of partitions that are to be processed by the task with id <code>taskId</code></dd>
+</dl>
 </li>
 </ul>
 <a name="close--">
@@ -284,6 +325,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

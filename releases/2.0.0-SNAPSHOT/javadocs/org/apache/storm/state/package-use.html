@@ -87,11 +87,19 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="#org.apache.storm.redis.state">org.apache.storm.redis.state</a></td>
+<td class="colFirst"><a href="#org.apache.storm.hbase.state">org.apache.storm.hbase.state</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.redis.state">org.apache.storm.redis.state</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.state">org.apache.storm.state</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.streams.processors">org.apache.storm.streams.processors</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
@@ -104,6 +112,10 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.topology.base">org.apache.storm.topology.base</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.windowing.persistence">org.apache.storm.windowing.persistence</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 </tbody>
@@ -126,6 +138,48 @@
 </tbody>
 </table>
 </li>
+<li class="blockList"><a name="org.apache.storm.hbase.state">
+<!--   -->
+</a>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../org/apache/storm/state/package-summary.html">org.apache.storm.state</a> used by <a href="../../../../org/apache/storm/hbase/state/package-summary.html">org.apache.storm.hbase.state</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/BaseBinaryStateIterator.html#org.apache.storm.hbase.state">BaseBinaryStateIterator</a>
+<div class="block">Base implementation of iterator over <a href="../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state"><code>KeyValueState</code></a> which encoded types of key and value are both binary type.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/BaseStateIterator.html#org.apache.storm.hbase.state">BaseStateIterator</a>
+<div class="block">Base implementation of iterator over <a href="../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state"><code>KeyValueState</code></a>.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/KeyValueState.html#org.apache.storm.hbase.state">KeyValueState</a>
+<div class="block">A state that supports key-value mappings.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/Serializer.html#org.apache.storm.hbase.state">Serializer</a>
+<div class="block">Interface to be implemented for serlializing and de-serializing the state.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/State.html#org.apache.storm.hbase.state">State</a>
+<div class="block">The state of the component that is either managed by the framework (e.g in case of <a href="../../../../org/apache/storm/topology/IStatefulBolt.html" title="interface in org.apache.storm.topology"><code>IStatefulBolt</code></a>) or managed by the the individual components themselves.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/StateProvider.html#org.apache.storm.hbase.state">StateProvider</a>
+<div class="block">Used by the <a href="../../../../org/apache/storm/state/StateFactory.html" title="class in org.apache.storm.state"><code>StateFactory</code></a> to create a new state instances.</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li class="blockList"><a name="org.apache.storm.redis.state">
 <!--   -->
 </a>
@@ -135,6 +189,16 @@
 <th class="colOne" scope="col">Class and Description</th>
 </tr>
 <tbody>
+<tr class="altColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/BaseBinaryStateIterator.html#org.apache.storm.redis.state">BaseBinaryStateIterator</a>
+<div class="block">Base implementation of iterator over <a href="../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state"><code>KeyValueState</code></a> which encoded types of key and value are both binary type.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/BaseStateIterator.html#org.apache.storm.redis.state">BaseStateIterator</a>
+<div class="block">Base implementation of iterator over <a href="../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state"><code>KeyValueState</code></a>.</div>
+</td>
+</tr>
 <tr class="altColor">
 <td class="colOne"><a href="../../../../org/apache/storm/state/class-use/KeyValueState.html#org.apache.storm.redis.state">KeyValueState</a>
 <div class="block">A state that supports key-value mappings.</div>
@@ -168,24 +232,34 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/IStateSpoutOutputCollector.html#org.apache.storm.state">IStateSpoutOutputCollector</a>&nbsp;</td>
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/BaseStateIterator.html#org.apache.storm.state">BaseStateIterator</a>
+<div class="block">Base implementation of iterator over <a href="../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state"><code>KeyValueState</code></a>.</div>
+</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/ISynchronizeOutputCollector.html#org.apache.storm.state">ISynchronizeOutputCollector</a>&nbsp;</td>
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/IStateSpoutOutputCollector.html#org.apache.storm.state">IStateSpoutOutputCollector</a>&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/ISynchronizeOutputCollector.html#org.apache.storm.state">ISynchronizeOutputCollector</a>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colOne"><a href="../../../../org/apache/storm/state/class-use/KeyValueState.html#org.apache.storm.state">KeyValueState</a>
 <div class="block">A state that supports key-value mappings.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colOne"><a href="../../../../org/apache/storm/state/class-use/Serializer.html#org.apache.storm.state">Serializer</a>
 <div class="block">Interface to be implemented for serlializing and de-serializing the state.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colOne"><a href="../../../../org/apache/storm/state/class-use/State.html#org.apache.storm.state">State</a>
 <div class="block">The state of the component that is either managed by the framework (e.g in case of <a href="../../../../org/apache/storm/topology/IStatefulBolt.html" title="interface in org.apache.storm.topology"><code>IStatefulBolt</code></a>) or managed by the the individual components themselves.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/StateEncoder.html#org.apache.storm.state">StateEncoder</a>
+<div class="block">The interface of State Encoder.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -198,6 +272,23 @@
 </tr>
 <tr class="rowColor">
 <td class="colOne"><a href="../../../../org/apache/storm/state/class-use/SynchronizeOutputCollector.html#org.apache.storm.state">SynchronizeOutputCollector</a>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.streams.processors">
+<!--   -->
+</a>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../org/apache/storm/state/package-summary.html">org.apache.storm.state</a> used by <a href="../../../../org/apache/storm/streams/processors/package-summary.html">org.apache.storm.streams.processors</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/KeyValueState.html#org.apache.storm.streams.processors">KeyValueState</a>
+<div class="block">A state that supports key-value mappings.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -249,6 +340,23 @@
 <tr class="altColor">
 <td class="colOne"><a href="../../../../org/apache/storm/state/class-use/State.html#org.apache.storm.topology.base">State</a>
 <div class="block">The state of the component that is either managed by the framework (e.g in case of <a href="../../../../org/apache/storm/topology/IStatefulBolt.html" title="interface in org.apache.storm.topology"><code>IStatefulBolt</code></a>) or managed by the the individual components themselves.</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.windowing.persistence">
+<!--   -->
+</a>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../org/apache/storm/state/package-summary.html">org.apache.storm.state</a> used by <a href="../../../../org/apache/storm/windowing/persistence/package-summary.html">org.apache.storm.windowing.persistence</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colOne"><a href="../../../../org/apache/storm/state/class-use/KeyValueState.html#org.apache.storm.windowing.persistence">KeyValueState</a>
+<div class="block">A state that supports key-value mappings.</div>
 </td>
 </tr>
 </tbody>
@@ -307,6 +415,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

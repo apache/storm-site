@@ -44,7 +44,7 @@
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/validation/package-summary.html">Prev&nbsp;Package</a></li>
-<li><a href="../../../../org/apache/storm/zookeeper/package-summary.html">Next&nbsp;Package</a></li>
+<li><a href="../../../../org/apache/storm/windowing/persistence/package-summary.html">Next&nbsp;Package</a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/windowing/package-summary.html" target="_top">Frames</a></li>
@@ -83,15 +83,27 @@
 </tr>
 <tbody>
 <tr class="altColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;T&gt;</td>
+<td class="colLast">
+<div class="block">An event is a wrapper object that gets stored in the window.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></td>
 <td class="colLast">
 <div class="block">Context information that can be used by the eviction policy</div>
 </td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;T&gt;</td>
+<tr class="altColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;T,S&gt;</td>
 <td class="colLast">
 <div class="block">Eviction policy tracks events and decides whether an event should be evicted from the window or not.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/windowing/TimestampExtractor.html" title="interface in org.apache.storm.windowing">TimestampExtractor</a></td>
+<td class="colLast">
+<div class="block">Interface to be implemented for extracting timestamp from a tuple.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -101,7 +113,7 @@
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;T&gt;</td>
+<td class="colFirst"><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;T,S&gt;</td>
 <td class="colLast">
 <div class="block">Triggers the window calculations based on the policy.</div>
 </td>
@@ -156,27 +168,39 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/windowing/StatefulWindowManager.html" title="class in org.apache.storm.windowing">StatefulWindowManager</a>&lt;T&gt;</td>
+<td class="colLast">
+<div class="block">Window manager that handles windows with state persistence.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/windowing/TimeEvictionPolicy.html" title="class in org.apache.storm.windowing">TimeEvictionPolicy</a>&lt;T&gt;</td>
 <td class="colLast">
 <div class="block">Eviction policy that evicts events based on time duration.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/windowing/TimeTriggerPolicy.html" title="class in org.apache.storm.windowing">TimeTriggerPolicy</a>&lt;T&gt;</td>
 <td class="colLast">
 <div class="block">Invokes <a href="../../../../org/apache/storm/windowing/TriggerHandler.html#onTrigger--"><code>TriggerHandler.onTrigger()</code></a> after the duration.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/windowing/TupleWindowImpl.html" title="class in org.apache.storm.windowing">TupleWindowImpl</a></td>
 <td class="colLast">
 <div class="block">Holds the expired, new and current tuples in a window.</div>
 </td>
 </tr>
+<tr class="altColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/windowing/TupleWindowIterImpl.html" title="class in org.apache.storm.windowing">TupleWindowIterImpl</a></td>
+<td class="colLast">
+<div class="block">An iterator based implementation over the events in a window.</div>
+</td>
+</tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/windowing/WatermarkCountEvictionPolicy.html" title="class in org.apache.storm.windowing">WatermarkCountEvictionPolicy</a>&lt;T&gt;</td>
 <td class="colLast">
-<div class="block">An eviction policy that tracks count based on watermark ts and evicts events upto the watermark based on a threshold count.</div>
+<div class="block">An eviction policy that tracks count based on watermark ts and evicts events up to the watermark based on a threshold count.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -263,7 +287,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/validation/package-summary.html">Prev&nbsp;Package</a></li>
-<li><a href="../../../../org/apache/storm/zookeeper/package-summary.html">Next&nbsp;Package</a></li>
+<li><a href="../../../../org/apache/storm/windowing/persistence/package-summary.html">Next&nbsp;Package</a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/windowing/package-summary.html" target="_top">Frames</a></li>
@@ -288,6 +312,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -18,8 +18,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":6,"i2":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":10,"i1":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../../org/apache/storm/topology/base/BaseComponent.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseComponent</a></li>
@@ -106,7 +106,12 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseRichBolt</a></li>
 <li>
 <ul class="inheritance">
+<li><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseTickTupleAwareRichBolt</a></li>
+<li>
+<ul class="inheritance">
 <li>org.apache.storm.elasticsearch.bolt.AbstractEsBolt</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -119,7 +124,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/task/IBolt.html" title="interface in org.apache.storm.task">IBolt</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichBolt.html" title="interface in org.apache.storm.topology">IRichBolt</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/task/IBolt.html" title="interface in org.apache.storm.task">IBolt</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichBolt.html" title="interface in org.apache.storm.topology">IRichBolt</a></dd>
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
@@ -128,7 +133,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public abstract class <span class="typeNameLabel">AbstractEsBolt</span>
-extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html" title="class in org.apache.storm.topology.base">BaseRichBolt</a></pre>
+extends <a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base">BaseTickTupleAwareRichBolt</a></pre>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../serialized-form.html#org.apache.storm.elasticsearch.bolt.AbstractEsBolt">Serialized Form</a></dd>
@@ -152,12 +157,16 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected static org.elasticsearch.client.Client</code></td>
+<td class="colFirst"><code>protected static org.elasticsearch.client.RestClient</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/bolt/AbstractEsBolt.html#client">client</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected <a href="../../../../../org/apache/storm/task/OutputCollector.html" title="class in org.apache.storm.task">OutputCollector</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/bolt/AbstractEsBolt.html#collector">collector</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected static com.fasterxml.jackson.databind.ObjectMapper</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/bolt/AbstractEsBolt.html#objectMapper">objectMapper</a></span></code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -186,7 +195,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -198,20 +207,21 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/bolt/AbstractEsBolt.html#execute-org.apache.storm.tuple.Tuple-">execute</a></span>(<a href="../../../../../org/apache/storm/tuple/Tuple.html" title="interface in org.apache.storm.tuple">Tuple</a>&nbsp;tuple)</code>
-<div class="block">Process a single tuple of input.</div>
-</td>
-</tr>
-<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/bolt/AbstractEsBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;map,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/bolt/AbstractEsBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;map,
        <a href="../../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;topologyContext,
        <a href="../../../../../org/apache/storm/task/OutputCollector.html" title="class in org.apache.storm.task">OutputCollector</a>&nbsp;outputCollector)</code>
 <div class="block">Called when a task for this component is initialized within a worker on the cluster.</div>
 </td>
 </tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.base.BaseTickTupleAwareRichBolt">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;org.apache.storm.topology.base.<a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html" title="class in org.apache.storm.topology.base">BaseTickTupleAwareRichBolt</a></h3>
+<code><a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html#execute-org.apache.storm.tuple.Tuple-">execute</a>, <a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html#onTickTuple-org.apache.storm.tuple.Tuple-">onTickTuple</a>, <a href="../../../../../org/apache/storm/topology/base/BaseTickTupleAwareRichBolt.html#process-org.apache.storm.tuple.Tuple-">process</a></code></li>
+</ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.base.BaseRichBolt">
 <!--   -->
@@ -230,8 +240,8 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.IComponent">
@@ -260,7 +270,16 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <ul class="blockList">
 <li class="blockList">
 <h4>client</h4>
-<pre>protected static&nbsp;org.elasticsearch.client.Client client</pre>
+<pre>protected static&nbsp;org.elasticsearch.client.RestClient client</pre>
+</li>
+</ul>
+<a name="objectMapper">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>objectMapper</h4>
+<pre>protected static final&nbsp;com.fasterxml.jackson.databind.ObjectMapper objectMapper</pre>
 </li>
 </ul>
 <a name="collector">
@@ -303,31 +322,16 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>public&nbsp;void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;map,
+<pre>public&nbsp;void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;map,
                     <a href="../../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;topologyContext,
                     <a href="../../../../../org/apache/storm/task/OutputCollector.html" title="class in org.apache.storm.task">OutputCollector</a>&nbsp;outputCollector)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/task/IBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">IBolt</a></code></span></div>
 <div class="block"><p>Called when a task for this component is initialized within a worker on the cluster. It provides the bolt with the environment in which the bolt executes.</p><p>This includes the:</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>map</code> - The Storm configuration for this bolt. This is the configuration provided to the topology merged in with cluster configuration on this machine.</dd>
-<dd><code>topologyContext</code> - This object can be used to get information about this task&rsquo;s place within the topology, including the task id and component id of this task, input and output information, etc.</dd>
-<dd><code>outputCollector</code> - The collector is used to emit tuples from this bolt. Tuples can be emitted at any time, including the prepare and cleanup methods. The collector is thread-safe and should be saved as an instance variable of this bolt object.</dd>
-</dl>
-</li>
-</ul>
-<a name="execute-org.apache.storm.tuple.Tuple-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>execute</h4>
-<pre>public abstract&nbsp;void&nbsp;execute(<a href="../../../../../org/apache/storm/tuple/Tuple.html" title="interface in org.apache.storm.tuple">Tuple</a>&nbsp;tuple)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/task/IBolt.html#execute-org.apache.storm.tuple.Tuple-">IBolt</a></code></span></div>
-<div class="block"><p>Process a single tuple of input. The Tuple object contains metadata on it about which component/stream/task it came from. The values of the Tuple can be accessed using Tuple#getValue. The IBolt does not have to process the Tuple immediately. It is perfectly fine to hang onto a tuple and process it later (for instance, to do an aggregation or join).</p><p>Tuples should be emitted using the OutputCollector provided through the prepare method. It is required that all input tuples are acked or failed at some point using the OutputCollector. Otherwise, Storm will be unable to determine when tuples coming off the spouts have been completed.</p><p>For the common case of acking an input tuple at the end of the execute method, see IBasicBolt which automates this.</p></div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>tuple</code> - The input tuple to be processed.</dd>
+<dd><code>map</code> - The Storm configuration for this bolt. This is the configuration provided to the topology merged in with cluster  configuration on this machine.</dd>
+<dd><code>topologyContext</code> - This object can be used to get information about this task&rsquo;s place within the topology, including the task id and  component id of this task, input and output information, etc.</dd>
+<dd><code>outputCollector</code> - The collector is used to emit tuples from this bolt. Tuples can be emitted at any time, including the prepare and  cleanup methods. The collector is thread-safe and should be saved as an instance variable of this bolt object.</dd>
 </dl>
 </li>
 </ul>
@@ -419,6 +423,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -12,7 +12,19 @@ DRPC is not so much a feature of Storm as it is a pattern expressed from Storm's
 Distributed RPC is coordinated by a "DRPC server" (Storm comes packaged with an implementation of this). The DRPC server coordinates receiving an RPC request, sending the request to the Storm topology, receiving the results from the Storm topology, and sending the results back to the waiting client. From a client's perspective, a distributed RPC call looks just like a regular RPC call. For example, here's how a client would compute the results for the "reach" function with the argument "http://twitter.com":
 
 ```java
-DRPCClient client = new DRPCClient("drpc-host", 3772);
+Config conf = new Config();
+conf.put("storm.thrift.transport", "org.apache.storm.security.auth.plain.PlainSaslTransportPlugin");
+conf.put(Config.STORM_NIMBUS_RETRY_TIMES, 3);
+conf.put(Config.STORM_NIMBUS_RETRY_INTERVAL, 10);
+conf.put(Config.STORM_NIMBUS_RETRY_INTERVAL_CEILING, 20);
+DRPCClient client = new DRPCClient(conf, "drpc-host", 3772);
+String result = client.execute("reach", "http://twitter.com");
+```
+
+or if you just want to use a preconfigured client you can call.  The exact host will be selected randomly from the configured set of hosts, if the host appears to be down it will loop through all configured hosts looking for one that works.
+
+```java
+DRPCClient client = DRPCClient.getConfiguredClient(conf);
 String result = client.execute("reach", "http://twitter.com");
 ```
 
@@ -57,23 +69,9 @@ In this example, `ExclaimBolt` simply appends a "!" to the second field of the t
 
 ### Local mode DRPC
 
-DRPC can be run in local mode. Here's how to run the above example in local mode:
-
-```java
-LocalDRPC drpc = new LocalDRPC();
-LocalCluster cluster = new LocalCluster();
-
-cluster.submitTopology("drpc-demo", conf, builder.createLocalTopology(drpc));
-
-System.out.println("Results for 'hello':" + drpc.execute("exclamation", "hello"));
-
-cluster.shutdown();
-drpc.shutdown();
-```
-
-First you create a `LocalDRPC` object. This object simulates a DRPC server in process, just like how `LocalCluster` simulates a Storm cluster in process. Then you create the `LocalCluster` to run the topology in local mode. `LinearDRPCTopologyBuilder` has separate methods for creating local topologies and remote topologies. In local mode the `LocalDRPC` object does not bind to any ports so the topology needs to know about the object to communicate with it. This is why `createLocalTopology` takes in the `LocalDRPC` object as input.
-
-After launching the topology, you can do DRPC invocations using the `execute` method on `LocalDRPC`.
+In the past to use DRPC in local mode it took creating a special LocalDRPC instance.  This can still be used when writing tests for your code, but in the current version of storm when you run in local mode a LocalDRPC
+instance is also created, and any DRPCClient created will link to it instead of the outside world.  This means that any interaction you want to test needs to be a part of the script that launches the topology, just like
+with LocalDRPC.
 
 ### Remote mode DRPC
 
@@ -89,12 +87,14 @@ Launching a DRPC server can be done with the `storm` script and is just like lau
 bin/storm drpc
 ```
 
-Next, you need to configure your Storm cluster to know the locations of the DRPC server(s). This is how `DRPCSpout` knows from where to read function invocations. This can be done through the `storm.yaml` file or the topology configurations. Configuring this through the `storm.yaml` looks something like this:
+Next, you need to configure your Storm cluster to know the locations of the DRPC server(s). This is how `DRPCSpout` knows from where to read function invocations. This can be done through the `storm.yaml` file or the topology configurations. You should also specify storm.thrift.transport property to match DRPCClient settings. Configuring this through the `storm.yaml` looks something like this:
 
 ```yaml
 drpc.servers:
   - "drpc1.foo.com"
   - "drpc2.foo.com"
+drpc.http.port: 8081
+storm.thrift.transport: "org.apache.storm.security.auth.plain.PlainSaslTransportPlugin"
 ```
 
 Finally, you launch DRPC topologies using `StormSubmitter` just like you launch any other topology. To run the above example in remote mode, you do something like this:
@@ -104,6 +104,23 @@ StormSubmitter.submitTopology("exclamation-drpc", conf, builder.createRemoteTopo
 ```
 
 `createRemoteTopology` is used to create topologies suitable for Storm clusters.
+
+Assuming that the topology is listening on the `exclaim` function you can execute something several differnt ways.
+
+Programatically:
+```java
+Config conf = new Config();
+try (DRPCClient drpc = DRPCClient.getConfiguredClient(conf)) {
+  //User the drpc client
+  String result = drpc.execute("exclaim", "argument");
+}
+```
+
+through curl:
+```curl http://hostname:8081/drpc/exclaim/argument```
+
+Through the command line:
+```bin/storm drpc-client exclaim argument```
 
 ### A more complex example
 

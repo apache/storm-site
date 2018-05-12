@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.hive.common.HiveWriter</li>
@@ -110,7 +110,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">HiveWriter</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
 </li>
 </ul>
 </div>
@@ -187,13 +187,14 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveWriter.html#HiveWriter-org.apache.hive.hcatalog.streaming.HiveEndPoint-int-boolean-long-java.util.concurrent.ExecutorService-org.apache.storm.hive.bolt.mapper.HiveMapper-org.apache.hadoop.security.UserGroupInformation-">HiveWriter</a></span>(org.apache.hive.hcatalog.streaming.HiveEndPoint&nbsp;endPoint,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveWriter.html#HiveWriter-org.apache.hive.hcatalog.streaming.HiveEndPoint-int-boolean-long-java.util.concurrent.ExecutorService-org.apache.storm.hive.bolt.mapper.HiveMapper-org.apache.hadoop.security.UserGroupInformation-boolean-">HiveWriter</a></span>(org.apache.hive.hcatalog.streaming.HiveEndPoint&nbsp;endPoint,
           int&nbsp;txnsPerBatch,
           boolean&nbsp;autoCreatePartitions,
           long&nbsp;callTimeout,
-          <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html?is-external=true" title="class or interface in java.util.concurrent">ExecutorService</a>&nbsp;callTimeoutPool,
+          <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html?is-external=true" title="class or interface in java.util.concurrent">ExecutorService</a>&nbsp;callTimeoutPool,
           <a href="../../../../../org/apache/storm/hive/bolt/mapper/HiveMapper.html" title="interface in org.apache.storm.hive.bolt.mapper">HiveMapper</a>&nbsp;mapper,
-          org.apache.hadoop.security.UserGroupInformation&nbsp;ugi)</code>&nbsp;</td>
+          org.apache.hadoop.security.UserGroupInformation&nbsp;ugi,
+          boolean&nbsp;tokenAuthEnabled)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -239,22 +240,27 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveWriter.html#getLastUsed--">getLastUsed</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code>org.apache.hive.hcatalog.streaming.RecordWriter</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveWriter.html#getRecordWriter-org.apache.storm.hive.bolt.mapper.HiveMapper-boolean-">getRecordWriter</a></span>(<a href="../../../../../org/apache/storm/hive/bolt/mapper/HiveMapper.html" title="interface in org.apache.storm.hive.bolt.mapper">HiveMapper</a>&nbsp;mapper,
+               boolean&nbsp;tokenAuthEnabled)</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveWriter.html#getTotalRecords--">getTotalRecords</a></span>()</code>
 <div class="block">returns totalRecords written so far in a transaction</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveWriter.html#heartBeat--">heartBeat</a></span>()</code>
 <div class="block">Queues up a heartbeat request on the current and remaining txns using the  heartbeatThdPool and returns immediately</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveWriter.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveWriter.html#write-byte:A-">write</a></span>(byte[]&nbsp;record)</code>
 <div class="block">Write data <br /></div>
@@ -265,8 +271,8 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -299,7 +305,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="HiveWriter-org.apache.hive.hcatalog.streaming.HiveEndPoint-int-boolean-long-java.util.concurrent.ExecutorService-org.apache.storm.hive.bolt.mapper.HiveMapper-org.apache.hadoop.security.UserGroupInformation-">
+<a name="HiveWriter-org.apache.hive.hcatalog.streaming.HiveEndPoint-int-boolean-long-java.util.concurrent.ExecutorService-org.apache.storm.hive.bolt.mapper.HiveMapper-org.apache.hadoop.security.UserGroupInformation-boolean-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -309,14 +315,15 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
                   int&nbsp;txnsPerBatch,
                   boolean&nbsp;autoCreatePartitions,
                   long&nbsp;callTimeout,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html?is-external=true" title="class or interface in java.util.concurrent">ExecutorService</a>&nbsp;callTimeoutPool,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html?is-external=true" title="class or interface in java.util.concurrent">ExecutorService</a>&nbsp;callTimeoutPool,
                   <a href="../../../../../org/apache/storm/hive/bolt/mapper/HiveMapper.html" title="interface in org.apache.storm.hive.bolt.mapper">HiveMapper</a>&nbsp;mapper,
-                  org.apache.hadoop.security.UserGroupInformation&nbsp;ugi)
-           throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a>,
+                  org.apache.hadoop.security.UserGroupInformation&nbsp;ugi,
+                  boolean&nbsp;tokenAuthEnabled)
+           throws <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a>,
                   <a href="../../../../../org/apache/storm/hive/common/HiveWriter.ConnectFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.ConnectFailure</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
 <dd><code><a href="../../../../../org/apache/storm/hive/common/HiveWriter.ConnectFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.ConnectFailure</a></code></dd>
 </dl>
 </li>
@@ -329,16 +336,31 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="getRecordWriter-org.apache.storm.hive.bolt.mapper.HiveMapper-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRecordWriter</h4>
+<pre>public&nbsp;org.apache.hive.hcatalog.streaming.RecordWriter&nbsp;getRecordWriter(<a href="../../../../../org/apache/storm/hive/bolt/mapper/HiveMapper.html" title="interface in org.apache.storm.hive.bolt.mapper">HiveMapper</a>&nbsp;mapper,
+                                                                       boolean&nbsp;tokenAuthEnabled)
+                                                                throws <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
+</dl>
+</li>
+</ul>
 <a name="toString--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>toString</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -351,12 +373,12 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <pre>public&nbsp;void&nbsp;write(byte[]&nbsp;record)
            throws <a href="../../../../../org/apache/storm/hive/common/HiveWriter.WriteFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.WriteFailure</a>,
                   org.apache.hive.hcatalog.streaming.SerializationError,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
 <div class="block"><p>Write data <br /></p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
 <dd><code><a href="../../../../../org/apache/storm/hive/common/HiveWriter.WriteFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.WriteFailure</a></code></dd>
 <dd><code>org.apache.hive.hcatalog.streaming.SerializationError</code></dd>
 </dl>
@@ -372,14 +394,14 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
            throws <a href="../../../../../org/apache/storm/hive/common/HiveWriter.CommitFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.CommitFailure</a>,
                   <a href="../../../../../org/apache/storm/hive/common/HiveWriter.TxnBatchFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.TxnBatchFailure</a>,
                   <a href="../../../../../org/apache/storm/hive/common/HiveWriter.TxnFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.TxnFailure</a>,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
 <div class="block"><p>Commits the current Txn if totalRecordsPerTransaction &gt; 0 . If &lsquo;rollToNext&rsquo; is true, will switch to next Txn in batch or to a  new TxnBatch if current Txn batch is exhausted</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/hive/common/HiveWriter.CommitFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.CommitFailure</a></code></dd>
 <dd><code><a href="../../../../../org/apache/storm/hive/common/HiveWriter.TxnBatchFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.TxnBatchFailure</a></code></dd>
 <dd><code><a href="../../../../../org/apache/storm/hive/common/HiveWriter.TxnFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.TxnFailure</a></code></dd>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -390,11 +412,11 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>heartBeat</h4>
 <pre>public&nbsp;void&nbsp;heartBeat()
-               throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
+               throws <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
 <div class="block"><p>Queues up a heartbeat request on the current and remaining txns using the  heartbeatThdPool and returns immediately</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -418,16 +440,16 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
                    throws <a href="../../../../../org/apache/storm/hive/common/HiveWriter.TxnBatchFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.TxnBatchFailure</a>,
                           <a href="../../../../../org/apache/storm/hive/common/HiveWriter.TxnFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.TxnFailure</a>,
                           <a href="../../../../../org/apache/storm/hive/common/HiveWriter.CommitFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.CommitFailure</a>,
-                          <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a>,
-                          <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
+                          <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a>,
+                          <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
 <div class="block"><p>Flush and Close current transactionBatch.</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/hive/common/HiveWriter.TxnBatchFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.TxnBatchFailure</a></code></dd>
 <dd><code><a href="../../../../../org/apache/storm/hive/common/HiveWriter.TxnFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.TxnFailure</a></code></dd>
 <dd><code><a href="../../../../../org/apache/storm/hive/common/HiveWriter.CommitFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.CommitFailure</a></code></dd>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -438,13 +460,13 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>close</h4>
 <pre>public&nbsp;void&nbsp;close()
-           throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a>,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
+           throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a>,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
 <div class="block"><p>Close the Transaction Batch and connection</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -457,13 +479,13 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <pre>public&nbsp;void&nbsp;abort()
            throws org.apache.hive.hcatalog.streaming.StreamingException,
                   <a href="../../../../../org/apache/storm/hive/common/HiveWriter.TxnBatchFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.TxnBatchFailure</a>,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
 <div class="block"><p>Aborts the current Txn and switches to next Txn.</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>org.apache.hive.hcatalog.streaming.StreamingException</code> - if could not get new Transaction Batch, or switch to next Txn</dd>
 <dd><code><a href="../../../../../org/apache/storm/hive/common/HiveWriter.TxnBatchFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.TxnBatchFailure</a></code></dd>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -549,6 +571,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

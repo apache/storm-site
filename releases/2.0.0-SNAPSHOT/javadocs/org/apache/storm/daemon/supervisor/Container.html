@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":6,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":6,"i16":10,"i17":10,"i18":6,"i19":6,"i20":10,"i21":10,"i22":10,"i23":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":6,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":6,"i22":10,"i23":10,"i24":6,"i25":6,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -49,7 +49,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../org/apache/storm/daemon/supervisor/BasicContainerLauncher.html" title="class in org.apache.storm.daemon.supervisor"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/daemon/supervisor/ClientSupervisorUtils.html" title="class in org.apache.storm.daemon.supervisor"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../org/apache/storm/daemon/supervisor/Container.ContainerType.html" title="enum in org.apache.storm.daemon.supervisor"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.daemon.supervisor.Container</li>
@@ -118,7 +118,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public abstract class <span class="typeNameLabel">Container</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html" title="interface in org.apache.storm.daemon.supervisor">Killable</a></pre>
 <div class="block"><p>Represents a container that a worker will run in.</p></div>
 </li>
@@ -163,7 +163,7 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_assignment">_assignment</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_conf">_conf</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
@@ -179,15 +179,23 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_resourceIsolationManager">_resourceIsolationManager</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_supervisorId">_supervisorId</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_supervisorPort">_supervisorPort</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_symlinksDisabled">_symlinksDisabled</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_topoConf">_topoConf</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_topologyId">_topologyId</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
@@ -195,7 +203,7 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_type">_type</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_workerId">_workerId</a></span></code>&nbsp;</td>
 </tr>
 </table>
@@ -215,14 +223,15 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected </code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Container-org.apache.storm.daemon.supervisor.Container.ContainerType-java.util.Map-java.lang.String-int-org.apache.storm.generated.LocalAssignment-org.apache.storm.container.ResourceIsolationInterface-java.lang.String-java.util.Map-org.apache.storm.daemon.supervisor.AdvancedFSOps-">Container</a></span>(<a href="../../../../../org/apache/storm/daemon/supervisor/Container.ContainerType.html" title="enum in org.apache.storm.daemon.supervisor">Container.ContainerType</a>&nbsp;type,
-         <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
-         <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Container-org.apache.storm.daemon.supervisor.Container.ContainerType-java.util.Map-java.lang.String-int-int-org.apache.storm.generated.LocalAssignment-org.apache.storm.container.ResourceIsolationInterface-java.lang.String-java.util.Map-org.apache.storm.daemon.supervisor.AdvancedFSOps-">Container</a></span>(<a href="../../../../../org/apache/storm/daemon/supervisor/Container.ContainerType.html" title="enum in org.apache.storm.daemon.supervisor">Container.ContainerType</a>&nbsp;type,
+         <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+         <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+         int&nbsp;supervisorPort,
          int&nbsp;port,
          <a href="../../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
          <a href="../../../../../org/apache/storm/container/ResourceIsolationInterface.html" title="interface in org.apache.storm.container">ResourceIsolationInterface</a>&nbsp;resourceIsolationManager,
-         <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;workerId,
-         <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
+         <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;workerId,
+         <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
          <a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html" title="class in org.apache.storm.daemon.supervisor">AdvancedFSOps</a>&nbsp;ops)</code>
 <div class="block">Create a new Container.</div>
 </td>
@@ -261,7 +270,7 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#createArtifactsLink--">createArtifactsLink</a></span>()</code>
-<div class="block">Create symlink from the containers directory/artifacts to the artifacts directory</div>
+<div class="block">Create symlink from the containers directory/artifacts to the artifacts directory.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
@@ -276,7 +285,9 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>abstract boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#didMainProcessExit--">didMainProcessExit</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#didMainProcessExit--">didMainProcessExit</a></span>()</code>
+<div class="block">Return true if the main process exited, else false.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -287,87 +298,129 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#forceKill-long-">forceKill</a></span>(long&nbsp;pid)</code>
-<div class="block">Kill a given process</div>
+<div class="block">Kill a given process.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getAllPids--">getAllPids</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i10" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getWorkerId--">getWorkerId</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getMemoryReservationMb--">getMemoryReservationMb</a></span>()</code>
+<div class="block">Get the current memory reservation of this container.</div>
+</td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getWorkerUser--">getWorkerUser</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getMemoryUsageMb--">getMemoryUsageMb</a></span>()</code>
+<div class="block">Get the current memory usage of this container.</div>
+</td>
 </tr>
 <tr id="i12" class="altColor">
-<td class="colFirst"><code>protected boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#isProcessAlive-long-java.lang.String-">isProcessAlive</a></span>(long&nbsp;pid,
-              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)</code>
-<div class="block">Is a process alive and running?</div>
+<td class="colFirst"><code>long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getTotalTopologyMemoryReserved-org.apache.storm.generated.LocalAssignment-">getTotalTopologyMemoryReserved</a></span>(<a href="../../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;withUpdatedLimits)</code>
+<div class="block">Get the total memory reserved.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
+<td class="colFirst"><code>long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getTotalTopologyMemoryUsed--">getTotalTopologyMemoryUsed</a></span>()</code>
+<div class="block">Get the total memory used (on and off heap).</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getTotalWorkersForThisTopology--">getTotalWorkersForThisTopology</a></span>()</code>
+<div class="block">Get the number of workers for this topology.</div>
+</td>
+</tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getWorkerId--">getWorkerId</a></span>()</code>
+<div class="block">Get the id of the container or null if there is no worker id right now.</div>
+</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getWorkerUser--">getWorkerUser</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#isMemoryLimitViolated-org.apache.storm.generated.LocalAssignment-">isMemoryLimitViolated</a></span>(<a href="../../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;withUpdatedLimits)</code>
+<div class="block">Check if the container is over its memory limit AND needs to be killed.</div>
+</td>
+</tr>
+<tr id="i18" class="altColor">
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#isProcessAlive-long-java.lang.String-">isProcessAlive</a></span>(long&nbsp;pid,
+              <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)</code>
+<div class="block">Is a process alive and running?.</div>
+</td>
+</tr>
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#kill--">kill</a></span>()</code>
 <div class="block">Kill the processes in this container nicely.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#kill-long-">kill</a></span>(long&nbsp;pid)</code>
-<div class="block">Kill a given process</div>
+<div class="block">Kill a given process.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#launch--">launch</a></span>()</code>
-<div class="block">Launch the process for the first time PREREQUISITE: setup has run and passed</div>
+<div class="block">Launch the process for the first time.</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/generated/LSWorkerHeartbeat.html" title="class in org.apache.storm.generated">LSWorkerHeartbeat</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#readHeartbeat--">readHeartbeat</a></span>()</code>
 <div class="block">Read the Heartbeat for the current container.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<tr id="i23" class="rowColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#readTopoConf--">readTopoConf</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#relaunch--">relaunch</a></span>()</code>
-<div class="block">Restart the processes in this container PREREQUISITE: cleanUpForRestart has run and passed</div>
+<div class="block">Restart the processes in this container.</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#runProfiling-org.apache.storm.generated.ProfileRequest-boolean-">runProfiling</a></span>(<a href="../../../../../org/apache/storm/generated/ProfileRequest.html" title="class in org.apache.storm.generated">ProfileRequest</a>&nbsp;request,
             boolean&nbsp;stop)</code>
-<div class="block">Run a profiling request</div>
+<div class="block">Run a profiling request.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#saveWorkerUser-java.lang.String-">saveWorkerUser</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#saveWorkerUser-java.lang.String-">saveWorkerUser</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)</code>&nbsp;</td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#setup--">setup</a></span>()</code>
 <div class="block">Setup the container to run.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr id="i28" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#writeLogMetadata-java.lang.String-">writeLogMetadata</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)</code>
-<div class="block">Write out the file used by the log viewer to allow/reject log access</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#updateMemoryAccounting--">updateMemoryAccounting</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i30" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#writeLogMetadata-java.lang.String-">writeLogMetadata</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)</code>
+<div class="block">Write out the file used by the log viewer to allow/reject log access.</div>
 </td>
 </tr>
 </table>
@@ -375,8 +428,8 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -398,7 +451,7 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>_conf</h4>
-<pre>protected final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt; _conf</pre>
+<pre>protected final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt; _conf</pre>
 </li>
 </ul>
 <a name="Z:Z_topoConf">
@@ -407,16 +460,7 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>_topoConf</h4>
-<pre>protected final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt; _topoConf</pre>
-</li>
-</ul>
-<a name="Z:Z_workerId">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>_workerId</h4>
-<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> _workerId</pre>
+<pre>protected final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt; _topoConf</pre>
 </li>
 </ul>
 <a name="Z:Z_topologyId">
@@ -425,7 +469,7 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>_topologyId</h4>
-<pre>protected final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> _topologyId</pre>
+<pre>protected final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> _topologyId</pre>
 </li>
 </ul>
 <a name="Z:Z_supervisorId">
@@ -434,7 +478,16 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>_supervisorId</h4>
-<pre>protected final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> _supervisorId</pre>
+<pre>protected final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> _supervisorId</pre>
+</li>
+</ul>
+<a name="Z:Z_supervisorPort">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>_supervisorPort</h4>
+<pre>protected final&nbsp;int _supervisorPort</pre>
 </li>
 </ul>
 <a name="Z:Z_port">
@@ -473,6 +526,24 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <pre>protected final&nbsp;<a href="../../../../../org/apache/storm/container/ResourceIsolationInterface.html" title="interface in org.apache.storm.container">ResourceIsolationInterface</a> _resourceIsolationManager</pre>
 </li>
 </ul>
+<a name="Z:Z_symlinksDisabled">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>_symlinksDisabled</h4>
+<pre>protected final&nbsp;boolean _symlinksDisabled</pre>
+</li>
+</ul>
+<a name="Z:Z_workerId">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>_workerId</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> _workerId</pre>
+</li>
+</ul>
 <a name="Z:Z_type">
 <!--   -->
 </a>
@@ -490,36 +561,38 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Container-org.apache.storm.daemon.supervisor.Container.ContainerType-java.util.Map-java.lang.String-int-org.apache.storm.generated.LocalAssignment-org.apache.storm.container.ResourceIsolationInterface-java.lang.String-java.util.Map-org.apache.storm.daemon.supervisor.AdvancedFSOps-">
+<a name="Container-org.apache.storm.daemon.supervisor.Container.ContainerType-java.util.Map-java.lang.String-int-int-org.apache.storm.generated.LocalAssignment-org.apache.storm.container.ResourceIsolationInterface-java.lang.String-java.util.Map-org.apache.storm.daemon.supervisor.AdvancedFSOps-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Container</h4>
 <pre>protected&nbsp;Container(<a href="../../../../../org/apache/storm/daemon/supervisor/Container.ContainerType.html" title="enum in org.apache.storm.daemon.supervisor">Container.ContainerType</a>&nbsp;type,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+                    int&nbsp;supervisorPort,
                     int&nbsp;port,
                     <a href="../../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
                     <a href="../../../../../org/apache/storm/container/ResourceIsolationInterface.html" title="interface in org.apache.storm.container">ResourceIsolationInterface</a>&nbsp;resourceIsolationManager,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;workerId,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;workerId,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
                     <a href="../../../../../org/apache/storm/daemon/supervisor/AdvancedFSOps.html" title="class in org.apache.storm.daemon.supervisor">AdvancedFSOps</a>&nbsp;ops)
-             throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+             throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Create a new Container.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>type</code> - the type of container being made.</dd>
 <dd><code>conf</code> - the supervisor config</dd>
 <dd><code>supervisorId</code> - the ID of the supervisor this is a part of.</dd>
+<dd><code>supervisorPort</code> - the thrift server port of the supervisor this is a part of.</dd>
 <dd><code>port</code> - the port the container is on. Should be &lt;= 0 if only a partial recovery</dd>
 <dd><code>assignment</code> - the assignment for this container. Should be null if only a partial recovery.</dd>
 <dd><code>resourceIsolationManager</code> - used to isolate resources for a container can be null if no isolation is used.</dd>
 <dd><code>workerId</code> - the id of the worker to use. Must not be null if doing a partial recovery.</dd>
-<dd><code>topoConf</code> - the config of the topology (mostly for testing) if null and not a partial recovery the real conf is read.</dd>
+<dd><code>topoConf</code> - the config of the topology (mostly for testing) if null and not a partial recovery the real conf is  read.</dd>
 <dd><code>ops</code> - file system operations (mostly for testing) if null a new one is made</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
 </dl>
 </li>
 </ul>
@@ -537,10 +610,10 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>toString</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -550,11 +623,11 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>readTopoConf</h4>
-<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;readTopoConf()
-                                   throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;readTopoConf()
+                                   throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -565,13 +638,13 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>kill</h4>
 <pre>protected&nbsp;void&nbsp;kill(long&nbsp;pid)
-             throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<div class="block"><p>Kill a given process</p></div>
+             throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Kill a given process.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>pid</code> - the id of the process to kill</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -582,13 +655,13 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>forceKill</h4>
 <pre>protected&nbsp;void&nbsp;forceKill(long&nbsp;pid)
-                  throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<div class="block"><p>Kill a given process</p></div>
+                  throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Kill a given process.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>pid</code> - the id of the process to kill</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -599,14 +672,14 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>kill</h4>
 <pre>public&nbsp;void&nbsp;kill()
-          throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+          throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html#kill--">Killable</a></code></span></div>
 <div class="block"><p>Kill the processes in this container nicely. kill -15 equivalent</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html#kill--">kill</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html" title="interface in org.apache.storm.daemon.supervisor">Killable</a></code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -617,14 +690,14 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>forceKill</h4>
 <pre>public&nbsp;void&nbsp;forceKill()
-               throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+               throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html#forceKill--">Killable</a></code></span></div>
 <div class="block"><p>Kill the processes in this container violently. kill -9 equivalent</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html#forceKill--">forceKill</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html" title="interface in org.apache.storm.daemon.supervisor">Killable</a></code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -635,13 +708,13 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>readHeartbeat</h4>
 <pre>public&nbsp;<a href="../../../../../org/apache/storm/generated/LSWorkerHeartbeat.html" title="class in org.apache.storm.generated">LSWorkerHeartbeat</a>&nbsp;readHeartbeat()
-                                throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                                throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Read the Heartbeat for the current container.</p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the Heartbeat</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -652,9 +725,9 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>isProcessAlive</h4>
 <pre>protected&nbsp;boolean&nbsp;isProcessAlive(long&nbsp;pid,
-                                 <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)
-                          throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<div class="block"><p>Is a process alive and running?</p></div>
+                                 <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)
+                          throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Is a process alive and running?.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>pid</code> - the PID of the running process</dd>
@@ -662,7 +735,7 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if it is, else false</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -673,14 +746,14 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>areAllProcessesDead</h4>
 <pre>public&nbsp;boolean&nbsp;areAllProcessesDead()
-                            throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html#areAllProcessesDead--">areAllProcessesDead</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html" title="interface in org.apache.storm.daemon.supervisor">Killable</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if all of the processes are dead, else false</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -691,14 +764,14 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>cleanUp</h4>
 <pre>public&nbsp;void&nbsp;cleanUp()
-             throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+             throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html#cleanUp--">Killable</a></code></span></div>
 <div class="block"><p>Clean up the container. It is not coming back. by default do the same thing as when restarting.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html#cleanUp--">cleanUp</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html" title="interface in org.apache.storm.daemon.supervisor">Killable</a></code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -709,11 +782,11 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>setup</h4>
 <pre>protected&nbsp;void&nbsp;setup()
-              throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+              throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Setup the container to run. By default this creates the needed directories/links in the local file system PREREQUISITE: All needed blobs and topology, jars/configs have been downloaded and placed in the appropriate locations</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -723,14 +796,14 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>writeLogMetadata</h4>
-<pre>protected&nbsp;void&nbsp;writeLogMetadata(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)
-                         throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<div class="block"><p>Write out the file used by the log viewer to allow/reject log access</p></div>
+<pre>protected&nbsp;void&nbsp;writeLogMetadata(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)
+                         throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Write out the file used by the log viewer to allow/reject log access.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>user</code> - the user this is going to run as</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -741,11 +814,11 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>createArtifactsLink</h4>
 <pre>protected&nbsp;void&nbsp;createArtifactsLink()
-                            throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<div class="block"><p>Create symlink from the containers directory/artifacts to the artifacts directory</p></div>
+                            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Create symlink from the containers directory/artifacts to the artifacts directory.</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -756,11 +829,11 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>createBlobstoreLinks</h4>
 <pre>protected&nbsp;void&nbsp;createBlobstoreLinks()
-                             throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                             throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Create symlinks for each of the blobs from the container&rsquo;s directory to corresponding links in the storm dist directory.</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error.</dd>
 </dl>
 </li>
 </ul>
@@ -770,13 +843,13 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllPids</h4>
-<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;getAllPids()
-                        throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;getAllPids()
+                        throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>all of the pids that are a part of this container.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -786,13 +859,13 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>getWorkerUser</h4>
-<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getWorkerUser()
-                        throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getWorkerUser()
+                        throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the user that some operations should be done as.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -802,11 +875,11 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>saveWorkerUser</h4>
-<pre>protected&nbsp;void&nbsp;saveWorkerUser(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)
-                       throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<pre>protected&nbsp;void&nbsp;saveWorkerUser(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)
+                       throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -817,10 +890,10 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>deleteSavedWorkerUser</h4>
 <pre>protected&nbsp;void&nbsp;deleteSavedWorkerUser()
-                              throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                              throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -831,12 +904,92 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>cleanUpForRestart</h4>
 <pre>public&nbsp;void&nbsp;cleanUpForRestart()
-                       throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                       throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Clean up the container partly preparing for restart. By default delete all of the temp directories we are going to get a new worker_id anyways. POST CONDITION: the workerId will be set to null</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
+</li>
+</ul>
+<a name="isMemoryLimitViolated-org.apache.storm.generated.LocalAssignment-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isMemoryLimitViolated</h4>
+<pre>public&nbsp;boolean&nbsp;isMemoryLimitViolated(<a href="../../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;withUpdatedLimits)
+                              throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Check if the container is over its memory limit AND needs to be killed. This does not necessarily mean that it just went over the limit.</p></div>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+</dl>
+</li>
+</ul>
+<a name="updateMemoryAccounting--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>updateMemoryAccounting</h4>
+<pre>protected&nbsp;void&nbsp;updateMemoryAccounting()</pre>
+</li>
+</ul>
+<a name="getTotalTopologyMemoryUsed--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTotalTopologyMemoryUsed</h4>
+<pre>public&nbsp;long&nbsp;getTotalTopologyMemoryUsed()</pre>
+<div class="block"><p>Get the total memory used (on and off heap).</p></div>
+</li>
+</ul>
+<a name="getTotalTopologyMemoryReserved-org.apache.storm.generated.LocalAssignment-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTotalTopologyMemoryReserved</h4>
+<pre>public&nbsp;long&nbsp;getTotalTopologyMemoryReserved(<a href="../../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;withUpdatedLimits)</pre>
+<div class="block"><p>Get the total memory reserved.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>withUpdatedLimits</code> - the local assignment with shared memory</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the total memory reserved.</dd>
+</dl>
+</li>
+</ul>
+<a name="getTotalWorkersForThisTopology--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getTotalWorkersForThisTopology</h4>
+<pre>public&nbsp;long&nbsp;getTotalWorkersForThisTopology()</pre>
+<div class="block"><p>Get the number of workers for this topology.</p></div>
+</li>
+</ul>
+<a name="getMemoryUsageMb--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getMemoryUsageMb</h4>
+<pre>public&nbsp;long&nbsp;getMemoryUsageMb()</pre>
+<div class="block"><p>Get the current memory usage of this container.</p></div>
+</li>
+</ul>
+<a name="getMemoryReservationMb--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getMemoryReservationMb</h4>
+<pre>public&nbsp;long&nbsp;getMemoryReservationMb()</pre>
+<div class="block"><p>Get the current memory reservation of this container.</p></div>
 </li>
 </ul>
 <a name="launch--">
@@ -846,11 +999,11 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>launch</h4>
 <pre>public abstract&nbsp;void&nbsp;launch()
-                     throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<div class="block"><p>Launch the process for the first time PREREQUISITE: setup has run and passed</p></div>
+                     throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Launch the process for the first time. PREREQUISITE: setup has run and passed</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -861,11 +1014,11 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>relaunch</h4>
 <pre>public abstract&nbsp;void&nbsp;relaunch()
-                       throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<div class="block"><p>Restart the processes in this container PREREQUISITE: cleanUpForRestart has run and passed</p></div>
+                       throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Restart the processes in this container. PREREQUISITE: cleanUpForRestart has run and passed</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -876,10 +1029,7 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <li class="blockList">
 <h4>didMainProcessExit</h4>
 <pre>public abstract&nbsp;boolean&nbsp;didMainProcessExit()</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>true if the main process exited, else false. This is just best effort return false if unknown.</dd>
-</dl>
+<div class="block"><p>Return true if the main process exited, else false. This is just best effort return false if unknown.</p></div>
 </li>
 </ul>
 <a name="runProfiling-org.apache.storm.generated.ProfileRequest-boolean-">
@@ -890,9 +1040,9 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <h4>runProfiling</h4>
 <pre>public abstract&nbsp;boolean&nbsp;runProfiling(<a href="../../../../../org/apache/storm/generated/ProfileRequest.html" title="class in org.apache.storm.generated">ProfileRequest</a>&nbsp;request,
                                      boolean&nbsp;stop)
-                              throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a>,
-                                     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
-<div class="block"><p>Run a profiling request</p></div>
+                              throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a>,
+                                     <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
+<div class="block"><p>Run a profiling request.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>request</code> - the request to run</dd>
@@ -900,8 +1050,8 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if it succeeded, else false</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code> - if running the command is interrupted.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code> - if running the command is interrupted.</dd>
 </dl>
 </li>
 </ul>
@@ -911,11 +1061,8 @@ implements <a href="../../../../../org/apache/storm/daemon/supervisor/Killable.h
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getWorkerId</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getWorkerId()</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the id of the container or null if there is no worker id right now.</dd>
-</dl>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getWorkerId()</pre>
+<div class="block"><p>Get the id of the container or null if there is no worker id right now.</p></div>
 </li>
 </ul>
 </li>
@@ -950,7 +1097,7 @@ hljs.initHighlightingOnLoad();
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../org/apache/storm/daemon/supervisor/BasicContainerLauncher.html" title="class in org.apache.storm.daemon.supervisor"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/daemon/supervisor/ClientSupervisorUtils.html" title="class in org.apache.storm.daemon.supervisor"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../org/apache/storm/daemon/supervisor/Container.ContainerType.html" title="enum in org.apache.storm.daemon.supervisor"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -991,6 +1138,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

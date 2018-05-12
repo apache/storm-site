@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html" title="class in org.apache.storm.daemon.supervisor">org.apache.storm.daemon.supervisor.Container</a></li>
@@ -152,7 +152,7 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <!--   -->
 </a>
 <h3>Fields inherited from class&nbsp;org.apache.storm.daemon.supervisor.<a href="../../../../../org/apache/storm/daemon/supervisor/Container.html" title="class in org.apache.storm.daemon.supervisor">Container</a></h3>
-<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_assignment">_assignment</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_conf">_conf</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_ops">_ops</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_port">_port</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_resourceIsolationManager">_resourceIsolationManager</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_supervisorId">_supervisorId</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_topoConf">_topoConf</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_topologyId">_topologyId</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_type">_type</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_workerId">_workerId</a></code></li>
+<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_assignment">_assignment</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_conf">_conf</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_ops">_ops</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_port">_port</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_resourceIsolationManager">_resourceIsolationManager</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_supervisorId">_supervisorId</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_supervisorPort">_supervisorPort</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_symlinksDisabled">_symlinksDisabled</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_topoConf">_topoConf</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_topologyId">_topologyId</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_type">_type</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#Z:Z_workerId">_workerId</a></code></li>
 </ul>
 </li>
 </ul>
@@ -168,8 +168,9 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#LocalContainer-java.util.Map-java.lang.String-int-org.apache.storm.generated.LocalAssignment-org.apache.storm.messaging.IContext-">LocalContainer</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
-              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#LocalContainer-java.util.Map-java.lang.String-int-int-org.apache.storm.generated.LocalAssignment-org.apache.storm.messaging.IContext-">LocalContainer</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+              <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+              int&nbsp;supervisorPort,
               int&nbsp;port,
               <a href="../../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
               <a href="../../../../../org/apache/storm/messaging/IContext.html" title="interface in org.apache.storm.messaging">IContext</a>&nbsp;sharedContext)</code>&nbsp;</td>
@@ -194,32 +195,46 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#areAllProcessesDead--">areAllProcessesDead</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#didMainProcessExit--">didMainProcessExit</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#createArtifactsLink--">createArtifactsLink</a></span>()</code>
+<div class="block">Create symlink from the containers directory/artifacts to the artifacts directory.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#createBlobstoreLinks--">createBlobstoreLinks</a></span>()</code>
+<div class="block">Create symlinks for each of the blobs from the container&rsquo;s directory to corresponding links in the storm dist directory.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#didMainProcessExit--">didMainProcessExit</a></span>()</code>
+<div class="block">Return true if the main process exited, else false.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#kill--">kill</a></span>()</code>
 <div class="block">Kill the processes in this container nicely.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#launch--">launch</a></span>()</code>
-<div class="block">Launch the process for the first time PREREQUISITE: setup has run and passed</div>
+<div class="block">Launch the process for the first time.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#relaunch--">relaunch</a></span>()</code>
-<div class="block">Restart the processes in this container PREREQUISITE: cleanUpForRestart has run and passed</div>
+<div class="block">Restart the processes in this container.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#runProfiling-org.apache.storm.generated.ProfileRequest-boolean-">runProfiling</a></span>(<a href="../../../../../org/apache/storm/generated/ProfileRequest.html" title="class in org.apache.storm.generated">ProfileRequest</a>&nbsp;request,
             boolean&nbsp;stop)</code>
-<div class="block">Run a profiling request</div>
+<div class="block">Run a profiling request.</div>
 </td>
 </tr>
 </table>
@@ -228,14 +243,14 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;org.apache.storm.daemon.supervisor.<a href="../../../../../org/apache/storm/daemon/supervisor/Container.html" title="class in org.apache.storm.daemon.supervisor">Container</a></h3>
-<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#cleanUp--">cleanUp</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#cleanUpForRestart--">cleanUpForRestart</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#createArtifactsLink--">createArtifactsLink</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#createBlobstoreLinks--">createBlobstoreLinks</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#deleteSavedWorkerUser--">deleteSavedWorkerUser</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#forceKill--">forceKill</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#forceKill-long-">forceKill</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getAllPids--">getAllPids</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getWorkerId--">getWorkerId</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getWorkerUser--">getWorkerUser</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#isProcessAlive-long-java.lang.String-">isProcessAlive</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#kill-long-">kill</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#readHeartbeat--">readHeartbeat</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#readTopoConf--">readTopoConf</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#saveWorkerUser-java.lang.String-">saveWorkerUser</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#setup--">setup</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#toString--">toString</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#writeLogMetadata-java.lang.String-">writeLogMetadata</a></code></li>
+<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#cleanUp--">cleanUp</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#cleanUpForRestart--">cleanUpForRestart</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#deleteSavedWorkerUser--">deleteSavedWorkerUser</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#forceKill--">forceKill</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#forceKill-long-">forceKill</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getAllPids--">getAllPids</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getMemoryReservationMb--">getMemoryReservationMb</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getMemoryUsageMb--">getMemoryUsageMb</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getTotalTopologyMemoryReserved-org.apache.storm.generated.LocalAssignment-">getTotalTopologyMemoryReserved</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getTotalTopologyMemoryUsed--">getTotalTopologyMemoryUsed</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getTotalWorkersForThisTopology--">getTotalWorkersForThisTopology</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getWorkerId--">getWorkerId</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#getWorkerUser--">getWorkerUser</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#isMemoryLimitViolated-org.apache.storm.generated.LocalAssignment-">isMemoryLimitViolated</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#isProcessAlive-long-java.lang.String-">isProcessAlive</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#kill-long-">kill</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#readHeartbeat--">readHeartbeat</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#readTopoConf--">readTopoConf</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#saveWorkerUser-java.lang.String-">saveWorkerUser</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#setup--">setup</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#toString--">toString</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#updateMemoryAccounting--">updateMemoryAccounting</a>, <a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#writeLogMetadata-java.lang.String-">writeLogMetadata</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -251,21 +266,22 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="LocalContainer-java.util.Map-java.lang.String-int-org.apache.storm.generated.LocalAssignment-org.apache.storm.messaging.IContext-">
+<a name="LocalContainer-java.util.Map-java.lang.String-int-int-org.apache.storm.generated.LocalAssignment-org.apache.storm.messaging.IContext-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>LocalContainer</h4>
-<pre>public&nbsp;LocalContainer(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
-                      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+<pre>public&nbsp;LocalContainer(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+                      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+                      int&nbsp;supervisorPort,
                       int&nbsp;port,
                       <a href="../../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
                       <a href="../../../../../org/apache/storm/messaging/IContext.html" title="interface in org.apache.storm.messaging">IContext</a>&nbsp;sharedContext)
-               throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+               throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -277,6 +293,36 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="createArtifactsLink--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createArtifactsLink</h4>
+<pre>protected&nbsp;void&nbsp;createArtifactsLink()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#createArtifactsLink--">Container</a></code></span></div>
+<div class="block"><p>Create symlink from the containers directory/artifacts to the artifacts directory.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#createArtifactsLink--">createArtifactsLink</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html" title="class in org.apache.storm.daemon.supervisor">Container</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="createBlobstoreLinks--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBlobstoreLinks</h4>
+<pre>protected&nbsp;void&nbsp;createBlobstoreLinks()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#createBlobstoreLinks--">Container</a></code></span></div>
+<div class="block"><p>Create symlinks for each of the blobs from the container&rsquo;s directory to corresponding links in the storm dist directory.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#createBlobstoreLinks--">createBlobstoreLinks</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html" title="class in org.apache.storm.daemon.supervisor">Container</a></code></dd>
+</dl>
+</li>
+</ul>
 <a name="launch--">
 <!--   -->
 </a>
@@ -284,14 +330,14 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <li class="blockList">
 <h4>launch</h4>
 <pre>public&nbsp;void&nbsp;launch()
-            throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#launch--">Container</a></code></span></div>
-<div class="block"><p>Launch the process for the first time PREREQUISITE: setup has run and passed</p></div>
+<div class="block"><p>Launch the process for the first time. PREREQUISITE: setup has run and passed</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#launch--">launch</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html" title="class in org.apache.storm.daemon.supervisor">Container</a></code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -302,7 +348,7 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <li class="blockList">
 <h4>kill</h4>
 <pre>public&nbsp;void&nbsp;kill()
-          throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+          throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html#kill--">Killable</a></code></span></div>
 <div class="block"><p>Kill the processes in this container nicely. kill -15 equivalent</p></div>
 <dl>
@@ -311,7 +357,7 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#kill--">kill</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html" title="class in org.apache.storm.daemon.supervisor">Container</a></code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -322,7 +368,7 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <li class="blockList">
 <h4>areAllProcessesDead</h4>
 <pre>public&nbsp;boolean&nbsp;areAllProcessesDead()
-                            throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                            throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html#areAllProcessesDead--">areAllProcessesDead</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Killable.html" title="interface in org.apache.storm.daemon.supervisor">Killable</a></code></dd>
@@ -331,7 +377,7 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if all of the processes are dead, else false</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -342,14 +388,14 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <li class="blockList">
 <h4>relaunch</h4>
 <pre>public&nbsp;void&nbsp;relaunch()
-              throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+              throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#relaunch--">Container</a></code></span></div>
-<div class="block"><p>Restart the processes in this container PREREQUISITE: cleanUpForRestart has run and passed</p></div>
+<div class="block"><p>Restart the processes in this container. PREREQUISITE: cleanUpForRestart has run and passed</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#relaunch--">relaunch</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html" title="class in org.apache.storm.daemon.supervisor">Container</a></code></dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
 </dl>
 </li>
 </ul>
@@ -360,11 +406,11 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <li class="blockList">
 <h4>didMainProcessExit</h4>
 <pre>public&nbsp;boolean&nbsp;didMainProcessExit()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#didMainProcessExit--">Container</a></code></span></div>
+<div class="block"><p>Return true if the main process exited, else false. This is just best effort return false if unknown.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#didMainProcessExit--">didMainProcessExit</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html" title="class in org.apache.storm.daemon.supervisor">Container</a></code></dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>true if the main process exited, else false. This is just best effort return false if unknown.</dd>
 </dl>
 </li>
 </ul>
@@ -376,10 +422,10 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <h4>runProfiling</h4>
 <pre>public&nbsp;boolean&nbsp;runProfiling(<a href="../../../../../org/apache/storm/generated/ProfileRequest.html" title="class in org.apache.storm.generated">ProfileRequest</a>&nbsp;request,
                             boolean&nbsp;stop)
-                     throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a>,
-                            <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
+                     throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a>,
+                            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#runProfiling-org.apache.storm.generated.ProfileRequest-boolean-">Container</a></code></span></div>
-<div class="block"><p>Run a profiling request</p></div>
+<div class="block"><p>Run a profiling request.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html#runProfiling-org.apache.storm.generated.ProfileRequest-boolean-">runProfiling</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/daemon/supervisor/Container.html" title="class in org.apache.storm.daemon.supervisor">Container</a></code></dd>
@@ -389,8 +435,8 @@ extends <a href="../../../../../org/apache/storm/daemon/supervisor/Container.htm
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if it succeeded, else false</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code> - if running the command is interrupted.</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - on any error</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code> - if running the command is interrupted.</dd>
 </dl>
 </li>
 </ul>
@@ -467,6 +513,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

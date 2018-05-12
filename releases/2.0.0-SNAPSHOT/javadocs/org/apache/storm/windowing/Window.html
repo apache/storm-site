@@ -18,8 +18,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":18,"i4":6,"i5":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -105,7 +105,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/storm/windowing/TupleWindowImpl.html" title="class in org.apache.storm.windowing">TupleWindowImpl</a></dd>
+<dd><a href="../../../../org/apache/storm/windowing/TupleWindowImpl.html" title="class in org.apache.storm.windowing">TupleWindowImpl</a>, <a href="../../../../org/apache/storm/windowing/TupleWindowIterImpl.html" title="class in org.apache.storm.windowing">TupleWindowIterImpl</a></dd>
 </dl>
 <hr>
 <br>
@@ -124,27 +124,45 @@ var activeTableTab = "activeTableTab";
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t5" class="tableTab"><span><a href="javascript:show(16);">Default Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/Window.html#get--">get</a></span>()</code>
 <div class="block">Gets the list of events in the window.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/Window.html#getEndTimestamp--">getEndTimestamp</a></span>()</code>
+<div class="block">If processing based on event time, returns the window end time based on watermark otherwise returns the window end time based on processing time.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/Window.html#getExpired--">getExpired</a></span>()</code>
 <div class="block">Get the list of events expired from the window since the last time the window was generated.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;</code></td>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>default <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/Window.html#getIter--">getIter</a></span>()</code>
+<div class="block">Returns an iterator over the events in the window.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/Window.html#getNew--">getNew</a></span>()</code>
 <div class="block">Get the list of newly added events in the window since the last time the window was generated.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/Window.html#getStartTimestamp--">getStartTimestamp</a></span>()</code>
+<div class="block">Returns the window start timestamp.</div>
 </td>
 </tr>
 </table>
@@ -168,11 +186,27 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>get</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;&nbsp;get()</pre>
-<div class="block"><p>Gets the list of events in the window.</p></div>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;&nbsp;get()</pre>
+<div class="block"><p>Gets the list of events in the window. <p> <b>Note: </b> If the number of tuples in windows is huge, invoking <code>get</code> would load all the tuples into memory and may throw an OOM exception. Use windowing with persistence (<a href="../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withPersistence--"><code>BaseStatefulWindowedBolt.withPersistence()</code></a>) and <a href="../../../../org/apache/storm/windowing/Window.html#getIter--"><code>getIter()</code></a> to retrieve an iterator over the events in the window. </p></p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the list of events in the window.</dd>
+</dl>
+</li>
+</ul>
+<a name="getIter--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getIter</h4>
+<pre>default&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;&nbsp;getIter()</pre>
+<div class="block"><p>Returns an iterator over the events in the window. <p> <b>Note: </b> This is only supported when using windowing with persistence <a href="../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withPersistence--"><code>BaseStatefulWindowedBolt.withPersistence()</code></a>. </p></p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util"><code>Iterator</code></a> over the events in the current window.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if not using <a href="../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withPersistence--"><code>BaseStatefulWindowedBolt.withPersistence()</code></a></dd>
 </dl>
 </li>
 </ul>
@@ -182,25 +216,57 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getNew</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;&nbsp;getNew()</pre>
-<div class="block"><p>Get the list of newly added events in the window since the last time the window was generated.</p></div>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;&nbsp;getNew()</pre>
+<div class="block"><p>Get the list of newly added events in the window since the last time the window was generated. <p> <b>Note: </b> This is not supported when using windowing with persistence (<a href="../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withPersistence--"><code>BaseStatefulWindowedBolt.withPersistence()</code></a>). </p></p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the list of newly added events in the window.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if using <a href="../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withPersistence--"><code>BaseStatefulWindowedBolt.withPersistence()</code></a></dd>
 </dl>
 </li>
 </ul>
 <a name="getExpired--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getExpired</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;&nbsp;getExpired()</pre>
-<div class="block"><p>Get the list of events expired from the window since the last time the window was generated.</p></div>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/Window.html" title="type parameter in Window">T</a>&gt;&nbsp;getExpired()</pre>
+<div class="block"><p>Get the list of events expired from the window since the last time the window was generated. <p> <b>Note: </b> This is not supported when using windowing with persistence (<a href="../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withPersistence--"><code>BaseStatefulWindowedBolt.withPersistence()</code></a>). </p></p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the list of events expired from the window.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html?is-external=true" title="class or interface in java.lang">UnsupportedOperationException</a></code> - if using <a href="../../../../org/apache/storm/topology/base/BaseStatefulWindowedBolt.html#withPersistence--"><code>BaseStatefulWindowedBolt.withPersistence()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getEndTimestamp--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEndTimestamp</h4>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getEndTimestamp()</pre>
+<div class="block"><p>If processing based on event time, returns the window end time based on watermark otherwise returns the window end time based on processing time.</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the window end timestamp</dd>
+</dl>
+</li>
+</ul>
+<a name="getStartTimestamp--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getStartTimestamp</h4>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getStartTimestamp()</pre>
+<div class="block"><p>Returns the window start timestamp. Will return null if the window length is not based on time duration.</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the window start timestamp or null if the window length is not time based</dd>
 </dl>
 </li>
 </ul>
@@ -277,6 +343,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

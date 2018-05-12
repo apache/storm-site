@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../../org/apache/storm/topology/base/BaseComponent.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseComponent</a></li>
@@ -119,7 +119,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/task/IBolt.html" title="interface in org.apache.storm.task">IBolt</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichBolt.html" title="interface in org.apache.storm.topology">IRichBolt</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/task/IBolt.html" title="interface in org.apache.storm.task">IBolt</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichBolt.html" title="interface in org.apache.storm.topology">IRichBolt</a></dd>
 </dl>
 <hr>
 <br>
@@ -157,7 +157,11 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#collector">collector</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected com.microsoft.eventhubs.client.EventHubSender</code></td>
+<td class="colFirst"><code>protected com.microsoft.azure.eventhubs.EventHubClient</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#ehClient">ehClient</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected com.microsoft.azure.eventhubs.PartitionSender</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#sender">sender</a></span></code>&nbsp;</td>
 </tr>
 </table>
@@ -178,14 +182,14 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#EventHubBolt-org.apache.storm.eventhubs.bolt.EventHubBoltConfig-">EventHubBolt</a></span>(<a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBoltConfig.html" title="class in org.apache.storm.eventhubs.bolt">EventHubBoltConfig</a>&nbsp;config)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#EventHubBolt-java.lang.String-java.lang.String-">EventHubBolt</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;connectionString,
-            <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;entityPath)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#EventHubBolt-java.lang.String-java.lang.String-">EventHubBolt</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;connectionString,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;entityPath)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#EventHubBolt-java.lang.String-java.lang.String-java.lang.String-java.lang.String-boolean-">EventHubBolt</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;userName,
-            <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;password,
-            <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
-            <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;entityPath,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#EventHubBolt-java.lang.String-java.lang.String-java.lang.String-java.lang.String-boolean-">EventHubBolt</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;userName,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;password,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;entityPath,
             boolean&nbsp;partitionMode)</code>&nbsp;</td>
 </tr>
 </table>
@@ -205,32 +209,31 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#cleanup--">cleanup</a></span>()</code>
+<div class="block">Called when an IBolt is going to be shutdown.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#declareOutputFields-org.apache.storm.topology.OutputFieldsDeclarer-">declareOutputFields</a></span>(<a href="../../../../../org/apache/storm/topology/OutputFieldsDeclarer.html" title="interface in org.apache.storm.topology">OutputFieldsDeclarer</a>&nbsp;declarer)</code>
 <div class="block">Declare the output schema for all the streams of this topology.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#execute-org.apache.storm.tuple.Tuple-">execute</a></span>(<a href="../../../../../org/apache/storm/tuple/Tuple.html" title="interface in org.apache.storm.tuple">Tuple</a>&nbsp;tuple)</code>
 <div class="block">Process a single tuple of input.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;config,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/bolt/EventHubBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;config,
        <a href="../../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/task/OutputCollector.html" title="class in org.apache.storm.task">OutputCollector</a>&nbsp;collector)</code>
 <div class="block">Called when a task for this component is initialized within a worker on the cluster.</div>
 </td>
 </tr>
 </table>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.base.BaseRichBolt">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;org.apache.storm.topology.base.<a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html" title="class in org.apache.storm.topology.base">BaseRichBolt</a></h3>
-<code><a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html#cleanup--">cleanup</a></code></li>
-</ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.base.BaseComponent">
 <!--   -->
@@ -242,8 +245,8 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.IComponent">
@@ -281,7 +284,16 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <ul class="blockList">
 <li class="blockList">
 <h4>sender</h4>
-<pre>protected&nbsp;com.microsoft.eventhubs.client.EventHubSender sender</pre>
+<pre>protected&nbsp;com.microsoft.azure.eventhubs.PartitionSender sender</pre>
+</li>
+</ul>
+<a name="ehClient">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ehClient</h4>
+<pre>protected&nbsp;com.microsoft.azure.eventhubs.EventHubClient ehClient</pre>
 </li>
 </ul>
 <a name="boltConfig">
@@ -307,8 +319,8 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <ul class="blockList">
 <li class="blockList">
 <h4>EventHubBolt</h4>
-<pre>public&nbsp;EventHubBolt(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;connectionString,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;entityPath)</pre>
+<pre>public&nbsp;EventHubBolt(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;connectionString,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;entityPath)</pre>
 </li>
 </ul>
 <a name="EventHubBolt-java.lang.String-java.lang.String-java.lang.String-java.lang.String-boolean-">
@@ -317,10 +329,10 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <ul class="blockList">
 <li class="blockList">
 <h4>EventHubBolt</h4>
-<pre>public&nbsp;EventHubBolt(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;userName,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;password,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;entityPath,
+<pre>public&nbsp;EventHubBolt(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;userName,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;password,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;entityPath,
                     boolean&nbsp;partitionMode)</pre>
 </li>
 </ul>
@@ -347,16 +359,16 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>public&nbsp;void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;config,
+<pre>public&nbsp;void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;config,
                     <a href="../../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
                     <a href="../../../../../org/apache/storm/task/OutputCollector.html" title="class in org.apache.storm.task">OutputCollector</a>&nbsp;collector)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/task/IBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">IBolt</a></code></span></div>
 <div class="block"><p>Called when a task for this component is initialized within a worker on the cluster. It provides the bolt with the environment in which the bolt executes.</p><p>This includes the:</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>config</code> - The Storm configuration for this bolt. This is the configuration provided to the topology merged in with cluster configuration on this machine.</dd>
-<dd><code>context</code> - This object can be used to get information about this task&rsquo;s place within the topology, including the task id and component id of this task, input and output information, etc.</dd>
-<dd><code>collector</code> - The collector is used to emit tuples from this bolt. Tuples can be emitted at any time, including the prepare and cleanup methods. The collector is thread-safe and should be saved as an instance variable of this bolt object.</dd>
+<dd><code>config</code> - The Storm configuration for this bolt. This is the configuration provided to the topology merged in with cluster  configuration on this machine.</dd>
+<dd><code>context</code> - This object can be used to get information about this task&rsquo;s place within the topology, including the task id and  component id of this task, input and output information, etc.</dd>
+<dd><code>collector</code> - The collector is used to emit tuples from this bolt. Tuples can be emitted at any time, including the prepare and  cleanup methods. The collector is thread-safe and should be saved as an instance variable of this bolt object.</dd>
 </dl>
 </li>
 </ul>
@@ -372,6 +384,23 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>tuple</code> - The input tuple to be processed.</dd>
+</dl>
+</li>
+</ul>
+<a name="cleanup--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cleanup</h4>
+<pre>public&nbsp;void&nbsp;cleanup()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/task/IBolt.html#cleanup--">IBolt</a></code></span></div>
+<div class="block"><p>Called when an IBolt is going to be shutdown. There is no guarentee that cleanup will be called, because the supervisor kill -9&rsquo;s worker processes on the cluster.</p><p>The one context where cleanup is guaranteed to be called is when a topology is killed when running Storm in local mode.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/task/IBolt.html#cleanup--">cleanup</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/task/IBolt.html" title="interface in org.apache.storm.task">IBolt</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html#cleanup--">cleanup</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/topology/base/BaseRichBolt.html" title="class in org.apache.storm.topology.base">BaseRichBolt</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -463,6 +492,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

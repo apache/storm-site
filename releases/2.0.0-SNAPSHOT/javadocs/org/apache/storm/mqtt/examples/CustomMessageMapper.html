@@ -76,13 +76,13 @@ var activeTableTab = "activeTableTab";
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.mqtt.examples.CustomMessageMapper</li>
@@ -109,14 +109,15 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html" title="interface in org.apache.storm.mqtt">MqttMessageMapper</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html" title="interface in org.apache.storm.mqtt">MqttMessageMapper</a></dd>
 </dl>
 <hr>
 <br>
-<pre>public class <span class="typeNameLabel">CustomMessageMapper</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+<pre>public final class <span class="typeNameLabel">CustomMessageMapper</span>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html" title="interface in org.apache.storm.mqtt">MqttMessageMapper</a></pre>
-<div class="block"><p>Given a topic name: &ldquo;users/{user}/{location}/{deviceId}&rdquo; and a payload of &ldquo;{temperature}/{humidity}&rdquo; emits a tuple containing user(String), deviceId(String), location(String), temperature(float), humidity(float)</p></div>
+<div class="block"><p>Given a topic name: &ldquo;users/{user}/{location}/{deviceId}&rdquo; and a payload of &ldquo;{temperature}/{humidity}&rdquo; emits a tuple containing <code>user(String), deviceId(String), location(String), temperature(float),
+humidity(float)</code>.</p></div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../serialized-form.html#org.apache.storm.mqtt.examples.CustomMessageMapper">Serialized Form</a></dd>
@@ -127,23 +128,6 @@ implements <a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html"
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== CONSTRUCTOR SUMMARY ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="constructor.summary">
-<!--   -->
-</a>
-<h3>Constructor Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
-<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colOne" scope="col">Constructor and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/mqtt/examples/CustomMessageMapper.html#CustomMessageMapper--">CustomMessageMapper</a></span>()</code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ========== METHOD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.summary">
@@ -159,13 +143,13 @@ implements <a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html"
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/mqtt/examples/CustomMessageMapper.html#outputFields--">outputFields</a></span>()</code>
-<div class="block">Returns the list of output fields this Mapper produces.</div>
+<div class="block">Gets the output fields.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/mqtt/examples/CustomMessageMapper.html#toValues-org.apache.storm.mqtt.MqttMessage-">toValues</a></span>(<a href="../../../../../org/apache/storm/mqtt/MqttMessage.html" title="class in org.apache.storm.mqtt">MqttMessage</a>&nbsp;message)</code>
-<div class="block">Convert a <code>MqttMessage</code> to a set of Values that can be emitted as a Storm Tuple.</div>
+<div class="block">Converts MQTT message to an instance of <code>Values</code>.</div>
 </td>
 </tr>
 </table>
@@ -173,8 +157,8 @@ implements <a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html"
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -184,23 +168,6 @@ implements <a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html"
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ========= CONSTRUCTOR DETAIL ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="constructor.detail">
-<!--   -->
-</a>
-<h3>Constructor Detail</h3>
-<a name="CustomMessageMapper--">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>CustomMessageMapper</h4>
-<pre>public&nbsp;CustomMessageMapper()</pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ============ METHOD DETAIL ========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.detail">
@@ -214,15 +181,14 @@ implements <a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html"
 <li class="blockList">
 <h4>toValues</h4>
 <pre>public&nbsp;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&nbsp;toValues(<a href="../../../../../org/apache/storm/mqtt/MqttMessage.html" title="class in org.apache.storm.mqtt">MqttMessage</a>&nbsp;message)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html#toValues-org.apache.storm.mqtt.MqttMessage-">MqttMessageMapper</a></code></span></div>
-<div class="block"><p>Convert a <code>MqttMessage</code> to a set of Values that can be emitted as a Storm Tuple.</p></div>
+<div class="block"><p>Converts MQTT message to an instance of <code>Values</code>.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html#toValues-org.apache.storm.mqtt.MqttMessage-">toValues</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html" title="interface in org.apache.storm.mqtt">MqttMessageMapper</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>message</code> - An MQTT Message.</dd>
+<dd><code>message</code> - the message to convert</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>Values representing a Storm Tuple.</dd>
+<dd>the converted values</dd>
 </dl>
 </li>
 </ul>
@@ -233,13 +199,12 @@ implements <a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html"
 <li class="blockList">
 <h4>outputFields</h4>
 <pre>public&nbsp;<a href="../../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;outputFields()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html#outputFields--">MqttMessageMapper</a></code></span></div>
-<div class="block"><p>Returns the list of output fields this Mapper produces.</p></div>
+<div class="block"><p>Gets the output fields.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html#outputFields--">outputFields</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/mqtt/MqttMessageMapper.html" title="interface in org.apache.storm.mqtt">MqttMessageMapper</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the list of output fields this mapper produces.</dd>
+<dd>the output fields</dd>
 </dl>
 </li>
 </ul>
@@ -302,13 +267,13 @@ hljs.initHighlightingOnLoad();
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
@@ -316,6 +281,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

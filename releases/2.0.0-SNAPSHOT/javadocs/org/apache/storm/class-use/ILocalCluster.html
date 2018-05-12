@@ -83,6 +83,10 @@
 </tr>
 <tbody>
 <tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm">org.apache.storm</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.testing">org.apache.storm.testing</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -91,10 +95,140 @@
 </li>
 <li class="blockList">
 <ul class="blockList">
+<li class="blockList"><a name="org.apache.storm">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a> in <a href="../../../../org/apache/storm/package-summary.html">org.apache.storm</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing subinterfaces, and an explanation">
+<caption><span>Subinterfaces of <a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a> in <a href="../../../../org/apache/storm/package-summary.html">org.apache.storm</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Interface and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>interface&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/ILocalClusterTrackedTopologyAware.html" title="interface in org.apache.storm">ILocalClusterTrackedTopologyAware</a></span></code>
+<div class="block">This is here mostly for backwards compatibility.</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../org/apache/storm/package-summary.html">org.apache.storm</a> that implement <a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/LocalCluster.html" title="class in org.apache.storm">LocalCluster</a></span></code>
+<div class="block">A stand alone storm cluster that runs inside a single process.</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../org/apache/storm/package-summary.html">org.apache.storm</a> that return <a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Testing.</span><code><span class="memberNameLink"><a href="../../../../org/apache/storm/Testing.html#getLocalCluster-java.util.Map-">getLocalCluster</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;clusterConf)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">use <code>
+try (LocalCluster cluster = new LocalCluster.Builder()....build()) {
+ ...
+}
+</code></span></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../org/apache/storm/package-summary.html">org.apache.storm</a> with parameters of type <a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><span class="typeNameLabel">Testing.</span><code><span class="memberNameLink"><a href="../../../../org/apache/storm/Testing.html#advanceClusterTime-org.apache.storm.ILocalCluster-java.lang.Integer-">advanceClusterTime</a></span>(<a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a>&nbsp;cluster,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;secs)</code>
+<div class="block">Simulated time wait for a cluster.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><span class="typeNameLabel">Testing.</span><code><span class="memberNameLink"><a href="../../../../org/apache/storm/Testing.html#advanceClusterTime-org.apache.storm.ILocalCluster-java.lang.Integer-java.lang.Integer-">advanceClusterTime</a></span>(<a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a>&nbsp;cluster,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;secs,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;step)</code>
+<div class="block">Simulated time wait for a cluster.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/testing/FixedTuple.html" title="class in org.apache.storm.testing">FixedTuple</a>&gt;&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Testing.</span><code><span class="memberNameLink"><a href="../../../../org/apache/storm/Testing.html#completeTopology-org.apache.storm.ILocalCluster-org.apache.storm.generated.StormTopology-">completeTopology</a></span>(<a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a>&nbsp;cluster,
+                <a href="../../../../org/apache/storm/generated/StormTopology.html" title="class in org.apache.storm.generated">StormTopology</a>&nbsp;topology)</code>
+<div class="block">Run a topology to completion capturing all of the messages that are emitted.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/testing/FixedTuple.html" title="class in org.apache.storm.testing">FixedTuple</a>&gt;&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Testing.</span><code><span class="memberNameLink"><a href="../../../../org/apache/storm/Testing.html#completeTopology-org.apache.storm.ILocalCluster-org.apache.storm.generated.StormTopology-org.apache.storm.testing.CompleteTopologyParam-">completeTopology</a></span>(<a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a>&nbsp;cluster,
+                <a href="../../../../org/apache/storm/generated/StormTopology.html" title="class in org.apache.storm.generated">StormTopology</a>&nbsp;topology,
+                <a href="../../../../org/apache/storm/testing/CompleteTopologyParam.html" title="class in org.apache.storm.testing">CompleteTopologyParam</a>&nbsp;param)</code>
+<div class="block">Run a topology to completion capturing all of the messages that are emitted.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../org/apache/storm/testing/TrackedTopology.html" title="class in org.apache.storm.testing">TrackedTopology</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Testing.</span><code><span class="memberNameLink"><a href="../../../../org/apache/storm/Testing.html#mkTrackedTopology-org.apache.storm.ILocalCluster-org.apache.storm.generated.StormTopology-">mkTrackedTopology</a></span>(<a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a>&nbsp;cluster,
+                 <a href="../../../../org/apache/storm/generated/StormTopology.html" title="class in org.apache.storm.generated">StormTopology</a>&nbsp;topology)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">use <a href="../../../../org/apache/storm/testing/TrackedTopology.html" title="class in org.apache.storm.testing"><code>TrackedTopology</code></a> directly.</span></div>
+</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><span class="typeNameLabel">Testing.</span><code><span class="memberNameLink"><a href="../../../../org/apache/storm/Testing.html#simulateWait-org.apache.storm.ILocalCluster-">simulateWait</a></span>(<a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a>&nbsp;cluster)</code>
+<div class="block">If using simulated time simulate waiting for 10 seconds.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../org/apache/storm/Testing.CapturedTopology.html" title="class in org.apache.storm">Testing.CapturedTopology</a>&lt;<a href="../../../../org/apache/storm/testing/TrackedTopology.html" title="class in org.apache.storm.testing">TrackedTopology</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">Testing.</span><code><span class="memberNameLink"><a href="../../../../org/apache/storm/Testing.html#trackAndCaptureTopology-org.apache.storm.ILocalCluster-org.apache.storm.generated.StormTopology-">trackAndCaptureTopology</a></span>(<a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a>&nbsp;cluster,
+                       <a href="../../../../org/apache/storm/generated/StormTopology.html" title="class in org.apache.storm.generated">StormTopology</a>&nbsp;topology)</code>
+<div class="block">Track and capture a topology.</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li class="blockList"><a name="org.apache.storm.testing">
 <!--   -->
 </a>
 <h3>Uses of <a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a> in <a href="../../../../org/apache/storm/testing/package-summary.html">org.apache.storm.testing</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../org/apache/storm/testing/package-summary.html">org.apache.storm.testing</a> that return <a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a></code></td>
+<td class="colLast"><span class="typeNameLabel">TrackedTopology.</span><code><span class="memberNameLink"><a href="../../../../org/apache/storm/testing/TrackedTopology.html#getCluster--">getCluster</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
 <caption><span>Methods in <a href="../../../../org/apache/storm/testing/package-summary.html">org.apache.storm.testing</a> with parameters of type <a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -106,6 +240,20 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">TestJob.</span><code><span class="memberNameLink"><a href="../../../../org/apache/storm/testing/TestJob.html#run-org.apache.storm.ILocalCluster-">run</a></span>(<a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a>&nbsp;cluster)</code>
 <div class="block">run the testing logic with the cluster.</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../org/apache/storm/testing/package-summary.html">org.apache.storm.testing</a> with parameters of type <a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/testing/TrackedTopology.html#TrackedTopology-org.apache.storm.generated.StormTopology-org.apache.storm.ILocalCluster-">TrackedTopology</a></span>(<a href="../../../../org/apache/storm/generated/StormTopology.html" title="class in org.apache.storm.generated">StormTopology</a>&nbsp;origTopo,
+               <a href="../../../../org/apache/storm/ILocalCluster.html" title="interface in org.apache.storm">ILocalCluster</a>&nbsp;cluster)</code>
+<div class="block">Create a new topology to be tracked.</div>
 </td>
 </tr>
 </tbody>
@@ -166,6 +314,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -106,7 +106,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">IContext</span></pre>
-<div class="block"><p>This interface needs to be implemented for messaging plugin. </p><p>Messaging plugin is specified via Storm config parameter, storm.messaging.transport.</p><p>A messaging plugin should have a default constructor and implements IContext interface. Upon construction, we will invoke IContext::prepare(storm_conf) to enable context to be configured according to storm configuration.</p></div>
+<div class="block"><p>This interface needs to be implemented for messaging plugin.</p><p>Messaging plugin is specified via Storm config parameter, storm.messaging.transport.</p><p>A messaging plugin should have a default constructor and implements IContext interface. Upon construction, we will invoke IContext::prepare(topoConf) to enable context to be configured according to storm configuration.</p></div>
 </li>
 </ul>
 </div>
@@ -127,29 +127,30 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/messaging/IConnection.html" title="interface in org.apache.storm.messaging">IConnection</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IContext.html#bind-java.lang.String-int-">bind</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;storm_id,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IContext.html#bind-java.lang.String-int-">bind</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;storm_id,
     int&nbsp;port)</code>
 <div class="block">This method establishes a server side connection</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/messaging/IConnection.html" title="interface in org.apache.storm.messaging">IConnection</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IContext.html#connect-java.lang.String-java.lang.String-int-">connect</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;storm_id,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;host,
-       int&nbsp;port)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IContext.html#connect-java.lang.String-java.lang.String-int-java.util.concurrent.atomic.AtomicBoolean:A-">connect</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;storm_id,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;host,
+       int&nbsp;port,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicBoolean.html?is-external=true" title="class or interface in java.util.concurrent.atomic">AtomicBoolean</a>[]&nbsp;remoteBpStatus)</code>
 <div class="block">This method establish a client side connection to a remote server</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IContext.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;storm_conf)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IContext.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf)</code>
 <div class="block">This method is invoked at the startup of messaging plugin</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IContext.html#term--">term</a></span>()</code>
-<div class="block">This method is invoked when a worker is unload a messaging plugin</div>
+<div class="block">This method is invoked when a worker is unloading a messaging plugin</div>
 </td>
 </tr>
 </table>
@@ -173,11 +174,11 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;storm_conf)</pre>
+<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf)</pre>
 <div class="block"><p>This method is invoked at the startup of messaging plugin</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>storm_conf</code> - storm configuration</dd>
+<dd><code>topoConf</code> - storm configuration</dd>
 </dl>
 </li>
 </ul>
@@ -188,7 +189,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>term</h4>
 <pre>void&nbsp;term()</pre>
-<div class="block"><p>This method is invoked when a worker is unload a messaging plugin</p></div>
+<div class="block"><p>This method is invoked when a worker is unloading a messaging plugin</p></div>
 </li>
 </ul>
 <a name="bind-java.lang.String-int-">
@@ -197,7 +198,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>bind</h4>
-<pre><a href="../../../../org/apache/storm/messaging/IConnection.html" title="interface in org.apache.storm.messaging">IConnection</a>&nbsp;bind(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;storm_id,
+<pre><a href="../../../../org/apache/storm/messaging/IConnection.html" title="interface in org.apache.storm.messaging">IConnection</a>&nbsp;bind(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;storm_id,
                  int&nbsp;port)</pre>
 <div class="block"><p>This method establishes a server side connection</p></div>
 <dl>
@@ -209,21 +210,23 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
-<a name="connect-java.lang.String-java.lang.String-int-">
+<a name="connect-java.lang.String-java.lang.String-int-java.util.concurrent.atomic.AtomicBoolean:A-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>connect</h4>
-<pre><a href="../../../../org/apache/storm/messaging/IConnection.html" title="interface in org.apache.storm.messaging">IConnection</a>&nbsp;connect(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;storm_id,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;host,
-                    int&nbsp;port)</pre>
+<pre><a href="../../../../org/apache/storm/messaging/IConnection.html" title="interface in org.apache.storm.messaging">IConnection</a>&nbsp;connect(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;storm_id,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;host,
+                    int&nbsp;port,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicBoolean.html?is-external=true" title="class or interface in java.util.concurrent.atomic">AtomicBoolean</a>[]&nbsp;remoteBpStatus)</pre>
 <div class="block"><p>This method establish a client side connection to a remote server</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>storm_id</code> - topology ID</dd>
 <dd><code>host</code> - remote host</dd>
 <dd><code>port</code> - remote port</dd>
+<dd><code>remoteBpStatus</code> - array of booleans reflecting Back Pressure status of remote tasks.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>client side connection</dd>
 </dl>
@@ -302,6 +305,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

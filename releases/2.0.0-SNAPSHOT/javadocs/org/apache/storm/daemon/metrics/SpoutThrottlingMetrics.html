@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var methods = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../../org/apache/storm/daemon/metrics/BuiltinMetrics.html" title="class in org.apache.storm.daemon.metrics">org.apache.storm.daemon.metrics.BuiltinMetrics</a></li>
@@ -167,28 +167,16 @@ extends <a href="../../../../../org/apache/storm/daemon/metrics/BuiltinMetrics.h
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/metric/api/CountMetric.html" title="class in org.apache.storm.metric.api">CountMetric</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/metrics/SpoutThrottlingMetrics.html#getSkippedInactive--">getSkippedInactive</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/metrics/SpoutThrottlingMetrics.html#skippedBackPressureMs-long-">skippedBackPressureMs</a></span>(long&nbsp;ms)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/metric/api/CountMetric.html" title="class in org.apache.storm.metric.api">CountMetric</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/metrics/SpoutThrottlingMetrics.html#getSkippedMaxSpout--">getSkippedMaxSpout</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/metrics/SpoutThrottlingMetrics.html#skippedInactiveMs-long-">skippedInactiveMs</a></span>(long&nbsp;ms)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/metric/api/CountMetric.html" title="class in org.apache.storm.metric.api">CountMetric</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/metrics/SpoutThrottlingMetrics.html#getSkippedThrottle--">getSkippedThrottle</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/metrics/SpoutThrottlingMetrics.html#skippedInactive-org.apache.storm.stats.CommonStats-">skippedInactive</a></span>(<a href="../../../../../org/apache/storm/stats/CommonStats.html" title="class in org.apache.storm.stats">CommonStats</a>&nbsp;stats)</code>&nbsp;</td>
-</tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/metrics/SpoutThrottlingMetrics.html#skippedMaxSpout-org.apache.storm.stats.CommonStats-">skippedMaxSpout</a></span>(<a href="../../../../../org/apache/storm/stats/CommonStats.html" title="class in org.apache.storm.stats">CommonStats</a>&nbsp;stats)</code>&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/metrics/SpoutThrottlingMetrics.html#skippedThrottle-org.apache.storm.stats.CommonStats-">skippedThrottle</a></span>(<a href="../../../../../org/apache/storm/stats/CommonStats.html" title="class in org.apache.storm.stats">CommonStats</a>&nbsp;stats)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/metrics/SpoutThrottlingMetrics.html#skippedMaxSpoutMs-long-">skippedMaxSpoutMs</a></span>(long&nbsp;ms)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -202,8 +190,8 @@ extends <a href="../../../../../org/apache/storm/daemon/metrics/BuiltinMetrics.h
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -236,58 +224,31 @@ extends <a href="../../../../../org/apache/storm/daemon/metrics/BuiltinMetrics.h
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="getSkippedMaxSpout--">
+<a name="skippedMaxSpoutMs-long-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getSkippedMaxSpout</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/metric/api/CountMetric.html" title="class in org.apache.storm.metric.api">CountMetric</a>&nbsp;getSkippedMaxSpout()</pre>
+<h4>skippedMaxSpoutMs</h4>
+<pre>public&nbsp;void&nbsp;skippedMaxSpoutMs(long&nbsp;ms)</pre>
 </li>
 </ul>
-<a name="getSkippedThrottle--">
+<a name="skippedInactiveMs-long-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getSkippedThrottle</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/metric/api/CountMetric.html" title="class in org.apache.storm.metric.api">CountMetric</a>&nbsp;getSkippedThrottle()</pre>
+<h4>skippedInactiveMs</h4>
+<pre>public&nbsp;void&nbsp;skippedInactiveMs(long&nbsp;ms)</pre>
 </li>
 </ul>
-<a name="getSkippedInactive--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getSkippedInactive</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/metric/api/CountMetric.html" title="class in org.apache.storm.metric.api">CountMetric</a>&nbsp;getSkippedInactive()</pre>
-</li>
-</ul>
-<a name="skippedMaxSpout-org.apache.storm.stats.CommonStats-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>skippedMaxSpout</h4>
-<pre>public&nbsp;void&nbsp;skippedMaxSpout(<a href="../../../../../org/apache/storm/stats/CommonStats.html" title="class in org.apache.storm.stats">CommonStats</a>&nbsp;stats)</pre>
-</li>
-</ul>
-<a name="skippedThrottle-org.apache.storm.stats.CommonStats-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>skippedThrottle</h4>
-<pre>public&nbsp;void&nbsp;skippedThrottle(<a href="../../../../../org/apache/storm/stats/CommonStats.html" title="class in org.apache.storm.stats">CommonStats</a>&nbsp;stats)</pre>
-</li>
-</ul>
-<a name="skippedInactive-org.apache.storm.stats.CommonStats-">
+<a name="skippedBackPressureMs-long-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>skippedInactive</h4>
-<pre>public&nbsp;void&nbsp;skippedInactive(<a href="../../../../../org/apache/storm/stats/CommonStats.html" title="class in org.apache.storm.stats">CommonStats</a>&nbsp;stats)</pre>
+<h4>skippedBackPressureMs</h4>
+<pre>public&nbsp;void&nbsp;skippedBackPressureMs(long&nbsp;ms)</pre>
 </li>
 </ul>
 </li>
@@ -363,6 +324,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

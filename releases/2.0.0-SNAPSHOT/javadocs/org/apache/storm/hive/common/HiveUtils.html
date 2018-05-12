@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.hive.common.HiveUtils</li>
@@ -110,7 +110,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">HiveUtils</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
 </li>
 </ul>
 </div>
@@ -167,32 +167,38 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static org.apache.hadoop.security.UserGroupInformation</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveUtils.html#authenticate-java.lang.String-java.lang.String-">authenticate</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;keytab,
-            <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveUtils.html#authenticate-boolean-java.lang.String-java.lang.String-">authenticate</a></span>(boolean&nbsp;isTokenAuthEnabled,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;keytab,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveUtils.html#logAllHiveEndPoints-java.util.Map-">logAllHiveEndPoints</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;org.apache.hive.hcatalog.streaming.HiveEndPoint,<a href="../../../../../org/apache/storm/hive/common/HiveWriter.html" title="class in org.apache.storm.hive.common">HiveWriter</a>&gt;&nbsp;allWriters)</code>&nbsp;</td>
+<td class="colFirst"><code>static boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveUtils.html#isTokenAuthEnabled-java.util.Map-">isTokenAuthEnabled</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>static org.apache.hive.hcatalog.streaming.HiveEndPoint</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveUtils.html#makeEndPoint-java.util.List-org.apache.storm.hive.common.HiveOptions-">makeEndPoint</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;partitionVals,
-            <a href="../../../../../org/apache/storm/hive/common/HiveOptions.html" title="class in org.apache.storm.hive.common">HiveOptions</a>&nbsp;options)</code>&nbsp;</td>
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveUtils.html#logAllHiveEndPoints-java.util.Map-">logAllHiveEndPoints</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;org.apache.hive.hcatalog.streaming.HiveEndPoint,<a href="../../../../../org/apache/storm/hive/common/HiveWriter.html" title="class in org.apache.storm.hive.common">HiveWriter</a>&gt;&nbsp;allWriters)</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>static org.apache.hive.hcatalog.streaming.HiveEndPoint</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveUtils.html#makeEndPoint-java.util.List-org.apache.storm.hive.common.HiveOptions-">makeEndPoint</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;partitionVals,
+            <a href="../../../../../org/apache/storm/hive/common/HiveOptions.html" title="class in org.apache.storm.hive.common">HiveOptions</a>&nbsp;options)</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../org/apache/storm/hive/common/HiveWriter.html" title="class in org.apache.storm.hive.common">HiveWriter</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveUtils.html#makeHiveWriter-org.apache.hive.hcatalog.streaming.HiveEndPoint-java.util.concurrent.ExecutorService-org.apache.hadoop.security.UserGroupInformation-org.apache.storm.hive.common.HiveOptions-">makeHiveWriter</a></span>(org.apache.hive.hcatalog.streaming.HiveEndPoint&nbsp;endPoint,
-              <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html?is-external=true" title="class or interface in java.util.concurrent">ExecutorService</a>&nbsp;callTimeoutPool,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hive/common/HiveUtils.html#makeHiveWriter-org.apache.hive.hcatalog.streaming.HiveEndPoint-java.util.concurrent.ExecutorService-org.apache.hadoop.security.UserGroupInformation-org.apache.storm.hive.common.HiveOptions-boolean-">makeHiveWriter</a></span>(org.apache.hive.hcatalog.streaming.HiveEndPoint&nbsp;endPoint,
+              <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html?is-external=true" title="class or interface in java.util.concurrent">ExecutorService</a>&nbsp;callTimeoutPool,
               org.apache.hadoop.security.UserGroupInformation&nbsp;ugi,
-              <a href="../../../../../org/apache/storm/hive/common/HiveOptions.html" title="class in org.apache.storm.hive.common">HiveOptions</a>&nbsp;options)</code>&nbsp;</td>
+              <a href="../../../../../org/apache/storm/hive/common/HiveOptions.html" title="class in org.apache.storm.hive.common">HiveOptions</a>&nbsp;options,
+              boolean&nbsp;tokenAuthEnabled)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -231,7 +237,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockList">
 <li class="blockList">
 <h4>makeEndPoint</h4>
-<pre>public static&nbsp;org.apache.hive.hcatalog.streaming.HiveEndPoint&nbsp;makeEndPoint(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;partitionVals,
+<pre>public static&nbsp;org.apache.hive.hcatalog.streaming.HiveEndPoint&nbsp;makeEndPoint(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;partitionVals,
                                                                            <a href="../../../../../org/apache/storm/hive/common/HiveOptions.html" title="class in org.apache.storm.hive.common">HiveOptions</a>&nbsp;options)
                                                                     throws org.apache.hive.hcatalog.streaming.ConnectionError</pre>
 <dl>
@@ -240,33 +246,35 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 </dl>
 </li>
 </ul>
-<a name="makeHiveWriter-org.apache.hive.hcatalog.streaming.HiveEndPoint-java.util.concurrent.ExecutorService-org.apache.hadoop.security.UserGroupInformation-org.apache.storm.hive.common.HiveOptions-">
+<a name="makeHiveWriter-org.apache.hive.hcatalog.streaming.HiveEndPoint-java.util.concurrent.ExecutorService-org.apache.hadoop.security.UserGroupInformation-org.apache.storm.hive.common.HiveOptions-boolean-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>makeHiveWriter</h4>
 <pre>public static&nbsp;<a href="../../../../../org/apache/storm/hive/common/HiveWriter.html" title="class in org.apache.storm.hive.common">HiveWriter</a>&nbsp;makeHiveWriter(org.apache.hive.hcatalog.streaming.HiveEndPoint&nbsp;endPoint,
-                                        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/ExecutorService.html?is-external=true" title="class or interface in java.util.concurrent">ExecutorService</a>&nbsp;callTimeoutPool,
+                                        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html?is-external=true" title="class or interface in java.util.concurrent">ExecutorService</a>&nbsp;callTimeoutPool,
                                         org.apache.hadoop.security.UserGroupInformation&nbsp;ugi,
-                                        <a href="../../../../../org/apache/storm/hive/common/HiveOptions.html" title="class in org.apache.storm.hive.common">HiveOptions</a>&nbsp;options)
+                                        <a href="../../../../../org/apache/storm/hive/common/HiveOptions.html" title="class in org.apache.storm.hive.common">HiveOptions</a>&nbsp;options,
+                                        boolean&nbsp;tokenAuthEnabled)
                                  throws <a href="../../../../../org/apache/storm/hive/common/HiveWriter.ConnectFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.ConnectFailure</a>,
-                                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
+                                        <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/hive/common/HiveWriter.ConnectFailure.html" title="class in org.apache.storm.hive.common">HiveWriter.ConnectFailure</a></code></dd>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/InterruptedException.html?is-external=true" title="class or interface in java.lang">InterruptedException</a></code></dd>
 </dl>
 </li>
 </ul>
-<a name="authenticate-java.lang.String-java.lang.String-">
+<a name="authenticate-boolean-java.lang.String-java.lang.String-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>authenticate</h4>
-<pre>public static&nbsp;org.apache.hadoop.security.UserGroupInformation&nbsp;authenticate(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;keytab,
-                                                                           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)
+<pre>public static&nbsp;org.apache.hadoop.security.UserGroupInformation&nbsp;authenticate(boolean&nbsp;isTokenAuthEnabled,
+                                                                           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;keytab,
+                                                                           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;principal)
                                                                     throws <a href="../../../../../org/apache/storm/hive/common/HiveUtils.AuthenticationFailed.html" title="class in org.apache.storm.hive.common">HiveUtils.AuthenticationFailed</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -277,10 +285,19 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <a name="logAllHiveEndPoints-java.util.Map-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>logAllHiveEndPoints</h4>
-<pre>public static&nbsp;void&nbsp;logAllHiveEndPoints(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;org.apache.hive.hcatalog.streaming.HiveEndPoint,<a href="../../../../../org/apache/storm/hive/common/HiveWriter.html" title="class in org.apache.storm.hive.common">HiveWriter</a>&gt;&nbsp;allWriters)</pre>
+<pre>public static&nbsp;void&nbsp;logAllHiveEndPoints(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;org.apache.hive.hcatalog.streaming.HiveEndPoint,<a href="../../../../../org/apache/storm/hive/common/HiveWriter.html" title="class in org.apache.storm.hive.common">HiveWriter</a>&gt;&nbsp;allWriters)</pre>
+</li>
+</ul>
+<a name="isTokenAuthEnabled-java.util.Map-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>isTokenAuthEnabled</h4>
+<pre>public static&nbsp;boolean&nbsp;isTokenAuthEnabled(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
 </li>
 </ul>
 </li>
@@ -356,6 +373,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

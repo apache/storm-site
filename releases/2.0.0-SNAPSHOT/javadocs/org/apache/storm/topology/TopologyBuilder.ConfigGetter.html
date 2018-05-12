@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../org/apache/storm/topology/BaseConfigurationDeclarer.html" title="class in org.apache.storm.topology">org.apache.storm.topology.BaseConfigurationDeclarer</a>&lt;T&gt;</li>
@@ -146,7 +146,7 @@ extends <a href="../../../../org/apache/storm/topology/BaseConfigurationDeclarer
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html#ConfigGetter-java.lang.String-">ConfigGetter</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html#ConfigGetter-java.lang.String-">ConfigGetter</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -165,7 +165,34 @@ extends <a href="../../../../org/apache/storm/topology/BaseConfigurationDeclarer
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html#addConfigurations-java.util.Map-">addConfigurations</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html#addConfigurations-java.util.Map-">addConfigurations</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>
+<div class="block">add in several configs to the component.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html#addResource-java.lang.String-java.lang.Number-">addResource</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;resourceName,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;resourceValue)</code>
+<div class="block">Add generic resource for this component.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html#addResources-java.util.Map-">addResources</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a>&gt;&nbsp;resources)</code>
+<div class="block">Add generic resources for this component.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html#addSharedMemory-org.apache.storm.generated.SharedMemory-">addSharedMemory</a></span>(<a href="../../../../org/apache/storm/generated/SharedMemory.html" title="class in org.apache.storm.generated">SharedMemory</a>&nbsp;request)</code>
+<div class="block">Add in request for shared memory that this component will use.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html#getComponentConfiguration--">getComponentConfiguration</a></span>()</code>
+<div class="block">return the current component configuration.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -179,8 +206,8 @@ extends <a href="../../../../org/apache/storm/topology/BaseConfigurationDeclarer
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -202,7 +229,7 @@ extends <a href="../../../../org/apache/storm/topology/BaseConfigurationDeclarer
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ConfigGetter</h4>
-<pre>public&nbsp;ConfigGetter(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</pre>
+<pre>public&nbsp;ConfigGetter(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</pre>
 </li>
 </ul>
 </li>
@@ -216,10 +243,84 @@ extends <a href="../../../../org/apache/storm/topology/BaseConfigurationDeclarer
 <a name="addConfigurations-java.util.Map-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>addConfigurations</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a>&nbsp;addConfigurations(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a>&nbsp;addConfigurations(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#addConfigurations-java.util.Map-">ComponentConfigurationDeclarer</a></code></span></div>
+<div class="block"><p>add in several configs to the component.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>conf</code> - the configs to add</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining.</dd>
+</dl>
+</li>
+</ul>
+<a name="getComponentConfiguration--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getComponentConfiguration</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;getComponentConfiguration()</pre>
+<div class="block"><p>return the current component configuration.</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the current configuration.</dd>
+</dl>
+</li>
+</ul>
+<a name="addResources-java.util.Map-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addResources</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a>&nbsp;addResources(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a>&gt;&nbsp;resources)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../org/apache/storm/topology/BaseConfigurationDeclarer.html#addResources-java.util.Map-">BaseConfigurationDeclarer</a></code></span></div>
+<div class="block"><p>Add generic resources for this component.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#addResources-java.util.Map-">addResources</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="interface in org.apache.storm.topology">ComponentConfigurationDeclarer</a>&lt;<a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a> extends <a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="interface in org.apache.storm.topology">ComponentConfigurationDeclarer</a>&gt;</code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/topology/BaseConfigurationDeclarer.html#addResources-java.util.Map-">addResources</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/apache/storm/topology/BaseConfigurationDeclarer.html" title="class in org.apache.storm.topology">BaseConfigurationDeclarer</a>&lt;<a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a> extends <a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="interface in org.apache.storm.topology">ComponentConfigurationDeclarer</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="addResource-java.lang.String-java.lang.Number-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addResource</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a>&nbsp;addResource(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;resourceName,
+                     <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;resourceValue)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#addResource-java.lang.String-java.lang.Number-">ComponentConfigurationDeclarer</a></code></span></div>
+<div class="block"><p>Add generic resource for this component.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#addResource-java.lang.String-java.lang.Number-">addResource</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="interface in org.apache.storm.topology">ComponentConfigurationDeclarer</a>&lt;<a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a> extends <a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="interface in org.apache.storm.topology">ComponentConfigurationDeclarer</a>&gt;</code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/topology/BaseConfigurationDeclarer.html#addResource-java.lang.String-java.lang.Number-">addResource</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/apache/storm/topology/BaseConfigurationDeclarer.html" title="class in org.apache.storm.topology">BaseConfigurationDeclarer</a>&lt;<a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a> extends <a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="interface in org.apache.storm.topology">ComponentConfigurationDeclarer</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="addSharedMemory-org.apache.storm.generated.SharedMemory-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>addSharedMemory</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/topology/TopologyBuilder.ConfigGetter.html" title="type parameter in TopologyBuilder.ConfigGetter">T</a>&nbsp;addSharedMemory(<a href="../../../../org/apache/storm/generated/SharedMemory.html" title="class in org.apache.storm.generated">SharedMemory</a>&nbsp;request)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#addSharedMemory-org.apache.storm.generated.SharedMemory-">ResourceDeclarer</a></code></span></div>
+<div class="block"><p>Add in request for shared memory that this component will use. See <a href="../../../../org/apache/storm/topology/SharedOnHeap.html" title="class in org.apache.storm.topology"><code>SharedOnHeap</code></a>, <a href="../../../../org/apache/storm/topology/SharedOffHeapWithinNode.html" title="class in org.apache.storm.topology"><code>SharedOffHeapWithinNode</code></a>, and <a href="../../../../org/apache/storm/topology/SharedOffHeapWithinWorker.html" title="class in org.apache.storm.topology"><code>SharedOffHeapWithinWorker</code></a> for convenient ways to create shared memory requests.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - the shared memory request for this component</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -295,6 +396,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

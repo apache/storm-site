@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.hdfs.spout.FileLock</li>
@@ -110,7 +110,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">FileLock</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
 <div class="block"><p>Facility to synchronize access to HDFS files. Thread gains exclusive access to a file by acquiring a FileLock object. The lock itself is represented as file on HDFS. Relies on atomic file creation. Owning thread must heartbeat periodically on the lock to prevent the lock from being deemed as stale (i.e. lock whose owning thread have died).</p></div>
 </li>
 </ul>
@@ -154,7 +154,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/FileLock.html#acquireOldestExpiredLock-org.apache.hadoop.fs.FileSystem-org.apache.hadoop.fs.Path-int-java.lang.String-">acquireOldestExpiredLock</a></span>(org.apache.hadoop.fs.FileSystem&nbsp;fs,
                         org.apache.hadoop.fs.Path&nbsp;lockFilesDir,
                         int&nbsp;locktimeoutSec,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)</code>
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)</code>
 <div class="block">Finds a oldest expired lock file (using modification timestamp), then takes ownership of the lock file Impt: Assumes access to lockFilesDir has been externally synchronized such that  only one thread accessing the same thread</div>
 </td>
 </tr>
@@ -183,7 +183,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/FileLock.html#heartbeat-java.lang.String-">heartbeat</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fileOffset)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/FileLock.html#heartbeat-java.lang.String-">heartbeat</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fileOffset)</code>&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../org/apache/storm/hdfs/common/HdfsUtils.Pair.html" title="class in org.apache.storm.hdfs.common">HdfsUtils.Pair</a>&lt;org.apache.hadoop.fs.Path,<a href="../../../../../org/apache/storm/hdfs/spout/FileLock.LogEntry.html" title="class in org.apache.storm.hdfs.spout">FileLock.LogEntry</a>&gt;</code></td>
@@ -204,7 +204,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/FileLock.html#takeOwnership-org.apache.hadoop.fs.FileSystem-org.apache.hadoop.fs.Path-org.apache.storm.hdfs.spout.FileLock.LogEntry-java.lang.String-">takeOwnership</a></span>(org.apache.hadoop.fs.FileSystem&nbsp;fs,
              org.apache.hadoop.fs.Path&nbsp;lockFile,
              <a href="../../../../../org/apache/storm/hdfs/spout/FileLock.LogEntry.html" title="class in org.apache.storm.hdfs.spout">FileLock.LogEntry</a>&nbsp;lastEntry,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)</code>
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)</code>
 <div class="block">Takes ownership of the lock file if possible.</div>
 </td>
 </tr>
@@ -213,7 +213,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/FileLock.html#tryLock-org.apache.hadoop.fs.FileSystem-org.apache.hadoop.fs.Path-org.apache.hadoop.fs.Path-java.lang.String-">tryLock</a></span>(org.apache.hadoop.fs.FileSystem&nbsp;fs,
        org.apache.hadoop.fs.Path&nbsp;fileToLock,
        org.apache.hadoop.fs.Path&nbsp;lockDirPath,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)</code>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)</code>
 <div class="block">returns lock on file or null if file is already locked.</div>
 </td>
 </tr>
@@ -222,8 +222,8 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -239,35 +239,6 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="heartbeat-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>heartbeat</h4>
-<pre>public&nbsp;void&nbsp;heartbeat(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fileOffset)
-               throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
-</dl>
-</li>
-</ul>
-<a name="release--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>release</h4>
-<pre>public&nbsp;void&nbsp;release()
-             throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
-<div class="block"><p>Release lock by deleting file</p></div>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - if lock file could not be deleted</dd>
-</dl>
-</li>
-</ul>
 <a name="tryLock-org.apache.hadoop.fs.FileSystem-org.apache.hadoop.fs.Path-org.apache.hadoop.fs.Path-java.lang.String-">
 <!--   -->
 </a>
@@ -277,12 +248,12 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <pre>public static&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/FileLock.html" title="class in org.apache.storm.hdfs.spout">FileLock</a>&nbsp;tryLock(org.apache.hadoop.fs.FileSystem&nbsp;fs,
                                org.apache.hadoop.fs.Path&nbsp;fileToLock,
                                org.apache.hadoop.fs.Path&nbsp;lockDirPath,
-                               <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)
-                        throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                               <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)
+                        throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>returns lock on file or null if file is already locked. throws if unexpected problem</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -295,7 +266,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <pre>public static&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/FileLock.LogEntry.html" title="class in org.apache.storm.hdfs.spout">FileLock.LogEntry</a>&nbsp;getLastEntryIfStale(org.apache.hadoop.fs.FileSystem&nbsp;fs,
                                                     org.apache.hadoop.fs.Path&nbsp;lockFile,
                                                     long&nbsp;olderThan)
-                                             throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                                             throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>checks if lockFile is older than &lsquo;olderThan&rsquo; UTC time by examining the modification time on file and (if necessary) the timestamp in last log entry in the file. If its stale, then returns the last log entry, else returns null.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -305,7 +276,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the last entry in the file if its too old. null if last entry is not too old</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -317,7 +288,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <h4>getLastEntry</h4>
 <pre>public static&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/FileLock.LogEntry.html" title="class in org.apache.storm.hdfs.spout">FileLock.LogEntry</a>&nbsp;getLastEntry(org.apache.hadoop.fs.FileSystem&nbsp;fs,
                                              org.apache.hadoop.fs.Path&nbsp;lockFile)
-                                      throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                                      throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>returns the last log entry</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -325,7 +296,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <dd><code>lockFile</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -338,8 +309,8 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <pre>public static&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/FileLock.html" title="class in org.apache.storm.hdfs.spout">FileLock</a>&nbsp;takeOwnership(org.apache.hadoop.fs.FileSystem&nbsp;fs,
                                      org.apache.hadoop.fs.Path&nbsp;lockFile,
                                      <a href="../../../../../org/apache/storm/hdfs/spout/FileLock.LogEntry.html" title="class in org.apache.storm.hdfs.spout">FileLock.LogEntry</a>&nbsp;lastEntry,
-                                     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)
-                              throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                                     <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)
+                              throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Takes ownership of the lock file if possible.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -349,7 +320,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>null if lock File is not recoverable</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - if unable to acquire</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - if unable to acquire</dd>
 </dl>
 </li>
 </ul>
@@ -362,8 +333,8 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <pre>public static&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/FileLock.html" title="class in org.apache.storm.hdfs.spout">FileLock</a>&nbsp;acquireOldestExpiredLock(org.apache.hadoop.fs.FileSystem&nbsp;fs,
                                                 org.apache.hadoop.fs.Path&nbsp;lockFilesDir,
                                                 int&nbsp;locktimeoutSec,
-                                                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)
-                                         throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                                                <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;spoutId)
+                                         throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Finds a oldest expired lock file (using modification timestamp), then takes ownership of the lock file Impt: Assumes access to lockFilesDir has been externally synchronized such that  only one thread accessing the same thread</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -372,7 +343,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <dd><code>locktimeoutSec</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -385,7 +356,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <pre>public static&nbsp;<a href="../../../../../org/apache/storm/hdfs/common/HdfsUtils.Pair.html" title="class in org.apache.storm.hdfs.common">HdfsUtils.Pair</a>&lt;org.apache.hadoop.fs.Path,<a href="../../../../../org/apache/storm/hdfs/spout/FileLock.LogEntry.html" title="class in org.apache.storm.hdfs.spout">FileLock.LogEntry</a>&gt;&nbsp;locateOldestExpiredLock(org.apache.hadoop.fs.FileSystem&nbsp;fs,
                                                                                                   org.apache.hadoop.fs.Path&nbsp;lockFilesDir,
                                                                                                   int&nbsp;locktimeoutSec)
-                                                                                           throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+                                                                                           throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
 <div class="block"><p>Finds oldest expired lock file (using modification timestamp), then takes ownership of the lock file Impt: Assumes access to lockFilesDir has been externally synchronized such that  only one thread accessing the same thread</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -395,7 +366,36 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a Pair&lt;lock file path, last entry in lock file&gt; .. if expired lock file found</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="heartbeat-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>heartbeat</h4>
+<pre>public&nbsp;void&nbsp;heartbeat(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;fileOffset)
+               throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="release--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>release</h4>
+<pre>public&nbsp;void&nbsp;release()
+             throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></pre>
+<div class="block"><p>Release lock by deleting file</p></div>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code> - if lock file could not be deleted</dd>
 </dl>
 </li>
 </ul>
@@ -490,6 +490,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

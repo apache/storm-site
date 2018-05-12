@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.windowing.WatermarkTimeTriggerPolicy&lt;T&gt;</li>
@@ -109,13 +109,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;T&gt;</dd>
+<dd><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;T,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">WatermarkTimeTriggerPolicy&lt;T&gt;</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;T&gt;</pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+implements <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;T,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</pre>
 <div class="block"><p>Handles watermark events and triggers <a href="../../../../org/apache/storm/windowing/TriggerHandler.html#onTrigger--"><code>TriggerHandler.onTrigger()</code></a> for each window interval that has events to be processed up to the watermark ts.</p></div>
 </li>
 </ul>
@@ -137,7 +137,7 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" t
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html#WatermarkTimeTriggerPolicy-long-org.apache.storm.windowing.TriggerHandler-org.apache.storm.windowing.EvictionPolicy-org.apache.storm.windowing.WindowManager-">WatermarkTimeTriggerPolicy</a></span>(long&nbsp;slidingIntervalMs,
                           <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" title="interface in org.apache.storm.windowing">TriggerHandler</a>&nbsp;handler,
-                          <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;&nbsp;evictionPolicy,
+                          <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>,?&gt;&nbsp;evictionPolicy,
                           <a href="../../../../org/apache/storm/windowing/WindowManager.html" title="class in org.apache.storm.windowing">WindowManager</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;&nbsp;windowManager)</code>&nbsp;</td>
 </tr>
 </table>
@@ -156,30 +156,42 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" t
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html#reset--">reset</a></span>()</code>
-<div class="block">resets the trigger policy</div>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html#getState--">getState</a></span>()</code>
+<div class="block">Return runtime state to be checkpointed by the framework for restoring the trigger policy in case of failures.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html#reset--">reset</a></span>()</code>
+<div class="block">resets the trigger policy.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html#restoreState-java.lang.Long-">restoreState</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;state)</code>
+<div class="block">Restore the trigger policy from the state that was earlier checkpointed by the framework.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html#shutdown--">shutdown</a></span>()</code>
 <div class="block">Any clean up could be handled here.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html#start--">start</a></span>()</code>
 <div class="block">Starts the trigger policy.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html#track-org.apache.storm.windowing.Event-">track</a></span>(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;&nbsp;event)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html#track-org.apache.storm.windowing.Event-">track</a></span>(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;&nbsp;event)</code>
 <div class="block">Tracks the event and could use this to invoke the trigger.</div>
 </td>
 </tr>
@@ -188,8 +200,8 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" t
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -213,7 +225,7 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" t
 <h4>WatermarkTimeTriggerPolicy</h4>
 <pre>public&nbsp;WatermarkTimeTriggerPolicy(long&nbsp;slidingIntervalMs,
                                   <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" title="interface in org.apache.storm.windowing">TriggerHandler</a>&nbsp;handler,
-                                  <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;&nbsp;evictionPolicy,
+                                  <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>,?&gt;&nbsp;evictionPolicy,
                                   <a href="../../../../org/apache/storm/windowing/WindowManager.html" title="class in org.apache.storm.windowing">WindowManager</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;&nbsp;windowManager)</pre>
 </li>
 </ul>
@@ -231,12 +243,12 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" t
 <ul class="blockList">
 <li class="blockList">
 <h4>track</h4>
-<pre>public&nbsp;void&nbsp;track(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;&nbsp;event)</pre>
+<pre>public&nbsp;void&nbsp;track(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;&nbsp;event)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#track-org.apache.storm.windowing.Event-">TriggerPolicy</a></code></span></div>
 <div class="block"><p>Tracks the event and could use this to invoke the trigger.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#track-org.apache.storm.windowing.Event-">track</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;</code></dd>
+<dd><code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#track-org.apache.storm.windowing.Event-">track</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>event</code> - the input event</dd>
 </dl>
@@ -250,10 +262,10 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" t
 <h4>reset</h4>
 <pre>public&nbsp;void&nbsp;reset()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#reset--">TriggerPolicy</a></code></span></div>
-<div class="block"><p>resets the trigger policy</p></div>
+<div class="block"><p>resets the trigger policy.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#reset--">reset</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;</code></dd>
+<dd><code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#reset--">reset</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -268,7 +280,7 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" t
 <div class="block"><p>Starts the trigger policy. This can be used during recovery to start the triggers after recovery is complete.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#start--">start</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;</code></dd>
+<dd><code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#start--">start</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -283,7 +295,41 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" t
 <div class="block"><p>Any clean up could be handled here.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#shutdown--">shutdown</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;</code></dd>
+<dd><code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#shutdown--">shutdown</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
+<a name="getState--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getState</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;getState()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#getState--">TriggerPolicy</a></code></span></div>
+<div class="block"><p>Return runtime state to be checkpointed by the framework for restoring the trigger policy in case of failures.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#getState--">getState</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the state</dd>
+</dl>
+</li>
+</ul>
+<a name="restoreState-java.lang.Long-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>restoreState</h4>
+<pre>public&nbsp;void&nbsp;restoreState(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;state)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#restoreState-S-">TriggerPolicy</a></code></span></div>
+<div class="block"><p>Restore the trigger policy from the state that was earlier checkpointed by the framework.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html#restoreState-S-">restoreState</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>state</code> - the state</dd>
 </dl>
 </li>
 </ul>
@@ -293,10 +339,10 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" t
 <ul class="blockListLast">
 <li class="blockList">
 <h4>toString</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -373,6 +419,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
@@ -110,7 +110,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">FailedMsgRetryManager</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></pre>
 </li>
 </ul>
 </div>
@@ -131,50 +131,57 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#acked-java.lang.Long-">acked</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#acked-java.lang.Long-">acked</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>
 <div class="block">Message corresponding to the offset, was acked to kafka spout.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#clearOffsetsBefore-java.lang.Long-">clearOffsetsBefore</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;kafkaOffset)</code>
-<div class="block">Clear any offsets before kafkaOffset.</div>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#cleanOffsetAfterRetries-org.apache.storm.kafka.Partition-java.lang.Long-">cleanOffsetAfterRetries</a></span>(<a href="../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;partition,
+                       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>
+<div class="block">Spout will call this method after retryFurther returns false.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#failed-java.lang.Long-">failed</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>
-<div class="block">Message corresponding to the offset failed in kafka spout.</div>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#clearOffsetsBefore-java.lang.Long-">clearOffsetsBefore</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;kafkaOffset)</code>
+<div class="block">Clear any offsets before kafkaOffset.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#failed-java.lang.Long-">failed</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>
+<div class="block">Message corresponding to the offset failed in kafka spout.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#nextFailedMessageToRetry--">nextFailedMessageToRetry</a></span>()</code>
 <div class="block">The offset of message, which is to be re-emitted.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#prepare-org.apache.storm.kafka.SpoutConfig-java.util.Map-">prepare</a></span>(<a href="../../../../org/apache/storm/kafka/SpoutConfig.html" title="class in org.apache.storm.kafka">SpoutConfig</a>&nbsp;spoutConfig,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf)</code>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf)</code>
 <div class="block">Initialization</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#retryFurther-java.lang.Long-">retryFurther</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#retryFurther-java.lang.Long-">retryFurther</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>
 <div class="block">Spout will clean up the state for this offset if false is returned.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#retryStarted-java.lang.Long-">retryStarted</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#retryStarted-java.lang.Long-">retryStarted</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>
 <div class="block">Message corresponding to the offset, has been re-emitted and under transit.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#shouldReEmitMsg-java.lang.Long-">shouldReEmitMsg</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#shouldReEmitMsg-java.lang.Long-">shouldReEmitMsg</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -198,7 +205,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <li class="blockList">
 <h4>prepare</h4>
 <pre>void&nbsp;prepare(<a href="../../../../org/apache/storm/kafka/SpoutConfig.html" title="class in org.apache.storm.kafka">SpoutConfig</a>&nbsp;spoutConfig,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf)</pre>
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf)</pre>
 <div class="block"><p>Initialization</p></div>
 </li>
 </ul>
@@ -208,7 +215,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>failed</h4>
-<pre>void&nbsp;failed(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</pre>
+<pre>void&nbsp;failed(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</pre>
 <div class="block"><p>Message corresponding to the offset failed in kafka spout.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -222,7 +229,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>acked</h4>
-<pre>void&nbsp;acked(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</pre>
+<pre>void&nbsp;acked(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</pre>
 <div class="block"><p>Message corresponding to the offset, was acked to kafka spout.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -236,7 +243,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>retryStarted</h4>
-<pre>void&nbsp;retryStarted(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</pre>
+<pre>void&nbsp;retryStarted(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</pre>
 <div class="block"><p>Message corresponding to the offset, has been re-emitted and under transit.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -250,7 +257,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>nextFailedMessageToRetry</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;nextFailedMessageToRetry()</pre>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;nextFailedMessageToRetry()</pre>
 <div class="block"><p>The offset of message, which is to be re-emitted. Spout will fetch messages starting from this offset and resend them, except completed messages.</p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -263,7 +270,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>shouldReEmitMsg</h4>
-<pre>boolean&nbsp;shouldReEmitMsg(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</pre>
+<pre>boolean&nbsp;shouldReEmitMsg(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>offset</code> - </dd>
@@ -278,7 +285,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>retryFurther</h4>
-<pre>boolean&nbsp;retryFurther(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</pre>
+<pre>boolean&nbsp;retryFurther(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</pre>
 <div class="block"><p>Spout will clean up the state for this offset if false is returned.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -288,13 +295,28 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 </dl>
 </li>
 </ul>
+<a name="cleanOffsetAfterRetries-org.apache.storm.kafka.Partition-java.lang.Long-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cleanOffsetAfterRetries</h4>
+<pre>void&nbsp;cleanOffsetAfterRetries(<a href="../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;partition,
+                             <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</pre>
+<div class="block"><p>Spout will call this method after retryFurther returns false. This gives a chance for hooking up custom logic before all clean up.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>partition,offset</code> - </dd>
+</dl>
+</li>
+</ul>
 <a name="clearOffsetsBefore-java.lang.Long-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>clearOffsetsBefore</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;clearOffsetsBefore(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;kafkaOffset)</pre>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;clearOffsetsBefore(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;kafkaOffset)</pre>
 <div class="block"><p>Clear any offsets before kafkaOffset. These offsets are no longer available in kafka.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -377,6 +399,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

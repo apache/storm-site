@@ -101,11 +101,11 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd><a href="../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../org/apache/storm/topology/IStatefulComponent.html" title="interface in org.apache.storm.topology">IStatefulComponent</a>&lt;T&gt;, <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
+<dd><a href="../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../org/apache/storm/topology/IStatefulComponent.html" title="interface in org.apache.storm.topology">IStatefulComponent</a>&lt;T&gt;, <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/storm/topology/base/BaseStatefulBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulBolt</a>, <a href="../../../../org/apache/storm/topology/StatefulWindowedBoltExecutor.html" title="class in org.apache.storm.topology">StatefulWindowedBoltExecutor</a>, <a href="../../../../org/apache/storm/flux/examples/StatefulWordCounter.html" title="class in org.apache.storm.flux.examples">StatefulWordCounter</a></dd>
+<dd><a href="../../../../org/apache/storm/topology/base/BaseStatefulBolt.html" title="class in org.apache.storm.topology.base">BaseStatefulBolt</a>, <a href="../../../../org/apache/storm/topology/PersistentWindowedBoltExecutor.html" title="class in org.apache.storm.topology">PersistentWindowedBoltExecutor</a>, <a href="../../../../org/apache/storm/topology/StatefulWindowedBoltExecutor.html" title="class in org.apache.storm.topology">StatefulWindowedBoltExecutor</a>, <a href="../../../../org/apache/storm/flux/examples/StatefulWordCounter.html" title="class in org.apache.storm.flux.examples">StatefulWordCounter</a></dd>
 </dl>
 <hr>
 <br>
@@ -113,8 +113,7 @@ var activeTableTab = "activeTableTab";
 extends <a href="../../../../org/apache/storm/topology/IStatefulComponent.html" title="interface in org.apache.storm.topology">IStatefulComponent</a>&lt;T&gt;</pre>
 <div class="block"><p>A bolt abstraction for supporting stateful computation. The state of the bolt is periodically checkpointed.</p>
 <p>The framework provides at-least once guarantee for the
-state updates. The stateful bolts are expected to anchor the tuples while emitting
-and ack the input tuples once its processed.</p></div>
+state updates. The stateful bolts are expected to anchor the tuples while emitting and ack the input tuples once its processed.</p></div>
 </li>
 </ul>
 </div>
@@ -143,7 +142,7 @@ and ack the input tuples once its processed.</p></div>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/IStatefulBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/IStatefulBolt.html#prepare-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.task.OutputCollector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
        <a href="../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
        <a href="../../../../org/apache/storm/task/OutputCollector.html" title="class in org.apache.storm.task">OutputCollector</a>&nbsp;collector)</code>&nbsp;</td>
 </tr>
@@ -182,7 +181,7 @@ and ack the input tuples once its processed.</p></div>
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
              <a href="../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
              <a href="../../../../org/apache/storm/task/OutputCollector.html" title="class in org.apache.storm.task">OutputCollector</a>&nbsp;collector)</pre>
 <dl>
@@ -290,6 +289,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

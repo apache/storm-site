@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6};
+var methods = {"i0":6,"i1":6,"i2":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/scheduler/INimbus.html" title="interface in org.apache.storm.scheduler"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/scheduler/ISupervisor.html" title="interface in org.apache.storm.scheduler"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/scheduler/ISchedulingState.html" title="interface in org.apache.storm.scheduler"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/scheduler/IScheduler.html" target="_top">Frames</a></li>
@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/storm/scheduler/DefaultScheduler.html" title="class in org.apache.storm.scheduler">DefaultScheduler</a>, <a href="../../../../org/apache/storm/scheduler/EvenScheduler.html" title="class in org.apache.storm.scheduler">EvenScheduler</a>, <a href="../../../../org/apache/storm/scheduler/multitenant/MultitenantScheduler.html" title="class in org.apache.storm.scheduler.multitenant">MultitenantScheduler</a>, <a href="../../../../org/apache/storm/scheduler/resource/ResourceAwareScheduler.html" title="class in org.apache.storm.scheduler.resource">ResourceAwareScheduler</a></dd>
+<dd><a href="../../../../org/apache/storm/scheduler/blacklist/BlacklistScheduler.html" title="class in org.apache.storm.scheduler.blacklist">BlacklistScheduler</a>, <a href="../../../../org/apache/storm/scheduler/DefaultScheduler.html" title="class in org.apache.storm.scheduler">DefaultScheduler</a>, <a href="../../../../org/apache/storm/scheduler/EvenScheduler.html" title="class in org.apache.storm.scheduler">EvenScheduler</a>, <a href="../../../../org/apache/storm/scheduler/IsolationScheduler.html" title="class in org.apache.storm.scheduler">IsolationScheduler</a>, <a href="../../../../org/apache/storm/scheduler/multitenant/MultitenantScheduler.html" title="class in org.apache.storm.scheduler.multitenant">MultitenantScheduler</a>, <a href="../../../../org/apache/storm/scheduler/resource/ResourceAwareScheduler.html" title="class in org.apache.storm.scheduler.resource">ResourceAwareScheduler</a></dd>
 </dl>
 <hr>
 <br>
@@ -125,10 +125,16 @@ var activeTableTab = "activeTableTab";
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/scheduler/IScheduler.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/scheduler/IScheduler.html#config--">config</a></span>()</code>
+<div class="block">This function returns the scheduler&rsquo;s configuration.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/scheduler/IScheduler.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/scheduler/IScheduler.html#schedule-org.apache.storm.scheduler.Topologies-org.apache.storm.scheduler.Cluster-">schedule</a></span>(<a href="../../../../org/apache/storm/scheduler/Topologies.html" title="class in org.apache.storm.scheduler">Topologies</a>&nbsp;topologies,
         <a href="../../../../org/apache/storm/scheduler/Cluster.html" title="class in org.apache.storm.scheduler">Cluster</a>&nbsp;cluster)</code>
@@ -156,13 +162,13 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</pre>
+<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
 </li>
 </ul>
 <a name="schedule-org.apache.storm.scheduler.Topologies-org.apache.storm.scheduler.Cluster-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>schedule</h4>
 <pre>void&nbsp;schedule(<a href="../../../../org/apache/storm/scheduler/Topologies.html" title="class in org.apache.storm.scheduler">Topologies</a>&nbsp;topologies,
@@ -172,6 +178,20 @@ var activeTableTab = "activeTableTab";
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>topologies</code> - all the topologies in the cluster, some of them need schedule. Topologies object here  only contain static information about topologies. Information like assignments, slots are all in  the <code>cluster</code> object.</dd>
 <dd><code>cluster</code> - the cluster these topologies are running in. <code>cluster</code> contains everything user  need to develop a new scheduling logic. e.g. supervisors information, available slots, current  assignments for all the topologies etc. User can set the new assignment for topologies using  cluster.setAssignmentById()`</dd>
+</dl>
+</li>
+</ul>
+<a name="config--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>config</h4>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;config()</pre>
+<div class="block"><p>This function returns the scheduler&rsquo;s configuration.</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The scheduler&rsquo;s configuration.</dd>
 </dl>
 </li>
 </ul>
@@ -208,7 +228,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/scheduler/INimbus.html" title="interface in org.apache.storm.scheduler"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/scheduler/ISupervisor.html" title="interface in org.apache.storm.scheduler"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/scheduler/ISchedulingState.html" title="interface in org.apache.storm.scheduler"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/scheduler/IScheduler.html" target="_top">Frames</a></li>
@@ -248,6 +268,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

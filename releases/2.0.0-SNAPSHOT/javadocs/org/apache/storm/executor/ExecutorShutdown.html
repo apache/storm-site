@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.executor.ExecutorShutdown</li>
@@ -114,7 +114,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">ExecutorShutdown</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title="interface in org.apache.storm.daemon">Shutdownable</a>, <a href="../../../../org/apache/storm/executor/IRunningExecutor.html" title="interface in org.apache.storm.executor">IRunningExecutor</a></pre>
 </li>
 </ul>
@@ -134,9 +134,10 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/ExecutorShutdown.html#ExecutorShutdown-org.apache.storm.executor.Executor-java.util.List-java.util.Map-">ExecutorShutdown</a></span>(<a href="../../../../org/apache/storm/executor/Executor.html" title="class in org.apache.storm.executor">Executor</a>&nbsp;executor,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/utils/Utils.SmartThread.html" title="class in org.apache.storm.utils">Utils.SmartThread</a>&gt;&nbsp;threads,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../../org/apache/storm/daemon/Task.html" title="class in org.apache.storm.daemon">Task</a>&gt;&nbsp;taskDatas)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/ExecutorShutdown.html#ExecutorShutdown-org.apache.storm.executor.Executor-java.util.List-java.util.ArrayList-org.apache.storm.utils.JCQueue-">ExecutorShutdown</a></span>(<a href="../../../../org/apache/storm/executor/Executor.html" title="class in org.apache.storm.executor">Executor</a>&nbsp;executor,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/utils/Utils.SmartThread.html" title="class in org.apache.storm.utils">Utils.SmartThread</a>&gt;&nbsp;threads,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html?is-external=true" title="class or interface in java.util">ArrayList</a>&lt;<a href="../../../../org/apache/storm/daemon/Task.html" title="class in org.apache.storm.daemon">Task</a>&gt;&nbsp;taskDatas,
+                <a href="../../../../org/apache/storm/utils/JCQueue.html" title="class in org.apache.storm.utils">JCQueue</a>&nbsp;recvQueue)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -158,18 +159,26 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/ExecutorShutdown.html#credentialsChanged-org.apache.storm.generated.Credentials-">credentialsChanged</a></span>(<a href="../../../../org/apache/storm/generated/Credentials.html" title="class in org.apache.storm.generated">Credentials</a>&nbsp;credentials)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/ExecutorShutdown.html#getBackPressureFlag--">getBackPressureFlag</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/ExecutorShutdown.html#getExecutorId--">getExecutorId</a></span>()</code>&nbsp;</td>
 </tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/utils/JCQueue.html" title="class in org.apache.storm.utils">JCQueue</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/ExecutorShutdown.html#getReceiveQueue--">getReceiveQueue</a></span>()</code>&nbsp;</td>
+</tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/ExecutorShutdown.html#loadChanged-org.apache.storm.grouping.LoadMapping-">loadChanged</a></span>(<a href="../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;loadMapping)</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/ExecutorShutdown.html#publishFlushTuple--">publishFlushTuple</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/generated/ExecutorStats.html" title="class in org.apache.storm.generated">ExecutorStats</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/ExecutorShutdown.html#renderStats--">renderStats</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/executor/ExecutorShutdown.html#shutdown--">shutdown</a></span>()</code>&nbsp;</td>
 </tr>
@@ -178,8 +187,8 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -195,15 +204,16 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="ExecutorShutdown-org.apache.storm.executor.Executor-java.util.List-java.util.Map-">
+<a name="ExecutorShutdown-org.apache.storm.executor.Executor-java.util.List-java.util.ArrayList-org.apache.storm.utils.JCQueue-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ExecutorShutdown</h4>
 <pre>public&nbsp;ExecutorShutdown(<a href="../../../../org/apache/storm/executor/Executor.html" title="class in org.apache.storm.executor">Executor</a>&nbsp;executor,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/utils/Utils.SmartThread.html" title="class in org.apache.storm.utils">Utils.SmartThread</a>&gt;&nbsp;threads,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../../org/apache/storm/daemon/Task.html" title="class in org.apache.storm.daemon">Task</a>&gt;&nbsp;taskDatas)</pre>
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/utils/Utils.SmartThread.html" title="class in org.apache.storm.utils">Utils.SmartThread</a>&gt;&nbsp;threads,
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html?is-external=true" title="class or interface in java.util">ArrayList</a>&lt;<a href="../../../../org/apache/storm/daemon/Task.html" title="class in org.apache.storm.daemon">Task</a>&gt;&nbsp;taskDatas,
+                        <a href="../../../../org/apache/storm/utils/JCQueue.html" title="class in org.apache.storm.utils">JCQueue</a>&nbsp;recvQueue)</pre>
 </li>
 </ul>
 </li>
@@ -233,7 +243,7 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>getExecutorId</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;getExecutorId()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;getExecutorId()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#getExecutorId--">getExecutorId</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/executor/IRunningExecutor.html" title="interface in org.apache.storm.executor">IRunningExecutor</a></code></dd>
@@ -253,16 +263,42 @@ implements <a href="../../../../org/apache/storm/daemon/Shutdownable.html" title
 </dl>
 </li>
 </ul>
-<a name="getBackPressureFlag--">
+<a name="loadChanged-org.apache.storm.grouping.LoadMapping-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getBackPressureFlag</h4>
-<pre>public&nbsp;boolean&nbsp;getBackPressureFlag()</pre>
+<h4>loadChanged</h4>
+<pre>public&nbsp;void&nbsp;loadChanged(<a href="../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;loadMapping)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#getBackPressureFlag--">getBackPressureFlag</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/executor/IRunningExecutor.html" title="interface in org.apache.storm.executor">IRunningExecutor</a></code></dd>
+<dd><code><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#loadChanged-org.apache.storm.grouping.LoadMapping-">loadChanged</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/executor/IRunningExecutor.html" title="interface in org.apache.storm.executor">IRunningExecutor</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getReceiveQueue--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getReceiveQueue</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/utils/JCQueue.html" title="class in org.apache.storm.utils">JCQueue</a>&nbsp;getReceiveQueue()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#getReceiveQueue--">getReceiveQueue</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/executor/IRunningExecutor.html" title="interface in org.apache.storm.executor">IRunningExecutor</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="publishFlushTuple--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>publishFlushTuple</h4>
+<pre>public&nbsp;boolean&nbsp;publishFlushTuple()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/executor/IRunningExecutor.html#publishFlushTuple--">publishFlushTuple</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/executor/IRunningExecutor.html" title="interface in org.apache.storm.executor">IRunningExecutor</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -352,6 +388,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -83,6 +83,30 @@
 </tr>
 <tbody>
 <tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm">org.apache.storm</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.blobstore">org.apache.storm.blobstore</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.daemon.nimbus">org.apache.storm.daemon.nimbus</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.hdfs.blobstore">org.apache.storm.hdfs.blobstore</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.testing">org.apache.storm.testing</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.utils">org.apache.storm.utils</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.zookeeper">org.apache.storm.zookeeper</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -91,6 +115,172 @@
 </li>
 <li class="blockList">
 <ul class="blockList">
+<li class="blockList"><a name="org.apache.storm">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a> in <a href="../../../../../org/apache/storm/package-summary.html">org.apache.storm</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/package-summary.html">org.apache.storm</a> with parameters of type <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/LocalCluster.Builder.html" title="class in org.apache.storm">LocalCluster.Builder</a></code></td>
+<td class="colLast"><span class="typeNameLabel">LocalCluster.Builder.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/LocalCluster.Builder.html#withLeaderElector-org.apache.storm.nimbus.ILeaderElector-">withLeaderElector</a></span>(<a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a>&nbsp;leaderElector)</code>
+<div class="block">Use the following leaderElector instead of the one in the config.</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.blobstore">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a> in <a href="../../../../../org/apache/storm/blobstore/package-summary.html">org.apache.storm.blobstore</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/blobstore/package-summary.html">org.apache.storm.blobstore</a> with parameters of type <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">LocalFsBlobStore.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/blobstore/LocalFsBlobStore.html#prepare-java.util.Map-java.lang.String-org.apache.storm.nimbus.NimbusInfo-org.apache.storm.nimbus.ILeaderElector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;overrideBase,
+       <a href="../../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&nbsp;nimbusInfo,
+       <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a>&nbsp;leaderElector)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>abstract void</code></td>
+<td class="colLast"><span class="typeNameLabel">BlobStore.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/blobstore/BlobStore.html#prepare-java.util.Map-java.lang.String-org.apache.storm.nimbus.NimbusInfo-org.apache.storm.nimbus.ILeaderElector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;baseDir,
+       <a href="../../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&nbsp;nimbusInfo,
+       <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a>&nbsp;leaderElector)</code>
+<div class="block">Allows us to initialize the blob store</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">LocalFsBlobStore.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/blobstore/LocalFsBlobStore.html#setLeaderElector-org.apache.storm.nimbus.ILeaderElector-">setLeaderElector</a></span>(<a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a>&nbsp;leaderElector)</code>
+<div class="block">Sets leader elector (only used by LocalFsBlobStore to help sync blobs between Nimbi</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>abstract void</code></td>
+<td class="colLast"><span class="typeNameLabel">BlobStore.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/blobstore/BlobStore.html#setLeaderElector-org.apache.storm.nimbus.ILeaderElector-">setLeaderElector</a></span>(<a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a>&nbsp;leaderElector)</code>
+<div class="block">Sets leader elector (only used by LocalFsBlobStore to help sync blobs between Nimbi</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.daemon.nimbus">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a> in <a href="../../../../../org/apache/storm/daemon/nimbus/package-summary.html">org.apache.storm.daemon.nimbus</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../../org/apache/storm/daemon/nimbus/package-summary.html">org.apache.storm.daemon.nimbus</a> with parameters of type <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/nimbus/Nimbus.html#Nimbus-java.util.Map-org.apache.storm.scheduler.INimbus-org.apache.storm.cluster.IStormClusterState-org.apache.storm.nimbus.NimbusInfo-org.apache.storm.blobstore.BlobStore-org.apache.storm.nimbus.ILeaderElector-org.apache.storm.security.auth.IGroupMappingServiceProvider-">Nimbus</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+      <a href="../../../../../org/apache/storm/scheduler/INimbus.html" title="interface in org.apache.storm.scheduler">INimbus</a>&nbsp;inimbus,
+      <a href="../../../../../org/apache/storm/cluster/IStormClusterState.html" title="interface in org.apache.storm.cluster">IStormClusterState</a>&nbsp;stormClusterState,
+      <a href="../../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&nbsp;hostPortInfo,
+      <a href="../../../../../org/apache/storm/blobstore/BlobStore.html" title="class in org.apache.storm.blobstore">BlobStore</a>&nbsp;blobStore,
+      <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a>&nbsp;leaderElector,
+      <a href="../../../../../org/apache/storm/security/auth/IGroupMappingServiceProvider.html" title="interface in org.apache.storm.security.auth">IGroupMappingServiceProvider</a>&nbsp;groupMapper)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/nimbus/Nimbus.html#Nimbus-java.util.Map-org.apache.storm.scheduler.INimbus-org.apache.storm.cluster.IStormClusterState-org.apache.storm.nimbus.NimbusInfo-org.apache.storm.blobstore.BlobStore-org.apache.storm.daemon.nimbus.TopoCache-org.apache.storm.nimbus.ILeaderElector-org.apache.storm.security.auth.IGroupMappingServiceProvider-">Nimbus</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+      <a href="../../../../../org/apache/storm/scheduler/INimbus.html" title="interface in org.apache.storm.scheduler">INimbus</a>&nbsp;inimbus,
+      <a href="../../../../../org/apache/storm/cluster/IStormClusterState.html" title="interface in org.apache.storm.cluster">IStormClusterState</a>&nbsp;stormClusterState,
+      <a href="../../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&nbsp;hostPortInfo,
+      <a href="../../../../../org/apache/storm/blobstore/BlobStore.html" title="class in org.apache.storm.blobstore">BlobStore</a>&nbsp;blobStore,
+      <a href="../../../../../org/apache/storm/daemon/nimbus/TopoCache.html" title="class in org.apache.storm.daemon.nimbus">TopoCache</a>&nbsp;topoCache,
+      <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a>&nbsp;leaderElector,
+      <a href="../../../../../org/apache/storm/security/auth/IGroupMappingServiceProvider.html" title="interface in org.apache.storm.security.auth">IGroupMappingServiceProvider</a>&nbsp;groupMapper)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.hdfs.blobstore">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a> in <a href="../../../../../org/apache/storm/hdfs/blobstore/package-summary.html">org.apache.storm.hdfs.blobstore</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/hdfs/blobstore/package-summary.html">org.apache.storm.hdfs.blobstore</a> with parameters of type <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">HdfsBlobStore.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/blobstore/HdfsBlobStore.html#prepare-java.util.Map-java.lang.String-org.apache.storm.nimbus.NimbusInfo-org.apache.storm.nimbus.ILeaderElector-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;overrideBase,
+       <a href="../../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&nbsp;nimbusInfo,
+       <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a>&nbsp;leaderElector)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">HdfsBlobStore.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/blobstore/HdfsBlobStore.html#setLeaderElector-org.apache.storm.nimbus.ILeaderElector-">setLeaderElector</a></span>(<a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a>&nbsp;leaderElector)</code>
+<div class="block">Sets leader elector (only used by LocalFsBlobStore to help sync blobs between Nimbi</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.testing">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a> in <a href="../../../../../org/apache/storm/testing/package-summary.html">org.apache.storm.testing</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/testing/package-summary.html">org.apache.storm.testing</a> that implement <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/testing/MockLeaderElector.html" title="class in org.apache.storm.testing">MockLeaderElector</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.utils">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a> in <a href="../../../../../org/apache/storm/utils/package-summary.html">org.apache.storm.utils</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/utils/package-summary.html">org.apache.storm.utils</a> with parameters of type <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="../../../../../org/apache/storm/blobstore/BlobStore.html" title="class in org.apache.storm.blobstore">BlobStore</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ServerUtils.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/utils/ServerUtils.html#getNimbusBlobStore-java.util.Map-org.apache.storm.nimbus.NimbusInfo-org.apache.storm.nimbus.ILeaderElector-">getNimbusBlobStore</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+                  <a href="../../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&nbsp;nimbusInfo,
+                  <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a>&nbsp;leaderElector)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../../org/apache/storm/blobstore/BlobStore.html" title="class in org.apache.storm.blobstore">BlobStore</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ServerUtils.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/utils/ServerUtils.html#getNimbusBlobStore-java.util.Map-java.lang.String-org.apache.storm.nimbus.NimbusInfo-org.apache.storm.nimbus.ILeaderElector-">getNimbusBlobStore</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;baseDir,
+                  <a href="../../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&nbsp;nimbusInfo,
+                  <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a>&nbsp;leaderElector)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li class="blockList"><a name="org.apache.storm.zookeeper">
 <!--   -->
 </a>
@@ -117,13 +307,23 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Zookeeper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/zookeeper/Zookeeper.html#zkLeaderElector-java.util.Map-org.apache.storm.blobstore.BlobStore-">zkLeaderElector</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
-               <a href="../../../../../org/apache/storm/blobstore/BlobStore.html" title="class in org.apache.storm.blobstore">BlobStore</a>&nbsp;blobStore)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">Zookeeper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/zookeeper/Zookeeper.html#zkLeaderElector-java.util.Map-org.apache.curator.framework.CuratorFramework-org.apache.storm.blobstore.BlobStore-org.apache.storm.daemon.nimbus.TopoCache-org.apache.storm.cluster.IStormClusterState-java.util.List-">zkLeaderElector</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+               org.apache.curator.framework.CuratorFramework&nbsp;zkClient,
+               <a href="../../../../../org/apache/storm/blobstore/BlobStore.html" title="class in org.apache.storm.blobstore">BlobStore</a>&nbsp;blobStore,
+               <a href="../../../../../org/apache/storm/daemon/nimbus/TopoCache.html" title="class in org.apache.storm.daemon.nimbus">TopoCache</a>&nbsp;tc,
+               <a href="../../../../../org/apache/storm/cluster/IStormClusterState.html" title="interface in org.apache.storm.cluster">IStormClusterState</a>&nbsp;clusterState,
+               <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>
+<div class="block">Get master leader elector.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected <a href="../../../../../org/apache/storm/nimbus/ILeaderElector.html" title="interface in org.apache.storm.nimbus">ILeaderElector</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Zookeeper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/zookeeper/Zookeeper.html#zkLeaderElectorImpl-java.util.Map-org.apache.storm.blobstore.BlobStore-">zkLeaderElectorImpl</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
-                   <a href="../../../../../org/apache/storm/blobstore/BlobStore.html" title="class in org.apache.storm.blobstore">BlobStore</a>&nbsp;blobStore)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">Zookeeper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/zookeeper/Zookeeper.html#zkLeaderElectorImpl-java.util.Map-org.apache.curator.framework.CuratorFramework-org.apache.storm.blobstore.BlobStore-org.apache.storm.daemon.nimbus.TopoCache-org.apache.storm.cluster.IStormClusterState-java.util.List-">zkLeaderElectorImpl</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+                   org.apache.curator.framework.CuratorFramework&nbsp;zk,
+                   <a href="../../../../../org/apache/storm/blobstore/BlobStore.html" title="class in org.apache.storm.blobstore">BlobStore</a>&nbsp;blobStore,
+                   <a href="../../../../../org/apache/storm/daemon/nimbus/TopoCache.html" title="class in org.apache.storm.daemon.nimbus">TopoCache</a>&nbsp;tc,
+                   <a href="../../../../../org/apache/storm/cluster/IStormClusterState.html" title="interface in org.apache.storm.cluster">IStormClusterState</a>&nbsp;clusterState,
+                   <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -183,6 +383,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

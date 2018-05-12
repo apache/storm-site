@@ -18,8 +18,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var methods = {"i0":18,"i1":18,"i2":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -116,22 +116,32 @@ var activeTableTab = "activeTableTab";
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t5" class="tableTab"><span><a href="javascript:show(16);">Default Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html#onActivation-java.util.List-java.util.List-java.util.List-">onActivation</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;events,
-            <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;newEvents,
-            <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;expired)</code>
+<td class="colFirst"><code>default void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html#onActivation-java.util.List-java.util.List-java.util.List-java.lang.Long-">onActivation</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;events,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;newEvents,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;expired,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;referenceTime)</code>
 <div class="block">Called on activation of the window due to the <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing"><code>TriggerPolicy</code></a></div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>default void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html#onActivation-java.util.function.Supplier-java.util.function.Supplier-java.util.function.Supplier-java.lang.Long-">onActivation</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&gt;&nbsp;eventsIt,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&gt;&nbsp;newEventsIt,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&gt;&nbsp;expiredIt,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;referenceTime)</code>
+<div class="block">Called on activation of the window due to the <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing"><code>TriggerPolicy</code></a>.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html#onExpiry-java.util.List-">onExpiry</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;events)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html#onExpiry-java.util.List-">onExpiry</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;events)</code>
 <div class="block">Called on expiry of events from the window due to <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing"><code>EvictionPolicy</code></a></div>
 </td>
 </tr>
@@ -156,7 +166,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>onExpiry</h4>
-<pre>void&nbsp;onExpiry(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;events)</pre>
+<pre>void&nbsp;onExpiry(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;events)</pre>
 <div class="block"><p>Called on expiry of events from the window due to <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing"><code>EvictionPolicy</code></a></p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -164,21 +174,43 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
-<a name="onActivation-java.util.List-java.util.List-java.util.List-">
+<a name="onActivation-java.util.List-java.util.List-java.util.List-java.lang.Long-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>onActivation</h4>
-<pre>void&nbsp;onActivation(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;events,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;newEvents,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;expired)</pre>
+<pre>default&nbsp;void&nbsp;onActivation(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;events,
+                          <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;newEvents,
+                          <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&nbsp;expired,
+                          <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;referenceTime)</pre>
 <div class="block"><p>Called on activation of the window due to the <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing"><code>TriggerPolicy</code></a></p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>events</code> - the list of current events in the window.</dd>
 <dd><code>newEvents</code> - the newly added events since last activation.</dd>
 <dd><code>expired</code> - the expired events since last activation.</dd>
+<dd><code>referenceTime</code> - the reference (event or processing) time that resulted in activation</dd>
+</dl>
+</li>
+</ul>
+<a name="onActivation-java.util.function.Supplier-java.util.function.Supplier-java.util.function.Supplier-java.lang.Long-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>onActivation</h4>
+<pre>default&nbsp;void&nbsp;onActivation(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&gt;&nbsp;eventsIt,
+                          <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&gt;&nbsp;newEventsIt,
+                          <a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="type parameter in WindowLifecycleListener">T</a>&gt;&gt;&nbsp;expiredIt,
+                          <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;referenceTime)</pre>
+<div class="block"><p>Called on activation of the window due to the <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing"><code>TriggerPolicy</code></a>. This is typically invoked when the windows are persisted in state and is huge to be loaded entirely in memory.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>eventsIt</code> - a supplier of iterator over the list of current events in the window</dd>
+<dd><code>newEventsIt</code> - a supplier of iterator over the newly added events since the last ativation</dd>
+<dd><code>expiredIt</code> - a supplier of iterator over the expired events since the last activation</dd>
+<dd><code>referenceTime</code> - the reference (event or processing) time that resulted in activation</dd>
 </dl>
 </li>
 </ul>
@@ -255,6 +287,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>
