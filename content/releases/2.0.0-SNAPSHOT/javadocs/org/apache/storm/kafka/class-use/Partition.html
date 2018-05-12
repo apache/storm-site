@@ -120,10 +120,11 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">KafkaUtils.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/KafkaUtils.html#calculatePartitionsForTask-java.util.List-int-int-">calculatePartitionsForTask</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/kafka/trident/GlobalPartitionInformation.html" title="class in org.apache.storm.kafka.trident">GlobalPartitionInformation</a>&gt;&nbsp;partitons,
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">KafkaUtils.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/KafkaUtils.html#calculatePartitionsForTask-java.util.List-int-int-int-">calculatePartitionsForTask</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/kafka/trident/GlobalPartitionInformation.html" title="class in org.apache.storm.kafka.trident">GlobalPartitionInformation</a>&gt;&nbsp;partitons,
                           int&nbsp;totalTasks,
-                          int&nbsp;taskIndex)</code>&nbsp;</td>
+                          int&nbsp;taskIndex,
+                          int&nbsp;taskId)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -135,20 +136,32 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">StringMessageAndMetadataScheme.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/StringMessageAndMetadataScheme.html#deserializeMessageWithMetadata-java.nio.ByteBuffer-org.apache.storm.kafka.Partition-long-">deserializeMessageWithMetadata</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/nio/ByteBuffer.html?is-external=true" title="class or interface in java.nio">ByteBuffer</a>&nbsp;message,
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">FailedMsgRetryManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/FailedMsgRetryManager.html#cleanOffsetAfterRetries-org.apache.storm.kafka.Partition-java.lang.Long-">cleanOffsetAfterRetries</a></span>(<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;partition,
+                       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>
+<div class="block">Spout will call this method after retryFurther returns false.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ExponentialBackoffMsgRetryManager.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/ExponentialBackoffMsgRetryManager.html#cleanOffsetAfterRetries-org.apache.storm.kafka.Partition-java.lang.Long-">cleanOffsetAfterRetries</a></span>(<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;partition,
+                       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&nbsp;offset)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">StringMessageAndMetadataScheme.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/StringMessageAndMetadataScheme.html#deserializeMessageWithMetadata-java.nio.ByteBuffer-org.apache.storm.kafka.Partition-long-">deserializeMessageWithMetadata</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/ByteBuffer.html?is-external=true" title="class or interface in java.nio">ByteBuffer</a>&nbsp;message,
                               <a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;partition,
                               long&nbsp;offset)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">MessageMetadataSchemeAsMultiScheme.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/MessageMetadataSchemeAsMultiScheme.html#deserializeMessageWithMetadata-java.nio.ByteBuffer-org.apache.storm.kafka.Partition-long-">deserializeMessageWithMetadata</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/nio/ByteBuffer.html?is-external=true" title="class or interface in java.nio">ByteBuffer</a>&nbsp;message,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">MessageMetadataSchemeAsMultiScheme.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/MessageMetadataSchemeAsMultiScheme.html#deserializeMessageWithMetadata-java.nio.ByteBuffer-org.apache.storm.kafka.Partition-long-">deserializeMessageWithMetadata</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/ByteBuffer.html?is-external=true" title="class or interface in java.nio">ByteBuffer</a>&nbsp;message,
                               <a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;partition,
                               long&nbsp;offset)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">MessageMetadataScheme.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/MessageMetadataScheme.html#deserializeMessageWithMetadata-java.nio.ByteBuffer-org.apache.storm.kafka.Partition-long-">deserializeMessageWithMetadata</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/nio/ByteBuffer.html?is-external=true" title="class or interface in java.nio">ByteBuffer</a>&nbsp;message,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">MessageMetadataScheme.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/MessageMetadataScheme.html#deserializeMessageWithMetadata-java.nio.ByteBuffer-org.apache.storm.kafka.Partition-long-">deserializeMessageWithMetadata</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/ByteBuffer.html?is-external=true" title="class or interface in java.nio">ByteBuffer</a>&nbsp;message,
                               <a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;partition,
                               long&nbsp;offset)</code>&nbsp;</td>
 </tr>
@@ -160,7 +173,7 @@
              long&nbsp;offset)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;</code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">KafkaUtils.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/KafkaUtils.html#generateTuples-org.apache.storm.kafka.MessageMetadataSchemeAsMultiScheme-kafka.message.Message-org.apache.storm.kafka.Partition-long-">generateTuples</a></span>(<a href="../../../../../org/apache/storm/kafka/MessageMetadataSchemeAsMultiScheme.html" title="class in org.apache.storm.kafka">MessageMetadataSchemeAsMultiScheme</a>&nbsp;scheme,
               kafka.message.Message&nbsp;msg,
               <a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;partition,
@@ -206,7 +219,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">KafkaUtils.KafkaOffsetMetric.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/KafkaUtils.KafkaOffsetMetric.html#refreshPartitions-java.util.Set-">refreshPartitions</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&gt;&nbsp;partitions)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">KafkaUtils.KafkaOffsetMetric.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/KafkaUtils.KafkaOffsetMetric.html#refreshPartitions-java.util.Set-">refreshPartitions</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&gt;&nbsp;partitions)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -218,11 +231,20 @@
 <tbody>
 <tr class="altColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/PartitionManager.html#PartitionManager-org.apache.storm.kafka.DynamicPartitionConnections-java.lang.String-org.apache.storm.kafka.ZkState-java.util.Map-org.apache.storm.kafka.SpoutConfig-org.apache.storm.kafka.Partition-">PartitionManager</a></span>(<a href="../../../../../org/apache/storm/kafka/DynamicPartitionConnections.html" title="class in org.apache.storm.kafka">DynamicPartitionConnections</a>&nbsp;connections,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId,
                 <a href="../../../../../org/apache/storm/kafka/ZkState.html" title="class in org.apache.storm.kafka">ZkState</a>&nbsp;state,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
                 <a href="../../../../../org/apache/storm/kafka/SpoutConfig.html" title="class in org.apache.storm.kafka">SpoutConfig</a>&nbsp;spoutConfig,
                 <a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;id)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/PartitionManager.html#PartitionManager-org.apache.storm.kafka.DynamicPartitionConnections-java.lang.String-org.apache.storm.kafka.ZkState-java.util.Map-org.apache.storm.kafka.SpoutConfig-org.apache.storm.kafka.Partition-org.apache.storm.kafka.PartitionManager-">PartitionManager</a></span>(<a href="../../../../../org/apache/storm/kafka/DynamicPartitionConnections.html" title="class in org.apache.storm.kafka">DynamicPartitionConnections</a>&nbsp;connections,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId,
+                <a href="../../../../../org/apache/storm/kafka/ZkState.html" title="class in org.apache.storm.kafka">ZkState</a>&nbsp;state,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
+                <a href="../../../../../org/apache/storm/kafka/SpoutConfig.html" title="class in org.apache.storm.kafka">SpoutConfig</a>&nbsp;spoutConfig,
+                <a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;id,
+                <a href="../../../../../org/apache/storm/kafka/PartitionManager.html" title="class in org.apache.storm.kafka">PartitionManager</a>&nbsp;previousManager)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -239,20 +261,20 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="interface in org.apache.storm.trident.spout">IOpaquePartitionedTridentSpout.Emitter</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/kafka/trident/GlobalPartitionInformation.html" title="class in org.apache.storm.kafka.trident">GlobalPartitionInformation</a>&gt;,<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="interface in org.apache.storm.trident.spout">IOpaquePartitionedTridentSpout.Emitter</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/kafka/trident/GlobalPartitionInformation.html" title="class in org.apache.storm.kafka.trident">GlobalPartitionInformation</a>&gt;,<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">TridentKafkaEmitter.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/trident/TridentKafkaEmitter.html#asOpaqueEmitter--">asOpaqueEmitter</a></span>()</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="interface in org.apache.storm.trident.spout">IOpaquePartitionedTridentSpout.Emitter</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/kafka/trident/GlobalPartitionInformation.html" title="class in org.apache.storm.kafka.trident">GlobalPartitionInformation</a>&gt;,<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">OpaqueTridentKafkaSpout.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/trident/OpaqueTridentKafkaSpout.html#getEmitter-java.util.Map-org.apache.storm.task.TopologyContext-">getEmitter</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.Emitter.html" title="interface in org.apache.storm.trident.spout">IOpaquePartitionedTridentSpout.Emitter</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/kafka/trident/GlobalPartitionInformation.html" title="class in org.apache.storm.kafka.trident">GlobalPartitionInformation</a>&gt;,<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">OpaqueTridentKafkaSpout.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/trident/OpaqueTridentKafkaSpout.html#getEmitter-java.util.Map-org.apache.storm.task.TopologyContext-">getEmitter</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
           <a href="../../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">GlobalPartitionInformation.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/trident/GlobalPartitionInformation.html#getOrderedPartitions--">getOrderedPartitions</a></span>()</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">GlobalPartitionInformation.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/trident/GlobalPartitionInformation.html#iterator--">iterator</a></span>()</code>&nbsp;</td>
 </tr>
 </tbody>
@@ -313,6 +335,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

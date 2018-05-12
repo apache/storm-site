@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.org.apache.storm.stats.CommonStats">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../org/apache/storm/stats/CommonStats.html" title="class in org.apache.storm.stats">org.apache.storm.stats.CommonStats</a></li>
@@ -128,31 +128,12 @@ extends <a href="../../../../org/apache/storm/stats/CommonStats.html" title="cla
 <!--   -->
 </a>
 <h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#ACKED">ACKED</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#COMPLETE_LATENCIES">COMPLETE_LATENCIES</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#FAILED">FAILED</a></span></code>&nbsp;</td>
-</tr>
-</table>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.org.apache.storm.stats.CommonStats">
 <!--   -->
 </a>
 <h3>Fields inherited from class&nbsp;org.apache.storm.stats.<a href="../../../../org/apache/storm/stats/CommonStats.html" title="class in org.apache.storm.stats">CommonStats</a></h3>
-<code><a href="../../../../org/apache/storm/stats/CommonStats.html#COMMON_FIELDS">COMMON_FIELDS</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#EMITTED">EMITTED</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#metricMap">metricMap</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#NUM_STAT_BUCKETS">NUM_STAT_BUCKETS</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#rate">rate</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#RATE">RATE</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#TRANSFERRED">TRANSFERRED</a></code></li>
+<code><a href="../../../../org/apache/storm/stats/CommonStats.html#rate">rate</a></code></li>
 </ul>
 </li>
 </ul>
@@ -168,7 +149,8 @@ extends <a href="../../../../org/apache/storm/stats/CommonStats.html" title="cla
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#SpoutExecutorStats-int-">SpoutExecutorStats</a></span>(int&nbsp;rate)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#SpoutExecutorStats-int-int-">SpoutExecutorStats</a></span>(int&nbsp;rate,
+                  int&nbsp;numStatBuckets)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -186,30 +168,28 @@ extends <a href="../../../../org/apache/storm/stats/CommonStats.html" title="cla
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../../org/apache/storm/metric/internal/MultiCountStatAndMetric.html" title="class in org.apache.storm.metric.internal">MultiCountStatAndMetric</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#getAcked--">getAcked</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#cleanupStats--">cleanupStats</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/metric/internal/MultiLatencyStatAndMetric.html" title="class in org.apache.storm.metric.internal">MultiLatencyStatAndMetric</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#getCompleteLatencies--">getCompleteLatencies</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../../../../org/apache/storm/metric/internal/MultiCountStatAndMetric.html" title="class in org.apache.storm.metric.internal">MultiCountStatAndMetric</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#getFailed--">getFailed</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/generated/ExecutorStats.html" title="class in org.apache.storm.generated">ExecutorStats</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#renderStats--">renderStats</a></span>()</code>&nbsp;</td>
 </tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#spoutAckedTuple-java.lang.String-long-com.codahale.metrics.Counter-">spoutAckedTuple</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stream,
+               long&nbsp;latencyMs,
+               com.codahale.metrics.Counter&nbsp;ackedCounter)</code>&nbsp;</td>
+</tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#spoutAckedTuple-java.lang.String-long-">spoutAckedTuple</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stream,
-               long&nbsp;latencyMs)</code>&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#spoutFailedTuple-java.lang.String-long-">spoutFailedTuple</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stream,
-                long&nbsp;latencyMs)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/stats/SpoutExecutorStats.html#spoutFailedTuple-java.lang.String-long-com.codahale.metrics.Counter-">spoutFailedTuple</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stream,
+                long&nbsp;latencyMs,
+                com.codahale.metrics.Counter&nbsp;failedCounter)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -217,14 +197,14 @@ extends <a href="../../../../org/apache/storm/stats/CommonStats.html" title="cla
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;org.apache.storm.stats.<a href="../../../../org/apache/storm/stats/CommonStats.html" title="class in org.apache.storm.stats">CommonStats</a></h3>
-<code><a href="../../../../org/apache/storm/stats/CommonStats.html#cleanupStats--">cleanupStats</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#emittedTuple-java.lang.String-">emittedTuple</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#get-java.lang.String-">get</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#getEmitted--">getEmitted</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#getRate--">getRate</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#getTransferred--">getTransferred</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#put-java.lang.String-java.lang.Object-">put</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#transferredTuples-java.lang.String-int-">transferredTuples</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#valueStat-java.lang.String-">valueStat</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#valueStats-java.lang.String:A-">valueStats</a></code></li>
+<code><a href="../../../../org/apache/storm/stats/CommonStats.html#emittedTuple-java.lang.String-com.codahale.metrics.Counter-">emittedTuple</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#getAcked--">getAcked</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#getEmitted--">getEmitted</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#getFailed--">getFailed</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#getRate--">getRate</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#getTransferred--">getTransferred</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#transferredTuples-java.lang.String-int-com.codahale.metrics.Counter-">transferredTuples</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#valueStat-org.apache.storm.metric.internal.MultiCountStatAndMetric-">valueStat</a>, <a href="../../../../org/apache/storm/stats/CommonStats.html#valueStat-org.apache.storm.metric.internal.MultiLatencyStatAndMetric-">valueStat</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -234,66 +214,20 @@ extends <a href="../../../../org/apache/storm/stats/CommonStats.html" title="cla
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="ACKED">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>ACKED</h4>
-<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> ACKED</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.storm.stats.SpoutExecutorStats.ACKED">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a name="FAILED">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>FAILED</h4>
-<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> FAILED</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.storm.stats.SpoutExecutorStats.FAILED">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-<a name="COMPLETE_LATENCIES">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>COMPLETE_LATENCIES</h4>
-<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a> COMPLETE_LATENCIES</pre>
-<dl>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#org.apache.storm.stats.SpoutExecutorStats.COMPLETE_LATENCIES">Constant Field Values</a></dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="SpoutExecutorStats-int-">
+<a name="SpoutExecutorStats-int-int-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>SpoutExecutorStats</h4>
-<pre>public&nbsp;SpoutExecutorStats(int&nbsp;rate)</pre>
+<pre>public&nbsp;SpoutExecutorStats(int&nbsp;rate,
+                          int&nbsp;numStatBuckets)</pre>
 </li>
 </ul>
 </li>
@@ -304,24 +238,6 @@ extends <a href="../../../../org/apache/storm/stats/CommonStats.html" title="cla
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="getAcked--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getAcked</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/metric/internal/MultiCountStatAndMetric.html" title="class in org.apache.storm.metric.internal">MultiCountStatAndMetric</a>&nbsp;getAcked()</pre>
-</li>
-</ul>
-<a name="getFailed--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getFailed</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/metric/internal/MultiCountStatAndMetric.html" title="class in org.apache.storm.metric.internal">MultiCountStatAndMetric</a>&nbsp;getFailed()</pre>
-</li>
-</ul>
 <a name="getCompleteLatencies--">
 <!--   -->
 </a>
@@ -331,24 +247,39 @@ extends <a href="../../../../org/apache/storm/stats/CommonStats.html" title="cla
 <pre>public&nbsp;<a href="../../../../org/apache/storm/metric/internal/MultiLatencyStatAndMetric.html" title="class in org.apache.storm.metric.internal">MultiLatencyStatAndMetric</a>&nbsp;getCompleteLatencies()</pre>
 </li>
 </ul>
-<a name="spoutAckedTuple-java.lang.String-long-">
+<a name="cleanupStats--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cleanupStats</h4>
+<pre>public&nbsp;void&nbsp;cleanupStats()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/stats/CommonStats.html#cleanupStats--">cleanupStats</a></code>&nbsp;in class&nbsp;<code><a href="../../../../org/apache/storm/stats/CommonStats.html" title="class in org.apache.storm.stats">CommonStats</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="spoutAckedTuple-java.lang.String-long-com.codahale.metrics.Counter-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>spoutAckedTuple</h4>
-<pre>public&nbsp;void&nbsp;spoutAckedTuple(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stream,
-                            long&nbsp;latencyMs)</pre>
+<pre>public&nbsp;void&nbsp;spoutAckedTuple(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stream,
+                            long&nbsp;latencyMs,
+                            com.codahale.metrics.Counter&nbsp;ackedCounter)</pre>
 </li>
 </ul>
-<a name="spoutFailedTuple-java.lang.String-long-">
+<a name="spoutFailedTuple-java.lang.String-long-com.codahale.metrics.Counter-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>spoutFailedTuple</h4>
-<pre>public&nbsp;void&nbsp;spoutFailedTuple(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stream,
-                             long&nbsp;latencyMs)</pre>
+<pre>public&nbsp;void&nbsp;spoutFailedTuple(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stream,
+                             long&nbsp;latencyMs,
+                             com.codahale.metrics.Counter&nbsp;failedCounter)</pre>
 </li>
 </ul>
 <a name="renderStats--">
@@ -422,13 +353,13 @@ hljs.initHighlightingOnLoad();
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.org.apache.storm.stats.CommonStats">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -437,6 +368,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

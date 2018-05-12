@@ -116,8 +116,9 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../org/apache/storm/daemon/supervisor/ContainerLauncher.html" title="class in org.apache.storm.daemon.supervisor">ContainerLauncher</a></code></td>
-<td class="colLast"><span class="typeNameLabel">ContainerLauncher.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/ContainerLauncher.html#make-java.util.Map-java.lang.String-org.apache.storm.messaging.IContext-">make</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
-    <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+<td class="colLast"><span class="typeNameLabel">ContainerLauncher.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/ContainerLauncher.html#make-java.util.Map-java.lang.String-int-org.apache.storm.messaging.IContext-">make</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+    <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+    int&nbsp;supervisorPort,
     <a href="../../../../../org/apache/storm/messaging/IContext.html" title="interface in org.apache.storm.messaging">IContext</a>&nbsp;sharedContext)</code>
 <div class="block">Factory to create the right container launcher for the config and the environment.</div>
 </td>
@@ -131,21 +132,25 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#LocalContainer-java.util.Map-java.lang.String-int-org.apache.storm.generated.LocalAssignment-org.apache.storm.messaging.IContext-">LocalContainer</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
-              <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainer.html#LocalContainer-java.util.Map-java.lang.String-int-int-org.apache.storm.generated.LocalAssignment-org.apache.storm.messaging.IContext-">LocalContainer</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+              <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+              int&nbsp;supervisorPort,
               int&nbsp;port,
               <a href="../../../../../org/apache/storm/generated/LocalAssignment.html" title="class in org.apache.storm.generated">LocalAssignment</a>&nbsp;assignment,
               <a href="../../../../../org/apache/storm/messaging/IContext.html" title="interface in org.apache.storm.messaging">IContext</a>&nbsp;sharedContext)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainerLauncher.html#LocalContainerLauncher-java.util.Map-java.lang.String-org.apache.storm.messaging.IContext-">LocalContainerLauncher</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
-                      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/LocalContainerLauncher.html#LocalContainerLauncher-java.util.Map-java.lang.String-int-org.apache.storm.messaging.IContext-">LocalContainerLauncher</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+                      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;supervisorId,
+                      int&nbsp;supervisorPort,
                       <a href="../../../../../org/apache/storm/messaging/IContext.html" title="interface in org.apache.storm.messaging">IContext</a>&nbsp;sharedContext)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Supervisor.html#Supervisor-java.util.Map-org.apache.storm.messaging.IContext-org.apache.storm.scheduler.ISupervisor-">Supervisor</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/Supervisor.html#Supervisor-java.util.Map-org.apache.storm.messaging.IContext-org.apache.storm.scheduler.ISupervisor-">Supervisor</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
           <a href="../../../../../org/apache/storm/messaging/IContext.html" title="interface in org.apache.storm.messaging">IContext</a>&nbsp;sharedContext,
-          <a href="../../../../../org/apache/storm/scheduler/ISupervisor.html" title="interface in org.apache.storm.scheduler">ISupervisor</a>&nbsp;iSupervisor)</code>&nbsp;</td>
+          <a href="../../../../../org/apache/storm/scheduler/ISupervisor.html" title="interface in org.apache.storm.scheduler">ISupervisor</a>&nbsp;iSupervisor)</code>
+<div class="block">Constructor for supervisor daemon.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -161,25 +166,28 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/worker/Worker.html#Worker-java.util.Map-org.apache.storm.messaging.IContext-java.lang.String-java.lang.String-int-java.lang.String-">Worker</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/worker/Worker.html#Worker-java.util.Map-org.apache.storm.messaging.IContext-java.lang.String-java.lang.String-int-int-java.lang.String-">Worker</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
       <a href="../../../../../org/apache/storm/messaging/IContext.html" title="interface in org.apache.storm.messaging">IContext</a>&nbsp;context,
-      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyId,
-      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;assignmentId,
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyId,
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;assignmentId,
+      int&nbsp;supervisorPort,
       int&nbsp;port,
-      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;workerId)</code>
-<div class="block">TODO: should worker even take the topologyId as input? this should be deducable from cluster state (by searching through assignments) what about if there&rsquo;s inconsistency in assignments? -&gt; but nimbus should guarantee this consistency</div>
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;workerId)</code>
+<div class="block">TODO: should worker even take the topologyId as input? this should be deducible from cluster state (by searching through assignments) what about if there&rsquo;s inconsistency in assignments? -&gt; but nimbus should guarantee this consistency.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/worker/WorkerState.html#WorkerState-java.util.Map-org.apache.storm.messaging.IContext-java.lang.String-java.lang.String-int-java.lang.String-java.util.Map-org.apache.storm.cluster.IStateStorage-org.apache.storm.cluster.IStormClusterState-">WorkerState</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/worker/WorkerState.html#WorkerState-java.util.Map-org.apache.storm.messaging.IContext-java.lang.String-java.lang.String-int-int-java.lang.String-java.util.Map-org.apache.storm.cluster.IStateStorage-org.apache.storm.cluster.IStormClusterState-java.util.Collection-">WorkerState</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
            <a href="../../../../../org/apache/storm/messaging/IContext.html" title="interface in org.apache.storm.messaging">IContext</a>&nbsp;mqContext,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyId,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;assignmentId,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyId,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;assignmentId,
+           int&nbsp;supervisorPort,
            int&nbsp;port,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;workerId,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;topologyConf,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;workerId,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topologyConf,
            <a href="../../../../../org/apache/storm/cluster/IStateStorage.html" title="interface in org.apache.storm.cluster">IStateStorage</a>&nbsp;stateStorage,
-           <a href="../../../../../org/apache/storm/cluster/IStormClusterState.html" title="interface in org.apache.storm.cluster">IStormClusterState</a>&nbsp;stormClusterState)</code>&nbsp;</td>
+           <a href="../../../../../org/apache/storm/cluster/IStormClusterState.html" title="interface in org.apache.storm.cluster">IStormClusterState</a>&nbsp;stormClusterState,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../../org/apache/storm/security/auth/IAutoCredentials.html" title="interface in org.apache.storm.security.auth">IAutoCredentials</a>&gt;&nbsp;autoCredentials)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -197,7 +205,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../org/apache/storm/messaging/IContext.html" title="interface in org.apache.storm.messaging">IContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">TransportFactory.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/messaging/TransportFactory.html#makeContext-java.util.Map-">makeContext</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;storm_conf)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">TransportFactory.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/messaging/TransportFactory.html#makeContext-java.util.Map-">makeContext</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -275,6 +283,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

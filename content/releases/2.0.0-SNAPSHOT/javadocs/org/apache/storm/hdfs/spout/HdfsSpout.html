@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/hdfs/spout/FileLock.LogEntry.html" title="class in org.apache.storm.hdfs.spout"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/hdfs/spout/ParseException.html" title="class in org.apache.storm.hdfs.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpoutTopology.html" title="class in org.apache.storm.hdfs.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/hdfs/spout/HdfsSpout.html" target="_top">Frames</a></li>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../../org/apache/storm/topology/base/BaseComponent.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseComponent</a></li>
@@ -119,7 +119,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichSpout.html" title="interface in org.apache.storm.topology">IRichSpout</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichSpout.html" title="interface in org.apache.storm.topology">IRichSpout</a></dd>
 </dl>
 <hr>
 <br>
@@ -166,107 +166,119 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#ack-java.lang.Object-">ack</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#ack-java.lang.Object-">ack</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</code>
 <div class="block">Storm has determined that the tuple emitted by this spout with the msgId identifier has been fully processed.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#close--">close</a></span>()</code>
+<div class="block">Called when an ISpout is going to be shutdown.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#declareOutputFields-org.apache.storm.topology.OutputFieldsDeclarer-">declareOutputFields</a></span>(<a href="../../../../../org/apache/storm/topology/OutputFieldsDeclarer.html" title="interface in org.apache.storm.topology">OutputFieldsDeclarer</a>&nbsp;declarer)</code>
 <div class="block">Declare the output schema for all the streams of this topology.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#emitData-java.util.List-org.apache.storm.hdfs.spout.HdfsSpout.MessageId-">emitData</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;tuple,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#emitData-java.util.List-org.apache.storm.hdfs.spout.HdfsSpout.MessageId-">emitData</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;tuple,
         org.apache.storm.hdfs.spout.HdfsSpout.MessageId&nbsp;id)</code>&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#fail-java.lang.Object-">fail</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#fail-java.lang.Object-">fail</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</code>
 <div class="block">The tuple emitted by this spout with the msgId identifier has failed to be fully processed.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/spout/SpoutOutputCollector.html" title="class in org.apache.storm.spout">SpoutOutputCollector</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#getCollector--">getCollector</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>org.apache.hadoop.fs.Path</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#getLockDirPath--">getLockDirPath</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#nextTuple--">nextTuple</a></span>()</code>
 <div class="block">When this method is called, Storm is requesting that the Spout emit tuples to the output collector.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#open-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.spout.SpoutOutputCollector-">open</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#open-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.spout.SpoutOutputCollector-">open</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
     <a href="../../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
     <a href="../../../../../org/apache/storm/spout/SpoutOutputCollector.html" title="class in org.apache.storm.spout">SpoutOutputCollector</a>&nbsp;collector)</code>
 <div class="block">Called when a task for this component is initialized within a worker on the cluster.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setArchiveDir-java.lang.String-">setArchiveDir</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;archiveDir)</code>&nbsp;</td>
-</tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setBadFilesDir-java.lang.String-">setBadFilesDir</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;badFilesDir)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setArchiveDir-java.lang.String-">setArchiveDir</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;archiveDir)</code>&nbsp;</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setClocksInSync-boolean-">setClocksInSync</a></span>(boolean&nbsp;clocksInSync)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setBadFilesDir-java.lang.String-">setBadFilesDir</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;badFilesDir)</code>&nbsp;</td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setCommitFrequencyCount-int-">setCommitFrequencyCount</a></span>(int&nbsp;commitFrequencyCount)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setClocksInSync-boolean-">setClocksInSync</a></span>(boolean&nbsp;clocksInSync)</code>&nbsp;</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setCommitFrequencySec-int-">setCommitFrequencySec</a></span>(int&nbsp;commitFrequencySec)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setCommitFrequencyCount-int-">setCommitFrequencyCount</a></span>(int&nbsp;commitFrequencyCount)</code>&nbsp;</td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setHdfsUri-java.lang.String-">setHdfsUri</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;hdfsUri)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setCommitFrequencySec-int-">setCommitFrequencySec</a></span>(int&nbsp;commitFrequencySec)</code>&nbsp;</td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setIgnoreSuffix-java.lang.String-">setIgnoreSuffix</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;ignoreSuffix)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setHdfsUri-java.lang.String-">setHdfsUri</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;hdfsUri)</code>&nbsp;</td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setLockDir-java.lang.String-">setLockDir</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;lockDir)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setIgnoreSuffix-java.lang.String-">setIgnoreSuffix</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;ignoreSuffix)</code>&nbsp;</td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setLockTimeoutSec-int-">setLockTimeoutSec</a></span>(int&nbsp;lockTimeoutSec)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setLockDir-java.lang.String-">setLockDir</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;lockDir)</code>&nbsp;</td>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setMaxOutstanding-int-">setMaxOutstanding</a></span>(int&nbsp;maxOutstanding)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setLockTimeoutSec-int-">setLockTimeoutSec</a></span>(int&nbsp;lockTimeoutSec)</code>&nbsp;</td>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setReaderType-java.lang.String-">setReaderType</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;readerType)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setMaxOutstanding-int-">setMaxOutstanding</a></span>(int&nbsp;maxOutstanding)</code>&nbsp;</td>
 </tr>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setSourceDir-java.lang.String-">setSourceDir</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceDir)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setReaderType-java.lang.String-">setReaderType</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;readerType)</code>&nbsp;</td>
 </tr>
 <tr id="i20" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#withConfigKey-java.lang.String-">withConfigKey</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;configKey)</code>
-<div class="block">set key name under which HDFS options are placed.</div>
-</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#setSourceDir-java.lang.String-">setSourceDir</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceDir)</code>&nbsp;</td>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#withOutputFields-java.lang.String...-">withOutputFields</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;fields)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#withConfigKey-java.lang.String-">withConfigKey</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;configKey)</code>
+<div class="block">set key name under which HDFS options are placed.</div>
+</td>
+</tr>
+<tr id="i22" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#withOutputFields-java.lang.String...-">withOutputFields</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;fields)</code>
 <div class="block">Output field names.</div>
+</td>
+</tr>
+<tr id="i23" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html#withOutputStream-java.lang.String-">withOutputStream</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamName)</code>
+<div class="block">Set output stream name</div>
 </td>
 </tr>
 </table>
@@ -275,7 +287,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;org.apache.storm.topology.base.<a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.html" title="class in org.apache.storm.topology.base">BaseRichSpout</a></h3>
-<code><a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.html#activate--">activate</a>, <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.html#close--">close</a>, <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.html#deactivate--">deactivate</a></code></li>
+<code><a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.html#activate--">activate</a>, <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.html#deactivate--">deactivate</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.base.BaseComponent">
@@ -288,8 +300,8 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.IComponent">
@@ -335,7 +347,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>setHdfsUri</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setHdfsUri(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;hdfsUri)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setHdfsUri(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;hdfsUri)</pre>
 </li>
 </ul>
 <a name="setReaderType-java.lang.String-">
@@ -344,7 +356,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>setReaderType</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setReaderType(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;readerType)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setReaderType(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;readerType)</pre>
 </li>
 </ul>
 <a name="setSourceDir-java.lang.String-">
@@ -353,7 +365,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>setSourceDir</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setSourceDir(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceDir)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setSourceDir(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceDir)</pre>
 </li>
 </ul>
 <a name="setArchiveDir-java.lang.String-">
@@ -362,7 +374,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>setArchiveDir</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setArchiveDir(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;archiveDir)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setArchiveDir(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;archiveDir)</pre>
 </li>
 </ul>
 <a name="setBadFilesDir-java.lang.String-">
@@ -371,7 +383,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>setBadFilesDir</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setBadFilesDir(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;badFilesDir)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setBadFilesDir(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;badFilesDir)</pre>
 </li>
 </ul>
 <a name="setLockDir-java.lang.String-">
@@ -380,7 +392,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>setLockDir</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setLockDir(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;lockDir)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setLockDir(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;lockDir)</pre>
 </li>
 </ul>
 <a name="setCommitFrequencyCount-int-">
@@ -434,7 +446,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>setIgnoreSuffix</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setIgnoreSuffix(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;ignoreSuffix)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;setIgnoreSuffix(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;ignoreSuffix)</pre>
 </li>
 </ul>
 <a name="withOutputFields-java.lang.String...-">
@@ -443,7 +455,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>withOutputFields</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;withOutputFields(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;fields)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;withOutputFields(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;fields)</pre>
 <div class="block"><p>Output field names. Number of fields depends upon the reader type</p></div>
 </li>
 </ul>
@@ -453,8 +465,18 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>withConfigKey</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;withConfigKey(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;configKey)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;withConfigKey(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;configKey)</pre>
 <div class="block"><p>set key name under which HDFS options are placed. (similar to HDFS bolt). default key name is &lsquo;hdfs.config&rsquo;</p></div>
+</li>
+</ul>
+<a name="withOutputStream-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withOutputStream</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpout.html" title="class in org.apache.storm.hdfs.spout">HdfsSpout</a>&nbsp;withOutputStream(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamName)</pre>
+<div class="block"><p>Set output stream name</p></div>
 </li>
 </ul>
 <a name="getLockDirPath--">
@@ -492,7 +514,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>emitData</h4>
-<pre>protected&nbsp;void&nbsp;emitData(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;tuple,
+<pre>protected&nbsp;void&nbsp;emitData(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;tuple,
                         org.apache.storm.hdfs.spout.HdfsSpout.MessageId&nbsp;id)</pre>
 </li>
 </ul>
@@ -502,16 +524,33 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>open</h4>
-<pre>public&nbsp;void&nbsp;open(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<pre>public&nbsp;void&nbsp;open(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
                  <a href="../../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
                  <a href="../../../../../org/apache/storm/spout/SpoutOutputCollector.html" title="class in org.apache.storm.spout">SpoutOutputCollector</a>&nbsp;collector)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html#open-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.spout.SpoutOutputCollector-">ISpout</a></code></span></div>
 <div class="block"><p>Called when a task for this component is initialized within a worker on the cluster. It provides the spout with the environment in which the spout executes.</p><p>This includes the:</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>conf</code> - The Storm configuration for this spout. This is the configuration provided to the topology merged in with cluster configuration on this machine.</dd>
-<dd><code>context</code> - This object can be used to get information about this task&rsquo;s place within the topology, including the task id and component id of this task, input and output information, etc.</dd>
-<dd><code>collector</code> - The collector is used to emit tuples from this spout. Tuples can be emitted at any time, including the open and close methods. The collector is thread-safe and should be saved as an instance variable of this spout object.</dd>
+<dd><code>conf</code> - The Storm configuration for this spout. This is the configuration provided to the topology merged in with cluster  configuration on this machine.</dd>
+<dd><code>context</code> - This object can be used to get information about this task&rsquo;s place within the topology, including the task id and  component id of this task, input and output information, etc.</dd>
+<dd><code>collector</code> - The collector is used to emit tuples from this spout. Tuples can be emitted at any time, including the open and  close methods. The collector is thread-safe and should be saved as an instance variable of this spout object.</dd>
+</dl>
+</li>
+</ul>
+<a name="close--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>close</h4>
+<pre>public&nbsp;void&nbsp;close()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html#close--">ISpout</a></code></span></div>
+<div class="block"><p>Called when an ISpout is going to be shutdown. There is no guarentee that close will be called, because the supervisor kill -9&rsquo;s worker processes on the cluster.</p><p>The one context where close is guaranteed to be called is a topology is killed when running Storm in local mode.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/spout/ISpout.html#close--">close</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.html#close--">close</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.html" title="class in org.apache.storm.topology.base">BaseRichSpout</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -521,7 +560,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>ack</h4>
-<pre>public&nbsp;void&nbsp;ack(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</pre>
+<pre>public&nbsp;void&nbsp;ack(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html#ack-java.lang.Object-">ISpout</a></code></span></div>
 <div class="block"><p>Storm has determined that the tuple emitted by this spout with the msgId identifier has been fully processed. Typically, an implementation of this method will take that message off the queue and prevent it from being replayed.</p></div>
 <dl>
@@ -538,7 +577,7 @@ extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.htm
 <ul class="blockList">
 <li class="blockList">
 <h4>fail</h4>
-<pre>public&nbsp;void&nbsp;fail(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</pre>
+<pre>public&nbsp;void&nbsp;fail(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html#fail-java.lang.Object-">ISpout</a></code></span></div>
 <div class="block"><p>The tuple emitted by this spout with the msgId identifier has failed to be fully processed. Typically, an implementation of this method will put that message back on the queue to be replayed at a later time.</p></div>
 <dl>
@@ -597,7 +636,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/hdfs/spout/FileLock.LogEntry.html" title="class in org.apache.storm.hdfs.spout"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/hdfs/spout/ParseException.html" title="class in org.apache.storm.hdfs.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/hdfs/spout/HdfsSpoutTopology.html" title="class in org.apache.storm.hdfs.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/hdfs/spout/HdfsSpout.html" target="_top">Frames</a></li>
@@ -637,6 +676,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

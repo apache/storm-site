@@ -165,29 +165,7 @@ order to change configuration.</p>
 <h2 id="about">About</h2>
 
 <p>Flux is a framework and set of utilities that make defining and deploying Apache Storm topologies less painful and
-deveoper-intensive.</p>
-
-<p>Have you ever found yourself repeating this pattern?:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java">
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-    <span class="c1">// logic to determine if we're running locally or not...</span>
-    <span class="c1">// create necessary config options...</span>
-    <span class="kt">boolean</span> <span class="n">runLocal</span> <span class="o">=</span> <span class="n">shouldRunLocal</span><span class="o">();</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">runLocal</span><span class="o">){</span>
-        <span class="n">LocalCluster</span> <span class="n">cluster</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocalCluster</span><span class="o">();</span>
-        <span class="n">cluster</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">conf</span><span class="o">,</span> <span class="n">topology</span><span class="o">);</span>
-    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-        <span class="n">StormSubmitter</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">conf</span><span class="o">,</span> <span class="n">topology</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>Wouldn&#39;t something like this be easier:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">storm jar mytopology.jar org.apache.storm.flux.Flux <span class="nt">--local</span> config.yaml
-</code></pre></div>
-<p>or:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">storm jar mytopology.jar org.apache.storm.flux.Flux <span class="nt">--remote</span> config.yaml
-</code></pre></div>
-<p>Another pain point often mentioned is the fact that the wiring for a Topology graph is often tied up in Java code,
+deveoper-intensive. One of the pain points often mentioned is the fact that the wiring for a Topology graph is often tied up in Java code,
 and that any changes require recompilation and repackaging of the topology jar file. Flux aims to alleviate that
 pain by allowing you to package all your Storm components in a single jar, and use an external text file to define
 the layout and configuration of your topologies.</p>
@@ -540,7 +518,7 @@ JavaBean-like setter methods and fields declared as <code>public</code>:</p>
         <span class="na">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">stringMultiScheme"</span>
 </code></pre></div>
 <p>In the example above, the <code>properties</code> declaration will cause Flux to look for a public method in the <code>SpoutConfig</code> with
-the signature <code>setForceFromStart(boolean b)</code> and attempt to invoke it. If a setter method is not found, Flux will then
+the signature <code>setIgnoreZkOffsets(boolean b)</code> and attempt to invoke it. If a setter method is not found, Flux will then
 look for a public instance variable with the name <code>ignoreZkOffsets</code> and attempt to set its value.</p>
 
 <p>References may also be used as property values.</p>

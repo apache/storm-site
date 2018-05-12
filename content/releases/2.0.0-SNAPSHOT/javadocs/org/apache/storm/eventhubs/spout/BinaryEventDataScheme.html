@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../org/apache/storm/eventhubs/spout/EventData.html" title="class in org.apache.storm.eventhubs.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/eventhubs/spout/EventDataScheme.html" title="class in org.apache.storm.eventhubs.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/eventhubs/spout/BinaryEventDataScheme.html" target="_top">Frames</a></li>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.eventhubs.spout.BinaryEventDataScheme</li>
@@ -109,14 +109,14 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataScheme.html" title="interface in org.apache.storm.eventhubs.spout">IEventDataScheme</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, <a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataScheme.html" title="interface in org.apache.storm.eventhubs.spout">IEventDataScheme</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">BinaryEventDataScheme</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataScheme.html" title="interface in org.apache.storm.eventhubs.spout">IEventDataScheme</a></pre>
-<div class="block"><p>An Event Data Scheme which deserializes message payload into the raw bytes.</p><p>The resulting tuple would contain two items, the first being the message bytes, and the second a map of properties that include metadata, which can be used to determine who processes the message, and how it is processed.</p></div>
+<div class="block"><p>An Event Data Scheme which deserializes message payload into the raw bytes.</p><p>The resulting tuple would contain three items, the first being the message bytes, and the second a map of properties that include metadata, which can be used to determine who processes the message, and how it is processed.The third is the system properties which exposes information like enqueue-time, offset and sequence number</p></div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../serialized-form.html#org.apache.storm.eventhubs.spout.BinaryEventDataScheme">Serialized Form</a></dd>
@@ -157,8 +157,8 @@ implements <a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataSc
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/spout/BinaryEventDataScheme.html#deserialize-org.apache.qpid.amqp_1_0.client.Message-">deserialize</a></span>(org.apache.qpid.amqp_1_0.client.Message&nbsp;message)</code>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/spout/BinaryEventDataScheme.html#deserialize-com.microsoft.azure.eventhubs.EventData-">deserialize</a></span>(com.microsoft.azure.eventhubs.EventData&nbsp;eventData)</code>
 <div class="block">Deserialize an AMQP Message into a Tuple.</div>
 </td>
 </tr>
@@ -173,8 +173,8 @@ implements <a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataSc
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -207,20 +207,20 @@ implements <a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataSc
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="deserialize-org.apache.qpid.amqp_1_0.client.Message-">
+<a name="deserialize-com.microsoft.azure.eventhubs.EventData-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>deserialize</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;deserialize(org.apache.qpid.amqp_1_0.client.Message&nbsp;message)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataScheme.html#deserialize-org.apache.qpid.amqp_1_0.client.Message-">IEventDataScheme</a></code></span></div>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;deserialize(com.microsoft.azure.eventhubs.EventData&nbsp;eventData)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataScheme.html#deserialize-com.microsoft.azure.eventhubs.EventData-">IEventDataScheme</a></code></span></div>
 <div class="block"><p>Deserialize an AMQP Message into a Tuple.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataScheme.html#deserialize-org.apache.qpid.amqp_1_0.client.Message-">deserialize</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataScheme.html" title="interface in org.apache.storm.eventhubs.spout">IEventDataScheme</a></code></dd>
+<dd><code><a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataScheme.html#deserialize-com.microsoft.azure.eventhubs.EventData-">deserialize</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataScheme.html" title="interface in org.apache.storm.eventhubs.spout">IEventDataScheme</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>message</code> - The Message to Deserialize.</dd>
+<dd><code>eventData</code> - The EventData to Deserialize.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>A tuple containing the deserialized fields of the message.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
@@ -278,7 +278,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../org/apache/storm/eventhubs/spout/EventData.html" title="class in org.apache.storm.eventhubs.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/eventhubs/spout/EventDataScheme.html" title="class in org.apache.storm.eventhubs.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/eventhubs/spout/BinaryEventDataScheme.html" target="_top">Frames</a></li>
@@ -318,6 +318,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

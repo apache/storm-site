@@ -154,7 +154,7 @@
 <span class="n">conf</span><span class="o">.</span><span class="na">setMaxSpoutPending</span><span class="o">(</span><span class="mi">5000</span><span class="o">);</span>
 <span class="n">StormSubmitter</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="s">"mytopology"</span><span class="o">,</span> <span class="n">conf</span><span class="o">,</span> <span class="n">topology</span><span class="o">);</span>
 </code></pre></div>
-<p>3) Create a jar containing your code and all the dependencies of your code (except for Storm -- the Storm jars will be added to the classpath on the worker nodes).</p>
+<p>3) Create a JAR containing your topology code. You have the option to either bundle all of the dependencies of your code into that JAR (except for Storm -- the Storm JARs will be added to the classpath on the worker nodes), or you can leverage the <a href="Classpath-handling.html">Classpath handling</a> features in Storm for using external libraries without bundling them into your topology JAR.</p>
 
 <p>If you&#39;re using Maven, the <a href="http://maven.apache.org/plugins/maven-assembly-plugin/">Maven Assembly Plugin</a> can do the packaging for you. Just add this to your pom.xml:</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml">  <span class="nt">&lt;plugin&gt;</span>

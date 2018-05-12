@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.trident.operation.DefaultResourceDeclarer&lt;T&gt;</li>
@@ -118,7 +118,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">DefaultResourceDeclarer&lt;T extends DefaultResourceDeclarer&gt;</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html" title="interface in org.apache.storm.topology">ResourceDeclarer</a>&lt;T&gt;, <a href="../../../../../org/apache/storm/trident/operation/ITridentResource.html" title="interface in org.apache.storm.trident.operation">ITridentResource</a></pre>
 </li>
 </ul>
@@ -156,29 +156,45 @@ implements <a href="../../../../../org/apache/storm/topology/ResourceDeclarer.ht
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html#getResources--">getResources</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html#addSharedMemory-org.apache.storm.generated.SharedMemory-">addSharedMemory</a></span>(<a href="../../../../../org/apache/storm/generated/SharedMemory.html" title="class in org.apache.storm.generated">SharedMemory</a>&nbsp;request)</code>
+<div class="block">Add in request for shared memory that this component will use.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html#setCPULoad-java.lang.Number-">setCPULoad</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;amount)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html#getResources--">getResources</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html#setMemoryLoad-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../org/apache/storm/generated/SharedMemory.html" title="class in org.apache.storm.generated">SharedMemory</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html#getSharedMemory--">getSharedMemory</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html#setMemoryLoad-java.lang.Number-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html#setCPULoad-java.lang.Number-">setCPULoad</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;amount)</code>
+<div class="block">Set the amount of CPU load for this component</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html#setMemoryLoad-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</code>
+<div class="block">Set the amount of on heap memory for this component</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html#setMemoryLoad-java.lang.Number-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</code>
+<div class="block">Set the amount of memory for this component on and off heap</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -217,10 +233,16 @@ implements <a href="../../../../../org/apache/storm/topology/ResourceDeclarer.ht
 <ul class="blockList">
 <li class="blockList">
 <h4>setMemoryLoad</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-">ResourceDeclarer</a></code></span></div>
+<div class="block"><p>Set the amount of on heap memory for this component</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-">setMemoryLoad</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html" title="interface in org.apache.storm.topology">ResourceDeclarer</a>&lt;<a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a> extends <a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="class in org.apache.storm.trident.operation">DefaultResourceDeclarer</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>onHeap</code> - the amount of on heap memory</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
 </dl>
 </li>
 </ul>
@@ -230,11 +252,18 @@ implements <a href="../../../../../org/apache/storm/topology/ResourceDeclarer.ht
 <ul class="blockList">
 <li class="blockList">
 <h4>setMemoryLoad</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
-                       <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
+                       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-java.lang.Number-">ResourceDeclarer</a></code></span></div>
+<div class="block"><p>Set the amount of memory for this component on and off heap</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-java.lang.Number-">setMemoryLoad</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html" title="interface in org.apache.storm.topology">ResourceDeclarer</a>&lt;<a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a> extends <a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="class in org.apache.storm.trident.operation">DefaultResourceDeclarer</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>onHeap</code> - the amount of on heap memory</dd>
+<dd><code>offHeap</code> - the amount of off heap memory</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
 </dl>
 </li>
 </ul>
@@ -244,25 +273,65 @@ implements <a href="../../../../../org/apache/storm/topology/ResourceDeclarer.ht
 <ul class="blockList">
 <li class="blockList">
 <h4>setCPULoad</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a>&nbsp;setCPULoad(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;amount)</pre>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a>&nbsp;setCPULoad(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;amount)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html#setCPULoad-java.lang.Number-">ResourceDeclarer</a></code></span></div>
+<div class="block"><p>Set the amount of CPU load for this component</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html#setCPULoad-java.lang.Number-">setCPULoad</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html" title="interface in org.apache.storm.topology">ResourceDeclarer</a>&lt;<a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a> extends <a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="class in org.apache.storm.trident.operation">DefaultResourceDeclarer</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>amount</code> - the amount of CPU</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
 </dl>
 </li>
 </ul>
 <a name="getResources--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getResources</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&gt;&nbsp;getResources()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&gt;&nbsp;getResources()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/trident/operation/ITridentResource.html#getResources--">getResources</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/trident/operation/ITridentResource.html" title="interface in org.apache.storm.trident.operation">ITridentResource</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a name of resource name -&gt; amount of that resource. <em>Return should never be null!</em></dd>
+</dl>
+</li>
+</ul>
+<a name="getSharedMemory--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getSharedMemory</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../org/apache/storm/generated/SharedMemory.html" title="class in org.apache.storm.generated">SharedMemory</a>&gt;&nbsp;getSharedMemory()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/trident/operation/ITridentResource.html#getSharedMemory--">getSharedMemory</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/trident/operation/ITridentResource.html" title="interface in org.apache.storm.trident.operation">ITridentResource</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the shared memory region requests</dd>
+</dl>
+</li>
+</ul>
+<a name="addSharedMemory-org.apache.storm.generated.SharedMemory-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>addSharedMemory</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a>&nbsp;addSharedMemory(<a href="../../../../../org/apache/storm/generated/SharedMemory.html" title="class in org.apache.storm.generated">SharedMemory</a>&nbsp;request)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html#addSharedMemory-org.apache.storm.generated.SharedMemory-">ResourceDeclarer</a></code></span></div>
+<div class="block"><p>Add in request for shared memory that this component will use. See <a href="../../../../../org/apache/storm/topology/SharedOnHeap.html" title="class in org.apache.storm.topology"><code>SharedOnHeap</code></a>, <a href="../../../../../org/apache/storm/topology/SharedOffHeapWithinNode.html" title="class in org.apache.storm.topology"><code>SharedOffHeapWithinNode</code></a>, and <a href="../../../../../org/apache/storm/topology/SharedOffHeapWithinWorker.html" title="class in org.apache.storm.topology"><code>SharedOffHeapWithinWorker</code></a> for convenient ways to create shared memory requests.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html#addSharedMemory-org.apache.storm.generated.SharedMemory-">addSharedMemory</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/topology/ResourceDeclarer.html" title="interface in org.apache.storm.topology">ResourceDeclarer</a>&lt;<a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="type parameter in DefaultResourceDeclarer">T</a> extends <a href="../../../../../org/apache/storm/trident/operation/DefaultResourceDeclarer.html" title="class in org.apache.storm.trident.operation">DefaultResourceDeclarer</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - the shared memory request for this component</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
 </dl>
 </li>
 </ul>
@@ -339,6 +408,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

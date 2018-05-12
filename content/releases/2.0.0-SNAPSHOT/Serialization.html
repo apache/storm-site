@@ -150,7 +150,7 @@
 
 <p>Storm uses <a href="https://github.com/EsotericSoftware/kryo">Kryo</a> for serialization. Kryo is a flexible and fast serialization library that produces small serializations.</p>
 
-<p>By default, Storm can serialize primitive types, strings, byte arrays, ArrayList, HashMap, HashSet, and the Clojure collection types. If you want to use another type in your tuples, you&#39;ll need to register a custom serializer.</p>
+<p>By default, Storm can serialize primitive types, strings, byte arrays, ArrayList, HashMap, and HashSet. If you want to use another type in your tuples, you&#39;ll need to register a custom serializer.</p>
 
 <h3 id="dynamic-typing">Dynamic typing</h3>
 
@@ -166,7 +166,7 @@
 
 <p>As mentioned, Storm uses Kryo for serialization. To implement custom serializers, you need to register new serializers with Kryo. It&#39;s highly recommended that you read over <a href="https://github.com/EsotericSoftware/kryo">Kryo&#39;s home page</a> to understand how it handles custom serialization.</p>
 
-<p>Adding custom serializers is done through the &quot;topology.kryo.register&quot; property in your topology config. It takes a list of registrations, where each registration can take one of two forms:</p>
+<p>Adding custom serializers is done through the &quot;topology.kryo.register&quot; property in your topology config or through a ServiceLoader described later. The config takes a list of registrations, where each registration can take one of two forms:</p>
 
 <ol>
 <li>The name of a class to register. In this case, Storm will use Kryo&#39;s <code>FieldsSerializer</code> to serialize the class. This may or may not be optimal for the class -- see the Kryo docs for more details.</li>
@@ -184,6 +184,12 @@
 <p>Storm provides helpers for registering serializers in a topology config. The <a href="javadocs/org/apache/storm/Config.html">Config</a> class has a method called <code>registerSerialization</code> that takes in a registration to add to the config.</p>
 
 <p>There&#39;s an advanced config called <code>Config.TOPOLOGY_SKIP_MISSING_KRYO_REGISTRATIONS</code>. If you set this to true, Storm will ignore any serializations that are registered but do not have their code available on the classpath. Otherwise, Storm will throw errors when it can&#39;t find a serialization. This is useful if you run many topologies on a cluster that each have different serializations, but you want to declare all the serializations across all topologies in the <code>storm.yaml</code> files.</p>
+
+<h4 id="serializationregister-service-loader">SerializationRegister Service Loader</h4>
+
+<p>If you want to provide language bindings to storm, have a library that you want to interact cleanly with storm or have some other reason to provide serialization bindings and don&#39;t want to force the user to update their configs you can use the org.apache.storm.serialization.SerializationRegister service loader.</p>
+
+<p>You may use this like any other service loader and storm will register the bindings without forceing users to update their configs. The storm-clojure package uses this to provide transparent support for clojure types.</p>
 
 <h3 id="java-serialization">Java serialization</h3>
 

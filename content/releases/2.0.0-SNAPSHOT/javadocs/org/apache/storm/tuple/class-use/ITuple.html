@@ -99,16 +99,18 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><a href="#org.apache.storm.druid.bolt">org.apache.storm.druid.bolt</a></td>
+<td class="colFirst"><a href="#org.apache.storm.clojure">org.apache.storm.clojure</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="#org.apache.storm.elasticsearch">org.apache.storm.elasticsearch</a></td>
+<td class="colFirst"><a href="#org.apache.storm.druid.bolt">org.apache.storm.druid.bolt</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.elasticsearch.common">org.apache.storm.elasticsearch.common</a></td>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Shared code for example classes.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.hbase.bolt.mapper">org.apache.storm.hbase.bolt.mapper</a></td>
@@ -151,6 +153,14 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.rocketmq.common.mapper">org.apache.storm.rocketmq.common.mapper</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.rocketmq.common.selector">org.apache.storm.rocketmq.common.selector</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.solr.mapper">org.apache.storm.solr.mapper</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -179,19 +189,19 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/cassandra/query/Column.html" title="class in org.apache.storm.cassandra.query">Column</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/cassandra/query/Column.html" title="class in org.apache.storm.cassandra.query">Column</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">CqlMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/CqlMapper.html#map-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Maps the specified input tuple to a list of CQL columns.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/cassandra/query/Column.html" title="class in org.apache.storm.cassandra.query">Column</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/cassandra/query/Column.html" title="class in org.apache.storm.cassandra.query">Column</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">CqlMapper.SelectableCqlMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/CqlMapper.SelectableCqlMapper.html#map-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Maps the specified input tuple to a list of CQL columns.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/cassandra/query/Column.html" title="class in org.apache.storm.cassandra.query">Column</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/cassandra/query/Column.html" title="class in org.apache.storm.cassandra.query">Column</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">CqlMapper.DefaultCqlMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/CqlMapper.DefaultCqlMapper.html#map-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Maps the specified input tuple to a list of CQL columns.</div>
 </td>
@@ -203,54 +213,69 @@
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">CQLStatementTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/CQLStatementTupleMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">CQLStatementTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/CQLStatementTupleMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
    com.datastax.driver.core.Session&nbsp;session,
    <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Maps a given tuple to one or multiple CQL statements.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">CQLStatementTupleMapper.DynamicCQLStatementTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/CQLStatementTupleMapper.DynamicCQLStatementTupleMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">CQLStatementTupleMapper.DynamicCQLStatementTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/CQLStatementTupleMapper.DynamicCQLStatementTupleMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
    com.datastax.driver.core.Session&nbsp;session,
    <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">BaseCQLStatementTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/BaseCQLStatementTupleMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">BaseCQLStatementTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/BaseCQLStatementTupleMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
    com.datastax.driver.core.Session&nbsp;session,
    <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Maps a given tuple to one or multiple CQL statements.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">CQLResultSetValuesMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/CQLResultSetValuesMapper.html#map-com.datastax.driver.core.Session-com.datastax.driver.core.Statement-org.apache.storm.tuple.ITuple-">map</a></span>(com.datastax.driver.core.Session&nbsp;session,
    com.datastax.driver.core.Statement&nbsp;statement,
    <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">ContextQuery.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/ContextQuery.html#resolves-java.util.Map-org.apache.storm.tuple.ITuple-">resolves</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;config,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ContextQuery.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/ContextQuery.html#resolves-java.util.Map-org.apache.storm.tuple.ITuple-">resolves</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;config,
         <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Resolves a cassandra bound query.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">ContextQuery.StaticContextQuery.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/ContextQuery.StaticContextQuery.html#resolves-java.util.Map-org.apache.storm.tuple.ITuple-">resolves</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;config,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ContextQuery.StaticContextQuery.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/ContextQuery.StaticContextQuery.html#resolves-java.util.Map-org.apache.storm.tuple.ITuple-">resolves</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;config,
         <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">ContextQuery.BoundQueryContext.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/ContextQuery.BoundQueryContext.html#resolves-java.util.Map-org.apache.storm.tuple.ITuple-">resolves</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;config,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ContextQuery.BoundQueryContext.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/ContextQuery.BoundQueryContext.html#resolves-java.util.Map-org.apache.storm.tuple.ITuple-">resolves</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;config,
         <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">ContextQuery.BoundQueryNamedByFieldContext.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/ContextQuery.BoundQueryNamedByFieldContext.html#resolves-java.util.Map-org.apache.storm.tuple.ITuple-">resolves</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;config,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">ContextQuery.BoundQueryNamedByFieldContext.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/ContextQuery.BoundQueryNamedByFieldContext.html#resolves-java.util.Map-org.apache.storm.tuple.ITuple-">resolves</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;config,
         <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Method parameters in <a href="../../../../../org/apache/storm/cassandra/query/package-summary.html">org.apache.storm.cassandra.query</a> with type arguments of type <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">AyncCQLResultSetValuesMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/AyncCQLResultSetValuesMapper.html#map-com.datastax.driver.core.Session-java.util.List-java.util.List-">map</a></span>(com.datastax.driver.core.Session&nbsp;session,
+   <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;&nbsp;statements,
+   <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -267,28 +292,34 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/nio/ByteBuffer.html?is-external=true" title="class or interface in java.nio">ByteBuffer</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/nio/ByteBuffer.html?is-external=true" title="class or interface in java.nio">ByteBuffer</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">RoutingKeyGenerator.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/impl/RoutingKeyGenerator.html#getRoutingKeys-org.apache.storm.tuple.ITuple-">getRoutingKeys</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">SimpleCQLStatementMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/impl/SimpleCQLStatementMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">SimpleCQLStatementMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/impl/SimpleCQLStatementMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
    com.datastax.driver.core.Session&nbsp;session,
    <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Maps a given tuple to one or multiple CQL statements.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">BoundCQLStatementTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/impl/BoundCQLStatementTupleMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;config,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ObjectMapperCqlStatementMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/impl/ObjectMapperCqlStatementMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;map,
+   com.datastax.driver.core.Session&nbsp;session,
+   <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">BoundCQLStatementTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/impl/BoundCQLStatementTupleMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;config,
    com.datastax.driver.core.Session&nbsp;session,
    <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Maps a given tuple to one or multiple CQL statements.</div>
 </td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">BatchCQLStatementTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/impl/BatchCQLStatementTupleMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">BatchCQLStatementTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/impl/BatchCQLStatementTupleMapper.html#map-java.util.Map-com.datastax.driver.core.Session-org.apache.storm.tuple.ITuple-">map</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
    com.datastax.driver.core.Session&nbsp;session,
    <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Maps a given tuple to one or multiple CQL statements.</div>
@@ -309,6 +340,10 @@
 </tr>
 <tbody>
 <tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></td>
+<td class="colLast"><span class="typeNameLabel">FieldSelector.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/selector/FieldSelector.html#getFieldValue-org.apache.storm.tuple.ITuple-">getFieldValue</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/cassandra/query/Column.html" title="class in org.apache.storm.cassandra.query">Column</a></code></td>
 <td class="colLast"><span class="typeNameLabel">FieldSelector.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/query/selector/FieldSelector.html#select-org.apache.storm.tuple.ITuple-">select</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;t)</code>&nbsp;</td>
 </tr>
@@ -319,6 +354,51 @@
 <!--   -->
 </a>
 <h3>Uses of <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a> in <a href="../../../../../org/apache/storm/cassandra/trident/state/package-summary.html">org.apache.storm.cassandra.trident.state</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/cassandra/trident/state/package-summary.html">org.apache.storm.cassandra.trident.state</a> that implement <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/trident/state/SimpleTuple.html" title="class in org.apache.storm.cassandra.trident.state">SimpleTuple</a></span></code>
+<div class="block">Utility class for passing around ordered key/value data with an immutable key set.</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/cassandra/trident/state/package-summary.html">org.apache.storm.cassandra.trident.state</a> that return <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a></code></td>
+<td class="colLast"><span class="typeNameLabel">NonTransactionalTupleStateMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/trident/state/NonTransactionalTupleStateMapper.html#fromValues-java.util.List-">fromValues</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;&nbsp;values)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/cassandra/trident/state/package-summary.html">org.apache.storm.cassandra.trident.state</a> that return types with arguments of type <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/state/TransactionalValue.html" title="class in org.apache.storm.trident.state">TransactionalValue</a>&lt;<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">TransactionalTupleStateMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/trident/state/TransactionalTupleStateMapper.html#fromValues-java.util.List-">fromValues</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;&nbsp;valuesList)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/trident/state/OpaqueValue.html" title="class in org.apache.storm.trident.state">OpaqueValue</a>&lt;<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">OpaqueTupleStateMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/trident/state/OpaqueTupleStateMapper.html#fromValues-java.util.List-">fromValues</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;&nbsp;valuesList)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
 <caption><span>Methods in <a href="../../../../../org/apache/storm/cassandra/trident/state/package-summary.html">org.apache.storm.cassandra.trident.state</a> with parameters of type <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -327,10 +407,60 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;&gt;</code></td>
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">TridentAyncCQLResultSetValuesMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/trident/state/TridentAyncCQLResultSetValuesMapper.html#handleResult-com.datastax.driver.core.ResultSet-org.apache.storm.tuple.ITuple-">handleResult</a></span>(com.datastax.driver.core.ResultSet&nbsp;resultSet,
+            <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">TridentResultSetValuesMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/trident/state/TridentResultSetValuesMapper.html#map-com.datastax.driver.core.Session-com.datastax.driver.core.Statement-org.apache.storm.tuple.ITuple-">map</a></span>(com.datastax.driver.core.Session&nbsp;session,
    com.datastax.driver.core.Statement&nbsp;statement,
    <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a></code></td>
+<td class="colLast"><span class="typeNameLabel">NonTransactionalTupleStateMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/trident/state/NonTransactionalTupleStateMapper.html#toValues-org.apache.storm.tuple.ITuple-">toValues</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;t)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Method parameters in <a href="../../../../../org/apache/storm/cassandra/trident/state/package-summary.html">org.apache.storm.cassandra.trident.state</a> with type arguments of type <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">TridentAyncCQLResultSetValuesMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/trident/state/TridentAyncCQLResultSetValuesMapper.html#map-com.datastax.driver.core.Session-java.util.List-java.util.List-">map</a></span>(com.datastax.driver.core.Session&nbsp;session,
+   <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;com.datastax.driver.core.Statement&gt;&nbsp;statements,
+   <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a></code></td>
+<td class="colLast"><span class="typeNameLabel">OpaqueTupleStateMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/trident/state/OpaqueTupleStateMapper.html#toValues-org.apache.storm.trident.state.OpaqueValue-">toValues</a></span>(<a href="../../../../../org/apache/storm/trident/state/OpaqueValue.html" title="class in org.apache.storm.trident.state">OpaqueValue</a>&lt;<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a></code></td>
+<td class="colLast"><span class="typeNameLabel">TransactionalTupleStateMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/trident/state/TransactionalTupleStateMapper.html#toValues-org.apache.storm.trident.state.TransactionalValue-">toValues</a></span>(<a href="../../../../../org/apache/storm/trident/state/TransactionalValue.html" title="class in org.apache.storm.trident.state">TransactionalValue</a>&lt;<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.clojure">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a> in <a href="../../../../../org/apache/storm/clojure/package-summary.html">org.apache.storm.clojure</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../org/apache/storm/clojure/package-summary.html">org.apache.storm.clojure</a> that implement <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/clojure/ClojureTuple.html" title="class in org.apache.storm.clojure">ClojureTuple</a></span></code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -359,24 +489,6 @@
 </tbody>
 </table>
 </li>
-<li class="blockList"><a name="org.apache.storm.elasticsearch">
-<!--   -->
-</a>
-<h3>Uses of <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a> in <a href="../../../../../org/apache/storm/elasticsearch/package-summary.html">org.apache.storm.elasticsearch</a></h3>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
-<caption><span>Methods in <a href="../../../../../org/apache/storm/elasticsearch/package-summary.html">org.apache.storm.elasticsearch</a> with parameters of type <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Method and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>org.elasticsearch.action.get.GetRequest</code></td>
-<td class="colLast"><span class="typeNameLabel">ElasticsearchGetRequest.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/ElasticsearchGetRequest.html#extractFrom-org.apache.storm.tuple.ITuple-">extractFrom</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
-</tr>
-</tbody>
-</table>
-</li>
 <li class="blockList"><a name="org.apache.storm.elasticsearch.common">
 <!--   -->
 </a>
@@ -389,43 +501,55 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">EsTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsTupleMapper.html#getId-org.apache.storm.tuple.ITuple-">getId</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Extracts id from tuple.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">DefaultEsTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/DefaultEsTupleMapper.html#getId-org.apache.storm.tuple.ITuple-">getId</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">EsTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsTupleMapper.html#getIndex-org.apache.storm.tuple.ITuple-">getIndex</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Extracts index from tuple.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">DefaultEsTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/DefaultEsTupleMapper.html#getIndex-org.apache.storm.tuple.ITuple-">getIndex</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">EsTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsTupleMapper.html#getParams-org.apache.storm.tuple.ITuple-java.util.Map-">getParams</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple,
+         <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;defaultValue)</code>
+<div class="block">Extracts params from tuple if available.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">DefaultEsTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/DefaultEsTupleMapper.html#getParams-org.apache.storm.tuple.ITuple-java.util.Map-">getParams</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple,
+         <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;defaultValue)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">EsTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsTupleMapper.html#getSource-org.apache.storm.tuple.ITuple-">getSource</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Extracts source from tuple.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">DefaultEsTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/DefaultEsTupleMapper.html#getSource-org.apache.storm.tuple.ITuple-">getSource</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">EsTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsTupleMapper.html#getType-org.apache.storm.tuple.ITuple-">getType</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Extracts type from tuple.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">DefaultEsTupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/DefaultEsTupleMapper.html#getType-org.apache.storm.tuple.ITuple-">getType</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 </tbody>
@@ -443,7 +567,7 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">HBaseValueMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hbase/bolt/mapper/HBaseValueMapper.html#toValues-org.apache.storm.tuple.ITuple-org.apache.hadoop.hbase.client.Result-">toValues</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;input,
         org.apache.hadoop.hbase.client.Result&nbsp;result)</code>&nbsp;</td>
 </tr>
@@ -462,7 +586,7 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">WordCountValueMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hbase/topology/WordCountValueMapper.html#toValues-org.apache.storm.tuple.ITuple-org.apache.hadoop.hbase.client.Result-">toValues</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple,
         org.apache.hadoop.hbase.client.Result&nbsp;result)</code>&nbsp;</td>
 </tr>
@@ -481,22 +605,22 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/jdbc/common/Column.html" title="class in org.apache.storm.jdbc.common">Column</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/jdbc/common/Column.html" title="class in org.apache.storm.jdbc.common">Column</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">SimpleJdbcMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jdbc/mapper/SimpleJdbcMapper.html#getColumns-org.apache.storm.tuple.ITuple-">getColumns</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/jdbc/common/Column.html" title="class in org.apache.storm.jdbc.common">Column</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/jdbc/common/Column.html" title="class in org.apache.storm.jdbc.common">Column</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">JdbcMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jdbc/mapper/JdbcMapper.html#getColumns-org.apache.storm.tuple.ITuple-">getColumns</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">SimpleJdbcLookupMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jdbc/mapper/SimpleJdbcLookupMapper.html#toTuple-org.apache.storm.tuple.ITuple-java.util.List-">toTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;input,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/jdbc/common/Column.html" title="class in org.apache.storm.jdbc.common">Column</a>&gt;&nbsp;columns)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/jdbc/common/Column.html" title="class in org.apache.storm.jdbc.common">Column</a>&gt;&nbsp;columns)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">JdbcLookupMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jdbc/mapper/JdbcLookupMapper.html#toTuple-org.apache.storm.tuple.ITuple-java.util.List-">toTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;input,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/jdbc/common/Column.html" title="class in org.apache.storm.jdbc.common">Column</a>&gt;&nbsp;columns)</code>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/jdbc/common/Column.html" title="class in org.apache.storm.jdbc.common">Column</a>&gt;&nbsp;columns)</code>
 <div class="block">Converts a DB row to a list of storm values that can be emitted.</div>
 </td>
 </tr>
@@ -542,7 +666,7 @@
 <tr class="rowColor">
 <td class="colFirst"><code>org.bson.conversions.Bson</code></td>
 <td class="colLast"><span class="typeNameLabel">QueryFilterCreator.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/mongodb/common/QueryFilterCreator.html#createFilter-org.apache.storm.tuple.ITuple-">createFilter</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
-<div class="block">Create a query Filter by given Tuple</div>
+<div class="block">Create a query Filter by given Tuple.</div>
 </td>
 </tr>
 </tbody>
@@ -570,7 +694,19 @@
 <tr class="altColor">
 <td class="colFirst"><code>org.bson.Document</code></td>
 <td class="colLast"><span class="typeNameLabel">MongoMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/mongodb/common/mapper/MongoMapper.html#toDocument-org.apache.storm.tuple.ITuple-">toDocument</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
-<div class="block">Converts a Tuple to a Document</div>
+<div class="block">Converts a Tuple to a Document.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">SimpleMongoLookupMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/mongodb/common/mapper/SimpleMongoLookupMapper.html#toTuple-org.apache.storm.tuple.ITuple-org.bson.Document-">toTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;input,
+       org.bson.Document&nbsp;doc)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">MongoLookupMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/mongodb/common/mapper/MongoLookupMapper.html#toTuple-org.apache.storm.tuple.ITuple-org.bson.Document-">toTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;input,
+       org.bson.Document&nbsp;doc)</code>
+<div class="block">Converts a Mongo document to a list of storm values that can be emitted.</div>
 </td>
 </tr>
 </tbody>
@@ -632,21 +768,21 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">TupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/common/mapper/TupleMapper.html#getKeyFromTuple-org.apache.storm.tuple.ITuple-">getKeyFromTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Extracts key from tuple.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">TupleMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/common/mapper/TupleMapper.html#getValueFromTuple-org.apache.storm.tuple.ITuple-">getValueFromTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>
 <div class="block">Extracts value from tuple.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">RedisLookupMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/common/mapper/RedisLookupMapper.html#toTuple-org.apache.storm.tuple.ITuple-java.lang.Object-">toTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;input,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>
 <div class="block">Converts return value from Redis to a list of storm values that can be emitted.</div>
 </td>
 </tr>
@@ -665,25 +801,93 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">WordCountStoreMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/trident/WordCountStoreMapper.html#getKeyFromTuple-org.apache.storm.tuple.ITuple-">getKeyFromTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">WordCountLookupMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/trident/WordCountLookupMapper.html#getKeyFromTuple-org.apache.storm.tuple.ITuple-">getKeyFromTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">WordCountStoreMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/trident/WordCountStoreMapper.html#getValueFromTuple-org.apache.storm.tuple.ITuple-">getValueFromTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">WordCountLookupMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/trident/WordCountLookupMapper.html#getValueFromTuple-org.apache.storm.tuple.ITuple-">getValueFromTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple">Values</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">WordCountLookupMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/trident/WordCountLookupMapper.html#toTuple-org.apache.storm.tuple.ITuple-java.lang.Object-">toTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;input,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.rocketmq.common.mapper">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a> in <a href="../../../../../org/apache/storm/rocketmq/common/mapper/package-summary.html">org.apache.storm.rocketmq.common.mapper</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/rocketmq/common/mapper/package-summary.html">org.apache.storm.rocketmq.common.mapper</a> with parameters of type <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">TupleToMessageMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/rocketmq/common/mapper/TupleToMessageMapper.html#getKeyFromTuple-org.apache.storm.tuple.ITuple-">getKeyFromTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">FieldNameBasedTupleToMessageMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/rocketmq/common/mapper/FieldNameBasedTupleToMessageMapper.html#getKeyFromTuple-org.apache.storm.tuple.ITuple-">getKeyFromTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>byte[]</code></td>
+<td class="colLast"><span class="typeNameLabel">TupleToMessageMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/rocketmq/common/mapper/TupleToMessageMapper.html#getValueFromTuple-org.apache.storm.tuple.ITuple-">getValueFromTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>byte[]</code></td>
+<td class="colLast"><span class="typeNameLabel">FieldNameBasedTupleToMessageMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/rocketmq/common/mapper/FieldNameBasedTupleToMessageMapper.html#getValueFromTuple-org.apache.storm.tuple.ITuple-">getValueFromTuple</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.rocketmq.common.selector">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a> in <a href="../../../../../org/apache/storm/rocketmq/common/selector/package-summary.html">org.apache.storm.rocketmq.common.selector</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/rocketmq/common/selector/package-summary.html">org.apache.storm.rocketmq.common.selector</a> with parameters of type <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">TopicSelector.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/rocketmq/common/selector/TopicSelector.html#getTag-org.apache.storm.tuple.ITuple-">getTag</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">FieldNameBasedTopicSelector.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/rocketmq/common/selector/FieldNameBasedTopicSelector.html#getTag-org.apache.storm.tuple.ITuple-">getTag</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DefaultTopicSelector.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/rocketmq/common/selector/DefaultTopicSelector.html#getTag-org.apache.storm.tuple.ITuple-">getTag</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">TopicSelector.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/rocketmq/common/selector/TopicSelector.html#getTopic-org.apache.storm.tuple.ITuple-">getTopic</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">FieldNameBasedTopicSelector.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/rocketmq/common/selector/FieldNameBasedTopicSelector.html#getTopic-org.apache.storm.tuple.ITuple-">getTopic</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DefaultTopicSelector.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/rocketmq/common/selector/DefaultTopicSelector.html#getTopic-org.apache.storm.tuple.ITuple-">getTopic</a></span>(<a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&nbsp;tuple)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -722,15 +926,15 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>org.apache.solr.client.solrj.SolrRequest</code></td>
-<td class="colLast"><span class="typeNameLabel">SolrMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrMapper.html#toSolrRequest-java.util.List-">toSolrRequest</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">SolrMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrMapper.html#toSolrRequest-java.util.List-">toSolrRequest</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>org.apache.solr.client.solrj.SolrRequest</code></td>
-<td class="colLast"><span class="typeNameLabel">SolrJsonMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrJsonMapper.html#toSolrRequest-java.util.List-">toSolrRequest</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">SolrJsonMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrJsonMapper.html#toSolrRequest-java.util.List-">toSolrRequest</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>org.apache.solr.client.solrj.SolrRequest</code></td>
-<td class="colLast"><span class="typeNameLabel">SolrFieldsMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrFieldsMapper.html#toSolrRequest-java.util.List-">toSolrRequest</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">SolrFieldsMapper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/solr/mapper/SolrFieldsMapper.html#toSolrRequest-java.util.List-">toSolrRequest</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;? extends <a href="../../../../../org/apache/storm/tuple/ITuple.html" title="interface in org.apache.storm.tuple">ITuple</a>&gt;&nbsp;tuples)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -856,6 +1060,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

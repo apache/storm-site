@@ -90,10 +90,6 @@
 <td class="colFirst"><a href="#org.apache.storm.localizer">org.apache.storm.localizer</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="altColor">
-<td class="colFirst"><a href="#org.apache.storm.utils">org.apache.storm.utils</a></td>
-<td class="colLast">&nbsp;</td>
-</tr>
 </tbody>
 </table>
 </li>
@@ -107,18 +103,28 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/ILocalizer.html#org.apache.storm.daemon.supervisor">ILocalizer</a>
-<div class="block">Download blobs from the blob store and keep them up to date.</div>
+<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/AsyncLocalizer.html#org.apache.storm.daemon.supervisor">AsyncLocalizer</a>
+<div class="block">Downloads and caches blobs locally.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/Localizer.html#org.apache.storm.daemon.supervisor">Localizer</a>
-<div class="block">Class to download and manage files from the blobstore.</div>
+<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/BlobChangingCallback.html#org.apache.storm.daemon.supervisor">BlobChangingCallback</a>
+<div class="block">Callback for when a localized blob is going to change.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/GoodToGo.html#org.apache.storm.daemon.supervisor">GoodToGo</a>
+<div class="block">Used as a way to give feedback that the listener is ready for the caller to change the blob.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/LocallyCachedBlob.html#org.apache.storm.daemon.supervisor">LocallyCachedBlob</a>
+<div class="block">Represents a blob that is cached locally on disk by the supervisor.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/LocalResource.html#org.apache.storm.daemon.supervisor">LocalResource</a>
-<div class="block">Local Resource requested by the topology</div>
+<div class="block">Local Resource requested by the topology.</div>
 </td>
 </tr>
 </tbody>
@@ -134,9 +140,17 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/ILocalizer.html#org.apache.storm.localizer">ILocalizer</a>
-<div class="block">Download blobs from the blob store and keep them up to date.</div>
+<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/BlobChangingCallback.html#org.apache.storm.localizer">BlobChangingCallback</a>
+<div class="block">Callback for when a localized blob is going to change.</div>
 </td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/GoodToGo.html#org.apache.storm.localizer">GoodToGo</a>
+<div class="block">Used as a way to give feedback that the listener is ready for the caller to change the blob.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/GoodToGo.GoodToGoLatch.html#org.apache.storm.localizer">GoodToGo.GoodToGoLatch</a>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/LocalizedResource.html#org.apache.storm.localizer">LocalizedResource</a>
@@ -144,36 +158,12 @@
 </td>
 </tr>
 <tr class="altColor">
-<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/LocalizedResourceSet.html#org.apache.storm.localizer">LocalizedResourceSet</a>
-<div class="block">Set of localized resources for a specific user.</div>
+<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/LocallyCachedBlob.html#org.apache.storm.localizer">LocallyCachedBlob</a>
+<div class="block">Represents a blob that is cached locally on disk by the supervisor.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/Localizer.html#org.apache.storm.localizer">Localizer</a>
-<div class="block">Class to download and manage files from the blobstore.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/LocalResource.html#org.apache.storm.localizer">LocalResource</a>
-<div class="block">Local Resource requested by the topology</div>
-</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li class="blockList"><a name="org.apache.storm.utils">
-<!--   -->
-</a>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
-<caption><span>Classes in <a href="../../../../org/apache/storm/localizer/package-summary.html">org.apache.storm.localizer</a> used by <a href="../../../../org/apache/storm/utils/package-summary.html">org.apache.storm.utils</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colOne" scope="col">Class and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/Localizer.html#org.apache.storm.utils">Localizer</a>
-<div class="block">Class to download and manage files from the blobstore.</div>
-</td>
+<td class="colOne"><a href="../../../../org/apache/storm/localizer/class-use/LocallyCachedTopologyBlob.TopologyBlobType.html#org.apache.storm.localizer">LocallyCachedTopologyBlob.TopologyBlobType</a>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -231,6 +221,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

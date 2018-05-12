@@ -258,19 +258,17 @@ Same thing applies to flatMap, so following is valid as well,</p>
 <p><code>peek</code> can be used to perform an additional action on each trident tuple as they flow through the stream.
  This could be useful for debugging to see the tuples as they flow past a certain point in a pipeline.</p>
 
-<p>For example, the below code would print the result of converting the words to uppercase before they are passed to <code>groupBy</code>
-<code>java
- mystream.flatMap(new Split()).map(new UpperCase())
-         .peek(new Consumer() {
-                @Override
-                public void accept(TridentTuple input) {
-                  System.out.println(input.getString(0));
-                }
-         })
-         .groupBy(new Fields(&quot;word&quot;))
-         .persistentAggregate(new MemoryMapState.Factory(), new Count(), new Fields(&quot;count&quot;))
-</code></p>
-
+<p>For example, the below code would print the result of converting the words to uppercase before they are passed to <code>groupBy</code></p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"> <span class="n">mystream</span><span class="o">.</span><span class="na">flatMap</span><span class="o">(</span><span class="k">new</span> <span class="n">Split</span><span class="o">()).</span><span class="na">map</span><span class="o">(</span><span class="k">new</span> <span class="n">UpperCase</span><span class="o">())</span>
+         <span class="o">.</span><span class="na">peek</span><span class="o">(</span><span class="k">new</span> <span class="n">Consumer</span><span class="o">()</span> <span class="o">{</span>
+                <span class="nd">@Override</span>
+                <span class="kd">public</span> <span class="kt">void</span> <span class="nf">accept</span><span class="o">(</span><span class="n">TridentTuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+                  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+                <span class="o">}</span>
+         <span class="o">})</span>
+         <span class="o">.</span><span class="na">groupBy</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word"</span><span class="o">))</span>
+         <span class="o">.</span><span class="na">persistentAggregate</span><span class="o">(</span><span class="k">new</span> <span class="n">MemoryMapState</span><span class="o">.</span><span class="na">Factory</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Count</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"count"</span><span class="o">))</span>
+</code></pre></div>
 <h3 id="min-and-minby">min and minBy</h3>
 
 <p><code>min</code> and <code>minBy</code> operations return minimum value on each partition of a batch of tuples in a trident stream.</p>
@@ -303,7 +301,6 @@ Partition 2:
 [74,  37]
 [51,  49]
 [37,  98]
-
 </code></pre></div>
 <p><code>minBy</code> operation can be applied on the above stream of tuples like below which results in emitting tuples with minimum values of <code>count</code> field in each partition.</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java">  <span class="n">mystream</span><span class="o">.</span><span class="na">minBy</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"count"</span><span class="o">))</span>
@@ -319,7 +316,6 @@ Partition 1:
 
 Partition 2:
 [82,  23]
-
 </code></pre></div>
 <p>You can look at other <code>min</code> and <code>minBy</code> operations on Stream
 <code>java
@@ -539,7 +535,7 @@ Partition 2:
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<p>The benefits of CombinerAggregators are seen when you use them with the aggregate method instead of partitionAggregate. In that case, Trident automatically optimizes the computation by doing partial aggregations before transferring tuples over the network.</p>
+<p>CombinerAggregators offer high efficiency when used with the aggregate method instead of partitionAggregate (<a href="#aggregation-operations">see below</a>).</p>
 
 <p>A ReducerAggregator has the following interface:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ReducerAggregator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">Serializable</span> <span class="o">{</span>
@@ -645,7 +641,7 @@ Partition 2:
 
 <p><img src="images/grouping.png" alt="Grouping"></p>
 
-<p>If you run aggregators on a grouped stream, the aggregation will be run within each group instead of against the whole batch. persistentAggregate can also be run on a GroupedStream, in which case the results will be stored in a <a href="http://github.com/apache/storm/blob/master/storm-core/src/jvm/org/apache/storm/trident/state/map/MapState.java">MapState</a> with the key being the grouping fields. You can read more about persistentAggregate in the <a href="Trident-state.html">Trident state doc</a>.</p>
+<p>If you run aggregators on a grouped stream, the aggregation will be run within each group instead of against the whole batch. persistentAggregate can also be run on a GroupedStream, in which case the results will be stored in a <a href="http://github.com/apache/storm/blob/master/storm-client/src/jvm/org/apache/storm/trident/state/map/MapState.java">MapState</a> with the key being the grouping fields. You can read more about persistentAggregate in the <a href="Trident-state.html">Trident state doc</a>.</p>
 
 <p>Like regular streams, aggregators on grouped streams can be chained.</p>
 

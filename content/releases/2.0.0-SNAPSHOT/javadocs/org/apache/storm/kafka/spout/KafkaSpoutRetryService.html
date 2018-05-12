@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryExponentialBackoff.TimeInterval.html" title="class in org.apache.storm.kafka.spout"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStream.html" title="class in org.apache.storm.kafka.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTestBolt.html" title="class in org.apache.storm.kafka.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/kafka/spout/KafkaSpoutRetryService.html" target="_top">Frames</a></li>
@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
@@ -110,7 +110,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">KafkaSpoutRetryService</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></pre>
 <div class="block"><p>Represents the logic that manages the retrial of failed tuples.</p></div>
 </li>
 </ul>
@@ -131,35 +131,50 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#isReady-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">isReady</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
-<div class="block">Checks if a specific failed <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> is is ready to be retried, i.e is scheduled and has retry time that is less than current time.</div>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;org.apache.kafka.common.TopicPartition,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#earliestRetriableOffsets--">earliestRetriableOffsets</a></span>()</code>
+<div class="block">Gets the earliest retriable offsets.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#getMessageId-org.apache.kafka.common.TopicPartition-long-">getMessageId</a></span>(org.apache.kafka.common.TopicPartition&nbsp;topicPartition,
+            long&nbsp;offset)</code>
+<div class="block">Gets the <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> for the record on the given topic partition and offset.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#isReady-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">isReady</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
+<div class="block">Checks if a specific failed <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> is ready to be retried, i.e is scheduled and has retry time that is less than current time.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#isScheduled-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">isScheduled</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
 <div class="block">Checks if a specific failed <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> is scheduled to be retried.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#remove-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">remove</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
-<div class="block">Removes a message from the list of messages scheduled for retrial</div>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#readyMessageCount--">readyMessageCount</a></span>()</code>
+<div class="block">Get the number of messages ready for retry.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#retainAll-java.util.Collection-">retainAll</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;org.apache.kafka.common.TopicPartition&gt;&nbsp;topicPartitions)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#remove-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">remove</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
+<div class="block">Removes a message from the list of messages scheduled for retrial.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#retainAll-java.util.Collection-">retainAll</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;org.apache.kafka.common.TopicPartition&gt;&nbsp;topicPartitions)</code>
 <div class="block">Retains all the messages whose <code>TopicPartition</code> belongs to the specified <code>Collection&lt;TopicPartition&gt;</code>.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;org.apache.kafka.common.TopicPartition&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#retriableTopicPartitions--">retriableTopicPartitions</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>void</code></td>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html#schedule-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">schedule</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</code>
 <div class="block">Schedules this <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> if not yet scheduled, or updates retry time if it has already been scheduled.</div>
 </td>
@@ -185,11 +200,13 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>schedule</h4>
-<pre>void&nbsp;schedule(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</pre>
-<div class="block"><p>Schedules this <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> if not yet scheduled, or updates retry time if it has already been scheduled.</p></div>
+<pre>boolean&nbsp;schedule(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</pre>
+<div class="block"><p>Schedules this <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> if not yet scheduled, or updates retry time if it has already been scheduled. It may also indicate that the message should not be retried, in which case the message will not be scheduled.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>msgId</code> - message to schedule for retrial</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if the message will be retried, false otherwise</dd>
 </dl>
 </li>
 </ul>
@@ -200,10 +217,12 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <li class="blockList">
 <h4>remove</h4>
 <pre>boolean&nbsp;remove(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</pre>
-<div class="block"><p>Removes a message from the list of messages scheduled for retrial</p></div>
+<div class="block"><p>Removes a message from the list of messages scheduled for retrial.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>msgId</code> - message to remove from retrial</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if the message was scheduled for retrial, false otherwise</dd>
 </dl>
 </li>
 </ul>
@@ -213,7 +232,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <ul class="blockList">
 <li class="blockList">
 <h4>retainAll</h4>
-<pre>boolean&nbsp;retainAll(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;org.apache.kafka.common.TopicPartition&gt;&nbsp;topicPartitions)</pre>
+<pre>boolean&nbsp;retainAll(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;org.apache.kafka.common.TopicPartition&gt;&nbsp;topicPartitions)</pre>
 <div class="block"><p>Retains all the messages whose <code>TopicPartition</code> belongs to the specified <code>Collection&lt;TopicPartition&gt;</code>. All messages that come from a <code>TopicPartition</code> NOT existing in the collection will be removed. This method is useful to cleanup state following partition rebalance.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -223,16 +242,17 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 </dl>
 </li>
 </ul>
-<a name="retriableTopicPartitions--">
+<a name="earliestRetriableOffsets--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>retriableTopicPartitions</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;org.apache.kafka.common.TopicPartition&gt;&nbsp;retriableTopicPartitions()</pre>
+<h4>earliestRetriableOffsets</h4>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;org.apache.kafka.common.TopicPartition,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;earliestRetriableOffsets()</pre>
+<div class="block"><p>Gets the earliest retriable offsets.</p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>set of topic partitions that have offsets that are ready to be retried, i.e., for which a tuple has failed and has retry time less than current time</dd>
+<dd>The earliest retriable offset for each TopicPartition that has  offsets ready to be retried, i.e. for which a tuple has failed  and has retry time less than current time.</dd>
 </dl>
 </li>
 </ul>
@@ -243,8 +263,10 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <li class="blockList">
 <h4>isReady</h4>
 <pre>boolean&nbsp;isReady(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</pre>
-<div class="block"><p>Checks if a specific failed <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> is is ready to be retried, i.e is scheduled and has retry time that is less than current time.</p></div>
+<div class="block"><p>Checks if a specific failed <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> is ready to be retried, i.e is scheduled and has retry time that is less than current time.</p></div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>msgId</code> - message to check for readiness</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if message is ready to be retried, false otherwise</dd>
 </dl>
@@ -253,14 +275,48 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.h
 <a name="isScheduled-org.apache.storm.kafka.spout.KafkaSpoutMessageId-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>isScheduled</h4>
 <pre>boolean&nbsp;isScheduled(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;msgId)</pre>
 <div class="block"><p>Checks if a specific failed <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> is scheduled to be retried. The message may or may not be ready to be retried yet.</p></div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>msgId</code> - message to check for scheduling status</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>true if the message is scheduled to be retried, regardless of being or not ready to be retried. Returns false is this message is not scheduled for retrial</dd>
+<dd>true if the message is scheduled to be retried, regardless of being or not ready to be retried.  Returns false is this message is not scheduled for retrial</dd>
+</dl>
+</li>
+</ul>
+<a name="readyMessageCount--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>readyMessageCount</h4>
+<pre>int&nbsp;readyMessageCount()</pre>
+<div class="block"><p>Get the number of messages ready for retry.</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The number of messages that are ready for retry</dd>
+</dl>
+</li>
+</ul>
+<a name="getMessageId-org.apache.kafka.common.TopicPartition-long-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getMessageId</h4>
+<pre><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a>&nbsp;getMessageId(org.apache.kafka.common.TopicPartition&nbsp;topicPartition,
+                                 long&nbsp;offset)</pre>
+<div class="block"><p>Gets the <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> for the record on the given topic partition and offset.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>topicPartition</code> - The topic partition of the record</dd>
+<dd><code>offset</code> - The offset of the record</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The id the record was scheduled for retry with,  or a new <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutMessageId</code></a> if the record was not scheduled for retry.</dd>
 </dl>
 </li>
 </ul>
@@ -297,7 +353,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryExponentialBackoff.TimeInterval.html" title="class in org.apache.storm.kafka.spout"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStream.html" title="class in org.apache.storm.kafka.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTestBolt.html" title="class in org.apache.storm.kafka.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/kafka/spout/KafkaSpoutRetryService.html" target="_top">Frames</a></li>
@@ -337,6 +393,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

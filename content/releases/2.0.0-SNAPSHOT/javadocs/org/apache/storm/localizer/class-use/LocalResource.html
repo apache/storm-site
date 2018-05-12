@@ -86,10 +86,6 @@
 <td class="colFirst"><a href="#org.apache.storm.daemon.supervisor">org.apache.storm.daemon.supervisor</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><a href="#org.apache.storm.localizer">org.apache.storm.localizer</a></td>
-<td class="colLast">&nbsp;</td>
-</tr>
 </tbody>
 </table>
 </li>
@@ -107,63 +103,9 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/localizer/LocalResource.html" title="class in org.apache.storm.localizer">LocalResource</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">SupervisorUtils.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/SupervisorUtils.html#blobstoreMapToLocalresources-java.util.Map-">blobstoreMapToLocalresources</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;&nbsp;blobstoreMap)</code>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/localizer/LocalResource.html" title="class in org.apache.storm.localizer">LocalResource</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">SupervisorUtils.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/supervisor/SupervisorUtils.html#blobstoreMapToLocalresources-java.util.Map-">blobstoreMapToLocalresources</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;&nbsp;blobstoreMap)</code>
 <div class="block">Returns a list of LocalResources based on the blobstore-map passed in</div>
-</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li class="blockList"><a name="org.apache.storm.localizer">
-<!--   -->
-</a>
-<h3>Uses of <a href="../../../../../org/apache/storm/localizer/LocalResource.html" title="class in org.apache.storm.localizer">LocalResource</a> in <a href="../../../../../org/apache/storm/localizer/package-summary.html">org.apache.storm.localizer</a></h3>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
-<caption><span>Methods in <a href="../../../../../org/apache/storm/localizer/package-summary.html">org.apache.storm.localizer</a> with parameters of type <a href="../../../../../org/apache/storm/localizer/LocalResource.html" title="class in org.apache.storm.localizer">LocalResource</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Method and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/localizer/LocalizedResource.html" title="class in org.apache.storm.localizer">LocalizedResource</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Localizer.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/localizer/Localizer.html#getBlob-org.apache.storm.localizer.LocalResource-java.lang.String-java.lang.String-java.io.File-">getBlob</a></span>(<a href="../../../../../org/apache/storm/localizer/LocalResource.html" title="class in org.apache.storm.localizer">LocalResource</a>&nbsp;localResource,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topo,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;userFileDir)</code>
-<div class="block">This function either returns the blob in the existing cache or if it doesn&rsquo;t exist in the cache, it will download the blob and will block until the download is complete.</div>
-</td>
-</tr>
-</tbody>
-</table>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
-<caption><span>Method parameters in <a href="../../../../../org/apache/storm/localizer/package-summary.html">org.apache.storm.localizer</a> with type arguments of type <a href="../../../../../org/apache/storm/localizer/LocalResource.html" title="class in org.apache.storm.localizer">LocalResource</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Method and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">Localizer.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/localizer/Localizer.html#addReferences-java.util.List-java.lang.String-java.lang.String-">addReferences</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/localizer/LocalResource.html" title="class in org.apache.storm.localizer">LocalResource</a>&gt;&nbsp;localresource,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topo)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/localizer/LocalizedResource.html" title="class in org.apache.storm.localizer">LocalizedResource</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">Localizer.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/localizer/Localizer.html#getBlobs-java.util.List-java.lang.String-java.lang.String-java.io.File-">getBlobs</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/localizer/LocalResource.html" title="class in org.apache.storm.localizer">LocalResource</a>&gt;&nbsp;localResources,
-        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user,
-        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topo,
-        <a href="http://docs.oracle.com/javase/7/docs/api/java/io/File.html?is-external=true" title="class or interface in java.io">File</a>&nbsp;userFileDir)</code>
-<div class="block">This function either returns the blobs in the existing cache or if they don&rsquo;t exist in the cache, it downloads them in parallel (up to SUPERVISOR_BLOBSTORE_DOWNLOAD_THREAD_COUNT) and will block until all of them have been downloaded</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/localizer/LocalizedResource.html" title="class in org.apache.storm.localizer">LocalizedResource</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">Localizer.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/localizer/Localizer.html#updateBlobs-java.util.List-java.lang.String-">updateBlobs</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/localizer/LocalResource.html" title="class in org.apache.storm.localizer">LocalResource</a>&gt;&nbsp;localResources,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;user)</code>
-<div class="block">This function updates blobs on the supervisor.</div>
 </td>
 </tr>
 </tbody>
@@ -224,6 +166,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

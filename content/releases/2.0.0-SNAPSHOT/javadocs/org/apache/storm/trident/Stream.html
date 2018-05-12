@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10,"i44":10,"i45":10,"i46":10,"i47":10,"i48":10,"i49":10,"i50":10,"i51":10,"i52":10,"i53":10,"i54":10,"i55":10,"i56":10,"i57":10,"i58":10,"i59":10,"i60":10,"i61":10,"i62":10,"i63":10,"i64":10,"i65":10,"i66":10,"i67":10,"i68":10,"i69":10,"i70":10,"i71":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10,"i44":10,"i45":10,"i46":10,"i47":10,"i48":10,"i49":10,"i50":10,"i51":10,"i52":10,"i53":10,"i54":10,"i55":10,"i56":10,"i57":10,"i58":10,"i59":10,"i60":10,"i61":10,"i62":10,"i63":10,"i64":10,"i65":10,"i66":10,"i67":10,"i68":10,"i69":10,"i70":10,"i71":10,"i72":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.trident.Stream</li>
@@ -114,15 +114,11 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">Stream</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStream.html" title="interface in org.apache.storm.trident.fluent">IAggregatableStream</a>, <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="interface in org.apache.storm.topology">ResourceDeclarer</a>&lt;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&gt;</pre>
 <div class="block"><p>A Stream represents the core data model in Trident, and can be thought of as a &ldquo;stream&rdquo; of tuples that are processed as a series of small batches. A stream is partitioned accross the nodes in the cluster, and operations are applied to a stream in parallel accross each partition.</p><p>There are five types of operations that can be performed on streams in Trident</p>
 <ol>
-  <li><strong>Partiton-Local Operations</strong> - Operations that are applied locally to each partition and do not involve network transfer</li>
-  <li><strong>Repartitioning Operations</strong> - Operations that change how tuples are partitioned across tasks(thus causing network transfer), but do not change the content of the stream.</li>
-  <li><strong>Aggregation Operations</strong> - Operations that <em>may</em> repartition a stream (thus causing network transfer)</li>
-  <li><strong>Grouping Operations</strong> - Operations that may repartition a stream on specific fields and group together tuples whose fields values are equal.</li>
-  <li><strong>Merge and Join Operations</strong> - Operations that combine different streams together.</li>
+  <li><strong>Partiton-Local Operations</strong> - Operations that are applied locally to each partition and do not involve network transfer 2. <strong>Repartitioning Operations</strong> - Operations that change how tuples are partitioned across tasks(thus causing network transfer), but do not change the content of the stream. 3. <strong>Aggregation Operations</strong> - Operations that <em>may</em> repartition a stream (thus causing network transfer) 4. <strong>Grouping Operations</strong> - Operations that may repartition a stream on specific fields and group together tuples whose fields values are equal. 5. <strong>Merge and Join Operations</strong> - Operations that combine different streams together.</li>
 </ol></div>
 </li>
 </ul>
@@ -145,7 +141,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <tr class="altColor">
 <td class="colFirst"><code>protected </code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#Stream-org.apache.storm.trident.TridentTopology-java.lang.String-org.apache.storm.trident.planner.Node-">Stream</a></span>(<a href="../../../../org/apache/storm/trident/TridentTopology.html" title="class in org.apache.storm.trident">TridentTopology</a>&nbsp;topology,
-      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
       <a href="../../../../org/apache/storm/trident/planner/Node.html" title="class in org.apache.storm.trident.planner">Node</a>&nbsp;node)</code>&nbsp;</td>
 </tr>
 </table>
@@ -165,381 +161,387 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#addSharedMemory-org.apache.storm.generated.SharedMemory-">addSharedMemory</a></span>(<a href="../../../../org/apache/storm/generated/SharedMemory.html" title="class in org.apache.storm.generated">SharedMemory</a>&nbsp;request)</code>
+<div class="block">Add in request for shared memory that this component will use.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#aggregate-org.apache.storm.trident.operation.Aggregator-org.apache.storm.tuple.Fields-">aggregate</a></span>(<a href="../../../../org/apache/storm/trident/operation/Aggregator.html" title="interface in org.apache.storm.trident.operation">Aggregator</a>&nbsp;agg,
          <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#aggregate-org.apache.storm.trident.operation.CombinerAggregator-org.apache.storm.tuple.Fields-">aggregate</a></span>(<a href="../../../../org/apache/storm/trident/operation/CombinerAggregator.html" title="interface in org.apache.storm.trident.operation">CombinerAggregator</a>&nbsp;agg,
          <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#aggregate-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.Aggregator-org.apache.storm.tuple.Fields-">aggregate</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
          <a href="../../../../org/apache/storm/trident/operation/Aggregator.html" title="interface in org.apache.storm.trident.operation">Aggregator</a>&nbsp;agg,
          <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#aggregate-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.CombinerAggregator-org.apache.storm.tuple.Fields-">aggregate</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
          <a href="../../../../org/apache/storm/trident/operation/CombinerAggregator.html" title="interface in org.apache.storm.trident.operation">CombinerAggregator</a>&nbsp;agg,
          <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#aggregate-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.ReducerAggregator-org.apache.storm.tuple.Fields-">aggregate</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
          <a href="../../../../org/apache/storm/trident/operation/ReducerAggregator.html" title="interface in org.apache.storm.trident.operation">ReducerAggregator</a>&nbsp;agg,
          <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#aggregate-org.apache.storm.trident.operation.ReducerAggregator-org.apache.storm.tuple.Fields-">aggregate</a></span>(<a href="../../../../org/apache/storm/trident/operation/ReducerAggregator.html" title="interface in org.apache.storm.trident.operation">ReducerAggregator</a>&nbsp;agg,
          <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#applyAssembly-org.apache.storm.trident.operation.Assembly-">applyAssembly</a></span>(<a href="../../../../org/apache/storm/trident/operation/Assembly.html" title="interface in org.apache.storm.trident.operation">Assembly</a>&nbsp;assembly)</code>
 <div class="block">Applies an <code>Assembly</code> to this <code>Stream</code>.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#batchGlobal--">batchGlobal</a></span>()</code>
 <div class="block">Repartitioning Operation</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#broadcast--">broadcast</a></span>()</code>
 <div class="block">Repartitioning Operation</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/fluent/ChainedAggregatorDeclarer.html" title="class in org.apache.storm.trident.fluent">ChainedAggregatorDeclarer</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#chainedAgg--">chainedAgg</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#each-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.Filter-">each</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
     <a href="../../../../org/apache/storm/trident/operation/Filter.html" title="interface in org.apache.storm.trident.operation">Filter</a>&nbsp;filter)</code>&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#each-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.Function-org.apache.storm.tuple.Fields-">each</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
     <a href="../../../../org/apache/storm/trident/operation/Function.html" title="interface in org.apache.storm.trident.operation">Function</a>&nbsp;function,
     <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#each-org.apache.storm.trident.operation.Function-org.apache.storm.tuple.Fields-">each</a></span>(<a href="../../../../org/apache/storm/trident/operation/Function.html" title="interface in org.apache.storm.trident.operation">Function</a>&nbsp;function,
     <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#filter-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.Filter-">filter</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
       <a href="../../../../org/apache/storm/trident/operation/Filter.html" title="interface in org.apache.storm.trident.operation">Filter</a>&nbsp;filter)</code>
 <div class="block">Returns a stream consisting of the elements of this stream that match the given filter.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#filter-org.apache.storm.trident.operation.Filter-">filter</a></span>(<a href="../../../../org/apache/storm/trident/operation/Filter.html" title="interface in org.apache.storm.trident.operation">Filter</a>&nbsp;filter)</code>
 <div class="block">Returns a stream consisting of the elements of this stream that match the given filter.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#flatMap-org.apache.storm.trident.operation.FlatMapFunction-">flatMap</a></span>(<a href="../../../../org/apache/storm/trident/operation/FlatMapFunction.html" title="interface in org.apache.storm.trident.operation">FlatMapFunction</a>&nbsp;function)</code>
 <div class="block">Returns a stream consisting of the results of replacing each value of this stream with the contents produced by applying the provided mapping function to each value.</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#flatMap-org.apache.storm.trident.operation.FlatMapFunction-org.apache.storm.tuple.Fields-">flatMap</a></span>(<a href="../../../../org/apache/storm/trident/operation/FlatMapFunction.html" title="interface in org.apache.storm.trident.operation">FlatMapFunction</a>&nbsp;function,
        <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;outputFields)</code>
 <div class="block">Returns a stream consisting of the results of replacing each value of this stream with the contents produced by applying the provided mapping function to each value.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#getOutputFields--">getOutputFields</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#global--">global</a></span>()</code>
 <div class="block">Repartitioning Operation</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/fluent/GroupedStream.html" title="class in org.apache.storm.trident.fluent">GroupedStream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#groupBy-org.apache.storm.tuple.Fields-">groupBy</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;fields)</code>
 <div class="block">Grouping Operation</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#identityPartition--">identityPartition</a></span>()</code>
 <div class="block">Repartitioning Operation</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#localOrShuffle--">localOrShuffle</a></span>()</code>
 <div class="block">Repartitioning Operation</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#map-org.apache.storm.trident.operation.MapFunction-">map</a></span>(<a href="../../../../org/apache/storm/trident/operation/MapFunction.html" title="interface in org.apache.storm.trident.operation">MapFunction</a>&nbsp;function)</code>
 <div class="block">Returns a stream consisting of the result of applying the given mapping function to the values of this stream.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#map-org.apache.storm.trident.operation.MapFunction-org.apache.storm.tuple.Fields-">map</a></span>(<a href="../../../../org/apache/storm/trident/operation/MapFunction.html" title="interface in org.apache.storm.trident.operation">MapFunction</a>&nbsp;function,
    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;outputFields)</code>
 <div class="block">Returns a stream consisting of the result of applying the given mapping function to the values of this stream.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#max-java.util.Comparator-">max</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;<a href="../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&gt;&nbsp;comparator)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#max-java.util.Comparator-">max</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;<a href="../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&gt;&nbsp;comparator)</code>
 <div class="block">This aggregator operation computes the maximum of tuples in a stream by using the given <code>comparator</code> with <code>TridentTuple</code>s.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#maxBy-java.lang.String-">maxBy</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#maxBy-java.lang.String-">maxBy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName)</code>
 <div class="block">This aggregator operation computes the maximum of tuples by the given <code>inputFieldName</code> and it is assumed that its value is an instance of <code>Comparable</code>.</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
-<td class="colFirst"><code>&lt;T&gt;&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#maxBy-java.lang.String-java.util.Comparator-">maxBy</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName,
-     <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;T&gt;&nbsp;comparator)</code>
-<div class="block">This aggregator operation computes the maximum of tuples by the given <code>inputFieldName</code> in a stream by using the given <code>comparator</code>.</div>
-</td>
-</tr>
 <tr id="i27" class="rowColor">
-<td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#min-java.util.Comparator-">min</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;<a href="../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&gt;&nbsp;comparator)</code>
-<div class="block">This aggregator operation computes the minimum of tuples in a stream by using the given <code>comparator</code> with <code>TridentTuple</code>s.</div>
+<td class="colFirst"><code>&lt;T&gt;&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#maxBy-java.lang.String-java.util.Comparator-">maxBy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName,
+     <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;T&gt;&nbsp;comparator)</code>
+<div class="block">This aggregator operation computes the maximum of tuples by the given <code>inputFieldName</code> in a stream by using the given <code>comparator</code>.</div>
 </td>
 </tr>
 <tr id="i28" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#minBy-java.lang.String-">minBy</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName)</code>
-<div class="block">This aggregator operation computes the minimum of tuples by the given <code>inputFieldName</code> and it is assumed that its value is an instance of <code>Comparable</code>.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#min-java.util.Comparator-">min</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;<a href="../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&gt;&nbsp;comparator)</code>
+<div class="block">This aggregator operation computes the minimum of tuples in a stream by using the given <code>comparator</code> with <code>TridentTuple</code>s.</div>
 </td>
 </tr>
 <tr id="i29" class="rowColor">
-<td class="colFirst"><code>&lt;T&gt;&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#minBy-java.lang.String-java.util.Comparator-">minBy</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName,
-     <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;T&gt;&nbsp;comparator)</code>
-<div class="block">This aggregator operation computes the minimum of tuples by the given <code>inputFieldName</code> in a stream by using the given <code>comparator</code>.</div>
+<td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#minBy-java.lang.String-">minBy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName)</code>
+<div class="block">This aggregator operation computes the minimum of tuples by the given <code>inputFieldName</code> and it is assumed that its value is an instance of <code>Comparable</code>.</div>
 </td>
 </tr>
 <tr id="i30" class="altColor">
-<td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#name-java.lang.String-">name</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>
-<div class="block">Applies a label to the stream.</div>
+<td class="colFirst"><code>&lt;T&gt;&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#minBy-java.lang.String-java.util.Comparator-">minBy</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName,
+     <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;T&gt;&nbsp;comparator)</code>
+<div class="block">This aggregator operation computes the minimum of tuples by the given <code>inputFieldName</code> in a stream by using the given <code>comparator</code>.</div>
 </td>
 </tr>
 <tr id="i31" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#name-java.lang.String-">name</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>
+<div class="block">Applies a label to the stream.</div>
+</td>
+</tr>
+<tr id="i32" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#parallelismHint-int-">parallelismHint</a></span>(int&nbsp;hint)</code>
 <div class="block">Applies a parallelism hint to a stream.</div>
 </td>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partition-org.apache.storm.grouping.CustomStreamGrouping-">partition</a></span>(<a href="../../../../org/apache/storm/grouping/CustomStreamGrouping.html" title="interface in org.apache.storm.grouping">CustomStreamGrouping</a>&nbsp;partitioner)</code>
 <div class="block">Repartitioning Operation</div>
 </td>
 </tr>
-<tr id="i33" class="rowColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partition-org.apache.storm.generated.Grouping-">partition</a></span>(<a href="../../../../org/apache/storm/generated/Grouping.html" title="class in org.apache.storm.generated">Grouping</a>&nbsp;grouping)</code>
 <div class="block">Repartitioning Operation</div>
 </td>
 </tr>
-<tr id="i34" class="altColor">
+<tr id="i35" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionAggregate-org.apache.storm.trident.operation.Aggregator-org.apache.storm.tuple.Fields-">partitionAggregate</a></span>(<a href="../../../../org/apache/storm/trident/operation/Aggregator.html" title="interface in org.apache.storm.trident.operation">Aggregator</a>&nbsp;agg,
                   <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i35" class="rowColor">
+<tr id="i36" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionAggregate-org.apache.storm.trident.operation.CombinerAggregator-org.apache.storm.tuple.Fields-">partitionAggregate</a></span>(<a href="../../../../org/apache/storm/trident/operation/CombinerAggregator.html" title="interface in org.apache.storm.trident.operation">CombinerAggregator</a>&nbsp;agg,
                   <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i36" class="altColor">
+<tr id="i37" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionAggregate-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.Aggregator-org.apache.storm.tuple.Fields-">partitionAggregate</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
                   <a href="../../../../org/apache/storm/trident/operation/Aggregator.html" title="interface in org.apache.storm.trident.operation">Aggregator</a>&nbsp;agg,
                   <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i37" class="rowColor">
+<tr id="i38" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionAggregate-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.CombinerAggregator-org.apache.storm.tuple.Fields-">partitionAggregate</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
                   <a href="../../../../org/apache/storm/trident/operation/CombinerAggregator.html" title="interface in org.apache.storm.trident.operation">CombinerAggregator</a>&nbsp;agg,
                   <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i38" class="altColor">
+<tr id="i39" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionAggregate-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.ReducerAggregator-org.apache.storm.tuple.Fields-">partitionAggregate</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
                   <a href="../../../../org/apache/storm/trident/operation/ReducerAggregator.html" title="interface in org.apache.storm.trident.operation">ReducerAggregator</a>&nbsp;agg,
                   <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i39" class="rowColor">
+<tr id="i40" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionAggregate-org.apache.storm.trident.operation.ReducerAggregator-org.apache.storm.tuple.Fields-">partitionAggregate</a></span>(<a href="../../../../org/apache/storm/trident/operation/ReducerAggregator.html" title="interface in org.apache.storm.trident.operation">ReducerAggregator</a>&nbsp;agg,
                   <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i40" class="altColor">
+<tr id="i41" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionBy-org.apache.storm.tuple.Fields-">partitionBy</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;fields)</code>
 <div class="block">Repartitioning Operation</div>
 </td>
 </tr>
-<tr id="i41" class="rowColor">
+<tr id="i42" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionPersist-org.apache.storm.trident.state.StateFactory-org.apache.storm.tuple.Fields-org.apache.storm.trident.state.StateUpdater-">partitionPersist</a></span>(<a href="../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a>&nbsp;stateFactory,
                 <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
                 <a href="../../../../org/apache/storm/trident/state/StateUpdater.html" title="interface in org.apache.storm.trident.state">StateUpdater</a>&nbsp;updater)</code>&nbsp;</td>
 </tr>
-<tr id="i42" class="altColor">
+<tr id="i43" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionPersist-org.apache.storm.trident.state.StateFactory-org.apache.storm.tuple.Fields-org.apache.storm.trident.state.StateUpdater-org.apache.storm.tuple.Fields-">partitionPersist</a></span>(<a href="../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a>&nbsp;stateFactory,
                 <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
                 <a href="../../../../org/apache/storm/trident/state/StateUpdater.html" title="interface in org.apache.storm.trident.state">StateUpdater</a>&nbsp;updater,
                 <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i43" class="rowColor">
+<tr id="i44" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionPersist-org.apache.storm.trident.state.StateFactory-org.apache.storm.trident.state.StateUpdater-">partitionPersist</a></span>(<a href="../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a>&nbsp;stateFactory,
                 <a href="../../../../org/apache/storm/trident/state/StateUpdater.html" title="interface in org.apache.storm.trident.state">StateUpdater</a>&nbsp;updater)</code>&nbsp;</td>
 </tr>
-<tr id="i44" class="altColor">
+<tr id="i45" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionPersist-org.apache.storm.trident.state.StateFactory-org.apache.storm.trident.state.StateUpdater-org.apache.storm.tuple.Fields-">partitionPersist</a></span>(<a href="../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a>&nbsp;stateFactory,
                 <a href="../../../../org/apache/storm/trident/state/StateUpdater.html" title="interface in org.apache.storm.trident.state">StateUpdater</a>&nbsp;updater,
                 <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i45" class="rowColor">
+<tr id="i46" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionPersist-org.apache.storm.trident.state.StateSpec-org.apache.storm.tuple.Fields-org.apache.storm.trident.state.StateUpdater-">partitionPersist</a></span>(<a href="../../../../org/apache/storm/trident/state/StateSpec.html" title="class in org.apache.storm.trident.state">StateSpec</a>&nbsp;stateSpec,
                 <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
                 <a href="../../../../org/apache/storm/trident/state/StateUpdater.html" title="interface in org.apache.storm.trident.state">StateUpdater</a>&nbsp;updater)</code>&nbsp;</td>
 </tr>
-<tr id="i46" class="altColor">
+<tr id="i47" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionPersist-org.apache.storm.trident.state.StateSpec-org.apache.storm.tuple.Fields-org.apache.storm.trident.state.StateUpdater-org.apache.storm.tuple.Fields-">partitionPersist</a></span>(<a href="../../../../org/apache/storm/trident/state/StateSpec.html" title="class in org.apache.storm.trident.state">StateSpec</a>&nbsp;stateSpec,
                 <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
                 <a href="../../../../org/apache/storm/trident/state/StateUpdater.html" title="interface in org.apache.storm.trident.state">StateUpdater</a>&nbsp;updater,
                 <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i47" class="rowColor">
+<tr id="i48" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionPersist-org.apache.storm.trident.state.StateSpec-org.apache.storm.trident.state.StateUpdater-">partitionPersist</a></span>(<a href="../../../../org/apache/storm/trident/state/StateSpec.html" title="class in org.apache.storm.trident.state">StateSpec</a>&nbsp;stateSpec,
                 <a href="../../../../org/apache/storm/trident/state/StateUpdater.html" title="interface in org.apache.storm.trident.state">StateUpdater</a>&nbsp;updater)</code>&nbsp;</td>
 </tr>
-<tr id="i48" class="altColor">
+<tr id="i49" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#partitionPersist-org.apache.storm.trident.state.StateSpec-org.apache.storm.trident.state.StateUpdater-org.apache.storm.tuple.Fields-">partitionPersist</a></span>(<a href="../../../../org/apache/storm/trident/state/StateSpec.html" title="class in org.apache.storm.trident.state">StateSpec</a>&nbsp;stateSpec,
                 <a href="../../../../org/apache/storm/trident/state/StateUpdater.html" title="interface in org.apache.storm.trident.state">StateUpdater</a>&nbsp;updater,
                 <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i49" class="rowColor">
+<tr id="i50" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#peek-org.apache.storm.trident.operation.Consumer-">peek</a></span>(<a href="../../../../org/apache/storm/trident/operation/Consumer.html" title="interface in org.apache.storm.trident.operation">Consumer</a>&nbsp;action)</code>
 <div class="block">Returns a stream consisting of the trident tuples of this stream, additionally performing the provided action on each trident tuple as they are consumed from the resulting stream.</div>
 </td>
 </tr>
-<tr id="i50" class="altColor">
+<tr id="i51" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#persistentAggregate-org.apache.storm.trident.state.StateFactory-org.apache.storm.trident.operation.CombinerAggregator-org.apache.storm.tuple.Fields-">persistentAggregate</a></span>(<a href="../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a>&nbsp;stateFactory,
                    <a href="../../../../org/apache/storm/trident/operation/CombinerAggregator.html" title="interface in org.apache.storm.trident.operation">CombinerAggregator</a>&nbsp;agg,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i51" class="rowColor">
+<tr id="i52" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#persistentAggregate-org.apache.storm.trident.state.StateFactory-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.CombinerAggregator-org.apache.storm.tuple.Fields-">persistentAggregate</a></span>(<a href="../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a>&nbsp;stateFactory,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
                    <a href="../../../../org/apache/storm/trident/operation/CombinerAggregator.html" title="interface in org.apache.storm.trident.operation">CombinerAggregator</a>&nbsp;agg,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i52" class="altColor">
+<tr id="i53" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#persistentAggregate-org.apache.storm.trident.state.StateFactory-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.ReducerAggregator-org.apache.storm.tuple.Fields-">persistentAggregate</a></span>(<a href="../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a>&nbsp;stateFactory,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
                    <a href="../../../../org/apache/storm/trident/operation/ReducerAggregator.html" title="interface in org.apache.storm.trident.operation">ReducerAggregator</a>&nbsp;agg,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i53" class="rowColor">
+<tr id="i54" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#persistentAggregate-org.apache.storm.trident.state.StateFactory-org.apache.storm.trident.operation.ReducerAggregator-org.apache.storm.tuple.Fields-">persistentAggregate</a></span>(<a href="../../../../org/apache/storm/trident/state/StateFactory.html" title="interface in org.apache.storm.trident.state">StateFactory</a>&nbsp;stateFactory,
                    <a href="../../../../org/apache/storm/trident/operation/ReducerAggregator.html" title="interface in org.apache.storm.trident.operation">ReducerAggregator</a>&nbsp;agg,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i54" class="altColor">
+<tr id="i55" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#persistentAggregate-org.apache.storm.trident.state.StateSpec-org.apache.storm.trident.operation.CombinerAggregator-org.apache.storm.tuple.Fields-">persistentAggregate</a></span>(<a href="../../../../org/apache/storm/trident/state/StateSpec.html" title="class in org.apache.storm.trident.state">StateSpec</a>&nbsp;spec,
                    <a href="../../../../org/apache/storm/trident/operation/CombinerAggregator.html" title="interface in org.apache.storm.trident.operation">CombinerAggregator</a>&nbsp;agg,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i55" class="rowColor">
+<tr id="i56" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#persistentAggregate-org.apache.storm.trident.state.StateSpec-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.CombinerAggregator-org.apache.storm.tuple.Fields-">persistentAggregate</a></span>(<a href="../../../../org/apache/storm/trident/state/StateSpec.html" title="class in org.apache.storm.trident.state">StateSpec</a>&nbsp;spec,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
                    <a href="../../../../org/apache/storm/trident/operation/CombinerAggregator.html" title="interface in org.apache.storm.trident.operation">CombinerAggregator</a>&nbsp;agg,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i56" class="altColor">
+<tr id="i57" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#persistentAggregate-org.apache.storm.trident.state.StateSpec-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.ReducerAggregator-org.apache.storm.tuple.Fields-">persistentAggregate</a></span>(<a href="../../../../org/apache/storm/trident/state/StateSpec.html" title="class in org.apache.storm.trident.state">StateSpec</a>&nbsp;spec,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
                    <a href="../../../../org/apache/storm/trident/operation/ReducerAggregator.html" title="interface in org.apache.storm.trident.operation">ReducerAggregator</a>&nbsp;agg,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i57" class="rowColor">
+<tr id="i58" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#persistentAggregate-org.apache.storm.trident.state.StateSpec-org.apache.storm.trident.operation.ReducerAggregator-org.apache.storm.tuple.Fields-">persistentAggregate</a></span>(<a href="../../../../org/apache/storm/trident/state/StateSpec.html" title="class in org.apache.storm.trident.state">StateSpec</a>&nbsp;spec,
                    <a href="../../../../org/apache/storm/trident/operation/ReducerAggregator.html" title="interface in org.apache.storm.trident.operation">ReducerAggregator</a>&nbsp;agg,
                    <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i58" class="altColor">
+<tr id="i59" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#project-org.apache.storm.tuple.Fields-">project</a></span>(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;keepFields)</code>
 <div class="block">Filters out fields from a stream, resulting in a Stream containing only the fields specified by <code>keepFields</code>.</div>
 </td>
 </tr>
-<tr id="i59" class="rowColor">
-<td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#setCPULoad-java.lang.Number-">setCPULoad</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;load)</code>
-<div class="block">Sets the CPU Load resource for the current operation</div>
-</td>
-</tr>
 <tr id="i60" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#setMemoryLoad-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</code>
-<div class="block">Sets the Memory Load resources for the current operation.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#setCPULoad-java.lang.Number-">setCPULoad</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;load)</code>
+<div class="block">Sets the CPU Load resource for the current operation</div>
 </td>
 </tr>
 <tr id="i61" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#setMemoryLoad-java.lang.Number-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#setMemoryLoad-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</code>
 <div class="block">Sets the Memory Load resources for the current operation.</div>
 </td>
 </tr>
 <tr id="i62" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#setMemoryLoad-java.lang.Number-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</code>
+<div class="block">Sets the Memory Load resources for the current operation.</div>
+</td>
+</tr>
+<tr id="i63" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#shuffle--">shuffle</a></span>()</code>
 <div class="block">Repartitioning Operation</div>
 </td>
 </tr>
-<tr id="i63" class="rowColor">
+<tr id="i64" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#slidingWindow-org.apache.storm.topology.base.BaseWindowedBolt.Duration-org.apache.storm.topology.base.BaseWindowedBolt.Duration-org.apache.storm.trident.windowing.WindowsStoreFactory-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.Aggregator-org.apache.storm.tuple.Fields-">slidingWindow</a></span>(<a href="../../../../org/apache/storm/topology/base/BaseWindowedBolt.Duration.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Duration</a>&nbsp;windowDuration,
              <a href="../../../../org/apache/storm/topology/base/BaseWindowedBolt.Duration.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Duration</a>&nbsp;slidingInterval,
@@ -550,7 +552,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <div class="block">Returns a stream of tuples which are aggregated results of a window which slides at duration of <code>slidingInterval</code> and completes a window at <code>windowDuration</code></div>
 </td>
 </tr>
-<tr id="i64" class="altColor">
+<tr id="i65" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#slidingWindow-int-int-org.apache.storm.trident.windowing.WindowsStoreFactory-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.Aggregator-org.apache.storm.tuple.Fields-">slidingWindow</a></span>(int&nbsp;windowCount,
              int&nbsp;slideCount,
@@ -561,24 +563,24 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <div class="block">Returns a stream of tuples which are aggregated results of a sliding window with every <code>windowCount</code> of tuples and slides the window after <code>slideCount</code>.</div>
 </td>
 </tr>
-<tr id="i65" class="rowColor">
+<tr id="i66" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#stateQuery-org.apache.storm.trident.TridentState-org.apache.storm.tuple.Fields-org.apache.storm.trident.state.QueryFunction-org.apache.storm.tuple.Fields-">stateQuery</a></span>(<a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a>&nbsp;state,
           <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
           <a href="../../../../org/apache/storm/trident/state/QueryFunction.html" title="interface in org.apache.storm.trident.state">QueryFunction</a>&nbsp;function,
           <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i66" class="altColor">
+<tr id="i67" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#stateQuery-org.apache.storm.trident.TridentState-org.apache.storm.trident.state.QueryFunction-org.apache.storm.tuple.Fields-">stateQuery</a></span>(<a href="../../../../org/apache/storm/trident/TridentState.html" title="class in org.apache.storm.trident">TridentState</a>&nbsp;state,
           <a href="../../../../org/apache/storm/trident/state/QueryFunction.html" title="interface in org.apache.storm.trident.state">QueryFunction</a>&nbsp;function,
           <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;functionFields)</code>&nbsp;</td>
 </tr>
-<tr id="i67" class="rowColor">
+<tr id="i68" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#toStream--">toStream</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i68" class="altColor">
+<tr id="i69" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#tumblingWindow-org.apache.storm.topology.base.BaseWindowedBolt.Duration-org.apache.storm.trident.windowing.WindowsStoreFactory-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.Aggregator-org.apache.storm.tuple.Fields-">tumblingWindow</a></span>(<a href="../../../../org/apache/storm/topology/base/BaseWindowedBolt.Duration.html" title="class in org.apache.storm.topology.base">BaseWindowedBolt.Duration</a>&nbsp;windowDuration,
               <a href="../../../../org/apache/storm/trident/windowing/WindowsStoreFactory.html" title="interface in org.apache.storm.trident.windowing">WindowsStoreFactory</a>&nbsp;windowStoreFactory,
@@ -588,7 +590,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <div class="block">Returns a stream of tuples which are aggregated results of a window that tumbles at duration of <code>windowDuration</code></div>
 </td>
 </tr>
-<tr id="i69" class="rowColor">
+<tr id="i70" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#tumblingWindow-int-org.apache.storm.trident.windowing.WindowsStoreFactory-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.Aggregator-org.apache.storm.tuple.Fields-">tumblingWindow</a></span>(int&nbsp;windowCount,
               <a href="../../../../org/apache/storm/trident/windowing/WindowsStoreFactory.html" title="interface in org.apache.storm.trident.windowing">WindowsStoreFactory</a>&nbsp;windowStoreFactory,
@@ -598,7 +600,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <div class="block">Returns a stream of tuples which are aggregated results of a tumbling window with every <code>windowCount</code> of tuples.</div>
 </td>
 </tr>
-<tr id="i70" class="altColor">
+<tr id="i71" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#window-org.apache.storm.trident.windowing.config.WindowConfig-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.Aggregator-org.apache.storm.tuple.Fields-">window</a></span>(<a href="../../../../org/apache/storm/trident/windowing/config/WindowConfig.html" title="interface in org.apache.storm.trident.windowing.config">WindowConfig</a>&nbsp;windowConfig,
       <a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;inputFields,
@@ -607,7 +609,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <div class="block">Returns a stream of aggregated results based on the given window configuration which uses inmemory windowing tuple store.</div>
 </td>
 </tr>
-<tr id="i71" class="rowColor">
+<tr id="i72" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/trident/Stream.html#window-org.apache.storm.trident.windowing.config.WindowConfig-org.apache.storm.trident.windowing.WindowsStoreFactory-org.apache.storm.tuple.Fields-org.apache.storm.trident.operation.Aggregator-org.apache.storm.tuple.Fields-">window</a></span>(<a href="../../../../org/apache/storm/trident/windowing/config/WindowConfig.html" title="interface in org.apache.storm.trident.windowing.config">WindowConfig</a>&nbsp;windowConfig,
       <a href="../../../../org/apache/storm/trident/windowing/WindowsStoreFactory.html" title="interface in org.apache.storm.trident.windowing">WindowsStoreFactory</a>&nbsp;windowStoreFactory,
@@ -622,8 +624,8 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -646,7 +648,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <li class="blockList">
 <h4>Stream</h4>
 <pre>protected&nbsp;Stream(<a href="../../../../org/apache/storm/trident/TridentTopology.html" title="class in org.apache.storm.trident">TridentTopology</a>&nbsp;topology,
-                 <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+                 <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
                  <a href="../../../../org/apache/storm/trident/planner/Node.html" title="class in org.apache.storm.trident.planner">Node</a>&nbsp;node)</pre>
 </li>
 </ul>
@@ -664,7 +666,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <ul class="blockList">
 <li class="blockList">
 <h4>name</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;name(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;name(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
 <div class="block"><p>Applies a label to the stream. Naming a stream will append the label to the name of the bolt(s) created by Trident and will be visible in the Storm UI.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -696,11 +698,15 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <ul class="blockList">
 <li class="blockList">
 <h4>setCPULoad</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;setCPULoad(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;load)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;setCPULoad(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;load)</pre>
 <div class="block"><p>Sets the CPU Load resource for the current operation</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setCPULoad-java.lang.Number-">setCPULoad</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="interface in org.apache.storm.topology">ResourceDeclarer</a>&lt;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>load</code> - the amount of CPU</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
 </dl>
 </li>
 </ul>
@@ -710,11 +716,15 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <ul class="blockList">
 <li class="blockList">
 <h4>setMemoryLoad</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</pre>
 <div class="block"><p>Sets the Memory Load resources for the current operation. offHeap becomes default</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-">setMemoryLoad</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="interface in org.apache.storm.topology">ResourceDeclarer</a>&lt;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>onHeap</code> - the amount of on heap memory</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
 </dl>
 </li>
 </ul>
@@ -724,12 +734,36 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <ul class="blockList">
 <li class="blockList">
 <h4>setMemoryLoad</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
-                            <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
+                            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</pre>
 <div class="block"><p>Sets the Memory Load resources for the current operation.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-java.lang.Number-">setMemoryLoad</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="interface in org.apache.storm.topology">ResourceDeclarer</a>&lt;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>onHeap</code> - the amount of on heap memory</dd>
+<dd><code>offHeap</code> - the amount of off heap memory</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
+</dl>
+</li>
+</ul>
+<a name="addSharedMemory-org.apache.storm.generated.SharedMemory-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addSharedMemory</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;addSharedMemory(<a href="../../../../org/apache/storm/generated/SharedMemory.html" title="class in org.apache.storm.generated">SharedMemory</a>&nbsp;request)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#addSharedMemory-org.apache.storm.generated.SharedMemory-">ResourceDeclarer</a></code></span></div>
+<div class="block"><p>Add in request for shared memory that this component will use. See <a href="../../../../org/apache/storm/topology/SharedOnHeap.html" title="class in org.apache.storm.topology"><code>SharedOnHeap</code></a>, <a href="../../../../org/apache/storm/topology/SharedOffHeapWithinNode.html" title="class in org.apache.storm.topology"><code>SharedOffHeapWithinNode</code></a>, and <a href="../../../../org/apache/storm/topology/SharedOffHeapWithinWorker.html" title="class in org.apache.storm.topology"><code>SharedOffHeapWithinWorker</code></a> for convenient ways to create shared memory requests.</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#addSharedMemory-org.apache.storm.generated.SharedMemory-">addSharedMemory</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="interface in org.apache.storm.topology">ResourceDeclarer</a>&lt;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - the shared memory request for this component</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
 </dl>
 </li>
 </ul>
@@ -740,9 +774,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <li class="blockList">
 <h4>project</h4>
 <pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;project(<a href="../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;keepFields)</pre>
-<div class="block"><p>Filters out fields from a stream, resulting in a Stream containing only the fields specified by <code>keepFields</code>.</p><p>For example, if you had a Stream <code>mystream</code> containing the fields <code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;,&quot;d&quot;]</code>, calling&quot;</p>
-<pre><code class="java">mystream.project(new Fields(&quot;b&quot;, &quot;d&quot;))
-</code></pre><p>would produce a stream containing only the fields <code>[&quot;b&quot;, &quot;d&quot;]</code>.</p></div>
+<div class="block"><p>Filters out fields from a stream, resulting in a Stream containing only the fields specified by <code>keepFields</code>.</p><p>For example, if you had a Stream <code>mystream</code> containing the fields <code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;,&quot;d&quot;]</code>, calling&quot;</p><p><code>java mystream.project(new Fields(&quot;b&quot;, &quot;d&quot;))</code></p><p>would produce a stream containing only the fields <code>[&quot;b&quot;, &quot;d&quot;]</code>.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>keepFields</code> - The fields in the Stream to keep</dd>
@@ -841,7 +873,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <li class="blockList">
 <h4>batchGlobal</h4>
 <pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;batchGlobal()</pre>
-<div class="block"><h2>Repartitioning Operation</h2><p>All tuples in the batch are sent to the same partition. Different batches in the stream may go to different  partitions.</p></div>
+<div class="block"><h2>Repartitioning Operation</h2><p>All tuples in the batch are sent to the same partition. Different batches in the stream may go to different partitions.</p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
@@ -1198,7 +1230,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <ul class="blockList">
 <li class="blockList">
 <h4>minBy</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;minBy(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;minBy(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName)</pre>
 <div class="block"><p>This aggregator operation computes the minimum of tuples by the given <code>inputFieldName</code> and it is assumed that its value is an instance of <code>Comparable</code>. If the value of tuple with field <code>inputFieldName</code> is not an instance of <code>Comparable</code> then it throws <code>ClassCastException</code></p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1214,8 +1246,8 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <ul class="blockList">
 <li class="blockList">
 <h4>minBy</h4>
-<pre>public&nbsp;&lt;T&gt;&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;minBy(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;T&gt;&nbsp;comparator)</pre>
+<pre>public&nbsp;&lt;T&gt;&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;minBy(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName,
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;T&gt;&nbsp;comparator)</pre>
 <div class="block"><p>This aggregator operation computes the minimum of tuples by the given <code>inputFieldName</code> in a stream by using the given <code>comparator</code>. If the value of tuple with field <code>inputFieldName</code> is not an instance of <code>T</code> then it throws <code>ClassCastException</code></p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1233,7 +1265,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <ul class="blockList">
 <li class="blockList">
 <h4>min</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;min(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;<a href="../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&gt;&nbsp;comparator)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;min(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;<a href="../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&gt;&nbsp;comparator)</pre>
 <div class="block"><p>This aggregator operation computes the minimum of tuples in a stream by using the given <code>comparator</code> with <code>TridentTuple</code>s.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1249,7 +1281,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <ul class="blockList">
 <li class="blockList">
 <h4>maxBy</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;maxBy(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;maxBy(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName)</pre>
 <div class="block"><p>This aggregator operation computes the maximum of tuples by the given <code>inputFieldName</code> and it is assumed that its value is an instance of <code>Comparable</code>. If the value of tuple with field <code>inputFieldName</code> is not an instance of <code>Comparable</code> then it throws <code>ClassCastException</code></p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1265,8 +1297,8 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <ul class="blockList">
 <li class="blockList">
 <h4>maxBy</h4>
-<pre>public&nbsp;&lt;T&gt;&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;maxBy(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;T&gt;&nbsp;comparator)</pre>
+<pre>public&nbsp;&lt;T&gt;&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;maxBy(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;inputFieldName,
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;T&gt;&nbsp;comparator)</pre>
 <div class="block"><p>This aggregator operation computes the maximum of tuples by the given <code>inputFieldName</code> in a stream by using the given <code>comparator</code>. If the value of tuple with field <code>inputFieldName</code> is not an instance of <code>T</code> then it throws <code>ClassCastException</code></p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1284,7 +1316,7 @@ implements <a href="../../../../org/apache/storm/trident/fluent/IAggregatableStr
 <ul class="blockList">
 <li class="blockList">
 <h4>max</h4>
-<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;max(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;<a href="../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&gt;&nbsp;comparator)</pre>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/trident/Stream.html" title="class in org.apache.storm.trident">Stream</a>&nbsp;max(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html?is-external=true" title="class or interface in java.util">Comparator</a>&lt;<a href="../../../../org/apache/storm/trident/tuple/TridentTuple.html" title="interface in org.apache.storm.trident.tuple">TridentTuple</a>&gt;&nbsp;comparator)</pre>
 <div class="block"><p>This aggregator operation computes the maximum of tuples in a stream by using the given <code>comparator</code> with <code>TridentTuple</code>s.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1747,6 +1779,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

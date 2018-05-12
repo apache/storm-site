@@ -117,6 +117,21 @@
 <!--   -->
 </a>
 <h3>Uses of <a href="../../../../../org/apache/storm/windowing/WindowManager.html" title="class in org.apache.storm.windowing">WindowManager</a> in <a href="../../../../../org/apache/storm/windowing/package-summary.html">org.apache.storm.windowing</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing subclasses, and an explanation">
+<caption><span>Subclasses of <a href="../../../../../org/apache/storm/windowing/WindowManager.html" title="class in org.apache.storm.windowing">WindowManager</a> in <a href="../../../../../org/apache/storm/windowing/package-summary.html">org.apache.storm.windowing</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/StatefulWindowManager.html" title="class in org.apache.storm.windowing">StatefulWindowManager</a>&lt;T&gt;</span></code>
+<div class="block">Window manager that handles windows with state persistence.</div>
+</td>
+</tr>
+</tbody>
+</table>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
 <caption><span>Constructors in <a href="../../../../../org/apache/storm/windowing/package-summary.html">org.apache.storm.windowing</a> with parameters of type <a href="../../../../../org/apache/storm/windowing/WindowManager.html" title="class in org.apache.storm.windowing">WindowManager</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -126,19 +141,21 @@
 <tr class="altColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/WatermarkCountTriggerPolicy.html#WatermarkCountTriggerPolicy-int-org.apache.storm.windowing.TriggerHandler-org.apache.storm.windowing.EvictionPolicy-org.apache.storm.windowing.WindowManager-">WatermarkCountTriggerPolicy</a></span>(int&nbsp;count,
                            <a href="../../../../../org/apache/storm/windowing/TriggerHandler.html" title="interface in org.apache.storm.windowing">TriggerHandler</a>&nbsp;handler,
-                           <a href="../../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../../org/apache/storm/windowing/WatermarkCountTriggerPolicy.html" title="type parameter in WatermarkCountTriggerPolicy">T</a>&gt;&nbsp;evictionPolicy,
+                           <a href="../../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../../org/apache/storm/windowing/WatermarkCountTriggerPolicy.html" title="type parameter in WatermarkCountTriggerPolicy">T</a>,?&gt;&nbsp;evictionPolicy,
                            <a href="../../../../../org/apache/storm/windowing/WindowManager.html" title="class in org.apache.storm.windowing">WindowManager</a>&lt;<a href="../../../../../org/apache/storm/windowing/WatermarkCountTriggerPolicy.html" title="type parameter in WatermarkCountTriggerPolicy">T</a>&gt;&nbsp;windowManager)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/WaterMarkEventGenerator.html#WaterMarkEventGenerator-org.apache.storm.windowing.WindowManager-int-int-java.util.Set-">WaterMarkEventGenerator</a></span>(<a href="../../../../../org/apache/storm/windowing/WindowManager.html" title="class in org.apache.storm.windowing">WindowManager</a>&lt;<a href="../../../../../org/apache/storm/windowing/WaterMarkEventGenerator.html" title="type parameter in WaterMarkEventGenerator">T</a>&gt;&nbsp;windowManager,
-                       int&nbsp;interval,
-                       int&nbsp;eventTsLag,
-                       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&gt;&nbsp;inputStreams)</code>&nbsp;</td>
+                       int&nbsp;intervalMs,
+                       int&nbsp;eventTsLagMs,
+                       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&gt;&nbsp;inputStreams)</code>
+<div class="block">Creates a new WatermarkEventGenerator.</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html#WatermarkTimeTriggerPolicy-long-org.apache.storm.windowing.TriggerHandler-org.apache.storm.windowing.EvictionPolicy-org.apache.storm.windowing.WindowManager-">WatermarkTimeTriggerPolicy</a></span>(long&nbsp;slidingIntervalMs,
                           <a href="../../../../../org/apache/storm/windowing/TriggerHandler.html" title="interface in org.apache.storm.windowing">TriggerHandler</a>&nbsp;handler,
-                          <a href="../../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;&nbsp;evictionPolicy,
+                          <a href="../../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>,?&gt;&nbsp;evictionPolicy,
                           <a href="../../../../../org/apache/storm/windowing/WindowManager.html" title="class in org.apache.storm.windowing">WindowManager</a>&lt;<a href="../../../../../org/apache/storm/windowing/WatermarkTimeTriggerPolicy.html" title="type parameter in WatermarkTimeTriggerPolicy">T</a>&gt;&nbsp;windowManager)</code>&nbsp;</td>
 </tr>
 </tbody>
@@ -199,6 +216,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

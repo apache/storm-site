@@ -279,7 +279,7 @@ to specify which fields are involved in a <code>FIELDS</code> grouping.</p>
 <p>Shell spouts are synchronous. The rest happens in a while(true) loop:</p>
 
 <ul>
-<li>STDIN: Either a next, ack, or fail command.</li>
+<li>STDIN: Either a next, ack, activate, deactivate or fail command.</li>
 </ul>
 
 <p>&quot;next&quot; is the equivalent of ISpout&#39;s <code>nextTuple</code>. It looks like:</p>
@@ -288,6 +288,16 @@ to specify which fields are involved in a <code>FIELDS</code> grouping.</p>
 <p>&quot;ack&quot; looks like:</p>
 <div class="highlight"><pre><code class="language-" data-lang="">{"command": "ack", "id": "1231231"}
 </code></pre></div>
+<p>&quot;activate&quot; is the equivalent of ISpout&#39;s <code>activate</code>:
+<code>
+{&quot;command&quot;: &quot;activate&quot;}
+</code></p>
+
+<p>&quot;deactivate&quot; is the equivalent of ISpout&#39;s <code>deactivate</code>:
+<code>
+{&quot;command&quot;: &quot;deactivate&quot;}
+</code></p>
+
 <p>&quot;fail&quot; looks like:</p>
 <div class="highlight"><pre><code class="language-" data-lang="">{"command": "fail", "id": "1231231"}
 </code></pre></div>

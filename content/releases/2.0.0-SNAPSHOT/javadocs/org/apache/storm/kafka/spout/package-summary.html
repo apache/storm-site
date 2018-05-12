@@ -44,7 +44,7 @@
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/kafka/monitor/package-summary.html">Prev&nbsp;Package</a></li>
-<li><a href="../../../../../org/apache/storm/kafka/spout/trident/package-summary.html">Next&nbsp;Package</a></li>
+<li><a href="../../../../../org/apache/storm/kafka/spout/internal/package-summary.html">Next&nbsp;Package</a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/kafka/spout/package-summary.html" target="_top">Frames</a></li>
@@ -83,8 +83,10 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Consumer.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutConfig.Consumer</a></td>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/Func.html" title="interface in org.apache.storm.kafka.spout">Func</a>&lt;V,R&gt;</td>
+<td class="colLast">
+<div class="block">A simple interface to allow compatibility with non java 8 code bases.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutRetryService</a></td>
@@ -93,15 +95,15 @@
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStreams.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutStreams</a></td>
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaTupleListener.html" title="interface in org.apache.storm.kafka.spout">KafkaTupleListener</a></td>
 <td class="colLast">
-<div class="block">Represents the <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStream.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutStream</code></a> associated with each topic or topic pattern (wildcard), and provides a public API to declare output streams and emmit tuples, on the appropriate stream, for all the topics specified.</div>
+<div class="block">The KafkaTupleListener handles state changes of a kafka tuple inside a KafkaSpout.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTuplesBuilder.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutTuplesBuilder</a>&lt;K,V&gt;</td>
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/RecordTranslator.html" title="interface in org.apache.storm.kafka.spout">RecordTranslator</a>&lt;K,V&gt;</td>
 <td class="colLast">
-<div class="block"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTuplesBuilder.html" title="interface in org.apache.storm.kafka.spout"><code>KafkaSpoutTuplesBuilder</code></a> wraps all the logic that builds tuples from <code>ConsumerRecord</code>s.</div>
+<div class="block">Translate a <code>ConsumerRecord</code> to a tuple.</div>
 </td>
 </tr>
 </tbody>
@@ -116,70 +118,78 @@
 </tr>
 <tbody>
 <tr class="altColor">
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/ByTopicRecordTranslator.html" title="class in org.apache.storm.kafka.spout">ByTopicRecordTranslator</a>&lt;K,V&gt;</td>
+<td class="colLast">
+<div class="block">Based off of a given Kafka topic a ConsumerRecord came from it will be translated to a Storm tuple and emitted to a given stream.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/DefaultRecordTranslator.html" title="class in org.apache.storm.kafka.spout">DefaultRecordTranslator</a>&lt;K,V&gt;</td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/EmptyKafkaTupleListener.html" title="class in org.apache.storm.kafka.spout">EmptyKafkaTupleListener</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpout.html" title="class in org.apache.storm.kafka.spout">KafkaSpout</a>&lt;K,V&gt;</td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig</a>&lt;K,V&gt;</td>
 <td class="colLast">
-<div class="block">KafkaSpoutConfig defines the required configuration to connect a consumer to a consumer group, as well as the subscribing topics</div>
+<div class="block">KafkaSpoutConfig defines the required configuration to connect a consumer to a consumer group, as well as the subscribing topics.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;K,V&gt;</td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutMessageId.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutMessageId</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryExponentialBackoff.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutRetryExponentialBackoff</a></td>
 <td class="colLast">
 <div class="block">Implementation of <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html" title="interface in org.apache.storm.kafka.spout"><code>KafkaSpoutRetryService</code></a> using the exponential backoff formula.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryExponentialBackoff.TimeInterval.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutRetryExponentialBackoff.TimeInterval</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTestBolt.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutTestBolt</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
 <tr class="altColor">
-<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStream.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutStream</a></td>
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTopologyMainNamedTopics.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutTopologyMainNamedTopics</a></td>
 <td class="colLast">
-<div class="block">Represents the stream and output fields used by a topic</div>
+<div class="block">This example sets up 3 topologies to put data in Kafka via the KafkaBolt, and shows how to set up a topology that reads from some Kafka topics using the KafkaSpout.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStreamsNamedTopics.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutStreamsNamedTopics</a></td>
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTopologyMainWildcardTopics.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutTopologyMainWildcardTopics</a></td>
 <td class="colLast">
-<div class="block">Represents the <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStream.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutStream</code></a> associated with each topic, and provides a public API to declare output streams and emmit tuples, on the appropriate stream, for all the topics specified.</div>
+<div class="block">This example is similar to <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTopologyMainNamedTopics.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutTopologyMainNamedTopics</code></a>, but demonstrates subscribing to Kafka topics with a regex.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStreamsNamedTopics.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutStreamsNamedTopics.Builder</a></td>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStreamsWildcardTopics.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutStreamsWildcardTopics</a></td>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTupleBuilder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutTupleBuilder</a>&lt;K,V&gt;</td>
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaTuple.html" title="class in org.apache.storm.kafka.spout">KafkaTuple</a></td>
 <td class="colLast">
-<div class="block">Implementations of <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTupleBuilder.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpoutTupleBuilder</code></a> contain the logic to build tuples from <code>ConsumerRecord</code>s.</div>
+<div class="block">A list of Values in a tuple that can be routed to a given stream.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTuplesBuilderNamedTopics.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutTuplesBuilderNamedTopics</a>&lt;K,V&gt;</td>
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/SimpleRecordTranslator.html" title="class in org.apache.storm.kafka.spout">SimpleRecordTranslator</a>&lt;K,V&gt;</td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTuplesBuilderNamedTopics.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutTuplesBuilderNamedTopics.Builder</a>&lt;K,V&gt;</td>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTuplesBuilderWildcardTopics.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutTuplesBuilderWildcardTopics</a>&lt;K,V&gt;</td>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/TopicPartitionComparator.html" title="class in org.apache.storm.kafka.spout">TopicPartitionComparator</a></td>
+<td class="colLast">
+<div class="block">Singleton comparator of TopicPartitions.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -195,7 +205,13 @@
 <tr class="altColor">
 <td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.FirstPollOffsetStrategy.html" title="enum in org.apache.storm.kafka.spout">KafkaSpoutConfig.FirstPollOffsetStrategy</a></td>
 <td class="colLast">
-<div class="block">The offset used by the Kafka spout in the first poll to Kafka broker.</div>
+<div class="block">Defines how the <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpout.html" title="class in org.apache.storm.kafka.spout"><code>KafkaSpout</code></a> seeks the offset to be used in the first poll to Kafka upon topology deployment.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html" title="enum in org.apache.storm.kafka.spout">KafkaSpoutConfig.ProcessingGuarantee</a></td>
+<td class="colLast">
+<div class="block">This enum controls when the tuple with the <code>ConsumerRecord</code> for an offset is marked as processed, i.e.</div>
 </td>
 </tr>
 </tbody>
@@ -229,7 +245,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/kafka/monitor/package-summary.html">Prev&nbsp;Package</a></li>
-<li><a href="../../../../../org/apache/storm/kafka/spout/trident/package-summary.html">Next&nbsp;Package</a></li>
+<li><a href="../../../../../org/apache/storm/kafka/spout/internal/package-summary.html">Next&nbsp;Package</a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/kafka/spout/package-summary.html" target="_top">Frames</a></li>
@@ -254,6 +270,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -247,14 +247,12 @@ Please see <a href="https://github.com/brettwooldridge/HikariCP#configuration-kn
 method will return the columns in the order in which Jdbc connection instance&#39;s <code>connection.getMetaData().getColumns();</code> method returns them.</p>
 
 <p><strong>If you specified your own insert query to <code>JdbcInsertBolt</code> you must initialize <code>SimpleJdbcMapper</code> with explicit columnschema such that the schema has columns in the same order as your insert queries.</strong>
-For example if your insert query is <code>Insert into user (user_id, user_name) values (?,?)</code> then your <code>SimpleJdbcMapper</code> should be initialized with the following statements:
-<code>java
-List&lt;Column&gt; columnSchema = Lists.newArrayList(
-    new Column(&quot;user_id&quot;, java.sql.Types.INTEGER),
-    new Column(&quot;user_name&quot;, java.sql.Types.VARCHAR));
-JdbcMapper simpleJdbcMapper = new SimpleJdbcMapper(columnSchema);
-</code></p>
-
+For example if your insert query is <code>Insert into user (user_id, user_name) values (?,?)</code> then your <code>SimpleJdbcMapper</code> should be initialized with the following statements:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="n">columnSchema</span> <span class="o">=</span> <span class="n">Lists</span><span class="o">.</span><span class="na">newArrayList</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">Column</span><span class="o">(</span><span class="s">"user_id"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">INTEGER</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nf">Column</span><span class="o">(</span><span class="s">"user_name"</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">sql</span><span class="o">.</span><span class="na">Types</span><span class="o">.</span><span class="na">VARCHAR</span><span class="o">));</span>
+<span class="n">JdbcMapper</span> <span class="n">simpleJdbcMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SimpleJdbcMapper</span><span class="o">(</span><span class="n">columnSchema</span><span class="o">);</span>
+</code></pre></div>
 <p>If your storm tuple only has fields for a subset of columns i.e. if some of the columns in your table have default values and you want to only insert values for columns with no default values you can enforce the behavior by initializing the 
 <code>SimpleJdbcMapper</code> with explicit columnschema. For example, if you have a user_details table <code>create table if not exists user_details (user_id integer, user_name varchar(100), dept_name varchar(100), create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);</code>
 In this table the create_time column has a default value. To ensure only the columns with no default values are inserted 
@@ -351,25 +349,25 @@ The default is set to value of topology.message.timeout.secs. You should set thi
 <ul>
 <li>Ensure you have included JDBC implementation dependency for your chosen database as part of your build configuration.</li>
 <li>The test topologies executes the following queries so your intended DB must support these queries for test topologies
-to work. 
-<code>SQL
-create table if not exists user (user_id integer, user_name varchar(100), dept_name varchar(100), create_date date);
+to work. </li>
+</ul>
+<div class="highlight"><pre><code class="language-SQL" data-lang="SQL">create table if not exists user (user_id integer, user_name varchar(100), dept_name varchar(100), create_date date);
 create table if not exists department (dept_id integer, dept_name varchar(100));
 create table if not exists user_department (user_id integer, dept_id integer);
-insert into department values (1, &#39;R&amp;D&#39;);
-insert into department values (2, &#39;Finance&#39;);
-insert into department values (3, &#39;HR&#39;);
-insert into department values (4, &#39;Sales&#39;);
+insert into department values (1, 'R&amp;D');
+insert into department values (2, 'Finance');
+insert into department values (3, 'HR');
+insert into department values (4, 'Sales');
 insert into user_department values (1, 1);
 insert into user_department values (2, 2);
 insert into user_department values (3, 3);
 insert into user_department values (4, 4);
 select dept_name from department, user_department where department.dept_id = user_department.dept_id and user_department.user_id = ?;
-</code>
-### Execution
-Run the <code>org.apache.storm.jdbc.topology.UserPersistanceTopology</code> class using storm jar command. The class expects 5 args
-storm jar org.apache.storm.jdbc.topology.UserPersistanceTopology <dataSourceClassName> <dataSource.url> <user> <password> [topology name]</li>
-</ul>
+</code></pre></div>
+<h3 id="execution">Execution</h3>
+
+<p>Run the <code>org.apache.storm.jdbc.topology.UserPersistanceTopology</code> class using storm jar command. The class expects 5 args
+storm jar org.apache.storm.jdbc.topology.UserPersistanceTopology <dataSourceClassName> <dataSource.url> <user> <password> [topology name]</p>
 
 <p>To make it work with Mysql, you can add the following to the pom.xml</p>
 <div class="highlight"><pre><code class="language-" data-lang="">&lt;dependency&gt;
@@ -394,11 +392,9 @@ storm jar org.apache.storm.jdbc.topology.UserPersistanceTopology <dataSourceClas
     &lt;/configuration&gt;
 &lt;/plugin&gt;
 </code></pre></div>
-<p>Mysql Example:
-<code>
-storm jar ~/repo/incubator-storm/external/storm-jdbc/target/storm-jdbc-0.10.0-SNAPSHOT-jar-with-dependencies.jar org.apache.storm.jdbc.topology.UserPersistanceTopology  com.mysql.jdbc.jdbc2.optional.MysqlDataSource jdbc:mysql://localhost/test root password UserPersistenceTopology
-</code></p>
-
+<p>Mysql Example:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">storm jar ~/repo/incubator-storm/external/storm-jdbc/target/storm-jdbc-0.10.0-SNAPSHOT-jar-with-dependencies.jar org.apache.storm.jdbc.topology.UserPersistanceTopology  com.mysql.jdbc.jdbc2.optional.MysqlDataSource jdbc:mysql://localhost/test root password UserPersistenceTopology
+</code></pre></div>
 <p>You can execute a select query against the user table which should show newly inserted rows:</p>
 <div class="highlight"><pre><code class="language-" data-lang="">select * from user;
 </code></pre></div>

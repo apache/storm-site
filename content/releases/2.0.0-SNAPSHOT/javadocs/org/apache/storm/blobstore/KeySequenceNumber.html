@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/blobstore/KeyFilter.html" title="interface in org.apache.storm.blobstore"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/blobstore/LocalFsBlobStore.html" title="class in org.apache.storm.blobstore"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/blobstore/ListHDFS.html" title="class in org.apache.storm.blobstore"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/blobstore/KeySequenceNumber.html" target="_top">Frames</a></li>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.blobstore.KeySequenceNumber</li>
@@ -110,7 +110,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">KeySequenceNumber</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
 <div class="block"><p>Class hands over the key sequence number which implies the number of updates made to a blob. The information regarding the keys and the sequence number which represents the number of updates are stored within the zookeeper in the following format. /storm/blobstore/key_name/nimbushostport-sequencenumber Example: If there are two nimbodes with nimbus.seeds:leader,non-leader are set, then the state inside the zookeeper is eventually stored as: /storm/blobstore/key1/leader:8080-1 /storm/blobstore/key1/non-leader:8080-1 indicates that a new blob with the name key1 has been created on the leader nimbus and the non-leader nimbus syncs after a call back is triggered by attempting to download the blob and finally updates its state inside the zookeeper.</p><p>A watch is placed on the /storm/blobstore/key1 and the znodes leader:8080-1 and non-leader:8080-1 are ephemeral which implies that these nodes exist only until the connection between the corresponding nimbus and the zookeeper persist. If in case the nimbus crashes the node disappears under /storm/blobstore/key1.</p><p>The sequence number for the keys are handed over based on the following scenario: Lets assume there are three nimbodes up and running, one being the leader and the other being the non-leader.</p>
 <ol>
   <li><p>Create is straight forward. Check whether the znode -&gt; /storm/blobstore/key1 has been created or not. It implies the blob has not been created yet. If not created, it creates it and updates the zookeeper states under /storm/blobstore/key1 and /storm/blobstoremaxkeysequencenumber/key1. The znodes it creates on these nodes are /storm/blobstore/key1/leader:8080-1, /storm/blobstore/key1/non-leader:8080-1 and /storm/blobstoremaxkeysequencenumber/key1/1. The latter holds the global sequence number across all nimbodes more like a static variable indicating the true value of number of updates for a blob. This node helps to maintain sanity in case leadership changes due to crashing.</p></li>
@@ -135,7 +135,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/KeySequenceNumber.html#KeySequenceNumber-java.lang.String-org.apache.storm.nimbus.NimbusInfo-">KeySequenceNumber</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/KeySequenceNumber.html#KeySequenceNumber-java.lang.String-org.apache.storm.nimbus.NimbusInfo-">KeySequenceNumber</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                  <a href="../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&nbsp;nimbusInfo)</code>&nbsp;</td>
 </tr>
 </table>
@@ -155,15 +155,15 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/KeySequenceNumber.html#getKeySequenceNumber-java.util.Map-">getKeySequenceNumber</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/blobstore/KeySequenceNumber.html#getKeySequenceNumber-org.apache.curator.framework.CuratorFramework-">getKeySequenceNumber</a></span>(org.apache.curator.framework.CuratorFramework&nbsp;zkClient)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -185,7 +185,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <ul class="blockListLast">
 <li class="blockList">
 <h4>KeySequenceNumber</h4>
-<pre>public&nbsp;KeySequenceNumber(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+<pre>public&nbsp;KeySequenceNumber(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
                          <a href="../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&nbsp;nimbusInfo)</pre>
 </li>
 </ul>
@@ -197,13 +197,18 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="getKeySequenceNumber-java.util.Map-">
+<a name="getKeySequenceNumber-org.apache.curator.framework.CuratorFramework-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getKeySequenceNumber</h4>
-<pre>public&nbsp;int&nbsp;getKeySequenceNumber(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</pre>
+<pre>public&nbsp;int&nbsp;getKeySequenceNumber(org.apache.curator.framework.CuratorFramework&nbsp;zkClient)
+                         throws <a href="../../../../org/apache/storm/generated/KeyNotFoundException.html" title="class in org.apache.storm.generated">KeyNotFoundException</a></pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/generated/KeyNotFoundException.html" title="class in org.apache.storm.generated">KeyNotFoundException</a></code></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -239,7 +244,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/blobstore/KeyFilter.html" title="interface in org.apache.storm.blobstore"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/blobstore/LocalFsBlobStore.html" title="class in org.apache.storm.blobstore"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/blobstore/ListHDFS.html" title="class in org.apache.storm.blobstore"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/blobstore/KeySequenceNumber.html" target="_top">Frames</a></li>
@@ -279,6 +284,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

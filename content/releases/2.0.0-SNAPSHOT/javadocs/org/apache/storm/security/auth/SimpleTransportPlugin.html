@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.security.auth.SimpleTransportPlugin</li>
@@ -118,7 +118,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">SimpleTransportPlugin</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlugin.html" title="interface in org.apache.storm.security.auth">ITransportPlugin</a></pre>
 <div class="block"><p>Simple transport for Thrift plugin.</p><p>This plugin is designed to be backward compatible with existing Storm code.</p></div>
 </li>
@@ -140,12 +140,12 @@ implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlug
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/login/Configuration.html?is-external=true" title="class or interface in javax.security.auth.login">Configuration</a></code></td>
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/login/Configuration.html?is-external=true" title="class or interface in javax.security.auth.login">Configuration</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/SimpleTransportPlugin.html#login_conf">login_conf</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/SimpleTransportPlugin.html#storm_conf">storm_conf</a></span></code>&nbsp;</td>
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/SimpleTransportPlugin.html#topoConf">topoConf</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected <a href="../../../../../org/apache/storm/security/auth/ThriftConnectionType.html" title="enum in org.apache.storm.security.auth">ThriftConnectionType</a></code></td>
@@ -186,26 +186,30 @@ implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlug
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>org.apache.thrift.transport.TTransport</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/SimpleTransportPlugin.html#connect-org.apache.thrift.transport.TTransport-java.lang.String-java.lang.String-">connect</a></span>(org.apache.thrift.transport.TTransport&nbsp;transport,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;serverHost,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;asUser)</code>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;serverHost,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;asUser)</code>
 <div class="block">Connect to the specified server via framed transport</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a></code></td>
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/SimpleTransportPlugin.html#getDefaultSubject--">getDefaultSubject</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/SimpleTransportPlugin.html#getPort--">getPort</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>org.apache.thrift.server.TServer</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/SimpleTransportPlugin.html#getServer-org.apache.thrift.TProcessor-">getServer</a></span>(org.apache.thrift.TProcessor&nbsp;processor)</code>
 <div class="block">Create a server associated with a given port, service handler, and purpose</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/security/auth/SimpleTransportPlugin.html#prepare-org.apache.storm.security.auth.ThriftConnectionType-java.util.Map-javax.security.auth.login.Configuration-">prepare</a></span>(<a href="../../../../../org/apache/storm/security/auth/ThriftConnectionType.html" title="enum in org.apache.storm.security.auth">ThriftConnectionType</a>&nbsp;type,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;storm_conf,
-       <a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/login/Configuration.html?is-external=true" title="class or interface in javax.security.auth.login">Configuration</a>&nbsp;login_conf)</code>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
+       <a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/login/Configuration.html?is-external=true" title="class or interface in javax.security.auth.login">Configuration</a>&nbsp;loginConf)</code>
 <div class="block">Invoked once immediately after construction</div>
 </td>
 </tr>
@@ -214,8 +218,15 @@ implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlug
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.security.auth.ITransportPlugin">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;org.apache.storm.security.auth.<a href="../../../../../org/apache/storm/security/auth/ITransportPlugin.html" title="interface in org.apache.storm.security.auth">ITransportPlugin</a></h3>
+<code><a href="../../../../../org/apache/storm/security/auth/ITransportPlugin.html#areWorkerTokensSupported--">areWorkerTokensSupported</a></code></li>
 </ul>
 </li>
 </ul>
@@ -240,13 +251,13 @@ implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlug
 <pre>protected&nbsp;<a href="../../../../../org/apache/storm/security/auth/ThriftConnectionType.html" title="enum in org.apache.storm.security.auth">ThriftConnectionType</a> type</pre>
 </li>
 </ul>
-<a name="storm_conf">
+<a name="topoConf">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>storm_conf</h4>
-<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a> storm_conf</pre>
+<h4>topoConf</h4>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt; topoConf</pre>
 </li>
 </ul>
 <a name="login_conf">
@@ -255,7 +266,7 @@ implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlug
 <ul class="blockListLast">
 <li class="blockList">
 <h4>login_conf</h4>
-<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/login/Configuration.html?is-external=true" title="class or interface in javax.security.auth.login">Configuration</a> login_conf</pre>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/login/Configuration.html?is-external=true" title="class or interface in javax.security.auth.login">Configuration</a> login_conf</pre>
 </li>
 </ul>
 </li>
@@ -290,8 +301,8 @@ implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlug
 <li class="blockList">
 <h4>prepare</h4>
 <pre>public&nbsp;void&nbsp;prepare(<a href="../../../../../org/apache/storm/security/auth/ThriftConnectionType.html" title="enum in org.apache.storm.security.auth">ThriftConnectionType</a>&nbsp;type,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;storm_conf,
-                    <a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/login/Configuration.html?is-external=true" title="class or interface in javax.security.auth.login">Configuration</a>&nbsp;login_conf)</pre>
+                    <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
+                    <a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/login/Configuration.html?is-external=true" title="class or interface in javax.security.auth.login">Configuration</a>&nbsp;loginConf)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/security/auth/ITransportPlugin.html#prepare-org.apache.storm.security.auth.ThriftConnectionType-java.util.Map-javax.security.auth.login.Configuration-">ITransportPlugin</a></code></span></div>
 <div class="block"><p>Invoked once immediately after construction</p></div>
 <dl>
@@ -299,8 +310,8 @@ implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlug
 <dd><code><a href="../../../../../org/apache/storm/security/auth/ITransportPlugin.html#prepare-org.apache.storm.security.auth.ThriftConnectionType-java.util.Map-javax.security.auth.login.Configuration-">prepare</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/security/auth/ITransportPlugin.html" title="interface in org.apache.storm.security.auth">ITransportPlugin</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>type</code> - the type of connection this will process.</dd>
-<dd><code>storm_conf</code> - Storm configuration</dd>
-<dd><code>login_conf</code> - login configuration</dd>
+<dd><code>topoConf</code> - Storm configuration</dd>
+<dd><code>loginConf</code> - login configuration</dd>
 </dl>
 </li>
 </ul>
@@ -311,7 +322,7 @@ implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlug
 <li class="blockList">
 <h4>getServer</h4>
 <pre>public&nbsp;org.apache.thrift.server.TServer&nbsp;getServer(org.apache.thrift.TProcessor&nbsp;processor)
-                                           throws <a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a>,
+                                           throws <a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a>,
                                                   org.apache.thrift.transport.TTransportException</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/security/auth/ITransportPlugin.html#getServer-org.apache.thrift.TProcessor-">ITransportPlugin</a></code></span></div>
 <div class="block"><p>Create a server associated with a given port, service handler, and purpose</p></div>
@@ -323,7 +334,7 @@ implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlug
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>server</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/IOException.html?is-external=true" title="class or interface in java.io">IOException</a></code></dd>
 <dd><code>org.apache.thrift.transport.TTransportException</code></dd>
 </dl>
 </li>
@@ -335,8 +346,8 @@ implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlug
 <li class="blockList">
 <h4>connect</h4>
 <pre>public&nbsp;org.apache.thrift.transport.TTransport&nbsp;connect(org.apache.thrift.transport.TTransport&nbsp;transport,
-                                                      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;serverHost,
-                                                      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;asUser)
+                                                      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;serverHost,
+                                                      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;asUser)
                                                throws org.apache.thrift.transport.TTransportException</pre>
 <div class="block"><p>Connect to the specified server via framed transport</p></div>
 <dl>
@@ -354,13 +365,28 @@ implements <a href="../../../../../org/apache/storm/security/auth/ITransportPlug
 <a name="getDefaultSubject--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getDefaultSubject</h4>
-<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;getDefaultSubject()</pre>
+<pre>protected&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/Subject.html?is-external=true" title="class or interface in javax.security.auth">Subject</a>&nbsp;getDefaultSubject()</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the subject that will be used for all connections</dd>
+</dl>
+</li>
+</ul>
+<a name="getPort--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getPort</h4>
+<pre>public&nbsp;int&nbsp;getPort()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/security/auth/ITransportPlugin.html#getPort--">getPort</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/security/auth/ITransportPlugin.html" title="interface in org.apache.storm.security.auth">ITransportPlugin</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The port this transport is using. This is not known until <a href="../../../../../org/apache/storm/security/auth/ITransportPlugin.html#getServer-org.apache.thrift.TProcessor-"><code>ITransportPlugin.getServer(org.apache.thrift.TProcessor)</code></a> has been called.</dd>
 </dl>
 </li>
 </ul>
@@ -437,6 +463,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

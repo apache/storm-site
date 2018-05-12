@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<p>This page describes all the commands that are possible with the &quot;storm&quot; command line client. To learn how to set up your &quot;storm&quot; client to talk to a remote cluster, follow the instructions in <a href="Setting-up-development-environment.html">Setting up development environment</a>.</p>
+<p>This page describes all the commands that are possible with the &quot;storm&quot; command line client. To learn how to set up your &quot;storm&quot; client to talk to a remote cluster, follow the instructions in <a href="Setting-up-development-environment.html">Setting up development environment</a>. See <a href="Classpath-handling.html">Classpath handling</a> for details on using external libraries in these commands.</p>
 
 <p>These commands are:</p>
 
@@ -163,6 +163,7 @@
 <li>supervisor</li>
 <li>ui</li>
 <li>drpc</li>
+<li>drpc-client</li>
 <li>blobstore</li>
 <li>dev-zookeeper</li>
 <li>get-errors</li>
@@ -190,7 +191,9 @@
 For example, --jars &quot;your-local-jar.jar,your-local-jar2.jar&quot; will load your-local-jar.jar and your-local-jar2.jar.
 And when you want to ship maven artifacts and its transitive dependencies, you can pass them to <code>--artifacts</code> with comma-separated string. You can also exclude some dependencies like what you&#39;re doing in maven pom. Please add exclusion artifacts with &#39;^&#39; separated string after the artifact. For example, <code>--artifacts &quot;redis.clients:jedis:2.9.0,org.apache.kafka:kafka_2.10:0.8.2.2^org.slf4j:slf4j-log4j12&quot;</code> will load jedis and kafka artifact and all of transitive dependencies but exclude slf4j-log4j12 from kafka.</p>
 
-<p>Complete example of both options is here: <code>./bin/storm jar example/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.RollingTopWords blobstore-remote2 remote --jars &quot;./external/storm-redis/storm-redis-1.1.0.jar,./external/storm-kafka/storm-kafka-1.1.0.jar&quot; --artifacts &quot;redis.clients:jedis:2.9.0,org.apache.kafka:kafka_2.10:0.8.2.2^org.slf4j:slf4j-log4j12&quot;</code></p>
+<p>When you need to pull the artifacts from other than Maven Central, you can pass remote repositories to --artifactRepositories option with comma-separated string. Repository format is &quot;<name>^<url>&quot;. &#39;^&#39; is taken as separator because URL allows various characters. For example, --artifactRepositories &quot;jboss-repository^<a href="http://repository.jboss.com/maven2,HDPRepo%5Ehttp://repo.hortonworks.com/content/groups/public/">http://repository.jboss.com/maven2,HDPRepo^http://repo.hortonworks.com/content/groups/public/</a>&quot; will add JBoss and HDP repositories for dependency resolver.</p>
+
+<p>Complete example of both options is here: <code>./bin/storm jar example/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.RollingTopWords blobstore-remote2 remote --jars &quot;./external/storm-redis/storm-redis-1.1.0.jar,./external/storm-kafka/storm-kafka-1.1.0.jar&quot; --artifacts &quot;redis.clients:jedis:2.9.0,org.apache.kafka:kafka_2.10:0.8.2.2^org.slf4j:slf4j-log4j12&quot; --artifactRepositories &quot;jboss-repository^http://repository.jboss.com/maven2,HDPRepo^http://repo.hortonworks.com/content/groups/public/&quot;</code></p>
 
 <p>When you pass jars and/or artifacts options, StormSubmitter will upload them when the topology is submitted, and they will be included to classpath of both the process which runs the class, and also workers for that topology.</p>
 
@@ -200,7 +203,7 @@ And when you want to ship maven artifacts and its transitive dependencies, you c
 
 <p>Compiles the SQL statements into a Trident topology and submits it to Storm.</p>
 
-<p><code>--jars</code> and <code>--artifacts</code> options are also applied to <code>sql</code> command. You normally want to pass these options since you need to set data source to your sql which is an external storage in many cases.</p>
+<p><code>--jars</code> and <code>--artifacts</code>, and <code>--artifactRepositories</code> options available for jar are also applied to sql command. Please refer &quot;help jar&quot; to see how to use --jars and --artifacts, and --artifactRepositories options. You normally want to pass these options since you need to set data source to your sql which is an external storage in many cases.</p>
 
 <h3 id="kill">kill</h3>
 
@@ -277,6 +280,37 @@ And when you want to ship maven artifacts and its transitive dependencies, you c
 <p>Syntax: <code>storm drpc</code></p>
 
 <p>Launches a DRPC daemon. This command should be run under supervision with a tool like <a href="http://cr.yp.to/daemontools.html">daemontools</a> or <a href="http://mmonit.com/monit/">monit</a>. See <a href="Distributed-RPC.html">Distributed RPC</a> for more information.</p>
+
+<h3 id="drpc-client">drpc-client</h3>
+
+<p>Syntax: <code>storm drpc-client [options] ([function argument]*)|(argument*)</code></p>
+
+<p>Provides a very simple way to send DRPC requests. If a <code>-f</code> argument is supplied, to set the function name, all of the arguments are treated
+as arguments to the function.  If no function is given the arguments must be pairs of function argument.</p>
+
+<p><em>NOTE:</em> This is not really intended for production use.  This is mostly because parsing out the results can be a pain.</p>
+
+<p>Creating an actuall DRPC client only takes a few lines, so for production please go with that.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">Config</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span>
+<span class="k">try</span> <span class="o">(</span><span class="n">DRPCClient</span> <span class="n">drpc</span> <span class="o">=</span> <span class="n">DRPCClient</span><span class="o">.</span><span class="na">getConfiguredClient</span><span class="o">(</span><span class="n">conf</span><span class="o">))</span> <span class="o">{</span>
+  <span class="c1">//User the drpc client</span>
+  <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">drpc</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">function</span><span class="o">,</span> <span class="n">argument</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div>
+<h4 id="examples">Examples</h4>
+
+<p><code>storm drpc-client exclaim a exclaim b test bar</code></p>
+
+<p>This will submit 3 separate DRPC request.
+1. funciton = &quot;exclaim&quot; args = &quot;a&quot;
+2. function = &quot;exclaim&quot; args = &quot;b&quot;
+3. function = &quot;test&quot; args = &quot;bar&quot;</p>
+
+<p><code>storm drpc-client -f exclaim a b</code></p>
+
+<p>This will submit 2 separate DRPC request.
+1. funciton = &quot;exclaim&quot; args = &quot;a&quot;
+2. function = &quot;exclaim&quot; args = &quot;b&quot;</p>
 
 <h3 id="blobstore">blobstore</h3>
 

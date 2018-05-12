@@ -151,7 +151,16 @@
 <h3 id="high-level-overview">High level overview</h3>
 
 <p>Distributed RPC is coordinated by a &quot;DRPC server&quot; (Storm comes packaged with an implementation of this). The DRPC server coordinates receiving an RPC request, sending the request to the Storm topology, receiving the results from the Storm topology, and sending the results back to the waiting client. From a client&#39;s perspective, a distributed RPC call looks just like a regular RPC call. For example, here&#39;s how a client would compute the results for the &quot;reach&quot; function with the argument &quot;<a href="http://twitter.com%22:">http://twitter.com&quot;:</a></p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">DRPCClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DRPCClient</span><span class="o">(</span><span class="s">"drpc-host"</span><span class="o">,</span> <span class="mi">3772</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">Config</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span>
+<span class="n">conf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"storm.thrift.transport"</span><span class="o">,</span> <span class="s">"org.apache.storm.security.auth.plain.PlainSaslTransportPlugin"</span><span class="o">);</span>
+<span class="n">conf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Config</span><span class="o">.</span><span class="na">STORM_NIMBUS_RETRY_TIMES</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+<span class="n">conf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Config</span><span class="o">.</span><span class="na">STORM_NIMBUS_RETRY_INTERVAL</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+<span class="n">conf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Config</span><span class="o">.</span><span class="na">STORM_NIMBUS_RETRY_INTERVAL_CEILING</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
+<span class="n">DRPCClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DRPCClient</span><span class="o">(</span><span class="n">conf</span><span class="o">,</span> <span class="s">"drpc-host"</span><span class="o">,</span> <span class="mi">3772</span><span class="o">);</span>
+<span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">"reach"</span><span class="o">,</span> <span class="s">"http://twitter.com"</span><span class="o">);</span>
+</code></pre></div>
+<p>or if you just want to use a preconfigured client you can call.  The exact host will be selected randomly from the configured set of hosts, if the host appears to be down it will loop through all configured hosts looking for one that works.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">DRPCClient</span> <span class="n">client</span> <span class="o">=</span> <span class="n">DRPCClient</span><span class="o">.</span><span class="na">getConfiguredClient</span><span class="o">(</span><span class="n">conf</span><span class="o">);</span>
 <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">"reach"</span><span class="o">,</span> <span class="s">"http://twitter.com"</span><span class="o">);</span>
 </code></pre></div>
 <p>The distributed RPC workflow looks like this:</p>
@@ -194,20 +203,9 @@
 
 <h3 id="local-mode-drpc">Local mode DRPC</h3>
 
-<p>DRPC can be run in local mode. Here&#39;s how to run the above example in local mode:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">LocalDRPC</span> <span class="n">drpc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocalDRPC</span><span class="o">();</span>
-<span class="n">LocalCluster</span> <span class="n">cluster</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocalCluster</span><span class="o">();</span>
-
-<span class="n">cluster</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="s">"drpc-demo"</span><span class="o">,</span> <span class="n">conf</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">createLocalTopology</span><span class="o">(</span><span class="n">drpc</span><span class="o">));</span>
-
-<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Results for 'hello':"</span> <span class="o">+</span> <span class="n">drpc</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">"exclamation"</span><span class="o">,</span> <span class="s">"hello"</span><span class="o">));</span>
-
-<span class="n">cluster</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>
-<span class="n">drpc</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>
-</code></pre></div>
-<p>First you create a <code>LocalDRPC</code> object. This object simulates a DRPC server in process, just like how <code>LocalCluster</code> simulates a Storm cluster in process. Then you create the <code>LocalCluster</code> to run the topology in local mode. <code>LinearDRPCTopologyBuilder</code> has separate methods for creating local topologies and remote topologies. In local mode the <code>LocalDRPC</code> object does not bind to any ports so the topology needs to know about the object to communicate with it. This is why <code>createLocalTopology</code> takes in the <code>LocalDRPC</code> object as input.</p>
-
-<p>After launching the topology, you can do DRPC invocations using the <code>execute</code> method on <code>LocalDRPC</code>.</p>
+<p>In the past to use DRPC in local mode it took creating a special LocalDRPC instance.  This can still be used when writing tests for your code, but in the current version of storm when you run in local mode a LocalDRPC
+instance is also created, and any DRPCClient created will link to it instead of the outside world.  This means that any interaction you want to test needs to be a part of the script that launches the topology, just like
+with LocalDRPC.</p>
 
 <h3 id="remote-mode-drpc">Remote mode DRPC</h3>
 
@@ -222,15 +220,34 @@
 <p>Launching a DRPC server can be done with the <code>storm</code> script and is just like launching Nimbus or the UI:</p>
 <div class="highlight"><pre><code class="language-" data-lang="">bin/storm drpc
 </code></pre></div>
-<p>Next, you need to configure your Storm cluster to know the locations of the DRPC server(s). This is how <code>DRPCSpout</code> knows from where to read function invocations. This can be done through the <code>storm.yaml</code> file or the topology configurations. Configuring this through the <code>storm.yaml</code> looks something like this:</p>
+<p>Next, you need to configure your Storm cluster to know the locations of the DRPC server(s). This is how <code>DRPCSpout</code> knows from where to read function invocations. This can be done through the <code>storm.yaml</code> file or the topology configurations. You should also specify storm.thrift.transport property to match DRPCClient settings. Configuring this through the <code>storm.yaml</code> looks something like this:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">drpc.servers</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s2">"</span><span class="s">drpc1.foo.com"</span>
   <span class="pi">-</span> <span class="s2">"</span><span class="s">drpc2.foo.com"</span>
+<span class="s">drpc.http.port</span><span class="pi">:</span> <span class="s">8081</span>
+<span class="s">storm.thrift.transport</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.security.auth.plain.PlainSaslTransportPlugin"</span>
 </code></pre></div>
 <p>Finally, you launch DRPC topologies using <code>StormSubmitter</code> just like you launch any other topology. To run the above example in remote mode, you do something like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">StormSubmitter</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="s">"exclamation-drpc"</span><span class="o">,</span> <span class="n">conf</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">createRemoteTopology</span><span class="o">());</span>
 </code></pre></div>
 <p><code>createRemoteTopology</code> is used to create topologies suitable for Storm clusters.</p>
+
+<p>Assuming that the topology is listening on the <code>exclaim</code> function you can execute something several differnt ways.</p>
+
+<p>Programatically:
+<code>java
+Config conf = new Config();
+try (DRPCClient drpc = DRPCClient.getConfiguredClient(conf)) {
+  //User the drpc client
+  String result = drpc.execute(&quot;exclaim&quot;, &quot;argument&quot;);
+}
+</code></p>
+
+<p>through curl:
+<code>curl http://hostname:8081/drpc/exclaim/argument</code></p>
+
+<p>Through the command line:
+<code>bin/storm drpc-client exclaim argument</code></p>
 
 <h3 id="a-more-complex-example">A more complex example</h3>
 

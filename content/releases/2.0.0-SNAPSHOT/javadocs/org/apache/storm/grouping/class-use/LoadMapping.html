@@ -91,6 +91,10 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.executor">org.apache.storm.executor</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.grouping">org.apache.storm.grouping</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -111,10 +115,8 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">GrouperFactory.BasicLoadAwareCustomStreamGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/GrouperFactory.BasicLoadAwareCustomStreamGrouping.html#chooseTasks-int-java.util.List-org.apache.storm.grouping.LoadMapping-">chooseTasks</a></span>(int&nbsp;taskId,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;values,
-           <a href="../../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;load)</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">GrouperFactory.BasicLoadAwareCustomStreamGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/GrouperFactory.BasicLoadAwareCustomStreamGrouping.html#refreshLoad-org.apache.storm.grouping.LoadMapping-">refreshLoad</a></span>(<a href="../../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;loadMapping)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -137,6 +139,32 @@
 </tbody>
 </table>
 </li>
+<li class="blockList"><a name="org.apache.storm.executor">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a> in <a href="../../../../../org/apache/storm/executor/package-summary.html">org.apache.storm.executor</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/executor/package-summary.html">org.apache.storm.executor</a> with parameters of type <a href="../../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">IRunningExecutor.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/executor/IRunningExecutor.html#loadChanged-org.apache.storm.grouping.LoadMapping-">loadChanged</a></span>(<a href="../../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;loadMapping)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">ExecutorShutdown.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/executor/ExecutorShutdown.html#loadChanged-org.apache.storm.grouping.LoadMapping-">loadChanged</a></span>(<a href="../../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;loadMapping)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">Executor.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/executor/Executor.html#reflectNewLoadMapping-org.apache.storm.grouping.LoadMapping-">reflectNewLoadMapping</a></span>(<a href="../../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;loadMapping)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li class="blockList"><a name="org.apache.storm.grouping">
 <!--   -->
 </a>
@@ -149,16 +177,12 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">LoadAwareShuffleGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/grouping/LoadAwareShuffleGrouping.html#chooseTasks-int-java.util.List-org.apache.storm.grouping.LoadMapping-">chooseTasks</a></span>(int&nbsp;taskId,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;values,
-           <a href="../../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;load)</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">LoadAwareShuffleGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/grouping/LoadAwareShuffleGrouping.html#refreshLoad-org.apache.storm.grouping.LoadMapping-">refreshLoad</a></span>(<a href="../../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;loadMapping)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">LoadAwareCustomStreamGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/grouping/LoadAwareCustomStreamGrouping.html#chooseTasks-int-java.util.List-org.apache.storm.grouping.LoadMapping-">chooseTasks</a></span>(int&nbsp;taskId,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;values,
-           <a href="../../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;load)</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">LoadAwareCustomStreamGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/grouping/LoadAwareCustomStreamGrouping.html#refreshLoad-org.apache.storm.grouping.LoadMapping-">refreshLoad</a></span>(<a href="../../../../../org/apache/storm/grouping/LoadMapping.html" title="class in org.apache.storm.grouping">LoadMapping</a>&nbsp;loadMapping)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -218,6 +242,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

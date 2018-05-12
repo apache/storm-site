@@ -154,6 +154,9 @@
 
 <p>First, an example:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="n">TridentTopology</span> <span class="n">topo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TridentTopology</span><span class="o">();</span>
+    <span class="n">topo</span><span class="o">.</span><span class="na">setResourceDefaults</span><span class="o">(</span><span class="k">new</span> <span class="n">DefaultResourceDeclarer</span><span class="o">();</span>
+                                                          <span class="o">.</span><span class="na">setMemoryLoad</span><span class="o">(</span><span class="mi">128</span><span class="o">)</span>
+                                                          <span class="o">.</span><span class="na">setCPULoad</span><span class="o">(</span><span class="mi">20</span><span class="o">));</span>
     <span class="n">TridentState</span> <span class="n">wordCounts</span> <span class="o">=</span>
         <span class="n">topology</span>
             <span class="o">.</span><span class="na">newStream</span><span class="o">(</span><span class="s">"words"</span><span class="o">,</span> <span class="n">feeder</span><span class="o">)</span>
@@ -167,6 +170,7 @@
             <span class="o">.</span><span class="na">parallelismHint</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
             <span class="o">.</span><span class="na">setCPULoad</span><span class="o">(</span><span class="mi">50</span><span class="o">)</span>
             <span class="o">.</span><span class="na">setMemoryLoad</span><span class="o">(</span><span class="mi">1024</span><span class="o">)</span>
+            <span class="o">.</span><span class="na">each</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word!"</span><span class="o">),</span> <span class="k">new</span> <span class="n">QMarkAdder</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word!?"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">groupBy</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word!"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">persistentAggregate</span><span class="o">(</span><span class="k">new</span> <span class="n">MemoryMapState</span><span class="o">.</span><span class="na">Factory</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Count</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"count"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">setCPULoad</span><span class="o">(</span><span class="mi">100</span><span class="o">)</span>
@@ -181,13 +185,13 @@ Operations that are combined by Trident into single Bolts will have their resour
 
 <ul>
 <li>a spout and spout coordinator with a CPU load of 20% each, and a memory load of 512MiB on-heap and 256MiB off-heap.</li>
-<li>a bolt with 60% cpu load (10% + 50%) and a memory load of 1536MiB (1024 + 512) on-heap from the combined <code>Split</code> and <code>BangAdder</code></li>
+<li>a bolt with 80% cpu load (10% + 50% + 20%) and a memory load of 1664MiB (1024 + 512 + 128) on-heap from the combined <code>Split</code> and <code>BangAdder</code> and the <code>QMarkAdder</code> which used the default resources contained in the DefaultResourceDeclarer</li>
 <li>a bolt with 100% cpu load and a memory load of 2048MiB on-heap, with default value for off-heap.</li>
 </ul>
 
-<p>The API can be called as many times as is desired.
-It may be called after every operation, after some of the operations, or used in the same manner as <code>parallelismHint()</code> to set resources for a whole section.
-Resource declarations have the same <em>boundaries</em> as parallelism hints. They don&#39;t cross any groupings, shufflings, or any other kind of repartitioning.</p>
+<p>Resource declarations may be called after any operation. The operations without explicit resources will get the defaults. If you choose to set resources for only some operations, defaults must be declared, or topology submission will fail.
+Resource declarations have the same <em>boundaries</em> as parallelism hints. They don&#39;t cross any groupings, shufflings, or any other kind of repartitioning.
+Resources are declared per operation, but get combined within boundaries.</p>
 
 
 

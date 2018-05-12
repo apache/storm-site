@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -131,33 +131,51 @@ var activeTableTab = "activeTableTab";
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../../org/apache/storm/grouping/Load.html" title="class in org.apache.storm.grouping">Load</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IConnection.html#getLoad-java.util.Collection-">getLoad</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;tasks)</code>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../../org/apache/storm/grouping/Load.html" title="class in org.apache.storm.grouping">Load</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IConnection.html#getLoad-java.util.Collection-">getLoad</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;tasks)</code>
 <div class="block">Get the current load for the given tasks</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IConnection.html#getPort--">getPort</a></span>()</code>
+<div class="block">Get the port for this connection</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IConnection.html#registerNewConnectionResponse-java.util.function.Supplier-">registerNewConnectionResponse</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;cb)</code>
+<div class="block">Register a response generator to be used to send an initial response when a new client connects.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IConnection.html#registerRecv-org.apache.storm.messaging.IConnectionCallback-">registerRecv</a></span>(<a href="../../../../org/apache/storm/messaging/IConnectionCallback.html" title="interface in org.apache.storm.messaging">IConnectionCallback</a>&nbsp;cb)</code>
 <div class="block">Register a callback to be notified when data is ready to be processed.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IConnection.html#send-int-byte:A-">send</a></span>(int&nbsp;taskId,
     byte[]&nbsp;payload)</code>
 <div class="block">send a message with taskId and payload</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IConnection.html#send-java.util.Iterator-">send</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;msgs)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IConnection.html#send-java.util.Iterator-">send</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;msgs)</code>
 <div class="block">send batch messages</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IConnection.html#sendLoadMetrics-java.util.Map-">sendLoadMetrics</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a>&gt;&nbsp;taskToLoad)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IConnection.html#sendBackPressureStatus-org.apache.storm.messaging.netty.BackPressureStatus-">sendBackPressureStatus</a></span>(<a href="../../../../org/apache/storm/messaging/netty/BackPressureStatus.html" title="class in org.apache.storm.messaging.netty">BackPressureStatus</a>&nbsp;bpStatus)</code>
+<div class="block">Sends the back pressure metrics to all downstream connections.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/messaging/IConnection.html#sendLoadMetrics-java.util.Map-">sendLoadMetrics</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a>&gt;&nbsp;taskToLoad)</code>
 <div class="block">Send load metrics to all downstream connections.</div>
 </td>
 </tr>
@@ -190,18 +208,42 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
+<a name="registerNewConnectionResponse-java.util.function.Supplier-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>registerNewConnectionResponse</h4>
+<pre>void&nbsp;registerNewConnectionResponse(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html?is-external=true" title="class or interface in java.util.function">Supplier</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;cb)</pre>
+<div class="block"><p>Register a response generator to be used to send an initial response when a new client connects.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>cb</code> - the callback to process the connection.</dd>
+</dl>
+</li>
+</ul>
 <a name="sendLoadMetrics-java.util.Map-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sendLoadMetrics</h4>
-<pre>void&nbsp;sendLoadMetrics(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a>&gt;&nbsp;taskToLoad)</pre>
+<pre>void&nbsp;sendLoadMetrics(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a>&gt;&nbsp;taskToLoad)</pre>
 <div class="block"><p>Send load metrics to all downstream connections.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>taskToLoad</code> - a map from the task id to the load for that task.</dd>
 </dl>
+</li>
+</ul>
+<a name="sendBackPressureStatus-org.apache.storm.messaging.netty.BackPressureStatus-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendBackPressureStatus</h4>
+<pre>void&nbsp;sendBackPressureStatus(<a href="../../../../org/apache/storm/messaging/netty/BackPressureStatus.html" title="class in org.apache.storm.messaging.netty">BackPressureStatus</a>&nbsp;bpStatus)</pre>
+<div class="block"><p>Sends the back pressure metrics to all downstream connections.</p></div>
 </li>
 </ul>
 <a name="send-int-byte:A-">
@@ -226,7 +268,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>send</h4>
-<pre>void&nbsp;send(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;msgs)</pre>
+<pre>void&nbsp;send(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;msgs)</pre>
 <div class="block"><p>send batch messages</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -240,13 +282,27 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getLoad</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../../org/apache/storm/grouping/Load.html" title="class in org.apache.storm.grouping">Load</a>&gt;&nbsp;getLoad(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;tasks)</pre>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="../../../../org/apache/storm/grouping/Load.html" title="class in org.apache.storm.grouping">Load</a>&gt;&nbsp;getLoad(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;tasks)</pre>
 <div class="block"><p>Get the current load for the given tasks</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>tasks</code> - the tasks to look for.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a Load for each of the tasks it knows about.</dd>
+</dl>
+</li>
+</ul>
+<a name="getPort--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getPort</h4>
+<pre>int&nbsp;getPort()</pre>
+<div class="block"><p>Get the port for this connection</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The port this connection is using</dd>
 </dl>
 </li>
 </ul>
@@ -333,6 +389,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

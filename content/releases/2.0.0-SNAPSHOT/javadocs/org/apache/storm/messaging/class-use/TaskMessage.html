@@ -83,18 +83,14 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><a href="#org.apache.storm.daemon.worker">org.apache.storm.daemon.worker</a></td>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.messaging">org.apache.storm.messaging</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.messaging.netty">org.apache.storm.messaging.netty</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.utils">org.apache.storm.utils</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -103,30 +99,26 @@
 </li>
 <li class="blockList">
 <ul class="blockList">
-<li class="blockList"><a name="org.apache.storm.daemon.worker">
+<li class="blockList"><a name="org.apache.storm.messaging">
 <!--   -->
 </a>
-<h3>Uses of <a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a> in <a href="../../../../../org/apache/storm/daemon/worker/package-summary.html">org.apache.storm.daemon.worker</a></h3>
+<h3>Uses of <a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a> in <a href="../../../../../org/apache/storm/messaging/package-summary.html">org.apache.storm.messaging</a></h3>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
-<caption><span>Method parameters in <a href="../../../../../org/apache/storm/daemon/worker/package-summary.html">org.apache.storm.daemon.worker</a> with type arguments of type <a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a></span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>Methods in <a href="../../../../../org/apache/storm/messaging/package-summary.html">org.apache.storm.messaging</a> with parameters of type <a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">WorkerState.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/worker/WorkerState.html#sendTuplesToRemoteWorker-java.util.HashMap-long-boolean-">sendTuplesToRemoteWorker</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html?is-external=true" title="class or interface in java.util">ArrayList</a>&lt;<a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&gt;&nbsp;packets,
-                        long&nbsp;seqId,
-                        boolean&nbsp;batchEnd)</code>&nbsp;</td>
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><span class="typeNameLabel">DeserializingConnectionCallback.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/messaging/DeserializingConnectionCallback.html#updateMetrics-int-org.apache.storm.messaging.TaskMessage-">updateMetrics</a></span>(int&nbsp;sourceTaskId,
+             <a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&nbsp;message)</code>
+<div class="block">Update serialized byte counts for each message.</div>
+</td>
 </tr>
 </tbody>
 </table>
-</li>
-<li class="blockList"><a name="org.apache.storm.messaging">
-<!--   -->
-</a>
-<h3>Uses of <a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a> in <a href="../../../../../org/apache/storm/messaging/package-summary.html">org.apache.storm.messaging</a></h3>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
 <caption><span>Method parameters in <a href="../../../../../org/apache/storm/messaging/package-summary.html">org.apache.storm.messaging</a> with type arguments of type <a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -136,17 +128,17 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">IConnectionCallback.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/messaging/IConnectionCallback.html#recv-java.util.List-">recv</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;batch)</code>
+<td class="colLast"><span class="typeNameLabel">IConnectionCallback.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/messaging/IConnectionCallback.html#recv-java.util.List-">recv</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;batch)</code>
 <div class="block">A batch of new messages have arrived to be processed</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">DeserializingConnectionCallback.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/messaging/DeserializingConnectionCallback.html#recv-java.util.List-">recv</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;batch)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">DeserializingConnectionCallback.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/messaging/DeserializingConnectionCallback.html#recv-java.util.List-">recv</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;batch)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">IConnection.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/messaging/IConnection.html#send-java.util.Iterator-">send</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;msgs)</code>
+<td class="colLast"><span class="typeNameLabel">IConnection.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/messaging/IConnection.html#send-java.util.Iterator-">send</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;msgs)</code>
 <div class="block">send batch messages</div>
 </td>
 </tr>
@@ -179,7 +171,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">Client.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/messaging/netty/Client.html#send-java.util.Iterator-">send</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;msgs)</code>
+<td class="colLast"><span class="typeNameLabel">Client.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/messaging/netty/Client.html#send-java.util.Iterator-">send</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&nbsp;msgs)</code>
 <div class="block">Enqueue task messages to be sent to the remote destination (cf.</div>
 </td>
 </tr>
@@ -191,7 +183,7 @@
 </a>
 <h3>Uses of <a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a> in <a href="../../../../../org/apache/storm/utils/package-summary.html">org.apache.storm.utils</a></h3>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
-<caption><span>Method parameters in <a href="../../../../../org/apache/storm/utils/package-summary.html">org.apache.storm.utils</a> with type arguments of type <a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a></span><span class="tabEnd">&nbsp;</span></caption>
+<caption><span>Methods in <a href="../../../../../org/apache/storm/utils/package-summary.html">org.apache.storm.utils</a> with parameters of type <a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -199,7 +191,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">TransferDrainer.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/utils/TransferDrainer.html#add-java.util.HashMap-">add</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html?is-external=true" title="class or interface in java.util">HashMap</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html?is-external=true" title="class or interface in java.util">ArrayList</a>&lt;<a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&gt;&gt;&nbsp;taskTupleSetMap)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">TransferDrainer.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/utils/TransferDrainer.html#add-org.apache.storm.messaging.TaskMessage-">add</a></span>(<a href="../../../../../org/apache/storm/messaging/TaskMessage.html" title="class in org.apache.storm.messaging">TaskMessage</a>&nbsp;taskMsg)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -259,6 +251,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

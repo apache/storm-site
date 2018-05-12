@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueStateProvider.html" title="class in org.apache.storm.redis.state"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueStateIterator.html" title="class in org.apache.storm.redis.state"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/redis/state/RedisKeyValueState.html" target="_top">Frames</a></li>
@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.redis.state.RedisKeyValueState&lt;K,V&gt;</li>
@@ -109,12 +109,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;K,V&gt;, <a href="../../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html?is-external=true" title="class or interface in java.util">Map.Entry</a>&lt;K,V&gt;&gt;, <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;K,V&gt;, <a href="../../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">RedisKeyValueState&lt;K,V&gt;</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;K,V&gt;</pre>
 <div class="block"><p>A redis based implementation that persists the state in Redis.</p></div>
 </li>
@@ -123,6 +123,29 @@ implements <a href="../../../../../org/apache/storm/state/KeyValueState.html" ti
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/util/NavigableMap.html?is-external=true" title="class or interface in java.util">NavigableMap</a>&lt;byte[],byte[]&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#EMPTY_PENDING_COMMIT_MAP">EMPTY_PENDING_COMMIT_MAP</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#ITERATOR_CHUNK_SIZE">ITERATOR_CHUNK_SIZE</a></span></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -135,21 +158,27 @@ implements <a href="../../../../../org/apache/storm/state/KeyValueState.html" ti
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.container.JedisCommandsInstanceContainer-org.apache.storm.state.Serializer-org.apache.storm.state.Serializer-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
-                  <a href="../../../../../org/apache/storm/redis/common/container/JedisCommandsInstanceContainer.html" title="interface in org.apache.storm.redis.common.container">JedisCommandsInstanceContainer</a>&nbsp;jedisContainer,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.config.JedisClusterConfig-org.apache.storm.state.Serializer-org.apache.storm.state.Serializer-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+                  <a href="../../../../../org/apache/storm/redis/common/config/JedisClusterConfig.html" title="class in org.apache.storm.redis.common.config">JedisClusterConfig</a>&nbsp;jedisClusterConfig,
                   <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&gt;&nbsp;keySerializer,
                   <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&gt;&nbsp;valueSerializer)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.config.JedisPoolConfig-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.config.JedisPoolConfig-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                   <a href="../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;poolConfig)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.config.JedisPoolConfig-org.apache.storm.state.Serializer-org.apache.storm.state.Serializer-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.config.JedisPoolConfig-org.apache.storm.state.Serializer-org.apache.storm.state.Serializer-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                   <a href="../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;poolConfig,
+                  <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&gt;&nbsp;keySerializer,
+                  <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&gt;&nbsp;valueSerializer)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.container.RedisCommandsInstanceContainer-org.apache.storm.state.Serializer-org.apache.storm.state.Serializer-">RedisKeyValueState</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+                  <a href="../../../../../org/apache/storm/redis/common/container/RedisCommandsInstanceContainer.html" title="interface in org.apache.storm.redis.common.container">RedisCommandsInstanceContainer</a>&nbsp;container,
                   <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&gt;&nbsp;keySerializer,
                   <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&gt;&nbsp;valueSerializer)</code>&nbsp;</td>
 </tr>
@@ -182,31 +211,41 @@ implements <a href="../../../../../org/apache/storm/state/KeyValueState.html" ti
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#delete-K-">delete</a></span>(<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&nbsp;key)</code>
+<div class="block">Deletes the value mapped to the key, if there is any</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#get-K-">get</a></span>(<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&nbsp;key)</code>
 <div class="block">Returns the value mapped to the key</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#get-K-V-">get</a></span>(<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&nbsp;key,
    <a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&nbsp;defaultValue)</code>
 <div class="block">Returns the value mapped to the key or defaultValue if no mapping is found.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html?is-external=true" title="class or interface in java.util">Map.Entry</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>,<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#iterator--">iterator</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#prepareCommit-long-">prepareCommit</a></span>(long&nbsp;txid)</code>
 <div class="block">Invoked by the framework to prepare a transaction for commit.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#put-K-V-">put</a></span>(<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&nbsp;key,
    <a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&nbsp;value)</code>
 <div class="block">Maps the value with the key</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html#rollback--">rollback</a></span>()</code>
 <div class="block">Rollback a prepared transaction to the previously committed state.</div>
@@ -217,8 +256,15 @@ implements <a href="../../../../../org/apache/storm/state/KeyValueState.html" ti
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.java.lang.Iterable">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true#forEach-java.util.function.Consumer-" title="class or interface in java.lang">forEach</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true#spliterator--" title="class or interface in java.lang">spliterator</a></code></li>
 </ul>
 </li>
 </ul>
@@ -228,6 +274,36 @@ implements <a href="../../../../../org/apache/storm/state/KeyValueState.html" ti
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a name="ITERATOR_CHUNK_SIZE">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>ITERATOR_CHUNK_SIZE</h4>
+<pre>public static final&nbsp;int ITERATOR_CHUNK_SIZE</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../constant-values.html#org.apache.storm.redis.state.RedisKeyValueState.ITERATOR_CHUNK_SIZE">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a name="EMPTY_PENDING_COMMIT_MAP">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>EMPTY_PENDING_COMMIT_MAP</h4>
+<pre>public static final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/NavigableMap.html?is-external=true" title="class or interface in java.util">NavigableMap</a>&lt;byte[],byte[]&gt; EMPTY_PENDING_COMMIT_MAP</pre>
+</li>
+</ul>
+</li>
+</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -240,7 +316,7 @@ implements <a href="../../../../../org/apache/storm/state/KeyValueState.html" ti
 <ul class="blockList">
 <li class="blockList">
 <h4>RedisKeyValueState</h4>
-<pre>public&nbsp;RedisKeyValueState(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace)</pre>
+<pre>public&nbsp;RedisKeyValueState(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace)</pre>
 </li>
 </ul>
 <a name="RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.config.JedisPoolConfig-">
@@ -249,7 +325,7 @@ implements <a href="../../../../../org/apache/storm/state/KeyValueState.html" ti
 <ul class="blockList">
 <li class="blockList">
 <h4>RedisKeyValueState</h4>
-<pre>public&nbsp;RedisKeyValueState(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+<pre>public&nbsp;RedisKeyValueState(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                           <a href="../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;poolConfig)</pre>
 </li>
 </ul>
@@ -259,20 +335,32 @@ implements <a href="../../../../../org/apache/storm/state/KeyValueState.html" ti
 <ul class="blockList">
 <li class="blockList">
 <h4>RedisKeyValueState</h4>
-<pre>public&nbsp;RedisKeyValueState(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+<pre>public&nbsp;RedisKeyValueState(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
                           <a href="../../../../../org/apache/storm/redis/common/config/JedisPoolConfig.html" title="class in org.apache.storm.redis.common.config">JedisPoolConfig</a>&nbsp;poolConfig,
                           <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&gt;&nbsp;keySerializer,
                           <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&gt;&nbsp;valueSerializer)</pre>
 </li>
 </ul>
-<a name="RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.container.JedisCommandsInstanceContainer-org.apache.storm.state.Serializer-org.apache.storm.state.Serializer-">
+<a name="RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.config.JedisClusterConfig-org.apache.storm.state.Serializer-org.apache.storm.state.Serializer-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>RedisKeyValueState</h4>
+<pre>public&nbsp;RedisKeyValueState(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+                          <a href="../../../../../org/apache/storm/redis/common/config/JedisClusterConfig.html" title="class in org.apache.storm.redis.common.config">JedisClusterConfig</a>&nbsp;jedisClusterConfig,
+                          <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&gt;&nbsp;keySerializer,
+                          <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&gt;&nbsp;valueSerializer)</pre>
+</li>
+</ul>
+<a name="RedisKeyValueState-java.lang.String-org.apache.storm.redis.common.container.RedisCommandsInstanceContainer-org.apache.storm.state.Serializer-org.apache.storm.state.Serializer-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>RedisKeyValueState</h4>
-<pre>public&nbsp;RedisKeyValueState(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
-                          <a href="../../../../../org/apache/storm/redis/common/container/JedisCommandsInstanceContainer.html" title="interface in org.apache.storm.redis.common.container">JedisCommandsInstanceContainer</a>&nbsp;jedisContainer,
+<pre>public&nbsp;RedisKeyValueState(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+                          <a href="../../../../../org/apache/storm/redis/common/container/RedisCommandsInstanceContainer.html" title="interface in org.apache.storm.redis.common.container">RedisCommandsInstanceContainer</a>&nbsp;container,
                           <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&gt;&nbsp;keySerializer,
                           <a href="../../../../../org/apache/storm/state/Serializer.html" title="interface in org.apache.storm.state">Serializer</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&gt;&nbsp;valueSerializer)</pre>
 </li>
@@ -347,6 +435,38 @@ implements <a href="../../../../../org/apache/storm/state/KeyValueState.html" ti
 <dd><code>defaultValue</code> - the value to return if no mapping is found</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the value or defaultValue if no mapping is found</dd>
+</dl>
+</li>
+</ul>
+<a name="delete-java.lang.Object-">
+<!--   -->
+</a><a name="delete-K-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>delete</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&nbsp;delete(<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>&nbsp;key)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/state/KeyValueState.html#delete-K-">KeyValueState</a></code></span></div>
+<div class="block"><p>Deletes the value mapped to the key, if there is any</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../org/apache/storm/state/KeyValueState.html#delete-K-">delete</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>,<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - the key</dd>
+</dl>
+</li>
+</ul>
+<a name="iterator--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>iterator</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html?is-external=true" title="class or interface in java.util">Map.Entry</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>,<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&gt;&gt;&nbsp;iterator()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true#iterator--" title="class or interface in java.lang">iterator</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html?is-external=true" title="class or interface in java.util">Map.Entry</a>&lt;<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">K</a>,<a href="../../../../../org/apache/storm/redis/state/RedisKeyValueState.html" title="type parameter in RedisKeyValueState">V</a>&gt;&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -447,7 +567,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueStateProvider.html" title="class in org.apache.storm.redis.state"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/redis/state/RedisKeyValueStateIterator.html" title="class in org.apache.storm.redis.state"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/redis/state/RedisKeyValueState.html" target="_top">Frames</a></li>
@@ -472,13 +592,13 @@ hljs.initHighlightingOnLoad();
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -487,6 +607,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

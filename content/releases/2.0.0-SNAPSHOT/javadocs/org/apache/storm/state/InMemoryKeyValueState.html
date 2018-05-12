@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.state.InMemoryKeyValueState&lt;K,V&gt;</li>
@@ -109,12 +109,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;K,V&gt;, <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html?is-external=true" title="class or interface in java.util">Map.Entry</a>&lt;K,V&gt;&gt;, <a href="../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;K,V&gt;, <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">InMemoryKeyValueState&lt;K,V&gt;</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;K,V&gt;</pre>
 <div class="block"><p>An in-memory implementation of the <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state"><code>State</code></a></p></div>
 </li>
@@ -166,38 +166,48 @@ implements <a href="../../../../org/apache/storm/state/KeyValueState.html" title
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">V</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html#delete-K-">delete</a></span>(<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">K</a>&nbsp;key)</code>
+<div class="block">Deletes the value mapped to the key, if there is any</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">V</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html#get-K-">get</a></span>(<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">K</a>&nbsp;key)</code>
 <div class="block">Returns the value mapped to the key</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">V</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html#get-K-V-">get</a></span>(<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">K</a>&nbsp;key,
    <a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">V</a>&nbsp;defaultValue)</code>
 <div class="block">Returns the value mapped to the key or defaultValue if no mapping is found.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html?is-external=true" title="class or interface in java.util">Map.Entry</a>&lt;<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">K</a>,<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">V</a>&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html#iterator--">iterator</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html#prepareCommit-long-">prepareCommit</a></span>(long&nbsp;txid)</code>
 <div class="block">Invoked by the framework to prepare a transaction for commit.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html#put-K-V-">put</a></span>(<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">K</a>&nbsp;key,
    <a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">V</a>&nbsp;value)</code>
 <div class="block">Maps the value with the key</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html#rollback--">rollback</a></span>()</code>
 <div class="block">Rollback a prepared transaction to the previously committed state.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
@@ -205,8 +215,15 @@ implements <a href="../../../../org/apache/storm/state/KeyValueState.html" title
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.java.lang.Iterable">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true#forEach-java.util.function.Consumer-" title="class or interface in java.lang">forEach</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true#spliterator--" title="class or interface in java.lang">spliterator</a></code></li>
 </ul>
 </li>
 </ul>
@@ -304,6 +321,38 @@ implements <a href="../../../../org/apache/storm/state/KeyValueState.html" title
 </dl>
 </li>
 </ul>
+<a name="delete-java.lang.Object-">
+<!--   -->
+</a><a name="delete-K-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>delete</h4>
+<pre>public&nbsp;<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">V</a>&nbsp;delete(<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">K</a>&nbsp;key)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../org/apache/storm/state/KeyValueState.html#delete-K-">KeyValueState</a></code></span></div>
+<div class="block"><p>Deletes the value mapped to the key, if there is any</p></div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/state/KeyValueState.html#delete-K-">delete</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../org/apache/storm/state/KeyValueState.html" title="interface in org.apache.storm.state">KeyValueState</a>&lt;<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">K</a>,<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">V</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - the key</dd>
+</dl>
+</li>
+</ul>
+<a name="iterator--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>iterator</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html?is-external=true" title="class or interface in java.util">Iterator</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html?is-external=true" title="class or interface in java.util">Map.Entry</a>&lt;<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">K</a>,<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">V</a>&gt;&gt;&nbsp;iterator()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true#iterator--" title="class or interface in java.lang">iterator</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html?is-external=true" title="class or interface in java.lang">Iterable</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.Entry.html?is-external=true" title="class or interface in java.util">Map.Entry</a>&lt;<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">K</a>,<a href="../../../../org/apache/storm/state/InMemoryKeyValueState.html" title="type parameter in InMemoryKeyValueState">V</a>&gt;&gt;</code></dd>
+</dl>
+</li>
+</ul>
 <a name="commit--">
 <!--   -->
 </a>
@@ -374,10 +423,10 @@ implements <a href="../../../../org/apache/storm/state/KeyValueState.html" title
 <ul class="blockListLast">
 <li class="blockList">
 <h4>toString</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -454,6 +503,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

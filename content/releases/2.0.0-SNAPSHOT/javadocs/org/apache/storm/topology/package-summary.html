@@ -142,7 +142,7 @@ Common methods for stateful components in the topology.</div>
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/topology/IStatefulWindowedBolt.html" title="interface in org.apache.storm.topology">IStatefulWindowedBolt</a>&lt;T extends <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>&gt;</td>
 <td class="colLast">
-<div class="block">A windowed bolt abstraction for supporting windowing operation with state</div>
+<div class="block">A windowed bolt abstraction for supporting windowing operation with state.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -205,25 +205,61 @@ Common methods for stateful components in the topology.</div>
 </td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/topology/ConfigurableTopology.html" title="class in org.apache.storm.topology">ConfigurableTopology</a></td>
+<td class="colLast">
+<div class="block">Extensions of this class takes a reference to one or more configuration files.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/topology/OutputFieldsGetter.html" title="class in org.apache.storm.topology">OutputFieldsGetter</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><a href="../../../../org/apache/storm/topology/StatefulBoltExecutor.html" title="class in org.apache.storm.topology">StatefulBoltExecutor</a>&lt;T extends <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>&gt;</td>
-<td class="colLast">
-<div class="block">Wraps a <a href="../../../../org/apache/storm/topology/IStatefulBolt.html" title="interface in org.apache.storm.topology"><code>IStatefulBolt</code></a> and manages the state of the bolt.</div>
-</td>
-</tr>
 <tr class="altColor">
-<td class="colFirst"><a href="../../../../org/apache/storm/topology/StatefulWindowedBoltExecutor.html" title="class in org.apache.storm.topology">StatefulWindowedBoltExecutor</a>&lt;T extends <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>&gt;</td>
+<td class="colFirst"><a href="../../../../org/apache/storm/topology/PersistentWindowedBoltExecutor.html" title="class in org.apache.storm.topology">PersistentWindowedBoltExecutor</a>&lt;T extends <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>&gt;</td>
 <td class="colLast">
 <div class="block">Wraps a <a href="../../../../org/apache/storm/topology/IStatefulWindowedBolt.html" title="interface in org.apache.storm.topology"><code>IStatefulWindowedBolt</code></a> and handles the execution.</div>
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/topology/SharedOffHeapWithinNode.html" title="class in org.apache.storm.topology">SharedOffHeapWithinNode</a></td>
+<td class="colLast">
+<div class="block">A request for a shared memory region off heap between workers on a node</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/topology/SharedOffHeapWithinWorker.html" title="class in org.apache.storm.topology">SharedOffHeapWithinWorker</a></td>
+<td class="colLast">
+<div class="block">A request for a shared memory region off heap, but only within a worker.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/topology/SharedOnHeap.html" title="class in org.apache.storm.topology">SharedOnHeap</a></td>
+<td class="colLast">
+<div class="block">A request for a shared memory region on heap.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/topology/StatefulBoltExecutor.html" title="class in org.apache.storm.topology">StatefulBoltExecutor</a>&lt;T extends <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>&gt;</td>
+<td class="colLast">
+<div class="block">Wraps a <a href="../../../../org/apache/storm/topology/IStatefulBolt.html" title="interface in org.apache.storm.topology"><code>IStatefulBolt</code></a> and manages the state of the bolt.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/topology/StatefulWindowedBoltExecutor.html" title="class in org.apache.storm.topology">StatefulWindowedBoltExecutor</a>&lt;T extends <a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>&gt;</td>
+<td class="colLast">
+<div class="block">Wraps a <a href="../../../../org/apache/storm/topology/IStatefulWindowedBolt.html" title="interface in org.apache.storm.topology"><code>IStatefulWindowedBolt</code></a> and handles the execution.</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><a href="../../../../org/apache/storm/topology/TopologyBuilder.html" title="class in org.apache.storm.topology">TopologyBuilder</a></td>
 <td class="colLast">
 <div class="block">TopologyBuilder exposes the Java API for specifying a topology for Storm to execute.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="../../../../org/apache/storm/topology/TupleFieldTimestampExtractor.html" title="class in org.apache.storm.topology">TupleFieldTimestampExtractor</a></td>
+<td class="colLast">
+<div class="block">A <a href="../../../../org/apache/storm/windowing/TimestampExtractor.html" title="interface in org.apache.storm.windowing"><code>TimestampExtractor</code></a> that extracts timestamp from a specific field in the tuple.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -307,6 +343,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

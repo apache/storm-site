@@ -101,16 +101,16 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html?is-external=true" title="class or interface in java.io">Closeable</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.html?is-external=true" title="class or interface in java.io">Closeable</a></dd>
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/storm/zookeeper/LeaderElectorImp.html" title="class in org.apache.storm.zookeeper">LeaderElectorImp</a></dd>
+<dd><a href="../../../../org/apache/storm/zookeeper/LeaderElectorImp.html" title="class in org.apache.storm.zookeeper">LeaderElectorImp</a>, <a href="../../../../org/apache/storm/testing/MockLeaderElector.html" title="class in org.apache.storm.testing">MockLeaderElector</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">ILeaderElector</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html?is-external=true" title="class or interface in java.io">Closeable</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.html?is-external=true" title="class or interface in java.io">Closeable</a></pre>
 <div class="block"><p>The interface for leader election.</p></div>
 </li>
 </ul>
@@ -143,20 +143,26 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ILeaderElector.html#getAllNimbuses--">getAllNimbuses</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ILeaderElector.html#getAllNimbuses--">getAllNimbuses</a></span>()</code>
+<div class="block">Get list of current nimbus addresses.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ILeaderElector.html#getLeader--">getLeader</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ILeaderElector.html#getLeader--">getLeader</a></span>()</code>
+<div class="block">Get the current leader&rsquo;s address.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ILeaderElector.html#isLeader--">isLeader</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ILeaderElector.html#isLeader--">isLeader</a></span>()</code>
+<div class="block">Decide if the caller currently has the leader lock.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ILeaderElector.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ILeaderElector.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>
 <div class="block">Method guaranteed to be called as part of initialization of leader elector instance.</div>
 </td>
 </tr>
@@ -187,7 +193,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</pre>
+<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
 <div class="block"><p>Method guaranteed to be called as part of initialization of leader elector instance.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -202,11 +208,11 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html
 <li class="blockList">
 <h4>addToLeaderLockQueue</h4>
 <pre>void&nbsp;addToLeaderLockQueue()
-                   throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+                   throws <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
 <div class="block"><p>queue up for leadership lock. The call returns immediately and the caller must check isLeader() to perform any leadership action. This method can be called multiple times so it needs to be idempotent.</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -217,11 +223,11 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html
 <li class="blockList">
 <h4>removeFromLeaderLockQueue</h4>
 <pre>void&nbsp;removeFromLeaderLockQueue()
-                        throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+                        throws <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
 <div class="block"><p>Removes the caller from the leader lock queue. If the caller is leader also releases the lock. This method can be called multiple times so it needs to be idempotent.</p></div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -232,12 +238,13 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html
 <li class="blockList">
 <h4>isLeader</h4>
 <pre>boolean&nbsp;isLeader()
-          throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+          throws <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><p>Decide if the caller currently has the leader lock.</p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if the caller currently has the leader lock.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -248,6 +255,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html
 <li class="blockList">
 <h4>getLeader</h4>
 <pre><a href="../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&nbsp;getLeader()</pre>
+<div class="block"><p>Get the current leader&rsquo;s address.</p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the current leader&rsquo;s address , may return null if no one has the lock.</dd>
@@ -260,13 +268,14 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html
 <ul class="blockList">
 <li class="blockList">
 <h4>getAllNimbuses</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&gt;&nbsp;getAllNimbuses()
-                         throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus">NimbusInfo</a>&gt;&nbsp;getAllNimbuses()
+                         throws <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+<div class="block"><p>Get list of current nimbus addresses.</p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>list of current nimbus addresses, includes leader.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -280,9 +289,9 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html
 <div class="block"><p>Method called to allow for cleanup. once close this object can not be reused.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/AutoCloseable.html?is-external=true#close--" title="class or interface in java.lang">close</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true#close--" title="class or interface in java.lang">close</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html?is-external=true" title="class or interface in java.lang">AutoCloseable</a></code></dd>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html?is-external=true#close--" title="class or interface in java.io">close</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Closeable.html?is-external=true" title="class or interface in java.io">Closeable</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.html?is-external=true#close--" title="class or interface in java.io">close</a></code>&nbsp;in interface&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Closeable.html?is-external=true" title="class or interface in java.io">Closeable</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -359,6 +368,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

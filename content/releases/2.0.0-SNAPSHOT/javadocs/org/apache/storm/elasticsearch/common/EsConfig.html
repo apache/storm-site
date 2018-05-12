@@ -18,6 +18,12 @@
     catch(err) {
     }
 //-->
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
 </script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -71,13 +77,13 @@
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.java.lang.Object">Method</a></li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.top">
@@ -91,7 +97,7 @@
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.elasticsearch.common.EsConfig</li>
@@ -103,13 +109,13 @@
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">EsConfig</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
-implements <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+implements <a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></pre>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
 <dd>0.11</dd>
@@ -134,15 +140,12 @@ implements <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializabl
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#EsConfig-java.lang.String-java.lang.String:A-">EsConfig</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;clusterName,
-        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;nodes)</code>
-<div class="block">EsConfig Constructor to be used in EsIndexBolt, EsPercolateBolt and EsStateFactory</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#EsConfig--">EsConfig</a></span>()</code>
+<div class="block">EsConfig Constructor to be used in EsIndexBolt, EsPercolateBolt and EsStateFactory.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#EsConfig-java.lang.String-java.lang.String:A-java.util.Map-">EsConfig</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;clusterName,
-        <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;nodes,
-        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;additionalConfiguration)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#EsConfig-java.lang.String...-">EsConfig</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;urls)</code>
 <div class="block">EsConfig Constructor to be used in EsIndexBolt, EsPercolateBolt and EsStateFactory</div>
 </td>
 </tr>
@@ -155,12 +158,71 @@ implements <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializabl
 <!--   -->
 </a>
 <h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>org.apache.http.Header[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#getDefaultHeaders--">getDefaultHeaders</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>org.elasticsearch.client.RestClient.FailureListener</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#getFailureListener--">getFailureListener</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>org.elasticsearch.client.RestClientBuilder.HttpClientConfigCallback</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#getHttpClientConfigCallback--">getHttpClientConfigCallback</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>org.apache.http.HttpHost[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#getHttpHosts--">getHttpHosts</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#getMaxRetryTimeoutMillis--">getMaxRetryTimeoutMillis</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#getPathPrefix--">getPathPrefix</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>org.elasticsearch.client.RestClientBuilder.RequestConfigCallback</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#getRequestConfigCallback--">getRequestConfigCallback</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#withDefaultHeaders-org.apache.http.Header:A-">withDefaultHeaders</a></span>(org.apache.http.Header[]&nbsp;defaultHeaders)</code>&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#withFailureListener-org.elasticsearch.client.RestClient.FailureListener-">withFailureListener</a></span>(org.elasticsearch.client.RestClient.FailureListener&nbsp;failureListener)</code>&nbsp;</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#withHttpClientConfigCallback-org.elasticsearch.client.RestClientBuilder.HttpClientConfigCallback-">withHttpClientConfigCallback</a></span>(org.elasticsearch.client.RestClientBuilder.HttpClientConfigCallback&nbsp;httpClientConfigCallback)</code>&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#withMaxRetryTimeoutMillis-java.lang.Integer-">withMaxRetryTimeoutMillis</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;maxRetryTimeoutMillis)</code>&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#withPathPrefix-java.lang.String-">withPathPrefix</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;pathPrefix)</code>&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html#withRequestConfigCallback-org.elasticsearch.client.RestClientBuilder.RequestConfigCallback-">withRequestConfigCallback</a></span>(org.elasticsearch.client.RestClientBuilder.RequestConfigCallback&nbsp;requestConfigCallback)</code>&nbsp;</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -176,44 +238,156 @@ implements <a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializabl
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="EsConfig-java.lang.String-java.lang.String:A-">
+<a name="EsConfig--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>EsConfig</h4>
-<pre>public&nbsp;EsConfig(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;clusterName,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;nodes)</pre>
-<div class="block"><p>EsConfig Constructor to be used in EsIndexBolt, EsPercolateBolt and EsStateFactory</p></div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>clusterName</code> - Elasticsearch cluster name</dd>
-<dd><code>nodes</code> - Elasticsearch addresses in host:port pattern string array</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if nodes are empty</dd>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang">NullPointerException</a></code> - on any of the fields being null</dd>
-</dl>
+<pre>public&nbsp;EsConfig()</pre>
+<div class="block"><p>EsConfig Constructor to be used in EsIndexBolt, EsPercolateBolt and EsStateFactory. Connects to Elasticsearch at <a href="http://localhost:9200">http://localhost:9200</a>.</p></div>
 </li>
 </ul>
-<a name="EsConfig-java.lang.String-java.lang.String:A-java.util.Map-">
+<a name="EsConfig-java.lang.String...-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>EsConfig</h4>
-<pre>public&nbsp;EsConfig(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;clusterName,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>[]&nbsp;nodes,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;additionalConfiguration)</pre>
+<pre>public&nbsp;EsConfig(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;urls)</pre>
 <div class="block"><p>EsConfig Constructor to be used in EsIndexBolt, EsPercolateBolt and EsStateFactory</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>clusterName</code> - Elasticsearch cluster name</dd>
-<dd><code>nodes</code> - Elasticsearch addresses in host:port pattern string array</dd>
-<dd><code>additionalConfiguration</code> - Additional Elasticsearch configuration</dd>
+<dd><code>urls</code> - Elasticsearch addresses in <a href="scheme://host:port">scheme://host:port</a> pattern string array</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if nodes are empty</dd>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang">NullPointerException</a></code> - on any of the fields being null</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if urls are empty</dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/NullPointerException.html?is-external=true" title="class or interface in java.lang">NullPointerException</a></code> - on any of the fields being null</dd>
 </dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="withMaxRetryTimeoutMillis-java.lang.Integer-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withMaxRetryTimeoutMillis</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a>&nbsp;withMaxRetryTimeoutMillis(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;maxRetryTimeoutMillis)</pre>
+</li>
+</ul>
+<a name="withDefaultHeaders-org.apache.http.Header:A-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withDefaultHeaders</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a>&nbsp;withDefaultHeaders(org.apache.http.Header[]&nbsp;defaultHeaders)</pre>
+</li>
+</ul>
+<a name="withFailureListener-org.elasticsearch.client.RestClient.FailureListener-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withFailureListener</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a>&nbsp;withFailureListener(org.elasticsearch.client.RestClient.FailureListener&nbsp;failureListener)</pre>
+</li>
+</ul>
+<a name="withHttpClientConfigCallback-org.elasticsearch.client.RestClientBuilder.HttpClientConfigCallback-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withHttpClientConfigCallback</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a>&nbsp;withHttpClientConfigCallback(org.elasticsearch.client.RestClientBuilder.HttpClientConfigCallback&nbsp;httpClientConfigCallback)</pre>
+</li>
+</ul>
+<a name="withRequestConfigCallback-org.elasticsearch.client.RestClientBuilder.RequestConfigCallback-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withRequestConfigCallback</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a>&nbsp;withRequestConfigCallback(org.elasticsearch.client.RestClientBuilder.RequestConfigCallback&nbsp;requestConfigCallback)</pre>
+</li>
+</ul>
+<a name="withPathPrefix-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withPathPrefix</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/elasticsearch/common/EsConfig.html" title="class in org.apache.storm.elasticsearch.common">EsConfig</a>&nbsp;withPathPrefix(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;pathPrefix)</pre>
+</li>
+</ul>
+<a name="getHttpHosts--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getHttpHosts</h4>
+<pre>public&nbsp;org.apache.http.HttpHost[]&nbsp;getHttpHosts()</pre>
+</li>
+</ul>
+<a name="getMaxRetryTimeoutMillis--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getMaxRetryTimeoutMillis</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;getMaxRetryTimeoutMillis()</pre>
+</li>
+</ul>
+<a name="getDefaultHeaders--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDefaultHeaders</h4>
+<pre>public&nbsp;org.apache.http.Header[]&nbsp;getDefaultHeaders()</pre>
+</li>
+</ul>
+<a name="getFailureListener--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFailureListener</h4>
+<pre>public&nbsp;org.elasticsearch.client.RestClient.FailureListener&nbsp;getFailureListener()</pre>
+</li>
+</ul>
+<a name="getHttpClientConfigCallback--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getHttpClientConfigCallback</h4>
+<pre>public&nbsp;org.elasticsearch.client.RestClientBuilder.HttpClientConfigCallback&nbsp;getHttpClientConfigCallback()</pre>
+</li>
+</ul>
+<a name="getRequestConfigCallback--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRequestConfigCallback</h4>
+<pre>public&nbsp;org.elasticsearch.client.RestClientBuilder.RequestConfigCallback&nbsp;getRequestConfigCallback()</pre>
+</li>
+</ul>
+<a name="getPathPrefix--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getPathPrefix</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getPathPrefix()</pre>
 </li>
 </ul>
 </li>
@@ -276,19 +450,19 @@ hljs.initHighlightingOnLoad();
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.java.lang.Object">Method</a></li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.bottom">
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

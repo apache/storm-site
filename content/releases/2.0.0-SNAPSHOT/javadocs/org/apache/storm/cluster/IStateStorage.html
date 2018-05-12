@@ -106,7 +106,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">IStateStorage</span></pre>
-<div class="block"><p>StateStorage provides the API for the pluggable state store used by the Storm daemons. Data is stored in path/value format, and the store supports listing sub-paths at a given path. All data should be available across all nodes with eventual consistency.</p><p>IMPORTANT NOTE: Heartbeats have different api calls used to interact with them. The root path (/) may or may not be the same as the root path for the other api calls.</p><p>For example, performing these two calls:  set_data(&ldquo;/path&rdquo;, data, acls);  void set_worker_hb(&ldquo;/path&rdquo;, heartbeat, acls); may or may not cause a collision in &ldquo;/path&rdquo;. Never use the same paths with the <em>_hb</em> methods as you do with the others.</p></div>
+<div class="block"><p>StateStorage provides the API for the pluggable state store used by the Storm daemons. Data is stored in path/value format, and the store supports listing sub-paths at a given path. All data should be available across all nodes with eventual consistency.</p><p>IMPORTANT NOTE: Heartbeats have different api calls used to interact with them. The root path (/) may or may not be the same as the root path for the other api calls.</p><p>For example, performing these two calls: set_data(&ldquo;/path&rdquo;, data, acls); void set_worker_hb(&ldquo;/path&rdquo;, heartbeat, acls); may or may not cause a collision in &ldquo;/path&rdquo;. Never use the same paths with the <em>_hb</em> methods as you do with the others.</p></div>
 </li>
 </ul>
 </div>
@@ -138,127 +138,127 @@ var activeTableTab = "activeTableTab";
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#create_sequential-java.lang.String-byte:A-java.util.List-">create_sequential</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#create_sequential-java.lang.String-byte:A-java.util.List-">create_sequential</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                  byte[]&nbsp;data,
-                 <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>
+                 <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>
 <div class="block">Path will be appended with a monotonically increasing integer, a new node will be created there, and data will be put at that node.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#delete_node_blobstore-java.lang.String-java.lang.String-">delete_node_blobstore</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
-                     <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nimbusHostPortInfo)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#delete_node_blobstore-java.lang.String-java.lang.String-">delete_node_blobstore</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+                     <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nimbusHostPortInfo)</code>
 <div class="block">Allows us to delete the znodes within /storm/blobstore/key_name whose znodes start with the corresponding nimbusHostPortInfo</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#delete_node-java.lang.String-">delete_node</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#delete_node-java.lang.String-">delete_node</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</code>
 <div class="block">Deletes the node at a given path, and any child nodes that may exist.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#delete_worker_hb-java.lang.String-">delete_worker_hb</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#delete_worker_hb-java.lang.String-">delete_worker_hb</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</code>
 <div class="block">Deletes the heartbeat at a given path, and any child nodes that may exist.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_children-java.lang.String-boolean-">get_children</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_children-java.lang.String-boolean-">get_children</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
             boolean&nbsp;watch)</code>
 <div class="block">Get a list of paths of all the child nodes which exist immediately under path.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/cluster/VersionedData.html" title="class in org.apache.storm.cluster">VersionedData</a>&lt;byte[]&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_data_with_version-java.lang.String-boolean-">get_data_with_version</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_data_with_version-java.lang.String-boolean-">get_data_with_version</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                      boolean&nbsp;watch)</code>
 <div class="block">Get the data at the node along with its version.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>byte[]</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_data-java.lang.String-boolean-">get_data</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_data-java.lang.String-boolean-">get_data</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
         boolean&nbsp;watch)</code>
 <div class="block">Get the data from the node at path</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_version-java.lang.String-boolean-">get_version</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_version-java.lang.String-boolean-">get_version</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
            boolean&nbsp;watch)</code>
 <div class="block">Gets the &lsquo;version&rsquo; of the node at a path.</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_worker_hb_children-java.lang.String-boolean-">get_worker_hb_children</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_worker_hb_children-java.lang.String-boolean-">get_worker_hb_children</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                       boolean&nbsp;watch)</code>
 <div class="block">Get a list of paths of all the child nodes which exist immediately under path.</div>
 </td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>byte[]</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_worker_hb-java.lang.String-boolean-">get_worker_hb</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#get_worker_hb-java.lang.String-boolean-">get_worker_hb</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
              boolean&nbsp;watch)</code>
 <div class="block">Get the heartbeat from the node at path</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#mkdirs-java.lang.String-java.util.List-">mkdirs</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
-      <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#mkdirs-java.lang.String-java.util.List-">mkdirs</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>
 <div class="block">Creates nodes for path and all its parents.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#node_exists-java.lang.String-boolean-">node_exists</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#node_exists-java.lang.String-boolean-">node_exists</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
            boolean&nbsp;watch)</code>
 <div class="block">Check if a node exists and optionally set a watch on the path.</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#register-org.apache.storm.callback.ZKStateChangedCallback-">register</a></span>(<a href="../../../../org/apache/storm/callback/ZKStateChangedCallback.html" title="interface in org.apache.storm.callback">ZKStateChangedCallback</a>&nbsp;callback)</code>
 <div class="block">Registers a callback function that gets called when CuratorEvents happen.</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#set_data-java.lang.String-byte:A-java.util.List-">set_data</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#set_data-java.lang.String-byte:A-java.util.List-">set_data</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
         byte[]&nbsp;data,
-        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>
+        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>
 <div class="block">Set the value of the node at path to data.</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#set_ephemeral_node-java.lang.String-byte:A-java.util.List-">set_ephemeral_node</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#set_ephemeral_node-java.lang.String-byte:A-java.util.List-">set_ephemeral_node</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                   byte[]&nbsp;data,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>
 <div class="block">Creates an ephemeral node at path.</div>
 </td>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#set_worker_hb-java.lang.String-byte:A-java.util.List-">set_worker_hb</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#set_worker_hb-java.lang.String-byte:A-java.util.List-">set_worker_hb</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
              byte[]&nbsp;data,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</code>
 <div class="block">Write a worker heartbeat at the path.</div>
 </td>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#sync_path-java.lang.String-">sync_path</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#sync_path-java.lang.String-">sync_path</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</code>
 <div class="block">Force consistency on a path.</div>
 </td>
 </tr>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#unregister-java.lang.String-">unregister</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/cluster/IStateStorage.html#unregister-java.lang.String-">unregister</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</code>
 <div class="block">Unregisters a callback function that was registered with register(&hellip;).</div>
 </td>
 </tr>
@@ -283,11 +283,11 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>register</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;register(<a href="../../../../org/apache/storm/callback/ZKStateChangedCallback.html" title="interface in org.apache.storm.callback">ZKStateChangedCallback</a>&nbsp;callback)</pre>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;register(<a href="../../../../org/apache/storm/callback/ZKStateChangedCallback.html" title="interface in org.apache.storm.callback">ZKStateChangedCallback</a>&nbsp;callback)</pre>
 <div class="block"><p>Registers a callback function that gets called when CuratorEvents happen.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>callback</code> - is a clojure IFn that accepts the type - translated to clojure keyword as in zookeeper - and the path: (callback type path)</dd>
+<dd><code>callback</code> - is a clojure IFn that accepts the type - translated to clojure keyword as in zookeeper - and the path: (callback type  path)</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>is an id that can be passed to unregister(&hellip;) to unregister the callback.</dd>
 </dl>
@@ -299,7 +299,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>unregister</h4>
-<pre>void&nbsp;unregister(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</pre>
+<pre>void&nbsp;unregister(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</pre>
 <div class="block"><p>Unregisters a callback function that was registered with register(&hellip;).</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -313,9 +313,9 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>create_sequential</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;create_sequential(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;create_sequential(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                          byte[]&nbsp;data,
-                         <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</pre>
+                         <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</pre>
 <div class="block"><p>Path will be appended with a monotonically increasing integer, a new node will be created there, and data will be put at that node.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -333,8 +333,8 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>mkdirs</h4>
-<pre>void&nbsp;mkdirs(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
-            <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</pre>
+<pre>void&nbsp;mkdirs(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</pre>
 <div class="block"><p>Creates nodes for path and all its parents. Path elements are separated by a &ldquo;/&rdquo;, as in *nix filesystem notation. Equivalent to mkdir -p in *nix.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -349,7 +349,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>delete_node</h4>
-<pre>void&nbsp;delete_node(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</pre>
+<pre>void&nbsp;delete_node(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</pre>
 <div class="block"><p>Deletes the node at a given path, and any child nodes that may exist.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -363,9 +363,9 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>set_ephemeral_node</h4>
-<pre>void&nbsp;set_ephemeral_node(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre>void&nbsp;set_ephemeral_node(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                         byte[]&nbsp;data,
-                        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</pre>
+                        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</pre>
 <div class="block"><p>Creates an ephemeral node at path. Ephemeral nodes are destroyed by the store when the client disconnects.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -381,18 +381,18 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>get_version</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;get_version(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;get_version(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                     boolean&nbsp;watch)
-             throws <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
+             throws <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></pre>
 <div class="block"><p>Gets the &lsquo;version&rsquo; of the node at a path. Optionally sets a watch on that node. The version should increase whenever a write happens.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - The path to get the version of.</dd>
-<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the register method. Very useful for catching updates to nodes.</dd>
+<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the  register method. Very useful for catching updates to nodes.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The integer version of this node.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Exception.html?is-external=true" title="class or interface in java.lang">Exception</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -402,13 +402,13 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>node_exists</h4>
-<pre>boolean&nbsp;node_exists(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre>boolean&nbsp;node_exists(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                     boolean&nbsp;watch)</pre>
 <div class="block"><p>Check if a node exists and optionally set a watch on the path.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - The path to check for the existence of a node.</dd>
-<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the register method. Very useful for catching updates to nodes.</dd>
+<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the  register method. Very useful for catching updates to nodes.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Whether or not a node exists at path.</dd>
 </dl>
@@ -420,13 +420,13 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>get_children</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;get_children(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;get_children(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                           boolean&nbsp;watch)</pre>
 <div class="block"><p>Get a list of paths of all the child nodes which exist immediately under path.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - The path to look under</dd>
-<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the register method. Very useful for catching updates to nodes.</dd>
+<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the  register method. Very useful for catching updates to nodes.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>list of string paths under path.</dd>
 </dl>
@@ -448,9 +448,9 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>set_data</h4>
-<pre>void&nbsp;set_data(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre>void&nbsp;set_data(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
               byte[]&nbsp;data,
-              <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</pre>
+              <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</pre>
 <div class="block"><p>Set the value of the node at path to data.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -466,13 +466,13 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>get_data</h4>
-<pre>byte[]&nbsp;get_data(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre>byte[]&nbsp;get_data(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                 boolean&nbsp;watch)</pre>
 <div class="block"><p>Get the data from the node at path</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - The path to look under</dd>
-<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the register method. Very useful for catching updates to nodes.</dd>
+<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the  register method. Very useful for catching updates to nodes.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The data at the node.</dd>
 </dl>
@@ -484,13 +484,13 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>get_data_with_version</h4>
-<pre><a href="../../../../org/apache/storm/cluster/VersionedData.html" title="class in org.apache.storm.cluster">VersionedData</a>&lt;byte[]&gt;&nbsp;get_data_with_version(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre><a href="../../../../org/apache/storm/cluster/VersionedData.html" title="class in org.apache.storm.cluster">VersionedData</a>&lt;byte[]&gt;&nbsp;get_data_with_version(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                                             boolean&nbsp;watch)</pre>
 <div class="block"><p>Get the data at the node along with its version. Data is returned in an Map with the keys data and version.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - The path to look under</dd>
-<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the register method. Very useful for catching updates to nodes.</dd>
+<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the  register method. Very useful for catching updates to nodes.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the data with a version</dd>
 </dl>
@@ -502,9 +502,9 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>set_worker_hb</h4>
-<pre>void&nbsp;set_worker_hb(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre>void&nbsp;set_worker_hb(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                    byte[]&nbsp;data,
-                   <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</pre>
+                   <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;org.apache.zookeeper.data.ACL&gt;&nbsp;acls)</pre>
 <div class="block"><p>Write a worker heartbeat at the path.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -520,13 +520,13 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>get_worker_hb</h4>
-<pre>byte[]&nbsp;get_worker_hb(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre>byte[]&nbsp;get_worker_hb(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                      boolean&nbsp;watch)</pre>
 <div class="block"><p>Get the heartbeat from the node at path</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - The path to look under</dd>
-<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the register method. Very useful for catching updates to nodes.</dd>
+<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the  register method. Very useful for catching updates to nodes.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The heartbeat at the node.</dd>
 </dl>
@@ -538,13 +538,13 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>get_worker_hb_children</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;get_worker_hb_children(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;get_worker_hb_children(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
                                     boolean&nbsp;watch)</pre>
 <div class="block"><p>Get a list of paths of all the child nodes which exist immediately under path. This is similar to get_children, but must be used for any nodes</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - The path to look under</dd>
-<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the register method. Very useful for catching updates to nodes.</dd>
+<dd><code>watch</code> - Whether or not to set a watch on the path. Watched paths emit events which are consumed by functions registered with the  register method. Very useful for catching updates to nodes.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>list of string paths under path.</dd>
 </dl>
@@ -556,7 +556,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>delete_worker_hb</h4>
-<pre>void&nbsp;delete_worker_hb(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</pre>
+<pre>void&nbsp;delete_worker_hb(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</pre>
 <div class="block"><p>Deletes the heartbeat at a given path, and any child nodes that may exist.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -584,7 +584,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>sync_path</h4>
-<pre>void&nbsp;sync_path(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</pre>
+<pre>void&nbsp;sync_path(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path)</pre>
 <div class="block"><p>Force consistency on a path. Any writes committed on the path before this call will be completely propagated when it returns.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -598,8 +598,8 @@ var activeTableTab = "activeTableTab";
 <ul class="blockListLast">
 <li class="blockList">
 <h4>delete_node_blobstore</h4>
-<pre>void&nbsp;delete_node_blobstore(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
-                           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nimbusHostPortInfo)</pre>
+<pre>void&nbsp;delete_node_blobstore(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;path,
+                           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;nimbusHostPortInfo)</pre>
 <div class="block"><p>Allows us to delete the znodes within /storm/blobstore/key_name whose znodes start with the corresponding nimbusHostPortInfo</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -681,6 +681,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

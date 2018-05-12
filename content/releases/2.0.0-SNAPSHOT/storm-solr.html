@@ -210,11 +210,9 @@ a <code>SolrMapperException</code> will be thrown when the method <code>toSolrRe
 be a String with the contents in JSON format, or a Java object that will be serialized to JSON</p>
 
 <p>Code snippet illustrating how to create a <code>SolrJsonMapper</code> object to update the <code>gettingstarted</code> Solr collection with JSON content 
-declared in the tuple field with name &quot;JSON&quot;
-<code>java
-    SolrMapper solrMapper = new SolrJsonMapper.Builder(&quot;gettingstarted&quot;, &quot;JSON&quot;).build();
-</code></p>
-
+declared in the tuple field with name &quot;JSON&quot;</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="n">SolrMapper</span> <span class="n">solrMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SolrJsonMapper</span><span class="o">.</span><span class="na">Builder</span><span class="o">(</span><span class="s">"gettingstarted"</span><span class="o">,</span> <span class="s">"JSON"</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+</code></pre></div>
 <h3 id="solrfieldsmapper">SolrFieldsMapper</h3>
 
 <p>The <code>SolrFieldsMapper</code> creates a Solr update request that is sent to the Solr URL endpoint that handles the updates of <code>SolrInputDocument</code> objects.</p>
@@ -248,35 +246,33 @@ and then generate an uber jar with all the dependencies.</p>
 <h2 id="use-the-maven-shade-plugin-to-build-the-uber-jar">Use the Maven Shade Plugin to Build the Uber Jar</h2>
 
 <p>Add the following to <code>REPO_HOME/storm/external/storm-solr/pom.xml</code></p>
-<div class="highlight"><pre><code class="language-" data-lang=""> &lt;plugin&gt;
-     &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-     &lt;artifactId&gt;maven-shade-plugin&lt;/artifactId&gt;
-     &lt;version&gt;2.4.1&lt;/version&gt;
-     &lt;executions&gt;
-         &lt;execution&gt;
-             &lt;phase&gt;package&lt;/phase&gt;
-             &lt;goals&gt;
-                 &lt;goal&gt;shade&lt;/goal&gt;
-             &lt;/goals&gt;
-             &lt;configuration&gt;
-                 &lt;transformers&gt;
-                     &lt;transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"&gt;
-                         &lt;mainClass&gt;org.apache.storm.solr.topology.SolrJsonTopology&lt;/mainClass&gt;
-                     &lt;/transformer&gt;
-                 &lt;/transformers&gt;
-             &lt;/configuration&gt;
-         &lt;/execution&gt;
-     &lt;/executions&gt;
-&lt;/plugin&gt;
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;plugin&gt;</span>
+     <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+     <span class="nt">&lt;artifactId&gt;</span>maven-shade-plugin<span class="nt">&lt;/artifactId&gt;</span>
+     <span class="nt">&lt;version&gt;</span>2.4.1<span class="nt">&lt;/version&gt;</span>
+     <span class="nt">&lt;executions&gt;</span>
+         <span class="nt">&lt;execution&gt;</span>
+             <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+             <span class="nt">&lt;goals&gt;</span>
+                 <span class="nt">&lt;goal&gt;</span>shade<span class="nt">&lt;/goal&gt;</span>
+             <span class="nt">&lt;/goals&gt;</span>
+             <span class="nt">&lt;configuration&gt;</span>
+                 <span class="nt">&lt;transformers&gt;</span>
+                     <span class="nt">&lt;transformer</span> <span class="na">implementation=</span><span class="s">"org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"</span><span class="nt">&gt;</span>
+                         <span class="nt">&lt;mainClass&gt;</span>org.apache.storm.solr.topology.SolrJsonTopology<span class="nt">&lt;/mainClass&gt;</span>
+                     <span class="nt">&lt;/transformer&gt;</span>
+                 <span class="nt">&lt;/transformers&gt;</span>
+             <span class="nt">&lt;/configuration&gt;</span>
+         <span class="nt">&lt;/execution&gt;</span>
+     <span class="nt">&lt;/executions&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
 </code></pre></div>
 <p>create the uber jar by running the commmand:</p>
-
-<p><code>mvn package -f REPO_HOME/storm/external/storm-solr/pom.xml</code></p>
-
+<div class="highlight"><pre><code class="language-" data-lang="">mvn package -f REPO_HOME/storm/external/storm-solr/pom.xml
+</code></pre></div>
 <p>This will create the uber jar file with the name and location matching the following pattern:</p>
-
-<p><code>REPO_HOME/storm/external/storm/target/storm-solr-0.11.0-SNAPSHOT.jar</code></p>
-
+<div class="highlight"><pre><code class="language-" data-lang="">REPO_HOME/storm/external/storm/target/storm-solr-0.11.0-SNAPSHOT.jar
+</code></pre></div>
 <h2 id="run-examples">Run Examples</h2>
 
 <p>Copy the file <code>REPO_HOME/storm/external/storm-solr/target/storm-solr-0.11.0-SNAPSHOT.jar</code> to <code>STORM_HOME/extlib</code></p>

@@ -111,14 +111,18 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="#org.apache.storm.task">org.apache.storm.task</a></td>
+<td class="colFirst"><a href="#org.apache.storm.metrics2">org.apache.storm.metrics2</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><a href="#org.apache.storm.testing">org.apache.storm.testing</a></td>
+<td class="colFirst"><a href="#org.apache.storm.task">org.apache.storm.task</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.testing">org.apache.storm.testing</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.trident.partition">org.apache.storm.trident.partition</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -142,7 +146,7 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">Murmur3StreamGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/cassandra/Murmur3StreamGrouping.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>
 <div class="block">Tells the stream grouping at runtime the tasks in the target bolt.</div>
 </td>
 </tr>
@@ -162,7 +166,7 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a></code></td>
-<td class="colLast"><span class="typeNameLabel">StormCommon.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/StormCommon.html#makeWorkerContext-java.util.Map-">makeWorkerContext</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;workerData)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">StormCommon.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/StormCommon.html#makeWorkerContext-java.util.Map-">makeWorkerContext</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;workerData)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -176,42 +180,42 @@
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../org/apache/storm/grouping/LoadAwareCustomStreamGrouping.html" title="interface in org.apache.storm.grouping">LoadAwareCustomStreamGrouping</a></code></td>
 <td class="colLast"><span class="typeNameLabel">GrouperFactory.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/GrouperFactory.html#mkGrouper-org.apache.storm.task.WorkerTopologyContext-java.lang.String-java.lang.String-org.apache.storm.tuple.Fields-org.apache.storm.generated.Grouping-java.util.List-java.util.Map-">mkGrouper</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
-         <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;componentId,
-         <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamId,
+         <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;componentId,
+         <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamId,
          <a href="../../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;outFields,
          <a href="../../../../../org/apache/storm/generated/Grouping.html" title="class in org.apache.storm.generated">Grouping</a>&nbsp;thriftGrouping,
-         <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;unsortedTargetTasks,
-         <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;topoConf)</code>&nbsp;</td>
+         <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;unsortedTargetTasks,
+         <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">GrouperFactory.BasicLoadAwareCustomStreamGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/GrouperFactory.BasicLoadAwareCustomStreamGrouping.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">GrouperFactory.FieldsGrouper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/GrouperFactory.FieldsGrouper.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">GrouperFactory.GlobalGrouper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/GrouperFactory.GlobalGrouper.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">GrouperFactory.NoneGrouper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/GrouperFactory.NoneGrouper.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">GrouperFactory.AllGrouper.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/daemon/GrouperFactory.AllGrouper.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -276,10 +280,10 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/executor/error/ReportError.html#ReportError-java.util.Map-org.apache.storm.cluster.IStormClusterState-java.lang.String-java.lang.String-org.apache.storm.task.WorkerTopologyContext-">ReportError</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/executor/error/ReportError.html#ReportError-java.util.Map-org.apache.storm.cluster.IStormClusterState-java.lang.String-java.lang.String-org.apache.storm.task.WorkerTopologyContext-">ReportError</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
            <a href="../../../../../org/apache/storm/cluster/IStormClusterState.html" title="interface in org.apache.storm.cluster">IStormClusterState</a>&nbsp;stormClusterState,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stormId,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;componentId,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stormId,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;componentId,
            <a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;workerTopologyContext)</code>&nbsp;</td>
 </tr>
 </tbody>
@@ -300,25 +304,25 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ShuffleGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/grouping/ShuffleGrouping.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">PartialKeyGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/grouping/PartialKeyGrouping.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">LoadAwareShuffleGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/grouping/LoadAwareShuffleGrouping.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">CustomStreamGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/grouping/CustomStreamGrouping.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>
 <div class="block">Tells the stream grouping at runtime the tasks in the target bolt.</div>
 </td>
 </tr>
@@ -338,17 +342,60 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">IWorkerHook.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hooks/IWorkerHook.html#start-java.util.Map-org.apache.storm.task.WorkerTopologyContext-">start</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<td class="colLast"><span class="typeNameLabel">IWorkerHook.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hooks/IWorkerHook.html#start-java.util.Map-org.apache.storm.task.WorkerTopologyContext-">start</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
      <a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context)</code>
 <div class="block">This method is called when a worker is started</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">BaseWorkerHook.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hooks/BaseWorkerHook.html#start-java.util.Map-org.apache.storm.task.WorkerTopologyContext-">start</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<td class="colLast"><span class="typeNameLabel">BaseWorkerHook.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hooks/BaseWorkerHook.html#start-java.util.Map-org.apache.storm.task.WorkerTopologyContext-">start</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
      <a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context)</code>
 <div class="block">This method is called when a worker is started</div>
 </td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.metrics2">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a> in <a href="../../../../../org/apache/storm/metrics2/package-summary.html">org.apache.storm.metrics2</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/metrics2/package-summary.html">org.apache.storm.metrics2</a> with parameters of type <a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static com.codahale.metrics.Counter</code></td>
+<td class="colLast"><span class="typeNameLabel">StormMetricRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/metrics2/StormMetricRegistry.html#counter-java.lang.String-org.apache.storm.task.WorkerTopologyContext-java.lang.String-java.lang.Integer-java.lang.String-">counter</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+       <a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;componentId,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;taskId,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamId)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static com.codahale.metrics.Meter</code></td>
+<td class="colLast"><span class="typeNameLabel">StormMetricRegistry.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/metrics2/StormMetricRegistry.html#meter-java.lang.String-org.apache.storm.task.WorkerTopologyContext-java.lang.String-java.lang.Integer-java.lang.String-">meter</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
+     <a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
+     <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;componentId,
+     <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;taskId,
+     <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamId)</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing constructors, and an explanation">
+<caption><span>Constructors in <a href="../../../../../org/apache/storm/metrics2/package-summary.html">org.apache.storm.metrics2</a> with parameters of type <a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/metrics2/TaskMetrics.html#TaskMetrics-org.apache.storm.task.WorkerTopologyContext-java.lang.String-java.lang.Integer-">TaskMetrics</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;componentId,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;taskid)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -388,7 +435,7 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">NGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/testing/NGrouping.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -408,19 +455,19 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">IndexHashGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/partition/IndexHashGrouping.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targetTasks)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">IdentityGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/partition/IdentityGrouping.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;tasks)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;tasks)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">GlobalGrouping.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/trident/partition/GlobalGrouping.html#prepare-org.apache.storm.task.WorkerTopologyContext-org.apache.storm.generated.GlobalStreamId-java.util.List-">prepare</a></span>(<a href="../../../../../org/apache/storm/task/WorkerTopologyContext.html" title="class in org.apache.storm.task">WorkerTopologyContext</a>&nbsp;context,
        <a href="../../../../../org/apache/storm/generated/GlobalStreamId.html" title="class in org.apache.storm.generated">GlobalStreamId</a>&nbsp;stream,
-       <a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targets)</code>&nbsp;</td>
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;targets)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -480,6 +527,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

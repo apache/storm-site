@@ -108,6 +108,50 @@
 </tr>
 </tbody>
 </table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
+<caption><span>Fields in <a href="../../../../../org/apache/storm/windowing/package-summary.html">org.apache.storm.windowing</a> declared as <a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">TimeEvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#evictionContext">evictionContext</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
+<caption><span>Methods in <a href="../../../../../org/apache/storm/windowing/package-summary.html">org.apache.storm.windowing</a> that return <a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">WatermarkCountEvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/WatermarkCountEvictionPolicy.html#getContext--">getContext</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">TimeEvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#getContext--">getContext</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">EvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/EvictionPolicy.html#getContext--">getContext</a></span>()</code>
+<div class="block">Returns the current context that is part of this eviction policy.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">CountEvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/CountEvictionPolicy.html#getContext--">getContext</a></span>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></code></td>
+<td class="colLast"><span class="typeNameLabel">TimeEvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#getState--">getState</a></span>()</code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing methods, and an explanation">
 <caption><span>Methods in <a href="../../../../../org/apache/storm/windowing/package-summary.html">org.apache.storm.windowing</a> with parameters of type <a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -117,19 +161,23 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">WatermarkCountEvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/WatermarkCountEvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a></span>(<a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;context)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">TimeEvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#restoreState-org.apache.storm.windowing.EvictionContext-">restoreState</a></span>(<a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;state)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">TimeEvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a></span>(<a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;context)</code>&nbsp;</td>
+<td class="colLast"><span class="typeNameLabel">WatermarkCountEvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/WatermarkCountEvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a></span>(<a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;context)</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">TimeEvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/TimeEvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a></span>(<a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;context)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">EvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/EvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a></span>(<a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;context)</code>
 <div class="block">Sets a context in the eviction policy that can be used while evicting the events.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">CountEvictionPolicy.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/windowing/CountEvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a></span>(<a href="../../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;context)</code>&nbsp;</td>
 </tr>
@@ -191,6 +239,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

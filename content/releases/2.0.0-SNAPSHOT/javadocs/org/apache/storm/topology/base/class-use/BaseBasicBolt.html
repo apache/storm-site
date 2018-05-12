@@ -87,15 +87,23 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><a href="#org.apache.storm.eventhubs.samples.bolt">org.apache.storm.eventhubs.samples.bolt</a></td>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.flux.examples">org.apache.storm.flux.examples</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.flux.wrappers.bolts">org.apache.storm.flux.wrappers.bolts</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.lambda">org.apache.storm.lambda</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.loadgen">org.apache.storm.loadgen</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.perf.bolt">org.apache.storm.perf.bolt</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
@@ -108,10 +116,6 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="#org.apache.storm.testing">org.apache.storm.testing</a></td>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><a href="#storm.starter">storm.starter</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
 </tbody>
@@ -137,32 +141,6 @@
 </tbody>
 </table>
 </li>
-<li class="blockList"><a name="org.apache.storm.eventhubs.samples.bolt">
-<!--   -->
-</a>
-<h3>Uses of <a href="../../../../../../org/apache/storm/topology/base/BaseBasicBolt.html" title="class in org.apache.storm.topology.base">BaseBasicBolt</a> in <a href="../../../../../../org/apache/storm/eventhubs/samples/bolt/package-summary.html">org.apache.storm.eventhubs.samples.bolt</a></h3>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing subclasses, and an explanation">
-<caption><span>Subclasses of <a href="../../../../../../org/apache/storm/topology/base/BaseBasicBolt.html" title="class in org.apache.storm.topology.base">BaseBasicBolt</a> in <a href="../../../../../../org/apache/storm/eventhubs/samples/bolt/package-summary.html">org.apache.storm.eventhubs.samples.bolt</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Class and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/eventhubs/samples/bolt/GlobalCountBolt.html" title="class in org.apache.storm.eventhubs.samples.bolt">GlobalCountBolt</a></span></code>
-<div class="block">Globally count number of messages</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/eventhubs/samples/bolt/PartialCountBolt.html" title="class in org.apache.storm.eventhubs.samples.bolt">PartialCountBolt</a></span></code>
-<div class="block">Partially count number of messages from EventHubs</div>
-</td>
-</tr>
-</tbody>
-</table>
-</li>
 <li class="blockList"><a name="org.apache.storm.flux.examples">
 <!--   -->
 </a>
@@ -177,7 +155,7 @@
 <tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/flux/examples/TestPrintBolt.html" title="class in org.apache.storm.flux.examples">TestPrintBolt</a></span></code>
-<div class="block">Prints the tuples to stdout</div>
+<div class="block">Prints the tuples to stdout.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -209,6 +187,72 @@
 </tbody>
 </table>
 </li>
+<li class="blockList"><a name="org.apache.storm.lambda">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../org/apache/storm/topology/base/BaseBasicBolt.html" title="class in org.apache.storm.topology.base">BaseBasicBolt</a> in <a href="../../../../../../org/apache/storm/lambda/package-summary.html">org.apache.storm.lambda</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing subclasses, and an explanation">
+<caption><span>Subclasses of <a href="../../../../../../org/apache/storm/topology/base/BaseBasicBolt.html" title="class in org.apache.storm.topology.base">BaseBasicBolt</a> in <a href="../../../../../../org/apache/storm/lambda/package-summary.html">org.apache.storm.lambda</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/lambda/LambdaBiConsumerBolt.html" title="class in org.apache.storm.lambda">LambdaBiConsumerBolt</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/lambda/LambdaConsumerBolt.html" title="class in org.apache.storm.lambda">LambdaConsumerBolt</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.loadgen">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../org/apache/storm/topology/base/BaseBasicBolt.html" title="class in org.apache.storm.topology.base">BaseBasicBolt</a> in <a href="../../../../../../org/apache/storm/loadgen/package-summary.html">org.apache.storm.loadgen</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing subclasses, and an explanation">
+<caption><span>Subclasses of <a href="../../../../../../org/apache/storm/topology/base/BaseBasicBolt.html" title="class in org.apache.storm.topology.base">BaseBasicBolt</a> in <a href="../../../../../../org/apache/storm/loadgen/package-summary.html">org.apache.storm.loadgen</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/loadgen/ThroughputVsLatency.SplitSentence.html" title="class in org.apache.storm.loadgen">ThroughputVsLatency.SplitSentence</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/loadgen/ThroughputVsLatency.WordCount.html" title="class in org.apache.storm.loadgen">ThroughputVsLatency.WordCount</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.perf.bolt">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../org/apache/storm/topology/base/BaseBasicBolt.html" title="class in org.apache.storm.topology.base">BaseBasicBolt</a> in <a href="../../../../../../org/apache/storm/perf/bolt/package-summary.html">org.apache.storm.perf.bolt</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing subclasses, and an explanation">
+<caption><span>Subclasses of <a href="../../../../../../org/apache/storm/topology/base/BaseBasicBolt.html" title="class in org.apache.storm.topology.base">BaseBasicBolt</a> in <a href="../../../../../../org/apache/storm/perf/bolt/package-summary.html">org.apache.storm.perf.bolt</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/perf/bolt/CountBolt.html" title="class in org.apache.storm.perf.bolt">CountBolt</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/perf/bolt/SplitSentenceBolt.html" title="class in org.apache.storm.perf.bolt">SplitSentenceBolt</a></span></code>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li class="blockList"><a name="org.apache.storm.starter">
 <!--   -->
 </a>
@@ -220,6 +264,14 @@
 <th class="colLast" scope="col">Class and Description</th>
 </tr>
 <tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/starter/AnchoredWordCount.SplitSentence.html" title="class in org.apache.storm.starter">AnchoredWordCount.SplitSentence</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/starter/AnchoredWordCount.WordCount.html" title="class in org.apache.storm.starter">AnchoredWordCount.WordCount</a></span></code>&nbsp;</td>
+</tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/starter/BasicDRPCTopology.ExclaimBolt.html" title="class in org.apache.storm.starter">BasicDRPCTopology.ExclaimBolt</a></span></code>&nbsp;</td>
@@ -254,21 +306,17 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/starter/ThroughputVsLatency.SplitSentence.html" title="class in org.apache.storm.starter">ThroughputVsLatency.SplitSentence</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/starter/StatefulTopology.PrinterBolt.html" title="class in org.apache.storm.starter">StatefulTopology.PrinterBolt</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/starter/ThroughputVsLatency.WordCount.html" title="class in org.apache.storm.starter">ThroughputVsLatency.WordCount</a></span></code>&nbsp;</td>
-</tr>
-<tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/starter/TransactionalWords.Bucketize.html" title="class in org.apache.storm.starter">TransactionalWords.Bucketize</a></span></code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/starter/WordCountTopology.WordCount.html" title="class in org.apache.storm.starter">WordCountTopology.WordCount</a></span></code>&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/starter/WordCountTopologyNode.WordCount.html" title="class in org.apache.storm.starter">WordCountTopologyNode.WordCount</a></span></code>&nbsp;</td>
 </tr>
@@ -353,24 +401,6 @@
 </tbody>
 </table>
 </li>
-<li class="blockList"><a name="storm.starter">
-<!--   -->
-</a>
-<h3>Uses of <a href="../../../../../../org/apache/storm/topology/base/BaseBasicBolt.html" title="class in org.apache.storm.topology.base">BaseBasicBolt</a> in <a href="../../../../../../storm/starter/package-summary.html">storm.starter</a></h3>
-<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing subclasses, and an explanation">
-<caption><span>Subclasses of <a href="../../../../../../org/apache/storm/topology/base/BaseBasicBolt.html" title="class in org.apache.storm.topology.base">BaseBasicBolt</a> in <a href="../../../../../../storm/starter/package-summary.html">storm.starter</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Class and Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../storm/starter/StatefulTopology.PrinterBolt.html" title="class in storm.starter">StatefulTopology.PrinterBolt</a></span></code>&nbsp;</td>
-</tr>
-</tbody>
-</table>
-</li>
 </ul>
 </li>
 </ul>
@@ -426,6 +456,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

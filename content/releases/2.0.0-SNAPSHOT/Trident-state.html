@@ -398,7 +398,7 @@ apple =&gt; [count=10, txid=2]
     <span class="kt">void</span> <span class="nf">set</span><span class="o">(</span><span class="n">T</span> <span class="n">o</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
-<p><a href="http://github.com/apache/storm/blob/master/storm-core/src/jvm/org/apache/storm/trident/testing/MemoryMapState.java">MemoryMapState</a> and <a href="https://github.com/nathanmarz/trident-memcached/blob/2.0.0-SNAPSHOT/src/jvm/trident/memcached/MemcachedState.java">MemcachedState</a> each implement both of these interfaces.</p>
+<p><a href="http://github.com/apache/storm/blob/master/storm-client/src/jvm/org/apache/storm/trident/testing/MemoryMapState.java">MemoryMapState</a> and <a href="https://github.com/nathanmarz/trident-memcached/blob/2.0.0-SNAPSHOT/src/jvm/trident/memcached/MemcachedState.java">MemcachedState</a> each implement both of these interfaces.</p>
 
 <h2 id="implementing-map-states">Implementing Map States</h2>
 
@@ -408,11 +408,11 @@ apple =&gt; [count=10, txid=2]
     <span class="kt">void</span> <span class="nf">multiPut</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">vals</span><span class="o">);</span> 
 <span class="o">}</span>
 </code></pre></div>
-<p>OpaqueMap&#39;s will call multiPut with <a href="http://github.com/apache/storm/blob/master/storm-core/src/jvm/org/apache/storm/trident/state/OpaqueValue.java">OpaqueValue</a>&#39;s for the vals, TransactionalMap&#39;s will give <a href="http://github.com/apache/storm/blob/master/storm-core/src/jvm/org/apache/storm/trident/state/TransactionalValue.java">TransactionalValue</a>&#39;s for the vals, and NonTransactionalMaps will just pass the objects from the topology through.</p>
+<p>OpaqueMap&#39;s will call multiPut with <a href="http://github.com/apache/storm/blob/master/storm-client/src/jvm/org/apache/storm/trident/state/OpaqueValue.java">OpaqueValue</a>&#39;s for the vals, TransactionalMap&#39;s will give <a href="http://github.com/apache/storm/blob/master/storm-core/src/jvm/org/apache/storm/trident/state/TransactionalValue.java">TransactionalValue</a>&#39;s for the vals, and NonTransactionalMaps will just pass the objects from the topology through.</p>
 
-<p>Trident also provides the <a href="http://github.com/apache/storm/blob/master/storm-core/src/jvm/org/apache/storm/trident/state/map/CachedMap.java">CachedMap</a> class to do automatic LRU caching of map key/vals.</p>
+<p>Trident also provides the <a href="http://github.com/apache/storm/blob/master/storm-client/src/jvm/org/apache/storm/trident/state/map/CachedMap.java">CachedMap</a> class to do automatic LRU caching of map key/vals.</p>
 
-<p>Finally, Trident provides the <a href="http://github.com/apache/storm/blob/master/storm-core/src/jvm/org/apache/storm/trident/state/map/SnapshottableMap.java">SnapshottableMap</a> class that turns a MapState into a Snapshottable object, by storing global aggregations into a fixed key.</p>
+<p>Finally, Trident provides the <a href="http://github.com/apache/storm/blob/master/storm-client/src/jvm/org/apache/storm/trident/state/map/SnapshottableMap.java">SnapshottableMap</a> class that turns a MapState into a Snapshottable object, by storing global aggregations into a fixed key.</p>
 
 <p>Take a look at the implementation of <a href="https://github.com/nathanmarz/trident-memcached/blob/master/src/jvm/trident/memcached/MemcachedState.java">MemcachedState</a> to see how all these utilities can be put together to make a high performance MapState implementation. MemcachedState allows you to choose between opaque transactional, transactional, and non-transactional semantics.</p>
 

@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/nimbus/ITopologyActionNotifierPlugin.html" title="interface in org.apache.storm.nimbus"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/nimbus/IWorkerHeartbeatsRecoveryStrategy.html" title="interface in org.apache.storm.nimbus"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/nimbus/ITopologyValidator.html" target="_top">Frames</a></li>
@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/storm/nimbus/DefaultTopologyValidator.html" title="class in org.apache.storm.nimbus">DefaultTopologyValidator</a></dd>
+<dd><a href="../../../../org/apache/storm/nimbus/DefaultTopologyValidator.html" title="class in org.apache.storm.nimbus">DefaultTopologyValidator</a>, <a href="../../../../org/apache/storm/nimbus/StrictTopologyValidator.html" title="class in org.apache.storm.nimbus">StrictTopologyValidator</a></dd>
 </dl>
 <hr>
 <br>
@@ -126,12 +126,12 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ITopologyValidator.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;StormConf)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ITopologyValidator.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;StormConf)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ITopologyValidator.html#validate-java.lang.String-java.util.Map-org.apache.storm.generated.StormTopology-">validate</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyName,
-        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;topologyConf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/nimbus/ITopologyValidator.html#validate-java.lang.String-java.util.Map-org.apache.storm.generated.StormTopology-">validate</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyName,
+        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topologyConf,
         <a href="../../../../org/apache/storm/generated/StormTopology.html" title="class in org.apache.storm.generated">StormTopology</a>&nbsp;topology)</code>&nbsp;</td>
 </tr>
 </table>
@@ -155,7 +155,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;StormConf)</pre>
+<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;StormConf)</pre>
 </li>
 </ul>
 <a name="validate-java.lang.String-java.util.Map-org.apache.storm.generated.StormTopology-">
@@ -164,8 +164,8 @@ var activeTableTab = "activeTableTab";
 <ul class="blockListLast">
 <li class="blockList">
 <h4>validate</h4>
-<pre>void&nbsp;validate(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyName,
-              <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;topologyConf,
+<pre>void&nbsp;validate(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyName,
+              <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topologyConf,
               <a href="../../../../org/apache/storm/generated/StormTopology.html" title="class in org.apache.storm.generated">StormTopology</a>&nbsp;topology)
        throws <a href="../../../../org/apache/storm/generated/InvalidTopologyException.html" title="class in org.apache.storm.generated">InvalidTopologyException</a></pre>
 <dl>
@@ -207,7 +207,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/nimbus/ITopologyActionNotifierPlugin.html" title="interface in org.apache.storm.nimbus"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/nimbus/NimbusInfo.html" title="class in org.apache.storm.nimbus"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/nimbus/IWorkerHeartbeatsRecoveryStrategy.html" title="interface in org.apache.storm.nimbus"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/nimbus/ITopologyValidator.html" target="_top">Frames</a></li>
@@ -247,6 +247,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

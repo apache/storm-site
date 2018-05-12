@@ -86,6 +86,10 @@
 <td class="colFirst"><a href="#org.apache.storm">org.apache.storm</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="#org.apache.storm.hdfs.spout">org.apache.storm.hdfs.spout</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
 </tbody>
 </table>
 </li>
@@ -103,46 +107,100 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#DRPC_HTTP_FILTER_PARAMS">DRPC_HTTP_FILTER_PARAMS</a></span></code>
-<div class="block">Initialization parameters for the javax.servlet.Filter of the DRPC HTTP service</div>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#DRPC_HTTP_FILTER_PARAMS">DRPC_HTTP_FILTER_PARAMS</a></span></code>
+<div class="block">Initialization parameters for the javax.servlet.Filter of the DRPC HTTP service.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#ISOLATION_SCHEDULER_MACHINES">ISOLATION_SCHEDULER_MACHINES</a></span></code>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#ISOLATION_SCHEDULER_MACHINES">ISOLATION_SCHEDULER_MACHINES</a></span></code>
 <div class="block">A map from topology name to the number of machines that should be dedicated for that topology.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#MULTITENANT_SCHEDULER_USER_POOLS">MULTITENANT_SCHEDULER_USER_POOLS</a></span></code>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#MULTITENANT_SCHEDULER_USER_POOLS">MULTITENANT_SCHEDULER_USER_POOLS</a></span></code>
 <div class="block">A map from the user name to the number of machines that should that user is allowed to use.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#SUPERVISOR_RESOURCES_MAP">SUPERVISOR_RESOURCES_MAP</a></span></code>
+<div class="block">A map of resources the Supervisor has e.g {&ldquo;cpu.pcore.percent&rdquo; : 200.0.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#SUPERVISOR_SCHEDULER_META">SUPERVISOR_SCHEDULER_META</a></span></code>
+<div class="block">the metadata configured on the supervisor.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#SUPERVISOR_WORKER_VERSION_CLASSPATH_MAP">SUPERVISOR_WORKER_VERSION_CLASSPATH_MAP</a></span></code>
+<div class="block">Map a version of storm to a worker classpath that can be used to run it.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#SUPERVISOR_WORKER_VERSION_LOGWRITER_MAP">SUPERVISOR_WORKER_VERSION_LOGWRITER_MAP</a></span></code>
+<div class="block">Map a version of storm to a worker&rsquo;s logwriter class.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#SUPERVISOR_WORKER_VERSION_MAIN_MAP">SUPERVISOR_WORKER_VERSION_MAIN_MAP</a></span></code>
+<div class="block">Map a version of storm to a worker&rsquo;s main class.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_COMPONENT_RESOURCES_MAP">TOPOLOGY_COMPONENT_RESOURCES_MAP</a></span></code>
+<div class="block">A map of resources used by each component e.g {&ldquo;cpu.pcore.percent&rdquo; : 200.0.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_ENVIRONMENT">TOPOLOGY_ENVIRONMENT</a></span></code>
 <div class="block">Topology-specific environment variables for the worker child process.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_WORKER_METRICS">TOPOLOGY_WORKER_METRICS</a></span></code>
-<div class="block">A map of metric name to class name implementing IMetric that will be created once per worker JVM</div>
+<div class="block">A map of metric name to class name implementing IMetric that will be created once per worker JVM.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#UI_FILTER_PARAMS">UI_FILTER_PARAMS</a></span></code>
-<div class="block">Initialization parameters for the javax.servlet.Filter</div>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">DaemonConfig.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/DaemonConfig.html#UI_FILTER_PARAMS">UI_FILTER_PARAMS</a></span></code>
+<div class="block">Initialization parameters for the javax.servlet.Filter.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><span class="typeNameLabel">Config.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/Config.html#WORKER_METRICS">WORKER_METRICS</a></span></code>
-<div class="block">A map of metric name to class name implementing IMetric that will be created once per worker JVM</div>
+<div class="block">A map of metric name to class name implementing IMetric that will be created once per worker JVM.</div>
 </td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.hdfs.spout">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../org/apache/storm/validation/ConfigValidationAnnotations.isMapEntryType.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isMapEntryType</a> in <a href="../../../../../org/apache/storm/hdfs/spout/package-summary.html">org.apache.storm.hdfs.spout</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing fields, and an explanation">
+<caption><span>Fields in <a href="../../../../../org/apache/storm/hdfs/spout/package-summary.html">org.apache.storm.hdfs.spout</a> with annotations of type <a href="../../../../../org/apache/storm/validation/ConfigValidationAnnotations.isMapEntryType.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isMapEntryType</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Field and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>static <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><span class="typeNameLabel">Configs.</span><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/hdfs/spout/Configs.html#DEFAULT_HDFS_CONFIG_KEY">DEFAULT_HDFS_CONFIG_KEY</a></span></code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -202,6 +260,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

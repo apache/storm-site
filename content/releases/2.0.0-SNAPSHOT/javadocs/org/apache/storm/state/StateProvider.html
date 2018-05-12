@@ -101,7 +101,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/storm/state/InMemoryKeyValueStateProvider.html" title="class in org.apache.storm.state">InMemoryKeyValueStateProvider</a>, <a href="../../../../org/apache/storm/redis/state/RedisKeyValueStateProvider.html" title="class in org.apache.storm.redis.state">RedisKeyValueStateProvider</a></dd>
+<dd><a href="../../../../org/apache/storm/hbase/state/HBaseKeyValueStateProvider.html" title="class in org.apache.storm.hbase.state">HBaseKeyValueStateProvider</a>, <a href="../../../../org/apache/storm/state/InMemoryKeyValueStateProvider.html" title="class in org.apache.storm.state">InMemoryKeyValueStateProvider</a>, <a href="../../../../org/apache/storm/redis/state/RedisKeyValueStateProvider.html" title="class in org.apache.storm.redis.state">RedisKeyValueStateProvider</a></dd>
 </dl>
 <hr>
 <br>
@@ -127,8 +127,8 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/StateProvider.html#newState-java.lang.String-java.util.Map-org.apache.storm.task.TopologyContext-">newState</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
-        <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/state/StateProvider.html#newState-java.lang.String-java.util.Map-org.apache.storm.task.TopologyContext-">newState</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+        <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
         <a href="../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context)</code>
 <div class="block">Returns a new state instance.</div>
 </td>
@@ -154,14 +154,14 @@ var activeTableTab = "activeTableTab";
 <ul class="blockListLast">
 <li class="blockList">
 <h4>newState</h4>
-<pre><a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>&nbsp;newState(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
-               <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<pre><a href="../../../../org/apache/storm/state/State.html" title="interface in org.apache.storm.state">State</a>&nbsp;newState(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;namespace,
+               <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
                <a href="../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context)</pre>
 <div class="block"><p>Returns a new state instance. Each state belongs unique namespace which is typically the componentid-task of the task, so that each task can have its own unique state.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>namespace</code> - a namespace of the state</dd>
-<dd><code>stormConf</code> - the storm topology configuration</dd>
+<dd><code>topoConf</code> - the storm topology configuration</dd>
 <dd><code>context</code> - the <a href="../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task"><code>TopologyContext</code></a></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a previously saved state if one exists otherwise a newly initialized state.</dd>
@@ -241,6 +241,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

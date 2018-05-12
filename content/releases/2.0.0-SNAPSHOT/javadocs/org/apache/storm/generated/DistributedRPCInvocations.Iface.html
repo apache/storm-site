@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -105,7 +105,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../org/apache/storm/generated/DistributedRPCInvocations.Client.html" title="class in org.apache.storm.generated">DistributedRPCInvocations.Client</a>, <a href="../../../../org/apache/storm/drpc/DRPCInvocationsClient.html" title="class in org.apache.storm.drpc">DRPCInvocationsClient</a>, <a href="../../../../org/apache/storm/daemon/DrpcServer.html" title="class in org.apache.storm.daemon">DrpcServer</a>, <a href="../../../../org/apache/storm/LocalDRPC.html" title="class in org.apache.storm">LocalDRPC</a></dd>
+<dd><a href="../../../../org/apache/storm/generated/DistributedRPCInvocations.Client.html" title="class in org.apache.storm.generated">DistributedRPCInvocations.Client</a>, <a href="../../../../org/apache/storm/drpc/DRPCInvocationsClient.html" title="class in org.apache.storm.drpc">DRPCInvocationsClient</a>, <a href="../../../../org/apache/storm/daemon/drpc/DRPCThrift.html" title="class in org.apache.storm.daemon.drpc">DRPCThrift</a>, <a href="../../../../org/apache/storm/LocalDRPC.html" title="class in org.apache.storm">LocalDRPC</a></dd>
 </dl>
 <dl>
 <dt>Enclosing class:</dt>
@@ -134,16 +134,21 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/generated/DistributedRPCInvocations.Iface.html#failRequest-java.lang.String-">failRequest</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/generated/DistributedRPCInvocations.Iface.html#failRequest-java.lang.String-">failRequest</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../../../org/apache/storm/generated/DRPCRequest.html" title="class in org.apache.storm.generated">DRPCRequest</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/generated/DistributedRPCInvocations.Iface.html#fetchRequest-java.lang.String-">fetchRequest</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;functionName)</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/generated/DistributedRPCInvocations.Iface.html#failRequestV2-java.lang.String-org.apache.storm.generated.DRPCExecutionException-">failRequestV2</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
+             <a href="../../../../org/apache/storm/generated/DRPCExecutionException.html" title="class in org.apache.storm.generated">DRPCExecutionException</a>&nbsp;e)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/generated/DRPCRequest.html" title="class in org.apache.storm.generated">DRPCRequest</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/generated/DistributedRPCInvocations.Iface.html#fetchRequest-java.lang.String-">fetchRequest</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;functionName)</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/generated/DistributedRPCInvocations.Iface.html#result-java.lang.String-java.lang.String-">result</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
-      <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;result)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/generated/DistributedRPCInvocations.Iface.html#result-java.lang.String-java.lang.String-">result</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
+      <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;result)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -166,8 +171,8 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>result</h4>
-<pre>void&nbsp;result(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
-            <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;result)
+<pre>void&nbsp;result(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;result)
      throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
             org.apache.thrift.TException</pre>
 <dl>
@@ -183,7 +188,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>fetchRequest</h4>
-<pre><a href="../../../../org/apache/storm/generated/DRPCRequest.html" title="class in org.apache.storm.generated">DRPCRequest</a>&nbsp;fetchRequest(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;functionName)
+<pre><a href="../../../../org/apache/storm/generated/DRPCRequest.html" title="class in org.apache.storm.generated">DRPCRequest</a>&nbsp;fetchRequest(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;functionName)
                   throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                          org.apache.thrift.TException</pre>
 <dl>
@@ -196,12 +201,29 @@ var activeTableTab = "activeTableTab";
 <a name="failRequest-java.lang.String-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>failRequest</h4>
-<pre>void&nbsp;failRequest(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)
+<pre>void&nbsp;failRequest(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id)
           throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
                  org.apache.thrift.TException</pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a></code></dd>
+<dd><code>org.apache.thrift.TException</code></dd>
+</dl>
+</li>
+</ul>
+<a name="failRequestV2-java.lang.String-org.apache.storm.generated.DRPCExecutionException-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>failRequestV2</h4>
+<pre>void&nbsp;failRequestV2(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
+                   <a href="../../../../org/apache/storm/generated/DRPCExecutionException.html" title="class in org.apache.storm.generated">DRPCExecutionException</a>&nbsp;e)
+            throws <a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a>,
+                   org.apache.thrift.TException</pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../../../../org/apache/storm/generated/AuthorizationException.html" title="class in org.apache.storm.generated">AuthorizationException</a></code></dd>
@@ -282,6 +304,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

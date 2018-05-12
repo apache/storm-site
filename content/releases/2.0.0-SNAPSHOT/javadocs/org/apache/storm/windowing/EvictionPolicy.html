@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -93,7 +93,7 @@ var activeTableTab = "activeTableTab";
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">org.apache.storm.windowing</div>
-<h2 title="Interface EvictionPolicy" class="title">Interface EvictionPolicy&lt;T&gt;</h2>
+<h2 title="Interface EvictionPolicy" class="title">Interface EvictionPolicy&lt;T,S&gt;</h2>
 </div>
 <div class="contentContainer">
 <div class="description">
@@ -105,7 +105,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public interface <span class="typeNameLabel">EvictionPolicy&lt;T&gt;</span></pre>
+<pre>public interface <span class="typeNameLabel">EvictionPolicy&lt;T,S&gt;</span></pre>
 <div class="block"><p>Eviction policy tracks events and decides whether an event should be evicted from the window or not.</p></div>
 </li>
 </ul>
@@ -148,19 +148,43 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.Action.html" title="enum in org.apache.storm.windowing">EvictionPolicy.Action</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#evict-org.apache.storm.windowing.Event-">evict</a></span>(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">T</a>&gt;&nbsp;event)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#evict-org.apache.storm.windowing.Event-">evict</a></span>(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">T</a>&gt;&nbsp;event)</code>
 <div class="block">Decides if an event should be expired from the window, processed in the current window or kept for later processing.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#getContext--">getContext</a></span>()</code>
+<div class="block">Returns the current context that is part of this eviction policy.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">S</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#getState--">getState</a></span>()</code>
+<div class="block">Return runtime state to be checkpointed by the framework for restoring the eviction policy in case of failures.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#reset--">reset</a></span>()</code>
+<div class="block">Resets the eviction policy.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#restoreState-S-">restoreState</a></span>(<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">S</a>&nbsp;state)</code>
+<div class="block">Restore the eviction policy from the state that was earlier checkpointed by the framework.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#setContext-org.apache.storm.windowing.EvictionContext-">setContext</a></span>(<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;context)</code>
 <div class="block">Sets a context in the eviction policy that can be used while evicting the events.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#track-org.apache.storm.windowing.Event-">track</a></span>(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">T</a>&gt;&nbsp;event)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#track-org.apache.storm.windowing.Event-">track</a></span>(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">T</a>&gt;&nbsp;event)</code>
 <div class="block">Tracks the event to later decide whether <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#evict-org.apache.storm.windowing.Event-"><code>evict(Event)</code></a> should evict it or not.</div>
 </td>
 </tr>
@@ -185,7 +209,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>evict</h4>
-<pre><a href="../../../../org/apache/storm/windowing/EvictionPolicy.Action.html" title="enum in org.apache.storm.windowing">EvictionPolicy.Action</a>&nbsp;evict(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">T</a>&gt;&nbsp;event)</pre>
+<pre><a href="../../../../org/apache/storm/windowing/EvictionPolicy.Action.html" title="enum in org.apache.storm.windowing">EvictionPolicy.Action</a>&nbsp;evict(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">T</a>&gt;&nbsp;event)</pre>
 <div class="block"><p>Decides if an event should be expired from the window, processed in the current window or kept for later processing.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -201,7 +225,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>track</h4>
-<pre>void&nbsp;track(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">T</a>&gt;&nbsp;event)</pre>
+<pre>void&nbsp;track(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">T</a>&gt;&nbsp;event)</pre>
 <div class="block"><p>Tracks the event to later decide whether <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html#evict-org.apache.storm.windowing.Event-"><code>evict(Event)</code></a> should evict it or not.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -209,17 +233,71 @@ var activeTableTab = "activeTableTab";
 </dl>
 </li>
 </ul>
+<a name="getContext--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getContext</h4>
+<pre><a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;getContext()</pre>
+<div class="block"><p>Returns the current context that is part of this eviction policy.</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the eviction context</dd>
+</dl>
+</li>
+</ul>
 <a name="setContext-org.apache.storm.windowing.EvictionContext-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setContext</h4>
 <pre>void&nbsp;setContext(<a href="../../../../org/apache/storm/windowing/EvictionContext.html" title="interface in org.apache.storm.windowing">EvictionContext</a>&nbsp;context)</pre>
 <div class="block"><p>Sets a context in the eviction policy that can be used while evicting the events. E.g. For TimeEvictionPolicy, this could be used to set the reference timestamp.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>context</code> - </dd>
+<dd><code>context</code> - the eviction context</dd>
+</dl>
+</li>
+</ul>
+<a name="reset--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>reset</h4>
+<pre>void&nbsp;reset()</pre>
+<div class="block"><p>Resets the eviction policy.</p></div>
+</li>
+</ul>
+<a name="getState--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getState</h4>
+<pre><a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">S</a>&nbsp;getState()</pre>
+<div class="block"><p>Return runtime state to be checkpointed by the framework for restoring the eviction policy in case of failures.</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the state</dd>
+</dl>
+</li>
+</ul>
+<a name="restoreState-java.lang.Object-">
+<!--   -->
+</a><a name="restoreState-S-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>restoreState</h4>
+<pre>void&nbsp;restoreState(<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="type parameter in EvictionPolicy">S</a>&nbsp;state)</pre>
+<div class="block"><p>Restore the eviction policy from the state that was earlier checkpointed by the framework.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>state</code> - the state</dd>
 </dl>
 </li>
 </ul>
@@ -296,6 +374,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

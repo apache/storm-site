@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.html" title="class in org.apache.storm.kafka.spout"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Consumer.html" title="interface in org.apache.storm.kafka.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.FirstPollOffsetStrategy.html" title="enum in org.apache.storm.kafka.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" target="_top">Frames</a></li>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.kafka.spout.KafkaSpoutConfig.Builder&lt;K,V&gt;</li>
@@ -114,7 +114,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public static class <span class="typeNameLabel">KafkaSpoutConfig.Builder&lt;K,V&gt;</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
 </li>
 </ul>
 </div>
@@ -133,19 +133,22 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#Builder-java.util.Map-org.apache.storm.kafka.spout.KafkaSpoutStreams-org.apache.storm.kafka.spout.KafkaSpoutTuplesBuilder-">Builder</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;kafkaProps,
-       <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStreams.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutStreams</a>&nbsp;kafkaSpoutStreams,
-       <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTuplesBuilder.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutTuplesBuilder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;tuplesBuilder)</code>
-<div class="block">Please refer to javadoc in <code>#Builder(Map, KafkaSpoutStreams, KafkaSpoutTuplesBuilder, KafkaSpoutRetryService)</code>.<p/> This constructor uses by the default the following implementation for <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html" title="interface in org.apache.storm.kafka.spout"><code>KafkaSpoutRetryService</code></a>:<p/> <code>new KafkaSpoutRetryExponentialBackoff(TimeInterval.seconds(0), TimeInterval.milliSeconds(2),
-          DEFAULT_MAX_RETRIES, TimeInterval.seconds(10)))</code></div>
-</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#Builder-java.lang.String-java.util.regex.Pattern-">Builder</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;bootstrapServers,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html?is-external=true" title="class or interface in java.util.regex">Pattern</a>&nbsp;topics)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#Builder-java.util.Map-org.apache.storm.kafka.spout.KafkaSpoutStreams-org.apache.storm.kafka.spout.KafkaSpoutTuplesBuilder-org.apache.storm.kafka.spout.KafkaSpoutRetryService-">Builder</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;kafkaProps,
-       <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStreams.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutStreams</a>&nbsp;kafkaSpoutStreams,
-       <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTuplesBuilder.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutTuplesBuilder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;tuplesBuilder,
-       <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutRetryService</a>&nbsp;retryService)</code>
-<div class="block">KafkaSpoutConfig defines the required configuration to connect a consumer to a consumer group, as well as the subscribing topics The optional configuration can be specified using the set methods of this builder</div>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#Builder-java.lang.String-java.util.Set-">Builder</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;bootstrapServers,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;topics)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#Builder-java.lang.String-java.lang.String...-">Builder</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;bootstrapServers,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;topics)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#Builder-java.lang.String-org.apache.storm.kafka.spout.subscription.TopicFilter-org.apache.storm.kafka.spout.subscription.ManualPartitioner-">Builder</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;bootstrapServers,
+       <a href="../../../../../org/apache/storm/kafka/spout/subscription/TopicFilter.html" title="interface in org.apache.storm.kafka.spout.subscription">TopicFilter</a>&nbsp;topicFilter,
+       <a href="../../../../../org/apache/storm/kafka/spout/subscription/ManualPartitioner.html" title="interface in org.apache.storm.kafka.spout.subscription">ManualPartitioner</a>&nbsp;topicPartitioner)</code>
+<div class="block">Create a KafkaSpoutConfig builder with default property values and no key/value deserializers.</div>
 </td>
 </tr>
 </table>
@@ -169,26 +172,26 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setFirstPollOffsetStrategy-org.apache.storm.kafka.spout.KafkaSpoutConfig.FirstPollOffsetStrategy-">setFirstPollOffsetStrategy</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.FirstPollOffsetStrategy.html" title="enum in org.apache.storm.kafka.spout">KafkaSpoutConfig.FirstPollOffsetStrategy</a>&nbsp;firstPollOffsetStrategy)</code>
-<div class="block">Sets the offset used by the Kafka spout in the first poll to Kafka broker upon process start.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setEmitNullTuples-boolean-">setEmitNullTuples</a></span>(boolean&nbsp;emitNullTuples)</code>
+<div class="block">Specifies if the spout should emit null tuples to the component downstream, or rather not emit and directly ack them.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setKeyDeserializer-org.apache.kafka.common.serialization.Deserializer-">setKeyDeserializer</a></span>(org.apache.kafka.common.serialization.Deserializer&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>&gt;&nbsp;keyDeserializer)</code>
-<div class="block">Specifying this key deserializer overrides the property key.deserializer</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setFirstPollOffsetStrategy-org.apache.storm.kafka.spout.KafkaSpoutConfig.FirstPollOffsetStrategy-">setFirstPollOffsetStrategy</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.FirstPollOffsetStrategy.html" title="enum in org.apache.storm.kafka.spout">KafkaSpoutConfig.FirstPollOffsetStrategy</a>&nbsp;firstPollOffsetStrategy)</code>
+<div class="block">Sets the offset used by the Kafka spout in the first poll to Kafka broker upon process start.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setMaxRetries-int-">setMaxRetries</a></span>(int&nbsp;maxRetries)</code>
-<div class="block">Defines the max number of retrials in case of tuple failure.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setMaxUncommittedOffsets-int-">setMaxUncommittedOffsets</a></span>(int&nbsp;maxUncommittedOffsets)</code>
+<div class="block">Defines the max number of polled offsets (records) that can be pending commit, before another poll can take place.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setMaxUncommittedOffsets-int-">setMaxUncommittedOffsets</a></span>(int&nbsp;maxUncommittedOffsets)</code>
-<div class="block">Defines the max number of polled offsets (records) that can be pending commit, before another poll can take place.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setMetricsTimeBucketSizeInSecs-int-">setMetricsTimeBucketSizeInSecs</a></span>(int&nbsp;metricsTimeBucketSizeInSecs)</code>
+<div class="block">The time period that metrics data in bucketed into.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
@@ -199,14 +202,76 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setPollTimeoutMs-long-">setPollTimeoutMs</a></span>(long&nbsp;pollTimeoutMs)</code>
-<div class="block">Specifies the time, in milliseconds, spent waiting in poll if data is not available.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setPartitionRefreshPeriodMs-long-">setPartitionRefreshPeriodMs</a></span>(long&nbsp;partitionRefreshPeriodMs)</code>
+<div class="block">Sets partition refresh period in milliseconds.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setValueDeserializer-org.apache.kafka.common.serialization.Deserializer-">setValueDeserializer</a></span>(org.apache.kafka.common.serialization.Deserializer&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;valueDeserializer)</code>
-<div class="block">Specifying this value deserializer overrides the property value.deserializer</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setPollTimeoutMs-long-">setPollTimeoutMs</a></span>(long&nbsp;pollTimeoutMs)</code>
+<div class="block">Specifies the time, in milliseconds, spent waiting in poll if data is not available.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProcessingGuarantee-org.apache.storm.kafka.spout.KafkaSpoutConfig.ProcessingGuarantee-">setProcessingGuarantee</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html" title="enum in org.apache.storm.kafka.spout">KafkaSpoutConfig.ProcessingGuarantee</a>&nbsp;processingGuarantee)</code>
+<div class="block">Specifies which processing guarantee the spout should offer.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.util.Map-">setProp</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;props)</code>
+<div class="block">Set multiple <code>KafkaConsumer</code> properties.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.util.Properties-">setProp</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;props)</code>
+<div class="block">Set multiple <code>KafkaConsumer</code> properties.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-">setProp</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+       <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>
+<div class="block">Set a <code>KafkaConsumer</code> property.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setRecordTranslator-org.apache.storm.kafka.spout.Func-org.apache.storm.tuple.Fields-">setRecordTranslator</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/Func.html" title="interface in org.apache.storm.kafka.spout">Func</a>&lt;org.apache.kafka.clients.consumer.ConsumerRecord&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;&nbsp;func,
+                   <a href="../../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;fields)</code>
+<div class="block">Configure a translator with tuples to be emitted on the default stream.</div>
+</td>
+</tr>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setRecordTranslator-org.apache.storm.kafka.spout.Func-org.apache.storm.tuple.Fields-java.lang.String-">setRecordTranslator</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/Func.html" title="interface in org.apache.storm.kafka.spout">Func</a>&lt;org.apache.kafka.clients.consumer.ConsumerRecord&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;&nbsp;func,
+                   <a href="../../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;fields,
+                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stream)</code>
+<div class="block">Configure a translator with tuples to be emitted to a given stream.</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setRecordTranslator-org.apache.storm.kafka.spout.RecordTranslator-">setRecordTranslator</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/RecordTranslator.html" title="interface in org.apache.storm.kafka.spout">RecordTranslator</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;translator)</code>&nbsp;</td>
+</tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setRetry-org.apache.storm.kafka.spout.KafkaSpoutRetryService-">setRetry</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutRetryService</a>&nbsp;retryService)</code>
+<div class="block">Sets the retry service for the spout to use.</div>
+</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setTupleListener-org.apache.storm.kafka.spout.KafkaTupleListener-">setTupleListener</a></span>(<a href="../../../../../org/apache/storm/kafka/spout/KafkaTupleListener.html" title="interface in org.apache.storm.kafka.spout">KafkaTupleListener</a>&nbsp;tupleListener)</code>
+<div class="block">Sets the tuple listener for the spout to use.</div>
+</td>
+</tr>
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setTupleTrackingEnforced-boolean-">setTupleTrackingEnforced</a></span>(boolean&nbsp;tupleTrackingEnforced)</code>
+<div class="block">Specifies whether the spout should require Storm to track emitted tuples when using a <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html" title="enum in org.apache.storm.kafka.spout"><code>KafkaSpoutConfig.ProcessingGuarantee</code></a> other than <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html#AT_LEAST_ONCE"><code>KafkaSpoutConfig.ProcessingGuarantee.AT_LEAST_ONCE</code></a>.</div>
 </td>
 </tr>
 </table>
@@ -214,8 +279,8 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -231,36 +296,51 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Builder-java.util.Map-org.apache.storm.kafka.spout.KafkaSpoutStreams-org.apache.storm.kafka.spout.KafkaSpoutTuplesBuilder-">
+<a name="Builder-java.lang.String-java.lang.String...-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>Builder</h4>
-<pre>public&nbsp;Builder(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;kafkaProps,
-               <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStreams.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutStreams</a>&nbsp;kafkaSpoutStreams,
-               <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTuplesBuilder.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutTuplesBuilder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;tuplesBuilder)</pre>
-<div class="block"><p>Please refer to javadoc in <code>#Builder(Map, KafkaSpoutStreams, KafkaSpoutTuplesBuilder, KafkaSpoutRetryService)</code>.<p/> This constructor uses by the default the following implementation for <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html" title="interface in org.apache.storm.kafka.spout"><code>KafkaSpoutRetryService</code></a>:<p/> <code>new KafkaSpoutRetryExponentialBackoff(TimeInterval.seconds(0), TimeInterval.milliSeconds(2),
-          DEFAULT_MAX_RETRIES, TimeInterval.seconds(10)))</code></p></div>
+<pre>public&nbsp;Builder(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;bootstrapServers,
+               <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>...&nbsp;topics)</pre>
 </li>
 </ul>
-<a name="Builder-java.util.Map-org.apache.storm.kafka.spout.KafkaSpoutStreams-org.apache.storm.kafka.spout.KafkaSpoutTuplesBuilder-org.apache.storm.kafka.spout.KafkaSpoutRetryService-">
+<a name="Builder-java.lang.String-java.util.Set-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>Builder</h4>
+<pre>public&nbsp;Builder(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;bootstrapServers,
+               <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Set.html?is-external=true" title="class or interface in java.util">Set</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;topics)</pre>
+</li>
+</ul>
+<a name="Builder-java.lang.String-java.util.regex.Pattern-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>Builder</h4>
+<pre>public&nbsp;Builder(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;bootstrapServers,
+               <a href="http://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html?is-external=true" title="class or interface in java.util.regex">Pattern</a>&nbsp;topics)</pre>
+</li>
+</ul>
+<a name="Builder-java.lang.String-org.apache.storm.kafka.spout.subscription.TopicFilter-org.apache.storm.kafka.spout.subscription.ManualPartitioner-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Builder</h4>
-<pre>public&nbsp;Builder(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;kafkaProps,
-               <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutStreams.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutStreams</a>&nbsp;kafkaSpoutStreams,
-               <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutTuplesBuilder.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutTuplesBuilder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;tuplesBuilder,
-               <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutRetryService</a>&nbsp;retryService)</pre>
-<div class="block"><p>KafkaSpoutConfig defines the required configuration to connect a consumer to a consumer group, as well as the subscribing topics The optional configuration can be specified using the set methods of this builder</p></div>
+<pre>public&nbsp;Builder(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;bootstrapServers,
+               <a href="../../../../../org/apache/storm/kafka/spout/subscription/TopicFilter.html" title="interface in org.apache.storm.kafka.spout.subscription">TopicFilter</a>&nbsp;topicFilter,
+               <a href="../../../../../org/apache/storm/kafka/spout/subscription/ManualPartitioner.html" title="interface in org.apache.storm.kafka.spout.subscription">ManualPartitioner</a>&nbsp;topicPartitioner)</pre>
+<div class="block"><p>Create a KafkaSpoutConfig builder with default property values and no key/value deserializers.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>kafkaProps</code> - properties defining consumer connection to Kafka broker as specified in @see <a href="http://kafka.apache.org/090/javadoc/index.html?org/apache/kafka/clients/consumer/KafkaConsumer.html">KafkaConsumer</a></dd>
-<dd><code>kafkaSpoutStreams</code> - streams to where the tuples are emitted for each tuple. Multiple topics can emit in the same stream.</dd>
-<dd><code>tuplesBuilder</code> - logic to build tuples from <code>ConsumerRecord</code>s.</dd>
-<dd><code>retryService</code> - logic that manages the retrial of failed tuples</dd>
+<dd><code>bootstrapServers</code> - The bootstrap servers the consumer will use</dd>
+<dd><code>topicFilter</code> - The topic filter defining which topics and partitions the spout will read</dd>
+<dd><code>topicPartitioner</code> - The topic partitioner defining which topics and partitions are assinged to each spout task</dd>
 </dl>
 </li>
 </ul>
@@ -272,24 +352,35 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="setKeyDeserializer-org.apache.kafka.common.serialization.Deserializer-">
+<a name="setProp-java.lang.String-java.lang.Object-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setKeyDeserializer</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setKeyDeserializer(org.apache.kafka.common.serialization.Deserializer&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>&gt;&nbsp;keyDeserializer)</pre>
-<div class="block"><p>Specifying this key deserializer overrides the property key.deserializer</p></div>
+<h4>setProp</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setProp(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
+                                             <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</pre>
+<div class="block"><p>Set a <code>KafkaConsumer</code> property.</p></div>
 </li>
 </ul>
-<a name="setValueDeserializer-org.apache.kafka.common.serialization.Deserializer-">
+<a name="setProp-java.util.Map-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setValueDeserializer</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setValueDeserializer(org.apache.kafka.common.serialization.Deserializer&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;valueDeserializer)</pre>
-<div class="block"><p>Specifying this value deserializer overrides the property value.deserializer</p></div>
+<h4>setProp</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setProp(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;props)</pre>
+<div class="block"><p>Set multiple <code>KafkaConsumer</code> properties.</p></div>
+</li>
+</ul>
+<a name="setProp-java.util.Properties-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setProp</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setProp(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Properties.html?is-external=true" title="class or interface in java.util">Properties</a>&nbsp;props)</pre>
+<div class="block"><p>Set multiple <code>KafkaConsumer</code> properties.</p></div>
 </li>
 </ul>
 <a name="setPollTimeoutMs-long-">
@@ -299,7 +390,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>setPollTimeoutMs</h4>
 <pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setPollTimeoutMs(long&nbsp;pollTimeoutMs)</pre>
-<div class="block"><p>Specifies the time, in milliseconds, spent waiting in poll if data is not available. Default is 2s</p></div>
+<div class="block"><p>Specifies the time, in milliseconds, spent waiting in poll if data is not available. Default is 2s.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>pollTimeoutMs</code> - time in ms</dd>
@@ -313,24 +404,10 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>setOffsetCommitPeriodMs</h4>
 <pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setOffsetCommitPeriodMs(long&nbsp;offsetCommitPeriodMs)</pre>
-<div class="block"><p>Specifies the period, in milliseconds, the offset commit task is periodically called. Default is 15s.</p></div>
+<div class="block"><p>Specifies the period, in milliseconds, the offset commit task is periodically called. Default is 15s.</p><p><p>This setting only has an effect if the configured <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html" title="enum in org.apache.storm.kafka.spout"><code>KafkaSpoutConfig.ProcessingGuarantee</code></a> is <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html#AT_LEAST_ONCE"><code>KafkaSpoutConfig.ProcessingGuarantee.AT_LEAST_ONCE</code></a> or <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html#NO_GUARANTEE"><code>KafkaSpoutConfig.ProcessingGuarantee.NO_GUARANTEE</code></a>.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>offsetCommitPeriodMs</code> - time in ms</dd>
-</dl>
-</li>
-</ul>
-<a name="setMaxRetries-int-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setMaxRetries</h4>
-<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setMaxRetries(int&nbsp;maxRetries)</pre>
-<div class="block"><p>Defines the max number of retrials in case of tuple failure. The default is to retry forever, which means that no new records are committed until the previous polled records have been acked. This guarantees at once delivery of all the previously polled records. By specifying a finite value for maxRetries, the user decides to sacrifice guarantee of delivery for the previous polled records in favor of processing more records.</p></div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>maxRetries</code> - max number of retrials</dd>
 </dl>
 </li>
 </ul>
@@ -341,7 +418,7 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList">
 <h4>setMaxUncommittedOffsets</h4>
 <pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setMaxUncommittedOffsets(int&nbsp;maxUncommittedOffsets)</pre>
-<div class="block"><p>Defines the max number of polled offsets (records) that can be pending commit, before another poll can take place. Once this limit is reached, no more offsets (records) can be polled until the next successful commit(s) sets the number of pending offsets bellow the threshold. The default is <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.html#DEFAULT_MAX_UNCOMMITTED_OFFSETS"><code>KafkaSpoutConfig.DEFAULT_MAX_UNCOMMITTED_OFFSETS</code></a>.</p></div>
+<div class="block"><p>Defines the max number of polled offsets (records) that can be pending commit, before another poll can take place. Once this limit is reached, no more offsets (records) can be polled until the next successful commit(s) sets the number of pending offsets below the threshold. The default is <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.html#DEFAULT_MAX_UNCOMMITTED_OFFSETS"><code>KafkaSpoutConfig.DEFAULT_MAX_UNCOMMITTED_OFFSETS</code></a>. This limit is per partition and may in some cases be exceeded, but each partition cannot exceed this limit by more than maxPollRecords - 1.</p><p><p>This setting only has an effect if the configured <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html" title="enum in org.apache.storm.kafka.spout"><code>KafkaSpoutConfig.ProcessingGuarantee</code></a> is <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html#AT_LEAST_ONCE"><code>KafkaSpoutConfig.ProcessingGuarantee.AT_LEAST_ONCE</code></a>.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>maxUncommittedOffsets</code> - max number of records that can be be pending commit</dd>
@@ -359,6 +436,157 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>firstPollOffsetStrategy</code> - Offset used by Kafka spout first poll</dd>
+</dl>
+</li>
+</ul>
+<a name="setRetry-org.apache.storm.kafka.spout.KafkaSpoutRetryService-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setRetry</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setRetry(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutRetryService.html" title="interface in org.apache.storm.kafka.spout">KafkaSpoutRetryService</a>&nbsp;retryService)</pre>
+<div class="block"><p>Sets the retry service for the spout to use.</p><p><p>This setting only has an effect if the configured <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html" title="enum in org.apache.storm.kafka.spout"><code>KafkaSpoutConfig.ProcessingGuarantee</code></a> is <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html#AT_LEAST_ONCE"><code>KafkaSpoutConfig.ProcessingGuarantee.AT_LEAST_ONCE</code></a>.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>retryService</code> - the new retry service</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the builder (this).</dd>
+</dl>
+</li>
+</ul>
+<a name="setTupleListener-org.apache.storm.kafka.spout.KafkaTupleListener-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setTupleListener</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setTupleListener(<a href="../../../../../org/apache/storm/kafka/spout/KafkaTupleListener.html" title="interface in org.apache.storm.kafka.spout">KafkaTupleListener</a>&nbsp;tupleListener)</pre>
+<div class="block"><p>Sets the tuple listener for the spout to use.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>tupleListener</code> - the tuple listener</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the builder (this).</dd>
+</dl>
+</li>
+</ul>
+<a name="setRecordTranslator-org.apache.storm.kafka.spout.RecordTranslator-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setRecordTranslator</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setRecordTranslator(<a href="../../../../../org/apache/storm/kafka/spout/RecordTranslator.html" title="interface in org.apache.storm.kafka.spout">RecordTranslator</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;translator)</pre>
+</li>
+</ul>
+<a name="setRecordTranslator-org.apache.storm.kafka.spout.Func-org.apache.storm.tuple.Fields-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setRecordTranslator</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setRecordTranslator(<a href="../../../../../org/apache/storm/kafka/spout/Func.html" title="interface in org.apache.storm.kafka.spout">Func</a>&lt;org.apache.kafka.clients.consumer.ConsumerRecord&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;&nbsp;func,
+                                                         <a href="../../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;fields)</pre>
+<div class="block"><p>Configure a translator with tuples to be emitted on the default stream.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>func</code> - extracts and turns a Kafka ConsumerRecord into a list of objects to be emitted</dd>
+<dd><code>fields</code> - the names of the fields extracted</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this to be able to chain configuration</dd>
+</dl>
+</li>
+</ul>
+<a name="setRecordTranslator-org.apache.storm.kafka.spout.Func-org.apache.storm.tuple.Fields-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setRecordTranslator</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setRecordTranslator(<a href="../../../../../org/apache/storm/kafka/spout/Func.html" title="interface in org.apache.storm.kafka.spout">Func</a>&lt;org.apache.kafka.clients.consumer.ConsumerRecord&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&gt;&nbsp;func,
+                                                         <a href="../../../../../org/apache/storm/tuple/Fields.html" title="class in org.apache.storm.tuple">Fields</a>&nbsp;fields,
+                                                         <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stream)</pre>
+<div class="block"><p>Configure a translator with tuples to be emitted to a given stream.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>func</code> - extracts and turns a Kafka ConsumerRecord into a list of objects to be emitted</dd>
+<dd><code>fields</code> - the names of the fields extracted</dd>
+<dd><code>stream</code> - the stream to emit the tuples on</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this to be able to chain configuration</dd>
+</dl>
+</li>
+</ul>
+<a name="setPartitionRefreshPeriodMs-long-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setPartitionRefreshPeriodMs</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setPartitionRefreshPeriodMs(long&nbsp;partitionRefreshPeriodMs)</pre>
+<div class="block"><p>Sets partition refresh period in milliseconds. This is how often Kafka will be polled to check for new topics and/or new partitions.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>partitionRefreshPeriodMs</code> - time in milliseconds</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the builder (this)</dd>
+</dl>
+</li>
+</ul>
+<a name="setEmitNullTuples-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setEmitNullTuples</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setEmitNullTuples(boolean&nbsp;emitNullTuples)</pre>
+<div class="block"><p>Specifies if the spout should emit null tuples to the component downstream, or rather not emit and directly ack them. By default this parameter is set to false, which means that null tuples are not emitted.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>emitNullTuples</code> - sets if null tuples should or not be emitted downstream</dd>
+</dl>
+</li>
+</ul>
+<a name="setProcessingGuarantee-org.apache.storm.kafka.spout.KafkaSpoutConfig.ProcessingGuarantee-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setProcessingGuarantee</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setProcessingGuarantee(<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html" title="enum in org.apache.storm.kafka.spout">KafkaSpoutConfig.ProcessingGuarantee</a>&nbsp;processingGuarantee)</pre>
+<div class="block"><p>Specifies which processing guarantee the spout should offer. Refer to the documentation for <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html" title="enum in org.apache.storm.kafka.spout"><code>KafkaSpoutConfig.ProcessingGuarantee</code></a>.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>processingGuarantee</code> - The processing guarantee the spout should offer.</dd>
+</dl>
+</li>
+</ul>
+<a name="setTupleTrackingEnforced-boolean-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setTupleTrackingEnforced</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setTupleTrackingEnforced(boolean&nbsp;tupleTrackingEnforced)</pre>
+<div class="block"><p>Specifies whether the spout should require Storm to track emitted tuples when using a <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html" title="enum in org.apache.storm.kafka.spout"><code>KafkaSpoutConfig.ProcessingGuarantee</code></a> other than <a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html#AT_LEAST_ONCE"><code>KafkaSpoutConfig.ProcessingGuarantee.AT_LEAST_ONCE</code></a>. The spout will always track emitted tuples when offering at-least-once guarantees regardless of this setting. This setting is false by default.</p><p><p>Enabling tracking can be useful even in cases where reliability is not a concern, because it allows <a href="../../../../../org/apache/storm/Config.html#TOPOLOGY_MAX_SPOUT_PENDING"><code>Config.TOPOLOGY_MAX_SPOUT_PENDING</code></a> to have an effect, and enables some spout metrics (e.g. complete-latency) that would otherwise be disabled.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>tupleTrackingEnforced</code> - true if Storm should track emitted tuples, false otherwise</dd>
+</dl>
+</li>
+</ul>
+<a name="setMetricsTimeBucketSizeInSecs-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setMetricsTimeBucketSizeInSecs</h4>
+<pre>public&nbsp;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="class in org.apache.storm.kafka.spout">KafkaSpoutConfig.Builder</a>&lt;<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">K</a>,<a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" title="type parameter in KafkaSpoutConfig.Builder">V</a>&gt;&nbsp;setMetricsTimeBucketSizeInSecs(int&nbsp;metricsTimeBucketSizeInSecs)</pre>
+<div class="block"><p>The time period that metrics data in bucketed into.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>metricsTimeBucketSizeInSecs</code> - time in seconds</dd>
 </dl>
 </li>
 </ul>
@@ -404,7 +632,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.html" title="class in org.apache.storm.kafka.spout"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.Consumer.html" title="interface in org.apache.storm.kafka.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/kafka/spout/KafkaSpoutConfig.FirstPollOffsetStrategy.html" title="enum in org.apache.storm.kafka.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html" target="_top">Frames</a></li>
@@ -444,6 +672,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

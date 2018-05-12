@@ -91,7 +91,7 @@
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.validation.ConfigValidationAnnotations</li>
@@ -104,7 +104,7 @@
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">ConfigValidationAnnotations</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
 <div class="block"><p>Note: every annotation interface must have method <code>validatorClass()</code> For every annotation there must validator class to do the validation To add another annotation for config validation, add another annotation @interface class. Implement the corresponding validator logic in a class in ConfigValidation. Make sure validateField method in ConfigValidation knows how to use the validator and which method definition/parameters to pass in based on what fields are in the annotation. By default, params of annotations will be passed into a constructor that takes a Map as a parameter.</p></div>
 </li>
 </ul>
@@ -136,89 +136,93 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isImplementationOfClass.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isImplementationOfClass</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isDerivedFrom.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isDerivedFrom</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isInteger.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isInteger</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isImplementationOfClass.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isImplementationOfClass</a></span></code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isKryoReg.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isKryoReg</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isInteger.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isInteger</a></span></code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>static interface&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isKryoReg.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isKryoReg</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isListEntryCustom.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isListEntryCustom</a></span></code>
 <div class="block">Validates each entry in a list with a list of validators Validators with fields: validatorClass and entryValidatorClass</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isListEntryType.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isListEntryType</a></span></code>
 <div class="block">validates each entry in a list is of a certain type</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isMapEntryCustom.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isMapEntryCustom</a></span></code>
 <div class="block">Validates a each key and value in a Map with a list of validators Validator with fields: validatorClass, keyValidatorClasses, valueValidatorClasses</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isMapEntryType.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isMapEntryType</a></span></code>
 <div class="block">Validates the type of each key and value in a map Validator with fields: validatorClass, keyValidatorClass, valueValidatorClass</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isNoDuplicateInList.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isNoDuplicateInList</a></span></code>
 <div class="block">Validates that there are no duplicates in a list</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isNumber.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isNumber</a></span></code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isPositiveNumber.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isPositiveNumber</a></span></code>
 <div class="block">Checks if a number is positive and whether zero inclusive Validator with fields: validatorClass, includeZero</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isPowerOf2.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isPowerOf2</a></span></code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isString.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isString</a></span></code>
 <div class="block">Validators with fields: validatorClass</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isStringList.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isStringList</a></span></code>&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isStringOrStringList.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isStringOrStringList</a></span></code>
 <div class="block">Complex/custom type validators</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.isType.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.isType</a></span></code>
 <div class="block">Validators with fields: validatorClass and type</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.NotNull.html" title="annotation in org.apache.storm.validation">ConfigValidationAnnotations.NotNull</a></span></code>
 <div class="block">Validates on object is not null</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/validation/ConfigValidationAnnotations.ValidatorParams.html" title="class in org.apache.storm.validation">ConfigValidationAnnotations.ValidatorParams</a></span></code>
 <div class="block">Field names for annotations</div>
@@ -254,8 +258,8 @@ extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -353,6 +357,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

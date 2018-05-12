@@ -215,9 +215,7 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
 <h3 id="cassandrawriterbolt">CassandraWriterBolt</h3>
 
 <h4 id="static-import">Static import</h4>
-<div class="highlight"><pre><code class="language-java" data-lang="java">
-<span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">storm</span><span class="o">.</span><span class="na">cassandra</span><span class="o">.</span><span class="na">DynamicStatementBuilder</span><span class="o">.*</span>
-
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">static</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">storm</span><span class="o">.</span><span class="na">cassandra</span><span class="o">.</span><span class="na">DynamicStatementBuilder</span><span class="o">.*</span>
 </code></pre></div>
 <h4 id="insert-query-builder">Insert Query Builder</h4>
 
@@ -242,8 +240,7 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
     <span class="o">);</span>
 </code></pre></div>
 <h5 id="insert-multiple-queries-from-one-input-tuple">Insert multiple queries from one input tuple.</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">
-    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="o">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
         <span class="n">async</span><span class="o">(</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO titles_per_album (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">())),</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO titles_per_performer (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">()))</span>
@@ -251,8 +248,7 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
     <span class="o">);</span>
 </code></pre></div>
 <h5 id="insert-query-using-querybuilder">Insert query using QueryBuilder</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">
-    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="o">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
         <span class="n">async</span><span class="o">(</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO album (title,year,perfomer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">()))</span>
@@ -260,8 +256,7 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
     <span class="o">)</span>
 </code></pre></div>
 <h5 id="insert-query-with-static-bound-query">Insert query with static bound query</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">
-    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="o">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
          <span class="n">async</span><span class="o">(</span>
             <span class="n">boundQuery</span><span class="o">(</span><span class="s">"INSERT INTO album (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="n">all</span><span class="o">());</span>
@@ -269,8 +264,7 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
     <span class="o">);</span>
 </code></pre></div>
 <h5 id="insert-query-with-static-bound-query-using-named-setters-and-aliases">Insert query with static bound query using named setters and aliases</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">
-    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="o">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
          <span class="n">async</span><span class="o">(</span>
             <span class="n">boundQuery</span><span class="o">(</span><span class="s">"INSERT INTO album (title,year,performer,genre,tracks) VALUES (:ti, :ye, :pe, :ge, :tr);"</span><span class="o">)</span>
                 <span class="o">.</span><span class="na">bind</span><span class="o">(</span>
@@ -284,20 +278,17 @@ Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>
     <span class="o">);</span>
 </code></pre></div>
 <h5 id="insert-query-with-bound-statement-load-from-storm-configuration">Insert query with bound statement load from storm configuration</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">
-    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="o">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
          <span class="n">boundQuery</span><span class="o">(</span><span class="n">named</span><span class="o">(</span><span class="s">"insertIntoAlbum"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="n">all</span><span class="o">());</span>
 </code></pre></div>
 <h5 id="insert-query-with-bound-statement-load-from-tuple-field">Insert query with bound statement load from tuple field</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">
-    <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="o">(</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="k">new</span> <span class="n">CassandraWriterBolt</span><span class="o">(</span>
          <span class="n">boundQuery</span><span class="o">(</span><span class="n">namedByField</span><span class="o">(</span><span class="s">"cql"</span><span class="o">))</span>
             <span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="n">all</span><span class="o">());</span>
 </code></pre></div>
 <h5 id="insert-query-with-batch-statement">Insert query with batch statement</h5>
-<div class="highlight"><pre><code class="language-java" data-lang="java">
-    <span class="c1">// Logged</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="c1">// Logged</span>
     <span class="k">new</span> <span class="nf">CassandraWriterBolt</span><span class="o">(</span><span class="n">loggedBatch</span><span class="o">(</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO titles_per_album (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">())),</span>
             <span class="n">simpleQuery</span><span class="o">(</span><span class="s">"INSERT INTO titles_per_performer (title,year,performer,genre,tracks) VALUES (?, ?, ?, ?, ?);"</span><span class="o">).</span><span class="na">with</span><span class="o">(</span><span class="n">all</span><span class="o">()))</span>
@@ -360,33 +351,29 @@ The stream is partitioned among the bolt&#39;s tasks based on the specified row 
 </code></pre></div>
 <h3 id="trident-api-support">Trident API support</h3>
 
-<p>storm-cassandra support Trident <code>state</code> API for <code>inserting</code> data into Cassandra. 
-<code>java
-        CassandraState.Options options = new CassandraState.Options(new CassandraContext());
-        CQLStatementTupleMapper insertTemperatureValues = boundQuery(
-                &quot;INSERT INTO weather.temperature(weather_station_id, weather_station_name, event_time, temperature) VALUES(?, ?, ?, ?)&quot;)
-                .bind(with(field(&quot;weather_station_id&quot;), field(&quot;name&quot;).as(&quot;weather_station_name&quot;), field(&quot;event_time&quot;).now(), field(&quot;temperature&quot;)));
-        options.withCQLStatementTupleMapper(insertTemperatureValues);
-        CassandraStateFactory insertValuesStateFactory =  new CassandraStateFactory(options);
-        TridentState selectState = topology.newStaticState(selectWeatherStationStateFactory);
-        stream = stream.stateQuery(selectState, new Fields(&quot;weather_station_id&quot;), new CassandraQuery(), new Fields(&quot;name&quot;));
-        stream = stream.each(new Fields(&quot;name&quot;), new PrintFunction(), new Fields(&quot;name_x&quot;));
-        stream.partitionPersist(insertValuesStateFactory, new Fields(&quot;weather_station_id&quot;, &quot;name&quot;, &quot;event_time&quot;, &quot;temperature&quot;), new CassandraStateUpdater(), new Fields());
-</code></p>
-
-<p>Below <code>state</code> API for <code>querying</code> data from Cassandra.
-<code>java
-        CassandraState.Options options = new CassandraState.Options(new CassandraContext());
-        CQLStatementTupleMapper insertTemperatureValues = boundQuery(&quot;SELECT name FROM weather.station WHERE id = ?&quot;)
-                 .bind(with(field(&quot;weather_station_id&quot;).as(&quot;id&quot;)));
-        options.withCQLStatementTupleMapper(insertTemperatureValues);
-        options.withCQLResultSetValuesMapper(new TridentResultSetValuesMapper(new Fields(&quot;name&quot;)));
-        CassandraStateFactory selectWeatherStationStateFactory =  new CassandraStateFactory(options);
-        CassandraStateFactory selectWeatherStationStateFactory = getSelectWeatherStationStateFactory();
-        TridentState selectState = topology.newStaticState(selectWeatherStationStateFactory);
-        stream = stream.stateQuery(selectState, new Fields(&quot;weather_station_id&quot;), new CassandraQuery(), new Fields(&quot;name&quot;));         
-</code></p>
-
+<p>storm-cassandra support Trident <code>state</code> API for <code>inserting</code> data into Cassandra. </p>
+<div class="highlight"><pre><code class="language-java" data-lang="java">        <span class="n">CassandraState</span><span class="o">.</span><span class="na">Options</span> <span class="n">options</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CassandraState</span><span class="o">.</span><span class="na">Options</span><span class="o">(</span><span class="k">new</span> <span class="n">CassandraContext</span><span class="o">());</span>
+        <span class="n">CQLStatementTupleMapper</span> <span class="n">insertTemperatureValues</span> <span class="o">=</span> <span class="n">boundQuery</span><span class="o">(</span>
+                <span class="s">"INSERT INTO weather.temperature(weather_station_id, weather_station_name, event_time, temperature) VALUES(?, ?, ?, ?)"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="n">with</span><span class="o">(</span><span class="n">field</span><span class="o">(</span><span class="s">"weather_station_id"</span><span class="o">),</span> <span class="n">field</span><span class="o">(</span><span class="s">"name"</span><span class="o">).</span><span class="na">as</span><span class="o">(</span><span class="s">"weather_station_name"</span><span class="o">),</span> <span class="n">field</span><span class="o">(</span><span class="s">"event_time"</span><span class="o">).</span><span class="na">now</span><span class="o">(),</span> <span class="n">field</span><span class="o">(</span><span class="s">"temperature"</span><span class="o">)));</span>
+        <span class="n">options</span><span class="o">.</span><span class="na">withCQLStatementTupleMapper</span><span class="o">(</span><span class="n">insertTemperatureValues</span><span class="o">);</span>
+        <span class="n">CassandraStateFactory</span> <span class="n">insertValuesStateFactory</span> <span class="o">=</span>  <span class="k">new</span> <span class="n">CassandraStateFactory</span><span class="o">(</span><span class="n">options</span><span class="o">);</span>
+        <span class="n">TridentState</span> <span class="n">selectState</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="na">newStaticState</span><span class="o">(</span><span class="n">selectWeatherStationStateFactory</span><span class="o">);</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="na">stateQuery</span><span class="o">(</span><span class="n">selectState</span><span class="o">,</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"weather_station_id"</span><span class="o">),</span> <span class="k">new</span> <span class="n">CassandraQuery</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="na">each</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"name"</span><span class="o">),</span> <span class="k">new</span> <span class="n">PrintFunction</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"name_x"</span><span class="o">));</span>
+        <span class="n">stream</span><span class="o">.</span><span class="na">partitionPersist</span><span class="o">(</span><span class="n">insertValuesStateFactory</span><span class="o">,</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"weather_station_id"</span><span class="o">,</span> <span class="s">"name"</span><span class="o">,</span> <span class="s">"event_time"</span><span class="o">,</span> <span class="s">"temperature"</span><span class="o">),</span> <span class="k">new</span> <span class="n">CassandraStateUpdater</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">());</span>
+</code></pre></div>
+<p>Below <code>state</code> API for <code>querying</code> data from Cassandra.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java">        <span class="n">CassandraState</span><span class="o">.</span><span class="na">Options</span> <span class="n">options</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CassandraState</span><span class="o">.</span><span class="na">Options</span><span class="o">(</span><span class="k">new</span> <span class="n">CassandraContext</span><span class="o">());</span>
+        <span class="n">CQLStatementTupleMapper</span> <span class="n">insertTemperatureValues</span> <span class="o">=</span> <span class="n">boundQuery</span><span class="o">(</span><span class="s">"SELECT name FROM weather.station WHERE id = ?"</span><span class="o">)</span>
+                 <span class="o">.</span><span class="na">bind</span><span class="o">(</span><span class="n">with</span><span class="o">(</span><span class="n">field</span><span class="o">(</span><span class="s">"weather_station_id"</span><span class="o">).</span><span class="na">as</span><span class="o">(</span><span class="s">"id"</span><span class="o">)));</span>
+        <span class="n">options</span><span class="o">.</span><span class="na">withCQLStatementTupleMapper</span><span class="o">(</span><span class="n">insertTemperatureValues</span><span class="o">);</span>
+        <span class="n">options</span><span class="o">.</span><span class="na">withCQLResultSetValuesMapper</span><span class="o">(</span><span class="k">new</span> <span class="n">TridentResultSetValuesMapper</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"name"</span><span class="o">)));</span>
+        <span class="n">CassandraStateFactory</span> <span class="n">selectWeatherStationStateFactory</span> <span class="o">=</span>  <span class="k">new</span> <span class="n">CassandraStateFactory</span><span class="o">(</span><span class="n">options</span><span class="o">);</span>
+        <span class="n">CassandraStateFactory</span> <span class="n">selectWeatherStationStateFactory</span> <span class="o">=</span> <span class="n">getSelectWeatherStationStateFactory</span><span class="o">();</span>
+        <span class="n">TridentState</span> <span class="n">selectState</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="na">newStaticState</span><span class="o">(</span><span class="n">selectWeatherStationStateFactory</span><span class="o">);</span>
+        <span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="na">stateQuery</span><span class="o">(</span><span class="n">selectState</span><span class="o">,</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"weather_station_id"</span><span class="o">),</span> <span class="k">new</span> <span class="n">CassandraQuery</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>         
+</code></pre></div>
 
 
 	          </div>

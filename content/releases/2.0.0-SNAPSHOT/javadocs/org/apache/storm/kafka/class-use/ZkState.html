@@ -103,38 +103,50 @@
 <tbody>
 <tr class="altColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/PartitionManager.html#PartitionManager-org.apache.storm.kafka.DynamicPartitionConnections-java.lang.String-org.apache.storm.kafka.ZkState-java.util.Map-org.apache.storm.kafka.SpoutConfig-org.apache.storm.kafka.Partition-">PartitionManager</a></span>(<a href="../../../../../org/apache/storm/kafka/DynamicPartitionConnections.html" title="class in org.apache.storm.kafka">DynamicPartitionConnections</a>&nbsp;connections,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId,
                 <a href="../../../../../org/apache/storm/kafka/ZkState.html" title="class in org.apache.storm.kafka">ZkState</a>&nbsp;state,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
                 <a href="../../../../../org/apache/storm/kafka/SpoutConfig.html" title="class in org.apache.storm.kafka">SpoutConfig</a>&nbsp;spoutConfig,
                 <a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;id)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/StaticCoordinator.html#StaticCoordinator-org.apache.storm.kafka.DynamicPartitionConnections-java.util.Map-org.apache.storm.kafka.SpoutConfig-org.apache.storm.kafka.ZkState-int-int-java.lang.String-">StaticCoordinator</a></span>(<a href="../../../../../org/apache/storm/kafka/DynamicPartitionConnections.html" title="class in org.apache.storm.kafka">DynamicPartitionConnections</a>&nbsp;connections,
-                 <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/PartitionManager.html#PartitionManager-org.apache.storm.kafka.DynamicPartitionConnections-java.lang.String-org.apache.storm.kafka.ZkState-java.util.Map-org.apache.storm.kafka.SpoutConfig-org.apache.storm.kafka.Partition-org.apache.storm.kafka.PartitionManager-">PartitionManager</a></span>(<a href="../../../../../org/apache/storm/kafka/DynamicPartitionConnections.html" title="class in org.apache.storm.kafka">DynamicPartitionConnections</a>&nbsp;connections,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId,
+                <a href="../../../../../org/apache/storm/kafka/ZkState.html" title="class in org.apache.storm.kafka">ZkState</a>&nbsp;state,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
+                <a href="../../../../../org/apache/storm/kafka/SpoutConfig.html" title="class in org.apache.storm.kafka">SpoutConfig</a>&nbsp;spoutConfig,
+                <a href="../../../../../org/apache/storm/kafka/Partition.html" title="class in org.apache.storm.kafka">Partition</a>&nbsp;id,
+                <a href="../../../../../org/apache/storm/kafka/PartitionManager.html" title="class in org.apache.storm.kafka">PartitionManager</a>&nbsp;previousManager)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/StaticCoordinator.html#StaticCoordinator-org.apache.storm.kafka.DynamicPartitionConnections-java.util.Map-org.apache.storm.kafka.SpoutConfig-org.apache.storm.kafka.ZkState-int-int-int-java.lang.String-">StaticCoordinator</a></span>(<a href="../../../../../org/apache/storm/kafka/DynamicPartitionConnections.html" title="class in org.apache.storm.kafka">DynamicPartitionConnections</a>&nbsp;connections,
+                 <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
                  <a href="../../../../../org/apache/storm/kafka/SpoutConfig.html" title="class in org.apache.storm.kafka">SpoutConfig</a>&nbsp;config,
                  <a href="../../../../../org/apache/storm/kafka/ZkState.html" title="class in org.apache.storm.kafka">ZkState</a>&nbsp;state,
                  int&nbsp;taskIndex,
                  int&nbsp;totalTasks,
-                 <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId)</code>&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/ZkCoordinator.html#ZkCoordinator-org.apache.storm.kafka.DynamicPartitionConnections-java.util.Map-org.apache.storm.kafka.SpoutConfig-org.apache.storm.kafka.ZkState-int-int-java.lang.String-">ZkCoordinator</a></span>(<a href="../../../../../org/apache/storm/kafka/DynamicPartitionConnections.html" title="class in org.apache.storm.kafka">DynamicPartitionConnections</a>&nbsp;connections,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
-             <a href="../../../../../org/apache/storm/kafka/SpoutConfig.html" title="class in org.apache.storm.kafka">SpoutConfig</a>&nbsp;spoutConfig,
-             <a href="../../../../../org/apache/storm/kafka/ZkState.html" title="class in org.apache.storm.kafka">ZkState</a>&nbsp;state,
-             int&nbsp;taskIndex,
-             int&nbsp;totalTasks,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId)</code>&nbsp;</td>
+                 int&nbsp;taskId,
+                 <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/ZkCoordinator.html#ZkCoordinator-org.apache.storm.kafka.DynamicPartitionConnections-java.util.Map-org.apache.storm.kafka.SpoutConfig-org.apache.storm.kafka.ZkState-int-int-java.lang.String-org.apache.storm.kafka.DynamicBrokersReader-">ZkCoordinator</a></span>(<a href="../../../../../org/apache/storm/kafka/DynamicPartitionConnections.html" title="class in org.apache.storm.kafka">DynamicPartitionConnections</a>&nbsp;connections,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;stormConf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/ZkCoordinator.html#ZkCoordinator-org.apache.storm.kafka.DynamicPartitionConnections-java.util.Map-org.apache.storm.kafka.SpoutConfig-org.apache.storm.kafka.ZkState-int-int-int-java.lang.String-">ZkCoordinator</a></span>(<a href="../../../../../org/apache/storm/kafka/DynamicPartitionConnections.html" title="class in org.apache.storm.kafka">DynamicPartitionConnections</a>&nbsp;connections,
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
              <a href="../../../../../org/apache/storm/kafka/SpoutConfig.html" title="class in org.apache.storm.kafka">SpoutConfig</a>&nbsp;spoutConfig,
              <a href="../../../../../org/apache/storm/kafka/ZkState.html" title="class in org.apache.storm.kafka">ZkState</a>&nbsp;state,
              int&nbsp;taskIndex,
              int&nbsp;totalTasks,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId,
+             int&nbsp;taskId,
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId)</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/kafka/ZkCoordinator.html#ZkCoordinator-org.apache.storm.kafka.DynamicPartitionConnections-java.util.Map-org.apache.storm.kafka.SpoutConfig-org.apache.storm.kafka.ZkState-int-int-int-java.lang.String-org.apache.storm.kafka.DynamicBrokersReader-">ZkCoordinator</a></span>(<a href="../../../../../org/apache/storm/kafka/DynamicPartitionConnections.html" title="class in org.apache.storm.kafka">DynamicPartitionConnections</a>&nbsp;connections,
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
+             <a href="../../../../../org/apache/storm/kafka/SpoutConfig.html" title="class in org.apache.storm.kafka">SpoutConfig</a>&nbsp;spoutConfig,
+             <a href="../../../../../org/apache/storm/kafka/ZkState.html" title="class in org.apache.storm.kafka">ZkState</a>&nbsp;state,
+             int&nbsp;taskIndex,
+             int&nbsp;totalTasks,
+             int&nbsp;taskId,
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;topologyInstanceId,
              <a href="../../../../../org/apache/storm/kafka/DynamicBrokersReader.html" title="class in org.apache.storm.kafka">DynamicBrokersReader</a>&nbsp;reader)</code>&nbsp;</td>
 </tr>
 </tbody>
@@ -195,6 +207,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li>org.apache.storm.windowing.WindowManager&lt;T&gt;</li>
@@ -111,10 +111,14 @@ var activeTableTab = "activeTableTab";
 <dt>All Implemented Interfaces:</dt>
 <dd><a href="../../../../org/apache/storm/windowing/TriggerHandler.html" title="interface in org.apache.storm.windowing">TriggerHandler</a></dd>
 </dl>
+<dl>
+<dt>Direct Known Subclasses:</dt>
+<dd><a href="../../../../org/apache/storm/windowing/StatefulWindowManager.html" title="class in org.apache.storm.windowing">StatefulWindowManager</a></dd>
+</dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">WindowManager&lt;T&gt;</span>
-extends <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
+extends <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>
 implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" title="interface in org.apache.storm.windowing">TriggerHandler</a></pre>
 <div class="block"><p>Tracks a window of events and fires <a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="interface in org.apache.storm.windowing"><code>WindowLifecycleListener</code></a> callbacks on expiry of events or activation of the window due to <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing"><code>TriggerPolicy</code></a>.</p></div>
 </li>
@@ -136,10 +140,26 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>,?&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#evictionPolicy">evictionPolicy</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>static int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#EXPIRE_EVENTS_THRESHOLD">EXPIRE_EVENTS_THRESHOLD</a></span></code>
 <div class="block">Expire old events every EXPIRE_EVENTS_THRESHOLD to keep the window size in check.</div>
 </td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#queue">queue</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>,?&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#triggerPolicy">triggerPolicy</a></span></code>&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="interface in org.apache.storm.windowing">WindowLifecycleListener</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#windowLifecycleListener">windowLifecycleListener</a></span></code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -158,6 +178,12 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#WindowManager-org.apache.storm.windowing.WindowLifecycleListener-">WindowManager</a></span>(<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="interface in org.apache.storm.windowing">WindowLifecycleListener</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;lifecycleListener)</code>&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#WindowManager-org.apache.storm.windowing.WindowLifecycleListener-java.util.Collection-">WindowManager</a></span>(<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="interface in org.apache.storm.windowing">WindowLifecycleListener</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;lifecycleListener,
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&gt;&nbsp;queue)</code>
+<div class="block">Constructs a <a href="../../../../org/apache/storm/windowing/WindowManager.html" title="class in org.apache.storm.windowing"><code>WindowManager</code></a></div>
+</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -175,14 +201,14 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#add-org.apache.storm.windowing.Event-">add</a></span>(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;windowEvent)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#add-org.apache.storm.windowing.Event-">add</a></span>(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;windowEvent)</code>
 <div class="block">Tracks a window event</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#add-T-">add</a></span>(<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&nbsp;event)</code>
-<div class="block">Add an event into the window, with <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/System.html?is-external=true#currentTimeMillis--" title="class or interface in java.lang"><code>System.currentTimeMillis()</code></a> as the tracking ts.</div>
+<div class="block">Add an event into the window, with <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/System.html?is-external=true#currentTimeMillis--" title="class or interface in java.lang"><code>System.currentTimeMillis()</code></a> as the tracking ts.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
@@ -193,46 +219,60 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 </td>
 </tr>
 <tr id="i3" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#compactWindow--">compactWindow</a></span>()</code>
+<div class="block">expires events that fall out of the window every EXPIRE_EVENTS_THRESHOLD so that the window does not grow too big.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>long</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#getEarliestEventTs-long-long-">getEarliestEventTs</a></span>(long&nbsp;startTs,
                   long&nbsp;endTs)</code>
 <div class="block">Scans the event queue and returns the next earliest event ts between the startTs and endTs</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#getEventCount-long-">getEventCount</a></span>(long&nbsp;referenceTime)</code>
 <div class="block">Scans the event queue and returns number of events having timestamp less than or equal to the reference time.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#getSlidingCountTimestamps-long-long-int-">getSlidingCountTimestamps</a></span>(long&nbsp;startTs,
                          long&nbsp;endTs,
                          int&nbsp;slidingCount)</code>
 <div class="block">Scans the event queue and returns the list of event ts falling between startTs (exclusive) and endTs (inclusive) at each sliding interval counts.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html?is-external=true" title="class or interface in java.util">Optional</a>&lt;?&gt;&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#getState--">getState</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#onTrigger--">onTrigger</a></span>()</code>
 <div class="block">The callback invoked by the trigger policy.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#setEvictionPolicy-org.apache.storm.windowing.EvictionPolicy-">setEvictionPolicy</a></span>(<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;evictionPolicy)</code>&nbsp;</td>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#setTriggerPolicy-org.apache.storm.windowing.TriggerPolicy-">setTriggerPolicy</a></span>(<a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;triggerPolicy)</code>&nbsp;</td>
-</tr>
 <tr id="i9" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#restoreState-java.util.Map-">restoreState</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html?is-external=true" title="class or interface in java.util">Optional</a>&lt;?&gt;&gt;&nbsp;state)</code>&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#setEvictionPolicy-org.apache.storm.windowing.EvictionPolicy-">setEvictionPolicy</a></span>(<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>,?&gt;&nbsp;evictionPolicy)</code>&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#setTriggerPolicy-org.apache.storm.windowing.TriggerPolicy-">setTriggerPolicy</a></span>(<a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>,?&gt;&nbsp;triggerPolicy)</code>&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#shutdown--">shutdown</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/windowing/WindowManager.html#toString--">toString</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
@@ -240,8 +280,8 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 </li>
 </ul>
@@ -260,15 +300,51 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <a name="EXPIRE_EVENTS_THRESHOLD">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>EXPIRE_EVENTS_THRESHOLD</h4>
 <pre>public static final&nbsp;int EXPIRE_EVENTS_THRESHOLD</pre>
-<div class="block"><p>Expire old events every EXPIRE_EVENTS_THRESHOLD to keep the window size in check.</p></div>
+<div class="block"><p>Expire old events every EXPIRE_EVENTS_THRESHOLD to keep the window size in check.</p><p>Note that if the eviction policy is based on watermarks, events will not be evicted until a new watermark would cause them to be considered expired anyway, regardless of this limit</p></div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../constant-values.html#org.apache.storm.windowing.WindowManager.EXPIRE_EVENTS_THRESHOLD">Constant Field Values</a></dd>
 </dl>
+</li>
+</ul>
+<a name="queue">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>queue</h4>
+<pre>protected final&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&gt; queue</pre>
+</li>
+</ul>
+<a name="windowLifecycleListener">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>windowLifecycleListener</h4>
+<pre>protected final&nbsp;<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="interface in org.apache.storm.windowing">WindowLifecycleListener</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt; windowLifecycleListener</pre>
+</li>
+</ul>
+<a name="evictionPolicy">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>evictionPolicy</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>,?&gt; evictionPolicy</pre>
+</li>
+</ul>
+<a name="triggerPolicy">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>triggerPolicy</h4>
+<pre>protected&nbsp;<a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>,?&gt; triggerPolicy</pre>
 </li>
 </ul>
 </li>
@@ -282,10 +358,26 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <a name="WindowManager-org.apache.storm.windowing.WindowLifecycleListener-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>WindowManager</h4>
 <pre>public&nbsp;WindowManager(<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="interface in org.apache.storm.windowing">WindowLifecycleListener</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;lifecycleListener)</pre>
+</li>
+</ul>
+<a name="WindowManager-org.apache.storm.windowing.WindowLifecycleListener-java.util.Collection-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>WindowManager</h4>
+<pre>public&nbsp;WindowManager(<a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="interface in org.apache.storm.windowing">WindowLifecycleListener</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;lifecycleListener,
+                     <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html?is-external=true" title="class or interface in java.util">Collection</a>&lt;<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&gt;&nbsp;queue)</pre>
+<div class="block"><p>Constructs a <a href="../../../../org/apache/storm/windowing/WindowManager.html" title="class in org.apache.storm.windowing"><code>WindowManager</code></a></p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>lifecycleListener</code> - the <a href="../../../../org/apache/storm/windowing/WindowLifecycleListener.html" title="interface in org.apache.storm.windowing"><code>WindowLifecycleListener</code></a></dd>
+<dd><code>queue</code> - a collection where the events in the window can be enqueued. <br/>  <b>Note:</b> This collection has to be thread safe.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -302,7 +394,7 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <ul class="blockList">
 <li class="blockList">
 <h4>setEvictionPolicy</h4>
-<pre>public&nbsp;void&nbsp;setEvictionPolicy(<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;evictionPolicy)</pre>
+<pre>public&nbsp;void&nbsp;setEvictionPolicy(<a href="../../../../org/apache/storm/windowing/EvictionPolicy.html" title="interface in org.apache.storm.windowing">EvictionPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>,?&gt;&nbsp;evictionPolicy)</pre>
 </li>
 </ul>
 <a name="setTriggerPolicy-org.apache.storm.windowing.TriggerPolicy-">
@@ -311,7 +403,7 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <ul class="blockList">
 <li class="blockList">
 <h4>setTriggerPolicy</h4>
-<pre>public&nbsp;void&nbsp;setTriggerPolicy(<a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;triggerPolicy)</pre>
+<pre>public&nbsp;void&nbsp;setTriggerPolicy(<a href="../../../../org/apache/storm/windowing/TriggerPolicy.html" title="interface in org.apache.storm.windowing">TriggerPolicy</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>,?&gt;&nbsp;triggerPolicy)</pre>
 </li>
 </ul>
 <a name="add-java.lang.Object-">
@@ -323,7 +415,7 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <li class="blockList">
 <h4>add</h4>
 <pre>public&nbsp;void&nbsp;add(<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&nbsp;event)</pre>
-<div class="block"><p>Add an event into the window, with <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/System.html?is-external=true#currentTimeMillis--" title="class or interface in java.lang"><code>System.currentTimeMillis()</code></a> as the tracking ts.</p></div>
+<div class="block"><p>Add an event into the window, with <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/System.html?is-external=true#currentTimeMillis--" title="class or interface in java.lang"><code>System.currentTimeMillis()</code></a> as the tracking ts.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>event</code> - the event to add</dd>
@@ -354,7 +446,7 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <ul class="blockList">
 <li class="blockList">
 <h4>add</h4>
-<pre>public&nbsp;void&nbsp;add(org.apache.storm.windowing.Event&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;windowEvent)</pre>
+<pre>public&nbsp;void&nbsp;add(<a href="../../../../org/apache/storm/windowing/Event.html" title="interface in org.apache.storm.windowing">Event</a>&lt;<a href="../../../../org/apache/storm/windowing/WindowManager.html" title="type parameter in WindowManager">T</a>&gt;&nbsp;windowEvent)</pre>
 <div class="block"><p>Tracks a window event</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -385,6 +477,16 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <li class="blockList">
 <h4>shutdown</h4>
 <pre>public&nbsp;void&nbsp;shutdown()</pre>
+</li>
+</ul>
+<a name="compactWindow--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>compactWindow</h4>
+<pre>protected&nbsp;void&nbsp;compactWindow()</pre>
+<div class="block"><p>expires events that fall out of the window every EXPIRE_EVENTS_THRESHOLD so that the window does not grow too big.</p></div>
 </li>
 </ul>
 <a name="getEarliestEventTs-long-long-">
@@ -427,7 +529,7 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <ul class="blockList">
 <li class="blockList">
 <h4>getSlidingCountTimestamps</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;getSlidingCountTimestamps(long&nbsp;startTs,
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;getSlidingCountTimestamps(long&nbsp;startTs,
                                             long&nbsp;endTs,
                                             int&nbsp;slidingCount)</pre>
 <div class="block"><p>Scans the event queue and returns the list of event ts falling between startTs (exclusive) and endTs (inclusive) at each sliding interval counts.</p></div>
@@ -444,14 +546,32 @@ implements <a href="../../../../org/apache/storm/windowing/TriggerHandler.html" 
 <a name="toString--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>toString</h4>
-<pre>public&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;toString()</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a></code>&nbsp;in class&nbsp;<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></code></dd>
 </dl>
+</li>
+</ul>
+<a name="restoreState-java.util.Map-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>restoreState</h4>
+<pre>public&nbsp;void&nbsp;restoreState(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html?is-external=true" title="class or interface in java.util">Optional</a>&lt;?&gt;&gt;&nbsp;state)</pre>
+</li>
+</ul>
+<a name="getState--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getState</h4>
+<pre>public&nbsp;<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Optional.html?is-external=true" title="class or interface in java.util">Optional</a>&lt;?&gt;&gt;&nbsp;getState()</pre>
 </li>
 </ul>
 </li>
@@ -527,6 +647,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

@@ -108,13 +108,7 @@ var activeTableTab = "activeTableTab";
 <pre>public interface <span class="typeNameLabel">IKryoFactory</span></pre>
 <div class="block"><p>An interface that controls the Kryo instance used by Storm for serialization. The lifecycle is:</p>
 <ol>
-  <li>The Kryo instance is constructed using getKryo</li>
-  <li>Storm registers the default classes (e.g. arrays, lists, maps, etc.)</li>
-  <li>Storm calls preRegister hook</li>
-  <li>Storm registers all user-defined registrations through topology.kryo.register</li>
-  <li>Storm calls postRegister hook</li>
-  <li>Storm calls all user-defined decorators through topology.kryo.decorators</li>
-  <li>Storm calls postDecorate hook</li>
+  <li>The Kryo instance is constructed using getKryo 2. Storm registers the default classes (e.g. arrays, lists, maps, etc.) 3. Storm calls preRegister hook 4. Storm registers all user-defined registrations through topology.kryo.register 5. Storm calls postRegister hook 6. Storm calls all user-defined decorators through topology.kryo.decorators 7. Storm calls postDecorate hook</li>
 </ol></div>
 </li>
 </ul>
@@ -136,22 +130,22 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>com.esotericsoftware.kryo.Kryo</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/serialization/IKryoFactory.html#getKryo-java.util.Map-">getKryo</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/serialization/IKryoFactory.html#getKryo-java.util.Map-">getKryo</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/serialization/IKryoFactory.html#postDecorate-com.esotericsoftware.kryo.Kryo-java.util.Map-">postDecorate</a></span>(com.esotericsoftware.kryo.Kryo&nbsp;k,
-            <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</code>&nbsp;</td>
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/serialization/IKryoFactory.html#postRegister-com.esotericsoftware.kryo.Kryo-java.util.Map-">postRegister</a></span>(com.esotericsoftware.kryo.Kryo&nbsp;k,
-            <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</code>&nbsp;</td>
+            <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/serialization/IKryoFactory.html#preRegister-com.esotericsoftware.kryo.Kryo-java.util.Map-">preRegister</a></span>(com.esotericsoftware.kryo.Kryo&nbsp;k,
-           <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</code>&nbsp;</td>
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -174,7 +168,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>getKryo</h4>
-<pre>com.esotericsoftware.kryo.Kryo&nbsp;getKryo(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</pre>
+<pre>com.esotericsoftware.kryo.Kryo&nbsp;getKryo(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
 </li>
 </ul>
 <a name="preRegister-com.esotericsoftware.kryo.Kryo-java.util.Map-">
@@ -184,7 +178,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>preRegister</h4>
 <pre>void&nbsp;preRegister(com.esotericsoftware.kryo.Kryo&nbsp;k,
-                 <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</pre>
+                 <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
 </li>
 </ul>
 <a name="postRegister-com.esotericsoftware.kryo.Kryo-java.util.Map-">
@@ -194,7 +188,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>postRegister</h4>
 <pre>void&nbsp;postRegister(com.esotericsoftware.kryo.Kryo&nbsp;k,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</pre>
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
 </li>
 </ul>
 <a name="postDecorate-com.esotericsoftware.kryo.Kryo-java.util.Map-">
@@ -204,7 +198,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>postDecorate</h4>
 <pre>void&nbsp;postDecorate(com.esotericsoftware.kryo.Kryo&nbsp;k,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf)</pre>
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
 </li>
 </ul>
 </li>
@@ -280,6 +274,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

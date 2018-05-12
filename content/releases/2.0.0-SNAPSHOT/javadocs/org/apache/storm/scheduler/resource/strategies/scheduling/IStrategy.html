@@ -49,7 +49,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/DefaultResourceAwareStrategy.html" title="class in org.apache.storm.scheduler.resource.strategies.scheduling"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/GenericResourceAwareStrategy.html" title="class in org.apache.storm.scheduler.resource.strategies.scheduling"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
@@ -101,12 +101,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/DefaultResourceAwareStrategy.html" title="class in org.apache.storm.scheduler.resource.strategies.scheduling">DefaultResourceAwareStrategy</a></dd>
+<dd><a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/BaseResourceAwareStrategy.html" title="class in org.apache.storm.scheduler.resource.strategies.scheduling">BaseResourceAwareStrategy</a>, <a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/ConstraintSolverStrategy.html" title="class in org.apache.storm.scheduler.resource.strategies.scheduling">ConstraintSolverStrategy</a>, <a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/DefaultResourceAwareStrategy.html" title="class in org.apache.storm.scheduler.resource.strategies.scheduling">DefaultResourceAwareStrategy</a>, <a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/GenericResourceAwareStrategy.html" title="class in org.apache.storm.scheduler.resource.strategies.scheduling">GenericResourceAwareStrategy</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">IStrategy</span></pre>
-<div class="block"><p>An interface to for implementing different scheduling strategies for the resource aware scheduling In the future stategies will be pluggable</p></div>
+<div class="block"><p>An interface to for implementing different scheduling strategies for the resource aware scheduling. In the future strategies will be pluggable</p></div>
 </li>
 </ul>
 </div>
@@ -127,14 +127,15 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/IStrategy.html#prepare-org.apache.storm.scheduler.resource.SchedulingState-">prepare</a></span>(<a href="../../../../../../../org/apache/storm/scheduler/resource/SchedulingState.html" title="class in org.apache.storm.scheduler.resource">SchedulingState</a>&nbsp;schedulingState)</code>
-<div class="block">initialize prior to scheduling</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/IStrategy.html#prepare-java.util.Map-">prepare</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;config)</code>
+<div class="block">Prepare the Strategy for scheduling.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../../org/apache/storm/scheduler/resource/SchedulingResult.html" title="class in org.apache.storm.scheduler.resource">SchedulingResult</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/IStrategy.html#schedule-org.apache.storm.scheduler.TopologyDetails-">schedule</a></span>(<a href="../../../../../../../org/apache/storm/scheduler/TopologyDetails.html" title="class in org.apache.storm.scheduler">TopologyDetails</a>&nbsp;td)</code>
-<div class="block">This method is invoked to calcuate a scheduling for topology td</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/IStrategy.html#schedule-org.apache.storm.scheduler.Cluster-org.apache.storm.scheduler.TopologyDetails-">schedule</a></span>(<a href="../../../../../../../org/apache/storm/scheduler/Cluster.html" title="class in org.apache.storm.scheduler">Cluster</a>&nbsp;schedulingState,
+        <a href="../../../../../../../org/apache/storm/scheduler/TopologyDetails.html" title="class in org.apache.storm.scheduler">TopologyDetails</a>&nbsp;td)</code>
+<div class="block">This method is invoked to calculate a scheduling for topology td.</div>
 </td>
 </tr>
 </table>
@@ -152,29 +153,35 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="prepare-org.apache.storm.scheduler.resource.SchedulingState-">
+<a name="prepare-java.util.Map-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>prepare</h4>
-<pre>void&nbsp;prepare(<a href="../../../../../../../org/apache/storm/scheduler/resource/SchedulingState.html" title="class in org.apache.storm.scheduler.resource">SchedulingState</a>&nbsp;schedulingState)</pre>
-<div class="block"><p>initialize prior to scheduling</p></div>
+<pre>void&nbsp;prepare(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;config)</pre>
+<div class="block"><p>Prepare the Strategy for scheduling.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>config</code> - the cluster configuration</dd>
+</dl>
 </li>
 </ul>
-<a name="schedule-org.apache.storm.scheduler.TopologyDetails-">
+<a name="schedule-org.apache.storm.scheduler.Cluster-org.apache.storm.scheduler.TopologyDetails-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>schedule</h4>
-<pre><a href="../../../../../../../org/apache/storm/scheduler/resource/SchedulingResult.html" title="class in org.apache.storm.scheduler.resource">SchedulingResult</a>&nbsp;schedule(<a href="../../../../../../../org/apache/storm/scheduler/TopologyDetails.html" title="class in org.apache.storm.scheduler">TopologyDetails</a>&nbsp;td)</pre>
-<div class="block"><p>This method is invoked to calcuate a scheduling for topology td</p></div>
+<pre><a href="../../../../../../../org/apache/storm/scheduler/resource/SchedulingResult.html" title="class in org.apache.storm.scheduler.resource">SchedulingResult</a>&nbsp;schedule(<a href="../../../../../../../org/apache/storm/scheduler/Cluster.html" title="class in org.apache.storm.scheduler">Cluster</a>&nbsp;schedulingState,
+                          <a href="../../../../../../../org/apache/storm/scheduler/TopologyDetails.html" title="class in org.apache.storm.scheduler">TopologyDetails</a>&nbsp;td)</pre>
+<div class="block"><p>This method is invoked to calculate a scheduling for topology td. Cluster will reject any changes that are not for the given topology. Any changes made to the cluster will be committed if the scheduling is successful.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>td</code> - </dd>
+<dd><code>schedulingState</code> - the current state of the cluster</dd>
+<dd><code>td</code> - the topology to schedule for</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>returns a SchedulingResult object containing SchedulingStatus object to indicate whether scheduling is successful The strategy must calculate a scheduling in the format of Map&lt;WorkerSlot, Collection<ExecutorDetails>&gt; where the key of this map is the worker slot that the value (collection of executors) should be assigned to. if a scheduling is calculated successfully, put the scheduling map in the SchedulingResult object. PLEASE NOTE: Any other operations done on the cluster from a scheduling strategy will NOT persist or be realized. The data structures passed in can be used in any way necessary to assist in calculating a scheduling, but will NOT actually change the state of the cluster.</dd>
+<dd>returns a SchedulingResult object containing SchedulingStatus object to indicate whether scheduling is  successful.</dd>
 </dl>
 </li>
 </ul>
@@ -210,7 +217,7 @@ hljs.initHighlightingOnLoad();
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/DefaultResourceAwareStrategy.html" title="class in org.apache.storm.scheduler.resource.strategies.scheduling"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../../../org/apache/storm/scheduler/resource/strategies/scheduling/GenericResourceAwareStrategy.html" title="class in org.apache.storm.scheduler.resource.strategies.scheduling"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li>Next&nbsp;Class</li>
 </ul>
 <ul class="navList">
@@ -251,6 +258,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

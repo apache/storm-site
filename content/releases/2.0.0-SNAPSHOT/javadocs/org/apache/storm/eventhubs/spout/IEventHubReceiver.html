@@ -49,7 +49,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataScheme.html" title="interface in org.apache.storm.eventhubs.spout"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/eventhubs/spout/IEventFilter.html" title="interface in org.apache.storm.eventhubs.spout"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../org/apache/storm/eventhubs/spout/IEventHubReceiverFactory.html" title="interface in org.apache.storm.eventhubs.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -129,7 +129,7 @@ var activeTableTab = "activeTableTab";
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/spout/IEventHubReceiver.html#close--">close</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a></code></td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/spout/IEventHubReceiver.html#getMetricsData--">getMetricsData</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
@@ -138,11 +138,11 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/spout/IEventHubReceiver.html#open-com.microsoft.eventhubs.client.IEventHubFilter-">open</a></span>(com.microsoft.eventhubs.client.IEventHubFilter&nbsp;filter)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/spout/IEventHubReceiver.html#open-org.apache.storm.eventhubs.spout.IEventFilter-">open</a></span>(<a href="../../../../../org/apache/storm/eventhubs/spout/IEventFilter.html" title="interface in org.apache.storm.eventhubs.spout">IEventFilter</a>&nbsp;filter)</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code><a href="../../../../../org/apache/storm/eventhubs/spout/EventData.html" title="class in org.apache.storm.eventhubs.spout">EventData</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/spout/IEventHubReceiver.html#receive-long-">receive</a></span>(long&nbsp;timeoutInMilliseconds)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/storm/eventhubs/spout/EventDataWrap.html" title="class in org.apache.storm.eventhubs.spout">EventDataWrap</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/eventhubs/spout/IEventHubReceiver.html#receive--">receive</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -159,17 +159,17 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="open-com.microsoft.eventhubs.client.IEventHubFilter-">
+<a name="open-org.apache.storm.eventhubs.spout.IEventFilter-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>open</h4>
-<pre>void&nbsp;open(com.microsoft.eventhubs.client.IEventHubFilter&nbsp;filter)
-   throws com.microsoft.eventhubs.client.EventHubException</pre>
+<pre>void&nbsp;open(<a href="../../../../../org/apache/storm/eventhubs/spout/IEventFilter.html" title="interface in org.apache.storm.eventhubs.spout">IEventFilter</a>&nbsp;filter)
+   throws <a href="../../../../../org/apache/storm/eventhubs/spout/EventHubException.html" title="class in org.apache.storm.eventhubs.spout">EventHubException</a></pre>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>com.microsoft.eventhubs.client.EventHubException</code></dd>
+<dd><code><a href="../../../../../org/apache/storm/eventhubs/spout/EventHubException.html" title="class in org.apache.storm.eventhubs.spout">EventHubException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -191,13 +191,13 @@ var activeTableTab = "activeTableTab";
 <pre>boolean&nbsp;isOpen()</pre>
 </li>
 </ul>
-<a name="receive-long-">
+<a name="receive--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>receive</h4>
-<pre><a href="../../../../../org/apache/storm/eventhubs/spout/EventData.html" title="class in org.apache.storm.eventhubs.spout">EventData</a>&nbsp;receive(long&nbsp;timeoutInMilliseconds)</pre>
+<pre><a href="../../../../../org/apache/storm/eventhubs/spout/EventDataWrap.html" title="class in org.apache.storm.eventhubs.spout">EventDataWrap</a>&nbsp;receive()</pre>
 </li>
 </ul>
 <a name="getMetricsData--">
@@ -206,7 +206,7 @@ var activeTableTab = "activeTableTab";
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getMetricsData</h4>
-<pre><a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;getMetricsData()</pre>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;getMetricsData()</pre>
 </li>
 </ul>
 </li>
@@ -241,7 +241,7 @@ hljs.initHighlightingOnLoad();
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../org/apache/storm/eventhubs/spout/IEventDataScheme.html" title="interface in org.apache.storm.eventhubs.spout"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../org/apache/storm/eventhubs/spout/IEventFilter.html" title="interface in org.apache.storm.eventhubs.spout"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../org/apache/storm/eventhubs/spout/IEventHubReceiverFactory.html" title="interface in org.apache.storm.eventhubs.spout"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -282,6 +282,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

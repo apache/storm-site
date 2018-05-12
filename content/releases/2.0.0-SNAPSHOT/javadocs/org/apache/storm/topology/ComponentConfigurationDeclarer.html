@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/topology/CheckpointTupleForwarder.html" title="class in org.apache.storm.topology"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/topology/FailedException.html" title="class in org.apache.storm.topology"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/topology/ConfigurableTopology.html" title="class in org.apache.storm.topology"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/topology/ComponentConfigurationDeclarer.html" target="_top">Frames</a></li>
@@ -135,28 +135,59 @@ extends <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" ti
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#addConfiguration-java.lang.String-java.lang.Object-">addConfiguration</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;config,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#addConfiguration-java.lang.String-java.lang.Object-">addConfiguration</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;config,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</code>
+<div class="block">Add in a single config.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#addConfigurations-java.util.Map-">addConfigurations</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#addConfigurations-java.util.Map-">addConfigurations</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</code>
+<div class="block">add in several configs to the component.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#setDebug-boolean-">setDebug</a></span>(boolean&nbsp;debug)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#addResource-java.lang.String-java.lang.Number-">addResource</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;resourceName,
+           <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;resourceValue)</code>
+<div class="block">Add generic resource for this component.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#setMaxSpoutPending-java.lang.Number-">setMaxSpoutPending</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#addResources-java.util.Map-">addResources</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a>&gt;&nbsp;resources)</code>
+<div class="block">Add generic resources for this component.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#setMaxTaskParallelism-java.lang.Number-">setMaxTaskParallelism</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#getComponentConfiguration--">getComponentConfiguration</a></span>()</code>
+<div class="block">return the current component configuration.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#setNumTasks-java.lang.Number-">setNumTasks</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#setDebug-boolean-">setDebug</a></span>(boolean&nbsp;debug)</code>
+<div class="block">Turn on/off debug for this component.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#setMaxSpoutPending-java.lang.Number-">setMaxSpoutPending</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</code>
+<div class="block">Set the max spout pending config for this component.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#setMaxTaskParallelism-java.lang.Number-">setMaxTaskParallelism</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</code>
+<div class="block">Set the max task parallelism for this component.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html#setNumTasks-java.lang.Number-">setNumTasks</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</code>
+<div class="block">Set the number of tasks for this component.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -164,7 +195,7 @@ extends <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" ti
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;org.apache.storm.topology.<a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="interface in org.apache.storm.topology">ResourceDeclarer</a></h3>
-<code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setCPULoad-java.lang.Number-">setCPULoad</a>, <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-">setMemoryLoad</a>, <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-java.lang.Number-">setMemoryLoad</a></code></li>
+<code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#addSharedMemory-org.apache.storm.generated.SharedMemory-">addSharedMemory</a>, <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setCPULoad-java.lang.Number-">setCPULoad</a>, <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-">setMemoryLoad</a>, <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-java.lang.Number-">setMemoryLoad</a></code></li>
 </ul>
 </li>
 </ul>
@@ -186,7 +217,28 @@ extends <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" ti
 <ul class="blockList">
 <li class="blockList">
 <h4>addConfigurations</h4>
-<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;addConfigurations(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
+<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;addConfigurations(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf)</pre>
+<div class="block"><p>add in several configs to the component.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>conf</code> - the configs to add</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining.</dd>
+</dl>
+</li>
+</ul>
+<a name="getComponentConfiguration--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getComponentConfiguration</h4>
+<pre><a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;getComponentConfiguration()</pre>
+<div class="block"><p>return the current component configuration.</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the current configuration.</dd>
+</dl>
 </li>
 </ul>
 <a name="addConfiguration-java.lang.String-java.lang.Object-">
@@ -195,8 +247,16 @@ extends <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" ti
 <ul class="blockList">
 <li class="blockList">
 <h4>addConfiguration</h4>
-<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;addConfiguration(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;config,
-                   <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</pre>
+<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;addConfiguration(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;config,
+                   <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;value)</pre>
+<div class="block"><p>Add in a single config.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>config</code> - the key for the config</dd>
+<dd><code>value</code> - the value of the config</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining.</dd>
+</dl>
 </li>
 </ul>
 <a name="setDebug-boolean-">
@@ -206,6 +266,13 @@ extends <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" ti
 <li class="blockList">
 <h4>setDebug</h4>
 <pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;setDebug(boolean&nbsp;debug)</pre>
+<div class="block"><p>Turn on/off debug for this component.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>debug</code> - true for debug on false for debug off</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
+</dl>
 </li>
 </ul>
 <a name="setMaxTaskParallelism-java.lang.Number-">
@@ -214,7 +281,14 @@ extends <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" ti
 <ul class="blockList">
 <li class="blockList">
 <h4>setMaxTaskParallelism</h4>
-<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;setMaxTaskParallelism(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</pre>
+<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;setMaxTaskParallelism(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</pre>
+<div class="block"><p>Set the max task parallelism for this component.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>val</code> - the maximum parallelism</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
+</dl>
 </li>
 </ul>
 <a name="setMaxSpoutPending-java.lang.Number-">
@@ -223,16 +297,51 @@ extends <a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" ti
 <ul class="blockList">
 <li class="blockList">
 <h4>setMaxSpoutPending</h4>
-<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;setMaxSpoutPending(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</pre>
+<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;setMaxSpoutPending(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</pre>
+<div class="block"><p>Set the max spout pending config for this component.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>val</code> - the value of max spout pending.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
+</dl>
 </li>
 </ul>
 <a name="setNumTasks-java.lang.Number-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setNumTasks</h4>
-<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;setNumTasks(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</pre>
+<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;setNumTasks(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;val)</pre>
+<div class="block"><p>Set the number of tasks for this component.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>val</code> - the number of tasks</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining.</dd>
+</dl>
+</li>
+</ul>
+<a name="addResources-java.util.Map-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addResources</h4>
+<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;addResources(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Double.html?is-external=true" title="class or interface in java.lang">Double</a>&gt;&nbsp;resources)</pre>
+<div class="block"><p>Add generic resources for this component.</p></div>
+</li>
+</ul>
+<a name="addResource-java.lang.String-java.lang.Number-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>addResource</h4>
+<pre><a href="../../../../org/apache/storm/topology/ComponentConfigurationDeclarer.html" title="type parameter in ComponentConfigurationDeclarer">T</a>&nbsp;addResource(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;resourceName,
+              <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;resourceValue)</pre>
+<div class="block"><p>Add generic resource for this component.</p></div>
 </li>
 </ul>
 </li>
@@ -268,7 +377,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/topology/CheckpointTupleForwarder.html" title="class in org.apache.storm.topology"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/topology/FailedException.html" title="class in org.apache.storm.topology"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/topology/ConfigurableTopology.html" title="class in org.apache.storm.topology"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/topology/ComponentConfigurationDeclarer.html" target="_top">Frames</a></li>
@@ -308,6 +417,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

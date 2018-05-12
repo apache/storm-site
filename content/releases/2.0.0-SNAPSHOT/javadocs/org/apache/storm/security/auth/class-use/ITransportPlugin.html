@@ -99,6 +99,10 @@
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><a href="#org.apache.storm.security.auth.sasl">org.apache.storm.security.auth.sasl</a></td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><a href="#org.apache.storm.testing">org.apache.storm.testing</a></td>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -120,12 +124,6 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/security/auth/SaslTransportPlugin.html" title="class in org.apache.storm.security.auth">SaslTransportPlugin</a></span></code>
-<div class="block">Base class for SASL authentication plugin.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/security/auth/SimpleTransportPlugin.html" title="class in org.apache.storm.security.auth">SimpleTransportPlugin</a></span></code>
 <div class="block">Simple transport for Thrift plugin.</div>
 </td>
@@ -141,9 +139,9 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../../org/apache/storm/security/auth/ITransportPlugin.html" title="interface in org.apache.storm.security.auth">ITransportPlugin</a></code></td>
-<td class="colLast"><span class="typeNameLabel">AuthUtils.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/security/auth/AuthUtils.html#GetTransportPlugin-org.apache.storm.security.auth.ThriftConnectionType-java.util.Map-javax.security.auth.login.Configuration-">GetTransportPlugin</a></span>(<a href="../../../../../../org/apache/storm/security/auth/ThriftConnectionType.html" title="enum in org.apache.storm.security.auth">ThriftConnectionType</a>&nbsp;type,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;storm_conf,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/javax/security/auth/login/Configuration.html?is-external=true" title="class or interface in javax.security.auth.login">Configuration</a>&nbsp;login_conf)</code>
+<td class="colLast"><span class="typeNameLabel">AuthUtils.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/security/auth/AuthUtils.html#getTransportPlugin-org.apache.storm.security.auth.ThriftConnectionType-java.util.Map-javax.security.auth.login.Configuration-">getTransportPlugin</a></span>(<a href="../../../../../../org/apache/storm/security/auth/ThriftConnectionType.html" title="enum in org.apache.storm.security.auth">ThriftConnectionType</a>&nbsp;type,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;topoConf,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/javax/security/auth/login/Configuration.html?is-external=true" title="class or interface in javax.security.auth.login">Configuration</a>&nbsp;login_conf)</code>
 <div class="block">Construct a transport plugin per storm configuration</div>
 </td>
 </tr>
@@ -160,8 +158,8 @@
 <td class="colFirst"><code>org.apache.thrift.transport.TTransport</code></td>
 <td class="colLast"><span class="typeNameLabel">TBackoffConnect.</span><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/security/auth/TBackoffConnect.html#doConnectWithRetry-org.apache.storm.security.auth.ITransportPlugin-org.apache.thrift.transport.TTransport-java.lang.String-java.lang.String-">doConnectWithRetry</a></span>(<a href="../../../../../../org/apache/storm/security/auth/ITransportPlugin.html" title="interface in org.apache.storm.security.auth">ITransportPlugin</a>&nbsp;transportPlugin,
                   org.apache.thrift.transport.TTransport&nbsp;underlyingTransport,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;host,
-                  <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;asUser)</code>&nbsp;</td>
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;host,
+                  <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;asUser)</code>&nbsp;</td>
 </tr>
 </tbody>
 </table>
@@ -215,7 +213,29 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/security/auth/plain/PlainSaslTransportPlugin.html" title="class in org.apache.storm.security.auth.plain">PlainSaslTransportPlugin</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/security/auth/plain/PlainSaslTransportPlugin.html" title="class in org.apache.storm.security.auth.plain">PlainSaslTransportPlugin</a></span></code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="blockList"><a name="org.apache.storm.security.auth.sasl">
+<!--   -->
+</a>
+<h3>Uses of <a href="../../../../../../org/apache/storm/security/auth/ITransportPlugin.html" title="interface in org.apache.storm.security.auth">ITransportPlugin</a> in <a href="../../../../../../org/apache/storm/security/auth/sasl/package-summary.html">org.apache.storm.security.auth.sasl</a></h3>
+<table class="useSummary" border="0" cellpadding="3" cellspacing="0" summary="Use table, listing classes, and an explanation">
+<caption><span>Classes in <a href="../../../../../../org/apache/storm/security/auth/sasl/package-summary.html">org.apache.storm.security.auth.sasl</a> that implement <a href="../../../../../../org/apache/storm/security/auth/ITransportPlugin.html" title="interface in org.apache.storm.security.auth">ITransportPlugin</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/storm/security/auth/sasl/SaslTransportPlugin.html" title="class in org.apache.storm.security.auth.sasl">SaslTransportPlugin</a></span></code>
+<div class="block">Base class for SASL authentication plugin.</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -293,6 +313,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

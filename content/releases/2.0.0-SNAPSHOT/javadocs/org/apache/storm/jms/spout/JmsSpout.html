@@ -75,13 +75,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -97,7 +97,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
-<li><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
+<li><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</a></li>
 <li>
 <ul class="inheritance">
 <li><a href="../../../../../org/apache/storm/topology/base/BaseComponent.html" title="class in org.apache.storm.topology.base">org.apache.storm.topology.base.BaseComponent</a></li>
@@ -119,14 +119,14 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, javax.jms.MessageListener, <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichSpout.html" title="interface in org.apache.storm.topology">IRichSpout</a></dd>
+<dd><a href="http://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a>, javax.jms.MessageListener, <a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a>, <a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a>, <a href="../../../../../org/apache/storm/topology/IRichSpout.html" title="interface in org.apache.storm.topology">IRichSpout</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">JmsSpout</span>
 extends <a href="../../../../../org/apache/storm/topology/base/BaseRichSpout.html" title="class in org.apache.storm.topology.base">BaseRichSpout</a>
 implements javax.jms.MessageListener</pre>
-<div class="block"><p>A Storm <code>Spout</code> implementation that listens to a JMS topic or queue and outputs tuples based on the messages it receives. <p> <code>JmsSpout</code> instances rely on <code>JmsProducer</code> implementations to obtain the JMS <code>ConnectionFactory</code> and <code>Destination</code> objects necessary to connect to a JMS topic/queue. <p> When a <code>JmsSpout</code> receives a JMS message, it delegates to an internal <code>JmsTupleProducer</code> instance to create a Storm tuple from the incoming message. <p> Typically, developers will supply a custom <code>JmsTupleProducer</code> implementation appropriate for the expected message content.</p></div>
+<div class="block"><p>A Storm <code>Spout</code> implementation that listens to a JMS topic or queue and outputs tuples based on the messages it receives.</p><p><p><code>JmsSpout</code> instances rely on <code>JmsProducer</code> implementations to obtain the JMS <code>ConnectionFactory</code> and <code>Destination</code> objects necessary to connect to a JMS topic/queue.</p><p><p>When a <code>JmsSpout</code> receives a JMS message, it delegates to an internal <code>JmsTupleProducer</code> instance to create a Storm tuple from the incoming message.</p><p><p>Typically, developers will supply a custom <code>JmsTupleProducer</code> implementation appropriate for the expected message content.</p></div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../serialized-form.html#org.apache.storm.jms.spout.JmsSpout">Serialized Form</a></dd>
@@ -137,25 +137,6 @@ implements javax.jms.MessageListener</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#recoveryMutex">recoveryMutex</a></span></code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -187,32 +168,32 @@ implements javax.jms.MessageListener</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#ack-java.lang.Object-">ack</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</code>
-<div class="block">Storm has determined that the tuple emitted by this spout with the msgId identifier has been fully processed.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#ack-java.lang.Object-">ack</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</code>
+<div class="block">Ack a successfully handled message by the matching <a href="../../../../../org/apache/storm/jms/spout/JmsMessageID.html" title="class in org.apache.storm.jms.spout"><code>JmsMessageID</code></a>.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#close--">close</a></span>()</code>
-<div class="block">Called when an ISpout is going to be shutdown.</div>
+<div class="block">Close the <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#session"><code>session</code></a> and <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#connection"><code>connection</code></a>.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#declareOutputFields-org.apache.storm.topology.OutputFieldsDeclarer-">declareOutputFields</a></span>(<a href="../../../../../org/apache/storm/topology/OutputFieldsDeclarer.html" title="interface in org.apache.storm.topology">OutputFieldsDeclarer</a>&nbsp;declarer)</code>
-<div class="block">Declare the output schema for all the streams of this topology.</div>
+<div class="block">Use the <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#tupleProducer"><code>tupleProducer</code></a> to determine which fields are about to be emitted.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#fail-java.lang.Object-">fail</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</code>
-<div class="block">The tuple emitted by this spout with the msgId identifier has failed to be fully processed.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#fail-java.lang.Object-">fail</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</code>
+<div class="block">Fail an unsuccessfully handled message by its <a href="../../../../../org/apache/storm/jms/spout/JmsMessageID.html" title="class in org.apache.storm.jms.spout"><code>JmsMessageID</code></a>.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#getJmsAcknowledgeMode--">getJmsAcknowledgeMode</a></span>()</code>
-<div class="block">Returns the JMS Session acknowledgement mode for the JMS seesion associated with this spout.</div>
+<div class="block">Returns the JMS Session acknowledgement mode for the JMS session associated with this spout.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
@@ -232,7 +213,7 @@ implements javax.jms.MessageListener</pre>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#nextTuple--">nextTuple</a></span>()</code>
-<div class="block">When this method is called, Storm is requesting that the Spout emit tuples to the output collector.</div>
+<div class="block">Generate the next tuple from a message.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
@@ -243,7 +224,7 @@ implements javax.jms.MessageListener</pre>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#open-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.spout.SpoutOutputCollector-">open</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#open-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.spout.SpoutOutputCollector-">open</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
     <a href="../../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
     <a href="../../../../../org/apache/storm/spout/SpoutOutputCollector.html" title="class in org.apache.storm.spout">SpoutOutputCollector</a>&nbsp;collector)</code>
 <div class="block"><code>ISpout</code> implementation.</div>
@@ -251,24 +232,26 @@ implements javax.jms.MessageListener</pre>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#recovered--">recovered</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#recovered--">recovered</a></span>()</code>
+<div class="block">Marks a healthy session state.</div>
+</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#setDistributed-boolean-">setDistributed</a></span>(boolean&nbsp;distributed)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#setDistributed-boolean-">setDistributed</a></span>(boolean&nbsp;isDistributed)</code>
 <div class="block">Sets the &ldquo;distributed&rdquo; mode of this spout.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#setJmsAcknowledgeMode-int-">setJmsAcknowledgeMode</a></span>(int&nbsp;mode)</code>
-<div class="block">Sets the JMS Session acknowledgement mode for the JMS seesion associated with this spout.</div>
+<div class="block">Sets the JMS Session acknowledgement mode for the JMS session.</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#setJmsProvider-org.apache.storm.jms.JmsProvider-">setJmsProvider</a></span>(<a href="../../../../../org/apache/storm/jms/JmsProvider.html" title="interface in org.apache.storm.jms">JmsProvider</a>&nbsp;provider)</code>
-<div class="block">Set the <code>JmsProvider</code> implementation that this Spout will use to connect to a JMS <code>javax.jms.Desination</code></div>
+<div class="block">Set <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#jmsProvider"><code>jmsProvider</code></a>.</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
@@ -279,7 +262,7 @@ implements javax.jms.MessageListener</pre>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#setRecoveryPeriod-long-">setRecoveryPeriod</a></span>(long&nbsp;period)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#setRecoveryPeriodMs-long-">setRecoveryPeriodMs</a></span>(long&nbsp;period)</code>
 <div class="block">Sets the periodicity of the timer task that checks for failures and recovers the JMS session.</div>
 </td>
 </tr>
@@ -302,8 +285,8 @@ implements javax.jms.MessageListener</pre>
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
-<code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
+<h3>Methods inherited from class&nbsp;java.lang.<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></h3>
+<code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#clone--" title="class or interface in java.lang">clone</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#equals-java.lang.Object-" title="class or interface in java.lang">equals</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#finalize--" title="class or interface in java.lang">finalize</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#getClass--" title="class or interface in java.lang">getClass</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#hashCode--" title="class or interface in java.lang">hashCode</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notify--" title="class or interface in java.lang">notify</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#notifyAll--" title="class or interface in java.lang">notifyAll</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#toString--" title="class or interface in java.lang">toString</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait--" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-" title="class or interface in java.lang">wait</a>, <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true#wait-long-int-" title="class or interface in java.lang">wait</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.org.apache.storm.topology.IComponent">
@@ -320,23 +303,6 @@ implements javax.jms.MessageListener</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="recoveryMutex">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>recoveryMutex</h4>
-<pre>public final&nbsp;<a href="http://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</a> recoveryMutex</pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
@@ -360,22 +326,6 @@ implements javax.jms.MessageListener</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="setJmsAcknowledgeMode-int-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setJmsAcknowledgeMode</h4>
-<pre>public&nbsp;void&nbsp;setJmsAcknowledgeMode(int&nbsp;mode)</pre>
-<div class="block"><p>Sets the JMS Session acknowledgement mode for the JMS seesion associated with this spout. <p> Possible values: <ul> <li>javax.jms.Session.AUTO_ACKNOWLEDGE</li> <li>javax.jms.Session.CLIENT_ACKNOWLEDGE</li> <li>javax.jms.Session.DUPS_OK_ACKNOWLEDGE</li> </ul></p></div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>mode</code> - JMS Session Acknowledgement mode</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if the mode is not recognized.</dd>
-</dl>
-</li>
-</ul>
 <a name="getJmsAcknowledgeMode--">
 <!--   -->
 </a>
@@ -383,9 +333,26 @@ implements javax.jms.MessageListener</pre>
 <li class="blockList">
 <h4>getJmsAcknowledgeMode</h4>
 <pre>public&nbsp;int&nbsp;getJmsAcknowledgeMode()</pre>
-<div class="block"><p>Returns the JMS Session acknowledgement mode for the JMS seesion associated with this spout.</p></div>
+<div class="block"><p>Returns the JMS Session acknowledgement mode for the JMS session associated with this spout. Can be either of: <ul> <li><code>Session.AUTO_ACKNOWLEDGE</code></li> <li><code>Session.CLIENT_ACKNOWLEDGE</code></li> <li><code>Session.DUPS_OK_ACKNOWLEDGE</code></li> <li><code>Session.SESSION_TRANSACTED</code></li> </ul></p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
+<dd>the int value of the acknowledgment mode.</dd>
+</dl>
+</li>
+</ul>
+<a name="setJmsAcknowledgeMode-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setJmsAcknowledgeMode</h4>
+<pre>public&nbsp;void&nbsp;setJmsAcknowledgeMode(int&nbsp;mode)</pre>
+<div class="block"><p>Sets the JMS Session acknowledgement mode for the JMS session.</p><p><p>Possible values: <ul> <li>javax.jms.Session.AUTO_ACKNOWLEDGE</li> <li>javax.jms.Session.CLIENT_ACKNOWLEDGE</li> <li>javax.jms.Session.DUPS_OK_ACKNOWLEDGE</li> </ul></p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>mode</code> - JMS Session Acknowledgement mode</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="http://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html?is-external=true" title="class or interface in java.lang">IllegalArgumentException</a></code> - if the mode is not recognized.</dd>
 </dl>
 </li>
 </ul>
@@ -396,10 +363,10 @@ implements javax.jms.MessageListener</pre>
 <li class="blockList">
 <h4>setJmsProvider</h4>
 <pre>public&nbsp;void&nbsp;setJmsProvider(<a href="../../../../../org/apache/storm/jms/JmsProvider.html" title="interface in org.apache.storm.jms">JmsProvider</a>&nbsp;provider)</pre>
-<div class="block"><p>Set the <code>JmsProvider</code> implementation that this Spout will use to connect to a JMS <code>javax.jms.Desination</code></p></div>
+<div class="block"><p>Set <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#jmsProvider"><code>jmsProvider</code></a>.</p><p><p>Set the <code>JmsProvider</code> implementation that this Spout will use to connect to a JMS <code>javax.jms.Desination</code></p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>provider</code> - </dd>
+<dd><code>provider</code> - the provider to use</dd>
 </dl>
 </li>
 </ul>
@@ -413,7 +380,7 @@ implements javax.jms.MessageListener</pre>
 <div class="block"><p>Set the <code>JmsTupleProducer</code> implementation that will convert <code>javax.jms.Message</code> object to <code>org.apache.storm.tuple.Values</code> objects to be emitted.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>producer</code> - </dd>
+<dd><code>producer</code> - the producer instance to use</dd>
 </dl>
 </li>
 </ul>
@@ -424,10 +391,12 @@ implements javax.jms.MessageListener</pre>
 <li class="blockList">
 <h4>onMessage</h4>
 <pre>public&nbsp;void&nbsp;onMessage(javax.jms.Message&nbsp;msg)</pre>
-<div class="block"><p><code>javax.jms.MessageListener</code> implementation. <p> Stored the JMS message in an internal queue for processing by the <code>nextTuple()</code> method.</p></div>
+<div class="block"><p><code>javax.jms.MessageListener</code> implementation.</p><p><p>Stored the JMS message in an internal queue for processing by the <code>nextTuple()</code> method.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>onMessage</code>&nbsp;in interface&nbsp;<code>javax.jms.MessageListener</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>msg</code> - the message to handle</dd>
 </dl>
 </li>
 </ul>
@@ -437,17 +406,17 @@ implements javax.jms.MessageListener</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>open</h4>
-<pre>public&nbsp;void&nbsp;open(<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&nbsp;conf,
+<pre>public&nbsp;void&nbsp;open(<a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&gt;&nbsp;conf,
                  <a href="../../../../../org/apache/storm/task/TopologyContext.html" title="class in org.apache.storm.task">TopologyContext</a>&nbsp;context,
                  <a href="../../../../../org/apache/storm/spout/SpoutOutputCollector.html" title="class in org.apache.storm.spout">SpoutOutputCollector</a>&nbsp;collector)</pre>
-<div class="block"><p><code>ISpout</code> implementation. <p> Connects the JMS spout to the configured JMS destination topic/queue.</p></div>
+<div class="block"><p><code>ISpout</code> implementation.</p><p><p>Connects the JMS spout to the configured JMS destination topic/queue.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/spout/ISpout.html#open-java.util.Map-org.apache.storm.task.TopologyContext-org.apache.storm.spout.SpoutOutputCollector-">open</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>conf</code> - The Storm configuration for this spout. This is the configuration provided to the topology merged in with cluster configuration on this machine.</dd>
-<dd><code>context</code> - This object can be used to get information about this task&rsquo;s place within the topology, including the task id and component id of this task, input and output information, etc.</dd>
-<dd><code>collector</code> - The collector is used to emit tuples from this spout. Tuples can be emitted at any time, including the open and close methods. The collector is thread-safe and should be saved as an instance variable of this spout object.</dd>
+<dd><code>conf</code> - The Storm configuration for this spout. This is the configuration provided to the topology merged in with cluster  configuration on this machine.</dd>
+<dd><code>context</code> - This object can be used to get information about this task&rsquo;s place within the topology, including the task id and  component id of this task, input and output information, etc.</dd>
+<dd><code>collector</code> - The collector is used to emit tuples from this spout. Tuples can be emitted at any time, including the open and  close methods. The collector is thread-safe and should be saved as an instance variable of this spout object.</dd>
 </dl>
 </li>
 </ul>
@@ -458,8 +427,7 @@ implements javax.jms.MessageListener</pre>
 <li class="blockList">
 <h4>close</h4>
 <pre>public&nbsp;void&nbsp;close()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html#close--">ISpout</a></code></span></div>
-<div class="block"><p>Called when an ISpout is going to be shutdown. There is no guarentee that close will be called, because the supervisor kill -9&rsquo;s worker processes on the cluster.</p><p>The one context where close is guaranteed to be called is a topology is killed when running Storm in local mode.</p></div>
+<div class="block"><p>Close the <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#session"><code>session</code></a> and <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#connection"><code>connection</code></a>.</p><p><p>When overridden, should always call <code>super</code> to finalize the active connections.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/spout/ISpout.html#close--">close</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></code></dd>
@@ -475,8 +443,7 @@ implements javax.jms.MessageListener</pre>
 <li class="blockList">
 <h4>nextTuple</h4>
 <pre>public&nbsp;void&nbsp;nextTuple()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html#nextTuple--">ISpout</a></code></span></div>
-<div class="block"><p>When this method is called, Storm is requesting that the Spout emit tuples to the output collector. This method should be non-blocking, so if the Spout has no tuples to emit, this method should return. nextTuple, ack, and fail are all called in a tight loop in a single thread in the spout task. When there are no tuples to emit, it is courteous to have nextTuple sleep for a short amount of time (like a single millisecond) so as not to waste too much CPU.</p></div>
+<div class="block"><p>Generate the next tuple from a message.</p><p><p>This method polls the queue that&rsquo;s being filled asynchronously by the jms connection, every <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#POLL_INTERVAL_MS"><code>POLL_INTERVAL_MS</code></a> seconds. When a message arrives, a <a href="../../../../../org/apache/storm/tuple/Values.html" title="class in org.apache.storm.tuple"><code>Values</code></a> (tuple) is generated using <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#tupleProducer"><code>tupleProducer</code></a>. It is emitted, and the message is saved to <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#toCommit"><code>toCommit</code></a> and <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#pendingMessages"><code>pendingMessages</code></a> for later handling.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/spout/ISpout.html#nextTuple--">nextTuple</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></code></dd>
@@ -489,9 +456,8 @@ implements javax.jms.MessageListener</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>ack</h4>
-<pre>public&nbsp;void&nbsp;ack(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html#ack-java.lang.Object-">ISpout</a></code></span></div>
-<div class="block"><p>Storm has determined that the tuple emitted by this spout with the msgId identifier has been fully processed. Typically, an implementation of this method will take that message off the queue and prevent it from being replayed.</p></div>
+<pre>public&nbsp;void&nbsp;ack(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</pre>
+<div class="block"><p>Ack a successfully handled message by the matching <a href="../../../../../org/apache/storm/jms/spout/JmsMessageID.html" title="class in org.apache.storm.jms.spout"><code>JmsMessageID</code></a>.</p><p><p>Acking means removing the message from the pending messages collections, and if it was the oldest pending message - ack it to the mq as well, so that it&rsquo;s the only one acked.</p><p><p>Will only be called if we&rsquo;re transactional or not AUTO_ACKNOWLEDGE.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/spout/ISpout.html#ack-java.lang.Object-">ack</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></code></dd>
@@ -506,9 +472,8 @@ implements javax.jms.MessageListener</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>fail</h4>
-<pre>public&nbsp;void&nbsp;fail(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html#fail-java.lang.Object-">ISpout</a></code></span></div>
-<div class="block"><p>The tuple emitted by this spout with the msgId identifier has failed to be fully processed. Typically, an implementation of this method will put that message back on the queue to be replayed at a later time.</p></div>
+<pre>public&nbsp;void&nbsp;fail(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a>&nbsp;msgId)</pre>
+<div class="block"><p>Fail an unsuccessfully handled message by its <a href="../../../../../org/apache/storm/jms/spout/JmsMessageID.html" title="class in org.apache.storm.jms.spout"><code>JmsMessageID</code></a>.</p><p><p>Failing means dropping all pending messages and queueing a recovery attempt.</p><p><p>Will only be called if we&rsquo;re transactional or not AUTO_ACKNOWLEDGE</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/spout/ISpout.html#fail-java.lang.Object-">fail</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/spout/ISpout.html" title="interface in org.apache.storm.spout">ISpout</a></code></dd>
@@ -524,8 +489,7 @@ implements javax.jms.MessageListener</pre>
 <li class="blockList">
 <h4>declareOutputFields</h4>
 <pre>public&nbsp;void&nbsp;declareOutputFields(<a href="../../../../../org/apache/storm/topology/OutputFieldsDeclarer.html" title="interface in org.apache.storm.topology">OutputFieldsDeclarer</a>&nbsp;declarer)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../org/apache/storm/topology/IComponent.html#declareOutputFields-org.apache.storm.topology.OutputFieldsDeclarer-">IComponent</a></code></span></div>
-<div class="block"><p>Declare the output schema for all the streams of this topology.</p></div>
+<div class="block"><p>Use the <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#tupleProducer"><code>tupleProducer</code></a> to determine which fields are about to be emitted.</p><p><p>Note that <a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#nextTuple--"><code>nextTuple()</code></a> always emits to the default stream, and thus only fields declared for this stream are used.</p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../org/apache/storm/topology/IComponent.html#declareOutputFields-org.apache.storm.topology.OutputFieldsDeclarer-">declareOutputFields</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../org/apache/storm/topology/IComponent.html" title="interface in org.apache.storm.topology">IComponent</a></code></dd>
@@ -542,6 +506,10 @@ implements javax.jms.MessageListener</pre>
 <h4>hasFailures</h4>
 <pre>public&nbsp;boolean&nbsp;hasFailures()</pre>
 <div class="block"><p>Returns <code>true</code> if the spout has received failures from which it has not yet recovered.</p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><code>true</code> if there were failures, <code>false</code> otherwise.</dd>
+</dl>
 </li>
 </ul>
 <a name="recovered--">
@@ -551,19 +519,20 @@ implements javax.jms.MessageListener</pre>
 <li class="blockList">
 <h4>recovered</h4>
 <pre>protected&nbsp;void&nbsp;recovered()</pre>
+<div class="block"><p>Marks a healthy session state.</p></div>
 </li>
 </ul>
-<a name="setRecoveryPeriod-long-">
+<a name="setRecoveryPeriodMs-long-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setRecoveryPeriod</h4>
-<pre>public&nbsp;void&nbsp;setRecoveryPeriod(long&nbsp;period)</pre>
+<h4>setRecoveryPeriodMs</h4>
+<pre>public&nbsp;void&nbsp;setRecoveryPeriodMs(long&nbsp;period)</pre>
 <div class="block"><p>Sets the periodicity of the timer task that checks for failures and recovers the JMS session.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>period</code> - </dd>
+<dd><code>period</code> - desired wait period</dd>
 </dl>
 </li>
 </ul>
@@ -574,6 +543,10 @@ implements javax.jms.MessageListener</pre>
 <li class="blockList">
 <h4>isDistributed</h4>
 <pre>public&nbsp;boolean&nbsp;isDistributed()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd><a href="../../../../../org/apache/storm/jms/spout/JmsSpout.html#distributed"><code>distributed</code></a>.</dd>
+</dl>
 </li>
 </ul>
 <a name="setDistributed-boolean-">
@@ -582,11 +555,11 @@ implements javax.jms.MessageListener</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>setDistributed</h4>
-<pre>public&nbsp;void&nbsp;setDistributed(boolean&nbsp;distributed)</pre>
-<div class="block"><p>Sets the &ldquo;distributed&rdquo; mode of this spout. <p> If <code>true</code> multiple instances of this spout <i>may</i> be created across the cluster (depending on the &ldquo;parallelism_hint&rdquo; in the topology configuration). <p> Setting this value to <code>false</code> essentially means this spout will run as a singleton within the cluster (&ldquo;parallelism_hint&rdquo; will be ignored). <p> In general, this should be set to <code>false</code> if the underlying JMS destination is a topic, and <code>true</code> if it is a JMS queue.</p></div>
+<pre>public&nbsp;void&nbsp;setDistributed(boolean&nbsp;isDistributed)</pre>
+<div class="block"><p>Sets the &ldquo;distributed&rdquo; mode of this spout.</p><p><p>If <code>true</code> multiple instances of this spout <i>may</i> be created across the cluster (depending on the &ldquo;parallelism_hint&rdquo; in the topology configuration).</p><p><p>Setting this value to <code>false</code> essentially means this spout will run as a singleton within the cluster (&ldquo;parallelism_hint&rdquo; will be ignored).</p><p><p>In general, this should be set to <code>false</code> if the underlying JMS destination is a topic, and <code>true</code> if it is a JMS queue.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>distributed</code> - </dd>
+<dd><code>isDistributed</code> - <code>true</code> if should be distributed, <code>false</code> otherwise.</dd>
 </dl>
 </li>
 </ul>
@@ -597,6 +570,10 @@ implements javax.jms.MessageListener</pre>
 <li class="blockList">
 <h4>getSession</h4>
 <pre>protected&nbsp;javax.jms.Session&nbsp;getSession()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The currently active session.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -657,13 +634,13 @@ hljs.initHighlightingOnLoad();
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -672,6 +649,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>

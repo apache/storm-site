@@ -271,8 +271,16 @@ are performed based on the processing timestamp. Storm has support for tracking 
 <span class="kd">public</span> <span class="n">BaseWindowedBolt</span> <span class="nf">withTimestampField</span><span class="o">(</span><span class="n">String</span> <span class="n">fieldName</span><span class="o">)</span>
 </code></pre></div>
 <p>The value for the above <code>fieldName</code> will be looked up from the incoming tuple and considered for windowing calculations. 
-If the field is not present in the tuple an exception will be thrown. Along with the timestamp field name, a time lag parameter 
-can also be specified which indicates the max time limit for tuples with out of order timestamps. </p>
+If the field is not present in the tuple an exception will be thrown. Alternatively a <a href="../storm-client/src/jvm/org/apache/storm/windowing/TimestampExtractor.java">TimestampExtractor</a> can be used to
+derive a timestamp value from a tuple (e.g. extract timestamp from a nested field within the tuple).</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
+* Specify the timestamp extractor implementation.
+*
+* @param timestampExtractor the {@link TimestampExtractor} implementation
+*/</span>
+<span class="kd">public</span> <span class="n">BaseWindowedBolt</span> <span class="nf">withTimestampExtractor</span><span class="o">(</span><span class="n">TimestampExtractor</span> <span class="n">timestampExtractor</span><span class="o">)</span>
+</code></pre></div>
+<p>Along with the timestamp field name/extractor, a time lag parameter can also be specified which indicates the max time limit for tuples with out of order timestamps.</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
 * Specify the maximum time lag of the tuple timestamp in milliseconds. It means that the tuple timestamps
 * cannot be out of order by more than this amount.
@@ -355,7 +363,7 @@ and computing the ceiling based on the sliding interval (10s).</p>
 
 <p>The window calculation considers the time gaps and computes the windows based on the tuple timestamp.</p>
 
-<h2 id="guarentees">Guarentees</h2>
+<h2 id="guarantees">Guarantees</h2>
 
 <p>The windowing functionality in storm core currently provides at-least once guarentee. The values emitted from the bolts
 <code>execute(TupleWindow inputWindow)</code> method are automatically anchored to all the tuples in the inputWindow. The downstream
@@ -372,6 +380,105 @@ tuples can be received within the timeout period.</p>
 
 <p>An example toplogy <code>SlidingWindowTopology</code> shows how to use the apis to compute a sliding window sum and a tumbling window 
 average.</p>
+
+<h2 id="stateful-windowing">Stateful windowing</h2>
+
+<p>The default windowing implementation in storm stores the tuples in memory until they are processed and expired from the 
+window. This limits the use cases to windows that
+fit entirely in memory. Also the source tuples cannot be ack-ed until the window expiry requiring large message timeouts
+(topology.message.timeout.secs should be larger than the window length + sliding interval). This also puts extra loads 
+due to the complex acking and anchoring requirements.</p>
+
+<p>To address the above limitations and to support larger window sizes, storm provides stateful windowing support via <code>IStatefulWindowedBolt</code>. 
+User bolts should typically extend <code>BaseStatefulWindowedBolt</code> for the windowing operations with the framework automatically 
+managing the state of the window in the background.</p>
+
+<p>If the sources provide a monotonically increasing identifier as a part of the message, the framework can use this
+to periodically checkpoint the last expired and evaluated message ids, to avoid duplicate window evaluations in case of 
+failures or restarts. During recovery, the tuples with message ids lower than last expired id are discarded and tuples with 
+message id between the last expired and last evaluated message ids are fed into the system without activating any previously
+activated windows.
+The tuples beyond the last evaluated message ids are processed as usual. This can be enabled by setting
+the <code>messageIdField</code> as shown below,</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"mybolt"</span><span class="o">,</span>
+                   <span class="k">new</span> <span class="nf">MyStatefulWindowedBolt</span><span class="o">()</span>
+                   <span class="o">.</span><span class="na">withWindow</span><span class="o">(...)</span> <span class="c1">// windowing configuarations</span>
+                   <span class="o">.</span><span class="na">withMessageIdField</span><span class="o">(</span><span class="s">"msgid"</span><span class="o">),</span> <span class="c1">// a monotonically increasing 'long' field in the tuple</span>
+                   <span class="n">parallelism</span><span class="o">)</span>
+               <span class="o">.</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="s">"spout"</span><span class="o">);</span>
+</code></pre></div>
+<p>However, this option is feasible only if the sources can provide a monotonically increasing identifier in the tuple and the same is maintained
+while re-emitting the messages in case of failures. With this option the tuples are still buffered in memory until processed
+and expired from the window.</p>
+
+<p>For more details take a look at the sample topology in storm-starter <a href="../examples/storm-starter/src/jvm/org/apache/storm/starter/StatefulWindowingTopology.java">StatefulWindowingTopology</a> which will help you get started.</p>
+
+<h3 id="window-checkpointing">Window checkpointing</h3>
+
+<p>With window checkpointing, the monotonically increasing id is no longer required since the framework transparently saves the state of the window periodically into the configured state backend.
+The state that is saved includes the tuples in the window, any system state that is required to recover the state of processing
+and also the user state.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"mybolt"</span><span class="o">,</span>
+                   <span class="k">new</span> <span class="nf">MyStatefulPersistentWindowedBolt</span><span class="o">()</span>
+                   <span class="o">.</span><span class="na">withWindow</span><span class="o">(...)</span> <span class="c1">// windowing configuarations</span>
+                   <span class="o">.</span><span class="na">withPersistence</span><span class="o">()</span> <span class="c1">// persist the window state</span>
+                   <span class="o">.</span><span class="na">withMaxEventsInMemory</span><span class="o">(</span><span class="mi">25000</span><span class="o">),</span> <span class="c1">// max number of events to be cached in memory</span>
+                    <span class="n">parallelism</span><span class="o">)</span>
+               <span class="o">.</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="s">"spout"</span><span class="o">);</span>
+
+</code></pre></div>
+<p>The <code>withPersistence</code> instructs the framework to transparently save the tuples in window along with
+any associated system and user state to the state backend. The <code>withMaxEventsInMemory</code> is an optional 
+configuration that specifies the maximum number of tuples that may be kept in memory. The tuples are transparently loaded from 
+the state backend as required and the ones that are most likely to be used again are retained in memory.</p>
+
+<p>The state backend can be configured by setting the topology state provider config,</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// use redis for state persistence</span>
+<span class="n">conf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Config</span><span class="o">.</span><span class="na">TOPOLOGY_STATE_PROVIDER</span><span class="o">,</span> <span class="s">"org.apache.storm.redis.state.RedisKeyValueStateProvider"</span><span class="o">);</span>
+
+</code></pre></div>
+<p>Currently storm supports Redis and HBase as state backends and uses the underlying state-checkpointing
+framework for saving the window state. For more details on state checkpointing see <a href="State-checkpointing.md">State-checkpointing.md</a></p>
+
+<p>Here is an example of a persistent windowed bolt that uses the window checkpointing to save its state. The <code>initState</code>
+is invoked with the last saved state (user state) at initialization time. The execute method is invoked based on the configured
+windowing parameters and the tuples in the active window can be accessed via an <code>iterator</code> as shown below.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyStatefulPersistentWindowedBolt</span> <span class="kd">extends</span> <span class="n">BaseStatefulWindowedBolt</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span> <span class="n">V</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="n">KeyValueState</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">state</span><span class="o">;</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initState</span><span class="o">(</span><span class="n">KeyValueState</span><span class="o">&lt;</span><span class="n">K</span><span class="o">,</span> <span class="n">V</span><span class="o">&gt;</span> <span class="n">state</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">state</span> <span class="o">=</span> <span class="n">state</span><span class="o">;</span>
+   <span class="c1">// ...</span>
+   <span class="c1">// restore the state from the last saved state.</span>
+   <span class="c1">// ...</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">TupleWindow</span> <span class="n">window</span><span class="o">)</span> <span class="o">{</span>      
+    <span class="c1">// iterate over tuples in the current window</span>
+    <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">Tuple</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="na">getIter</span><span class="o">();</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+        <span class="c1">// compute some result based on the tuples in window</span>
+    <span class="o">}</span>
+
+    <span class="c1">// possibly update any state to be maintained across windows</span>
+    <span class="n">state</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">STATE_KEY</span><span class="o">,</span> <span class="n">updatedValue</span><span class="o">);</span>
+
+    <span class="c1">// emit the results downstream</span>
+    <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">result</span><span class="o">));</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p><strong>Note:</strong> In case of persistent windowed bolts, use <code>TupleWindow.getIter</code> to retrieve an iterator over the
+events in the window. If the number of tuples in windows is huge, invoking <code>TupleWindow.get</code> would
+try to load all the tuples into memory and may throw an OOM exception.</p>
+
+<p><strong>Note:</strong> In case of persistent windowed bolts the <code>TupleWindow.getNew</code> and <code>TupleWindow.getExpired</code> are currently not supported
+and will throw an <code>UnsupportedOperationException</code>.</p>
+
+<p>For more details take a look at the sample topology in storm-starter <a href="../examples/storm-starter/src/jvm/org/apache/storm/starter/PersistentWindowingTopology.java">PersistentWindowingTopology</a>
+which will help you get started.</p>
 
 
 

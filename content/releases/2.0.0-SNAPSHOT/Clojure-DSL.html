@@ -362,7 +362,7 @@
 </span></code></pre></div>
 <h3 id="running-topologies-in-local-mode-or-on-a-cluster">Running topologies in local mode or on a cluster</h3>
 
-<p>That&#39;s all there is to the Clojure DSL. To submit topologies in remote mode or local mode, just use the <code>StormSubmitter</code> or <code>LocalCluster</code> classes just like you would from Java.</p>
+<p>That&#39;s all there is to the Clojure DSL. To submit topologies in remote mode or local mode, just use the <code>StormSubmitter</code> class just like you would from Java.</p>
 
 <p>To create topology configs, it&#39;s easiest to use the <code>org.apache.storm.config</code> namespace which defines constants for all of the possible configs. The constants are the same as the static constants in the <code>Config</code> class, except with dashes instead of underscores. For example, here&#39;s a topology config that sets the number of workers to 15 and configures the topology in debug mode:</p>
 <div class="highlight"><pre><code class="language-clojure" data-lang="clojure"><span class="p">{</span><span class="n">TOPOLOGY-DEBUG</span><span class="w"> </span><span class="n">true</span><span class="w">

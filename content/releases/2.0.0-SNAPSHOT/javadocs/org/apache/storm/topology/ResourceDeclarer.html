@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -50,7 +50,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/topology/ReportedFailedException.html" title="class in org.apache.storm.topology"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/topology/SpoutDeclarer.html" title="interface in org.apache.storm.topology"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/topology/SharedOffHeapWithinNode.html" title="class in org.apache.storm.topology"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/topology/ResourceDeclarer.html" target="_top">Frames</a></li>
@@ -131,16 +131,28 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="type parameter in ResourceDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setCPULoad-java.lang.Number-">setCPULoad</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;amount)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#addSharedMemory-org.apache.storm.generated.SharedMemory-">addSharedMemory</a></span>(<a href="../../../../org/apache/storm/generated/SharedMemory.html" title="class in org.apache.storm.generated">SharedMemory</a>&nbsp;request)</code>
+<div class="block">Add in request for shared memory that this component will use.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="type parameter in ResourceDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setCPULoad-java.lang.Number-">setCPULoad</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;amount)</code>
+<div class="block">Set the amount of CPU load for this component</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="type parameter in ResourceDeclarer">T</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
-             <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</code>
+<div class="block">Set the amount of on heap memory for this component</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="type parameter in ResourceDeclarer">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html#setMemoryLoad-java.lang.Number-java.lang.Number-">setMemoryLoad</a></span>(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
+             <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</code>
+<div class="block">Set the amount of memory for this component on and off heap</div>
+</td>
 </tr>
 </table>
 </li>
@@ -163,7 +175,14 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>setMemoryLoad</h4>
-<pre><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="type parameter in ResourceDeclarer">T</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</pre>
+<pre><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="type parameter in ResourceDeclarer">T</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap)</pre>
+<div class="block"><p>Set the amount of on heap memory for this component</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>onHeap</code> - the amount of on heap memory</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
+</dl>
 </li>
 </ul>
 <a name="setMemoryLoad-java.lang.Number-java.lang.Number-">
@@ -172,17 +191,48 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <h4>setMemoryLoad</h4>
-<pre><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="type parameter in ResourceDeclarer">T</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
-                <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</pre>
+<pre><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="type parameter in ResourceDeclarer">T</a>&nbsp;setMemoryLoad(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;onHeap,
+                <a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;offHeap)</pre>
+<div class="block"><p>Set the amount of memory for this component on and off heap</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>onHeap</code> - the amount of on heap memory</dd>
+<dd><code>offHeap</code> - the amount of off heap memory</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
+</dl>
 </li>
 </ul>
 <a name="setCPULoad-java.lang.Number-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setCPULoad</h4>
-<pre><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="type parameter in ResourceDeclarer">T</a>&nbsp;setCPULoad(<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;amount)</pre>
+<pre><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="type parameter in ResourceDeclarer">T</a>&nbsp;setCPULoad(<a href="http://docs.oracle.com/javase/8/docs/api/java/lang/Number.html?is-external=true" title="class or interface in java.lang">Number</a>&nbsp;amount)</pre>
+<div class="block"><p>Set the amount of CPU load for this component</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>amount</code> - the amount of CPU</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
+</dl>
+</li>
+</ul>
+<a name="addSharedMemory-org.apache.storm.generated.SharedMemory-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>addSharedMemory</h4>
+<pre><a href="../../../../org/apache/storm/topology/ResourceDeclarer.html" title="type parameter in ResourceDeclarer">T</a>&nbsp;addSharedMemory(<a href="../../../../org/apache/storm/generated/SharedMemory.html" title="class in org.apache.storm.generated">SharedMemory</a>&nbsp;request)</pre>
+<div class="block"><p>Add in request for shared memory that this component will use. See <a href="../../../../org/apache/storm/topology/SharedOnHeap.html" title="class in org.apache.storm.topology"><code>SharedOnHeap</code></a>, <a href="../../../../org/apache/storm/topology/SharedOffHeapWithinNode.html" title="class in org.apache.storm.topology"><code>SharedOffHeapWithinNode</code></a>, and <a href="../../../../org/apache/storm/topology/SharedOffHeapWithinWorker.html" title="class in org.apache.storm.topology"><code>SharedOffHeapWithinWorker</code></a> for convenient ways to create shared memory requests.</p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - the shared memory request for this component</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>this for chaining</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -218,7 +268,7 @@ hljs.initHighlightingOnLoad();
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../org/apache/storm/topology/ReportedFailedException.html" title="class in org.apache.storm.topology"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../org/apache/storm/topology/SpoutDeclarer.html" title="interface in org.apache.storm.topology"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../org/apache/storm/topology/SharedOffHeapWithinNode.html" title="class in org.apache.storm.topology"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?org/apache/storm/topology/ResourceDeclarer.html" target="_top">Frames</a></li>
@@ -258,6 +308,6 @@ hljs.initHighlightingOnLoad();
 <!--   -->
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
-<p class="legalCopy"><small>Copyright &#169; 2016 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2018 <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.</small></p>
 </body>
 </html>
