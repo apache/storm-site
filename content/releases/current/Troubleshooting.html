@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<p>This page lists issues people have run into when using Storm along with their solutions.</p>
+<div class="documentation-content"><p>This page lists issues people have run into when using Storm along with their solutions.</p>
 
 <h3 id="worker-processes-are-crashing-on-startup-with-no-stack-trace">Worker processes are crashing on startup with no stack trace</h3>
 
@@ -279,7 +279,7 @@ Caused by: java.util.ConcurrentModificationException
 <ul>
 <li>This means that you&#39;re emitting a mutable object as an output tuple. Everything you emit into the output collector must be immutable. What&#39;s happening is that your bolt is modifying the object while it is being serialized to be sent over the network.</li>
 </ul>
-
+</div>
 
 
 	          </div>

@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<p>This page is about how the serialization system in Storm works for versions 0.6.0 and onwards. Storm used a different serialization system prior to 0.6.0 which is documented on <a href="Serialization-(prior-to-0.6.0).html">Serialization (prior to 0.6.0)</a>. </p>
+<div class="documentation-content"><p>This page is about how the serialization system in Storm works for versions 0.6.0 and onwards. Storm used a different serialization system prior to 0.6.0 which is documented on <a href="Serialization-(prior-to-0.6.0).html">Serialization (prior to 0.6.0)</a>. </p>
 
 <p>Tuples can be comprised of objects of any types. Since Storm is a distributed system, it needs to know how to serialize and deserialize objects when they&#39;re passed between tasks.</p>
 
@@ -200,7 +200,7 @@
 <p>When a topology is submitted, a single set of serializations is chosen to be used by all components in the topology for sending messages. This is done by merging the component-specific serializer registrations with the regular set of serialization registrations. If two components define serializers for the same class, one of the serializers is chosen arbitrarily.</p>
 
 <p>To force a serializer for a particular class if there&#39;s a conflict between two component-specific registrations, just define the serializer you want to use in the topology-specific configuration. The topology-specific configuration has precedence over component-specific configurations for serialization registrations.</p>
-
+</div>
 
 
 	          </div>

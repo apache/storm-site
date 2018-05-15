@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<h2 id="problem-statement">Problem Statement:</h2>
+<div class="documentation-content"><h2 id="problem-statement">Problem Statement:</h2>
 
 <p>Currently the storm master aka nimbus, is a process that runs on a single machine under supervision. In most cases the 
 nimbus failure is transient and it is restarted by the supervisor. However sometimes when disks fail and networks 
@@ -361,7 +361,7 @@ The default is 60 seconds, a value of -1 indicates to wait for ever.
 <p>Note: Even though all nimbus hosts have watchers on zookeeper to be notified immediately as soon as a new topology is available for code
 download, the callback pretty much never results in code download. In practice we have observed that the desired replication is only achieved once the background-thread runs. 
 So you should expect your topology submission time to be somewhere between 0 to (2 * nimbus.code.sync.freq.secs) for any nimbus.min.replication.count &gt; 1.</p>
-
+</div>
 
 
 	          </div>

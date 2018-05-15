@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<p>Local mode simulates a Storm cluster in process and is useful for developing and testing topologies. Running topologies in local mode is similar to running topologies <a href="Running-topologies-on-a-production-cluster.html">on a cluster</a>. </p>
+<div class="documentation-content"><p>Local mode simulates a Storm cluster in process and is useful for developing and testing topologies. Running topologies in local mode is similar to running topologies <a href="Running-topologies-on-a-production-cluster.html">on a cluster</a>. </p>
 
 <p>To create an in-process cluster, simply use the <code>LocalCluster</code> class. For example:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.apache.storm.LocalCluster</span><span class="o">;</span>
@@ -164,7 +164,7 @@
 <li><strong>Config.TOPOLOGY_MAX_TASK_PARALLELISM</strong>: This config puts a ceiling on the number of threads spawned for a single component. Oftentimes production topologies have a lot of parallelism (hundreds of threads) which places unreasonable load when trying to test the topology in local mode. This config lets you easy control that parallelism.</li>
 <li><strong>Config.TOPOLOGY_DEBUG</strong>: When this is set to true, Storm will log a message every time a tuple is emitted from any spout or bolt. This is extremely useful for debugging.</li>
 </ol>
-
+</div>
 
 
 	          </div>

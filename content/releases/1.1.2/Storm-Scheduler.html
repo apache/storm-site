@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<p>Storm now has 4 kinds of built-in schedulers: <a href="http://github.com/apache/storm/blob/v1.1.2/storm-core/src/clj/org/apache/storm/scheduler/DefaultScheduler.clj">DefaultScheduler</a>, <a href="http://github.com/apache/storm/blob/v1.1.2/storm-core/src/clj/org/apache/storm/scheduler/IsolationScheduler.clj">IsolationScheduler</a>, <a href="http://github.com/apache/storm/blob/v1.1.2/storm-core/src/jvm/org/apache/storm/scheduler/multitenant/MultitenantScheduler.java">MultitenantScheduler</a>, <a href="Resource_Aware_Scheduler_overview.html">ResourceAwareScheduler</a>. </p>
+<div class="documentation-content"><p>Storm now has 4 kinds of built-in schedulers: <a href="http://github.com/apache/storm/blob/v1.1.2/storm-core/src/clj/org/apache/storm/scheduler/DefaultScheduler.clj">DefaultScheduler</a>, <a href="http://github.com/apache/storm/blob/v1.1.2/storm-core/src/clj/org/apache/storm/scheduler/IsolationScheduler.clj">IsolationScheduler</a>, <a href="http://github.com/apache/storm/blob/v1.1.2/storm-core/src/jvm/org/apache/storm/scheduler/multitenant/MultitenantScheduler.java">MultitenantScheduler</a>, <a href="Resource_Aware_Scheduler_overview.html">ResourceAwareScheduler</a>. </p>
 
 <h2 id="pluggable-scheduler">Pluggable scheduler</h2>
 
@@ -163,7 +163,7 @@
 <p>Any topologies submitted to the cluster not listed there will not be isolated. Note that there is no way for a user of Storm to affect their isolation settings – this is only allowed by the administrator of the cluster (this is very much intentional).</p>
 
 <p>The isolation scheduler solves the multi-tenancy problem – avoiding resource contention between topologies – by providing full isolation between topologies. The intention is that &quot;productionized&quot; topologies should be listed in the isolation config, and test or in-development topologies should not. The remaining machines on the cluster serve the dual role of failover for isolated topologies and for running the non-isolated topologies.</p>
-
+</div>
 
 
 	          </div>

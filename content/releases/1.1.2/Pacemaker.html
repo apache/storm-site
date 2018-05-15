@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<h3 id="introduction">Introduction</h3>
+<div class="documentation-content"><h3 id="introduction">Introduction</h3>
 
 <p>Pacemaker is a storm daemon designed to process heartbeats from workers. As Storm is scaled up, ZooKeeper begins to become a bottleneck due to high volumes of writes from workers doing heartbeats. Lots of writes to disk and too much traffic across the network is generated as ZooKeeper tries to maintain consistency.</p>
 
@@ -258,7 +258,7 @@ On Gigabit networking, there is a theoretical limit of about 6000 nodes. However
 On a 270 supervisor cluster, fully scheduled with topologies, Pacemaker resource utilization was 70% of one core and nearly 1GiB of RAM on a machine with 4 <code>Intel(R) Xeon(R) CPU E5530 @ 2.40GHz</code> and 24GiB of RAM.</p>
 
 <p>Pacemaker now supports HA. Multiple Pacemaker instances can be used at once in a storm cluster to allow massive scalability. Just include the names of the Pacemaker hosts in the pacemaker.servers config and workers and Nimbus will start communicating with them. They&#39;re fault tolerant as well. The system keeps on working as long as there is at least one pacemaker left running - provided it can handle the load.</p>
-
+</div>
 
 
 	          </div>

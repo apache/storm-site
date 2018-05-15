@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<p><a href="http://github.com/apache/storm/blob/master/storm-client/src/jvm/org/apache/storm/daemon/Acker.java">Storm&#39;s acker</a> tracks completion of each tupletree with a checksum hash: each time a tuple is sent, its value is XORed into the checksum, and each time a tuple is acked its value is XORed in again. If all tuples have been successfully acked, the checksum will be zero (the odds that the checksum will be zero otherwise are vanishingly small).</p>
+<div class="documentation-content"><p><a href="http://github.com/apache/storm/blob/master/storm-client/src/jvm/org/apache/storm/daemon/Acker.java">Storm&#39;s acker</a> tracks completion of each tupletree with a checksum hash: each time a tuple is sent, its value is XORed into the checksum, and each time a tuple is acked its value is XORed in again. If all tuples have been successfully acked, the checksum will be zero (the odds that the checksum will be zero otherwise are vanishingly small).</p>
 
 <p>You can read a bit more about the <a href="Guaranteeing-message-processing.html#what-is-storms-reliability-api">reliability mechanism</a> elsewhere on the wiki -- this explains the internal details.</p>
 
@@ -180,7 +180,7 @@
 <p>Internally, it holds several HashMaps (&#39;buckets&#39;) of its own, each holding a cohort of records that will expire at the same time.  Let&#39;s call the longest-lived bucket death row, and the most recent the nursery. Whenever a value is <code>.put()</code> to the RotatingMap, it is relocated to the nursery -- and removed from any other bucket it might have been in (effectively resetting its death clock).</p>
 
 <p>Whenever its owner calls <code>.rotate()</code>, the RotatingMap advances each cohort one step further towards expiration. (Typically, Storm objects call rotate on every receipt of a system tick stream tuple.) If there are any key-value pairs in the former death row bucket, the RotatingMap invokes a callback (given in the constructor) for each key-value pair, letting its owner take appropriate action (eg, failing a tuple.</p>
-
+</div>
 
 
 	          </div>

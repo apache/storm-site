@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<p>Storm offers several different levels of guaranteed message processing, including best effort, at least once, and exactly once through <a href="Trident-tutorial.html">Trident</a>.
+<div class="documentation-content"><p>Storm offers several different levels of guaranteed message processing, including best effort, at least once, and exactly once through <a href="Trident-tutorial.html">Trident</a>.
 This page describes how Storm can guarantee at least once processing.</p>
 
 <h3 id="what-does-it-mean-for-a-message-to-be-fully-processed">What does it mean for a message to be &quot;fully processed&quot;?</h3>
@@ -301,7 +301,7 @@ This page describes how Storm can guarantee at least once processing.</p>
 <p>The second way is to remove reliability on a message by message basis. You can turn off tracking for an individual spout tuple by omitting a message id in the <code>SpoutOutputCollector.emit</code> method.</p>
 
 <p>Finally, if you don&#39;t care if a particular subset of the tuples downstream in the topology fail to be processed, you can emit them as unanchored tuples. Since they&#39;re not anchored to any spout tuples, they won&#39;t cause any spout tuples to fail if they aren&#39;t acked.</p>
-
+</div>
 
 
 	          </div>

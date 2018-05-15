@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<p>Tuples can be comprised of objects of any types. Since Storm is a distributed system, it needs to know how to serialize and deserialize objects when they&#39;re passed between tasks. By default Storm can serialize ints, shorts, longs, floats, doubles, bools, bytes, strings, and byte arrays, but if you want to use another type in your tuples, you&#39;ll need to implement a custom serializer.</p>
+<div class="documentation-content"><p>Tuples can be comprised of objects of any types. Since Storm is a distributed system, it needs to know how to serialize and deserialize objects when they&#39;re passed between tasks. By default Storm can serialize ints, shorts, longs, floats, doubles, bools, bytes, strings, and byte arrays, but if you want to use another type in your tuples, you&#39;ll need to implement a custom serializer.</p>
 
 <h3 id="dynamic-typing">Dynamic typing</h3>
 
@@ -188,7 +188,7 @@
 <p>Storm provides helpers for registering serializers in a topology config. The <a href="javadocs/backtype/storm/Config.html">Config</a> class has a method called <code>addSerialization</code> that takes in a serializer class to add to the config.</p>
 
 <p>There&#39;s an advanced config called Config.TOPOLOGY_SKIP_MISSING_SERIALIZATIONS. If you set this to true, Storm will ignore any serializations that are registered but do not have their code available on the classpath. Otherwise, Storm will throw errors when it can&#39;t find a serialization. This is useful if you run many topologies on a cluster that each have different serializations, but you want to declare all the serializations across all topologies in the <code>storm.yaml</code> files.</p>
-
+</div>
 
 
 	          </div>

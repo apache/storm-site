@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<p>The core data model in Trident is the &quot;Stream&quot;, processed as a series of batches. A stream is partitioned among the nodes in the cluster, and operations applied to a stream are applied in parallel across each partition.</p>
+<div class="documentation-content"><p>The core data model in Trident is the &quot;Stream&quot;, processed as a series of batches. A stream is partitioned among the nodes in the cluster, and operations applied to a stream are applied in parallel across each partition.</p>
 
 <p>There are five kinds of operations in Trident:</p>
 
@@ -663,7 +663,7 @@ Partition 2:
 <p>You might be wondering – how do you do something like a &quot;windowed join&quot;, where tuples from one side of the join are joined against the last hour of tuples from the other side of the join.</p>
 
 <p>To do this, you would make use of partitionPersist and stateQuery. The last hour of tuples from one side of the join would be stored and rotated in a source of state, keyed by the join field. Then the stateQuery would do lookups by the join field to perform the &quot;join&quot;.</p>
-
+</div>
 
 
 	          </div>

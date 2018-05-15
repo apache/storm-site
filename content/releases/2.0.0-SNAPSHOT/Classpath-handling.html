@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<h3 id="storm-is-an-application-container">Storm is an Application Container</h3>
+<div class="documentation-content"><h3 id="storm-is-an-application-container">Storm is an Application Container</h3>
 
 <p>Storm provides an application container environment, a la Apache Tomcat, which creates potential for classpath conflicts between Storm and your application.  The most common way of using Storm involves submitting an &quot;uber JAR&quot; containing your application code with all of its dependencies bundled in, and then Storm distributes this JAR to Worker nodes.  Then Storm runs your application within a Storm process called a <code>Worker</code> -- thus the JVM&#39;s classpath contains the dependencies of your JAR as well as whatever dependencies the Worker itself has.  So careful handling of classpaths and dependencies is critical for the correct functioning of Storm.</p>
 
@@ -173,7 +173,7 @@
 <p>When the <code>storm.py</code> script launches a <code>java</code> command, it first constructs the classpath from the optional settings mentioned above, as well as including some default locations such as the <code>${STORM_DIR}/</code>, <code>${STORM_DIR}/lib/</code>, <code>${STORM_DIR}/extlib/</code> and <code>${STORM_DIR}/extlib-daemon/</code> directories.  In past releases, Storm would enumerate all JARs in those directories and then explicitly add all of those JARs into the <code>-cp</code> / <code>--classpath</code> argument to the launched <code>java</code> commands.  As such, the classpath would get so long that the <code>java</code> commands could breach the Linux Kernel process table limit of 4096 bytes for recording commands.  That led to truncated commands in <code>ps</code> output, making it hard to operate Storm clusters because you could not easily differentiate the processes nor easily see from <code>ps</code> which port a worker is listening to.</p>
 
 <p>After Storm dropped support for Java 5, this classpath expansion was no longer necessary, because Java 6 supports classpath wildcards. Classpath wildcards allow you to specify a directory ending with a <code>*</code> element, such as <code>foo/bar/*</code>, and the JVM will automatically expand the classpath to include all <code>.jar</code> files in the wildcard directory.  As of <a href="https://issues.apache.org/jira/browse/STORM-2191">STORM-2191</a> Storm just uses classpath wildcards instead of explicitly listing all JARs, thereby shortening all of the commands and making operating Storm clusters a bit easier.</p>
-
+</div>
 
 
 	          </div>

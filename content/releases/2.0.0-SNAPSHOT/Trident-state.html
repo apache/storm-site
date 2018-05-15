@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<p>Trident has first-class abstractions for reading from and writing to stateful sources. The state can either be internal to the topology – e.g., kept in-memory and backed by HDFS – or externally stored in a database like Memcached or Cassandra. There&#39;s no difference in the Trident API for either case.</p>
+<div class="documentation-content"><p>Trident has first-class abstractions for reading from and writing to stateful sources. The state can either be internal to the topology – e.g., kept in-memory and backed by HDFS – or externally stored in a database like Memcached or Cassandra. There&#39;s no difference in the Trident API for either case.</p>
 
 <p>Trident manages state in a fault-tolerant way so that state updates are idempotent in the face of retries and failures. This lets you reason about Trident topologies as if each message were processed exactly-once.</p>
 
@@ -415,7 +415,7 @@ apple =&gt; [count=10, txid=2]
 <p>Finally, Trident provides the <a href="http://github.com/apache/storm/blob/master/storm-client/src/jvm/org/apache/storm/trident/state/map/SnapshottableMap.java">SnapshottableMap</a> class that turns a MapState into a Snapshottable object, by storing global aggregations into a fixed key.</p>
 
 <p>Take a look at the implementation of <a href="https://github.com/nathanmarz/trident-memcached/blob/master/src/jvm/trident/memcached/MemcachedState.java">MemcachedState</a> to see how all these utilities can be put together to make a high performance MapState implementation. MemcachedState allows you to choose between opaque transactional, transactional, and non-transactional semantics.</p>
-
+</div>
 
 
 	          </div>

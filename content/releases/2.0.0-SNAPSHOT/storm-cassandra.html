@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<h3 id="bolt-api-implementation-for-apache-cassandra">Bolt API implementation for Apache Cassandra</h3>
+<div class="documentation-content"><h3 id="bolt-api-implementation-for-apache-cassandra">Bolt API implementation for Apache Cassandra</h3>
 
 <p>This library provides core storm bolt on top of Apache Cassandra.
 Provides simple DSL to map storm <em>Tuple</em> to Cassandra Query Language <em>Statement</em>.</p>
@@ -373,7 +373,7 @@ The stream is partitioned among the bolt&#39;s tasks based on the specified row 
         <span class="n">CassandraStateFactory</span> <span class="n">selectWeatherStationStateFactory</span> <span class="o">=</span> <span class="n">getSelectWeatherStationStateFactory</span><span class="o">();</span>
         <span class="n">TridentState</span> <span class="n">selectState</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="na">newStaticState</span><span class="o">(</span><span class="n">selectWeatherStationStateFactory</span><span class="o">);</span>
         <span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="na">stateQuery</span><span class="o">(</span><span class="n">selectState</span><span class="o">,</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"weather_station_id"</span><span class="o">),</span> <span class="k">new</span> <span class="n">CassandraQuery</span><span class="o">(),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"name"</span><span class="o">));</span>         
-</code></pre></div>
+</code></pre></div></div>
 
 
 	          </div>
