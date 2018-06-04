@@ -5,9 +5,151 @@
     <description></description>
     <link>http://storm.apache.org/</link>
     <atom:link href="http://storm.apache.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 May 2018 17:16:07 +0200</pubDate>
-    <lastBuildDate>Tue, 15 May 2018 17:16:07 +0200</lastBuildDate>
+    <pubDate>Mon, 04 Jun 2018 19:47:18 -0400</pubDate>
+    <lastBuildDate>Mon, 04 Jun 2018 19:47:18 -0400</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Storm 1.2.2 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 1.2.2 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is a maintenance release that includes a number of important bug fixes that improve Storm&amp;#39;s performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release&quot;&gt;Changes in this Release&lt;/h2&gt;
+
+&lt;h2&gt;New Feature&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3026&quot;&gt;STORM-3026&lt;/a&gt;] - Upgrade ZK instance for security&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3027&quot;&gt;STORM-3027&lt;/a&gt;] - Make Impersonation Optional&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2896&quot;&gt;STORM-2896&lt;/a&gt;] - Support automatic migration of offsets from storm-kafka to storm-kafka-client KafkaSpout&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2997&quot;&gt;STORM-2997&lt;/a&gt;] - Add logviewer ssl module in SECURITY.md &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3006&quot;&gt;STORM-3006&lt;/a&gt;] - Distributed RPC documentation needs an update&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3011&quot;&gt;STORM-3011&lt;/a&gt;] - Use default bin path in flight.bash if $JAVA_HOME is undefined&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3022&quot;&gt;STORM-3022&lt;/a&gt;] - Decouple storm-hive UTs with Hive&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3039&quot;&gt;STORM-3039&lt;/a&gt;] - Ports of killed topologies remain in TIME_WAIT state preventing to start new topology&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3069&quot;&gt;STORM-3069&lt;/a&gt;] - Allow users to specify maven local repository directory for storm submit tool&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2911&quot;&gt;STORM-2911&lt;/a&gt;] - SpoutConfig is serializable but does not declare a serialVersionUID field&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2967&quot;&gt;STORM-2967&lt;/a&gt;] - Upgrade jackson to latest version 2.9.4&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2968&quot;&gt;STORM-2968&lt;/a&gt;] - Exclude a few unwanted jars from storm-autocreds&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2978&quot;&gt;STORM-2978&lt;/a&gt;] - The fix for STORM-2706 is broken, and adds a transitive dependency on Zookeeper 3.5.3-beta for projects that depend on e.g. storm-kafka&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2979&quot;&gt;STORM-2979&lt;/a&gt;] - WorkerHooks EOFException during run_worker_shutdown_hooks&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2981&quot;&gt;STORM-2981&lt;/a&gt;] - Upgrade Curator to lastest patch version&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2985&quot;&gt;STORM-2985&lt;/a&gt;] - Add jackson-annotations to dependency management&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2988&quot;&gt;STORM-2988&lt;/a&gt;] - &quot;Error on initialization of server mk-worker&quot; when using org.apache.storm.metrics2.reporters.JmxStormReporter on worker&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2989&quot;&gt;STORM-2989&lt;/a&gt;] - LogCleaner should preserve current worker.log.metrics&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2993&quot;&gt;STORM-2993&lt;/a&gt;] - Storm HDFS bolt throws ClosedChannelException when Time rotation policy is used&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2994&quot;&gt;STORM-2994&lt;/a&gt;] - KafkaSpout consumes messages but doesn't commit offsets&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3043&quot;&gt;STORM-3043&lt;/a&gt;] - NullPointerException thrown in SimpleRecordTranslator.apply()&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3052&quot;&gt;STORM-3052&lt;/a&gt;] - Let blobs un archive&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3059&quot;&gt;STORM-3059&lt;/a&gt;] - KafkaSpout throws NPE when hitting a null tuple if the processing guarantee is not AT_LEAST_ONCE&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2960&quot;&gt;STORM-2960&lt;/a&gt;] - Better to stress importance of setting up proper OS account for Storm processes&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3060&quot;&gt;STORM-3060&lt;/a&gt;] - Configuration mapping between storm-kafka &amp; storm-kafka-client&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2952&quot;&gt;STORM-2952&lt;/a&gt;] - Deprecate storm-kafka in 1.x&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3005&quot;&gt;STORM-3005&lt;/a&gt;] - [DRPC] LinearDRPCTopologyBuilder shouldn't be deprecated &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 04 Jun 2018 00:00:00 -0400</pubDate>
+        <link>http://storm.apache.org/2018/06/04/storm122-released.html</link>
+        <guid isPermaLink="true">http://storm.apache.org/2018/06/04/storm122-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Storm 1.1.3 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 1.1.3 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is a maintenance release that includes a number of important bug fixes that improve Storm&amp;#39;s performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release&quot;&gt;Changes in this Release&lt;/h2&gt;
+
+&lt;h2&gt;New Feature&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3026&quot;&gt;STORM-3026&lt;/a&gt;] - Upgrade ZK instance for security&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3027&quot;&gt;STORM-3027&lt;/a&gt;] - Make Impersonation Optional&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3011&quot;&gt;STORM-3011&lt;/a&gt;] - Use default bin path in flight.bash if $JAVA_HOME is undefined&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3039&quot;&gt;STORM-3039&lt;/a&gt;] - Ports of killed topologies remain in TIME_WAIT state preventing to start new topology&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2911&quot;&gt;STORM-2911&lt;/a&gt;] - SpoutConfig is serializable but does not declare a serialVersionUID field&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2978&quot;&gt;STORM-2978&lt;/a&gt;] - The fix for STORM-2706 is broken, and adds a transitive dependency on Zookeeper 3.5.3-beta for projects that depend on e.g. storm-kafka&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2979&quot;&gt;STORM-2979&lt;/a&gt;] - WorkerHooks EOFException during run_worker_shutdown_hooks&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2981&quot;&gt;STORM-2981&lt;/a&gt;] - Upgrade Curator to lastest patch version&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2985&quot;&gt;STORM-2985&lt;/a&gt;] - Add jackson-annotations to dependency management&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2989&quot;&gt;STORM-2989&lt;/a&gt;] - LogCleaner should preserve current worker.log.metrics&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2994&quot;&gt;STORM-2994&lt;/a&gt;] - KafkaSpout consumes messages but doesn't commit offsets&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3043&quot;&gt;STORM-3043&lt;/a&gt;] - NullPointerException thrown in SimpleRecordTranslator.apply()&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3052&quot;&gt;STORM-3052&lt;/a&gt;] - Let blobs un archive&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3059&quot;&gt;STORM-3059&lt;/a&gt;] - KafkaSpout throws NPE when hitting a null tuple if the processing guarantee is not AT_LEAST_ONCE&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2960&quot;&gt;STORM-2960&lt;/a&gt;] - Better to stress importance of setting up proper OS account for Storm processes&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3060&quot;&gt;STORM-3060&lt;/a&gt;] - Configuration mapping between storm-kafka &amp; storm-kafka-client&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2952&quot;&gt;STORM-2952&lt;/a&gt;] - Deprecate storm-kafka in 1.x&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3005&quot;&gt;STORM-3005&lt;/a&gt;] - [DRPC] LinearDRPCTopologyBuilder shouldn't be deprecated &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Test&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2841&quot;&gt;STORM-2841&lt;/a&gt;] - testNoAcksIfFlushFails UT fails with NullPointerException&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 04 Jun 2018 00:00:00 -0400</pubDate>
+        <link>http://storm.apache.org/2018/06/04/storm113-released.html</link>
+        <guid isPermaLink="true">http://storm.apache.org/2018/06/04/storm113-released.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Storm 1.2.1 Released</title>
@@ -37,7 +179,7 @@
 &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2841&quot;&gt;STORM-2841&lt;/a&gt;] - testNoAcksIfFlushFails UT fails with NullPointerException&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Mon, 19 Feb 2018 00:00:00 +0100</pubDate>
+        <pubDate>Mon, 19 Feb 2018 00:00:00 -0500</pubDate>
         <link>http://storm.apache.org/2018/02/19/storm121-released.html</link>
         <guid isPermaLink="true">http://storm.apache.org/2018/02/19/storm121-released.html</guid>
         
@@ -262,7 +404,7 @@
 &lt;p&gt;&lt;/body&gt;
 &lt;/html&gt;&lt;/p&gt;
 </description>
-        <pubDate>Thu, 15 Feb 2018 00:00:00 +0100</pubDate>
+        <pubDate>Thu, 15 Feb 2018 00:00:00 -0500</pubDate>
         <link>http://storm.apache.org/2018/02/15/storm120-released.html</link>
         <guid isPermaLink="true">http://storm.apache.org/2018/02/15/storm120-released.html</guid>
         
@@ -364,7 +506,7 @@
 &lt;p&gt;&lt;/body&gt;
 &lt;/html&gt;&lt;/p&gt;
 </description>
-        <pubDate>Thu, 15 Feb 2018 00:00:00 +0100</pubDate>
+        <pubDate>Thu, 15 Feb 2018 00:00:00 -0500</pubDate>
         <link>http://storm.apache.org/2018/02/15/storm112-released.html</link>
         <guid isPermaLink="true">http://storm.apache.org/2018/02/15/storm112-released.html</guid>
         
@@ -430,7 +572,7 @@
 &lt;p&gt;&lt;/body&gt;
 &lt;/html&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 14 Feb 2018 00:00:00 +0100</pubDate>
+        <pubDate>Wed, 14 Feb 2018 00:00:00 -0500</pubDate>
         <link>http://storm.apache.org/2018/02/14/storm106-released.html</link>
         <guid isPermaLink="true">http://storm.apache.org/2018/02/14/storm106-released.html</guid>
         
@@ -467,7 +609,7 @@
 &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2705&quot;&gt;STORM-2705&lt;/a&gt;] - DRPCSpout sleeps twice when idle&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Fri, 15 Sep 2017 00:00:00 +0200</pubDate>
+        <pubDate>Fri, 15 Sep 2017 00:00:00 -0400</pubDate>
         <link>http://storm.apache.org/2017/09/15/storm105-released.html</link>
         <guid isPermaLink="true">http://storm.apache.org/2017/09/15/storm105-released.html</guid>
         
@@ -534,7 +676,7 @@
 &lt;li&gt;STORM-2432: Storm-Kafka-Client Trident Spout Seeks Incorrect Offset With UNCOMMITTED_LATEST Strategy&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Tue, 01 Aug 2017 00:00:00 +0200</pubDate>
+        <pubDate>Tue, 01 Aug 2017 00:00:00 -0400</pubDate>
         <link>http://storm.apache.org/2017/08/01/storm111-released.html</link>
         <guid isPermaLink="true">http://storm.apache.org/2017/08/01/storm111-released.html</guid>
         
@@ -585,7 +727,7 @@
 &lt;li&gt;STORM-2350: Storm-HDFS&amp;#39;s listFilesByModificationTime is broken&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Fri, 28 Jul 2017 00:00:00 +0200</pubDate>
+        <pubDate>Fri, 28 Jul 2017 00:00:00 -0400</pubDate>
         <link>http://storm.apache.org/2017/07/28/storm104-released.html</link>
         <guid isPermaLink="true">http://storm.apache.org/2017/07/28/storm104-released.html</guid>
         
@@ -927,123 +1069,9 @@ Version: 1.1.0&lt;/p&gt;
 &lt;li&gt;STORM-1720: Support GEO in storm-redis&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Wed, 29 Mar 2017 00:00:00 +0200</pubDate>
+        <pubDate>Wed, 29 Mar 2017 00:00:00 -0400</pubDate>
         <link>http://storm.apache.org/2017/03/29/storm110-released.html</link>
         <guid isPermaLink="true">http://storm.apache.org/2017/03/29/storm110-released.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Storm 1.0.3 Released</title>
-        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 1.0.3 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;This is a maintenance release that includes a number of important bug fixes that improve Storm&amp;#39;s performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
-
-&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
-
-&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
-
-&lt;h2 id=&quot;full-changelog&quot;&gt;Full Changelog&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;STORM-2197: NimbusClient connectins leak due to leakage in ThriftClient&lt;/li&gt;
-&lt;li&gt;STORM-2321: Handle blobstore zk key deletion in KeySequenceNumber.&lt;/li&gt;
-&lt;li&gt;STORM-2324: Fix deployment failure if resources directory is missing in topology jar&lt;/li&gt;
-&lt;li&gt;STORM-2335: Fix broken Topology visualization with empty &amp;#39;:transferred&amp;#39; in executor stats&lt;/li&gt;
-&lt;li&gt;STORM-2336: Close Localizer and AsyncLocalizer when supervisor is shutting down&lt;/li&gt;
-&lt;li&gt;STORM-2338: Subprocess exception handling is broken in storm.py on Windows environment&lt;/li&gt;
-&lt;li&gt;STORM-2337: Broken documentation generation for storm-metrics-profiling-internal-actions.md and windows-users-guide.md&lt;/li&gt;
-&lt;li&gt;STORM-2325: Logviewer doesn&amp;#39;t consider &amp;#39;storm.local.hostname&amp;#39;&lt;/li&gt;
-&lt;li&gt;STORM-1742: More accurate &amp;#39;complete latency&amp;#39;&lt;/li&gt;
-&lt;li&gt;STORM-2176: Workers do not shutdown cleanly and worker hooks don&amp;#39;t run when a topology is killed&lt;/li&gt;
-&lt;li&gt;STORM-2293: hostname should only refer node&amp;#39;s &amp;#39;storm.local.hostname&amp;#39;&lt;/li&gt;
-&lt;li&gt;STORM-2246: Logviewer download link has urlencoding on part of the URL&lt;/li&gt;
-&lt;li&gt;STORM-1906: Window count/length of zero should be disallowed&lt;/li&gt;
-&lt;li&gt;STORM-1841: Address a few minor issues in windowing and doc&lt;/li&gt;
-&lt;li&gt;STORM-2268: Fix integration test for Travis CI build&lt;/li&gt;
-&lt;li&gt;STORM-2283: Fix DefaultStateHandler kryo multithreading issues&lt;/li&gt;
-&lt;li&gt;STORM-2264: OpaqueTridentKafkaSpout failing after STORM-2216&lt;/li&gt;
-&lt;li&gt;STORM-2276: Remove twitter4j usages due to license issue (JSON.org is catalog X)&lt;/li&gt;
-&lt;li&gt;STORM-2095: remove any remaining files when deleting blobstore directory&lt;/li&gt;
-&lt;li&gt;STORM-2222: Repeated NPEs thrown in nimbus if rebalance fails&lt;/li&gt;
-&lt;li&gt;STORM-2251: Integration test refers specific version of Storm which should be project version&lt;/li&gt;
-&lt;li&gt;STORM-2234: heartBeatExecutorService in shellSpout don&amp;#39;t work well with deactivate&lt;/li&gt;
-&lt;li&gt;STORM-2216: Favor JSONValue.parseWithException&lt;/li&gt;
-&lt;li&gt;STORM-2208: HDFS State Throws FileNotFoundException in Azure Data Lake Store file system (adl://)&lt;/li&gt;
-&lt;li&gt;STORM-2213: ShellSpout has race condition when ShellSpout is being inactive longer than heartbeat timeout&lt;/li&gt;
-&lt;li&gt;STORM-2210: remove array shuffle from ShuffleGrouping&lt;/li&gt;
-&lt;li&gt;STORM-2052: Kafka Spout - New Client API - Performance Improvements&lt;/li&gt;
-&lt;li&gt;storm-2205: Racecondition in getting nimbus summaries while ZK connections are reconnected&lt;/li&gt;
-&lt;li&gt;STORM-2198: perform RotationAction when stopping HdfsBolt&lt;/li&gt;
-&lt;li&gt;STORM-2196: A typo in RAS_Node::consumeCPU&lt;/li&gt;
-&lt;li&gt;STORM-2189: RAS_Node::freeCPU outputs incorrect info&lt;/li&gt;
-&lt;li&gt;STORM-2184: Don&amp;#39;t wakeup KafkaConsumer on shutdown&lt;/li&gt;
-&lt;li&gt;STORM-2185: Storm Supervisor doesn&amp;#39;t delete directories properly sometimes&lt;/li&gt;
-&lt;li&gt;STORM-2175: fix double close of workers&lt;/li&gt;
-&lt;li&gt;STORM-2018: Supervisor V2&lt;/li&gt;
-&lt;li&gt;STORM-2145: Leave leader nimbus&amp;#39;s hostname to log when trying to connect leader nimbus&lt;/li&gt;
-&lt;li&gt;STORM-2127: Storm-eventhubs should use latest amqp and eventhubs-client versions&lt;/li&gt;
-&lt;li&gt;STORM-2040: Fix bug on assert-can-serialize&lt;/li&gt;
-&lt;li&gt;STORM-2017: ShellBolt stops reporting task ids&lt;/li&gt;
-&lt;li&gt;STORM-2119: bug in log message printing to stdout&lt;/li&gt;
-&lt;li&gt;STORM-2120: Emit to _spoutConfig.outputStreamId&lt;/li&gt;
-&lt;li&gt;STORM-2101: fixes npe in compute-executors in nimbus&lt;/li&gt;
-&lt;li&gt;STORM-2090: Add integration test for storm windowing&lt;/li&gt;
-&lt;li&gt;STORM-2003: Make sure config contains TOPIC before get it&lt;/li&gt;
-&lt;li&gt;STORM-1567: in defaults.yaml &amp;#39;topology.disable.loadaware&amp;#39; should be &amp;#39;topology.disable.loadaware.messaging&amp;#39;&lt;/li&gt;
-&lt;li&gt;STORM-1987: Fix TridentKafkaWordCount arg handling in distributed mode.&lt;/li&gt;
-&lt;li&gt;STORM-1969: Modify HiveTopology to show usage of non-partition table.&lt;/li&gt;
-&lt;li&gt;STORM-1849: HDFSFileTopology should use the 3rd argument as topologyName&lt;/li&gt;
-&lt;li&gt;STORM-2086: use DefaultTopicSelector instead of creating a new one&lt;/li&gt;
-&lt;li&gt;STORM-2079: Unneccessary readStormConfig operation&lt;/li&gt;
-&lt;li&gt;STORM-2081: create external directory for storm-sql various data sources and move storm-sql-kafka to it&lt;/li&gt;
-&lt;li&gt;STORM-2070: Fix sigar native binary download link&lt;/li&gt;
-&lt;li&gt;STORM-2056: Bugs in logviewer&lt;/li&gt;
-&lt;li&gt;STORM-1646: Fix ExponentialBackoffMsgRetryManager test&lt;/li&gt;
-&lt;li&gt;STORM-2039: Backpressure refactoring in worker and executor&lt;/li&gt;
-&lt;li&gt;STORM-2064: Add storm name and function, access result and function to log-thrift-access&lt;/li&gt;
-&lt;li&gt;STORM-2063: Add thread name in worker logs&lt;/li&gt;
-&lt;li&gt;STORM-2042: Nimbus client connections not closed properly causing connection leaks&lt;/li&gt;
-&lt;li&gt;STORM-2032: removes warning in case more than one metrics tuple is received&lt;/li&gt;
-&lt;li&gt;STORM-1594: org.apache.storm.tuple.Fields can throw NPE if given invalid field in selector&lt;/li&gt;
-&lt;li&gt;STORM-1995: downloadChunk in nimbus.clj should close the input stream&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Tue, 14 Feb 2017 00:00:00 +0100</pubDate>
-        <link>http://storm.apache.org/2017/02/14/storm103-released.html</link>
-        <guid isPermaLink="true">http://storm.apache.org/2017/02/14/storm103-released.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Storm 0.10.2 Released</title>
-        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 0.10.2 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;This is a maintenance release that includes a number of important bug fixes that improve Storm&amp;#39;s performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
-
-&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
-
-&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
-
-&lt;h2 id=&quot;full-changelog&quot;&gt;Full Changelog&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;STORM-2042: Nimbus client connections not closed properly causing connection leaks&lt;/li&gt;
-&lt;li&gt;STORM-1609: Netty Client is not best effort delivery on failed Connection&lt;/li&gt;
-&lt;li&gt;STORM-1928: ShellSpout should check heartbeat while ShellSpout is waiting for subprocess to sync&lt;/li&gt;
-&lt;li&gt;STORM-1989: X-Frame-Options support for Storm UI&lt;/li&gt;
-&lt;li&gt;STORM-1834: Documentation How to Generate Certificates For Local Testing SSL Setup&lt;/li&gt;
-&lt;li&gt;STORM-1754: Correct java version in 0.10.x storm-starter&lt;/li&gt;
-&lt;li&gt;STORM-1750: Ensure worker dies when report-error-and-die is called.&lt;/li&gt;
-&lt;li&gt;STORM-1739: update the minor JAVA version dependency in 0.10.0 and above&lt;/li&gt;
-&lt;li&gt;STORM-1733: Flush stdout and stderr before calling &amp;quot;os.execvp&amp;quot; to prevent log loss&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Wed, 14 Sep 2016 00:00:00 +0200</pubDate>
-        <link>http://storm.apache.org/2016/09/14/storm0102-released.html</link>
-        <guid isPermaLink="true">http://storm.apache.org/2016/09/14/storm0102-released.html</guid>
         
         
       </item>
