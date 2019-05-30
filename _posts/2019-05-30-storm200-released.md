@@ -34,20 +34,19 @@ For more details see [stateful windowing documentation](https://github.com/apach
 ### Removal of Storm-Kafka
 The most significant change to Storm's Kafka integration since 1.x, is that storm-kafka has been removed. The module was deprecated a while back, due to Kafka's deprecation of the underlying client library. Users will have to move to the storm-kafka-client module, which uses Kafka's ´kafka-clients´ library for integration.
 
-For the most part, the migration to storm-kafka-client is straightforward. The documentation for storm-kafka-client contains a helpful mapping between the old and new spout configurations. If you are using any of the storm-kafka spouts, you will need to migrate offset checkpoints to the new spout, to avoid the new spout starting from scratch on your partitions. Storm provides a helper tool to do this which can be found [here](fhttps://github.com/apache/storm/tree/master/external/storm-kafka-migration.)
+For the most part, the migration to storm-kafka-client is straightforward. The documentation for storm-kafka-client contains a helpful mapping between the old and new spout configurations. If you are using any of the storm-kafka spouts, you will need to migrate offset checkpoints to the new spout, to avoid the new spout starting from scratch on your partitions. Storm provides a helper tool to do this which can be found [here](fhttps://github.com/apache/storm/tree/master/external/storm-kafka-migration).
 
 When performing a migration, you should stop your topology, run the migration tool, then redeploy your topology with the storm-kafka-client spout.
 
 ### Move to Using the KafkaConsumer.assign API
-Storm-kafka-client in Storm 1.x allowed you to use Kafka's own mechanism to manage which spout tasks were responsible for which partitions. This mechanism was a poor fit for Storm, and was deprecated in 1.2.0. It has been [removed entirely in 2.0](https://issues.apache.org/jira/browse/STORM-2542.)
+Storm-kafka-client in Storm 1.x allowed you to use Kafka's own mechanism to manage which spout tasks were responsible for which partitions. This mechanism was a poor fit for Storm, and was deprecated in 1.2.0. It has been [removed entirely in 2.0](https://issues.apache.org/jira/browse/STORM-2542).
 
 The storm-kafka-client Subscription interface has also been removed. It offered too limited control over the subscription behavior. It has been replaced with the TopicFilter and ManualPartitioner interfaces. Unless you were using a custom Subscription implementation, this will likely not
-affect you. If you were using a custom Subscription, [the storm-kafka-client documentation describes how to customize assignment](https://github.com/apache/storm/blob/master/docs/storm-kafka-client.md#manual-partition-assigment-advanced)
-.
+affect you. If you were using a custom Subscription, [the storm-kafka-client documentation describes how to customize assignment](https://github.com/apache/storm/blob/master/docs/storm-kafka-client.md#manual-partition-assigment-advanced).
 
 
 ### Other Kafka Highlights
-* The KafkaBolt now allows you to [specify a callback that will be called when a batch is written to Kafka](https://issues.apache.org/jira/browse/STORM-3175.)
+* The KafkaBolt now allows you to [specify a callback that will be called when a batch is written to Kafka](https://issues.apache.org/jira/browse/STORM-3175).
 * The FirstPollOffsetStrategy behavior has been made consistent between the non-Trident and Trident spouts. It is now always the case that EARLIEST/LATEST only take effect on topology redeploy, and not when a worker restarts https://issues.apache.org/jira/browse/STORM-2990.
 * Storm-kafka-client now has a transactional non-opaque Trident spout https://issues.apache.org/jira/browse/STORM-2974.
 * There are new example modules for storm-kafka-client. You can find them [here](https://github.com/apache/storm/tree/master/examples/storm-kafka-client-examples).
@@ -55,6 +54,28 @@ affect you. If you were using a custom Subscription, [the storm-kafka-client doc
 
 ## EOL for 1.0.x
 With the release of 2.0.0 the 1.0.x version line will no longer be maintained. 1.0.x users are strongly encouraged to upgrade to a more recent release.
+
+## Move to Java 8
+Java 7 support has been dropped, and Storm 2.0.0 requires Java 8.
+
+## Reorganization of Storm Maven artifacts
+The storm-core artifact has [been split](https://issues.apache.org/jira/browse/STORM-2441) into client and server-facing parts. Topology jars should depend on the following artifact as of Storm 2.0.0:
+
+```
+<groupId>org.apache.storm</groupId>
+<artifactId>storm-client</artifactId>
+<version>2.0.0</version>
+<scope>provided</scope>
+```
+
+Projects using `LocalCluster` for testing will additionally need to depend on the Storm server jar:
+
+```
+<groupId>org.apache.storm</groupId>
+<artifactId>storm-server</artifactId>
+<version>2.0.0</version>
+<scope>test</scope>
+```
 
 ## Stay Tuned
 Keep an eye on the Apache Storm blog for additional posts by Storm contributors for more in-depth discussions of new features in Storm 2.0.0 including:
