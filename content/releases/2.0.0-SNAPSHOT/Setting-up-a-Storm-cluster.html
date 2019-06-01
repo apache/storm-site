@@ -144,7 +144,7 @@
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><p>This page outlines the steps for getting a Storm cluster up and running. If you&#39;re on AWS, you should check out the <a href="https://github.com/nathanmarz/storm-deploy/wiki">storm-deploy</a> project. <a href="https://github.com/nathanmarz/storm-deploy/wiki">storm-deploy</a> completely automates the provisioning, configuration, and installation of Storm clusters on EC2. It also sets up Ganglia for you so you can monitor CPU, disk, and network usage.</p>
+<div class="documentation-content"><p>This page outlines the steps for getting a Storm cluster up and running. </p>
 
 <p>If you run into difficulties with your Storm cluster, first check for a solution is in the <a href="Troubleshooting.html">Troubleshooting</a> page. Otherwise, email the mailing list.</p>
 
@@ -183,7 +183,7 @@
 
 <h3 id="download-and-extract-a-storm-release-to-nimbus-and-worker-machines">Download and extract a Storm release to Nimbus and worker machines</h3>
 
-<p>Next, download a Storm release and extract the zip file somewhere on Nimbus and each of the worker machines. The Storm releases can be downloaded <a href="http://github.com/apache/storm/releases">from here</a>.</p>
+<p>Next, download a Storm release and extract the zip file somewhere on Nimbus and each of the worker machines. The Storm releases can be downloaded <a href="../../downloads.html">from here</a>.</p>
 
 <h3 id="fill-in-mandatory-configurations-into-storm-yaml">Fill in mandatory configurations into storm.yaml</h3>
 
@@ -223,7 +223,7 @@ You can leave it empty with default value <code>$STORM_HOME/storm-local</code></
 </code></pre></div>
 <h3 id="monitoring-health-of-supervisors">Monitoring Health of Supervisors</h3>
 
-<p>Storm provides a mechanism by which administrators can configure the supervisor to run administrator supplied scripts periodically to determine if a node is healthy or not. Administrators can have the supervisor determine if the node is in a healthy state by performing any checks of their choice in scripts located in storm.health.check.dir. If a script detects the node to be in an unhealthy state, it must print a line to standard output beginning with the string ERROR. The supervisor will periodically run the scripts in the health check dir and check the output. If the script’s output contains the string ERROR, as described above, the supervisor will shut down any workers and exit.</p>
+<p>Storm provides a mechanism by which administrators can configure the supervisor to run administrator supplied scripts periodically to determine if a node is healthy or not. Administrators can have the supervisor determine if the node is in a healthy state by performing any checks of their choice in scripts located in storm.health.check.dir. If a script detects the node to be in an unhealthy state, it must return a non-zero exit code. In pre-Storm 2.x releases, a bug considered a script exit value of 0 to be a failure.  This has now been fixed.  The supervisor will periodically run the scripts in the health check dir and check the output. If the script’s output contains the string ERROR, as described above, the supervisor will shut down any workers and exit.</p>
 
 <p>If the supervisor is running with supervision &quot;/bin/storm node-health-check&quot; can be called to determine if the supervisor should be launched or if the node is unhealthy.</p>
 
