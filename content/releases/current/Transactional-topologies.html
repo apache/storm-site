@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -226,11 +228,11 @@
 <li><em>First class batch processing API</em>: Storm layers an API on top of regular bolts to allow for batch processing of tuples. Storm manages all the coordination for determining when a task has received all the tuples for that particular transaction. Storm will also take care of cleaning up any accumulated state for each transaction (like the partial counts).</li>
 </ol>
 
-<p>Finally, another thing to note is that transactional topologies require a source queue that can replay an exact batch of messages. Technologies like <a href="https://github.com/robey/kestrel">Kestrel</a> can&#39;t do this. <a href="http://incubator.apache.org/kafka/index.html">Apache Kafka</a> is a perfect fit for this kind of spout, and <a href="https://github.com/apache/storm/tree/master/external/storm-kafka">storm-kafka</a> contains a transactional spout implementation for Kafka.</p>
+<p>Finally, another thing to note is that transactional topologies require a source queue that can replay an exact batch of messages. Technologies like <a href="https://github.com/robey/kestrel">Kestrel</a> can&#39;t do this. <a href="http://incubator.apache.org/kafka/index.html">Apache Kafka</a> is a perfect fit for this kind of spout, and <a href="https://github.com/apache/storm/tree/master/external/storm-kafka-client">storm-kafka-client</a> contains a transactional spout implementation for Kafka.</p>
 
 <h2 id="the-basics-through-example">The basics through example</h2>
 
-<p>You build transactional topologies by using <a href="javadocs/org/apache/storm/transactional/TransactionalTopologyBuilder.html">TransactionalTopologyBuilder</a>. Here&#39;s the transactional topology definition for a topology that computes the global count of tuples from the input stream. This code comes from <a href="http://github.com/apache/storm/blob/v1.2.2/examples/storm-starter/src/jvm/org/apache/storm/starter/TransactionalGlobalCount.java">TransactionalGlobalCount</a> in storm-starter.</p>
+<p>You build transactional topologies by using <a href="javadocs/org/apache/storm/transactional/TransactionalTopologyBuilder.html">TransactionalTopologyBuilder</a>. Here&#39;s the transactional topology definition for a topology that computes the global count of tuples from the input stream. This code comes from <a href="http://github.com/apache/storm/blob/v2.0.0/examples/storm-starter/src/jvm/org/apache/storm/starter/TransactionalGlobalCount.java">TransactionalGlobalCount</a> in storm-starter.</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">MemoryTransactionalSpout</span> <span class="n">spout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MemoryTransactionalSpout</span><span class="o">(</span><span class="n">DATA</span><span class="o">,</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word"</span><span class="o">),</span> <span class="n">PARTITION_TAKE_PER_BATCH</span><span class="o">);</span>
 <span class="n">TransactionalTopologyBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TransactionalTopologyBuilder</span><span class="o">(</span><span class="s">"global-count"</span><span class="o">,</span> <span class="s">"spout"</span><span class="o">,</span> <span class="n">spout</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
 <span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"partial-count"</span><span class="o">,</span> <span class="k">new</span> <span class="n">BatchCount</span><span class="o">(),</span> <span class="mi">5</span><span class="o">)</span>
@@ -338,7 +340,7 @@
 
 <p>The code for <code>finishBatch</code> in <code>UpdateGlobalCount</code> gets the current value from the database and compares its transaction id to the transaction id for this batch. If they are the same, it does nothing. Otherwise, it increments the value in the database by the partial count for this batch.</p>
 
-<p>A more involved transactional topology example that updates multiple databases idempotently can be found in storm-starter in the <a href="http://github.com/apache/storm/blob/v1.2.2/examples/storm-starter/src/jvm/org/apache/storm/starter/TransactionalWords.java">TransactionalWords</a> class.</p>
+<p>A more involved transactional topology example that updates multiple databases idempotently can be found in storm-starter in the <a href="http://github.com/apache/storm/blob/v2.0.0/examples/storm-starter/src/jvm/org/apache/storm/starter/TransactionalWords.java">TransactionalWords</a> class.</p>
 
 <h2 id="transactional-topology-api">Transactional Topology API</h2>
 
@@ -394,7 +396,7 @@
 
 <h4 id="partitioned-transactional-spout">Partitioned Transactional Spout</h4>
 
-<p>A common kind of transactional spout is one that reads the batches from a set of partitions across many queue brokers. For example, this is how <a href="http://github.com/apache/storm/tree/v1.2.2/external/storm-kafka/src/jvm/org/apache/storm/kafka/TransactionalKafkaSpout.java">TransactionalKafkaSpout</a> works. An <code>IPartitionedTransactionalSpout</code> automates the bookkeeping work of managing the state for each partition to ensure idempotent replayability. See <a href="javadocs/org/apache/storm/transactional/partitioned/IPartitionedTransactionalSpout.html">the Javadoc</a> for more details.</p>
+<p>A common kind of transactional spout is one that reads the batches from a set of partitions across many queue brokers. For example, this is how <a href="http://github.com/apache/storm/tree/v2.0.0/external/storm-kafka-client/src/main/java/org/apache/storm/kafka/spout/trident/KafkaTridentSpoutTransactional.java">KafkaTridentSpoutTransactional</a> works. An <code>IPartitionedTransactionalSpout</code> automates the bookkeeping work of managing the state for each partition to ensure idempotent replayability. See <a href="javadocs/org/apache/storm/transactional/partitioned/IPartitionedTransactionalSpout.html">the Javadoc</a> for more details.</p>
 
 <h3 id="configuration">Configuration</h3>
 
@@ -466,7 +468,7 @@
 
 <p>By failing all subsequent transactions on failure, no tuples are skipped. This also shows that a requirement of transactional spouts is that they always emit where the last transaction left off.</p>
 
-<p>A non-idempotent transactional spout is more concisely referred to as an &quot;OpaqueTransactionalSpout&quot; (opaque is the opposite of idempotent). <a href="javadocs/org/apache/storm/transactional/partitioned/IOpaquePartitionedTransactionalSpout.html">IOpaquePartitionedTransactionalSpout</a> is an interface for implementing opaque partitioned transactional spouts, of which <a href="http://github.com/apache/storm/tree/v1.2.2/external/storm-kafka/src/jvm/org/apache/storm/kafka/OpaqueTransactionalKafkaSpout.java">OpaqueTransactionalKafkaSpout</a> is an example. <code>OpaqueTransactionalKafkaSpout</code> can withstand losing individual Kafka nodes without sacrificing accuracy as long as you use the update strategy as explained in this section.</p>
+<p>A non-idempotent transactional spout is more concisely referred to as an &quot;OpaqueTransactionalSpout&quot; (opaque is the opposite of idempotent). <a href="javadocs/org/apache/storm/transactional/partitioned/IOpaquePartitionedTransactionalSpout.html">IOpaquePartitionedTransactionalSpout</a> is an interface for implementing opaque partitioned transactional spouts, of which <a href="http://github.com/apache/storm/tree/v2.0.0/external/storm-kafka-client/src/main/java/org/apache/storm/kafka/spout/Trident/KafkaTridentSpoutOpaque.java">KafkaTridentSpoutOpaque</a> is an example. <code>KafkaTridentSpoutOpaque</code> can withstand losing individual Kafka nodes without sacrificing accuracy as long as you use the update strategy as explained in this section.</p>
 
 <h2 id="implementation">Implementation</h2>
 

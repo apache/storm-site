@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -144,7 +146,7 @@
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><p>This page outlines the steps for getting a Storm cluster up and running. If you&#39;re on AWS, you should check out the <a href="https://github.com/nathanmarz/storm-deploy/wiki">storm-deploy</a> project. <a href="https://github.com/nathanmarz/storm-deploy/wiki">storm-deploy</a> completely automates the provisioning, configuration, and installation of Storm clusters on EC2. It also sets up Ganglia for you so you can monitor CPU, disk, and network usage.</p>
+<div class="documentation-content"><p>This page outlines the steps for getting a Storm cluster up and running. </p>
 
 <p>If you run into difficulties with your Storm cluster, first check for a solution is in the <a href="Troubleshooting.html">Troubleshooting</a> page. Otherwise, email the mailing list.</p>
 
@@ -156,6 +158,7 @@
 <li>Download and extract a Storm release to Nimbus and worker machines</li>
 <li>Fill in mandatory configurations into storm.yaml</li>
 <li>Launch daemons under supervision using &quot;storm&quot; script and a supervisor of your choice</li>
+<li>Setup DRPC servers (Optional)</li>
 </ol>
 
 <h3 id="set-up-a-zookeeper-cluster">Set up a Zookeeper cluster</h3>
@@ -174,7 +177,7 @@
 <p>Next you need to install Storm&#39;s dependencies on Nimbus and the worker machines. These are:</p>
 
 <ol>
-<li>Java 7+ (Apache Storm 1.x is tested through travis ci against both java 7 and java 8 JDKs)</li>
+<li>Java 8+ (Apache Storm 2.x is tested through travis ci against a java 8 JDK)</li>
 <li>Python 2.6.6 (Python 3.x should work too, but is not tested as part of our CI enviornment)</li>
 </ol>
 
@@ -182,11 +185,11 @@
 
 <h3 id="download-and-extract-a-storm-release-to-nimbus-and-worker-machines">Download and extract a Storm release to Nimbus and worker machines</h3>
 
-<p>Next, download a Storm release and extract the zip file somewhere on Nimbus and each of the worker machines. The Storm releases can be downloaded <a href="http://github.com/apache/storm/releases">from here</a>.</p>
+<p>Next, download a Storm release and extract the zip file somewhere on Nimbus and each of the worker machines. The Storm releases can be downloaded <a href="../../downloads.html">from here</a>.</p>
 
 <h3 id="fill-in-mandatory-configurations-into-storm-yaml">Fill in mandatory configurations into storm.yaml</h3>
 
-<p>The Storm release contains a file at <code>conf/storm.yaml</code> that configures the Storm daemons. You can see the default configuration values <a href="http://github.com/apache/storm/blob/v1.2.2/conf/defaults.yaml">here</a>. storm.yaml overrides anything in defaults.yaml. There&#39;s a few configurations that are mandatory to get a working cluster:</p>
+<p>The Storm release contains a file at <code>conf/storm.yaml</code> that configures the Storm daemons. You can see the default configuration values <a href="http://github.com/apache/storm/blob/v2.0.0/conf/defaults.yaml">here</a>. storm.yaml overrides anything in defaults.yaml. There&#39;s a few configurations that are mandatory to get a working cluster:</p>
 
 <p>1) <strong>storm.zookeeper.servers</strong>: This is a list of the hosts in the Zookeeper cluster for your Storm cluster. It should look something like:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">storm.zookeeper.servers</span><span class="pi">:</span>
@@ -217,9 +220,12 @@ You can leave it empty with default value <code>$STORM_HOME/storm-local</code></
     <span class="pi">-</span> <span class="s">6702</span>
     <span class="pi">-</span> <span class="s">6703</span>
 </code></pre></div>
+<p>5) <strong>drpc.servers</strong>: If you want to setup DRPC servers they need to specified so that the workers can find them. This should be a list of the DRPC servers.  For example:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">drpc.servers</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">111.222.333.44"</span><span class="pi">]</span>
+</code></pre></div>
 <h3 id="monitoring-health-of-supervisors">Monitoring Health of Supervisors</h3>
 
-<p>Storm provides a mechanism by which administrators can configure the supervisor to run administrator supplied scripts periodically to determine if a node is healthy or not. Administrators can have the supervisor determine if the node is in a healthy state by performing any checks of their choice in scripts located in storm.health.check.dir. If a script detects the node to be in an unhealthy state, it must print a line to standard output beginning with the string ERROR. The supervisor will periodically run the scripts in the health check dir and check the output. If the script’s output contains the string ERROR, as described above, the supervisor will shut down any workers and exit.</p>
+<p>Storm provides a mechanism by which administrators can configure the supervisor to run administrator supplied scripts periodically to determine if a node is healthy or not. Administrators can have the supervisor determine if the node is in a healthy state by performing any checks of their choice in scripts located in storm.health.check.dir. If a script detects the node to be in an unhealthy state, it must return a non-zero exit code. In pre-Storm 2.x releases, a bug considered a script exit value of 0 to be a failure.  This has now been fixed.  The supervisor will periodically run the scripts in the health check dir and check the output. If the script’s output contains the string ERROR, as described above, the supervisor will shut down any workers and exit.</p>
 
 <p>If the supervisor is running with supervision &quot;/bin/storm node-health-check&quot; can be called to determine if the supervisor should be launched or if the node is unhealthy.</p>
 
@@ -240,12 +246,22 @@ The time to allow any given healthcheck script to run before it is marked failed
 <p>The last step is to launch all the Storm daemons. It is critical that you run each of these daemons under supervision. Storm is a <strong>fail-fast</strong> system which means the processes will halt whenever an unexpected error is encountered. Storm is designed so that it can safely halt at any point and recover correctly when the process is restarted. This is why Storm keeps no state in-process -- if Nimbus or the Supervisors restart, the running topologies are unaffected. Here&#39;s how to run the Storm daemons:</p>
 
 <ol>
-<li><strong>Nimbus</strong>: Run the command &quot;bin/storm nimbus&quot; under supervision on the master machine.</li>
-<li><strong>Supervisor</strong>: Run the command &quot;bin/storm supervisor&quot; under supervision on each worker machine. The supervisor daemon is responsible for starting and stopping worker processes on that machine.</li>
+<li><strong>Nimbus</strong>: Run the command <code>bin/storm nimbus</code> under supervision on the master machine.</li>
+<li><strong>Supervisor</strong>: Run the command <code>bin/storm supervisor</code> under supervision on each worker machine. The supervisor daemon is responsible for starting and stopping worker processes on that machine.</li>
 <li><strong>UI</strong>: Run the Storm UI (a site you can access from the browser that gives diagnostics on the cluster and topologies) by running the command &quot;bin/storm ui&quot; under supervision. The UI can be accessed by navigating your web browser to http://{ui host}:8080.</li>
 </ol>
 
 <p>As you can see, running the daemons is very straightforward. The daemons will log to the logs/ directory in wherever you extracted the Storm release.</p>
+
+<h3 id="setup-drpc-servers-optional">Setup DRPC servers (Optional)</h3>
+
+<p>Just like with nimbus or the supervisors you will need to launch the drpc server.  To do this run the command <code>bin/storm drpc</code> on each of the machines that you configured as a part of the <code>drpc.servers</code> config.</p>
+
+<h4 id="drpc-http-setup">DRPC Http Setup</h4>
+
+<p>DRPC optionally offers a REST API as well.  To enable this set teh config <code>drpc.http.port</code> to the port you want to run on before launching the DRPC server. See the <a href="STORM-UI-REST-API.html">REST documentation</a> for more information on how to use it.</p>
+
+<p>It also supports SSL by setting <code>drpc.https.port</code> along with the keystore and optional truststore similar to how you would configure the UI.</p>
 </div>
 
 

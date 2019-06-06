@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -153,7 +155,7 @@ Storm SQL also adopts Rex compiler from Calcite, so Storm SQL is expected to han
 
 <h2 id="grammar">Grammar</h2>
 
-<p>Calcite provides broader SQL Grammar. But Storm SQL is not database system and handles streaming data, so only subset of grammar is supported.
+<p>Calcite provides broader SQL Grammar. But Storm SQL is not a database system and handles streaming data, so only subset of grammar is supported.
 Storm SQL doesn&#39;t redefine SQL Grammar and just utilize the parser Calcite provided, so SQL statements are still parsed based on Calcite&#39;s SQL Grammar. </p>
 
 <p>SQL grammar in <a href="http://en.wikipedia.org/wiki/Backus%E2%80%93Naur_Form">BNF</a>-like form.</p>
@@ -327,7 +329,7 @@ may refer to tables in the FROM clause of an enclosing query.</p>
 
 <p><em>selectWithoutFrom</em> is equivalent to VALUES,
 but is not standard SQL and is only allowed in certain
-<a href="/org/apache/calcite/sql/validate/SqlConformance.html#isFromRequired--">conformance levels</a>.</p>
+<a href="https://calcite.apache.org/apidocs/org/apache/calcite/sql/validate/SqlConformance.html#isFromRequired--">conformance levels</a>.</p>
 
 <h2 id="keywords">Keywords</h2>
 
@@ -1076,7 +1078,7 @@ the user or application to supply a time zone.</li>
 <td style="text-align: left">left</td>
 </tr>
 <tr>
-<td style="text-align: left"><a href="array%20element"> </a></td>
+<td style="text-align: left">[ ] (array element)</td>
 <td style="text-align: left">left</td>
 </tr>
 <tr>
@@ -1903,7 +1905,7 @@ If the class defines <code>evaluate</code> method, Storm SQL treats the function
 <p>Default input format and output format are JSON. We will introduce <code>supported formats</code> from further section.</p>
 
 <p>For example, the following statement specifies a Kafka spout and sink:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">CREATE EXTERNAL TABLE FOO (ID INT PRIMARY KEY) LOCATION 'kafka://localhost:2181/brokers?topic=test' TBLPROPERTIES '{"producer":{"bootstrap.servers":"localhost:9092","acks":"1","key.serializer":"org.apache.org.apache.storm.kafka.IntSerializer","value.serializer":"org.apache.org.apache.storm.kafka.ByteBufferSerializer"}}'
+<div class="highlight"><pre><code class="language-" data-lang="">CREATE EXTERNAL TABLE FOO (ID INT PRIMARY KEY) LOCATION 'kafka://test?bootstrap-hosts=localhost:9092' TBLPROPERTIES '{"producer":{"acks":"1","key.serializer":"org.apache.storm.kafka.IntSerializer"}}'
 </code></pre></div>
 <p>Please note that users should use <code>--jars</code> or <code>--artifacts</code> while running Storm SQL runner to make sure UDFs are available in classpath. </p>
 
@@ -1991,7 +1993,7 @@ Please note that it supports only one letter for delimiter.</p>
 <tr>
 <td style="text-align: left">Kafka</td>
 <td style="text-align: left">org.apache.storm:storm-sql-kafka</td>
-<td style="text-align: left"><code>kafka://zkhost:port/broker_path?topic=topic</code></td>
+<td style="text-align: left"><code>kafka://topic?bootstrap-servers=host1:port1,host2:port2</code></td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">Yes</td>
 <td style="text-align: left">Yes</td>
@@ -2026,7 +2028,7 @@ Please note that it supports only one letter for delimiter.</p>
 
 <p>Socket data source is a built-in feature so users don&#39;t need to add any artifacts to <code>--artifacts</code> options.</p>
 
-<p>Please note that Socket data source is only for testing: it doesn&#39;t guarantee exactly-once and at-least-once.</p>
+<p>Please note that Socket data source is only for testing: it doesn&#39;t ensure any delivery guarantee.</p>
 
 <p>TIP: <code>netcat</code> is a convenient tool for Socket: users can use netcat to connect Socket data source for either or both input and output purposes.</p>
 
@@ -2038,14 +2040,15 @@ Please note that it supports only one letter for delimiter.</p>
 <li><code>producer</code>: Specify Kafka Producer configuration - Please refer <a href="http://kafka.apache.org/documentation.html#producerconfigs">Kafka producer configs</a> for details.
 
 <ul>
-<li><code>bootstrap.servers</code> must be described in <code>producer</code></li>
+<li>Do not set <code>bootstrap.servers</code>. It is extracted from the URI you provide for the data source (e.g. <code>kafka://topic?bootstrap-servers=localhost:9092,localhost:9093</code> would extract to <code>localhost:9092,localhost:9093</code>).</li>
+<li>Do not set <code>value.serializer</code>. It is hardcoded to use <code>ByteBufferSerializer</code>. Instead use the <code>STORED AS INPUTFORMAT ... OUTPUTFORMAT ...</code> syntax to specify the output serializer Storm will use to create the ByteBuffer from input tuples.</li>
 </ul></li>
 </ul>
 
-<p>Please note that <code>storm-sql-kafka</code> requires users to provide <code>storm-kafka</code>, and <code>storm-kafka</code> requires users to provide <code>kafka</code> and <code>kafka-clients</code>.
+<p>Please note that <code>storm-sql-kafka</code> requires users to provide <code>storm-kafka-client</code>, and <code>storm-kafka-client</code> requires users to provide <code>kafka-clients</code>.
 You can use below as working reference for <code>--artifacts</code> option, and change dependencies version, and see it works:</p>
 
-<p><code>org.apache.storm:storm-sql-kafka:2.0.0-SNAPSHOT,org.apache.storm:storm-kafka:2.0.0-SNAPSHOT,org.apache.kafka:kafka_2.10:0.8.2.2^org.slf4j:slf4j-log4j12,org.apache.kafka:kafka-clients:0.8.2.2</code></p>
+<p><code>org.apache.storm:storm-sql-kafka:2.0.0-SNAPSHOT,org.apache.storm:storm-kafka-client:2.0.0-SNAPSHOT,org.apache.kafka:kafka-clients:1.1.0^org.slf4j:slf4j-log4j12</code></p>
 
 <h4 id="redis">Redis</h4>
 
@@ -2067,10 +2070,10 @@ You can use below as working reference for <code>--artifacts</code> option, and 
 
 <p>MongoDB data source requires below properties to be set:</p>
 
-<p><code>{&quot;collection.name&quot;: &quot;storm_sql_mongo&quot;, &quot;trident.ser.field&quot;: &quot;serfield&quot;}</code></p>
+<p><code>{&quot;collection.name&quot;: &quot;storm_sql_mongo&quot;, &quot;ser.field&quot;: &quot;serfield&quot;}</code></p>
 
 <ul>
-<li><code>trident.ser.field</code>: field to store - record will be serialized and stored as BSON in this field</li>
+<li><code>ser.field</code>: field to store - record will be serialized and stored as BSON in this field</li>
 <li><code>collection.name</code>: Collection name</li>
 </ul>
 
@@ -2087,7 +2090,7 @@ You can use below as working reference for <code>--artifacts</code> option, and 
 
 <ul>
 <li><code>hdfs.file.path</code>: HDFS file path</li>
-<li><code>hdfs.file.name</code>: HDFS file name - please refer to <a href="http://github.com/apache/storm/blob/v1.2.2/external/storm-hdfs/src/main/java/org/apache/storm/hdfs/trident/format/SimpleFileNameFormat.java">SimpleFileNameFormat</a></li>
+<li><code>hdfs.file.name</code>: HDFS file name - please refer to <a href="http://github.com/apache/storm/blob/v2.0.0/external/storm-hdfs/src/main/java/org/apache/storm/hdfs/bolt/format/SimpleFileNameFormat.java">SimpleFileNameFormat</a></li>
 <li><code>hdfs.rotation.size.kb</code>: HDFS FileSizeRotationPolicy in KB</li>
 <li><code>hdfs.rotation.time.seconds</code>: HDFS TimedRotationPolicy in seconds</li>
 </ul>

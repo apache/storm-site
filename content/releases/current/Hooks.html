@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -144,12 +146,18 @@
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><p>Storm provides hooks with which you can insert custom code to run on any number of events within Storm. You create a hook by extending the <a href="javadocs/org/apache/storm/hooks/BaseTaskHook.html">BaseTaskHook</a> class and overriding the appropriate method for the event you want to catch. There are two ways to register your hook:</p>
+<div class="documentation-content"><h2 id="task-hooks">Task hooks</h2>
+
+<p>Storm provides hooks with which you can insert custom code to run on any number of events within Storm. You create a hook by extending the <a href="javadocs/org/apache/storm/hooks/BaseTaskHook.html">BaseTaskHook</a> class and overriding the appropriate method for the event you want to catch. There are two ways to register your hook:</p>
 
 <ol>
 <li>In the open method of your spout or prepare method of your bolt using the <a href="javadocs/org/apache/storm/task/TopologyContext.html#addTaskHook">TopologyContext</a> method.</li>
 <li>Through the Storm configuration using the <a href="javadocs/org/apache/storm/Config.html#TOPOLOGY_AUTO_TASK_HOOKS">&quot;topology.auto.task.hooks&quot;</a> config. These hooks are automatically registered in every spout or bolt, and are useful for doing things like integrating with a custom monitoring system.</li>
 </ol>
+
+<h2 id="worker-hooks">Worker hooks</h2>
+
+<p>Storm also provides worker-level hooks that are called during worker startup, before any bolts or spouts are prepared/opened. You can create such a hook by extending <a href="javadocs/org/apache/storm/hooks/BaseWorkerHook">BaseWorkerHook</a> and overriding the methods you want to implement. You can register your hook via <code>TopologyBuilder.addWorkerHook</code>.</p>
 </div>
 
 

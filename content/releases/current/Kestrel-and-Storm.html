@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -150,7 +152,7 @@
 
 <h3 id="storm">Storm</h3>
 
-<p>This tutorial uses examples from the <a href="https://github.com/nathanmarz/storm-kestrel">storm-kestrel</a> project and the <a href="http://github.com/apache/storm/blob/1.2.2/examples/storm-starter">storm-starter</a> project. It&#39;s recommended that you clone those projects and follow along with the examples. Read <a href="Setting-up-development-environment.html">Setting up development environment</a> and <a href="Creating-a-new-Storm-project.html">Creating a new Storm project</a> to get your machine set up.</p>
+<p>This tutorial uses examples from the <a href="https://github.com/nathanmarz/storm-kestrel">storm-kestrel</a> project and the <a href="http://github.com/apache/storm/blob/2.0.0/examples/storm-starter">storm-starter</a> project. It&#39;s recommended that you clone those projects and follow along with the examples. Read <a href="Setting-up-development-environment.html">Setting up development environment</a> and <a href="Creating-a-new-Storm-project.html">Creating a new Storm project</a> to get your machine set up.</p>
 
 <h3 id="kestrel">Kestrel</h3>
 
@@ -201,140 +203,139 @@
 </code></pre></div>
 <h2 id="remove-items-from-kestrel">Remove items from Kestrel</h2>
 
-<p>This method dequeues items from a queue without removing them.
-```
-    private static void dequeueItems(KestrelClient kestrelClient, String queueName) throws IOException, ParseError
+<p>This method dequeues items from a queue without removing them.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    private static void dequeueItems(KestrelClient kestrelClient, String queueName) throws IOException, ParseError
              {
-        for(int i=1; i&lt;=12; i++){</p>
-<div class="highlight"><pre><code class="language-" data-lang="">        Item item = kestrelClient.dequeue(queueName);
-
-        if(item==null){
-            System.out.println("The queue (" + queueName + ") contains no items.");
-        }
-        else
-        {
-            byte[] data = item._data;
-
-            String receivedVal = new String(data);
-
-            System.out.println("receivedItem=" + receivedVal);
-        }
-    }
-</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">
-This method dequeues items from a queue and then removes them.
-</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">private static void dequeueAndRemoveItems(KestrelClient kestrelClient, String queueName)
-throws IOException, ParseError
-     {
         for(int i=1; i&lt;=12; i++){
 
             Item item = kestrelClient.dequeue(queueName);
-
 
             if(item==null){
                 System.out.println("The queue (" + queueName + ") contains no items.");
             }
             else
             {
-                int itemID = item._id;
-
-
                 byte[] data = item._data;
 
                 String receivedVal = new String(data);
 
-                kestrelClient.ack(queueName, itemID);
-
                 System.out.println("receivedItem=" + receivedVal);
             }
         }
-}
-</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">
-## Add Items continuously to Kestrel
+</code></pre></div>
+<p>This method dequeues items from a queue and then removes them.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    private static void dequeueAndRemoveItems(KestrelClient kestrelClient, String queueName)
+    throws IOException, ParseError
+         {
+            for(int i=1; i&lt;=12; i++){
 
-This is our final program to run in order to add continuously sentence items to a queue called **sentence_queue** of a locally running Kestrel server.
+                Item item = kestrelClient.dequeue(queueName);
 
-In order to stop it type a closing bracket char ']' in console and hit 'Enter'.
 
-</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">import java.io.IOException;
-import java.io.InputStream;
-import java.util.Random;
+                if(item==null){
+                    System.out.println("The queue (" + queueName + ") contains no items.");
+                }
+                else
+                {
+                    int itemID = item._id;
 
-import org.apache.storm.spout.KestrelClient;
-import org.apache.storm.spout.KestrelClient.Item;
-import org.apache.storm.spout.KestrelClient.ParseError;
 
-public class AddSentenceItemsToKestrel {
+                    byte[] data = item._data;
 
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
+                    String receivedVal = new String(data);
 
-        InputStream is = System.in;
+                    kestrelClient.ack(queueName, itemID);
 
-        char closing_bracket = ']';
-
-        int val = closing_bracket;
-
-        boolean aux = true;
-
-        try {
-
-            KestrelClient kestrelClient = null;
-            String queueName = "sentence_queue";
-
-            while(aux){
-
-                kestrelClient = new KestrelClient("localhost",22133);
-
-                queueSentenceItems(kestrelClient, queueName);
-
-                kestrelClient.close();
-
-                Thread.sleep(1000);
-
-                if(is.available()&gt;0){
-                 if(val==is.read())
-                     aux=false;
+                    System.out.println("receivedItem=" + receivedVal);
                 }
             }
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        catch (ParseError e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        System.out.println("end");
-
     }
-}
-</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">## Using KestrelSpout
+</code></pre></div>
+<h2 id="add-items-continuously-to-kestrel">Add Items continuously to Kestrel</h2>
 
-This topology reads sentences off of a Kestrel queue using KestrelSpout, splits the sentences into its constituent words (Bolt: SplitSentence), and then emits for each word the number of times it has seen that word before (Bolt: WordCount). How data is processed is described in detail in [Guaranteeing message processing](Guaranteeing-message-processing.html).
+<p>This is our final program to run in order to add continuously sentence items to a queue called <strong>sentence_queue</strong> of a locally running Kestrel server.</p>
 
-</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">TopologyBuilder builder = new TopologyBuilder();
-builder.setSpout("sentences", new KestrelSpout("localhost",22133,"sentence_queue",new StringScheme()));
-builder.setBolt("split", new SplitSentence(), 10)
-            .shuffleGrouping("sentences");
-builder.setBolt("count", new WordCount(), 20)
-        .fieldsGrouping("split", new Fields("word"));
-</code></pre></div><div class="highlight"><pre><code class="language-" data-lang="">
-## Execution
+<p>In order to stop it type a closing bracket char &#39;]&#39; in console and hit &#39;Enter&#39;.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    import java.io.IOException;
+    import java.io.InputStream;
+    import java.util.Random;
 
-At first, start your local kestrel server in production or development mode.
+    import org.apache.storm.spout.KestrelClient;
+    import org.apache.storm.spout.KestrelClient.Item;
+    import org.apache.storm.spout.KestrelClient.ParseError;
 
-Than, wait about 5 seconds in order to avoid a ConnectException.
+    public class AddSentenceItemsToKestrel {
 
-Now execute the program to add items to the queue and launch the Storm topology. The order in which you launch the programs is of no importance.
+        /**
+         * @param args
+         */
+        public static void main(String[] args) {
 
-If you run the topology with TOPOLOGY_DEBUG you should see tuples being emitted in the topology.
-</code></pre></div></div>
+            InputStream is = System.in;
+
+            char closing_bracket = ']';
+
+            int val = closing_bracket;
+
+            boolean aux = true;
+
+            try {
+
+                KestrelClient kestrelClient = null;
+                String queueName = "sentence_queue";
+
+                while(aux){
+
+                    kestrelClient = new KestrelClient("localhost",22133);
+
+                    queueSentenceItems(kestrelClient, queueName);
+
+                    kestrelClient.close();
+
+                    Thread.sleep(1000);
+
+                    if(is.available()&gt;0){
+                     if(val==is.read())
+                         aux=false;
+                    }
+                }
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            catch (ParseError e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            System.out.println("end");
+
+        }
+    }
+</code></pre></div>
+<h2 id="using-kestrelspout">Using KestrelSpout</h2>
+
+<p>This topology reads sentences off of a Kestrel queue using KestrelSpout, splits the sentences into its constituent words (Bolt: SplitSentence), and then emits for each word the number of times it has seen that word before (Bolt: WordCount). How data is processed is described in detail in <a href="Guaranteeing-message-processing.html">Guaranteeing message processing</a>.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">    TopologyBuilder builder = new TopologyBuilder();
+    builder.setSpout("sentences", new KestrelSpout("localhost",22133,"sentence_queue",new StringScheme()));
+    builder.setBolt("split", new SplitSentence(), 10)
+                .shuffleGrouping("sentences");
+    builder.setBolt("count", new WordCount(), 20)
+            .fieldsGrouping("split", new Fields("word"));
+</code></pre></div>
+<h2 id="execution">Execution</h2>
+
+<p>At first, start your local kestrel server in production or development mode.</p>
+
+<p>Than, wait about 5 seconds in order to avoid a ConnectException.</p>
+
+<p>Now execute the program to add items to the queue and launch the Storm topology. The order in which you launch the programs is of no importance.</p>
+
+<p>If you run the topology with TOPOLOGY_DEBUG you should see tuples being emitted in the topology.</p>
+</div>
 
 
 	          </div>

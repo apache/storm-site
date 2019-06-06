@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -172,7 +174,7 @@
 <li>Every tuple is in a batch (no tuples are skipped)</li>
 </ol>
 
-<p>This is a pretty easy type of spout to understand, the stream is divided into fixed batches that never change. storm-contrib has <a href="http://github.com/apache/storm/tree/v1.2.2/external/storm-kafka/src/jvm/org/apache/storm/kafka/trident/TransactionalTridentKafkaSpout.java">an implementation of a transactional spout</a> for Kafka.</p>
+<p>This is a pretty easy type of spout to understand, the stream is divided into fixed batches that never change. Storm has <a href="http://github.com/apache/storm/tree/v2.0.0/external/storm-kafka-client/src/main/java/org/apache/storm/kafka/spout/trident/KafkaTridentSpoutTransactional">an implementation of a transactional spout</a> for Kafka.</p>
 
 <p>You might be wondering – why wouldn&#39;t you just always use a transactional spout? They&#39;re simple and easy to understand. One reason you might not use one is because they&#39;re not necessarily very fault-tolerant. For example, the way TransactionalTridentKafkaSpout works is the batch for a txid will contain tuples from all the Kafka partitions for a topic. Once a batch has been emitted, any time that batch is re-emitted in the future the exact same set of tuples must be emitted to meet the semantics of transactional spouts. Now suppose a batch is emitted from TransactionalTridentKafkaSpout, the batch fails to process, and at the same time one of the Kafka nodes goes down. You&#39;re now incapable of replaying the same batch as you did before (since the node is down and some partitions for the topic are not unavailable), and processing will halt. </p>
 
@@ -209,7 +211,7 @@ apple =&gt; [count=10, txid=2]
 <li>Every tuple is <em>successfully</em> processed in exactly one batch. However, it&#39;s possible for a tuple to fail to process in one batch and then succeed to process in a later batch.</li>
 </ol>
 
-<p><a href="http://github.com/apache/storm/tree/v1.2.2/external/storm-kafka/src/jvm/org/apache/storm/kafka/trident/OpaqueTridentKafkaSpout.java">OpaqueTridentKafkaSpout</a> is a spout that has this property and is fault-tolerant to losing Kafka nodes. Whenever it&#39;s time for OpaqueTridentKafkaSpout to emit a batch, it emits tuples starting from where the last batch finished emitting. This ensures that no tuple is ever skipped or successfully processed by multiple batches.</p>
+<p><a href="http://github.com/apache/storm/tree/v2.0.0/external/storm-kafka-client/src/main/java/org/apache/storm/kafka/spout/trident/KafkaTridentSpoutOpaque.java">KafkaTridentSpoutOpaque</a> is a spout that has this property and is fault-tolerant to losing Kafka nodes. Whenever it&#39;s time for KafkaTridentSpoutOpaque to emit a batch, it emits tuples starting from where the last batch finished emitting. This ensures that no tuple is ever skipped or successfully processed by multiple batches.</p>
 
 <p>With opaque transactional spouts, it&#39;s no longer possible to use the trick of skipping state updates if the transaction id in the database is the same as the transaction id for the current batch. This is because the batch may have changed between state updates.</p>
 
@@ -398,7 +400,7 @@ apple =&gt; [count=10, txid=2]
     <span class="kt">void</span> <span class="nf">set</span><span class="o">(</span><span class="n">T</span> <span class="n">o</span><span class="o">);</span>
 <span class="o">}</span>
 </code></pre></div>
-<p><a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/trident/testing/MemoryMapState.java">MemoryMapState</a> and <a href="https://github.com/nathanmarz/trident-memcached/blob/1.2.2/src/jvm/trident/memcached/MemcachedState.java">MemcachedState</a> each implement both of these interfaces.</p>
+<p><a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/trident/testing/MemoryMapState.java">MemoryMapState</a> and <a href="https://github.com/nathanmarz/trident-memcached/blob/2.0.0/src/jvm/trident/memcached/MemcachedState.java">MemcachedState</a> each implement both of these interfaces.</p>
 
 <h2 id="implementing-map-states">Implementing Map States</h2>
 
@@ -408,11 +410,11 @@ apple =&gt; [count=10, txid=2]
     <span class="kt">void</span> <span class="nf">multiPut</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">keys</span><span class="o">,</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">vals</span><span class="o">);</span> 
 <span class="o">}</span>
 </code></pre></div>
-<p>OpaqueMap&#39;s will call multiPut with <a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/trident/state/OpaqueValue.java">OpaqueValue</a>&#39;s for the vals, TransactionalMap&#39;s will give <a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/trident/state/TransactionalValue.java">TransactionalValue</a>&#39;s for the vals, and NonTransactionalMaps will just pass the objects from the topology through.</p>
+<p>OpaqueMap&#39;s will call multiPut with <a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/trident/state/OpaqueValue.java">OpaqueValue</a>&#39;s for the vals, TransactionalMap&#39;s will give <a href="http://github.com/apache/storm/blob/v2.0.0/storm-core/src/jvm/org/apache/storm/trident/state/TransactionalValue.java">TransactionalValue</a>&#39;s for the vals, and NonTransactionalMaps will just pass the objects from the topology through.</p>
 
-<p>Trident also provides the <a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/trident/state/map/CachedMap.java">CachedMap</a> class to do automatic LRU caching of map key/vals.</p>
+<p>Trident also provides the <a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/trident/state/map/CachedMap.java">CachedMap</a> class to do automatic LRU caching of map key/vals.</p>
 
-<p>Finally, Trident provides the <a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/trident/state/map/SnapshottableMap.java">SnapshottableMap</a> class that turns a MapState into a Snapshottable object, by storing global aggregations into a fixed key.</p>
+<p>Finally, Trident provides the <a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/trident/state/map/SnapshottableMap.java">SnapshottableMap</a> class that turns a MapState into a Snapshottable object, by storing global aggregations into a fixed key.</p>
 
 <p>Take a look at the implementation of <a href="https://github.com/nathanmarz/trident-memcached/blob/master/src/jvm/trident/memcached/MemcachedState.java">MemcachedState</a> to see how all these utilities can be put together to make a high performance MapState implementation. MemcachedState allows you to choose between opaque transactional, transactional, and non-transactional semantics.</p>
 </div>

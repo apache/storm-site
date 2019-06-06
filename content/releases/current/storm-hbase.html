@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -176,7 +178,7 @@ provided for the storm-hbase connector. Specifically, the Config object passed i
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span>
 <span class="o">...</span>
 <span class="n">config</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"storm.keytab.file"</span><span class="o">,</span> <span class="s">"$keytab"</span><span class="o">);</span>
-<span class="n">config</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"storm.kerberos.principal"</span><span class="o">,</span> <span class="s">"$principle"</span><span class="o">);</span>
+<span class="n">config</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"storm.kerberos.principal"</span><span class="o">,</span> <span class="s">"$principal"</span><span class="o">);</span>
 <span class="n">StormSubmitter</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="s">"$topologyName"</span><span class="o">,</span> <span class="n">config</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">createTopology</span><span class="o">());</span>
 </code></pre></div>
 <h2 id="working-with-secure-hbase-using-delegation-tokens">Working with Secure HBASE using delegation tokens.</h2>
@@ -250,6 +252,15 @@ tuples to both regular HBase columns as well as counter columns.</p>
 <p>To use the <code>HBaseBolt</code>, construct it with the name of the table to write to, an a <code>HBaseMapper</code> implementation:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">HBaseBolt</span> <span class="n">hbase</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HBaseBolt</span><span class="o">(</span><span class="s">"WordCount"</span><span class="o">,</span> <span class="n">mapper</span><span class="o">);</span>
 </code></pre></div>
+<p>HBaseBolt params</p>
+
+<p>|Arg  |Description | Type | Default |
+|---    |--- |---
+|writeToWAL | To turn Durability SYNC_WAL or SKIP_WAL | Boolean (Optional) | True |
+|configKey | Any Hbase related configs | Map (Optional) | |
+|batchSize | Max no.of Tuples batched together to write to HBase | Int (Optional) | 15000 |
+|flushIntervalSecs| (In seconds)  If &gt; 0 HBase Bolt will periodically flush transaction batches. Enabling this is recommended to avoid tuple timeouts while waiting for a batch to fill up. | Int (Optional) | 0 |</p>
+
 <p>The <code>HBaseBolt</code> will delegate to the <code>mapper</code> instance to figure out how to persist tuple data to HBase.</p>
 
 <h3 id="hbasevaluemapper">HBaseValueMapper</h3>
@@ -265,7 +276,7 @@ Each of the value returned by this function will be emitted by the <code>HBaseLo
 
 <p>The <code>declareOutputFields</code> should be used to declare the outputFields of the <code>HBaseLookupBolt</code>.</p>
 
-<p>There is an example implementation in <code>src/test/java</code> directory.</p>
+<p>There is an example implementation in <code>examples/storm-hbase-examples/src/main/java</code> directory.</p>
 
 <h3 id="hbaseprojectioncriteria">HBaseProjectionCriteria</h3>
 
@@ -299,11 +310,19 @@ and an implementation of <code>HBaseRowToStormValueMapper</code>. You can option
 figure out which columns to include in the result and it will leverage the <code>HBaseRowToStormValueMapper</code> to get the 
 values to be emitted by the bolt.</p>
 
-<p>You can look at an example topology LookupWordCount.java under <code>src/test/java</code>.</p>
+<p>In addition, the <code>HBaseLookupBolt</code> supports bolt-side HBase result caching using an in-memory LRU cache using Caffeine. To enable caching:</p>
+
+<p><code>hbase.cache.enable</code> - to enable caching (default false)</p>
+
+<p><code>hbase.cache.ttl.seconds</code> - set time to live for LRU cache in seconds (default 300)</p>
+
+<p><code>hbase.cache.size</code> - set size of the cache (default 1000)</p>
+
+<p>You can look at an example topology LookupWordCount.java under <code>examples/storm-hbase-examples/src/main/java</code>.</p>
 
 <h2 id="example-persistent-word-count">Example: Persistent Word Count</h2>
 
-<p>A runnable example can be found in the <code>src/test/java</code> directory.</p>
+<p>A runnable example can be found in the <code>examples/storm-hbase-examples/src/main/java</code> directory.</p>
 
 <h3 id="setup">Setup</h3>
 
@@ -335,6 +354,12 @@ Word: 'watermelon', Count: 6806
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
         <span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span>
 
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">hbConf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="n">hbConf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"hbase.rootdir"</span><span class="o">,</span> <span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]);</span>
+        <span class="o">}</span>
+        <span class="n">config</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"hbase.conf"</span><span class="o">,</span> <span class="n">hbConf</span><span class="o">);</span>
+
         <span class="n">WordSpout</span> <span class="n">spout</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WordSpout</span><span class="o">();</span>
         <span class="n">WordCounter</span> <span class="n">bolt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WordCounter</span><span class="o">();</span>
 
@@ -344,7 +369,8 @@ Word: 'watermelon', Count: 6806
                 <span class="o">.</span><span class="na">withCounterFields</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"count"</span><span class="o">))</span>
                 <span class="o">.</span><span class="na">withColumnFamily</span><span class="o">(</span><span class="s">"cf"</span><span class="o">);</span>
 
-        <span class="n">HBaseBolt</span> <span class="n">hbase</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HBaseBolt</span><span class="o">(</span><span class="s">"WordCount"</span><span class="o">,</span> <span class="n">mapper</span><span class="o">);</span>
+        <span class="n">HBaseBolt</span> <span class="n">hbase</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HBaseBolt</span><span class="o">(</span><span class="s">"WordCount"</span><span class="o">,</span> <span class="n">mapper</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withConfigKey</span><span class="o">(</span><span class="s">"hbase.conf"</span><span class="o">);</span>
 
 
         <span class="c1">// wordSpout ==&gt; countBolt ==&gt; HBaseBolt</span>
@@ -354,18 +380,21 @@ Word: 'watermelon', Count: 6806
         <span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="n">COUNT_BOLT</span><span class="o">,</span> <span class="n">bolt</span><span class="o">,</span> <span class="mi">1</span><span class="o">).</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="n">WORD_SPOUT</span><span class="o">);</span>
         <span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="n">HBASE_BOLT</span><span class="o">,</span> <span class="n">hbase</span><span class="o">,</span> <span class="mi">1</span><span class="o">).</span><span class="na">fieldsGrouping</span><span class="o">(</span><span class="n">COUNT_BOLT</span><span class="o">,</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"word"</span><span class="o">));</span>
 
-
-        <span class="k">if</span> <span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">LocalCluster</span> <span class="n">cluster</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocalCluster</span><span class="o">();</span>
-            <span class="n">cluster</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="s">"test"</span><span class="o">,</span> <span class="n">config</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">createTopology</span><span class="o">());</span>
-            <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">10000</span><span class="o">);</span>
-            <span class="n">cluster</span><span class="o">.</span><span class="na">killTopology</span><span class="o">(</span><span class="s">"test"</span><span class="o">);</span>
-            <span class="n">cluster</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="n">config</span><span class="o">.</span><span class="na">setNumWorkers</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-            <span class="n">StormSubmitter</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span> <span class="n">config</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">createTopology</span><span class="o">());</span>
+        <span class="n">String</span> <span class="n">topoName</span> <span class="o">=</span> <span class="s">"test"</span><span class="o">;</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">topoName</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="mi">1</span><span class="o">];</span>
         <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">4</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"hdfs url: "</span> <span class="o">+</span> <span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="s">", keytab file: "</span> <span class="o">+</span> <span class="n">args</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">+</span> 
+                <span class="s">", principal name: "</span> <span class="o">+</span> <span class="n">args</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">+</span> <span class="s">", toplogy name: "</span> <span class="o">+</span> <span class="n">topoName</span><span class="o">);</span>
+            <span class="n">hbConf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">HBaseSecurityUtil</span><span class="o">.</span><span class="na">STORM_KEYTAB_FILE_KEY</span><span class="o">,</span> <span class="n">args</span><span class="o">[</span><span class="mi">2</span><span class="o">]);</span>
+            <span class="n">hbConf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">HBaseSecurityUtil</span><span class="o">.</span><span class="na">STORM_USER_NAME_KEY</span><span class="o">,</span> <span class="n">args</span><span class="o">[</span><span class="mi">3</span><span class="o">]);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">||</span> <span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Usage: PersistentWordCount &lt;hbase.rootdir&gt; [topology name] [keytab file] [principal name]"</span><span class="o">);</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">config</span><span class="o">.</span><span class="na">setNumWorkers</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
+        <span class="n">StormSubmitter</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="n">topoName</span><span class="o">,</span> <span class="n">config</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">createTopology</span><span class="o">());</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>

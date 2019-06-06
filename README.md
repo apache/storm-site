@@ -31,8 +31,7 @@ You must first generate Javadoc for the new release. Check out the Storm reposit
 
 In the Storm project root run
 ```
-mvn javadoc:javadoc -Dnotimestamp=true
-mvn javadoc:aggregate -DreportOutputDirectory=./docs/ -DdestDir=javadocs -Dnotimestamp=true
+mvn javadoc:aggregate -DreportOutputDirectory=./docs/ -DdestDir=javadocs -Dnotimestamp=true -P '!include-shaded-deps'
 ```
 
 In the storm-site project, release documentation is placed under the releases directory named after the release version. See [below](#how-release-specific-docs-work) for details about release specific documentation.
@@ -48,6 +47,12 @@ rsync -ac --delete --exclude _\* --exclude assets --exclude css --exclude README
 cd ${path_to_storm_site}
 git add releases/${release_name}
 git commit
+```
+
+If the release is the latest release, i.e. the release with the highest version number, you should also update the `releases/current` symlink to point to the new release. Run the following from the `storm-site/releases` directory.
+
+```
+ln -f -n -s ${release_name} current
 ```
 
 To publish the site, run the following from the storm-site root

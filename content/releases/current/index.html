@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -144,22 +146,11 @@
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><blockquote>
-<h4 id="note">NOTE</h4>
-
-<p>In the latest version, the class packages have been changed from &quot;backtype.storm&quot; to &quot;org.apache.storm&quot; so the topology code compiled with older version won&#39;t run on the Storm 1.0.0 just like that. Backward compatibility is available through following configuration </p>
-
-<p><code>client.jartransformer.class: &quot;org.apache.storm.hack.StormShadeTransformer&quot;</code></p>
-
-<p>You need to add the above config in storm installation if you want to run the code compiled with older versions of storm. The config should be added in the machine you use to submit your topologies.</p>
-
-<p>Refer to <a href="https://issues.apache.org/jira/browse/STORM-1202">https://issues.apache.org/jira/browse/STORM-1202</a> for more details. </p>
-</blockquote>
-
-<h3 id="basics-of-storm">Basics of Storm</h3>
+<div class="documentation-content"><h3 id="basics-of-storm">Basics of Storm</h3>
 
 <ul>
 <li><a href="javadocs/index.html">Javadoc</a></li>
+<li><a href="Tutorial.html">Tutorial</a></li>
 <li><a href="Concepts.html">Concepts</a></li>
 <li><a href="Storm-Scheduler.html">Scheduler</a></li>
 <li><a href="Configuration.html">Configuration</a></li>
@@ -171,7 +162,7 @@
 <li><a href="FAQ.html">FAQ</a></li>
 </ul>
 
-<h3 id="layers-on-top-of-storm">Layers on Top of Storm</h3>
+<h3 id="layers-on-top-of-storm">Layers on top of Storm</h3>
 
 <h4 id="trident">Trident</h4>
 
@@ -183,6 +174,17 @@
 <li><a href="Trident-state.html">Trident State</a>        -- exactly-once processing and fast, persistent aggregation</li>
 <li><a href="Trident-spouts.html">Trident spouts</a>       -- transactional and non-transactional data intake</li>
 <li><a href="Trident-RAS-API.html">Trident RAS API</a>     -- using the Resource Aware Scheduler with Trident.</li>
+</ul>
+
+<h4 id="streams-api">Streams API</h4>
+
+<p>Stream APIs is another alternative interface to Storm. It provides a typed API for expressing streaming computations and supports functional style operations.</p>
+
+<p>NOTE: Streams API is an <code>experimental</code> feature, and further works might break backward compatibility.
+We&#39;re also notifying it via annotating classes with marker interface <code>@InterfaceStability.Unstable</code>. </p>
+
+<ul>
+<li><a href="Stream-API.html">Streams API</a></li>
 </ul>
 
 <h4 id="sql">SQL</h4>
@@ -214,9 +216,10 @@ But small change will not affect the user experience. We will notify the user wh
 <li><a href="Running-topologies-on-a-production-cluster.html">Running topologies on a production cluster</a></li>
 <li><a href="Maven.html">Building Storm</a> with Maven</li>
 <li><a href="SECURITY.html">Setting up a Secure Cluster</a></li>
+<li><a href="cgroups_in_storm.html">CGroup Enforcement</a></li>
 <li><a href="Pacemaker.html">Pacemaker reduces load on zookeeper for large clusters</a></li>
 <li><a href="Resource_Aware_Scheduler_overview.html">Resource Aware Scheduler</a></li>
-<li><a href="storm-metrics-profiling-internal-actions.html">Daemon Metrics/Monitoring</a></li>
+<li><a href="ClusterMetrics.html">Daemon Metrics/Monitoring</a></li>
 <li><a href="windows-users-guide.html">Windows users guide</a></li>
 <li><a href="Classpath-handling.html">Classpath handling</a></li>
 </ul>
@@ -226,17 +229,16 @@ But small change will not affect the user experience. We will notify the user wh
 <ul>
 <li><a href="Serialization.html">Serialization</a></li>
 <li><a href="Common-patterns.html">Common patterns</a></li>
-<li><a href="Clojure-DSL.html">Clojure DSL</a></li>
+<li><a href="DSLs-and-multilang-adapters.html">DSLs and multilang adapters</a></li>
 <li><a href="Using-non-JVM-languages-with-Storm.html">Using non-JVM languages with Storm</a></li>
 <li><a href="Distributed-RPC.html">Distributed RPC</a></li>
-<li><a href="Transactional-topologies.html">Transactional topologies</a></li>
 <li><a href="Hooks.html">Hooks</a></li>
 <li><a href="Metrics.html">Metrics (Deprecated)</a></li>
 <li><a href="metrics_v2.html">Metrics V2</a></li>
 <li><a href="State-checkpointing.html">State Checkpointing</a></li>
 <li><a href="Windowing.html">Windowing</a></li>
 <li><a href="Joins.html">Joining Streams</a></li>
-<li><a href="distcache-blobstore.html">Blobstore(Distcahce)</a></li>
+<li><a href="distcache-blobstore.html">Blobstore(Distcache)</a></li>
 </ul>
 
 <h3 id="debugging">Debugging</h3>
@@ -251,32 +253,33 @@ But small change will not affect the user experience. We will notify the user wh
 <h3 id="integration-with-external-systems-and-other-libraries">Integration With External Systems, and Other Libraries</h3>
 
 <ul>
-<li><a href="storm-kafka.html">Apache Kafka Integration</a>, <a href="storm-kafka-client.html">New Kafka Consumer Integration</a></li>
+<li><a href="storm-kafka-client.html">Apache Kafka Integration</a></li>
 <li><a href="storm-hbase.html">Apache HBase Integration</a></li>
 <li><a href="storm-hdfs.html">Apache HDFS Integration</a></li>
 <li><a href="storm-hive.html">Apache Hive Integration</a></li>
 <li><a href="storm-solr.html">Apache Solr Integration</a></li>
 <li><a href="storm-cassandra.html">Apache Cassandra Integration</a></li>
+<li><a href="storm-rocketmq.html">Apache RocketMQ Integration</a></li>
 <li><a href="storm-jdbc.html">JDBC Integration</a></li>
 <li><a href="storm-jms.html">JMS Integration</a></li>
+<li><a href="storm-mqtt.html">MQTT Integration</a></li>
 <li><a href="storm-redis.html">Redis Integration</a></li>
 <li><a href="storm-eventhubs.html">Event Hubs Intergration</a></li>
 <li><a href="storm-elasticsearch.html">Elasticsearch Integration</a></li>
-<li><a href="storm-mqtt.html">MQTT Integration</a></li>
 <li><a href="storm-mongodb.html">Mongodb Integration</a></li>
 <li><a href="storm-opentsdb.html">OpenTSDB Integration</a></li>
 <li><a href="storm-kinesis.html">Kinesis Integration</a></li>
-<li><a href="storm-druid.html">Druid Integration</a></li>
+<li><a href="storm-pmml.html">PMML Integration</a></li>
 <li><a href="Kestrel-and-Storm.html">Kestrel Integration</a></li>
 </ul>
 
 <h4 id="container-resource-management-system-integration">Container, Resource Management System Integration</h4>
 
 <ul>
-<li><a href="https://github.com/yahoo/storm-yarn">YARN Integration</a>, <a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.2/bk_yarn_resource_mgt/content/ref-7d103a48-7c2e-4b7b-aab5-62c739a32ee0.1.html">YARN Integration via Slider</a></li>
+<li><a href="https://github.com/yahoo/storm-yarn">YARN Integration</a></li>
 <li><a href="https://github.com/mesos/storm">Mesos Integration</a></li>
 <li><a href="https://hub.docker.com/_/storm/">Docker Integration</a></li>
-<li><a href="https://github.com/kubernetes/kubernetes/tree/master/examples/storm">Kubernetes Integration</a></li>
+<li><a href="https://github.com/kubernetes/examples/tree/master/staging/storm">Kubernetes Integration</a></li>
 </ul>
 
 <h3 id="advanced">Advanced</h3>
@@ -285,6 +288,7 @@ But small change will not affect the user experience. We will notify the user wh
 <li><a href="Defining-a-non-jvm-language-dsl-for-storm.html">Defining a non-JVM language DSL for Storm</a></li>
 <li><a href="Multilang-protocol.html">Multilang protocol</a> (how to provide support for another language)</li>
 <li><a href="Implementation-docs.html">Implementation docs</a></li>
+<li><a href="storm-metricstore.html">Storm Metricstore</a></li>
 </ul>
 </div>
 

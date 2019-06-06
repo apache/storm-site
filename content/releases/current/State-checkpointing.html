@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -164,39 +166,41 @@ processing any tuples.</p>
 <li>Extend the BaseStatefulBolt and type parameterize it with KeyValueState which would store the mapping of word to count.</li>
 <li>The bolt gets initialized with its previously saved state in the init method. This will contain the word counts
 last committed by the framework during the previous run.</li>
-<li><p>In the execute method, update the word count.</p>
-
-<p>public class WordCountBolt extends BaseStatefulBolt<KeyValueState<String, Long>&gt; {
-private KeyValueState<String, Long> wordCounts;
-private OutputCollector collector;
-...
-    @Override
-    public void prepare(Map stormConf, TopologyContext context, OutputCollector collector) {
-      this.collector = collector;
-    }
-    @Override
-    public void initState(KeyValueState<String, Long> state) {
-      wordCounts = state;
-    }
-    @Override
-    public void execute(Tuple tuple) {
-      String word = tuple.getString(0);
-      Integer count = wordCounts.get(word, 0);
-      count++;
-      wordCounts.put(word, count);
-      collector.emit(tuple, new Values(word, count));
-      collector.ack(tuple);
-    }
-...
-}</p></li>
-<li><p>The framework periodically checkpoints the state of the bolt (default every second). The frequency
-can be changed by setting the storm config <code>topology.state.checkpoint.interval.ms</code></p></li>
-<li><p>For state persistence, use a state provider that supports persistence by setting the <code>topology.state.provider</code> in the
+<li>In the execute method, update the word count.</li>
+</ol>
+<div class="highlight"><pre><code class="language-java" data-lang="java">    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">WordCountBolt</span> <span class="kd">extends</span> <span class="n">BaseStatefulBolt</span><span class="o">&lt;</span><span class="n">KeyValueState</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">KeyValueState</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="n">wordCounts</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">;</span>
+    <span class="o">...</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">stormConf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+          <span class="k">this</span><span class="o">.</span><span class="na">collector</span> <span class="o">=</span> <span class="n">collector</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initState</span><span class="o">(</span><span class="n">KeyValueState</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Long</span><span class="o">&gt;</span> <span class="n">state</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">wordCounts</span> <span class="o">=</span> <span class="n">state</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">String</span> <span class="n">word</span> <span class="o">=</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+          <span class="n">Integer</span> <span class="n">count</span> <span class="o">=</span> <span class="n">wordCounts</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+          <span class="n">count</span><span class="o">++;</span>
+          <span class="n">wordCounts</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="n">count</span><span class="o">);</span>
+          <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="n">tuple</span><span class="o">,</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="n">count</span><span class="o">));</span>
+          <span class="n">collector</span><span class="o">.</span><span class="na">ack</span><span class="o">(</span><span class="n">tuple</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">...</span>
+    <span class="o">}</span>
+</code></pre></div>
+<ol>
+<li>The framework periodically checkpoints the state of the bolt (default every second). The frequency
+can be changed by setting the storm config <code>topology.state.checkpoint.interval.ms</code></li>
+<li>For state persistence, use a state provider that supports persistence by setting the <code>topology.state.provider</code> in the
 storm config. E.g. for using Redis based key-value state implementation set <code>topology.state.provider: org.apache.storm.redis.state.RedisKeyValueStateProvider</code>
 in storm.yaml. The provider implementation jar should be in the class path, which in this case means adding <code>storm-redis</code> 
-to dependency of your topology, or adding <code>--artifacts &quot;org.apache.storm:storm-sql-redis:&lt;storm-version&gt;&quot;</code> when submitting your topology with <code>storm jar</code>.</p></li>
-<li><p>The state provider properties can be overridden by setting <code>topology.state.provider.config</code>. For Redis state this is a
-json config with the following properties.</p></li>
+to dependency of your topology, or adding <code>--artifacts &quot;org.apache.storm:storm-sql-redis:&lt;storm-version&gt;&quot;</code> when submitting your topology with <code>storm jar</code>.</li>
+<li>The state provider properties can be overridden by setting <code>topology.state.provider.config</code>. For Redis state this is a
+json config with the following properties.</li>
 </ol>
 <div class="highlight"><pre><code class="language-" data-lang="">{
   "keyClass": "Optional fully qualified class name of the Key type.",

@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -150,18 +152,17 @@
 
 <p>Because heartbeats are of an ephemeral nature, they do not need to be persisted to disk or synced across nodes; an in-memory store will do. This is the role of Pacemaker. Pacemaker functions as a simple in-memory key/value store with ZooKeeper-like, directory-style keys and byte array values.</p>
 
-<p>The corresponding Pacemaker client is a plugin for the <code>ClusterState</code> interface, <code>org.apache.storm.pacemaker.pacemaker_state_factory</code>. Heartbeat calls are funneled by the <code>ClusterState</code> produced by <code>pacemaker_state_factory</code> into the Pacemaker daemon, while other set/get operations are forwarded to ZooKeeper.</p>
+<p>The corresponding Pacemaker client is a plugin for the <code>ClusterState</code> interface, <code>org.apache.storm.cluster.PaceMakerStateStorageFactory</code>. Heartbeat calls are funneled by the <code>ClusterState</code> produced by <code>pacemaker_state_factory</code> into the Pacemaker daemon, while other set/get operations are forwarded to ZooKeeper.</p>
 
 <hr>
 
 <h3 id="configuration">Configuration</h3>
 
 <ul>
-<li><code>pacemaker.host</code> : (deprecated) The host that the Pacemaker daemon is running on</li>
-<li><code>pacemaker.servers</code> : The hosts that the Pacemaker daemons are running on - This supercedes <code>pacemaker.host</code></li>
+<li><code>pacemaker.servers</code> : The hosts that the Pacemaker daemons are running on</li>
 <li><code>pacemaker.port</code> : The port that Pacemaker will listen on</li>
 <li><code>pacemaker.max.threads</code> : Maximum number of threads Pacemaker daemon will use to handle requests.</li>
-<li><code>pacemaker.childopts</code> : Any JVM parameters that need to go to the Pacemaker. (used by storm-deploy project)</li>
+<li><code>pacemaker.childopts</code> : Any JVM parameters that need to go to the Pacemaker. </li>
 <li><code>pacemaker.auth.method</code> : The authentication method that is used (more info below)</li>
 </ul>
 
@@ -169,7 +170,7 @@
 
 <p>To get Pacemaker up and running, set the following option in the cluster config on all nodes:
 <code>
-storm.cluster.state.store: &quot;org.apache.storm.pacemaker.pacemaker_state_factory&quot;
+storm.cluster.state.store: &quot;org.apache.storm.cluster.PaceMakerStateStorageFactory&quot;
 </code></p>
 
 <p>The Pacemaker servers also need to be set on all nodes:
@@ -177,10 +178,6 @@ storm.cluster.state.store: &quot;org.apache.storm.pacemaker.pacemaker_state_fact
 pacemaker.servers:
     - somehost.mycompany.com
     - someotherhost.mycompany.com
-</code>
-The pacemaker.host config still works for a single pacemaker, although it has been deprecated.
-<code>
-pacemaker.host: single_pacemaker.mycompany.com
 </code></p>
 
 <p>And then start all of your daemons</p>

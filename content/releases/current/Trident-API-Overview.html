@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -479,8 +481,8 @@ Example of using <code>HBaseWindowStoreFactory</code> for windowing can be seen 
 
 <h4 id="example-applications">Example applications</h4>
 
-<p>Example applications of these APIs are located at <a href="http://github.com/apache/storm/blob/v1.2.2/examples/storm-starter/src/jvm/org/apache/storm/starter/trident/TridentHBaseWindowingStoreTopology.java">TridentHBaseWindowingStoreTopology</a> 
-and <a href="http://github.com/apache/storm/blob/v1.2.2/examples/storm-starter/src/jvm/org/apache/storm/starter/trident/TridentWindowingInmemoryStoreTopology.java">TridentWindowingInmemoryStoreTopology</a> </p>
+<p>Example applications of these APIs are located at <a href="http://github.com/apache/storm/blob/v2.0.0/examples/storm-starter/src/jvm/org/apache/storm/starter/trident/TridentHBaseWindowingStoreTopology.java">TridentHBaseWindowingStoreTopology</a> 
+and <a href="http://github.com/apache/storm/blob/v2.0.0/examples/storm-starter/src/jvm/org/apache/storm/starter/trident/TridentWindowingInmemoryStoreTopology.java">TridentWindowingInmemoryStoreTopology</a> </p>
 
 <h3 id="partitionaggregate">partitionAggregate</h3>
 
@@ -641,7 +643,7 @@ Partition 2:
 
 <p><img src="images/grouping.png" alt="Grouping"></p>
 
-<p>If you run aggregators on a grouped stream, the aggregation will be run within each group instead of against the whole batch. persistentAggregate can also be run on a GroupedStream, in which case the results will be stored in a <a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/trident/state/map/MapState.java">MapState</a> with the key being the grouping fields. You can read more about persistentAggregate in the <a href="Trident-state.html">Trident state doc</a>.</p>
+<p>If you run aggregators on a grouped stream, the aggregation will be run within each group instead of against the whole batch. persistentAggregate can also be run on a GroupedStream, in which case the results will be stored in a <a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/trident/state/map/MapState.java">MapState</a> with the key being the grouping fields. You can read more about persistentAggregate in the <a href="Trident-state.html">Trident state doc</a>.</p>
 
 <p>Like regular streams, aggregators on grouped streams can be chained.</p>
 

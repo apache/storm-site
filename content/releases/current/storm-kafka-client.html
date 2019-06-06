@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -150,7 +152,7 @@
 
 <h2 id="compatibility">Compatibility</h2>
 
-<p>Apache Kafka versions 0.10 onwards</p>
+<p>Apache Kafka versions 0.10.1.0 onwards. Please be aware that <a href="https://issues.apache.org/jira/browse/KAFKA-7044">KAFKA-7044</a> can cause crashes in the spout, so you should upgrade Kafka if you are using an affected version (1.1.0, 1.1.1 or 2.0.0).</p>
 
 <h2 id="writing-to-kafka-as-part-of-your-topology">Writing to Kafka as part of your topology</h2>
 
@@ -295,8 +297,6 @@ streams based on the topic, storm provides <code>ByTopicRecordTranslator</code>.
 
 <h3 id="usage-examples">Usage Examples</h3>
 
-<p>The API is written with java 8 lambda expressions in mind.  It works with java7 and below though.</p>
-
 <h4 id="create-a-simple-insecure-spout">Create a Simple Insecure Spout</h4>
 
 <p>The following will consume all events published to &quot;topic&quot; and send them to MyBolt with the fields &quot;topic&quot;, &quot;partition&quot;, &quot;offset&quot;, &quot;key&quot;, &quot;value&quot;.</p>
@@ -317,24 +317,21 @@ streams based on the topic, storm provides <code>ByTopicRecordTranslator</code>.
 <span class="o">...</span>
 </code></pre></div>
 <h4 id="multiple-streams">Multiple Streams</h4>
+<div class="highlight"><pre><code class="language-java" data-lang="java">
+<span class="kd">final</span> <span class="n">TopologyBuilder</span> <span class="n">tp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TopologyBuilder</span><span class="o">();</span>
 
-<p>This uses java 8 lambda expressions.</p>
+<span class="c1">//By default all topics not covered by another rule, but consumed by the spout will be emitted to "STREAM_1" as "topic", "key", and "value"</span>
+<span class="n">ByTopicRecordTranslator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">byTopic</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByTopicRecordTranslator</span><span class="o">&lt;&gt;(</span>
+    <span class="o">(</span><span class="n">r</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="na">topic</span><span class="o">(),</span> <span class="n">r</span><span class="o">.</span><span class="na">key</span><span class="o">(),</span> <span class="n">r</span><span class="o">.</span><span class="na">value</span><span class="o">()),</span>
+    <span class="k">new</span> <span class="nf">Fields</span><span class="o">(</span><span class="s">"topic"</span><span class="o">,</span> <span class="s">"key"</span><span class="o">,</span> <span class="s">"value"</span><span class="o">),</span> <span class="s">"STREAM_1"</span><span class="o">);</span>
+<span class="c1">//For topic_2 all events will be emitted to "STREAM_2" as just "key" and "value"</span>
+<span class="n">byTopic</span><span class="o">.</span><span class="na">forTopic</span><span class="o">(</span><span class="s">"topic_2"</span><span class="o">,</span> <span class="o">(</span><span class="n">r</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">r</span><span class="o">.</span><span class="na">key</span><span class="o">(),</span> <span class="n">r</span><span class="o">.</span><span class="na">value</span><span class="o">()),</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"value"</span><span class="o">),</span> <span class="s">"STREAM_2"</span><span class="o">);</span>
 
-<p>final TopologyBuilder tp = new TopologyBuilder();</p>
-
-<p>//By default all topics not covered by another rule, but consumed by the spout will be emitted to &quot;STREAM_1&quot; as &quot;topic&quot;, &quot;key&quot;, and &quot;value&quot;
-ByTopicRecordTranslator<String, String> byTopic = new ByTopicRecordTranslator&lt;&gt;(
-    (r) -&gt; new Values(r.topic(), r.key(), r.value()),
-    new Fields(&quot;topic&quot;, &quot;key&quot;, &quot;value&quot;), &quot;STREAM_1&quot;);
-//For topic_2 all events will be emitted to &quot;STREAM_2&quot; as just &quot;key&quot; and &quot;value&quot;
-byTopic.forTopic(&quot;topic_2&quot;, (r) -&gt; new Values(r.key(), r.value()), new Fields(&quot;key&quot;, &quot;value&quot;), &quot;STREAM_2&quot;);</p>
-
-<p>tp.setSpout(&quot;kafka_spout&quot;, new KafkaSpout&lt;&gt;(KafkaSpoutConfig.builder(&quot;127.0.0.1:&quot; + port, &quot;topic_1&quot;, &quot;topic_2&quot;, &quot;topic_3&quot;).build()), 1);
-tp.setBolt(&quot;bolt&quot;, new myBolt()).shuffleGrouping(&quot;kafka_spout&quot;, &quot;STREAM_1&quot;);
-tp.setBolt(&quot;another&quot;, new myOtherBolt()).shuffleGrouping(&quot;kafka_spout&quot;, &quot;STREAM_2&quot;);
-...
-```</p>
-
+<span class="n">tp</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="s">"kafka_spout"</span><span class="o">,</span> <span class="k">new</span> <span class="n">KafkaSpout</span><span class="o">&lt;&gt;(</span><span class="n">KafkaSpoutConfig</span><span class="o">.</span><span class="na">builder</span><span class="o">(</span><span class="s">"127.0.0.1:"</span> <span class="o">+</span> <span class="n">port</span><span class="o">,</span> <span class="s">"topic_1"</span><span class="o">,</span> <span class="s">"topic_2"</span><span class="o">,</span> <span class="s">"topic_3"</span><span class="o">).</span><span class="na">build</span><span class="o">()),</span> <span class="mi">1</span><span class="o">);</span>
+<span class="n">tp</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"bolt"</span><span class="o">,</span> <span class="k">new</span> <span class="n">myBolt</span><span class="o">()).</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="s">"kafka_spout"</span><span class="o">,</span> <span class="s">"STREAM_1"</span><span class="o">);</span>
+<span class="n">tp</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"another"</span><span class="o">,</span> <span class="k">new</span> <span class="n">myOtherBolt</span><span class="o">()).</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="s">"kafka_spout"</span><span class="o">,</span> <span class="s">"STREAM_2"</span><span class="o">);</span>
+<span class="o">...</span>
+</code></pre></div>
 <h4 id="trident">Trident</h4>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">final</span> <span class="n">TridentTopology</span> <span class="n">tridentTopology</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TridentTopology</span><span class="o">();</span>
 <span class="kd">final</span> <span class="n">Stream</span> <span class="n">spoutStream</span> <span class="o">=</span> <span class="n">tridentTopology</span><span class="o">.</span><span class="na">newStream</span><span class="o">(</span><span class="s">"kafkaSpout"</span><span class="o">,</span>
@@ -344,6 +341,10 @@ tp.setBolt(&quot;another&quot;, new myOtherBolt()).shuffleGrouping(&quot;kafka_s
 </code></pre></div>
 <p>Trident does not support multiple streams and will ignore any streams set for output.  If however the Fields are not identical for each
 output topic it will throw an exception and not continue.</p>
+
+<h4 id="example-topologies">Example topologies</h4>
+
+<p>Example topologies using storm-kafka-client can be found in the examples/storm-kafka-client-examples directory included in the Storm source or binary distributions.</p>
 
 <h3 id="custom-recordtranslators-advanced">Custom RecordTranslators (ADVANCED)</h3>
 
@@ -364,52 +365,13 @@ a full set of streams that this translator will ever try to emit on.  Additional
 streams.  If you are doing this for Trident a value must be in the List returned by <code>apply</code> for every field in the Fields object for that stream,
 otherwise trident can throw exceptions.</p>
 
-<h3 id="manual-partition-assigment-advanced">Manual Partition Assigment (ADVANCED)</h3>
+<h3 id="manual-partition-assignment-advanced">Manual Partition Assignment (ADVANCED)</h3>
 
-<p>By default the KafkaSpout instances will be assigned partitions using a round robin strategy. If you need to customize partition assignment, you must implement the <code>ManualPartitioner</code> interface. The implementation can be passed to the <code>ManualPartitionSubscription</code> constructor, and the <code>Subscription</code> can then be set in the <code>KafkaSpoutConfig</code> via the <code>KafkaSpoutConfig.Builder</code> constructor. Please take care when supplying a custom implementation, since an incorrect <code>ManualPartitioner</code> implementation could leave some partitions unread, or concurrently read by multiple spout instances. See the <code>RoundRobinManualPartitioner</code> for an example of how to implement this functionality.</p>
+<p>By default the KafkaSpout instances will be assigned partitions using a round robin strategy. If you need to customize partition assignment, you must implement the <code>ManualPartitioner</code> interface. You can pass your implementation to the <code>KafkaSpoutConfig.Builder</code> constructor. Please take care when supplying a custom implementation, since an incorrect <code>ManualPartitioner</code> implementation could leave some partitions unread, or concurrently read by multiple spout instances. See the <code>RoundRobinManualPartitioner</code> for an example of how to implement this functionality.</p>
 
-<h2 id="use-the-maven-shade-plugin-to-build-the-uber-jar">Use the Maven Shade Plugin to Build the Uber Jar</h2>
+<h3 id="manual-partition-discovery">Manual partition discovery</h3>
 
-<p>Add the following to <code>REPO_HOME/storm/external/storm-kafka-client/pom.xml</code></p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;plugin&gt;</span>
-    <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
-    <span class="nt">&lt;artifactId&gt;</span>maven-shade-plugin<span class="nt">&lt;/artifactId&gt;</span>
-    <span class="nt">&lt;version&gt;</span>2.4.1<span class="nt">&lt;/version&gt;</span>
-    <span class="nt">&lt;executions&gt;</span>
-        <span class="nt">&lt;execution&gt;</span>
-            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
-            <span class="nt">&lt;goals&gt;</span>
-                <span class="nt">&lt;goal&gt;</span>shade<span class="nt">&lt;/goal&gt;</span>
-            <span class="nt">&lt;/goals&gt;</span>
-            <span class="nt">&lt;configuration&gt;</span>
-                <span class="nt">&lt;transformers&gt;</span>
-                    <span class="nt">&lt;transformer</span> <span class="na">implementation=</span><span class="s">"org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"</span><span class="nt">&gt;</span>
-                        <span class="nt">&lt;mainClass&gt;</span>org.apache.storm.kafka.spout.test.KafkaSpoutTopologyMain<span class="nt">&lt;/mainClass&gt;</span>
-                    <span class="nt">&lt;/transformer&gt;</span>
-                <span class="nt">&lt;/transformers&gt;</span>
-            <span class="nt">&lt;/configuration&gt;</span>
-        <span class="nt">&lt;/execution&gt;</span>
-    <span class="nt">&lt;/executions&gt;</span>
-<span class="nt">&lt;/plugin&gt;</span>
-</code></pre></div>
-<p>create the uber jar by running the command:</p>
-
-<p><code>mvn package -f REPO_HOME/storm/external/storm-kafka-client/pom.xml</code></p>
-
-<p>This will create the uber jar file with the name and location matching the following pattern:</p>
-
-<p><code>REPO_HOME/storm/external/storm-kafka-client/target/storm-kafka-client-1.0.x.jar</code></p>
-
-<h3 id="run-storm-topology">Run Storm Topology</h3>
-
-<p>Copy the file <code>REPO_HOME/storm/external/storm-kafka-client/target/storm-kafka-client-*.jar</code> to <code>STORM_HOME/extlib</code></p>
-
-<p>Using the Kafka command line tools create three topics [test, test1, test2] and use the Kafka console producer to populate the topics with some data </p>
-
-<p>Execute the command <code>STORM_HOME/bin/storm jar REPO_HOME/storm/external/storm/target/storm-kafka-client-*.jar org.apache.storm.kafka.spout.test.KafkaSpoutTopologyMain</code></p>
-
-<p>With the debug level logs enabled it is possible to see the messages of each topic being redirected to the appropriate Bolt as defined 
-by the streams defined and choice of shuffle grouping.   </p>
+<p>You can customize how the spout discovers existing partitions, by implementing the <code>TopicFilter</code> interface. Storm-kafka-client ships with a few implementations. Like <code>ManualPartitioner</code>, you can pass your implementation to the <code>KafkaSpoutConfig.Builder</code> constructor. Note that the <code>TopicFilter</code> is only responsible for discovering partitions, deciding which of the discovered partitions to subscribe to is the responsibility of <code>ManualPartitioner</code>.</p>
 
 <h2 id="using-storm-kafka-client-with-different-versions-of-kafka">Using storm-kafka-client with different versions of kafka</h2>
 
@@ -428,10 +390,9 @@ use Kafka-clients 0.10.0.0, you would use the following dependency in your <code
 e.g. <code>mvn clean install -Dstorm.kafka.client.version=0.10.0.0</code></p>
 
 <p>When selecting a kafka client version, you should ensure -
- 1. kafka api is compatible. storm-kafka-client module only supports <strong>0.10 or newer</strong> kafka client API. For older versions,
- you can use storm-kafka module (<a href="https://github.com/apache/storm/tree/master/external/storm-kafka">https://github.com/apache/storm/tree/master/external/storm-kafka</a>).<br>
- 2. The kafka client selected by you should be wire compatible with the broker. e.g. 0.9.x client will not work with 
- 0.8.x broker. </p>
+ 1. The Kafka api must be compatible. The storm-kafka-client module only supports Kafka <strong>0.10 or newer</strong>. For older versions,
+ you can use the storm-kafka module (<a href="https://github.com/apache/storm/tree/1.x-branch/external/storm-kafka">https://github.com/apache/storm/tree/1.x-branch/external/storm-kafka</a>).<br>
+ 2. The Kafka client version selected by you should be wire compatible with the broker. Please see the <a href="https://cwiki.apache.org/confluence/display/KAFKA/Compatibility+Matrix">Kafka compatibility matrix</a>.</p>
 
 <h1 id="kafka-spout-performance-tuning">Kafka Spout Performance Tuning</h1>
 
@@ -476,6 +437,104 @@ or enabling backpressure with Config.TOPOLOGY_MAX_SPOUT_PENDING.</p>
   <span class="o">.</span><span class="na">setTupleTrackingEnforced</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
 </code></pre></div>
 <p>Note: This setting has no effect with AT_LEAST_ONCE processing guarantee, where tuple tracking is required and therefore always enabled.</p>
+
+<h1 id="mapping-from-storm-kafka-to-storm-kafka-client-spout-properties">Mapping from <code>storm-kafka</code> to <code>storm-kafka-client</code> spout properties</h1>
+
+<p>This may not be an exhaustive list because the <code>storm-kafka</code> configs were taken from Storm 0.9.6
+<a href="https://svn.apache.org/repos/asf/storm/site/releases/0.9.6/javadocs/storm/kafka/SpoutConfig.html">SpoutConfig</a> and
+<a href="https://svn.apache.org/repos/asf/storm/site/releases/0.9.6/javadocs/storm/kafka/KafkaConfig.html">KafkaConfig</a>.
+<code>storm-kafka-client</code> spout configurations were taken from Storm 1.0.6
+<a href="https://storm.apache.org/releases/1.0.6/javadocs/org/apache/storm/kafka/spout/KafkaSpoutConfig.html">KafkaSpoutConfig</a> 
+and Kafka 0.10.1.0 <a href="https://kafka.apache.org/0101/javadoc/index.html?org/apache/kafka/clients/consumer/ConsumerConfig.html">ConsumerConfig</a>.</p>
+
+<table><thead>
+<tr>
+<th>SpoutConfig</th>
+<th>KafkaSpoutConfig/ConsumerConfig</th>
+<th>KafkaSpoutConfig Usage</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Setting:</strong> <code>startOffsetTime</code><br><br> <strong>Default:</strong> <code>EarliestTime</code><br>________________________________________________ <br> <strong>Setting:</strong> <code>forceFromStart</code> <br><br> <strong>Default:</strong> <code>false</code> <br><br> <code>startOffsetTime</code> &amp; <code>forceFromStart</code> together determine the starting offset. <code>forceFromStart</code> determines whether the Zookeeper offset is ignored. <code>startOffsetTime</code> sets the timestamp that determines the beginning offset, in case there is no offset in Zookeeper, or the Zookeeper offset is ignored</td>
+<td><strong>Setting:</strong> <a href="javadocs/org/apache/storm/kafka/spout/KafkaSpoutConfig.FirstPollOffsetStrategy.html"><code>FirstPollOffsetStrategy</code></a><br><br> <strong>Default:</strong> <code>UNCOMMITTED_EARLIEST</code> <br><br> <a href="#helper-table-for-setting-firstpolloffsetstrategy">Refer to the helper table</a> for picking <code>FirstPollOffsetStrategy</code> based on your <code>startOffsetTime</code> &amp; <code>forceFromStart</code> settings</td>
+<td><a href="javadocs/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setFirstPollOffsetStrategy-org.apache.storm.kafka.spout.KafkaSpoutConfig.FirstPollOffsetStrategy-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setFirstPollOffsetStrategy(&lt;strategy-name&gt;)</code></a></td>
+</tr>
+<tr>
+<td><strong>Setting:</strong> <code>scheme</code><br><br> The interface that specifies how a <code>ByteBuffer</code> from a Kafka topic is transformed into Storm tuple <br><strong>Default:</strong> <code>RawMultiScheme</code></td>
+<td><strong>Setting:</strong> <a href="https://kafka.apache.org/11/javadoc/org/apache/kafka/common/serialization/Deserializer.html"><code>Deserializers</code></a></td>
+<td><a href="javadocs/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, &lt;deserializer-class&gt;)</code></a><br><br> <a href="javadocs/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, &lt;deserializer-class&gt;)</code></a></td>
+</tr>
+<tr>
+<td><strong>Setting:</strong> <code>fetchSizeBytes</code><br><br> Message fetch size -- the number of bytes to attempt to fetch in one request to a Kafka server <br> <strong>Default:</strong> <code>1MB</code></td>
+<td><strong>Setting:</strong> <a href="http://kafka.apache.org/10/documentation.html#newconsumerconfigs"><code>max.partition.fetch.bytes</code></a></td>
+<td><a href="javadocs/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.MAX_PARTITION_FETCH_BYTES_CONFIG, &lt;int-value&gt;)</code></a></td>
+</tr>
+<tr>
+<td><strong>Setting:</strong> <code>bufferSizeBytes</code><br><br> Buffer size (in bytes) for network requests. The buffer size which consumer has for pulling data from producer <br> <strong>Default:</strong> <code>1MB</code></td>
+<td><strong>Setting:</strong> <a href="http://kafka.apache.org/10/documentation.html#newconsumerconfigs"><code>receive.buffer.bytes</code></a></td>
+<td><a href="javadocs/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.RECEIVE_BUFFER_CONFIG, &lt;int-value&gt;)</code></a></td>
+</tr>
+<tr>
+<td><strong>Setting:</strong> <code>socketTimeoutMs</code><br><br> <strong>Default:</strong> <code>10000</code></td>
+<td><strong>N/A</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Setting:</strong> <code>useStartOffsetTimeIfOffsetOutOfRange</code><br><br> <strong>Default:</strong> <code>true</code></td>
+<td><strong>Setting:</strong> <a href="http://kafka.apache.org/10/documentation.html#newconsumerconfigs"><code>auto.offset.reset</code></a> <br><br> <strong>Default:</strong> Note that the default value for <code>auto.offset.reset</code> is <code>earliest</code> if you have <a href="javadocs/org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html"><code>ProcessingGuarantee</code></a> set to <code>AT_LEAST_ONCE</code>, but the default value is <code>latest</code> otherwise.</td>
+<td><a href="javadocs/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, &lt;String&gt;)</code></a></td>
+</tr>
+<tr>
+<td><strong>Setting:</strong> <code>fetchMaxWait</code><br><br> Maximum time in ms to wait for the response <br> <strong>Default:</strong> <code>10000</code></td>
+<td><strong>Setting:</strong> <a href="http://kafka.apache.org/10/documentation.html#newconsumerconfigs"><code>fetch.max.wait.ms</code></a></td>
+<td><a href="javadocs/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, &lt;value&gt;)</code></a></td>
+</tr>
+<tr>
+<td><strong>Setting:</strong> <code>maxOffsetBehind</code><br><br> Specifies how long a spout attempts to retry the processing of a failed tuple. One of the scenarios is when a failing tuple&#39;s offset is more than <code>maxOffsetBehind</code> behind the acked offset, the spout stops retrying the tuple.<br><strong>Default:</strong> <code>LONG.MAX_VALUE</code></td>
+<td><strong>N/A</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Setting:</strong> <code>clientId</code></td>
+<td><strong>Setting:</strong> <a href="http://kafka.apache.org/10/documentation.html#newconsumerconfigs"><code>client.id</code></a></td>
+<td><a href="javadocs/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.CLIENT_ID_CONFIG, &lt;String&gt;)</code></a></td>
+</tr>
+</tbody></table>
+
+<p>If you are using this table to upgrade your topology to use <code>storm-kafka-client</code> instead of <code>storm-kafka</code>, then you will also need to migrate the consumer offsets from ZooKeeper to Kafka broker. Use <a href="https://github.com/apache/storm/tree/master/external/storm-kafka-migration"><code>storm-kafka-migration</code></a> tool to migrate the Kafka consumer offsets.</p>
+
+<h4 id="helper-table-for-setting-firstpolloffsetstrategy">Helper table for setting <code>FirstPollOffsetStrategy</code></h4>
+
+<p>Pick and set <code>FirstPollOffsetStrategy</code> based on <code>startOffsetTime</code> &amp; <code>forceFromStart</code> settings:</p>
+
+<table><thead>
+<tr>
+<th><code>startOffsetTime</code></th>
+<th><code>forceFromStart</code></th>
+<th><code>FirstPollOffsetStrategy</code></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>EarliestTime</code></td>
+<td><code>true</code></td>
+<td><code>EARLIEST</code></td>
+</tr>
+<tr>
+<td><code>EarliestTime</code></td>
+<td><code>false</code></td>
+<td><code>UNCOMMITTED_EARLIEST</code></td>
+</tr>
+<tr>
+<td><code>LatestTime</code></td>
+<td><code>true</code></td>
+<td><code>LATEST</code></td>
+</tr>
+<tr>
+<td><code>LatestTime</code></td>
+<td><code>false</code></td>
+<td><code>UNCOMMITTED_LATEST</code></td>
+</tr>
+</tbody></table>
 </div>
 
 

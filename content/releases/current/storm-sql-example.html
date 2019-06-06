@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -149,7 +151,7 @@ This page is written by &quot;how-to&quot; style so you can follow the step and 
 
 <h2 id="preparation">Preparation</h2>
 
-<p>This page assumes that Apache Zookeeper, Apache Storm and Apache Kafka is installed locally and running with properly configured.
+<p>This page assumes that Apache Zookeeper, Apache Storm and Apache Kafka are installed locally and running properly configured.
 For convenience, this page assumes that Apache Kafka 0.10.0 is installed via <code>brew</code>.</p>
 
 <p>We&#39;ll use below tools to prepare the JSON data which will be fed to the input data source. 
@@ -260,15 +262,15 @@ while True:
 <p>In this example we&#39;ll filter error logs from entire logs and store them to another topics. <code>project</code> and <code>filter</code> features will be used.</p>
 
 <p>The content of script file is here:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">CREATE EXTERNAL TABLE APACHE_LOGS (ID INT PRIMARY KEY, REMOTE_IP VARCHAR, REQUEST_URL VARCHAR, REQUEST_METHOD VARCHAR, STATUS VARCHAR, REQUEST_HEADER_USER_AGENT VARCHAR, TIME_RECEIVED_UTC_ISOFORMAT VARCHAR, TIME_US DOUBLE) LOCATION 'kafka://localhost:2181/brokers?topic=apache-logs'
-CREATE EXTERNAL TABLE APACHE_ERROR_LOGS (ID INT PRIMARY KEY, REMOTE_IP VARCHAR, REQUEST_URL VARCHAR, REQUEST_METHOD VARCHAR, STATUS INT, REQUEST_HEADER_USER_AGENT VARCHAR, TIME_RECEIVED_UTC_ISOFORMAT VARCHAR, TIME_ELAPSED_MS INT) LOCATION 'kafka://localhost:2181/brokers?topic=apache-error-logs' TBLPROPERTIES '{"producer":{"bootstrap.servers":"localhost:9092","acks":"1","key.serializer":"org.apache.storm.kafka.IntSerializer","value.serializer":"org.apache.storm.kafka.ByteBufferSerializer"}}'
+<div class="highlight"><pre><code class="language-" data-lang="">CREATE EXTERNAL TABLE APACHE_LOGS (ID INT PRIMARY KEY, REMOTE_IP VARCHAR, REQUEST_URL VARCHAR, REQUEST_METHOD VARCHAR, STATUS VARCHAR, REQUEST_HEADER_USER_AGENT VARCHAR, TIME_RECEIVED_UTC_ISOFORMAT VARCHAR, TIME_US DOUBLE) LOCATION 'kafka://apache-logs?bootstrap-servers=localhost:9092'
+CREATE EXTERNAL TABLE APACHE_ERROR_LOGS (ID INT PRIMARY KEY, REMOTE_IP VARCHAR, REQUEST_URL VARCHAR, REQUEST_METHOD VARCHAR, STATUS INT, REQUEST_HEADER_USER_AGENT VARCHAR, TIME_RECEIVED_UTC_ISOFORMAT VARCHAR, TIME_ELAPSED_MS INT) LOCATION 'kafka://apache-error-logs?bootstrap-servers=localhost:9092' TBLPROPERTIES '{"producer":{"acks":"1","key.serializer":"org.apache.storm.kafka.IntSerializer"}}'
 INSERT INTO APACHE_ERROR_LOGS SELECT ID, REMOTE_IP, REQUEST_URL, REQUEST_METHOD, CAST(STATUS AS INT) AS STATUS_INT, REQUEST_HEADER_USER_AGENT, TIME_RECEIVED_UTC_ISOFORMAT, (TIME_US / 1000) AS TIME_ELAPSED_MS FROM APACHE_LOGS WHERE (CAST(STATUS AS INT) / 100) &gt;= 4
 </code></pre></div>
 <p>Save this file to <code>apache_log_error_filtering.sql</code>.</p>
 
 <p>Let&#39;s take a look at the script.</p>
 
-<p>The first statement defines the table <code>APACHE_LOGS</code> which represents the input stream. The <code>LOCATION</code> clause specifies the ZkHost (<code>localhost:2181</code>), the path of the brokers in ZooKeeper (<code>/brokers</code>) and the topic (<code>apache-logs</code>).
+<p>The first statement defines the table <code>APACHE_LOGS</code> which represents the input stream. The <code>LOCATION</code> clause specifies the Kafka host (<code>localhost:9092</code>) and the topic (<code>apache-logs</code>).
 Note that Kafka data source requires primary key to be defined. That&#39;s why we put integer id for parsed JSON data.</p>
 
 <p>Similarly, the second statement specifies the table <code>APACHE_ERROR_LOGS</code> which represents the output stream. The <code>TBLPROPERTIES</code> clause specifies the configuration of <a href="http://kafka.apache.org/documentation.html#producerconfigs">KafkaProducer</a> and is required for a Kafka sink table.</p>
@@ -276,7 +278,7 @@ Note that Kafka data source requires primary key to be defined. That&#39;s why w
 <p>The last statement defines the topology. Storm SQL only define the topology and run topology on DML statement. 
 DDL statements define input data source, output data source, and user defined function which will be referred by DML statement.</p>
 
-<p>Let&#39;s look at where statement first. Since we want to filter error logs, we divide status by 100 and compare quotient is equal or greater than 4. (easier representation is <code>&gt;= 400</code>)
+<p>Let&#39;s look at the <code>where</code> statement first. Since we want to filter error logs, we divide status by 100 and compare quotient is equal or greater than 4. (easier representation is <code>&gt;= 400</code>)
 Since status in JSON is string format (hence represented as VARCHAR for APACHE_LOGS table), we apply CAST(STATUS AS INT) to convert to integer type before applying division.
 Now we have filtered only error logs. </p>
 
@@ -285,11 +287,11 @@ Now we have filtered only error logs. </p>
 <p>Last, insert statement stores filtered and transformed rows (tuples) to the output stream.  </p>
 
 <p>To run this example, users need to include the data sources (<code>storm-sql-kafka</code> in this case) and its dependency in the
-class path. Dependencies for Storm SQL are automatically handled when users run <code>storm sql</code>. 
+class path. The Storm SQL core dependencies are automatically handled when users run <code>storm sql</code>. 
 Users can include data sources at the submission step like below:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ $STORM_DIR/bin/storm sql apache_log_error_filtering.sql apache_log_error_filtering --artifacts "org.apache.storm:storm-sql-kafka:2.0.0-SNAPSHOT,org.apache.storm:storm-kafka:2.0.0-SNAPSHOT,org.apache.kafka:kafka_2.10:0.8.2.2^org.slf4j:slf4j-log4j12,org.apache.kafka:kafka-clients:0.8.2.2"
+<div class="highlight"><pre><code class="language-" data-lang="">$ $STORM_DIR/bin/storm sql apache_log_error_filtering.sql apache_log_error_filtering --artifacts "org.apache.storm:storm-sql-kafka:2.0.0-SNAPSHOT,org.apache.storm:storm-kafka-client:2.0.0-SNAPSHOT,org.apache.kafka:kafka-clients:1.1.0^org.slf4j:slf4j-log4j12"
 </code></pre></div>
-<p>Above command submits the SQL statements to StormSQL. The option of storm sql is <code>storm sql [script file] [topology name]</code>. 
+<p>Above command submits the SQL statements to StormSQL. The command line syntax of Storm SQL is <code>storm sql [script file] [topology name]</code>. 
 Users need to modify each artifacts&#39; version if users are using different version of Storm or Kafka.</p>
 
 <p>If your statements pass the validation phase, topology will be shown to Storm UI page.</p>
@@ -303,7 +305,7 @@ Users need to modify each artifacts&#39; version if users are using different ve
 ...
 </code></pre></div>
 <p>You can also run Storm SQL runner to see the logical plan via placing <code>--explain</code> to topology name:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ $STORM_DIR/bin/storm sql apache_log_error_filtering.sql --explain --artifacts "org.apache.storm:storm-sql-kafka:2.0.0-SNAPSHOT,org.apache.storm:storm-kafka:2.0.0-SNAPSHOT,org.apache.kafka:kafka_2.10:0.8.2.2^org.slf4j:slf4j-log4j12,org.apache.kafka:kafka-clients:0.8.2.2"
+<div class="highlight"><pre><code class="language-" data-lang="">$ $STORM_DIR/bin/storm sql apache_log_error_filtering.sql --explain --artifacts "org.apache.storm:storm-sql-kafka:2.0.0-SNAPSHOT,org.apache.storm:storm-kafka-client:2.0.0-SNAPSHOT,org.apache.kafka:kafka-clients:1.1.0^org.slf4j:slf4j-log4j12"
 </code></pre></div>
 <p>and the output will be similar to:</p>
 <div class="highlight"><pre><code class="language-" data-lang="">LogicalTableModify(table=[[APACHE_ERROR_LOGS]], operation=[INSERT], updateColumnList=[[]], flattened=[true]), id = 8
@@ -323,8 +325,8 @@ Users need to modify each artifacts&#39; version if users are using different ve
 This is very similar to <code>filtering error logs</code> but we&#39;ll see how to define <code>User Defined Function (UDF)</code>.</p>
 
 <p>The content of script file is here:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">CREATE EXTERNAL TABLE APACHE_LOGS (ID INT PRIMARY KEY, REMOTE_IP VARCHAR, REQUEST_URL VARCHAR, REQUEST_METHOD VARCHAR, STATUS VARCHAR, REQUEST_HEADER_USER_AGENT VARCHAR, TIME_RECEIVED_UTC_ISOFORMAT VARCHAR, TIME_US DOUBLE) LOCATION 'kafka://localhost:2181/brokers?topic=apachelogs' TBLPROPERTIES '{"producer":{"bootstrap.servers":"localhost:9092","acks":"1","key.serializer":"org.apache.storm.kafka.IntSerializer","value.serializer":"org.apache.storm.kafka.ByteBufferSerializer"}}'
-CREATE EXTERNAL TABLE APACHE_SLOW_LOGS (ID INT PRIMARY KEY, REMOTE_IP VARCHAR, REQUEST_URL VARCHAR, REQUEST_METHOD VARCHAR, STATUS INT, REQUEST_HEADER_USER_AGENT VARCHAR, TIME_RECEIVED_UTC_ISOFORMAT VARCHAR, TIME_RECEIVED_TIMESTAMP BIGINT, TIME_ELAPSED_MS INT) LOCATION 'kafka://localhost:2181/brokers?topic=apacheslowlogs' TBLPROPERTIES '{"producer":{"bootstrap.servers":"localhost:9092","acks":"1","key.serializer":"org.apache.storm.kafka.IntSerializer","value.serializer":"org.apache.storm.kafka.ByteBufferSerializer"}}'
+<div class="highlight"><pre><code class="language-" data-lang="">CREATE EXTERNAL TABLE APACHE_LOGS (ID INT PRIMARY KEY, REMOTE_IP VARCHAR, REQUEST_URL VARCHAR, REQUEST_METHOD VARCHAR, STATUS VARCHAR, REQUEST_HEADER_USER_AGENT VARCHAR, TIME_RECEIVED_UTC_ISOFORMAT VARCHAR, TIME_US DOUBLE) LOCATION 'kafka://apache-logs?bootstrap-servers=localhost:9092' TBLPROPERTIES '{"producer":{"acks":"1","key.serializer":"org.apache.storm.kafka.IntSerializer"}}'
+CREATE EXTERNAL TABLE APACHE_SLOW_LOGS (ID INT PRIMARY KEY, REMOTE_IP VARCHAR, REQUEST_URL VARCHAR, REQUEST_METHOD VARCHAR, STATUS INT, REQUEST_HEADER_USER_AGENT VARCHAR, TIME_RECEIVED_UTC_ISOFORMAT VARCHAR, TIME_RECEIVED_TIMESTAMP BIGINT, TIME_ELAPSED_MS INT) LOCATION 'kafka://apache-slow-logs?bootstrap-servers=localhost:9092' TBLPROPERTIES '{"producer":{"acks":"1","key.serializer":"org.apache.storm.kafka.IntSerializer"}}'
 CREATE FUNCTION GET_TIME AS 'org.apache.storm.sql.runtime.functions.scalar.datetime.GetTime2'
 INSERT INTO APACHE_SLOW_LOGS SELECT ID, REMOTE_IP, REQUEST_URL, REQUEST_METHOD, CAST(STATUS AS INT) AS STATUS_INT, REQUEST_HEADER_USER_AGENT, TIME_RECEIVED_UTC_ISOFORMAT, GET_TIME(TIME_RECEIVED_UTC_ISOFORMAT, 'yyyy-MM-dd''T''HH:mm:ssZZ') AS TIME_RECEIVED_TIMESTAMP, TIME_US / 1000 AS TIME_ELAPSED_MS FROM APACHE_LOGS WHERE (TIME_US / 1000) &gt;= 100
 </code></pre></div>
@@ -359,7 +361,7 @@ This page assumes that GetTime2 is in classpath, for simplicity.</p>
 <p>The last statement is very similar to filtering error logs. The only new thing is that we call <code>GET_TIME(TIME_RECEIVED_UTC_ISOFORMAT, &#39;yyyy-MM-dd&#39;&#39;T&#39;&#39;HH:mm:ssZZ&#39;)</code> to convert string time to unix timestamp (BIGINT).</p>
 
 <p>Let&#39;s execute it.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">$ $STORM_DIR/bin/storm sql apache_log_slow_filtering.sql apache_log_slow_filtering --artifacts "org.apache.storm:storm-sql-kafka:2.0.0-SNAPSHOT,org.apache.storm:storm-kafka:2.0.0-SNAPSHOT,org.apache.kafka:kafka_2.10:0.8.2.2^org.slf4j:slf4j-log4j12,org.apache.kafka:kafka-clients:0.8.2.2"
+<div class="highlight"><pre><code class="language-" data-lang="">$ $STORM_DIR/bin/storm sql apache_log_slow_filtering.sql apache_log_slow_filtering --artifacts "org.apache.storm:storm-sql-kafka:2.0.0-SNAPSHOT,org.apache.storm:storm-kafka-client:2.0.0-SNAPSHOT,org.apache.kafka:kafka-clients:1.1.0^org.slf4j:slf4j-log4j12"
 </code></pre></div>
 <p>You can see the output via console:</p>
 <div class="highlight"><pre><code class="language-" data-lang="">$ kafka-console-consumer --zookeeper localhost:2181 --topic apache-slow-logs
@@ -374,11 +376,6 @@ This page assumes that GetTime2 is in classpath, for simplicity.</p>
 <h2 id="summary">Summary</h2>
 
 <p>We looked through several simple use cases for Storm SQL to learn Storm SQL features. If you haven&#39;t looked at <a href="storm-sql.html">Storm SQL integration</a> and <a href="storm-sql-reference.html">Storm SQL language</a>, you need to read it to see full supported features. </p>
-
-<p>Note that Storm SQL is running on Trident, which is micro-batch, and also no strong typed. Sink doesn&#39;t actually check the type.
-(You may noticed that the types of some of output fields are different than output table schema.)</p>
-
-<p>Its behavior is subject to change when Storm SQL changes its backend API to core (tuple by tuple, low-level or high-level) one.</p>
 </div>
 
 

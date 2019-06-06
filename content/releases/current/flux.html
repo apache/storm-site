@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -165,29 +167,7 @@ order to change configuration.</p>
 <h2 id="about">About</h2>
 
 <p>Flux is a framework and set of utilities that make defining and deploying Apache Storm topologies less painful and
-deveoper-intensive.</p>
-
-<p>Have you ever found yourself repeating this pattern?:</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java">
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-    <span class="c1">// logic to determine if we're running locally or not...</span>
-    <span class="c1">// create necessary config options...</span>
-    <span class="kt">boolean</span> <span class="n">runLocal</span> <span class="o">=</span> <span class="n">shouldRunLocal</span><span class="o">();</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">runLocal</span><span class="o">){</span>
-        <span class="n">LocalCluster</span> <span class="n">cluster</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LocalCluster</span><span class="o">();</span>
-        <span class="n">cluster</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">conf</span><span class="o">,</span> <span class="n">topology</span><span class="o">);</span>
-    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-        <span class="n">StormSubmitter</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="n">name</span><span class="o">,</span> <span class="n">conf</span><span class="o">,</span> <span class="n">topology</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div>
-<p>Wouldn&#39;t something like this be easier:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">storm jar mytopology.jar org.apache.storm.flux.Flux <span class="nt">--local</span> config.yaml
-</code></pre></div>
-<p>or:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">storm jar mytopology.jar org.apache.storm.flux.Flux <span class="nt">--remote</span> config.yaml
-</code></pre></div>
-<p>Another pain point often mentioned is the fact that the wiring for a Topology graph is often tied up in Java code,
+deveoper-intensive. One of the pain points often mentioned is the fact that the wiring for a Topology graph is often tied up in Java code,
 and that any changes require recompilation and repackaging of the topology jar file. Flux aims to alleviate that
 pain by allowing you to package all your Storm components in a single jar, and use an external text file to define
 the layout and configuration of your topologies.</p>
@@ -199,7 +179,7 @@ the layout and configuration of your topologies.</p>
 in your topology code</li>
 <li>Support for existing topology code (see below)</li>
 <li>Define Storm Core API (Spouts/Bolts) using a flexible YAML DSL</li>
-<li>YAML DSL support for most Storm components (storm-kafka, storm-hdfs, storm-hbase, etc.)</li>
+<li>YAML DSL support for most Storm components (storm-kafka-client, storm-hdfs, storm-hbase, etc.)</li>
 <li>Convenient support for multi-lang components</li>
 <li>External property substitution/filtering for easily switching between configurations/environments (similar to Maven-style
 <code>${variable.name}</code> substitution)</li>
@@ -488,6 +468,33 @@ the following will make an instance of the <code>org.apache.storm.kafka.StringSc
   <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">stringScheme"</span>
     <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.kafka.StringScheme"</span>
 </code></pre></div>
+<h3 id="static-factory-methods">Static factory methods</h3>
+
+<p>It is also possible to use static factory methods from Flux. Given the following Java code:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestBolt</span> <span class="kd">extends</span> <span class="n">BaseBasicBolt</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">TestBolt</span> <span class="nf">newInstance</span><span class="o">(</span><span class="n">Duration</span> <span class="n">triggerTime</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">TestBolt</span><span class="o">(</span><span class="n">triggerTime</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Duration</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="n">Duration</span> <span class="nf">ofSeconds</span><span class="o">(</span><span class="kt">long</span> <span class="n">seconds</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">Duration</span><span class="o">(</span><span class="n">seconds</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>it is possible to use the factory methods as follows:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">components</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">time"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">java.time.Duration"</span>
+    <span class="na">factory</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ofSeconds"</span>
+
+<span class="na">bolts</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">testBolt"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.flux.test.TestBolt"</span>
+    <span class="na">factory</span><span class="pi">:</span> <span class="s2">"</span><span class="s">newInstance"</span>
+    <span class="na">factoryArgs</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">ref</span><span class="pi">:</span> <span class="s2">"</span><span class="s">time"</span>
+</code></pre></div>
 <h3 id="contructor-arguments-references-properties-and-configuration-methods">Contructor Arguments, References, Properties and Configuration Methods</h3>
 
 <h4 id="constructor-arguments">Constructor Arguments</h4>
@@ -581,7 +588,7 @@ well.</p>
 
 <p>You can easily use Java <code>enum</code> values as arguments in a Flux YAML file, simply by referencing the name of the <code>enum</code>.</p>
 
-<p>For example, <a href="">Storm&#39;s HDFS module</a> includes the following <code>enum</code> definition (simplified for brevity):</p>
+<p>For example, <a href="storm-hdfs.html">Storm&#39;s HDFS module</a> includes the following <code>enum</code> definition (simplified for brevity):</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kd">enum</span> <span class="n">Units</span> <span class="o">{</span>
     <span class="n">KB</span><span class="o">,</span> <span class="n">MB</span><span class="o">,</span> <span class="n">GB</span><span class="o">,</span> <span class="n">TB</span>
 <span class="o">}</span>

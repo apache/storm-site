@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -147,25 +149,27 @@
 <div class="documentation-content"><p>Storm exposes a metrics interface to report summary statistics across the full topology.
 The numbers you see on the UI come from some of these built in metrics, but are reported through the worker heartbeats instead of through the IMetricsConsumer described below.</p>
 
+<p>If you are looking for cluster wide monitoring please see <a href="ClusterMetrics.html">Cluster Metrics</a>.</p>
+
 <h3 id="metric-types">Metric Types</h3>
 
-<p>Metrics have to implement <a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/api/IMetric.java"><code>IMetric</code></a> which contains just one method, <code>getValueAndReset</code> -- do any remaining work to find the summary value, and reset back to an initial state. For example, the MeanReducer divides the running total by its running count to find the mean, then initializes both values back to zero.</p>
+<p>Metrics have to implement <a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/metric/api/IMetric.java"><code>IMetric</code></a> which contains just one method, <code>getValueAndReset</code> -- do any remaining work to find the summary value, and reset back to an initial state. For example, the MeanReducer divides the running total by its running count to find the mean, then initializes both values back to zero.</p>
 
 <p>Storm gives you these metric types:</p>
 
 <ul>
-<li><a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/api/AssignableMetric.java">AssignableMetric</a> -- set the metric to the explicit value you supply. Useful if it&#39;s an external value or in the case that you are already calculating the summary statistic yourself.</li>
-<li><a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/api/CombinedMetric.java">CombinedMetric</a> -- generic interface for metrics that can be updated associatively. </li>
-<li><a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/api/CountMetric.java">CountMetric</a> -- a running total of the supplied values. Call <code>incr()</code> to increment by one, <code>incrBy(n)</code> to add/subtract the given number.
+<li><a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/metric/api/AssignableMetric.java">AssignableMetric</a> -- set the metric to the explicit value you supply. Useful if it&#39;s an external value or in the case that you are already calculating the summary statistic yourself.</li>
+<li><a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/metric/api/CombinedMetric.java">CombinedMetric</a> -- generic interface for metrics that can be updated associatively. </li>
+<li><a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/metric/api/CountMetric.java">CountMetric</a> -- a running total of the supplied values. Call <code>incr()</code> to increment by one, <code>incrBy(n)</code> to add/subtract the given number.
 
 <ul>
-<li><a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/api/MultiCountMetric.java">MultiCountMetric</a> -- a hashmap of count metrics.</li>
+<li><a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/metric/api/MultiCountMetric.java">MultiCountMetric</a> -- a hashmap of count metrics.</li>
 </ul></li>
-<li><a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/api/ReducedMetric.java">ReducedMetric</a>
+<li><a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/metric/api/ReducedMetric.java">ReducedMetric</a>
 
 <ul>
-<li><a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/api/MeanReducer.java">MeanReducer</a> -- track a running average of values given to its <code>reduce()</code> method. (It accepts <code>Double</code>, <code>Integer</code> or <code>Long</code> values, and maintains the internal average as a <code>Double</code>.) Despite his reputation, the MeanReducer is actually a pretty nice guy in person.</li>
-<li><a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/api/MultiReducedMetric.java">MultiReducedMetric</a> -- a hashmap of reduced metrics.</li>
+<li><a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/metric/api/MeanReducer.java">MeanReducer</a> -- track a running average of values given to its <code>reduce()</code> method. (It accepts <code>Double</code>, <code>Integer</code> or <code>Long</code> values, and maintains the internal average as a <code>Double</code>.) Despite his reputation, the MeanReducer is actually a pretty nice guy in person.</li>
+<li><a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/metric/api/MultiReducedMetric.java">MultiReducedMetric</a> -- a hashmap of reduced metrics.</li>
 </ul></li>
 </ul>
 
@@ -193,11 +197,11 @@ The numbers you see on the UI come from some of these built in metrics, but are 
 <p>Storm provides some built-in metrics consumers for you to try out to see which metrics are provided in your topology.</p>
 
 <ul>
-<li><a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/LoggingMetricsConsumer.java"><code>LoggingMetricsConsumer</code></a> -- listens for all metrics and dumps them to log file with TSV (Tab Separated Values).</li>
-<li><a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/HttpForwardingMetricsConsumer.java"><code>HttpForwardingMetricsConsumer</code></a> -- listens for all metrics and POSTs them serialized to a configured URL via HTTP. Storm also provides <a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/HttpForwardingMetricsServer.java"><code>HttpForwardingMetricsServer</code></a> as abstract class so you can extend this class and run as a HTTP server, and handle metrics sent by HttpForwardingMetricsConsumer.</li>
+<li><a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/metric/LoggingMetricsConsumer.java"><code>LoggingMetricsConsumer</code></a> -- listens for all metrics and dumps them to log file with TSV (Tab Separated Values).</li>
+<li><a href="http://github.com/apache/storm/blob/v2.0.0/examples/storm-loadgen/src/main/java/org/apache/storm/loadgen/HttpForwardingMetricsConsumer.java"><code>HttpForwardingMetricsConsumer</code></a> -- listens for all metrics and POSTs them serialized to a configured URL via HTTP. Storm also provides <a href="http://github.com/apache/storm/blob/v2.0.0/storm-core/src/jvm/org/apache/storm/metric/HttpForwardingMetricsServer.java"><code>HttpForwardingMetricsServer</code></a> as abstract class so you can extend this class and run as a HTTP server, and handle metrics sent by HttpForwardingMetricsConsumer.</li>
 </ul>
 
-<p>Also, Storm exposes the interface <a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/jvm/org/apache/storm/metric/api/IMetricsConsumer.java"><code>IMetricsConsumer</code></a> for implementing Metrics Consumer so you can create custom metrics consumers and attach to their topologies, or use other great implementation of Metrics Consumers provided by Storm community. Some of examples are <a href="https://github.com/verisign/storm-graphite">versign/storm-graphite</a>, and <a href="https://github.com/endgameinc/storm-metrics-statsd">storm-metrics-statsd</a>.</p>
+<p>Also, Storm exposes the interface <a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/metric/api/IMetricsConsumer.java"><code>IMetricsConsumer</code></a> for implementing Metrics Consumer so you can create custom metrics consumers and attach to their topologies, or use other great implementation of Metrics Consumers provided by Storm community. Some of examples are <a href="https://github.com/verisign/storm-graphite">versign/storm-graphite</a>, and <a href="https://github.com/endgameinc/storm-metrics-statsd">storm-metrics-statsd</a>.</p>
 
 <p>When you implement your own metrics consumer, <code>argument</code> is passed to Object when <a href="javadocs/org/apache/storm/metric/api/IMetricsConsumer.html#prepare-java.util.Map-java.lang.Object-org.apache.storm.task.TopologyContext-org.apache.storm.task.IErrorReporter-">IMetricsConsumer#prepare</a> is called, so you need to infer the Java type of configured value on yaml, and do explicit type casting.</p>
 
@@ -254,9 +258,9 @@ The numbers you see on the UI come from some of these built in metrics, but are 
 
 <h3 id="builtin-metrics">Builtin Metrics</h3>
 
-<p>The <a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/clj/org/apache/storm/daemon/builtin_metrics.clj">builtin metrics</a> instrument Storm itself.</p>
+<p>The <a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/daemon/metrics/BuiltinMetricsUtil.java">builtin metrics</a> instrument Storm itself.</p>
 
-<p><a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/clj/org/apache/storm/daemon/builtin_metrics.clj">builtin_metrics.clj</a> sets up data structures for the built-in metrics, and facade methods that the other framework components can use to update them. The metrics themselves are calculated in the calling code -- see for example <a href="http://github.com/apache/storm/blob/v1.2.2/storm-core/src/clj/org/apache/storm/daemon/executor.clj#358"><code>ack-spout-msg</code></a>  in <code>clj/b/s/daemon/daemon/executor.clj</code></p>
+<p><a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/daemon/metrics/BuiltinMetricsUtil.java">BuiltinMetricsUtil.java</a> sets up data structures for the built-in metrics, and facade methods that the other framework components can use to update them. The metrics themselves are calculated in the calling code -- see for example <a href="http://github.com/apache/storm/blob/v2.0.0/storm-client/src/jvm/org/apache/storm/executor/Executor.java"><code>ackSpoutMsg</code></a>.</p>
 
 <h4 id="reporting-rate">Reporting Rate</h4>
 
@@ -322,13 +326,21 @@ The keys to these maps fall into two categories <code>&quot;${stream_name}&quot;
 
 <p>This metric records how much time a spout was idle because more tuples than <code>topology.max.spout.pending</code> were still outstanding.  This is the total time in milliseconds, not the average amount of time and is not sub-sampled.</p>
 
-<h5 id="__skipped-throttle-ms"><code>__skipped-throttle-ms</code></h5>
+<h5 id="__skipped-backpressure-ms"><code>__skipped-backpressure-ms</code></h5>
 
-<p>This metric records how much time a spout was idle because back-pressure indicated that downstream queues in the topology were too full.  This is the total time in milliseconds, not the average amount of time and is not sub-sampled.</p>
+<p>This metric records how much time a spout was idle because back-pressure indicated that downstream queues in the topology were too full.  This is the total time in milliseconds, not the average amount of time and is not sub-sampled. This is similar to skipped-throttle-ms in Storm 1.x.</p>
 
 <h5 id="skipped-inactive-ms"><code>skipped-inactive-ms</code></h5>
 
 <p>This metric records how much time a spout was idle because the topology was deactivated.  This is the total time in milliseconds, not the average amount of time and is not sub-sampled.</p>
+
+<h4 id="error-reporting-metrics">Error Reporting Metrics</h4>
+
+<p>Storm also collects error reporting metrics for bolts and spouts.</p>
+
+<h5 id="__reported-error-count"><code>__reported-error-count</code></h5>
+
+<p>This metric records how many errors were reported by a spout/bolt. It is the total number of times the <code>reportError</code> method was called.</p>
 
 <h4 id="queue-metrics">Queue Metrics</h4>
 

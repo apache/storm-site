@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -211,7 +213,7 @@
 
 <h3 id="why-am-i-getting-a-notserializableexception-illegalstateexception-when-my-topology-is-being-started-up">Why am I getting a NotSerializableException/IllegalStateException when my topology is being started up?</h3>
 
-<p>Within the Storm lifecycle, the topology is instantiated and then serialized to byte format to be stored in ZooKeeper, prior to the topology being executed. Within this step, if a spout or bolt within the topology has an initialized unserializable property, serialization will fail. If there is a need for a field that is unserializable, initialize it within the bolt or spout&#39;s prepare method, which is run after the topology is delivered to the worker.</p>
+<p>Within the Storm lifecycle, the topology is instantiated and then serialized to byte format to be stored in ZooKeeper, prior to the topology being executed. Within this step, if a spout or bolt within the topology has an initialized unserializable property, serialization will fail. If there is a need for a field that is unserializable, initialize it within the bolt&#39;s <code>prepare</code> or spout&#39;s <code>open</code> method, which is run after the topology is delivered to the worker.</p>
 
 <h2 id="spouts">Spouts</h2>
 
@@ -225,11 +227,11 @@
 
 <h3 id="how-often-is-the-emitpartitionbatchnew-function-called">How often is the &#39;emitPartitionBatchNew&#39; function called?</h3>
 
-<p>Since the MBC is the actual spout, all the tuples in a batch are just members of its tupletree. That means storm&#39;s &quot;max spout pending&quot; config effectively defines the number of concurrent batches trident runs. The MBC emits a new batch if it has fewer than max-spending tuples pending and if at least one <a href="http://github.com/apache/storm/blob/v1.2.2/conf/defaults.yaml#L115">trident batch interval</a>&#39;s worth of seconds has passed since the last batch.</p>
+<p>Since the MBC is the actual spout, all the tuples in a batch are just members of its tupletree. That means storm&#39;s &quot;max spout pending&quot; config effectively defines the number of concurrent batches trident runs. The MBC emits a new batch if it has fewer than max-spending tuples pending and if at least one <a href="http://github.com/apache/storm/blob/v2.0.0/conf/defaults.yaml#L115">trident batch interval</a>&#39;s worth of seconds has passed since the last batch.</p>
 
 <h3 id="if-nothing-was-emitted-does-trident-slow-down-the-calls">If nothing was emitted does Trident slow down the calls?</h3>
 
-<p>Yes, there&#39;s a pluggable &quot;spout wait strategy&quot;; the default is to sleep for a <a href="http://github.com/apache/storm/blob/v1.2.2/conf/defaults.yaml#L110">configurable amount of time</a></p>
+<p>Yes, there&#39;s a pluggable &quot;spout wait strategy&quot;; the default is to sleep for a <a href="http://github.com/apache/storm/blob/v2.0.0/conf/defaults.yaml#L110">configurable amount of time</a></p>
 
 <h3 id="ok-then-what-is-the-trident-batch-interval-for">OK, then what is the trident batch interval for?</h3>
 
@@ -273,7 +275,7 @@
 <ul>
 <li>Set a time limit using domain knowledge</li>
 <li>Introduce a <em>punctuation</em>: a record known to come after all records in the given time bucket. Trident uses this scheme to know when a batch is complete. If you for instance receive records from a set of sensors, each in order for that sensor, then once all sensors have sent you a 3:02:xx or later timestamp lets you know you can commit. </li>
-<li>When possible, make your process incremental: each value that comes in makes the answer more an more true. A Trident ReducerAggregator is an operator that takes a prior result and a set of new records and returns a new result. This lets the result be cached and serialized to a datastore; if a server drops off line for a day and then comes back with a full day&#39;s worth of data in a rush, the old results will be calmly retrieved and updated.</li>
+<li>When possible, make your process incremental: each value that comes in makes the answer more and more true. A Trident ReducerAggregator is an operator that takes a prior result and a set of new records and returns a new result. This lets the result be cached and serialized to a datastore; if a server drops off line for a day and then comes back with a full day&#39;s worth of data in a rush, the old results will be calmly retrieved and updated.</li>
 <li>Lambda architecture: Record all events into an archival store (S3, HBase, HDFS) on receipt. in the fast layer, once the time window is clear, process the bucket to get an actionable answer, and ignore everything older than the time window. Periodically run a global aggregation to calculate a &quot;correct&quot; answer.</li>
 </ul>
 </div>

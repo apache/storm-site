@@ -44,7 +44,7 @@
           </div>
           <div class="col-md-5">
             
-              <h1>Version: 1.2.2</h1>
+              <h1>Version: 2.0.0</h1>
             
           </div>
           <div class="col-md-2">
@@ -74,7 +74,9 @@
                     <ul class="dropdown-menu">
                       
                         
-                          <li><a href="/releases/2.0.0-SNAPSHOT/index.html">2.0.0-SNAPSHOT</a></li>
+                      
+                        
+                          <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
                         
                       
                         
@@ -150,6 +152,7 @@
 
 <ol>
 <li>jar</li>
+<li>local</li>
 <li>sql</li>
 <li>kill</li>
 <li>activate</li>
@@ -157,12 +160,14 @@
 <li>rebalance</li>
 <li>repl</li>
 <li>classpath</li>
+<li>server_classpath</li>
 <li>localconfvalue</li>
 <li>remoteconfvalue</li>
 <li>nimbus</li>
 <li>supervisor</li>
 <li>ui</li>
 <li>drpc</li>
+<li>drpc-client</li>
 <li>blobstore</li>
 <li>dev-zookeeper</li>
 <li>get-errors</li>
@@ -177,6 +182,7 @@
 <li>shell</li>
 <li>upload-credentials</li>
 <li>version</li>
+<li>admin</li>
 <li>help</li>
 </ol>
 
@@ -192,9 +198,15 @@ And when you want to ship maven artifacts and its transitive dependencies, you c
 
 <p>When you need to pull the artifacts from other than Maven Central, you can pass remote repositories to --artifactRepositories option with comma-separated string. Repository format is &quot;<name>^<url>&quot;. &#39;^&#39; is taken as separator because URL allows various characters. For example, --artifactRepositories &quot;jboss-repository^<a href="http://repository.jboss.com/maven2,HDPRepo%5Ehttp://repo.hortonworks.com/content/groups/public/">http://repository.jboss.com/maven2,HDPRepo^http://repo.hortonworks.com/content/groups/public/</a>&quot; will add JBoss and HDP repositories for dependency resolver.</p>
 
-<p>Complete example of both options is here: <code>./bin/storm jar example/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.RollingTopWords blobstore-remote2 remote --jars &quot;./external/storm-redis/storm-redis-1.1.0.jar,./external/storm-kafka/storm-kafka-1.1.0.jar&quot; --artifacts &quot;redis.clients:jedis:2.9.0,org.apache.kafka:kafka_2.10:0.8.2.2^org.slf4j:slf4j-log4j12&quot; --artifactRepositories &quot;jboss-repository^http://repository.jboss.com/maven2,HDPRepo^http://repo.hortonworks.com/content/groups/public/&quot;</code></p>
+<p>Complete example of both options is here: <code>./bin/storm jar example/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.RollingTopWords blobstore-remote2 remote --jars &quot;./external/storm-redis/storm-redis-1.1.0.jar,./external/storm-kafka-client/storm-kafka-client-1.1.0.jar&quot; --artifacts &quot;redis.clients:jedis:2.9.0,org.apache.kafka:kafka-clients:1.0.0^org.slf4j:slf4j-api&quot; --artifactRepositories &quot;jboss-repository^http://repository.jboss.com/maven2,HDPRepo^http://repo.hortonworks.com/content/groups/public/&quot;</code></p>
 
 <p>When you pass jars and/or artifacts options, StormSubmitter will upload them when the topology is submitted, and they will be included to classpath of both the process which runs the class, and also workers for that topology.</p>
+
+<h3 id="local">local</h3>
+
+<p>Syntax: <code>storm jar topology-jar-path class ...</code></p>
+
+<p>The local command acts just like <code>storm jar</code> except instead of submitting a topology to a cluster it will run the cluster in local mode.  This means an embedded version of the storm daemons will be run within the same process as your topology for 30 seconds before it shuts down automatically.  As such the classpath of your topology will be extended to include everything needed to run those daemons.</p>
 
 <h3 id="sql">sql</h3>
 
@@ -226,13 +238,15 @@ And when you want to ship maven artifacts and its transitive dependencies, you c
 
 <p>Syntax: <code>storm rebalance topology-name [-w wait-time-secs] [-n new-num-workers] [-e component=parallelism]*</code></p>
 
-<p>Sometimes you may wish to spread out where the workers for a topology are running. For example, let&#39;s say you have a 10 node cluster running 4 workers per node, and then let&#39;s say you add another 10 nodes to the cluster. You may wish to have Storm spread out the workers for the running topology so that each node runs 2 workers. One way to do this is to kill the topology and resubmit it, but Storm provides a &quot;rebalance&quot; command that provides an easier way to do this.</p>
+<p>Sometimes you may wish to spread out where the workers for a topology are running. For example, let&#39;s say you have a 10 node cluster running 4 workers per node, and then let&#39;s say you add another 10 nodes to the cluster. You may wish to have Storm spread out the workers for the running topology so that each node runs 2 workers. One way to do this is to kill the topology and resubmit it, but Storm provides a &quot;rebalance&quot; command that provides an easier way to do this. </p>
 
 <p>Rebalance will first deactivate the topology for the duration of the message timeout (overridable with the -w flag) and then redistribute the workers evenly around the cluster. The topology will then return to its previous state of activation (so a deactivated topology will still be deactivated and an activated topology will go back to being activated).</p>
 
 <p>The rebalance command can also be used to change the parallelism of a running topology. Use the -n and -e switches to change the number of workers or number of executors of a component respectively.</p>
 
 <h3 id="repl">repl</h3>
+
+<p><em>DEPRECATED: This subcommand may be removed in a future release.</em></p>
 
 <p>Syntax: <code>storm repl</code></p>
 
@@ -243,6 +257,12 @@ And when you want to ship maven artifacts and its transitive dependencies, you c
 <p>Syntax: <code>storm classpath</code></p>
 
 <p>Prints the classpath used by the storm client when running commands.</p>
+
+<h3 id="server_classpath">server_classpath</h3>
+
+<p>Syntax: <code>storm server_classpath</code></p>
+
+<p>Prints the classpath used by the storm daemons.</p>
 
 <h3 id="localconfvalue">localconfvalue</h3>
 
@@ -279,6 +299,37 @@ And when you want to ship maven artifacts and its transitive dependencies, you c
 <p>Syntax: <code>storm drpc</code></p>
 
 <p>Launches a DRPC daemon. This command should be run under supervision with a tool like <a href="http://cr.yp.to/daemontools.html">daemontools</a> or <a href="http://mmonit.com/monit/">monit</a>. See <a href="Distributed-RPC.html">Distributed RPC</a> for more information.</p>
+
+<h3 id="drpc-client">drpc-client</h3>
+
+<p>Syntax: <code>storm drpc-client [options] ([function argument]*)|(argument*)</code></p>
+
+<p>Provides a very simple way to send DRPC requests. If a <code>-f</code> argument is supplied, to set the function name, all of the arguments are treated
+as arguments to the function.  If no function is given the arguments must be pairs of function argument.</p>
+
+<p><em>NOTE:</em> This is not really intended for production use.  This is mostly because parsing out the results can be a pain.</p>
+
+<p>Creating an actual DRPC client only takes a few lines, so for production please go with that.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">Config</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span>
+<span class="k">try</span> <span class="o">(</span><span class="n">DRPCClient</span> <span class="n">drpc</span> <span class="o">=</span> <span class="n">DRPCClient</span><span class="o">.</span><span class="na">getConfiguredClient</span><span class="o">(</span><span class="n">conf</span><span class="o">))</span> <span class="o">{</span>
+  <span class="c1">//User the drpc client</span>
+  <span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">drpc</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">function</span><span class="o">,</span> <span class="n">argument</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div>
+<h4 id="examples">Examples</h4>
+
+<p><code>storm drpc-client exclaim a exclaim b test bar</code></p>
+
+<p>This will submit 3 separate DRPC request.
+1. function = &quot;exclaim&quot; args = &quot;a&quot;
+2. function = &quot;exclaim&quot; args = &quot;b&quot;
+3. function = &quot;test&quot; args = &quot;bar&quot;</p>
+
+<p><code>storm drpc-client -f exclaim a b</code></p>
+
+<p>This will submit 2 separate DRPC request.
+1. function = &quot;exclaim&quot; args = &quot;a&quot;
+2. function = &quot;exclaim&quot; args = &quot;b&quot;</p>
 
 <h3 id="blobstore">blobstore</h3>
 
@@ -392,7 +443,7 @@ and timeout is integer seconds.</p>
 
 <p>./bin/storm set_log_level -l com.myapp=WARN -l com.myOtherLogger=ERROR:123 topology-name</p>
 
-<p>Set the com.myapp logger&#39;s level to WARN indifinitely, and com.myOtherLogger to ERROR for 123 seconds</p>
+<p>Set the com.myapp logger&#39;s level to WARN indefinitely, and com.myOtherLogger to ERROR for 123 seconds</p>
 
 <p>./bin/storm set_log_level -r com.myOtherLogger topology-name</p>
 
@@ -417,6 +468,31 @@ and timeout is integer seconds.</p>
 <p>Syntax: <code>storm version</code></p>
 
 <p>Prints the version number of this Storm release.</p>
+
+<h3 id="admin">admin</h3>
+
+<p>Syntax: <code>storm admin &lt;cmd&gt; [options]</code></p>
+
+<p>The storm admin command provides access to several operations that can help an administrator debug or fix a cluster.</p>
+
+<p><code>remove_corrupt_topologies</code> - This command should be run on a nimbus node as the same user nimbus runs as.  It will go directly to zookeeper + blobstore and find topologies that appear to be corrupted because of missing blobs. It will kill those topologies.</p>
+
+<p><code>zk_cli [options]</code> - This command will launch a zookeeper cli pointing to the storm zookeeper instance logged in as the nimbus user.  It should be run on a nimbus server as the user nimbus runs as.</p>
+
+<ul>
+<li><code>-s --server &lt;connection string&gt;</code>: Set the connection string to use,
+        defaults to storm connection string.</li>
+<li><code>-t --time-out &lt;timeout&gt;</code>:  Set the timeout to use, defaults to storm
+        zookeeper timeout.</li>
+<li><code>-w --write</code>: Allow for writes, defaults to read only, we don&#39;t want to
+        cause problems.</li>
+<li><code>-n --no-root</code>: Don&#39;t include the storm root on the default connection string.</li>
+<li><code>-j --jaas &lt;jaas_file&gt;</code>: Include a jaas file that should be used when
+        authenticating with ZK defaults to the
+        java.security.auth.login.config conf.</li>
+</ul>
+
+<p><code>creds &lt;topology_id&gt;</code> - Print the credential keys for a topology.</p>
 
 <h3 id="help">help</h3>
 
