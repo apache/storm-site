@@ -20,46 +20,19 @@ module Releases
       return version_string.split('.').map{|e| e.to_i}
     end
 
-    def release_from_pom()
-      text= `mvn -f ../pom.xml help:evaluate -Dexpression=project.version`
-      return text.split("\n").select{|a| !a.start_with?('[')}[0]
-    end
-
-    def branch_from_git()
-      return `git rev-parse --abbrev-ref HEAD`
-    end
-
     def generate(site)
-      if site.config['storm_release_only']
-        release_name = release_from_pom()
-        puts "release: #{release_name}"
-        git_branch = branch_from_git()
-        puts "branch: #{git_branch}"
-        for page in site.pages do
-          page.data['version'] = release_name;
-          page.data['git-tree-base'] = "http://github.com/apache/storm/tree/#{git_branch}"
-          page.data['git-blob-base'] = "http://github.com/apache/storm/blob/#{git_branch}"
-        end
-        return
-      end
-
       releases = Hash.new
-      if (site.data['releases'])
-        for rel_data in site.data['releases'] do
-          releases[rel_data['name']] = rel_data
-        end
-      end
 
+      # Find the releases/ subdirectories, their names are the current releases
       for page in site.pages do
         release_name = dir_to_releasename(page.dir)
         if (release_name != nil)
-          if !releases.has_key?(release_name)
-            releases[release_name] = {'name' => release_name};
-          end
+          releases[release_name] = {'name' => release_name};
           releases[release_name]['documented'] = true
         end
       end
 
+      # Set some metadata for each release
       releases.each { |release_name, release_data|
           set_if_unset(release_data, 'git-tag-or-branch', "v#{release_data['name']}")
           set_if_unset(release_data, 'git-tree-base', "http://github.com/apache/storm/tree/#{release_data['git-tag-or-branch']}")
@@ -68,6 +41,7 @@ module Releases
           set_if_unset(release_data, 'has-download', !release_name.end_with?('-SNAPSHOT'))
       }
 
+      # Make release metadata available to each page for release specific docs, e.g. links to source
       for page in site.pages do
         release_name = dir_to_releasename(page.dir)
         if (release_name != nil)
