@@ -34,7 +34,7 @@ For more details see [stateful windowing documentation](https://github.com/apach
 ### Removal of Storm-Kafka
 The most significant change to Storm's Kafka integration since 1.x, is that storm-kafka has been removed. The module was deprecated a while back, due to Kafka's deprecation of the underlying client library. Users will have to move to the storm-kafka-client module, which uses Kafka's ´kafka-clients´ library for integration.
 
-For the most part, the migration to storm-kafka-client is straightforward. The documentation for storm-kafka-client contains a helpful mapping between the old and new spout configurations. If you are using any of the storm-kafka spouts, you will need to migrate offset checkpoints to the new spout, to avoid the new spout starting from scratch on your partitions. Storm provides a helper tool to do this which can be found [here](fhttps://github.com/apache/storm/tree/master/external/storm-kafka-migration).
+For the most part, the migration to storm-kafka-client is straightforward. The documentation for storm-kafka-client contains a helpful mapping between the old and new spout configurations. If you are using any of the storm-kafka spouts, you will need to migrate offset checkpoints to the new spout, to avoid the new spout starting from scratch on your partitions. Storm provides a helper tool to do this which can be found [here](https://github.com/apache/storm/tree/master/external/storm-kafka-migration).
 
 When performing a migration, you should stop your topology, run the migration tool, then redeploy your topology with the storm-kafka-client spout.
 
