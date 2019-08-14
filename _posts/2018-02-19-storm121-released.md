@@ -1,16 +1,16 @@
 ---
 layout: post
-title: Storm 1.2.1 Released
+title: Apache Storm 1.2.1 Released
 author: P. Taylor Goetz
 ---
 
 The Apache Storm community is pleased to announce that version 1.2.1 has been released and is available from [the downloads page](/downloads.html).
 
-This is a maintenance release that includes a number of important bug fixes that improve Storm's performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.
+This is a maintenance release that includes a number of important bug fixes that improve Apache Storm's performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.
 
 In the 1.2.0 release, an LGPL-licensed binary dependency was inadvertently included. The 1.2.0 has since been removed from distribution.
 
-The dependency in question (Remote Tea Runtime) is required when using the Ganglia reporter for the new metrics system. To enable the Ganglia reporter you will need to download the following [jar](http://central.maven.org/maven2/org/acplt/oncrpc/1.0.7/oncrpc-1.0.7.jar) and place it in the `lib` directory of the Storm installation.
+The dependency in question (Remote Tea Runtime) is required when using the Ganglia reporter for the new metrics system. To enable the Ganglia reporter you will need to download the following [jar](http://central.maven.org/maven2/org/acplt/oncrpc/1.0.7/oncrpc-1.0.7.jar) and place it in the `lib` directory of the Apache Storm installation.
 
 
 Thanks

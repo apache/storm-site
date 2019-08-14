@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Storm 0.10.0 released
+title: Apache Storm 0.10.0 released
 author: P. Taylor Goetz
 ---
 

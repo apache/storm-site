@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Storm 1.0.0 released
+title: Apache Storm 1.0.0 released
 author: P. Taylor Goetz
 ---
 
@@ -16,7 +16,7 @@ One of the main highlights in this release is a dramatice performance improvemen
 Pacemaker - Heartbeat Server
 ----------------------------
 
-Pacemaker is an optional Storm daemon designed to process heartbeats from workers. As Storm is scaled up, ZooKeeper begins to become a bottleneck due to high volumes of writes from workers doing heartbeats. Lots of writes to disk and large ammounts traffic across the network is generated as ZooKeeper tries to maintain consistency.
+Pacemaker is an optional Apache Storm daemon designed to process heartbeats from workers. As Apache Storm is scaled up, ZooKeeper begins to become a bottleneck due to high volumes of writes from workers doing heartbeats. Lots of writes to disk and large ammounts traffic across the network is generated as ZooKeeper tries to maintain consistency.
 
 Because heartbeats are of an ephemeral nature, they do not need to be persisted to disk or synced across nodes, and an in-memory store will do. This is the role of Pacemaker. Pacemaker functions as a simple in-memory key/value store with ZooKeeper-like, directory-style keys and byte array values.
 
@@ -25,15 +25,15 @@ Distributed Cache API
 ---------------------
 In the past it was common for developers to bundle resources required by a topology (such as lookup data, machine learning models, etc.) within a topology jar file. One problem with this approach is that updating that data required the repackaging and redeployment of the topology. Another problem is that at times that data can be very large (gigabytes or more), which negatively impacts topology startup time. 
 
-Storm version 1.0 introduces a distributed cache API that allows for the sharing of files (BLOBs) among topologies. Files in the distributed cache can be updated at any time from the command line, without the need to redeploy a topology. The distributed cache API allows for files from several KB in size to several GB, and also supports compression formats such as ZIP and GZIP.
+Apache Storm version 1.0 introduces a distributed cache API that allows for the sharing of files (BLOBs) among topologies. Files in the distributed cache can be updated at any time from the command line, without the need to redeploy a topology. The distributed cache API allows for files from several KB in size to several GB, and also supports compression formats such as ZIP and GZIP.
 
-Storm 1.0 comes with two implementations of the distributed cache API: One backed by the local file system on Supervisor nodes, and one backed by Apache Hadoop HDFS. Both implementations also support fine-grained access control through ACLs.
+Apache Storm 1.0 comes with two implementations of the distributed cache API: One backed by the local file system on Supervisor nodes, and one backed by Apache Hadoop HDFS. Both implementations also support fine-grained access control through ACLs.
 
 HA Nimbus
 ---------
-Experienced Storm users will recognize that the Storm Nimbus service is not a single point of failure in the strictest sense (i.e. loss of the Nimbus node will not affect running topologies). However, the loss of the Nimbus node does degrade functionality for deploying new topologies and reassigning work across a cluster.
+Experienced Apache Storm users will recognize that the Apache Storm Nimbus service is not a single point of failure in the strictest sense (i.e. loss of the Nimbus node will not affect running topologies). However, the loss of the Nimbus node does degrade functionality for deploying new topologies and reassigning work across a cluster.
 
-In Storm 1.0 this “soft” point of failure has been eliminated by supporting an HA Nimbus. Multiple instances of the Nimbus service run in a cluster and perform leader election when a Nimbus node fails, and Nimbus hosts can join or leave the cluster at any time. HA Nimbus leverages the distributed cache API for replication to guarantee the availability of topology resources in the event of a Nimbus node failure.
+In Apache Storm 1.0 this “soft” point of failure has been eliminated by supporting an HA Nimbus. Multiple instances of the Nimbus service run in a cluster and perform leader election when a Nimbus node fails, and Nimbus hosts can join or leave the cluster at any time. HA Nimbus leverages the distributed cache API for replication to guarantee the availability of topology resources in the event of a Nimbus node failure.
 
 
 Native Streaming Window API
@@ -43,63 +43,63 @@ Window based computations are common among use cases in stream processing,  wher
 
 Windowing is primarily used for aggregations, joins, pattern matching and more. Windows can be seen as an in-memory table where events are added and evicted based on some policies.
 
-In past releases Storm relied on developers to build their own windowing logic. There were no recommended or high level abstractions that developers could use to define a Window in a standard way in a Topology.
+In past releases Apache Storm relied on developers to build their own windowing logic. There were no recommended or high level abstractions that developers could use to define a Window in a standard way in a Topology.
 
 Apache Storm 1.0 now includes a native windowing API. Windows can be specified with the following two parameters,
 
 1. Window length - the length or duration of the window
 2. Sliding interval - the interval at which the window slides
 
-Storm has support for sliding and tumbling windows based on time duration and/or event count.
+Apache Storm has support for sliding and tumbling windows based on time duration and/or event count.
 
 
 State Management - Statefule Bolts with Automatic Checkpointing
 ----------------
-Storm 1.0 introduces a new Stateful Bolt API with automatic checkpointing. Stateful Bolts are easy to implement -- simply extend the `BaseStatefulBolt` class -- and can be combined with stateless bolts in a topology. Storm will automatically manage bolt state and recover that state in the event of a failure.
+Apache Storm 1.0 introduces a new Stateful Bolt API with automatic checkpointing. Stateful Bolts are easy to implement -- simply extend the `BaseStatefulBolt` class -- and can be combined with stateless bolts in a topology. Apache Storm will automatically manage bolt state and recover that state in the event of a failure.
 
-Storm 1.0 comes with a state implementations backed by memory as well as Redis. Future point releases will include additional support for alternative state stores.
+Apache Storm 1.0 comes with a state implementations backed by memory as well as Redis. Future point releases will include additional support for alternative state stores.
 
 Automatic Backpressure
 ----------------------
-In previous Storm versions, the only way to throttle the input to a topology was to enable ACKing and set `topology.max.spout.pending`. For use cases that don't require at-least-once processing guarantees, this requirement imposed a significant performance penalty.
+In previous Apache Storm versions, the only way to throttle the input to a topology was to enable ACKing and set `topology.max.spout.pending`. For use cases that don't require at-least-once processing guarantees, this requirement imposed a significant performance penalty.
 
-Storm 1.0 includes a new automatic backpressure mechanism based on configurable high/low watermarks expressed as a percentage of a task's buffer size. If the high water mark is reached, Storm will slow down the topology's spouts and stop throttling when the low water mark is reached.
+Apache Storm 1.0 includes a new automatic backpressure mechanism based on configurable high/low watermarks expressed as a percentage of a task's buffer size. If the high water mark is reached, Apache Storm will slow down the topology's spouts and stop throttling when the low water mark is reached.
 
-Storm's backpressure mechanism is implemented independently of the Spout API, so all existing Spouts are supported.
+Apache Storm's backpressure mechanism is implemented independently of the Spout API, so all existing Spouts are supported.
 
 Resource Aware Scheduler
 ------------------------
 
-Based on Storm pluggable topology scheduler API, Storm 1.0 adds a new scheduler implementation that takes into account both the memory (on-heap and off-heap) and CPU resources available in a cluster. The resources aware scheduler (AKA "RAS Scheduler") allows users to specify the memory and CPU requirements for individual topology components (Spouts/Bolts), and Storm will schedule topology tasks among workers to best meet those requirements.
+Based on Apache Storm pluggable topology scheduler API, Apache Storm 1.0 adds a new scheduler implementation that takes into account both the memory (on-heap and off-heap) and CPU resources available in a cluster. The resources aware scheduler (AKA "RAS Scheduler") allows users to specify the memory and CPU requirements for individual topology components (Spouts/Bolts), and Apache Storm will schedule topology tasks among workers to best meet those requirements.
 
-In the future, the Storm community plans to extend the RAS implmentation to support network resources and rack awareness as well.
+In the future, the Apache Storm community plans to extend the RAS implmentation to support network resources and rack awareness as well.
 
 Dynamic Log Levels
 ------------------
 
-Storm 1.0 now allows users and administrators to dynamically change the log level settings for a running topology both from the Storm UI as well as the command line. Users can also specify an optional timeout after which those changes will be automatically reverted. The resulting log files are also easily searchable from the Storm UI and logviewer service.
+Apache Storm 1.0 now allows users and administrators to dynamically change the log level settings for a running topology both from the Apache Storm UI as well as the command line. Users can also specify an optional timeout after which those changes will be automatically reverted. The resulting log files are also easily searchable from the Apache Storm UI and logviewer service.
 
 
 Tuple Sampling and Debugging
 ----------------------------
 
-In the course of debugging a topology, many Storm users find themselves adding "debug" bolts or Trident functions to log information about the data flowing through the topology, only to remove or disable them for production deployment. Storm 1.0 eliminates this need through the new Topology Debug capability.
+In the course of debugging a topology, many Apache Storm users find themselves adding "debug" bolts or Trident functions to log information about the data flowing through the topology, only to remove or disable them for production deployment. Apache Storm 1.0 eliminates this need through the new Topology Debug capability.
 
-Storm UI now includes a function that allow you to sample a percentage tuples flowing through a topology or individual component directly from the Storm UI. The sampled events can then be viewed directly from the Storm UI and are also saved to disk.
+Apache Storm UI now includes a function that allow you to sample a percentage tuples flowing through a topology or individual component directly from the Apache Storm UI. The sampled events can then be viewed directly from the Apache Storm UI and are also saved to disk.
 
 Distributed Log Search
 ----------------------
-Another improvement to Storm's UI is the addition of a distributed log search. This search capability allows users to search across all log files of a specific topology, including archived (ZIP'ed) logs. The search results will include matches from all Supervisor nodes.
+Another improvement to Apache Storm's UI is the addition of a distributed log search. This search capability allows users to search across all log files of a specific topology, including archived (ZIP'ed) logs. The search results will include matches from all Supervisor nodes.
 
 Dynamic Worker Profiling
 ------------------------
-The last, but certainly not the least, usability improvement in Storm 1.0 is dynamic worker profiling. This new feature allows users to request worker profile data directly from Storm UI, including:
+The last, but certainly not the least, usability improvement in Apache Storm 1.0 is dynamic worker profiling. This new feature allows users to request worker profile data directly from Apache Storm UI, including:
 
  * Heap Dumps
  * JStack Output
  * JProfile Recordings
  
-The generated files are then available for download for off-line analysis with various debugging tools. It is also now possible to restart workers from the Storm UI.
+The generated files are then available for download for off-line analysis with various debugging tools. It is also now possible to restart workers from the Apache Storm UI.
 
 
 Thanks

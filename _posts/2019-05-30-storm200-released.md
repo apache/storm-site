@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Storm 2.0.0 Released
+title: Apache Storm 2.0.0 Released
 author: Apache Storm PMC
 ---
 
@@ -11,20 +11,20 @@ Apache Storm 2.0.0 includes significant improvements in terms of performance, ne
 The full list of changes in this release can be found [here](https://www.apache.org/dist/storm/apache-storm-2.0.0/RELEASE_NOTES.html).
 
 ## New Architecture Implemented in Java
-In previous releases a large part of Storm's core functionality was implemented in Clojure. Storm 2.0.0 has been rearchitected with it's core functionality implemented in pure Java. The new Java-based implementation has improved performance significantly, and made Storm's internal APIs more maintainable and extensible. While Storm's Clojure implementation served it well for many years, it was often cited as a barrier for entry to new contributors. Storm's codebase is now more accessible to developers who don't want to learn Clojure in order to contribute.
+In previous releases a large part of Apache Storm's core functionality was implemented in Clojure. Apache Storm 2.0.0 has been rearchitected with it's core functionality implemented in pure Java. The new Java-based implementation has improved performance significantly, and made Apache Storm's internal APIs more maintainable and extensible. While Apache Storm's Clojure implementation served it well for many years, it was often cited as a barrier for entry to new contributors. Apache Storm's codebase is now more accessible to developers who don't want to learn Clojure in order to contribute.
 
 ## New High Performance Core:
-Storm 2.0.0 introduces a new core featuring a leaner threading model, a blazing fast messaging subsystem and a lightweight back pressure model. It is designed to push boundaries on throughput, latency and energy consumption while maintaining backward compatibility. The design was motivated by the observation that existing hardware remains capable of much more than what the best streaming engines can deliver. Storm 2.0 is the first streaming engine to break the 1 microsecond latency barrier.
+Apache Storm 2.0.0 introduces a new core featuring a leaner threading model, a blazing fast messaging subsystem and a lightweight back pressure model. It is designed to push boundaries on throughput, latency and energy consumption while maintaining backward compatibility. The design was motivated by the observation that existing hardware remains capable of much more than what the best streaming engines can deliver. Apache Storm 2.0 is the first streaming engine to break the 1 microsecond latency barrier.
 
 ##New Streams API
 
-Storm 2.0.0 introduces a new typed API for expressing streaming computations more easily using functional style operations. It builds on top of the Storm's core spouts and bolt APIs and automatically fuses multiple operations together to optimize the pipeline.
+Apache Storm 2.0.0 introduces a new typed API for expressing streaming computations more easily using functional style operations. It builds on top of the Apache Storm's core spouts and bolt APIs and automatically fuses multiple operations together to optimize the pipeline.
 
 For more details and examples see the [Stream API documentation](https://github.com/apache/storm/blob/master/docs/Stream-API.md).
 
 ## Windowing Enhancements
 
-Storm 2.0.0's Windowing API can save/restore the window state to the configured state backend so that larger continuous windows can be supported. The window boundaries can now be accessed via the APIs.
+Apache Storm 2.0.0's Windowing API can save/restore the window state to the configured state backend so that larger continuous windows can be supported. The window boundaries can now be accessed via the APIs.
 
 For more details see [stateful windowing documentation](https://github.com/apache/storm/blob/master/docs/Windowing.md#stateful-windowing).
 
@@ -32,14 +32,14 @@ For more details see [stateful windowing documentation](https://github.com/apach
 ## Kafka Integration Changes
 
 ### Removal of Storm-Kafka
-The most significant change to Storm's Kafka integration since 1.x, is that storm-kafka has been removed. The module was deprecated a while back, due to Kafka's deprecation of the underlying client library. Users will have to move to the storm-kafka-client module, which uses Kafka's ´kafka-clients´ library for integration.
+The most significant change to Apache Storm's Kafka integration since 1.x, is that storm-kafka has been removed. The module was deprecated a while back, due to Kafka's deprecation of the underlying client library. Users will have to move to the storm-kafka-client module, which uses Kafka's ´kafka-clients´ library for integration.
 
-For the most part, the migration to storm-kafka-client is straightforward. The documentation for storm-kafka-client contains a helpful mapping between the old and new spout configurations. If you are using any of the storm-kafka spouts, you will need to migrate offset checkpoints to the new spout, to avoid the new spout starting from scratch on your partitions. Storm provides a helper tool to do this which can be found [here](https://github.com/apache/storm/tree/master/external/storm-kafka-migration).
+For the most part, the migration to storm-kafka-client is straightforward. The documentation for storm-kafka-client contains a helpful mapping between the old and new spout configurations. If you are using any of the storm-kafka spouts, you will need to migrate offset checkpoints to the new spout, to avoid the new spout starting from scratch on your partitions. Apache Storm provides a helper tool to do this which can be found [here](https://github.com/apache/storm/tree/master/external/storm-kafka-migration).
 
 When performing a migration, you should stop your topology, run the migration tool, then redeploy your topology with the storm-kafka-client spout.
 
 ### Move to Using the KafkaConsumer.assign API
-Storm-kafka-client in Storm 1.x allowed you to use Kafka's own mechanism to manage which spout tasks were responsible for which partitions. This mechanism was a poor fit for Storm, and was deprecated in 1.2.0. It has been [removed entirely in 2.0](https://issues.apache.org/jira/browse/STORM-2542).
+Storm-kafka-client in Apache Storm 1.x allowed you to use Kafka's own mechanism to manage which spout tasks were responsible for which partitions. This mechanism was a poor fit for Apache Storm, and was deprecated in 1.2.0. It has been [removed entirely in 2.0](https://issues.apache.org/jira/browse/STORM-2542).
 
 The storm-kafka-client Subscription interface has also been removed. It offered too limited control over the subscription behavior. It has been replaced with the TopicFilter and ManualPartitioner interfaces. Unless you were using a custom Subscription implementation, this will likely not
 affect you. If you were using a custom Subscription, [the storm-kafka-client documentation describes how to customize assignment](https://github.com/apache/storm/blob/master/docs/storm-kafka-client.md#manual-partition-assigment-advanced).
@@ -56,10 +56,10 @@ affect you. If you were using a custom Subscription, [the storm-kafka-client doc
 With the release of 2.0.0 the 1.0.x version line will no longer be maintained. 1.0.x users are strongly encouraged to upgrade to a more recent release.
 
 ## Move to Java 8
-Java 7 support has been dropped, and Storm 2.0.0 requires Java 8.
+Java 7 support has been dropped, and Apache Storm 2.0.0 requires Java 8.
 
-## Reorganization of Storm Maven artifacts
-The storm-core artifact has [been split](https://issues.apache.org/jira/browse/STORM-2441) into client and server-facing parts. Topology jars should depend on the following artifact as of Storm 2.0.0:
+## Reorganization of Apache Storm Maven artifacts
+The storm-core artifact has [been split](https://issues.apache.org/jira/browse/STORM-2441) into client and server-facing parts. Topology jars should depend on the following artifact as of Apache Storm 2.0.0:
 
 ```
 <groupId>org.apache.storm</groupId>
@@ -68,7 +68,7 @@ The storm-core artifact has [been split](https://issues.apache.org/jira/browse/S
 <scope>provided</scope>
 ```
 
-Projects using `LocalCluster` for testing will additionally need to depend on the Storm server jar:
+Projects using `LocalCluster` for testing will additionally need to depend on the Apache Storm server jar:
 
 ```
 <groupId>org.apache.storm</groupId>
@@ -78,7 +78,7 @@ Projects using `LocalCluster` for testing will additionally need to depend on th
 ```
 
 ## Stay Tuned
-Keep an eye on the Apache Storm blog for additional posts by Storm contributors for more in-depth discussions of new features in Storm 2.0.0 including:
+Keep an eye on the Apache Storm blog for additional posts by Apache Storm contributors for more in-depth discussions of new features in Apache Storm 2.0.0 including:
 
 * SQL enhancements
 * Metrics improvements

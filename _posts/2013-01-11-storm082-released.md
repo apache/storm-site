@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Storm 0.8.2 released
+title: Apache Storm 0.8.2 released
 author: Nathan Marz
 ---
 
-Storm 0.8.2 has been released and is available from [the downloads page](/downloads.html). This release contains a ton of improvements and fixes and is a highly recommended upgrade for everyone.
+Apache Storm 0.8.2 has been released and is available from [the downloads page](/downloads.html). This release contains a ton of improvements and fixes and is a highly recommended upgrade for everyone.
 
 Isolation Scheduler
 -------------------
@@ -15,16 +15,16 @@ You configure the isolation scheduler in the Nimbus configuration. Set "storm.sc
 
 <script src="https://gist.github.com/4514691.js"></script>
 
-Any topologies submitted to the cluster not listed there will not be isolated. Note that there is no way for a user of Storm to affect their isolation settings – this is only allowed by the administrator of the cluster (this is very much intentional).
+Any topologies submitted to the cluster not listed there will not be isolated. Note that there is no way for a user of Apache Storm to affect their isolation settings – this is only allowed by the administrator of the cluster (this is very much intentional).
 
 The isolation scheduler solves the multi-tenancy problem – avoiding resource contention between topologies – by providing full isolation between topologies. The intention is that "productionized" topologies should be listed in the isolation config, and test or in-development topologies should not. The remaining machines on the cluster serve the dual role of failover for isolated topologies and for running the non-isolated topologies.
 
-Storm UI improvements
+Apache Storm UI improvements
 -------------------
 
-The Storm UI has also been made significantly more useful. There are new stats "#executed", "execute latency", and "capacity" tracked for all bolts. The "capacity" metric is very useful and tells you what % of the time in the last 10 minutes the bolt spent executing tuples. If this value is close to 1, then the bolt is "at capacity" and is a bottleneck in your topology. The solution to at-capacity bolts is to increase the parallelism of that bolt.
+The Apache Storm UI has also been made significantly more useful. There are new stats "#executed", "execute latency", and "capacity" tracked for all bolts. The "capacity" metric is very useful and tells you what % of the time in the last 10 minutes the bolt spent executing tuples. If this value is close to 1, then the bolt is "at capacity" and is a bottleneck in your topology. The solution to at-capacity bolts is to increase the parallelism of that bolt.
 
-Another useful improvement is the ability to kill, activate, deactivate, and rebalance topologies from the Storm UI.
+Another useful improvement is the ability to kill, activate, deactivate, and rebalance topologies from the Apache Storm UI.
 
 
 Important bug fixes
