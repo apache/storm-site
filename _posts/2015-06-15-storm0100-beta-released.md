@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Storm 0.10.0 Beta Released
+title: Apache Storm 0.10.0 Beta Released
 author: P. Taylor Goetz
 ---
 
@@ -11,11 +11,11 @@ Aside from many stability and performance improvements, this release includes a 
 Secure, Multi-Tenant Deployment
 --------------------------------
 
-Much like the early days of Hadoop, Apache Storm originally evolved in an environment where security was not a high-priority concern. Rather, it was assumed that Storm would be deployed to environments suitably cordoned off from security threats. While a large number of users were comfortable setting up their own security measures for Storm (usually at the Firewall/OS level), this proved a hindrance to broader adoption among larger enterprises where security policies prohibited deployment without specific safeguards.
+Much like the early days of Hadoop, Apache Storm originally evolved in an environment where security was not a high-priority concern. Rather, it was assumed that Apache Storm would be deployed to environments suitably cordoned off from security threats. While a large number of users were comfortable setting up their own security measures for Apache Storm (usually at the Firewall/OS level), this proved a hindrance to broader adoption among larger enterprises where security policies prohibited deployment without specific safeguards.
 
-Yahoo! hosts one of the largest Storm deployments in the world, and their engineering team recognized the need for security early on, so it implemented many of the features necessary to secure its own Apache Storm deployment. Yahoo!, Hortonworks, Symantec, and the broader Apache Storm community have worked together to bring those security innovations into the main Apache Storm code base.
+Yahoo! hosts one of the largest Apache Storm deployments in the world, and their engineering team recognized the need for security early on, so it implemented many of the features necessary to secure its own Apache Storm deployment. Yahoo!, Hortonworks, Symantec, and the broader Apache Storm community have worked together to bring those security innovations into the main Apache Storm code base.
 
-We are pleased to announce that work is now complete. Some of the highlights of Storm's new security features include:
+We are pleased to announce that work is now complete. Some of the highlights of Apache Storm's new security features include:
 
  * Kerberos Authentication with Automatic Credential Push and Renewal
  * Pluggable Authorization and ACLs
@@ -25,21 +25,21 @@ We are pleased to announce that work is now complete. Some of the highlights of 
  * Secure integration with other Hadoop Projects (such as ZooKeeper, HDFS, HBase, etc.)
  * User isolation (Storm topologies run as the user who submitted them)
 
-For more details and instructions for securing Storm, please see [the security documentation](https://github.com/apache/storm/blob/v0.10.0-beta/SECURITY.md).
+For more details and instructions for securing Apache Storm, please see [the security documentation](https://github.com/apache/storm/blob/v0.10.0-beta/SECURITY.md).
 
 A Foundation for Rolling Upgrades and Continuity of Operations
 --------------------------------------------------------------
 
-In the past, upgrading a Storm cluster could be an arduous process that involved un-deploying existing topologies, removing state from local disk and ZooKeeper, installing the upgrade, and finally redeploying topologies. From an operations perspective, this process was disruptive to say the very least.
+In the past, upgrading an Apache Storm cluster could be an arduous process that involved un-deploying existing topologies, removing state from local disk and ZooKeeper, installing the upgrade, and finally redeploying topologies. From an operations perspective, this process was disruptive to say the very least.
 
-The underlying cause of this headache was rooted in the data format Storm processes used to store both local and distributed state. Between versions, these data structures would change in incompatible ways.
+The underlying cause of this headache was rooted in the data format Apache Storm processes used to store both local and distributed state. Between versions, these data structures would change in incompatible ways.
 
-Beginning with version 0.10.0, this limitation has been eliminated. In the future, upgrading from Storm 0.10.0 to a newer version can be accomplished seamlessly, with zero down time. In fact, for users who use [Apache Ambari](https://ambari.apache.org) for cluster provisioning and management, the process can be completely automated.
+Beginning with version 0.10.0, this limitation has been eliminated. In the future, upgrading from Apache Storm 0.10.0 to a newer version can be accomplished seamlessly, with zero down time. In fact, for users who use [Apache Ambari](https://ambari.apache.org) for cluster provisioning and management, the process can be completely automated.
 
 
 Easier Deployment and Declarative Topology Wiring with Flux
 ----------------------------------------------------------
-Apache Storm 0.10.0 now includes Flux, which is a framework and set of utilities that make defining and deploying Storm topologies less painful and developer-intensive. A common pain point mentioned by Storm users is the fact that the wiring for a Topology graph is often tied up in Java code, and that any changes require recompilation and repackaging of the topology jar file. Flux aims to alleviate that pain by allowing you to package all your Storm components in a single jar, and use an external text file to define the layout and configuration of your topologies.
+Apache Storm 0.10.0 now includes Flux, which is a framework and set of utilities that make defining and deploying Apache Storm topologies less painful and developer-intensive. A common pain point mentioned by Apache Storm users is the fact that the wiring for a Topology graph is often tied up in Java code, and that any changes require recompilation and repackaging of the topology jar file. Flux aims to alleviate that pain by allowing you to package all your Apache Storm components in a single jar, and use an external text file to define the layout and configuration of your topologies.
 
 Some of Flux' features include:
 
@@ -54,16 +54,16 @@ You can read more about Flux on the [Flux documentation page](https://github.com
 
 Partial Key Groupings
 ---------------------
-In addition to the standard Stream Groupings Storm has always supported, version 0.10.0 introduces a new grouping named "Partial Key Grouping". With the Partial Stream Grouping, the tuple  stream is partitioned by the fields specified in the grouping, like the Fields Grouping, but are load balanced between two downstream bolts, which provides better utilization of resources when the incoming data is skewed. 
+In addition to the standard Stream Groupings Apache Storm has always supported, version 0.10.0 introduces a new grouping named "Partial Key Grouping". With the Partial Stream Grouping, the tuple  stream is partitioned by the fields specified in the grouping, like the Fields Grouping, but are load balanced between two downstream bolts, which provides better utilization of resources when the incoming data is skewed. 
 
-Documentation for the Partial Key Grouping and other stream groupings supported by Storm can be found [here](https://storm.apache.org/documentation/Concepts.html). [This research paper](https://melmeric.files.wordpress.com/2014/11/the-power-of-both-choices-practical-load-balancing-for-distributed-stream-processing-engines.pdf) provides additional details regarding how it works and its advantages.
+Documentation for the Partial Key Grouping and other stream groupings supported by Apache Storm can be found [here](https://storm.apache.org/documentation/Concepts.html). [This research paper](https://melmeric.files.wordpress.com/2014/11/the-power-of-both-choices-practical-load-balancing-for-distributed-stream-processing-engines.pdf) provides additional details regarding how it works and its advantages.
 
 
 Improved Logging Framework
 --------------------------
-Debugging distributed applications can be difficult, and usually focuses on one main source of information: application log files. But in a very low latency system like Storm where every millisecond counts, logging can be a double-edged sword: If you log too little information you may miss the information you need to solve a problem; log too much and you risk degrading the overall performance of your application as resources are consumed by the logging framework.
+Debugging distributed applications can be difficult, and usually focuses on one main source of information: application log files. But in a very low latency system like Apache Storm where every millisecond counts, logging can be a double-edged sword: If you log too little information you may miss the information you need to solve a problem; log too much and you risk degrading the overall performance of your application as resources are consumed by the logging framework.
 
-In version 0.10.0 Storm's logging framework now uses [Apache Log4j 2](http://logging.apache.org/log4j/2.x/) which, like Storm's internal messaging subsystem, uses the extremely performant [LMAX Disruptor](https://lmax-exchange.github.io/disruptor/) messaging library. Log4j 2 boast an 18x higher throughput and orders of magnitude lower latency than Storm's previous logging framework. More efficient resource utilization at the logging level means more resources are available where they matter most: executing your business logic.
+In version 0.10.0 Apache Storm's logging framework now uses [Apache Log4j 2](http://logging.apache.org/log4j/2.x/) which, like Apache Storm's internal messaging subsystem, uses the extremely performant [LMAX Disruptor](https://lmax-exchange.github.io/disruptor/) messaging library. Log4j 2 boast an 18x higher throughput and orders of magnitude lower latency than Apache Storm's previous logging framework. More efficient resource utilization at the logging level means more resources are available where they matter most: executing your business logic.
 
 A few of the important features these changes bring include:
 
@@ -78,51 +78,51 @@ Streaming ingest with Apache Hive
 ---------------------------------
 Introduced in version 0.13, [Apache Hive](https://hive.apache.org) includes a [Streaming Data Ingest API](https://cwiki.apache.org/confluence/display/Hive/Streaming+Data+Ingest) that allows data to be written continuously into Hive. The incoming data can be continuously committed in small batches of records into existing Hive partition or table. Once the data is committed its immediately visible to all hive queries.
 
-Apache Storm 0.10.0 introduces both a Storm Core API bolt implementation 
-that allows users to stream data from Storm directly into hive. Storm's Hive integration also includes a [State](https://storm.apache.org/documentation/Trident-state) implementation for Storm's Micro-batching/Transactional API (Trident) that allows you to write to Hive from a micro-batch/transactional topology and supports exactly-once semantics for data persistence.
+Apache Storm 0.10.0 introduces both a Apache Storm Core API bolt implementation 
+that allows users to stream data from Apache Storm directly into hive. Apache Storm's Hive integration also includes a [State](https://storm.apache.org/documentation/Trident-state) implementation for Apache Storm's Micro-batching/Transactional API (Trident) that allows you to write to Hive from a micro-batch/transactional topology and supports exactly-once semantics for data persistence.
 
-For more information on Storm's Hive integration, see the [storm-hive documentation](https://github.com/apache/storm/blob/v0.10.0-beta/external/storm-hive/README.md).
+For more information on Apache Storm's Hive integration, see the [storm-hive documentation](https://github.com/apache/storm/blob/v0.10.0-beta/external/storm-hive/README.md).
 
 
 Microsoft Azure Event Hubs Integration
 --------------------------------------
-With Microsoft Azure's [support for running Storm on HDInsight](https://azure.microsoft.com/en-us/documentation/articles/hdinsight-storm-overview/), Storm is now a first class citizen of the Azure cloud computing platform. To better support Storm integration with Azure services, Microsoft engineers have contributed several components that allow Storm to integrate directly with [Microsoft Azure Event Hubs](http://azure.microsoft.com/en-us/services/event-hubs/).
+With Microsoft Azure's [support for running Apache Storm on HDInsight](https://azure.microsoft.com/en-us/documentation/articles/hdinsight-storm-overview/), Apache Storm is now a first class citizen of the Azure cloud computing platform. To better support Apache Storm integration with Azure services, Microsoft engineers have contributed several components that allow Apache Storm to integrate directly with [Microsoft Azure Event Hubs](http://azure.microsoft.com/en-us/services/event-hubs/).
 
-Storm's Event Hubs integration includes both spout and bolt implementations for reading from, and writing to Event Hubs. The Event Hub integration also includes a Micro-batching/Transactional (Trident) spout implementation that supports fully fault-tolerant and reliable processing, as well as support for exactly-once message processing semantics.
+Apache Storm's Event Hubs integration includes both spout and bolt implementations for reading from, and writing to Event Hubs. The Event Hub integration also includes a Micro-batching/Transactional (Trident) spout implementation that supports fully fault-tolerant and reliable processing, as well as support for exactly-once message processing semantics.
 
 
 Redis Support
 -------------
-Apache Storm 0.10.0 also introduces support for the [Redis](http://redis.io) data structure server. Storm's Redis support includes bolt implementations for both writing to and querying Redis from a Storm topology, and is easily extended for custom use cases. For Storm's micro-batching/transactional API, the Redis support includes both [Trident State and MapState](https://storm.apache.org/documentation/Trident-state.html) implementations for fault-tolerant state management with Redis.
+Apache Storm 0.10.0 also introduces support for the [Redis](http://redis.io) data structure server. Apache Storm's Redis support includes bolt implementations for both writing to and querying Redis from a Apache Storm topology, and is easily extended for custom use cases. For Apache Storm's micro-batching/transactional API, the Redis support includes both [Trident State and MapState](https://storm.apache.org/documentation/Trident-state.html) implementations for fault-tolerant state management with Redis.
 
 Further information can be found in the [storm-redis documentation](https://github.com/apache/storm/blob/v0.10.0-beta/external/storm-redis/README.md).
 
 
 JDBC/RDBMS Integration
 ----------------------
-Many stream processing data flows require accessing data from or writing data to a relational data store. Storm 0.10.0 introduces highly flexible and customizable support for integrating with virtually any JDBC-compliant database.
+Many stream processing data flows require accessing data from or writing data to a relational data store. Apache Storm 0.10.0 introduces highly flexible and customizable support for integrating with virtually any JDBC-compliant database.
 
-The Storm-JDBC package includes core Storm bolt and Trident state implementations that allow a storm topology to either insert Storm tuple data into a database table or execute select queries against a database to enrich streaming data in a storm topology.
+The Storm-JDBC package includes core Apache Storm bolt and Trident state implementations that allow an Apache Storm topology to either insert Apache Storm tuple data into a database table or execute select queries against a database to enrich streaming data in an Apache Storm topology.
 
 Further details and instructions can be found in the [Storm-JDBC documentation](https://github.com/apache/storm/blob/v0.10.0-beta/external/storm-jdbc/README.md).
 
 
 Reduced Dependency Conflicts
 ----------------------------
-In previous Storm releases, it was not uncommon for users' topology dependencies to conflict with the libraries used by Storm. In Storm 0.9.3 several dependency packages that were common sources of conflicts have been package-relocated (shaded) to avoid this situation. In 0.10.0 this list has been expanded.
+In previous Apache Storm releases, it was not uncommon for users' topology dependencies to conflict with the libraries used by Apache Storm. In Apache Storm 0.9.3 several dependency packages that were common sources of conflicts have been package-relocated (shaded) to avoid this situation. In 0.10.0 this list has been expanded.
 
 Developers are free to use the Storm-packaged versions, or supply their own version. 
 
-The full list of Storm's package relocations can be found [here](https://github.com/apache/storm/blob/v0.10.0-beta/storm-core/pom.xml#L439).
+The full list of Apache Storm's package relocations can be found [here](https://github.com/apache/storm/blob/v0.10.0-beta/storm-core/pom.xml#L439).
 
 
 Future Work
 -----------
-While the 0.10.0 release is an important milestone in the evolution of Apache Storm, the Storm community is actively working on new improvements, both near and long term, and continuously exploring the realm of the possible.
+While the 0.10.0 release is an important milestone in the evolution of Apache Storm, the Apache Storm community is actively working on new improvements, both near and long term, and continuously exploring the realm of the possible.
 
-Twitter recently announced the Heron project, which claims to provide substantial performance improvements while maintaining 100% API compatibility with Storm. The corresponding research paper provides additional details regarding the architectural improvements. The fact that Twitter chose to maintain API compatibility with Storm is a testament to the power and flexibility of that API. Twitter has also expressed a desire to share their experiences and work with the Apache Storm community.
+Twitter recently announced the Heron project, which claims to provide substantial performance improvements while maintaining 100% API compatibility with Apache Storm. The corresponding research paper provides additional details regarding the architectural improvements. The fact that Twitter chose to maintain API compatibility with Apache Storm is a testament to the power and flexibility of that API. Twitter has also expressed a desire to share their experiences and work with the Apache Storm community.
 
-A number of concepts expressed in the Heron paper were already in the implementation stage by the Storm community even before it was published, and we look forward to working with Twitter to bring those and other improvements to Storm.
+A number of concepts expressed in the Heron paper were already in the implementation stage by the Apache Storm community even before it was published, and we look forward to working with Twitter to bring those and other improvements to Apache Storm.
 
 Thanks
 ------

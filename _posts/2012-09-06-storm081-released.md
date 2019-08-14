@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Storm 0.8.1 released
+title: Apache Storm 0.8.1 released
 author: Nathan Marz
 ---
 
-Storm 0.8.1 is now available on the downloads page and in Maven. This release contains many bug fixes as well as a few important new features. These include: 
+Apache Storm 0.8.1 is now available on the downloads page and in Maven. This release contains many bug fixes as well as a few important new features. These include: 
 
-Storm's unit testing facilities have been exposed via Java
+Apache Storm's unit testing facilities have been exposed via Java
 -----------------------
 This is an extremely powerful API that lets you do things like: 
    a) Easily bring up and tear down local clusters 
@@ -17,7 +17,7 @@ This is an extremely powerful API that lets you do things like:
 Spout wait strategies
 ---------------------
 
-There's two situations in which a spout needs to wait. The first is when the max spout pending limit is reached. The second is when nothing is emitted from nextTuple. Previously, Storm would just have that spout sit in a busy loop in those cases. What Storm does in those situations is now pluggable, and the default is now for the spout to sleep for 1 ms. This will cause the spout to use dramatically less CPU when it hits those cases, and it also obviates the need for spouts to do any sleeping in their implementation to be "polite". The wait strategy can be configured with TOPOLOGY_SPOUT_WAIT_STRATEGY and can be configured on a spout by spout basis. The interface to implement for a wait strategy is backtype.storm.spout.ISpoutWaitStrategy 
+There's two situations in which a spout needs to wait. The first is when the max spout pending limit is reached. The second is when nothing is emitted from nextTuple. Previously, Apache Storm would just have that spout sit in a busy loop in those cases. What Apache Storm does in those situations is now pluggable, and the default is now for the spout to sleep for 1 ms. This will cause the spout to use dramatically less CPU when it hits those cases, and it also obviates the need for spouts to do any sleeping in their implementation to be "polite". The wait strategy can be configured with TOPOLOGY_SPOUT_WAIT_STRATEGY and can be configured on a spout by spout basis. The interface to implement for a wait strategy is backtype.storm.spout.ISpoutWaitStrategy 
 
 The full changelog is below: 
 

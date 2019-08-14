@@ -1,16 +1,16 @@
 ---
 layout: post
-title: Storm 1.1.2 Released
+title: Apache Storm 1.1.2 Released
 author: P. Taylor Goetz
 ---
 
 The Apache Storm community is pleased to announce that version 1.1.2 has been released and is available from [the downloads page](/downloads.html).
 
-This is a maintenance release that includes a number of important bug fixes that improve Storm's performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.
+This is a maintenance release that includes a number of important bug fixes that improve Apache Storm's performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.
 
 Apache Kafka Integration Improvements
 ------------------------------
-This release includes many improvements to Storm's Kafka integration that improve stability, ease configuration, and expose new features. More details can be found in the
+This release includes many improvements to Apache Storm's Kafka integration that improve stability, ease configuration, and expose new features. More details can be found in the
 [Kafka client documentation](/releases/1.1.2/storm-kafka-client.html)
 
 

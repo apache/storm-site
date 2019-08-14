@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Storm 1.1.0 released
+title: Apache Storm 1.1.0 released
 author: P. Taylor Goetz
 ---
 
@@ -10,9 +10,9 @@ This release represents a major milestone in the evolution of Apache Storm, and 
 
 Streaming SQL
 -------------
-Storm 1.1.0 supports native Streaming SQL, powered by [Apache Calcite](http://calcite.apache.org), that allows users to run SQL queries over streaming data as well update external systems and data stores such as [Apache Hive](http://hive.apache.org). To deploy an SQL-based topology users define the SQL query in a text file and use the `storm sql` command to submit the resulting topology to a Storm cluster. Behind the scenes Storm will compile the SQL into a Trident topology and run it on the cluster.
+Apache Storm 1.1.0 supports native Streaming SQL, powered by [Apache Calcite](http://calcite.apache.org), that allows users to run SQL queries over streaming data as well update external systems and data stores such as [Apache Hive](http://hive.apache.org). To deploy an SQL-based topology users define the SQL query in a text file and use the `storm sql` command to submit the resulting topology to an Apache Storm cluster. Behind the scenes Apache Storm will compile the SQL into a Trident topology and run it on the cluster.
 
-Storm's SQL support includes the following features:
+Apache Storm's SQL support includes the following features:
 
  * Streaming from/to external sources including Apache Kafka, HDFS, MongoDB, and Redis
  * Tuple filtering
@@ -22,7 +22,7 @@ Storm's SQL support includes the following features:
  * CSV, TSV, and Avro input/output formats
  * Extensibility to additional data sources via the `ISqlTridentDataSource` interface
 
-For more information about Storm's SQL support including examples, refer to the following resources:
+For more information about Apache Storm's SQL support including examples, refer to the following resources:
 
  * [Storm SQL Overview](/releases/1.1.0/storm-sql.html)
  * [Storm SQL Examples](/releases/1.1.0/storm-sql-example.html)
@@ -30,7 +30,7 @@ For more information about Storm's SQL support including examples, refer to the 
 
 Apache Kafka Integration Improvements
 -------------------------------------
-In addition to the traditional support for Kafka version 0.8/0.9 based on the Kafka simple consumer, Storm includes support for Kafka 0.10 and later based on the new Kafka consumer API. Storm's integration with Kafka 0.10 and later version is highly flexible and extensible, some of the features include:
+In addition to the traditional support for Kafka version 0.8/0.9 based on the Kafka simple consumer, Apache Storm includes support for Kafka 0.10 and later based on the new Kafka consumer API. Apache Storm's integration with Kafka 0.10 and later version is highly flexible and extensible, some of the features include:
 
  * Enhanced configuration API
  * Fine-grained offset control (at start and after failure)
@@ -41,7 +41,7 @@ In addition to the traditional support for Kafka version 0.8/0.9 based on the Ka
  * Manual partition control
  * Kafka security support
 
-For more information on Storm's Kafka integration please refer to the following documentation:
+For more information on Apache Storm's Kafka integration please refer to the following documentation:
 
  * [Kafka Integration (0.10 and later)](/releases/1.1.0/storm-kafka-client.html)
  * [Kafka Integration (0.8/0.9)](/releases/1.1.0/storm-kafka.html)
@@ -49,41 +49,41 @@ For more information on Storm's Kafka integration please refer to the following 
 
 PMML (Predictive Model Markup Language) Support
 ------------
-In order to better support machine learning use cases, Storm now includes support for executing PMML models in topoliges via a generic PMML bolt. The `PMMLPredictorBolt` allows users to specify a model, the raw input, and the resulting streams and output fields. At runtime the bolt will process incoming raw data, execute the model with the given input, and output tuples with scores for predicted fields and output fields.
+In order to better support machine learning use cases, Apache Storm now includes support for executing PMML models in topoliges via a generic PMML bolt. The `PMMLPredictorBolt` allows users to specify a model, the raw input, and the resulting streams and output fields. At runtime the bolt will process incoming raw data, execute the model with the given input, and output tuples with scores for predicted fields and output fields.
 
-More information on Storm's PMML support can be found [here](https://github.com/apache/storm/blob/v1.1.0/external/storm-pmml/README.md).
+More information on Apache Storm's PMML support can be found [here](https://github.com/apache/storm/blob/v1.1.0/external/storm-pmml/README.md).
 
 
 Druid Integration
 -----------------
-[Druid](http://druid.io) is a scalable, high-performance, column oriented, distributed data store popular for real time analytics use cases. Storm 1.1.0 introduces a Storm bolt and Trident state implementations for streaming data into a Druid data store.
+[Druid](http://druid.io) is a scalable, high-performance, column oriented, distributed data store popular for real time analytics use cases. Apache Storm 1.1.0 introduces a Apache Storm bolt and Trident state implementations for streaming data into a Druid data store.
 
-Documentation for Storm's Druid integration can be found [here](https://github.com/apache/storm/blob/v1.1.0/external/storm-druid/README.md).
+Documentation for Apache Storm's Druid integration can be found [here](https://github.com/apache/storm/blob/v1.1.0/external/storm-druid/README.md).
 
 
 OpenTSDB Integration
 --------------------
-[OpenTSDB](http://opentsdb.net) is a highly scalable time series database based on Apache HBase. Storm 1.1.0 adds a Storm bolt and Trident state implementations for writing data to OpenTSDB. Storm's OpenTSDB integration gives users fine-grained control over how Storm tuples map to OpenTSDB data structure by providing a simple interface (`ITupleOpenTsdbDatapointMapper`) that performs the translation.
+[OpenTSDB](http://opentsdb.net) is a highly scalable time series database based on Apache HBase. Apache Storm 1.1.0 adds an Apache Storm bolt and Trident state implementations for writing data to OpenTSDB. Apache Storm's OpenTSDB integration gives users fine-grained control over how Apache Storm tuples map to OpenTSDB data structure by providing a simple interface (`ITupleOpenTsdbDatapointMapper`) that performs the translation.
 
-Move information about Storm's OpenTSDB integration can be found [here](https://github.com/apache/storm/blob/v1.1.0/external/storm-opentsdb/README.md).
+Move information about Apache Storm's OpenTSDB integration can be found [here](https://github.com/apache/storm/blob/v1.1.0/external/storm-opentsdb/README.md).
 
 AWS Kinesis Support
 -------------------
-For users looking to integrate with Amazon's Kinesis service, Storm 1.1.0 now includes a spout for consuming message streams from Kinesis. Like most of Storm's external system integration components, the Kinesis spout provides a simple interface (`RecordToTupleMapper`)for controlling how Kinesis messages are translated to Storm tuples. The Kinesis spout provides an additional interface (`FailedMessageRetryHandler`) that allows users to customize the Spout's failure handling logic.
+For users looking to integrate with Amazon's Kinesis service, Apache Storm 1.1.0 now includes a spout for consuming message streams from Kinesis. Like most of Apache Storm's external system integration components, the Kinesis spout provides a simple interface (`RecordToTupleMapper`)for controlling how Kinesis messages are translated to Apache Storm tuples. The Kinesis spout provides an additional interface (`FailedMessageRetryHandler`) that allows users to customize the Spout's failure handling logic.
 
 Documentation for the Kinesis spout can be found [here](https://github.com/apache/storm/blob/v1.1.0/external/storm-kinesis/README.md).
 
 
 HDFS Spout
 ----------
-Storm's HDFS integration now includes a spout that continuously streams data from the HDFS filesystem. Storm's HDFS spout monitors a configurable directory for new files and feeds that data into a topology. When the spout has completed processing a file, it will be moved to the configured archive directory. In the event a file is corrupt or is otherwise not processable, the corresponding file will be moved to a specific directory. Parallelism of the spout is made possible through a locking mechanism that ensures each file is "owned" by a single spout instance. The HDFS spout supports connecting to HDFS instances that are secured with Kerberos authentication.
+Apache Storm's HDFS integration now includes a spout that continuously streams data from the HDFS filesystem. Apache Storm's HDFS spout monitors a configurable directory for new files and feeds that data into a topology. When the spout has completed processing a file, it will be moved to the configured archive directory. In the event a file is corrupt or is otherwise not processable, the corresponding file will be moved to a specific directory. Parallelism of the spout is made possible through a locking mechanism that ensures each file is "owned" by a single spout instance. The HDFS spout supports connecting to HDFS instances that are secured with Kerberos authentication.
 
-More information on using the HDFS spout can be found in the [Storm HDFS Documentation](https://github.com/apache/storm/blob/v1.1.0/external/storm-hdfs/README.md)
+More information on using the HDFS spout can be found in the [Apache Storm HDFS Documentation](https://github.com/apache/storm/blob/v1.1.0/external/storm-hdfs/README.md)
 
 
 Flux Improvements
 -----------------
-Flux is a framework and set of utilities that allow users to declaratively define Storm topologies and avoid hard-coding configuration values in topology components. Storm 1.1.0 introduces the following enhancements to the Flux framework:
+Flux is a framework and set of utilities that allow users to declaratively define Apache Storm topologies and avoid hard-coding configuration values in topology components. Apache Storm 1.1.0 introduces the following enhancements to the Flux framework:
 
  * Flux topology visualization in Storm UI
  * Support for Stateful bolts and windowing
@@ -95,14 +95,14 @@ More information about Flux can be found in the [Flux documentation](/releases/1
 
 Topology Deployment Enhancements
 --------------------------------
-In previous versions of Storm it was typically necessary to include all topology dependences in a shaded "uber jar," or by making them available on Storm's classpath. In Storm 1.1.0 the `storm jar` command now includes options to upload additional dependency jars during topology submission. The `--jars` command line option allows users to specify local jar files to upload. Alternatively, the `storm jar` command offers the `--artifacts` option for specifying additional jar file dependencies by their Maven coordinates. Finally, for Maven artifacts outside the Maven Central, the `--artifactRepository` option allows users to specify additional repositories for dependency resolution.
+In previous versions of Apache Storm it was typically necessary to include all topology dependences in a shaded "uber jar," or by making them available on Apache Storm's classpath. In Apache Storm 1.1.0 the `storm jar` command now includes options to upload additional dependency jars during topology submission. The `--jars` command line option allows users to specify local jar files to upload. Alternatively, the `storm jar` command offers the `--artifacts` option for specifying additional jar file dependencies by their Maven coordinates. Finally, for Maven artifacts outside the Maven Central, the `--artifactRepository` option allows users to specify additional repositories for dependency resolution.
 
 More informaton about available options of the `storm jar` command can be found by runnng the `storm help jar` command.
 
 
 Resource Aware Scheduler (RAS) Improvements
 -------------------------------------------
-The Resource Aware Scheduler introduced in Storm 1.0 added a scheduler implementation that takes into account both the memory (on-heap and off-heap) and CPU resources available in a cluster. In Storm 1.1.0 the RAS algorithm has been overhauled to dramatically improve cluster resource utilization and introduces rack awareness into the scheduling strategy.
+The Resource Aware Scheduler introduced in Apache Storm 1.0 added a scheduler implementation that takes into account both the memory (on-heap and off-heap) and CPU resources available in a cluster. In Apache Storm 1.1.0 the RAS algorithm has been overhauled to dramatically improve cluster resource utilization and introduces rack awareness into the scheduling strategy.
 
 More information on the new RAS capabilities can be found in the [RAS documentation](/releases/1.1.0/Resource_Aware_Scheduler_overview.html) and the [JIRA ticket](https://issues.apache.org/jira/browse/STORM-1766) introducing the new rack awareness algorithm.
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Storm 0.9.3 released
+title: Apache Storm 0.9.3 released
 author: P. Taylor Goetz
 ---
 
@@ -11,9 +11,9 @@ Improved Kafka Integration
 
 Apache Storm has supported [Apache Kafka](http://kafka.apache.org/) as a streaming data source since version 0.9.2-incubating. Version 0.9.3 brings a number of improvements to the Kafka integration including the ability to write data to one or more Kafka clusters and topics.
 
-The ability to both read from and write to Kafka further unlocks potential of the already powerful combination of Storm and Kafka. Storm users can now use Kafka as a source of and destination for streaming data. This allows for inter-topology communication, topology chaining, combining spout/bolt-based topologies with Trident-based data flows, and integration with any external system that supports data ingest from Kafka.
+The ability to both read from and write to Kafka further unlocks potential of the already powerful combination of Apache Storm and Kafka. Apache Storm users can now use Kafka as a source of and destination for streaming data. This allows for inter-topology communication, topology chaining, combining spout/bolt-based topologies with Trident-based data flows, and integration with any external system that supports data ingest from Kafka.
 
-More information about Storm's Kafka integration can be found in the [storm-kafka project documentation](https://github.com/apache/storm/blob/v0.9.3/external/storm-kafka/README.md).
+More information about Apache Storm's Kafka integration can be found in the [storm-kafka project documentation](https://github.com/apache/storm/blob/v0.9.3/external/storm-kafka/README.md).
 
 
 HDFS Integration
@@ -21,23 +21,23 @@ HDFS Integration
 
 Many stream processing use cases involve storing data in HDFS for further analysis and offline (batch) processing. Apache Storm’s HDFS integration consists of several bolt and Trident state implementations that allow topology developers to easily write data to HDFS from any Storm topology. 
 
-More information about Storm's HDFS integration can be found in the [storm-hdfs project documentation](https://github.com/apache/storm/tree/v0.9.3/external/storm-hdfs).
+More information about Apache Storm's HDFS integration can be found in the [storm-hdfs project documentation](https://github.com/apache/storm/tree/v0.9.3/external/storm-hdfs).
 
 
 HBase Integration
 -----------------
 
-Apache Storm’s HBase integration includes a number of components that allow Storm topologies to both write to and query HBase in real-time. Many organizations use Apache HBase as part of their big data strategy for batch, interactive, and real-time workflows. Storm’s HBase integration allows users to leverage data assets in HBase as streaming queries, as well as using HBase as a destination for streaming computation results.
+Apache Storm’s HBase integration includes a number of components that allow Apache Storm topologies to both write to and query HBase in real-time. Many organizations use Apache HBase as part of their big data strategy for batch, interactive, and real-time workflows. Apache Storm HBase integration allows users to leverage data assets in HBase as streaming queries, as well as using HBase as a destination for streaming computation results.
 
-More information about Storm's HBase integration can be found in the [storm-hbase project documentation](https://github.com/apache/storm/tree/v0.9.3/external/storm-hbase).
+More information about Apache Storm's HBase integration can be found in the [storm-hbase project documentation](https://github.com/apache/storm/tree/v0.9.3/external/storm-hbase).
 
 Reduced Dependency Conflicts
 ----------------------------
-In previous Storm releases, it was not uncommon for users' topology dependencies to conflict with the libraries used by Storm. In Storm 0.9.3 several dependency packages that were common sources of conflicts have been package-relocated (shaded) to avoid this situation. Developers are free to use the Storm-packaged versions, or supply their own version. 
+In previous Apache Storm releases, it was not uncommon for users' topology dependencies to conflict with the libraries used by Apache Storm. In Apache Storm 0.9.3 several dependency packages that were common sources of conflicts have been package-relocated (shaded) to avoid this situation. Developers are free to use the Storm-packaged versions, or supply their own version. 
 
 The following table lists the dependency package relocations:
 
-| Dependency  | Original Package | Storm Package |
+| Dependency  | Original Package | Apache Storm Package |
 |:---|:---|:---|
 | Apache Thrift | `org.apache.thrift` | `org.apache.thrift7` |
 | Netty | `org.jboss.netty` | `org.apache.storm.netty` |
@@ -56,7 +56,7 @@ In addition to the Node.js implementation, the multi-lang protocol has been subs
 
 Thanks
 ------
-Special thanks are due to all those who have contributed to Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.
+Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.
 
 
 Full Changelog

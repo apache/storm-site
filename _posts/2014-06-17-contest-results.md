@@ -1,15 +1,15 @@
 ---
 layout: post
-title: Storm Logo Contest Results
+title: Apache Storm Logo Contest Results
 author: P. Taylor Goetz
 ---
 
-The Apache Storm logo contest is now complete and was a great success. We received votes from 7 PPMC members as well as 55 votes from the greater Storm community. Thank you to everyone who participated by voting.
+The Apache Storm logo contest is now complete and was a great success. We received votes from 7 PPMC members as well as 55 votes from the greater Apache Storm community. Thank you to everyone who participated by voting.
 
 ## The Winner ##
-Congratulations to Jennifer Lee, whose [3rd entry](/2014/04/29/logo-jlee2.html) received the most points from both the PPMC as well as the Storm community. Final vote tallies are listed below.
+Congratulations to Jennifer Lee, whose [3rd entry](/2014/04/29/logo-jlee2.html) received the most points from both the PPMC as well as the Apache Storm community. Final vote tallies are listed below.
 
-![Storm Logo](/images/logocontest/storm_logo_winner.png)
+![Apache Storm Logo](/images/logocontest/storm_logo_winner.png)
 
 The Apache Storm project management team will now begin the process of finalizing the logo and making it official.
 

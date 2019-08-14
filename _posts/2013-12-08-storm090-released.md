@@ -1,23 +1,23 @@
 ---
 layout: post
-title: Storm 0.9.0 Released
+title: Apache Storm 0.9.0 Released
 author: P. Taylor Goetz
 ---
 
-We are pleased to announce that Storm 0.9.0 has been released and is available from [the downloads page](/downloads.html). This release represents an important milestone in the evolution of Storm.
+We are pleased to announce that Apache Storm 0.9.0 has been released and is available from [the downloads page](/downloads.html). This release represents an important milestone in the evolution of Apache Storm.
 
-While a number of new features have been added, a key focus area for this release has been stability-related fixes. Though many users are successfully running work-in-progress builds for Storm 0.9.x in production, this release represents the most stable version to-date, and is highly recommended for everyone, especially users of 0.8.x versions.
+While a number of new features have been added, a key focus area for this release has been stability-related fixes. Though many users are successfully running work-in-progress builds for Apache Storm 0.9.x in production, this release represents the most stable version to-date, and is highly recommended for everyone, especially users of 0.8.x versions.
 
 
 Netty Transport
 ---------------
-The first hightlight of this release is the new [Netty](http://netty.io/index.html) Transport contributed by [Yahoo! Engineering](http://yahooeng.tumblr.com/). Storm's core network transport mechanism is now plugable, and Storm now comes with two implementations: The original 0MQ transport, and a new Netty-based implementation.
+The first hightlight of this release is the new [Netty](http://netty.io/index.html) Transport contributed by [Yahoo! Engineering](http://yahooeng.tumblr.com/). Apache Storm's core network transport mechanism is now plugable, and Apache Storm now comes with two implementations: The original 0MQ transport, and a new Netty-based implementation.
 
-In earlier versions, Storm relied solely on 0MQ for transport. Since 0MQ is a native library, it was highly platform-dependent and, at times, challenging to install properly. In addition, stability between versions varied widely between versions and only a relatively old 0MQ version (2.1.7) was certified to work with Storm.
+In earlier versions, Apache Storm relied solely on 0MQ for transport. Since 0MQ is a native library, it was highly platform-dependent and, at times, challenging to install properly. In addition, stability between versions varied widely between versions and only a relatively old 0MQ version (2.1.7) was certified to work with Apache Storm.
 
-The Netty transport offers a pure Java alternative that eliminates Storm's dependency on native libraries. The Netty transport's performance is up to twice as fast as 0MQ, and it will open the door for authorization and authentication between worker processes. For an in-depth performance comparison of the 0MQ and Netty transports, see [this blog post](http://yahooeng.tumblr.com/post/64758709722/making-storm-fly-with-netty) by Storm contributor [Bobby Evans](https://github.com/revans2).
+The Netty transport offers a pure Java alternative that eliminates Apache Storm's dependency on native libraries. The Netty transport's performance is up to twice as fast as 0MQ, and it will open the door for authorization and authentication between worker processes. For an in-depth performance comparison of the 0MQ and Netty transports, see [this blog post](http://yahooeng.tumblr.com/post/64758709722/making-storm-fly-with-netty) by Apache Storm contributor [Bobby Evans](https://github.com/revans2).
 
-To configure Storm to use the Netty transport simply add the following to your `storm.yaml` configuration and adjust the values to best suit your use-case:
+To configure Apache Storm to use the Netty transport simply add the following to your `storm.yaml` configuration and adjust the values to best suit your use-case:
 
 ```
 storm.messaging.transport: "backtype.storm.messaging.netty.Context"
@@ -33,11 +33,11 @@ You can also write your own transport implementation by implementing the [`backt
 
 Log Viewer UI
 -------------
-Storm now includes a helpful new feature for debugging and monitoring topologies: The `logviewer` daemon.
+Apache Storm now includes a helpful new feature for debugging and monitoring topologies: The `logviewer` daemon.
 
-In earlier versions of Storm, viewing worker logs involved determining a worker's location (host/port), typically through Storm UI, then `ssh`ing to that host and `tail`ing the corresponding worker log file. With the new log viewer. You can now easily access a specific worker's log in a web browser by clicking on a worker's port number right from Storm UI.
+In earlier versions of Apache Storm, viewing worker logs involved determining a worker's location (host/port), typically through Apache Storm UI, then `ssh`ing to that host and `tail`ing the corresponding worker log file. With the new log viewer. You can now easily access a specific worker's log in a web browser by clicking on a worker's port number right from Apache Storm UI.
 
-The `logviewer` daemon runs as a separate process on Storm supervisor nodes. To enable the `logviewer` run the following command (under supervision) on your cluster's supervisor nodes:
+The `logviewer` daemon runs as a separate process on Apache Storm supervisor nodes. To enable the `logviewer` run the following command (under supervision) on your cluster's supervisor nodes:
 
 ```
 $ storm logviewer
@@ -46,32 +46,32 @@ $ storm logviewer
 
 Improved Windows Support
 ------------------------
-In previous versions, running Storm on Microsoft Windows required installing third-party binaries (0MQ), modifying Storm's source, and adding Windows-specific scripts. With the addition of the platform-independent Netty transport, as well as numerous enhancements to make Storm more platform-independent, running Storm on Windows is easier than ever.
+In previous versions, running Apache Storm on Microsoft Windows required installing third-party binaries (0MQ), modifying Apache Storm's source, and adding Windows-specific scripts. With the addition of the platform-independent Netty transport, as well as numerous enhancements to make Apache Storm more platform-independent, running Apache Storm on Windows is easier than ever.
 
 
 Security Improvements
 ---------------------
-Security, Authentication, and Authorization have been and will continue to be important focus areas for upcoming features. Storm 0.9.0 introduces an API for pluggable tuple serialization and a blowfish encryption based implementation for encrypting tuple data for sensitive use cases.
+Security, Authentication, and Authorization have been and will continue to be important focus areas for upcoming features. Apache Storm 0.9.0 introduces an API for pluggable tuple serialization and a blowfish encryption based implementation for encrypting tuple data for sensitive use cases.
 
 
 API Compatibility and Upgrading
 -------------------------------
-For most Storm topology developers, upgrading to 0.9.0 is simply a matter of updating the [dependency](https://clojars.org/storm). Storm's core API has changed very little since the 0.8.2 release.
+For most Apache Storm topology developers, upgrading to 0.9.0 is simply a matter of updating the [dependency](https://clojars.org/storm). Apache Storm's core API has changed very little since the 0.8.2 release.
 
-On the devops side, when upgrading to a new Storm release, it is safest to clear any existing state (Zookeeper, `storm.local.dir`), prior to upgrading.
+On the devops side, when upgrading to a new Apache Storm release, it is safest to clear any existing state (Zookeeper, `storm.local.dir`), prior to upgrading.
 
 Logging Changes
 ---------------
-Another important change in 0.9.0 has to do with logging. Storm has largely switched over to the [slf4j API](http://www.slf4j.org) (backed by a [logback](http://logback.qos.ch) logger implementation). Some Storm dependencies rely on the log4j API, so Storm currently depends on [log4j-over-slf4j](http://www.slf4j.org/legacy.html#log4j-over-slf4j).
+Another important change in 0.9.0 has to do with logging. Apache Storm has largely switched over to the [slf4j API](http://www.slf4j.org) (backed by a [logback](http://logback.qos.ch) logger implementation). Some Apache Storm dependencies rely on the log4j API, so Apache Storm currently depends on [log4j-over-slf4j](http://www.slf4j.org/legacy.html#log4j-over-slf4j).
 
 These changes have implications for existing topologies and topology components that use the log4j API.
 
-In general, and when possible, Storm topologies and topology components should use the [slf4j API](http://www.slf4j.org) for logging.
+In general, and when possible, Apache Storm topologies and topology components should use the [slf4j API](http://www.slf4j.org) for logging.
 
 
 Thanks
 ------
-Special thanks are due to all those who have contributed to Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.
+Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.
 
 
 Changelog

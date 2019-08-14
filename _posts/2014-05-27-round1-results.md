@@ -6,12 +6,12 @@ title: Logo Contest - Round 1 Results
 {{ page.title }}
 ================
 
-Round one of the Apache Storm logo contest is now complete and was a great success. We received votes from 7 PPMC members as well as 46 votes from the greater Storm community.
+Round one of the Apache Storm logo contest is now complete and was a great success. We received votes from 7 PPMC members as well as 46 votes from the greater Apache Storm community.
 
 We would like to extend a very special thanks to all those who took the time and effort to create and submit a logo proposal. We would also like to thank everyone who voted.
 
 ## Results ##
-The Storm PPMC and community votes were closely aligned, with the community vote resolving a PPMC tie for the 3rd finalist as shown in the result table below.
+The Apache Storm PPMC and community votes were closely aligned, with the community vote resolving a PPMC tie for the 3rd finalist as shown in the result table below.
 
 The three finalists entering the final round are:
 
