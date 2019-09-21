@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Storm 1.2.0 Released
+title: Apache Storm 1.2.0 Released
 author: P. Taylor Goetz
 ---
 
@@ -9,12 +9,12 @@ The Apache Storm community is pleased to announce that version 1.2.0 has been re
 
 Apache Kafka Integration Improvements
 ------------------------------
-This release includes many improvements to Storm's Kafka integration that improve stability, ease configuration, and expose new features. More details can be found in the
+This release includes many improvements to Apache Storm's Kafka integration that improve stability, ease configuration, and expose new features. More details can be found in the
 [Kafka client documentation](/releases/1.2.0/storm-kafka-client.html)
 
 New Metrics Reporting API
 -------------------------
-This release introduces a new metrics system for reporting internal statistics (e.g. acked, failed, emitted, transferred, disruptor queue metrics, etc.) as well as a new API for user defined metrics based on the popular [Dropwizard Metrics library](). Storm includes reporters for gathering metrics data with Ganglia, Graphite, JMX, CSV and the console. Additional metrics systems can be integrated by extending the `org.apache.storm.metrics2.reporters.ScheduledStormReporter` class. Additional details can be found in the [metrics documentation](/releases/1.2.0/metrics_v2.html).
+This release introduces a new metrics system for reporting internal statistics (e.g. acked, failed, emitted, transferred, disruptor queue metrics, etc.) as well as a new API for user defined metrics based on the popular [Dropwizard Metrics library](). Apache Storm includes reporters for gathering metrics data with Ganglia, Graphite, JMX, CSV and the console. Additional metrics systems can be integrated by extending the `org.apache.storm.metrics2.reporters.ScheduledStormReporter` class. Additional details can be found in the [metrics documentation](/releases/1.2.0/metrics_v2.html).
 
 
 Thanks

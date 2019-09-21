@@ -1,17 +1,17 @@
 ---
 layout: post
-title: Storm 0.9.7 Released
+title: Apache Storm 0.9.7 Released
 author: P. Taylor Goetz
 ---
 
 The Apache Storm community is pleased to announce that version 0.9.7 has been released and is available from [the downloads page](/downloads.html).
 
-This is a maintenance release that includes a number of important bug fixes that improve Storm's performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.
+This is a maintenance release that includes a number of important bug fixes that improve Apache Storm's performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.
 
 
 Multi-Lang Bug Fix
 ------------------
-This release fixes an issue with Storm's multi-lang feature where a malformed multi-lang message from a ShellSpout would cause the spout to hang indefinitely.
+This release fixes an issue with Apache Storm's multi-lang feature where a malformed multi-lang message from a ShellSpout would cause the spout to hang indefinitely.
 
 
 Thanks

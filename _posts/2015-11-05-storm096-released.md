@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Storm 0.9.6 released
+title: Apache Storm 0.9.6 released
 author: P. Taylor Goetz
 ---
 
 The Apache Storm community is pleased to announce that version 0.9.6 has been released and is available from [the downloads page](/downloads.html).
 
-This is a maintenance release that includes a number of important bug fixes that improve Storm's stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.
+This is a maintenance release that includes a number of important bug fixes that improve Apache Storm's stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.
 
 
 Thanks

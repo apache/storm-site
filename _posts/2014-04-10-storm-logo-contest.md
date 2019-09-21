@@ -4,9 +4,9 @@ title: Apache Storm Logo Contest
 author: P. Taylor Goetz
 ---
 
-Apache Storm is a platform for distributed, real-time computation that has been undergoing incubation at Apache since September 18, 2013. You can contribute by helping establish the Storm brand by submitting a proposal for the Apache Storm logo.
+Apache Storm is a platform for distributed, real-time computation that has been undergoing incubation at Apache since September 18, 2013. You can contribute by helping establish the Apache Storm brand by submitting a proposal for the Apache Storm logo.
 
-Your proposal will be published on the [Storm project website](http://storm.incubator.apache.org) next to the other proposals. On **Wednesday, April 30, 2014** the community will choose the new logo through a vote on the [Apache Storm Mailing List](http://mail-archives.apache.org/mod_mbox/incubator-storm-dev/). If more than 10 proposals are received, voting will take place in two rounds, with the first round selecting 10 proposals to move to round two.
+Your proposal will be published on the [Apache Storm project website](http://storm.incubator.apache.org) next to the other proposals. On **Wednesday, April 30, 2014** the community will choose the new logo through a vote on the [Apache Storm Mailing List](http://mail-archives.apache.org/mod_mbox/incubator-storm-dev/). If more than 10 proposals are received, voting will take place in two rounds, with the first round selecting 10 proposals to move to round two.
 
 The winning artist will be credited on the Apache Storm website as having designed the logo, and may include a link to her/his website or blog. Prizes for the winner(s) are currently TBD.
 
@@ -22,7 +22,7 @@ The logo should meet the following requirements:
  
 Optional, but nice to have:
  
- * Icons representing storm components (suitable for use in diagrams, presentations, etc.):
+ * Icons representing Apache Storm components (suitable for use in diagrams, presentations, etc.):
     * Spouts
     * Bolts
     * Streams
@@ -35,7 +35,7 @@ There is no limit on the number of entries per individual.
 
 ##INSPIRATION 
 
-While designing the logo, keep in mind what describes Storm: 
+While designing the logo, keep in mind what describes Apache Storm: 
 
  * Distributed Computation
  * High Performance
