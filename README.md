@@ -29,9 +29,11 @@ In order to add a new release, you must have committer access to the storm-site 
 
 You must first generate Javadoc for the new release. Check out the Storm repository from https://github.com/apache/storm, and check out the version of the code you are releasing.
 
+You must have already installed the storm-shaded-deps module, so please run `mvn clean install -pl storm-shaded-deps -am` if you haven't built Storm already.
+
 In the Storm project root run
 ```
-mvn javadoc:aggregate -DreportOutputDirectory=./docs/ -DdestDir=javadocs -Dnotimestamp=true -P '!include-shaded-deps'
+mvn javadoc:aggregate -DreportOutputDirectory=./docs/ -DdestDir=javadocs -Dnotimestamp=true -pl '!storm-shaded-deps'
 ```
 
 In the storm-site project, release documentation is placed under the releases directory named after the release version. See [below](#how-release-specific-docs-work) for details about release specific documentation.
