@@ -5,9 +5,164 @@
     <description></description>
     <link>http://storm.apache.org/</link>
     <atom:link href="http://storm.apache.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 27 Sep 2021 14:20:53 -0500</pubDate>
-    <lastBuildDate>Mon, 27 Sep 2021 14:20:53 -0500</lastBuildDate>
+    <pubDate>Mon, 27 Sep 2021 15:11:55 -0500</pubDate>
+    <lastBuildDate>Mon, 27 Sep 2021 15:11:55 -0500</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Apache Storm 2.3.0 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.3.0 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes a number of code improvements and important bug fixes that improve Apache Storm&amp;#39;s performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release&quot;&gt;Changes in this Release&lt;/h2&gt;
+
+&lt;h2&gt;New Feature&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3271&quot;&gt;STORM-3271&lt;/a&gt;] - Launch storm workers in docker containers&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3388&quot;&gt;STORM-3388&lt;/a&gt;] - Launch workers inside container using runc runtime&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3638&quot;&gt;STORM-3638&lt;/a&gt;] - Add fast and more reliable process liveness check&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3641&quot;&gt;STORM-3641&lt;/a&gt;] - switch JCQueue metrics to new metrics API&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3642&quot;&gt;STORM-3642&lt;/a&gt;] - update AutoTGT metric to new API&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3644&quot;&gt;STORM-3644&lt;/a&gt;] - improve PacemakerClient error messaging&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3647&quot;&gt;STORM-3647&lt;/a&gt;] - Add OFF-HEAP macro for worker childopts similar to LIMIT-MEM&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3648&quot;&gt;STORM-3648&lt;/a&gt;] - Add meter to track worker heartbeat rate&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3650&quot;&gt;STORM-3650&lt;/a&gt;] - Ackers and metricComponents are not distributed evenly&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3653&quot;&gt;STORM-3653&lt;/a&gt;] - Document treatment of common nodes in favored/unfavored nodes in scheduling&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3654&quot;&gt;STORM-3654&lt;/a&gt;] - JCQueue shouldn't include executor string in the metric name&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3656&quot;&gt;STORM-3656&lt;/a&gt;] - Change handling of Hadoop TGT renewal exception&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3657&quot;&gt;STORM-3657&lt;/a&gt;] - storm.messaging.netty.authentication should be true if it is true in either the topology conf or cluster conf&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3659&quot;&gt;STORM-3659&lt;/a&gt;] - User page should show storm Version in the Owner topologies table&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3660&quot;&gt;STORM-3660&lt;/a&gt;] - Remove messaging queue for updating Executor credentials&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3661&quot;&gt;STORM-3661&lt;/a&gt;] - Netty server should handle incoming messages better&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3662&quot;&gt;STORM-3662&lt;/a&gt;] - Continue to support Pacemaker for 2.x topologies&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3667&quot;&gt;STORM-3667&lt;/a&gt;] - Exception message on submitting topology due to incorrect worker max heap size should be more straightforward &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3670&quot;&gt;STORM-3670&lt;/a&gt;] - Separate configurations for daemon metric reporters and topology metrics reporters&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3671&quot;&gt;STORM-3671&lt;/a&gt;] - Add TopologySummary method to NImbus for optimal UI queries&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3673&quot;&gt;STORM-3673&lt;/a&gt;] - update BuiltinMetrics to use v2 Metrics API&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3675&quot;&gt;STORM-3675&lt;/a&gt;] - Eliminate ps command and use /proc/&lt;pid&gt; status in ServerUtils&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3676&quot;&gt;STORM-3676&lt;/a&gt;] - Reduce debug spew to scheduler log&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3682&quot;&gt;STORM-3682&lt;/a&gt;] - Upgrade netty client metrics to use V2 API&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3685&quot;&gt;STORM-3685&lt;/a&gt;] - Detect Loops in Topology at Submit&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3691&quot;&gt;STORM-3691&lt;/a&gt;] - Refactor Resource Aware Strategies (Base, Generic, Default)&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3692&quot;&gt;STORM-3692&lt;/a&gt;] - Handle UID return from Files.getOwner() at process liveness check&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3694&quot;&gt;STORM-3694&lt;/a&gt;] - all V2 metric reporters to report metric short names with dimensions&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3697&quot;&gt;STORM-3697&lt;/a&gt;] - Add metric for capacity&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3706&quot;&gt;STORM-3706&lt;/a&gt;] - Cluster.needsSchedulingRas always succeeds&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3707&quot;&gt;STORM-3707&lt;/a&gt;] - Add meter to track update blob failures&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3708&quot;&gt;STORM-3708&lt;/a&gt;] - ConstraintSolverConfig LOG messages should include topology id&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3709&quot;&gt;STORM-3709&lt;/a&gt;] - Reject topology submission if missing spout&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3714&quot;&gt;STORM-3714&lt;/a&gt;] - Add rate information for TaskMetrics&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3715&quot;&gt;STORM-3715&lt;/a&gt;] - Add Caching to HDFS BlobStore&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3719&quot;&gt;STORM-3719&lt;/a&gt;] - Add configuration for AsyncLocalizer updateBlobs frequency&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3721&quot;&gt;STORM-3721&lt;/a&gt;] - Change child pom.xml reference to parent pom.xml&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3724&quot;&gt;STORM-3724&lt;/a&gt;] - Use blobstore dir modtime to avoid update lookups by HDFSBlobstore&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3737&quot;&gt;STORM-3737&lt;/a&gt;] - Share Worker Metric Registry For Guice AOP Based Metrics Integeration&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3739&quot;&gt;STORM-3739&lt;/a&gt;] - Scheduling should sort numa zones by host groups&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3744&quot;&gt;STORM-3744&lt;/a&gt;] - IntelliJ does not find shaded classes&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3749&quot;&gt;STORM-3749&lt;/a&gt;] - improve logging on server error in StormServerHandler&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3755&quot;&gt;STORM-3755&lt;/a&gt;] - While scheduling multiple ackers with executor use best effort basis&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3758&quot;&gt;STORM-3758&lt;/a&gt;] - Zookeeper reconnect events sometime cause workers to restart&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3774&quot;&gt;STORM-3774&lt;/a&gt;] - Migrate Cgroup metrics to V2 &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3778&quot;&gt;STORM-3778&lt;/a&gt;] - convert SpoutThrottlingMetrics to V2 API&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3780&quot;&gt;STORM-3780&lt;/a&gt;] - switch ErrorReportingMetrics to V2 API&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3786&quot;&gt;STORM-3786&lt;/a&gt;] - V2 metrics tick may overreport or not report at all&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3790&quot;&gt;STORM-3790&lt;/a&gt;] - Add meter to track failures WorkerTokenAuthorizer getPassword&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3791&quot;&gt;STORM-3791&lt;/a&gt;] - update metric documentation&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3793&quot;&gt;STORM-3793&lt;/a&gt;] - Add metric to track backpressure status for a task&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3553&quot;&gt;STORM-3553&lt;/a&gt;] - Upgrade JQuery to 3.5.1&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3624&quot;&gt;STORM-3624&lt;/a&gt;] - Race condition on ArtifactoryConfigLoader.load&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3649&quot;&gt;STORM-3649&lt;/a&gt;] - Logic error regarding storm.supervisor.medium.memory.grace.period.ms&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3652&quot;&gt;STORM-3652&lt;/a&gt;] -  Last error not displayed  in Topology summary storm ui&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3655&quot;&gt;STORM-3655&lt;/a&gt;] - Worker should commit suicide On Change in its assignment.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3658&quot;&gt;STORM-3658&lt;/a&gt;] - Problematic worker stays alive because of a deadlock and race condition caused by ShutdownHooks&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3663&quot;&gt;STORM-3663&lt;/a&gt;] - Topology with Mockito 1.x fails to run unit tests &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3666&quot;&gt;STORM-3666&lt;/a&gt;] - Validate component name in rebalance command and fix --executor option&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3677&quot;&gt;STORM-3677&lt;/a&gt;] - Fix Worker Suicide Function if assignment is null&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3679&quot;&gt;STORM-3679&lt;/a&gt;] - misuse of nodeId as hostname in LoadAwareShuffleGrouping&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3684&quot;&gt;STORM-3684&lt;/a&gt;] - receive-queue V2 metrics shouldn't have &quot;_system&quot; as componentId if it is from a system task&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3690&quot;&gt;STORM-3690&lt;/a&gt;] - UI has NullPointerException when the scheduler is not ResourceAwareScheduler&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3695&quot;&gt;STORM-3695&lt;/a&gt;] - Add Timer rates to datapoints for V2 metrics tick&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3696&quot;&gt;STORM-3696&lt;/a&gt;] - ClientSupervisorUtils.processLauncherAndWait ignores InterruptedException&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3699&quot;&gt;STORM-3699&lt;/a&gt;] - fix flight.bash to support flight recording on openJDK8u262 or newer&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3701&quot;&gt;STORM-3701&lt;/a&gt;] - Race Condition between cleanup thread and download tasks&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3704&quot;&gt;STORM-3704&lt;/a&gt;] - Cosmetic: columns shifted in &quot;Topology summary&quot; table&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3712&quot;&gt;STORM-3712&lt;/a&gt;] - Check-Updated-License-Files CI job has been broken&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3720&quot;&gt;STORM-3720&lt;/a&gt;] - BlobStoreFile getModTime() never updates after first call&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3723&quot;&gt;STORM-3723&lt;/a&gt;] - ServerUtils.isAnyPosixProcessPidDirAlive might return wrong result&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3725&quot;&gt;STORM-3725&lt;/a&gt;] - DRPC spout will crash when any one of DRPC server is down&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3727&quot;&gt;STORM-3727&lt;/a&gt;] - SUPERVISOR_SLOTS_PORTS could be list of Longs&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3728&quot;&gt;STORM-3728&lt;/a&gt;] - Workers are not able to connect to Pacemaker if pacemaker.auth.method is KERBEROS&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3729&quot;&gt;STORM-3729&lt;/a&gt;] - Assigning memory greater and equal than 2048m will make assgin memory for slot values to 1m&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3731&quot;&gt;STORM-3731&lt;/a&gt;] - Remove unused nashorn import in storm-loadgen:OutputStream.java&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3733&quot;&gt;STORM-3733&lt;/a&gt;] - AsyncLocalizer stuck looking for missing topology&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3735&quot;&gt;STORM-3735&lt;/a&gt;] - Kyro serialization fails on some metric tuples when topology.fall.back.on.java.serialization is false&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3740&quot;&gt;STORM-3740&lt;/a&gt;] - Asynchronous background blob download can cause orphaned blob references&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3741&quot;&gt;STORM-3741&lt;/a&gt;] - Maven Surefire plugin corrupts output and creates an excessive log file&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3748&quot;&gt;STORM-3748&lt;/a&gt;] - prevent concurrent modification when fetching v2 metrics&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3763&quot;&gt;STORM-3763&lt;/a&gt;] - Backpressure message ignored by the receiver caused the topology to not progress&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3765&quot;&gt;STORM-3765&lt;/a&gt;] - NPE in DRPCSimpleACLAuthorizer.readAclFromConfig when drpc.authorizer.acl has no values&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3767&quot;&gt;STORM-3767&lt;/a&gt;] - NPE on getComponentPendingProfileActions &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3769&quot;&gt;STORM-3769&lt;/a&gt;] - Failed adding references to blobs: FileNotFoundException&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3775&quot;&gt;STORM-3775&lt;/a&gt;] - topology.blobstore.map can cause supervisor restarts&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3785&quot;&gt;STORM-3785&lt;/a&gt;] - Rate metrics are wrongly divided by 1000000&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Comment&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3687&quot;&gt;STORM-3687&lt;/a&gt;] - Add a warning about possible issues on a mixed cluster if the StormCommon.systemTopology implementation is changed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3718&quot;&gt;STORM-3718&lt;/a&gt;] - Updating the dropwizard dependency&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3757&quot;&gt;STORM-3757&lt;/a&gt;] - Update jackson version to 2.10.0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3635&quot;&gt;STORM-3635&lt;/a&gt;] - Add LocalityAwareness documentation&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3722&quot;&gt;STORM-3722&lt;/a&gt;] - Update committer list&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Test&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3743&quot;&gt;STORM-3743&lt;/a&gt;] - Add new topologies for TestLargeCluster&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Sub-task&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3674&quot;&gt;STORM-3674&lt;/a&gt;] - explicitly specify pip2 and pip3 in travis-install.sh&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3681&quot;&gt;STORM-3681&lt;/a&gt;] - Enable basic Travis ARM CI job&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3711&quot;&gt;STORM-3711&lt;/a&gt;] - Enable all the modules in ARM CI&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 27 Sep 2021 00:00:00 -0500</pubDate>
+        <link>http://storm.apache.org/2021/09/27/storm230-released.html</link>
+        <guid isPermaLink="true">http://storm.apache.org/2021/09/27/storm230-released.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Apache Storm 2.2.0 Released</title>
@@ -982,72 +1137,6 @@ affect you. If you were using a custom Subscription, &lt;a href=&quot;https://gi
         <pubDate>Thu, 15 Feb 2018 00:00:00 -0600</pubDate>
         <link>http://storm.apache.org/2018/02/15/storm112-released.html</link>
         <guid isPermaLink="true">http://storm.apache.org/2018/02/15/storm112-released.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Apache Storm 1.0.6 Released</title>
-        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 1.0.5 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;This is a maintenance release that includes a number of important bug fixes that improve Apache Storm&amp;#39;s performance, stability and fault tolerance. We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
-
-&lt;h2 id=&quot;apache-kafka-integration-improvements&quot;&gt;Apache Kafka Integration Improvements&lt;/h2&gt;
-
-&lt;p&gt;This release includes many improvements to Apache Storm&amp;#39;s Kafka integration that improve stability, ease configuration, and expose new features. More details can be found in the
-&lt;a href=&quot;/releases/1.0.6/storm-kafka-client.html&quot;&gt;Kafka client documentation&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
-
-&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
-
-&lt;h2 id=&quot;changes-in-this-release&quot;&gt;Changes in this Release&lt;/h2&gt;
-
-&lt;h2&gt;Improvement&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2877&quot;&gt;STORM-2877&lt;/a&gt;] - Introduce an option to configure pagination in Storm UI &lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2917&quot;&gt;STORM-2917&lt;/a&gt;] - Check the config(nimbus.host) before using it to connect&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;Bug&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2451&quot;&gt;STORM-2451&lt;/a&gt;] - windows storm.cmd does not set log4j2 config file correctly by default&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2690&quot;&gt;STORM-2690&lt;/a&gt;] - resurrect invocation of ISupervisor.assigned() &amp; make Supervisor.launchDaemon() accessible&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2751&quot;&gt;STORM-2751&lt;/a&gt;] - Remove AsyncLoggingContext from Supervisor&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2764&quot;&gt;STORM-2764&lt;/a&gt;] - HDFSBlobStore leaks file system objects&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2771&quot;&gt;STORM-2771&lt;/a&gt;] - Some tests are being run twice&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2786&quot;&gt;STORM-2786&lt;/a&gt;] - Ackers leak tracking info on failure and lots of other cases.&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2853&quot;&gt;STORM-2853&lt;/a&gt;] - Deactivated topologies cause high cpu utilization&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2856&quot;&gt;STORM-2856&lt;/a&gt;] - Make Storm build work on post 2017Q4 Travis Trusty image&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2870&quot;&gt;STORM-2870&lt;/a&gt;] - FileBasedEventLogger leaks non-daemon ExecutorService which prevents process to be finished&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2879&quot;&gt;STORM-2879&lt;/a&gt;] - Supervisor collapse continuously when there is a expired assignment for overdue storm&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2892&quot;&gt;STORM-2892&lt;/a&gt;] - Flux test fails to parse valid PATH environment variable&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2894&quot;&gt;STORM-2894&lt;/a&gt;] - fix some random typos in tests&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2912&quot;&gt;STORM-2912&lt;/a&gt;] - Tick tuple is being shared without resetting start time and incur side-effect to break metrics&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2918&quot;&gt;STORM-2918&lt;/a&gt;] - Upgrade Netty version&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;Task&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2874&quot;&gt;STORM-2874&lt;/a&gt;] - Minor style improvements to backpressure code&lt;/li&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2937&quot;&gt;STORM-2937&lt;/a&gt;] - Overwrite storm-kafka-client 1.x-branch into 1.0.x-branch&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;Sub-task&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2858&quot;&gt;STORM-2858&lt;/a&gt;] - Fix worker-launcher build&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;/body&gt;
-&lt;/html&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 14 Feb 2018 00:00:00 -0600</pubDate>
-        <link>http://storm.apache.org/2018/02/14/storm106-released.html</link>
-        <guid isPermaLink="true">http://storm.apache.org/2018/02/14/storm106-released.html</guid>
         
         
       </item>
