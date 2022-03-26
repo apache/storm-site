@@ -1,5 +1,5 @@
 # Apache Storm Website and Documentation
-This is the source for the Release specific part of the Apache Storm website and documentation. It is statically generated using [jekyll](http://jekyllrb.com).
+This is the source for the Release specific part of the Apache Storm website and documentation. It is statically generated using [jekyll](https://jekyllrb.com).
 
 ## Site Generation
 First install jekyll and bundler (assuming you have ruby installed):
@@ -20,7 +20,7 @@ bundle exec jekyll serve -w
 
 The `-w` option tells jekyll to watch for changes to files and regenerate the site automatically when any content changes.
 
-Point your browser to http://localhost:4000
+Point your browser to https://localhost:4000
 
 By default, jekyll will generate the site in a `_site` directory.
 

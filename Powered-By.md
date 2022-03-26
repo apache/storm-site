@@ -11,34 +11,34 @@ Want to be added to this page? Send an email [here](mailto:dev@storm.apache.org)
         <div class="row">
           <div class="col-md-12">
               <div id="owl-example" class="owl-carousel">
-                    <a href="http://www.yahoo.com/" target="blank"><img src="images/logos/yahoo.png" class="img-responsive"></a>
-                    <a href="http://www.twitter.com/" target="blank"><img src="images/logos/twitter.jpg" class="img-responsive"></a>
-                    <a href="http://www.spotify.com/" target="blank"><img src="images/logos/spotify.jpg" class="img-responsive"></a>
-                    <a href="http://www.yahoo.co.jp/" target="blank"><img src="images/logos/yahoo-japan.jpg" class="img-responsive"></a>
-                    <a href="http://www.yelp.com/" target="blank"><img src="images/logos/yelp.jpg" class="img-responsive"></a>
-                    <a href="http://flipboard.com/" target="blank"><img src="images/logos/flipboard.jpg" class="img-responsive"></a>
-                    <a href="http://www.ooyala.com/" target="blank"><img src="images/logos/ooyala.jpg" class="img-responsive"></a>
-                    <a href="http://groupon.com/" target="blank"><img src="images/logos/groupon.jpg" class="img-responsive"></a>
-                    <a href="http://www.parc.com/" target="blank"><img src="images/logos/parc.png" class="img-responsive"></a>
-                    <a href="http://www.alibaba.com/" target="blank"><img src="images/logos/alibaba.jpg" class="img-responsive"></a>
-                    <a href="http://www.baidu.com/" target="blank"><img src="images/logos/bai.jpg" class="img-responsive"></a>
-                    <a href="http://www.cerner.com/" target="blank"><img src="images/logos/cerner.jpg" class="img-responsive"></a>
-                    <a href="http://www.fullcontact.com/" target="blank"><img src="images/logos/fullcontact.jpg" class="img-responsive"></a>
-                    <a href="http://www.healthmarketscience.com/" target="blank"><img src="images/logos/health-market-science.jpg" class="img-responsive"></a>
-                    <a href="http://www.infochimps.com/" target="blank"><img src="images/logos/infochimp.jpg" class="img-responsive"></a>
-                    <a href="http://www.klout.com/" target="blank"><img src="images/logos/klout.jpg" class="img-responsive"></a>
-                    <a href="http://www.loggly.com/" target="blank"><img src="images/logos/loggly.jpg" class="img-responsive"></a>
-                    <a href="http://www.premise.is/" target="blank"><img src="images/logos/premise.jpg" class="img-responsive"></a>
-                    <a href="http://www.iqyi.com/" target="blank"><img src="images/logos/qiy.jpg" class="img-responsive"></a>
-                    <a href="http://www.quicklizard.com/" target="blank"><img src="images/logos/quicklizard.jpg" class="img-responsive"></a>
-                    <a href="http://www.rocketfuel.com/" target="blank"><img src="images/logos/rocketfuel.jpg" class="img-responsive"></a>
-                    <a href="http://www.rubiconproject.com/" target="blank"><img src="images/logos/rubicon.jpg" class="img-responsive"></a>
-                    <a href="http://spider.io/" target="blank" ><img src="images/logos/spider.jpg" class="img-responsive"></a>
-                    <a href="http://www.taobao.com/" target="blank" ><img src="images/logos/taobao.jpg" class="img-responsive"></a>
-                    <a href="http://www.weather.com/" target="blank" ><img src="images/logos/the-weather-channel.jpg" class="img-responsive"></a>
+                    <a href="https://www.yahoo.com/" target="blank"><img src="images/logos/yahoo.png" class="img-responsive"></a>
+                    <a href="https://www.twitter.com/" target="blank"><img src="images/logos/twitter.jpg" class="img-responsive"></a>
+                    <a href="https://www.spotify.com/" target="blank"><img src="images/logos/spotify.jpg" class="img-responsive"></a>
+                    <a href="https://www.yahoo.co.jp/" target="blank"><img src="images/logos/yahoo-japan.jpg" class="img-responsive"></a>
+                    <a href="https://www.yelp.com/" target="blank"><img src="images/logos/yelp.jpg" class="img-responsive"></a>
+                    <a href="https://flipboard.com/" target="blank"><img src="images/logos/flipboard.jpg" class="img-responsive"></a>
+                    <a href="https://www.ooyala.com/" target="blank"><img src="images/logos/ooyala.jpg" class="img-responsive"></a>
+                    <a href="https://groupon.com/" target="blank"><img src="images/logos/groupon.jpg" class="img-responsive"></a>
+                    <a href="https://www.parc.com/" target="blank"><img src="images/logos/parc.png" class="img-responsive"></a>
+                    <a href="https://www.alibaba.com/" target="blank"><img src="images/logos/alibaba.jpg" class="img-responsive"></a>
+                    <a href="https://www.baidu.com/" target="blank"><img src="images/logos/bai.jpg" class="img-responsive"></a>
+                    <a href="https://www.cerner.com/" target="blank"><img src="images/logos/cerner.jpg" class="img-responsive"></a>
+                    <a href="https://www.fullcontact.com/" target="blank"><img src="images/logos/fullcontact.jpg" class="img-responsive"></a>
+                    <a href="https://www.healthmarketscience.com/" target="blank"><img src="images/logos/health-market-science.jpg" class="img-responsive"></a>
+                    <a href="https://www.infochimps.com/" target="blank"><img src="images/logos/infochimp.jpg" class="img-responsive"></a>
+                    <a href="https://www.klout.com/" target="blank"><img src="images/logos/klout.jpg" class="img-responsive"></a>
+                    <a href="https://www.loggly.com/" target="blank"><img src="images/logos/loggly.jpg" class="img-responsive"></a>
+                    <a href="https://www.premise.is/" target="blank"><img src="images/logos/premise.jpg" class="img-responsive"></a>
+                    <a href="https://www.iqyi.com/" target="blank"><img src="images/logos/qiy.jpg" class="img-responsive"></a>
+                    <a href="https://www.quicklizard.com/" target="blank"><img src="images/logos/quicklizard.jpg" class="img-responsive"></a>
+                    <a href="https://www.rocketfuel.com/" target="blank"><img src="images/logos/rocketfuel.jpg" class="img-responsive"></a>
+                    <a href="https://www.rubiconproject.com/" target="blank"><img src="images/logos/rubicon.jpg" class="img-responsive"></a>
+                    <a href="https://spider.io/" target="blank" ><img src="images/logos/spider.jpg" class="img-responsive"></a>
+                    <a href="https://www.taobao.com/" target="blank" ><img src="images/logos/taobao.jpg" class="img-responsive"></a>
+                    <a href="https://www.weather.com/" target="blank" ><img src="images/logos/the-weather-channel.jpg" class="img-responsive"></a>
                     <a href="https://www.verisigninc.com/" target="blank" ><img src="images/logos/verisign.jpg" class="img-responsive"></a>
-                    <a href="http://www.webmd.com/" target="blank" ><img src="images/logos/webmd.jpg" class="img-responsive"></a>
-                    <a href="http://www.wego.com/"><img src="images/logos/wego.jpg" class="img-responsive"></a>
+                    <a href="https://www.webmd.com/" target="blank" ><img src="images/logos/webmd.jpg" class="img-responsive"></a>
+                    <a href="https://www.wego.com/"><img src="images/logos/wego.jpg" class="img-responsive"></a>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@ Want to be added to this page? Send an email [here](mailto:dev@storm.apache.org)
 
 <tr>
 <td>
-<a href="http://groupon.com">Groupon</a>
+<a href="https://groupon.com">Groupon</a>
 </td>
 <td>
 <p>
@@ -60,7 +60,7 @@ At Groupon we use Storm to build real-time data integration systems. Storm helps
 </tr>
 
 <tr>
-<td><a href="http://www.weather.com/">The Weather Channel</a></td>
+<td><a href="https://www.weather.com/">The Weather Channel</a></td>
 <td>
 <p>At Weather Channel we use several Storm topologies to ingest and persist weather data. Each topology is responsible for fetching one dataset from an internal or external network (the Internet), reshaping the records for use by our company, and persisting the records to relational databases. It is particularly useful to have an automatic mechanism for repeating attempts to download and manipulate the data when there is a hiccup.</p>
 </td>
@@ -68,7 +68,7 @@ At Groupon we use Storm to build real-time data integration systems. Storm helps
 
 <tr>
 <td>
-<a href="http://www.fullcontact.com/">FullContact</a>
+<a href="https://www.fullcontact.com/">FullContact</a>
 </td>
 <td>
 <p>
@@ -79,7 +79,7 @@ At FullContact we currently use Storm as the backbone of the system which synchr
 
 <tr>
 <td>
-<a href="http://twitter.com">Twitter</a>
+<a href="https://twitter.com">Twitter</a>
 </td>
 <td>
 <p>
@@ -90,7 +90,7 @@ Storm powers a wide variety of Twitter systems, ranging in applications from dis
 
 <tr>
 <td>
-<a href="http://www.yahoo.com">Yahoo!</a>
+<a href="https://www.yahoo.com">Yahoo!</a>
 </td>
 <td>
 <p>
@@ -101,7 +101,7 @@ Yahoo! is developing a next generation platform that enables the convergence of 
 
 <tr>
 <td>
-<a href="http://www.yahoo.co.jp/">Yahoo! JAPAN</a>
+<a href="https://www.yahoo.co.jp/">Yahoo! JAPAN</a>
 </td>
 <td>
 <p>
@@ -113,7 +113,7 @@ Yahoo! JAPAN is a leading web portal in Japan. Storm applications are processing
 
 <tr>
 <td>
-<a href="http://www.webmd.com">WebMD</a>
+<a href="https://www.webmd.com">WebMD</a>
 </td>
 <td>
 <p>
@@ -127,7 +127,7 @@ We use storm to power our search indexing process.  We continue to discover new 
 
 <tr>
 <td>
-<a href="http://www.spotify.com">Spotify</a>
+<a href="https://www.spotify.com">Spotify</a>
 </td>
 <td>
 <p>
@@ -139,7 +139,7 @@ Spotify serves streaming music to over 10 million subscribers and 40 million act
 
 <tr>
 <td>
-<a href="http://www.infochimps.com">Infochimps</a>
+<a href="https://www.infochimps.com">Infochimps</a>
 </td>
 <td>
 <p>
@@ -179,7 +179,7 @@ Rapid solution development and deployment, along with our expert Big Data method
 
 <tr>
 <td>
-<a href="http://healthmarketscience.com/">Health Market Science</a>
+<a href="https://healthmarketscience.com/">Health Market Science</a>
 </td>
 <td>
 <p>
@@ -201,7 +201,7 @@ Verisign, a global leader in domain names and Internet security, enables Interne
 
 <tr>
 <td>
-<a href="http://cerner.com/">Cerner</a>
+<a href="https://cerner.com/">Cerner</a>
 </td>
 <td>
 <p>
@@ -212,7 +212,7 @@ Cerner is a leader in health care information technology. We have been using Sto
 
 <tr>
 <td>
-<a href="http://www.aeris.com/">Aeris Communications</a>
+<a href="https://www.aeris.com/">Aeris Communications</a>
 </td>
 <td>
 <p>
@@ -225,7 +225,7 @@ Aeris Communications has the only cellular network that was designed and built e
 
 <tr>
 <td>
-<a href="http://flipboard.com/">Flipboard</a>
+<a href="https://flipboard.com/">Flipboard</a>
 </td>
 <td>
 <p>
@@ -239,7 +239,7 @@ We are using Storm across a wide range of our services from content search, to r
 
 <tr>
 <td>
-<a href="http://www.rubiconproject.com/">Rubicon Project</a>
+<a href="https://www.rubiconproject.com/">Rubicon Project</a>
 </td>
 <td>
 <p>
@@ -250,7 +250,7 @@ Storm is being used in production mode at the Rubicon Project to analyze the res
 
 <tr>
 <td>
-<a href="http://www.ooyala.com/">Ooyala</a>
+<a href="https://www.ooyala.com/">Ooyala</a>
 </td>
 <td>
 <p>
@@ -269,7 +269,7 @@ Ooyala will be deploying Storm in production to give our customers real-time str
 
 <tr>
 <td>
-<a href="http://www.taobao.com/index_global.php">Taobao</a>
+<a href="https://www.taobao.com/index_global.php">Taobao</a>
 </td>
 <td>
 <p>
@@ -280,7 +280,7 @@ We make statistics of logs and extract useful information from the statistics in
 
 <tr>
 <td>
-<a href="http://www.alibaba.com/">Alibaba</a>
+<a href="https://www.alibaba.com/">Alibaba</a>
 </td>
 <td>
 <p>
@@ -292,7 +292,7 @@ Alibaba is the leading B2B e-commerce website in the world. We use storm to proc
 
 <tr>
 <td>
-<a href="http://iQIYI.COM">iQIYI</a>
+<a href="https://iQIYI.COM">iQIYI</a>
 </td>
 <td>
 <p>
@@ -304,7 +304,7 @@ iQIYI is China`s largest online video platform. We are using Storm in our video 
 
 <tr>
 <td>
-<a href="http://www.baidu.com/">Baidu</a>
+<a href="https://www.baidu.com/">Baidu</a>
 </td>
 <td>
 <p>
@@ -316,11 +316,11 @@ This project helps Ops to determine and monitor services status and can do great
 
 <tr>
 <td>
-<a href="http://www.yelp.com/">Yelp</a>
+<a href="https://www.yelp.com/">Yelp</a>
 </td>
 <td>
 <p>
-Yelp is using Storm with <a href="http://pyleus.org/">Pyleus</a> to build a platform for developers to consume and process high throughput streams of data in real time. We have ongoing projects to use Storm and Pyleus for overhauling our internal application metrics pipeline, building an automated Python profile analysis system, and for general ETL operations. As its support for non-JVM components matures, we hope to make Storm the standard way of processing streaming data at Yelp.
+Yelp is using Storm with <a href="https://pyleus.org/">Pyleus</a> to build a platform for developers to consume and process high throughput streams of data in real time. We have ongoing projects to use Storm and Pyleus for overhauling our internal application metrics pipeline, building an automated Python profile analysis system, and for general ETL operations. As its support for non-JVM components matures, we hope to make Storm the standard way of processing streaming data at Yelp.
 </p>
 </td>
 </tr>
@@ -328,7 +328,7 @@ Yelp is using Storm with <a href="http://pyleus.org/">Pyleus</a> to build a plat
 
 <tr>
 <td>
-<a href="http://www.klout.com/">Klout</a>
+<a href="https://www.klout.com/">Klout</a>
 </td>
 <td>
 <p>

@@ -10,7 +10,7 @@ This is a maintenance release that includes a number of important bug fixes that
 
 In the 1.2.0 release, an LGPL-licensed binary dependency was inadvertently included. The 1.2.0 has since been removed from distribution.
 
-The dependency in question (Remote Tea Runtime) is required when using the Ganglia reporter for the new metrics system. To enable the Ganglia reporter you will need to download the following [jar](http://central.maven.org/maven2/org/acplt/oncrpc/1.0.7/oncrpc-1.0.7.jar) and place it in the `lib` directory of the Apache Storm installation.
+The dependency in question (Remote Tea Runtime) is required when using the Ganglia reporter for the new metrics system. To enable the Ganglia reporter you will need to download the following [jar](https://central.maven.org/maven2/org/acplt/oncrpc/1.0.7/oncrpc-1.0.7.jar) and place it in the `lib` directory of the Apache Storm installation.
 
 
 Thanks

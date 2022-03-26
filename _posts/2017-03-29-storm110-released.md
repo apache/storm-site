@@ -10,7 +10,7 @@ This release represents a major milestone in the evolution of Apache Storm, and 
 
 Streaming SQL
 -------------
-Apache Storm 1.1.0 supports native Streaming SQL, powered by [Apache Calcite](http://calcite.apache.org), that allows users to run SQL queries over streaming data as well update external systems and data stores such as [Apache Hive](http://hive.apache.org). To deploy an SQL-based topology users define the SQL query in a text file and use the `storm sql` command to submit the resulting topology to an Apache Storm cluster. Behind the scenes Apache Storm will compile the SQL into a Trident topology and run it on the cluster.
+Apache Storm 1.1.0 supports native Streaming SQL, powered by [Apache Calcite](https://calcite.apache.org), that allows users to run SQL queries over streaming data as well update external systems and data stores such as [Apache Hive](https://hive.apache.org). To deploy an SQL-based topology users define the SQL query in a text file and use the `storm sql` command to submit the resulting topology to an Apache Storm cluster. Behind the scenes Apache Storm will compile the SQL into a Trident topology and run it on the cluster.
 
 Apache Storm's SQL support includes the following features:
 
@@ -56,14 +56,14 @@ More information on Apache Storm's PMML support can be found [here](https://gith
 
 Druid Integration
 -----------------
-[Druid](http://druid.io) is a scalable, high-performance, column oriented, distributed data store popular for real time analytics use cases. Apache Storm 1.1.0 introduces a Apache Storm bolt and Trident state implementations for streaming data into a Druid data store.
+[Druid](https://druid.io) is a scalable, high-performance, column oriented, distributed data store popular for real time analytics use cases. Apache Storm 1.1.0 introduces a Apache Storm bolt and Trident state implementations for streaming data into a Druid data store.
 
 Documentation for Apache Storm's Druid integration can be found [here](https://github.com/apache/storm/blob/v1.1.0/external/storm-druid/README.md).
 
 
 OpenTSDB Integration
 --------------------
-[OpenTSDB](http://opentsdb.net) is a highly scalable time series database based on Apache HBase. Apache Storm 1.1.0 adds an Apache Storm bolt and Trident state implementations for writing data to OpenTSDB. Apache Storm's OpenTSDB integration gives users fine-grained control over how Apache Storm tuples map to OpenTSDB data structure by providing a simple interface (`ITupleOpenTsdbDatapointMapper`) that performs the translation.
+[OpenTSDB](https://opentsdb.net) is a highly scalable time series database based on Apache HBase. Apache Storm 1.1.0 adds an Apache Storm bolt and Trident state implementations for writing data to OpenTSDB. Apache Storm's OpenTSDB integration gives users fine-grained control over how Apache Storm tuples map to OpenTSDB data structure by providing a simple interface (`ITupleOpenTsdbDatapointMapper`) that performs the translation.
 
 Move information about Apache Storm's OpenTSDB integration can be found [here](https://github.com/apache/storm/blob/v1.1.0/external/storm-opentsdb/README.md).
 
@@ -123,13 +123,13 @@ Version: 1.1.0
 For users who cannot use Maven for building, external component jar files can be downloaded from Maven Central with the following URL pattern:
 
 ```
-http://repo1.maven.org/maven2/org/apache/storm/${artifactID}/${version}/${artifactId}-${version}.jar
+https://repo1.maven.org/maven2/org/apache/storm/${artifactID}/${version}/${artifactId}-${version}.jar
 ```
 
 For example, to download the storm-kafka-client jar file the URL would be:
 
 ```
-http://repo1.maven.org/maven2/org/apache/storm/storm-kafka-client/1.1.0/storm-kafka-client-1.1.0.jar
+https://repo1.maven.org/maven2/org/apache/storm/storm-kafka-client/1.1.0/storm-kafka-client-1.1.0.jar
 ```
 
 

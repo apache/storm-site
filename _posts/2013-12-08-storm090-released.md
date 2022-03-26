@@ -11,11 +11,11 @@ While a number of new features have been added, a key focus area for this releas
 
 Netty Transport
 ---------------
-The first hightlight of this release is the new [Netty](http://netty.io/index.html) Transport contributed by [Yahoo! Engineering](http://yahooeng.tumblr.com/). Apache Storm's core network transport mechanism is now plugable, and Apache Storm now comes with two implementations: The original 0MQ transport, and a new Netty-based implementation.
+The first highlight of this release is the new [Netty](https://netty.io/index.html) Transport contributed by [Yahoo! Engineering](https://yahooeng.tumblr.com/). Apache Storm's core network transport mechanism is now plugable, and Apache Storm now comes with two implementations: The original 0MQ transport, and a new Netty-based implementation.
 
 In earlier versions, Apache Storm relied solely on 0MQ for transport. Since 0MQ is a native library, it was highly platform-dependent and, at times, challenging to install properly. In addition, stability between versions varied widely between versions and only a relatively old 0MQ version (2.1.7) was certified to work with Apache Storm.
 
-The Netty transport offers a pure Java alternative that eliminates Apache Storm's dependency on native libraries. The Netty transport's performance is up to twice as fast as 0MQ, and it will open the door for authorization and authentication between worker processes. For an in-depth performance comparison of the 0MQ and Netty transports, see [this blog post](http://yahooeng.tumblr.com/post/64758709722/making-storm-fly-with-netty) by Apache Storm contributor [Bobby Evans](https://github.com/revans2).
+The Netty transport offers a pure Java alternative that eliminates Apache Storm's dependency on native libraries. The Netty transport's performance is up to twice as fast as 0MQ, and it will open the door for authorization and authentication between worker processes. For an in-depth performance comparison of the 0MQ and Netty transports, see [this blog post](https://yahooeng.tumblr.com/post/64758709722/making-storm-fly-with-netty) by Apache Storm contributor [Bobby Evans](https://github.com/revans2).
 
 To configure Apache Storm to use the Netty transport simply add the following to your `storm.yaml` configuration and adjust the values to best suit your use-case:
 
@@ -62,11 +62,11 @@ On the devops side, when upgrading to a new Apache Storm release, it is safest t
 
 Logging Changes
 ---------------
-Another important change in 0.9.0 has to do with logging. Apache Storm has largely switched over to the [slf4j API](http://www.slf4j.org) (backed by a [logback](http://logback.qos.ch) logger implementation). Some Apache Storm dependencies rely on the log4j API, so Apache Storm currently depends on [log4j-over-slf4j](http://www.slf4j.org/legacy.html#log4j-over-slf4j).
+Another important change in 0.9.0 has to do with logging. Apache Storm has largely switched over to the [slf4j API](https://www.slf4j.org) (backed by a [logback](https://logback.qos.ch) logger implementation). Some Apache Storm dependencies rely on the log4j API, so Apache Storm currently depends on [log4j-over-slf4j](https://www.slf4j.org/legacy.html#log4j-over-slf4j).
 
 These changes have implications for existing topologies and topology components that use the log4j API.
 
-In general, and when possible, Apache Storm topologies and topology components should use the [slf4j API](http://www.slf4j.org) for logging.
+In general, and when possible, Apache Storm topologies and topology components should use the [slf4j API](https://www.slf4j.org) for logging.
 
 
 Thanks

@@ -9,7 +9,7 @@ We are pleased to announce that Apache Storm 0.9.3 has been released and is avai
 Improved Kafka Integration
 ----------------------------
 
-Apache Storm has supported [Apache Kafka](http://kafka.apache.org/) as a streaming data source since version 0.9.2-incubating. Version 0.9.3 brings a number of improvements to the Kafka integration including the ability to write data to one or more Kafka clusters and topics.
+Apache Storm has supported [Apache Kafka](https://kafka.apache.org/) as a streaming data source since version 0.9.2-incubating. Version 0.9.3 brings a number of improvements to the Kafka integration including the ability to write data to one or more Kafka clusters and topics.
 
 The ability to both read from and write to Kafka further unlocks potential of the already powerful combination of Apache Storm and Kafka. Apache Storm users can now use Kafka as a source of and destination for streaming data. This allows for inter-topology communication, topology chaining, combining spout/bolt-based topologies with Trident-based data flows, and integration with any external system that supports data ingest from Kafka.
 
@@ -49,7 +49,7 @@ The following table lists the dependency package relocations:
 
 Multi-Lang Improvements
 -----------------------
-Apache Storm 0.9.3 includes a new [Node.js](http://nodejs.org) multi-lang implementation that allows developers to write spouts and bolts in JavaScript.
+Apache Storm 0.9.3 includes a new [Node.js](https://nodejs.org) multi-lang implementation that allows developers to write spouts and bolts in JavaScript.
 
 In addition to the Node.js implementation, the multi-lang protocol has been substantially improved in terms of robustness and error handling capabilities. As a result, **the multi-lang API has changed in a non-backward-compatible way**. Users with existing multi-lang topologies should consult the Python, Ruby, and JavaScript multi-lang examples to determine the impact prior to upgrading.
 
