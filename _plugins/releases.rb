@@ -35,8 +35,8 @@ module Releases
       # Set some metadata for each release
       releases.each { |release_name, release_data|
           set_if_unset(release_data, 'git-tag-or-branch', "v#{release_data['name']}")
-          set_if_unset(release_data, 'git-tree-base', "http://github.com/apache/storm/tree/#{release_data['git-tag-or-branch']}")
-          set_if_unset(release_data, 'git-blob-base', "http://github.com/apache/storm/blob/#{release_data['git-tag-or-branch']}")
+          set_if_unset(release_data, 'git-tree-base', "https://github.com/apache/storm/tree/#{release_data['git-tag-or-branch']}")
+          set_if_unset(release_data, 'git-blob-base', "https://github.com/apache/storm/blob/#{release_data['git-tag-or-branch']}")
           set_if_unset(release_data, 'base-name', "apache-storm-#{release_data['name']}")
           set_if_unset(release_data, 'has-download', !release_name.end_with?('-SNAPSHOT'))
       }
