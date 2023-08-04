@@ -1,0 +1,49 @@
+<p>OpenTSDB offers a scalable and highly available storage for time series data. It consists of a
+Time Series Daemon (TSD) servers along with command line utilities. Each TSD connects to the 
+configured HBase cluster to push/query the data.</p>
+
+<p>Time series data point consists of:</p>
+<ul>
+  <li>a metric name.</li>
+  <li>a UNIX timestamp (seconds or milliseconds since Epoch).</li>
+  <li>a value (64 bit integer or single-precision floating point value).</li>
+  <li>a set of tags (key-value pairs) that describe the time series the point belongs to.</li>
+</ul>
+
+<p>Storm bolt and trident state creates the above time series data from a tuple based on the given <code class="language-plaintext highlighter-rouge">TupleMetricPointMapper</code></p>
+
+<p>This module provides core Storm and Trident bolt implementations for writing data to OpenTSDB.</p>
+
+<p>Time series data points are written with at-least-once guarantee and duplicate data points should be handled as mentioned <a href="http://opentsdb.net/docs/build/html/user_guide/writing.html#duplicate-data-points">here</a> in OpenTSDB.</p>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="core-bolt">Core Bolt</h3>
+<p>Below example describes the usage of core bolt which is <code class="language-plaintext highlighter-rouge">org.apache.storm.opentsdb.bolt.OpenTsdbBolt</code></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+        <span class="nc">OpenTsdbClient</span><span class="o">.</span><span class="na">Builder</span> <span class="n">builder</span> <span class="o">=</span>  <span class="nc">OpenTsdbClient</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">(</span><span class="n">openTsdbUrl</span><span class="o">).</span><span class="na">sync</span><span class="o">(</span><span class="mi">30_000</span><span class="o">).</span><span class="na">returnDetails</span><span class="o">();</span>
+        <span class="kd">final</span> <span class="nc">OpenTsdbBolt</span> <span class="n">openTsdbBolt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OpenTsdbBolt</span><span class="o">(</span><span class="n">builder</span><span class="o">,</span> <span class="nc">Collections</span><span class="o">.</span><span class="na">singletonList</span><span class="o">(</span><span class="nc">TupleOpenTsdbDatapointMapper</span><span class="o">.</span><span class="na">DEFAULT_MAPPER</span><span class="o">));</span>
+        <span class="n">openTsdbBolt</span><span class="o">.</span><span class="na">withBatchSize</span><span class="o">(</span><span class="mi">10</span><span class="o">).</span><span class="na">withFlushInterval</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
+        <span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"opentsdb"</span><span class="o">,</span> <span class="n">openTsdbBolt</span><span class="o">).</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="s">"metric-gen"</span><span class="o">);</span>
+        
+</code></pre></div></div>
+
+<h3 id="trident-state">Trident State</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+        <span class="kd">final</span> <span class="nc">OpenTsdbStateFactory</span> <span class="n">openTsdbStateFactory</span> <span class="o">=</span>
+                <span class="k">new</span> <span class="nf">OpenTsdbStateFactory</span><span class="o">(</span><span class="nc">OpenTsdbClient</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">(</span><span class="n">tsdbUrl</span><span class="o">),</span>
+                        <span class="nc">Collections</span><span class="o">.</span><span class="na">singletonList</span><span class="o">(</span><span class="nc">TupleOpenTsdbDatapointMapper</span><span class="o">.</span><span class="na">DEFAULT_MAPPER</span><span class="o">));</span>
+        <span class="nc">TridentTopology</span> <span class="n">tridentTopology</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TridentTopology</span><span class="o">();</span>
+        
+        <span class="kd">final</span> <span class="nc">Stream</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">tridentTopology</span><span class="o">.</span><span class="na">newStream</span><span class="o">(</span><span class="s">"metric-tsdb-stream"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">MetricGenSpout</span><span class="o">());</span>
+        
+        <span class="n">stream</span><span class="o">.</span><span class="na">peek</span><span class="o">(</span><span class="k">new</span> <span class="nc">Consumer</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">accept</span><span class="o">(</span><span class="nc">TridentTuple</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+                <span class="no">LOG</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"########### Received tuple: [{}]"</span><span class="o">,</span> <span class="n">input</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}).</span><span class="na">partitionPersist</span><span class="o">(</span><span class="n">openTsdbStateFactory</span><span class="o">,</span> <span class="nc">MetricGenSpout</span><span class="o">.</span><span class="na">DEFAULT_METRIC_FIELDS</span><span class="o">,</span> <span class="k">new</span> <span class="nc">OpenTsdbStateUpdater</span><span class="o">());</span>
+        
+</code></pre></div></div>
