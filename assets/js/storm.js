@@ -52,16 +52,3 @@ $(document).ready(function() {
 	});
 
 });;
-
-function isMobile() {
-	    if (sessionStorage.desktop)
-	        return false;
-	    else if (localStorage.mobile)
-	        $('#twitter_widget').hide();
-
-	    var mobile = ['iphone','ipad','android','blackberry','nokia','opera mini','windows mobile','windows phone','iemobile']; 
-	    for (var i in mobile) 
-	    	if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0) 
-	    		$('#twitter_widget').hide();
-	    return false;
-	};
