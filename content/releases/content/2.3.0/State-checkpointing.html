@@ -1,0 +1,289 @@
+<h1 id="state-support-in-core-storm">State support in core storm</h1>
+<p>Storm core has abstractions for bolts to save and retrieve the state of its operations. There is a default in-memory
+based state implementation and also a Redis backed implementation that provides state persistence.</p>
+
+<h2 id="state-management">State management</h2>
+<p>Bolts that requires its state to be managed and persisted by the framework should implement the <code class="language-plaintext highlighter-rouge">IStatefulBolt</code> interface or
+extend the <code class="language-plaintext highlighter-rouge">BaseStatefulBolt</code> and implement <code class="language-plaintext highlighter-rouge">void initState(T state)</code> method. The <code class="language-plaintext highlighter-rouge">initState</code> method is invoked by the framework
+during the bolt initialization with the previously saved state of the bolt. This is invoked after prepare but before the bolt starts
+processing any tuples.</p>
+
+<p>Currently the only kind of <code class="language-plaintext highlighter-rouge">State</code> implementation that is supported is <code class="language-plaintext highlighter-rouge">KeyValueState</code> which provides key-value mapping.</p>
+
+<p>For example a word count bolt could use the key value state abstraction for the word counts as follows.</p>
+
+<ol>
+  <li>Extend the BaseStatefulBolt and type parameterize it with KeyValueState which would store the mapping of word to count.</li>
+  <li>The bolt gets initialized with its previously saved state in the init method. This will contain the word counts
+last committed by the framework during the previous run.</li>
+  <li>In the execute method, update the word count.</li>
+</ol>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">WordCountBolt</span> <span class="kd">extends</span> <span class="nc">BaseStatefulBolt</span><span class="o">&lt;</span><span class="nc">KeyValueState</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">KeyValueState</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="n">wordCounts</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">OutputCollector</span> <span class="n">collector</span><span class="o">;</span>
+    <span class="o">...</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="nc">Map</span> <span class="n">stormConf</span><span class="o">,</span> <span class="nc">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="nc">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+          <span class="k">this</span><span class="o">.</span><span class="na">collector</span> <span class="o">=</span> <span class="n">collector</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initState</span><span class="o">(</span><span class="nc">KeyValueState</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span> <span class="n">state</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">wordCounts</span> <span class="o">=</span> <span class="n">state</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">Tuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+          <span class="nc">String</span> <span class="n">word</span> <span class="o">=</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+          <span class="nc">Integer</span> <span class="n">count</span> <span class="o">=</span> <span class="n">wordCounts</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+          <span class="n">count</span><span class="o">++;</span>
+          <span class="n">wordCounts</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="n">count</span><span class="o">);</span>
+          <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="n">tuple</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Values</span><span class="o">(</span><span class="n">word</span><span class="o">,</span> <span class="n">count</span><span class="o">));</span>
+          <span class="n">collector</span><span class="o">.</span><span class="na">ack</span><span class="o">(</span><span class="n">tuple</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">...</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<ol>
+  <li>The framework periodically checkpoints the state of the bolt (default every second). The frequency
+can be changed by setting the storm config <code class="language-plaintext highlighter-rouge">topology.state.checkpoint.interval.ms</code></li>
+  <li>For state persistence, use a state provider that supports persistence by setting the <code class="language-plaintext highlighter-rouge">topology.state.provider</code> in the
+storm config. E.g. for using Redis based key-value state implementation set <code class="language-plaintext highlighter-rouge">topology.state.provider: org.apache.storm.redis.state.RedisKeyValueStateProvider</code>
+in storm.yaml. The provider implementation jar should be in the class path, which in this case means adding <code class="language-plaintext highlighter-rouge">storm-redis</code> 
+to dependency of your topology, or adding <code class="language-plaintext highlighter-rouge">--artifacts "org.apache.storm:storm-sql-redis:&lt;storm-version&gt;"</code> when submitting your topology with <code class="language-plaintext highlighter-rouge">storm jar</code>.</li>
+  <li>The state provider properties can be overridden by setting <code class="language-plaintext highlighter-rouge">topology.state.provider.config</code>. For Redis state this is a
+json config with the following properties.</li>
+</ol>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "keyClass": "Optional fully qualified class name of the Key type.",
+  "valueClass": "Optional fully qualified class name of the Value type.",
+  "keySerializerClass": "Optional Key serializer implementation class.",
+  "valueSerializerClass": "Optional Value Serializer implementation class.",
+  "jedisPoolConfig": {
+    "host": "localhost",
+    "port": 6379,
+    "timeout": 2000,
+    "database": 0,
+    "password": "xyz"
+    }
+}
+</code></pre></div></div>
+
+<p>For Redis Cluster state this is a json config with the following properties.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {
+   "keyClass": "Optional fully qualified class name of the Key type.",
+   "valueClass": "Optional fully qualified class name of the Value type.",
+   "keySerializerClass": "Optional Key serializer implementation class.",
+   "valueSerializerClass": "Optional Value Serializer implementation class.",
+   "jedisClusterConfig": {
+     "nodes": ["localhost:7379", "localhost:7380", "localhost:7381"],
+     "timeout": 2000,
+     "maxRedirections": 5
+   }
+ }
+</code></pre></div></div>
+
+<p>NOTE: If you used Redis state with Storm version 1.1.0 or earlier, you would need to also migrate your state since the representation of state has changed<br />
+from Base64-encoded string to binary to reduce huge overhead. Storm provides a migration tool to help, which is placed on <code class="language-plaintext highlighter-rouge">storm-redis-example</code> module.</p>
+
+<p>Please download the source from download page or clone the project, and type below command:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mvn clean install -DskipTests
+cd examples/storm-redis-examples
+&lt;storm-installation-dir&gt;/bin/storm jar target/storm-redis-examples-*.jar org.apache.storm.redis.tools.Base64ToBinaryStateMigrationUtil [options]
+</code></pre></div></div>
+
+<p>Supported options are listed here:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> -d,--dbnum &lt;arg&gt;       Redis DB number (default: 0)
+ -h,--host &lt;arg&gt;        Redis hostname (default: localhost)
+ -n,--namespace &lt;arg&gt;   REQUIRED the list of namespace to migrate.
+ -p,--port &lt;arg&gt;        Redis port (default: 6379)
+    --password &lt;arg&gt;    Redis password (default: no password)
+</code></pre></div></div>
+
+<p>You can provide multiple <code class="language-plaintext highlighter-rouge">namespace</code> options to migrate multiple namespaces at once. 
+(e.g.: <code class="language-plaintext highlighter-rouge">--namespace total-7 --namespace partialsum-3</code>)
+Other options are not mandatory.
+Please note that you need to also migrate the key starting with “$checkpointspout-“ since it’s internal namespace of state.</p>
+
+<h2 id="checkpoint-mechanism">Checkpoint mechanism</h2>
+<p>Checkpoint is triggered by an internal checkpoint spout at the specified <code class="language-plaintext highlighter-rouge">topology.state.checkpoint.interval.ms</code>. If there is
+at-least one <code class="language-plaintext highlighter-rouge">IStatefulBolt</code> in the topology, the checkpoint spout is automatically added by the topology builder . For stateful topologies,
+the topology builder wraps the <code class="language-plaintext highlighter-rouge">IStatefulBolt</code> in a <code class="language-plaintext highlighter-rouge">StatefulBoltExecutor</code> which handles the state commits on receiving the checkpoint tuples.
+The non stateful bolts are wrapped in a <code class="language-plaintext highlighter-rouge">CheckpointTupleForwarder</code> which just forwards the checkpoint tuples so that the checkpoint tuples
+can flow through the topology DAG. The checkpoint tuples flow through a separate internal stream namely <code class="language-plaintext highlighter-rouge">$checkpoint</code>. The topology builder
+wires the checkpoint stream across the whole topology with the checkpoint spout at the root.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>              default                         default               default
+[spout1]   ---------------&gt; [statefulbolt1] ----------&gt; [bolt1] --------------&gt; [statefulbolt2]
+                          |                 ----------&gt;         --------------&gt;
+                          |                   ($chpt)               ($chpt)
+                          |
+[$checkpointspout] _______| ($chpt)
+</code></pre></div></div>
+
+<p>At checkpoint intervals the checkpoint tuples are emitted by the checkpoint spout. On receiving a checkpoint tuple, the state of the bolt
+is saved and then the checkpoint tuple is forwarded to the next component. Each bolt waits for the checkpoint to arrive on all its input
+streams before it saves its state so that the state represents a consistent state across the topology. Once the checkpoint spout receives
+ACK from all the bolts, the state commit is complete and the transaction is recorded as committed by the checkpoint spout.</p>
+
+<p>The state checkpointing does not currently checkpoint the state of the spout. Yet, once the state of all bolts are checkpointed, and once the checkpoint tuples are acked, the tuples emitted by the spout are also acked. 
+It also implies that <code class="language-plaintext highlighter-rouge">topology.state.checkpoint.interval.ms</code> is lower than <code class="language-plaintext highlighter-rouge">topology.message.timeout.secs</code>.</p>
+
+<p>The state commit works like a three phase commit protocol with a prepare and commit phase so that the state across the topology is saved
+in a consistent and atomic manner.</p>
+
+<h3 id="recovery">Recovery</h3>
+<p>The recovery phase is triggered when the topology is started for the first time. If the previous transaction was not successfully
+prepared, a <code class="language-plaintext highlighter-rouge">rollback</code> message is sent across the topology so that if a bolt has some prepared transactions it can be discarded.
+If the previous transaction was prepared successfully but not committed, a <code class="language-plaintext highlighter-rouge">commit</code> message is sent across the topology so that
+the prepared transactions can be committed. After these steps are complete, the bolts are initialized with the state.</p>
+
+<p>The recovery is also triggered if one of the bolts fails to acknowledge the checkpoint message or say a worker crashed in
+the middle. Thus when the worker is restarted by the supervisor, the checkpoint mechanism makes sure that the bolt gets
+initialized with its previous state and the checkpointing continues from the point where it left off.</p>
+
+<h3 id="guarantee">Guarantee</h3>
+<p>Storm relies on the acking mechanism to replay tuples in case of failures. It is possible that the state is committed
+but the worker crashes before acking the tuples. In this case the tuples are replayed causing duplicate state updates.
+Also currently the StatefulBoltExecutor continues to process the tuples from a stream after it has received a checkpoint
+tuple on one stream while waiting for checkpoint to arrive on other input streams for saving the state. This can also cause
+duplicate state updates during recovery.</p>
+
+<p>The state abstraction does not eliminate duplicate evaluations and currently provides only at-least once guarantee.</p>
+
+<p>In order to provide the at-least once guarantee, all bolts in a stateful topology are expected to anchor the tuples 
+while emitting and ack the input tuples once its processed. For non-stateful bolts, the anchoring/acking can be automatically 
+managed by extending the <code class="language-plaintext highlighter-rouge">BaseBasicBolt</code>. Stateful bolts are expected to anchor tuples while emitting and ack the tuple 
+after processing like in the <code class="language-plaintext highlighter-rouge">WordCountBolt</code> example in the State management section above.</p>
+
+<h3 id="istateful-bolt-hooks">IStateful bolt hooks</h3>
+<p>IStateful bolt interface provides hook methods where in the stateful bolts could implement some custom actions.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="cm">/**
+     * This is a hook for the component to perform some actions just before the
+     * framework commits its state.
+     */</span>
+    <span class="kt">void</span> <span class="nf">preCommit</span><span class="o">(</span><span class="kt">long</span> <span class="n">txid</span><span class="o">);</span>
+
+    <span class="cm">/**
+     * This is a hook for the component to perform some actions just before the
+     * framework prepares its state.
+     */</span>
+    <span class="kt">void</span> <span class="nf">prePrepare</span><span class="o">(</span><span class="kt">long</span> <span class="n">txid</span><span class="o">);</span>
+
+    <span class="cm">/**
+     * This is a hook for the component to perform some actions just before the
+     * framework rolls back the prepared state.
+     */</span>
+    <span class="kt">void</span> <span class="nf">preRollback</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>This is optional and stateful bolts are not expected to provide any implementation. This is provided so that other
+system level components can be built on top of the stateful abstractions where we might want to take some actions before the
+stateful bolt’s state is prepared, committed or rolled back.</p>
+
+<h2 id="providing-custom-state-implementations">Providing custom state implementations</h2>
+<p>Currently the only kind of <code class="language-plaintext highlighter-rouge">State</code> implementation supported is <code class="language-plaintext highlighter-rouge">KeyValueState</code> which provides key-value mapping.</p>
+
+<p>Custom state implementations should provide implementations for the methods defined in the <code class="language-plaintext highlighter-rouge">org.apache.storm.State</code> interface.
+These are the <code class="language-plaintext highlighter-rouge">void prepareCommit(long txid)</code>, <code class="language-plaintext highlighter-rouge">void commit(long txid)</code>, <code class="language-plaintext highlighter-rouge">rollback()</code> methods. <code class="language-plaintext highlighter-rouge">commit()</code> method is optional
+and is useful if the bolt manages the state on its own. This is currently used only by the internal system bolts,
+for e.g. the CheckpointSpout to save its state.</p>
+
+<p><code class="language-plaintext highlighter-rouge">KeyValueState</code> implementation should also implement the methods defined in the <code class="language-plaintext highlighter-rouge">org.apache.storm.state.KeyValueState</code> interface.</p>
+
+<h3 id="state-provider">State provider</h3>
+<p>The framework instantiates the state via the corresponding <code class="language-plaintext highlighter-rouge">StateProvider</code> implementation. A custom state should also provide
+a <code class="language-plaintext highlighter-rouge">StateProvider</code> implementation which can load and return the state based on the namespace. Each state belongs to a unique namespace.
+The namespace is typically unique per task so that each task can have its own state. The StateProvider and the corresponding
+State implementation should be available in the class path of Storm (by placing them in the extlib directory).</p>
+
+<h3 id="supported-state-backends">Supported State Backends</h3>
+
+<h4 id="redis">Redis</h4>
+
+<ul>
+  <li>State provider class name (<code class="language-plaintext highlighter-rouge">topology.state.provider</code>)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">org.apache.storm.redis.state.RedisKeyValueStateProvider</code></p>
+
+<ul>
+  <li>Provider config (<code class="language-plaintext highlighter-rouge">topology.state.provider.config</code>)</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {
+   "keyClass": "Optional fully qualified class name of the Key type.",
+   "valueClass": "Optional fully qualified class name of the Value type.",
+   "keySerializerClass": "Optional Key serializer implementation class.",
+   "valueSerializerClass": "Optional Value Serializer implementation class.",
+   "jedisPoolConfig": {
+     "host": "localhost",
+     "port": 6379,
+     "timeout": 2000,
+     "database": 0,
+     "password": "xyz"
+   }
+ }
+</code></pre></div></div>
+
+<ul>
+  <li>Artifacts to add (<code class="language-plaintext highlighter-rouge">--artifacts</code>)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">org.apache.storm:storm-redis:&lt;storm-version&gt;</code></p>
+
+<h4 id="hbase">HBase</h4>
+
+<p>In order to make state scalable, HBaseKeyValueState stores state KV to a row. This introduces <code class="language-plaintext highlighter-rouge">non-atomic</code> commit phase and guarantee 
+eventual consistency on HBase side. It doesn’t matter in point of state’s view because HBaseKeyValueState can still provide not-yet-committed value.
+Even if worker crashes at commit phase, after restart it will read pending-commit states (stored atomically) from HBase and states will be stored eventually.</p>
+
+<p>NOTE: HBase state provider uses pre-created table and column family, so users need to create and provide one to the provider config.</p>
+
+<p>You can simply create table via <code class="language-plaintext highlighter-rouge">create 'state', 'cf'</code> in <code class="language-plaintext highlighter-rouge">hbase shell</code> but in production you may want to give some more properties.</p>
+
+<ul>
+  <li>State provider class name (<code class="language-plaintext highlighter-rouge">topology.state.provider</code>)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">org.apache.storm.hbase.state.HBaseKeyValueStateProvider</code></p>
+
+<ul>
+  <li>Provider config (<code class="language-plaintext highlighter-rouge">topology.state.provider.config</code>)</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {
+   "keyClass": "Optional fully qualified class name of the Key type.",
+   "valueClass": "Optional fully qualified class name of the Value type.",
+   "keySerializerClass": "Optional Key serializer implementation class.",
+   "valueSerializerClass": "Optional Value Serializer implementation class.",
+   "hbaseConfigKey": "config key to load hbase configuration from storm root configuration. (similar to storm-hbase)",
+   "tableName": "Pre-created table name for state.",
+   "columnFamily": "Pre-created column family for state."
+ }
+</code></pre></div></div>
+
+<p>If you want to initialize HBase state provider from codebase, please see below example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Config conf = new Config();
+    Map&lt;String, Object&gt; hbConf = new HashMap&lt;String, Object&gt;();
+    hbConf.put("hbase.rootdir", "file:///tmp/hbase");
+    conf.put("hbase.conf", hbConf);
+    conf.put("topology.state.provider",  "org.apache.storm.hbase.state.HBaseKeyValueStateProvider");
+    conf.put("topology.state.provider.config", "{" +
+            "   \"hbaseConfigKey\": \"hbase.conf\"," +
+            "   \"tableName\": \"state\"," +
+            "   \"columnFamily\": \"cf\"" +
+            " }");
+</code></pre></div></div>
+
+<ul>
+  <li>Artifacts to add (<code class="language-plaintext highlighter-rouge">--artifacts</code>)</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">org.apache.storm:storm-hbase:&lt;storm-version&gt;</code></p>

@@ -1,0 +1,208 @@
+<p>The idea behind distributed RPC (DRPC) is to parallelize the computation of really intense functions on the fly using Storm. The Storm topology takes in as input a stream of function arguments, and it emits an output stream of the results for each of those function calls.</p>
+
+<p>DRPC is not so much a feature of Storm as it is a pattern expressed from Storm’s primitives of streams, spouts, bolts, and topologies. DRPC could have been packaged as a separate library from Storm, but it’s so useful that it’s bundled with Storm.</p>
+
+<h3 id="high-level-overview">High level overview</h3>
+
+<p>Distributed RPC is coordinated by a “DRPC server” (Storm comes packaged with an implementation of this). The DRPC server coordinates receiving an RPC request, sending the request to the Storm topology, receiving the results from the Storm topology, and sending the results back to the waiting client. From a client’s perspective, a distributed RPC call looks just like a regular RPC call. For example, here’s how a client would compute the results for the “reach” function with the argument “http://twitter.com”:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Config</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Config</span><span class="o">();</span>
+        <span class="n">conf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"storm.thrift.transport"</span><span class="o">,</span> <span class="s">"org.apache.storm.security.auth.plain.PlainSaslTransportPlugin"</span><span class="o">);</span>
+        <span class="n">conf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">Config</span><span class="o">.</span><span class="na">STORM_NIMBUS_RETRY_TIMES</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="n">conf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">Config</span><span class="o">.</span><span class="na">STORM_NIMBUS_RETRY_INTERVAL</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span>
+        <span class="n">conf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">Config</span><span class="o">.</span><span class="na">STORM_NIMBUS_RETRY_INTERVAL_CEILING</span><span class="o">,</span> <span class="mi">20</span><span class="o">);</span>
+<span class="nc">DRPCClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DRPCClient</span><span class="o">(</span><span class="n">conf</span><span class="o">,</span> <span class="s">"drpc-host"</span><span class="o">,</span> <span class="mi">3772</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">"reach"</span><span class="o">,</span> <span class="s">"http://twitter.com"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>The distributed RPC workflow looks like this:</p>
+
+<p><img src="images/drpc-workflow.png" alt="Tasks in a topology" /></p>
+
+<p>A client sends the DRPC server the name of the function to execute and the arguments to that function. The topology implementing that function uses a <code class="language-plaintext highlighter-rouge">DRPCSpout</code> to receive a function invocation stream from the DRPC server. Each function invocation is tagged with a unique id by the DRPC server. The topology then computes the result and at the end of the topology a bolt called <code class="language-plaintext highlighter-rouge">ReturnResults</code> connects to the DRPC server and gives it the result for the function invocation id. The DRPC server then uses the id to match up that result with which client is waiting, unblocks the waiting client, and sends it the result.</p>
+
+<h3 id="lineardrpctopologybuilder">LinearDRPCTopologyBuilder</h3>
+
+<p>Storm comes with a topology builder called <a href="javadocs/org/apache/storm/drpc/LinearDRPCTopologyBuilder.html">LinearDRPCTopologyBuilder</a> that automates almost all the steps involved for doing DRPC. These include:</p>
+
+<ol>
+  <li>Setting up the spout</li>
+  <li>Returning the results to the DRPC server</li>
+  <li>Providing functionality to bolts for doing finite aggregations over groups of tuples</li>
+</ol>
+
+<p>Let’s look at a simple example. Here’s the implementation of a DRPC topology that returns its input argument with a “!” appended:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ExclaimBolt</span> <span class="kd">extends</span> <span class="nc">BaseBasicBolt</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">Tuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="nc">BasicOutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">input</span> <span class="o">=</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="nc">Values</span><span class="o">(</span><span class="n">tuple</span><span class="o">.</span><span class="na">getValue</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">input</span> <span class="o">+</span> <span class="s">"!"</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="o">(</span><span class="nc">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">declarer</span><span class="o">.</span><span class="na">declare</span><span class="o">(</span><span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="s">"result"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="nc">LinearDRPCTopologyBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinearDRPCTopologyBuilder</span><span class="o">(</span><span class="s">"exclamation"</span><span class="o">);</span>
+    <span class="n">builder</span><span class="o">.</span><span class="na">addBolt</span><span class="o">(</span><span class="k">new</span> <span class="nc">ExclaimBolt</span><span class="o">(),</span> <span class="mi">3</span><span class="o">);</span>
+    <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>As you can see, there’s very little to it. When creating the <code class="language-plaintext highlighter-rouge">LinearDRPCTopologyBuilder</code>, you tell it the name of the DRPC function for the topology. A single DRPC server can coordinate many functions, and the function name distinguishes the functions from one another. The first bolt you declare will take in as input 2-tuples, where the first field is the request id and the second field is the arguments for that request. <code class="language-plaintext highlighter-rouge">LinearDRPCTopologyBuilder</code> expects the last bolt to emit an output stream containing 2-tuples of the form [id, result]. Finally, all intermediate tuples must contain the request id as the first field.</p>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">ExclaimBolt</code> simply appends a “!” to the second field of the tuple. <code class="language-plaintext highlighter-rouge">LinearDRPCTopologyBuilder</code> handles the rest of the coordination of connecting to the DRPC server and sending results back.</p>
+
+<h3 id="local-mode-drpc">Local mode DRPC</h3>
+
+<p>DRPC can be run in local mode. Here’s how to run the above example in local mode:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">LocalDRPC</span> <span class="n">drpc</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LocalDRPC</span><span class="o">();</span>
+<span class="nc">LocalCluster</span> <span class="n">cluster</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LocalCluster</span><span class="o">();</span>
+
+<span class="n">cluster</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="s">"drpc-demo"</span><span class="o">,</span> <span class="n">conf</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">createLocalTopology</span><span class="o">(</span><span class="n">drpc</span><span class="o">));</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Results for 'hello':"</span> <span class="o">+</span> <span class="n">drpc</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="s">"exclamation"</span><span class="o">,</span> <span class="s">"hello"</span><span class="o">));</span>
+
+<span class="n">cluster</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>
+<span class="n">drpc</span><span class="o">.</span><span class="na">shutdown</span><span class="o">();</span>
+</code></pre></div></div>
+
+<p>First you create a <code class="language-plaintext highlighter-rouge">LocalDRPC</code> object. This object simulates a DRPC server in process, just like how <code class="language-plaintext highlighter-rouge">LocalCluster</code> simulates a Storm cluster in process. Then you create the <code class="language-plaintext highlighter-rouge">LocalCluster</code> to run the topology in local mode. <code class="language-plaintext highlighter-rouge">LinearDRPCTopologyBuilder</code> has separate methods for creating local topologies and remote topologies. In local mode the <code class="language-plaintext highlighter-rouge">LocalDRPC</code> object does not bind to any ports so the topology needs to know about the object to communicate with it. This is why <code class="language-plaintext highlighter-rouge">createLocalTopology</code> takes in the <code class="language-plaintext highlighter-rouge">LocalDRPC</code> object as input.</p>
+
+<p>After launching the topology, you can do DRPC invocations using the <code class="language-plaintext highlighter-rouge">execute</code> method on <code class="language-plaintext highlighter-rouge">LocalDRPC</code>.</p>
+
+<h3 id="remote-mode-drpc">Remote mode DRPC</h3>
+
+<p>Using DRPC on an actual cluster is also straightforward. There’s three steps:</p>
+
+<ol>
+  <li>Launch DRPC server(s)</li>
+  <li>Configure the locations of the DRPC servers</li>
+  <li>Submit DRPC topologies to Storm cluster</li>
+</ol>
+
+<p>Launching a DRPC server can be done with the <code class="language-plaintext highlighter-rouge">storm</code> script and is just like launching Nimbus or the UI:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/storm drpc
+</code></pre></div></div>
+
+<p>Next, you need to configure your Storm cluster to know the locations of the DRPC server(s). This is how <code class="language-plaintext highlighter-rouge">DRPCSpout</code> knows from where to read function invocations. This can be done through the <code class="language-plaintext highlighter-rouge">storm.yaml</code> file or the topology configurations. You should also specify storm.thrift.transport property to match DRPCClient settings. Configuring this through the <code class="language-plaintext highlighter-rouge">storm.yaml</code> looks something like this:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">drpc.servers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s2">"</span><span class="s">drpc1.foo.com"</span>
+  <span class="pi">-</span> <span class="s2">"</span><span class="s">drpc2.foo.com"</span>
+
+<span class="s">storm.thrift.transport</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.security.auth.plain.PlainSaslTransportPlugin"</span>
+</code></pre></div></div>
+
+<p>Finally, you launch DRPC topologies using <code class="language-plaintext highlighter-rouge">StormSubmitter</code> just like you launch any other topology. To run the above example in remote mode, you do something like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">StormSubmitter</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="s">"exclamation-drpc"</span><span class="o">,</span> <span class="n">conf</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">createRemoteTopology</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">createRemoteTopology</code> is used to create topologies suitable for Storm clusters.</p>
+
+<h3 id="a-more-complex-example">A more complex example</h3>
+
+<p>The exclamation DRPC example was a toy example for illustrating the concepts of DRPC. Let’s look at a more complex example which really needs the parallelism a Storm cluster provides for computing the DRPC function. The example we’ll look at is computing the reach of a URL on Twitter.</p>
+
+<p>The reach of a URL is the number of unique people exposed to a URL on Twitter. To compute reach, you need to:</p>
+
+<ol>
+  <li>Get all the people who tweeted the URL</li>
+  <li>Get all the followers of all those people</li>
+  <li>Unique the set of followers</li>
+  <li>Count the unique set of followers</li>
+</ol>
+
+<p>A single reach computation can involve thousands of database calls and tens of millions of follower records during the computation. It’s a really, really intense computation. As you’re about to see, implementing this function on top of Storm is dead simple. On a single machine, reach can take minutes to compute; on a Storm cluster, you can compute reach for even the hardest URLs in a couple seconds.</p>
+
+<p>A sample reach topology is defined in storm-starter <a href="/examples/storm-starter/src/jvm/org/apache/storm/starter/ReachTopology.java">here</a>. Here’s how you define the reach topology:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">LinearDRPCTopologyBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinearDRPCTopologyBuilder</span><span class="o">(</span><span class="s">"reach"</span><span class="o">);</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">addBolt</span><span class="o">(</span><span class="k">new</span> <span class="nc">GetTweeters</span><span class="o">(),</span> <span class="mi">3</span><span class="o">);</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">addBolt</span><span class="o">(</span><span class="k">new</span> <span class="nc">GetFollowers</span><span class="o">(),</span> <span class="mi">12</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">shuffleGrouping</span><span class="o">();</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">addBolt</span><span class="o">(</span><span class="k">new</span> <span class="nc">PartialUniquer</span><span class="o">(),</span> <span class="mi">6</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">fieldsGrouping</span><span class="o">(</span><span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="s">"follower"</span><span class="o">));</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">addBolt</span><span class="o">(</span><span class="k">new</span> <span class="nc">CountAggregator</span><span class="o">(),</span> <span class="mi">2</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">fieldsGrouping</span><span class="o">(</span><span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="s">"id"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>The topology executes as four steps:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">GetTweeters</code> gets the users who tweeted the URL. It transforms an input stream of <code class="language-plaintext highlighter-rouge">[id, url]</code> into an output stream of <code class="language-plaintext highlighter-rouge">[id, tweeter]</code>. Each <code class="language-plaintext highlighter-rouge">url</code> tuple will map to many <code class="language-plaintext highlighter-rouge">tweeter</code> tuples.</li>
+  <li><code class="language-plaintext highlighter-rouge">GetFollowers</code> gets the followers for the tweeters. It transforms an input stream of <code class="language-plaintext highlighter-rouge">[id, tweeter]</code> into an output stream of <code class="language-plaintext highlighter-rouge">[id, follower]</code>. Across all the tasks, there may of course be duplication of follower tuples when someone follows multiple people who tweeted the same URL.</li>
+  <li><code class="language-plaintext highlighter-rouge">PartialUniquer</code> groups the followers stream by the follower id. This has the effect of the same follower going to the same task. So each task of <code class="language-plaintext highlighter-rouge">PartialUniquer</code> will receive mutually independent sets of followers. Once <code class="language-plaintext highlighter-rouge">PartialUniquer</code> receives all the follower tuples directed at it for the request id, it emits the unique count of its subset of followers.</li>
+  <li>Finally, <code class="language-plaintext highlighter-rouge">CountAggregator</code> receives the partial counts from each of the <code class="language-plaintext highlighter-rouge">PartialUniquer</code> tasks and sums them up to complete the reach computation.</li>
+</ol>
+
+<p>Let’s take a look at the <code class="language-plaintext highlighter-rouge">PartialUniquer</code> bolt:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PartialUniquer</span> <span class="kd">extends</span> <span class="nc">BaseBatchBolt</span> <span class="o">{</span>
+    <span class="nc">BatchOutputCollector</span> <span class="n">_collector</span><span class="o">;</span>
+    <span class="nc">Object</span> <span class="n">_id</span><span class="o">;</span>
+    <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">_followers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashSet</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="nc">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="nc">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="nc">BatchOutputCollector</span> <span class="n">collector</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">_collector</span> <span class="o">=</span> <span class="n">collector</span><span class="o">;</span>
+        <span class="n">_id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">Tuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">_followers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tuple</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="mi">1</span><span class="o">));</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">finishBatch</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">_collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="nc">Values</span><span class="o">(</span><span class="n">_id</span><span class="o">,</span> <span class="n">_followers</span><span class="o">.</span><span class="na">size</span><span class="o">()));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="o">(</span><span class="nc">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">declarer</span><span class="o">.</span><span class="na">declare</span><span class="o">(</span><span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="s">"id"</span><span class="o">,</span> <span class="s">"partial-count"</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">PartialUniquer</code> implements <code class="language-plaintext highlighter-rouge">IBatchBolt</code> by extending <code class="language-plaintext highlighter-rouge">BaseBatchBolt</code>. A batch bolt provides a first class API to processing a batch of tuples as a concrete unit. A new instance of the batch bolt is created for each request id, and Storm takes care of cleaning up the instances when appropriate.</p>
+
+<p>When <code class="language-plaintext highlighter-rouge">PartialUniquer</code> receives a follower tuple in the <code class="language-plaintext highlighter-rouge">execute</code> method, it adds it to the set for the request id in an internal <code class="language-plaintext highlighter-rouge">HashSet</code>.</p>
+
+<p>Batch bolts provide the <code class="language-plaintext highlighter-rouge">finishBatch</code> method which is called after all the tuples for this batch targeted at this task have been processed. In the callback, <code class="language-plaintext highlighter-rouge">PartialUniquer</code> emits a single tuple containing the unique count for its subset of follower ids.</p>
+
+<p>Under the hood, <code class="language-plaintext highlighter-rouge">CoordinatedBolt</code> is used to detect when a given bolt has received all of the tuples for any given request id. <code class="language-plaintext highlighter-rouge">CoordinatedBolt</code> makes use of direct streams to manage this coordination.</p>
+
+<p>The rest of the topology should be self-explanatory. As you can see, every single step of the reach computation is done in parallel, and defining the DRPC topology was extremely simple.</p>
+
+<h3 id="non-linear-drpc-topologies">Non-linear DRPC topologies</h3>
+
+<p><code class="language-plaintext highlighter-rouge">LinearDRPCTopologyBuilder</code> only handles “linear” DRPC topologies, where the computation is expressed as a sequence of steps (like reach). It’s not hard to imagine functions that would require a more complicated topology with branching and merging of the bolts. For now, to do this you’ll need to drop down into using <code class="language-plaintext highlighter-rouge">CoordinatedBolt</code> directly. Be sure to talk about your use case for non-linear DRPC topologies on the mailing list to inform the construction of more general abstractions for DRPC topologies.</p>
+
+<h3 id="how-lineardrpctopologybuilder-works">How LinearDRPCTopologyBuilder works</h3>
+
+<ul>
+  <li>DRPCSpout emits [args, return-info]. return-info is the host and port of the DRPC server as well as the id generated by the DRPC server</li>
+  <li>constructs a topology comprising of:
+    <ul>
+      <li>DRPCSpout</li>
+      <li>PrepareRequest (generates a request id and creates a stream for the return info and a stream for the args)</li>
+      <li>CoordinatedBolt wrappers and direct groupings</li>
+      <li>JoinResult (joins the result with the return info)</li>
+      <li>ReturnResult (connects to the DRPC server and returns the result)</li>
+    </ul>
+  </li>
+  <li>LinearDRPCTopologyBuilder is a good example of a higher level abstraction built on top of Storm’s primitives</li>
+</ul>
+
+<h3 id="advanced">Advanced</h3>
+<ul>
+  <li>KeyedFairBolt for weaving the processing of multiple requests at the same time</li>
+  <li>How to use <code class="language-plaintext highlighter-rouge">CoordinatedBolt</code> directly</li>
+</ul>

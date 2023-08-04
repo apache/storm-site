@@ -1,0 +1,358 @@
+<p>Storm components for interacting with HDFS file systems</p>
+
+<h2 id="usage">Usage</h2>
+<p>The following example will write pipe(“|”)-delimited files to the HDFS path hdfs://localhost:54310/foo. After every
+1,000 tuples it will sync filesystem, making that data visible to other HDFS clients. It will rotate files when they
+reach 5 megabytes in size.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// use "|" instead of "," for field delimiter</span>
+<span class="nc">RecordFormat</span> <span class="n">format</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DelimitedRecordFormat</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">withFieldDelimiter</span><span class="o">(</span><span class="s">"|"</span><span class="o">);</span>
+
+<span class="c1">// sync the filesystem after every 1k tuples</span>
+<span class="nc">SyncPolicy</span> <span class="n">syncPolicy</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CountSyncPolicy</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+
+<span class="c1">// rotate files when they reach 5MB</span>
+<span class="nc">FileRotationPolicy</span> <span class="n">rotationPolicy</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileSizeRotationPolicy</span><span class="o">(</span><span class="mf">5.0f</span><span class="o">,</span> <span class="nc">Units</span><span class="o">.</span><span class="na">MB</span><span class="o">);</span>
+
+<span class="nc">FileNameFormat</span> <span class="n">fileNameFormat</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultFileNameFormat</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">withPath</span><span class="o">(</span><span class="s">"/foo/"</span><span class="o">);</span>
+
+<span class="nc">HdfsBolt</span> <span class="n">bolt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HdfsBolt</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">withFsUrl</span><span class="o">(</span><span class="s">"hdfs://localhost:54310"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">withFileNameFormat</span><span class="o">(</span><span class="n">fileNameFormat</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">withRecordFormat</span><span class="o">(</span><span class="n">format</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">withRotationPolicy</span><span class="o">(</span><span class="n">rotationPolicy</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">withSyncPolicy</span><span class="o">(</span><span class="n">syncPolicy</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="packaging-a-topology">Packaging a Topology</h3>
+<p>When packaging your topology, it’s important that you use the <a href="">maven-shade-plugin</a> as opposed to the
+<a href="">maven-assembly-plugin</a>.</p>
+
+<p>The shade plugin provides facilities for merging JAR manifest entries, which the hadoop client leverages for URL scheme
+resolution.</p>
+
+<p>If you experience errors such as the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java.lang.RuntimeException: Error preparing HdfsBolt: No FileSystem for scheme: hdfs
+</code></pre></div></div>
+
+<p>it’s an indication that your topology jar file isn’t packaged properly.</p>
+
+<p>If you are using maven to create your topology jar, you should use the following <code class="language-plaintext highlighter-rouge">maven-shade-plugin</code> configuration to
+create your topology jar:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>maven-shade-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.4<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;createDependencyReducedPom&gt;</span>true<span class="nt">&lt;/createDependencyReducedPom&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+    <span class="nt">&lt;executions&gt;</span>
+        <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+                <span class="nt">&lt;goal&gt;</span>shade<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;transformers&gt;</span>
+                    <span class="nt">&lt;transformer</span>
+                            <span class="na">implementation=</span><span class="s">"org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"</span><span class="nt">/&gt;</span>
+                    <span class="nt">&lt;transformer</span>
+                            <span class="na">implementation=</span><span class="s">"org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;mainClass&gt;&lt;/mainClass&gt;</span>
+                    <span class="nt">&lt;/transformer&gt;</span>
+                <span class="nt">&lt;/transformers&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/execution&gt;</span>
+    <span class="nt">&lt;/executions&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+
+</code></pre></div></div>
+
+<h3 id="specifying-a-hadoop-version">Specifying a Hadoop Version</h3>
+<p>By default, storm-hdfs uses the following Hadoop dependencies:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.hadoop<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>hadoop-client<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.2.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;exclusions&gt;</span>
+        <span class="nt">&lt;exclusion&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.slf4j<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>slf4j-log4j12<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;/exclusion&gt;</span>
+    <span class="nt">&lt;/exclusions&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.hadoop<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>hadoop-hdfs<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.2.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;exclusions&gt;</span>
+        <span class="nt">&lt;exclusion&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.slf4j<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>slf4j-log4j12<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;/exclusion&gt;</span>
+    <span class="nt">&lt;/exclusions&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>If you are using a different version of Hadoop, you should exclude the Hadoop libraries from the storm-hdfs dependency
+and add the dependencies for your preferred version in your pom.</p>
+
+<p>Hadoop client version incompatibilites can manifest as errors like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>com.google.protobuf.InvalidProtocolBufferException: Protocol message contained an invalid tag (zero)
+</code></pre></div></div>
+
+<h2 id="customization">Customization</h2>
+
+<h3 id="record-formats">Record Formats</h3>
+<p>Record format can be controlled by providing an implementation of the <code class="language-plaintext highlighter-rouge">org.apache.storm.hdfs.format.RecordFormat</code>
+interface:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">RecordFormat</span> <span class="kd">extends</span> <span class="nc">Serializable</span> <span class="o">{</span>
+    <span class="kt">byte</span><span class="o">[]</span> <span class="nf">format</span><span class="o">(</span><span class="nc">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The provided <code class="language-plaintext highlighter-rouge">org.apache.storm.hdfs.format.DelimitedRecordFormat</code> is capable of producing formats such as CSV and
+tab-delimited files.</p>
+
+<h3 id="file-naming">File Naming</h3>
+<p>File naming can be controlled by providing an implementation of the <code class="language-plaintext highlighter-rouge">org.apache.storm.hdfs.format.FileNameFormat</code>
+interface:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">FileNameFormat</span> <span class="kd">extends</span> <span class="nc">Serializable</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="nc">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="nc">TopologyContext</span> <span class="n">topologyContext</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="nf">getName</span><span class="o">(</span><span class="kt">long</span> <span class="n">rotation</span><span class="o">,</span> <span class="kt">long</span> <span class="n">timeStamp</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="nf">getPath</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The provided <code class="language-plaintext highlighter-rouge">org.apache.storm.hdfs.format.DefaultFileNameFormat</code>  will create file names with the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> {prefix}{componentId}-{taskId}-{rotationNum}-{timestamp}{extension}
+</code></pre></div></div>
+
+<p>For example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> MyBolt-5-7-1390579837830.txt
+</code></pre></div></div>
+
+<p>By default, prefix is empty and extenstion is “.txt”.</p>
+
+<h3 id="sync-policies">Sync Policies</h3>
+<p>Sync policies allow you to control when buffered data is flushed to the underlying filesystem (thus making it available
+to clients reading the data) by implementing the <code class="language-plaintext highlighter-rouge">org.apache.storm.hdfs.sync.SyncPolicy</code> interface:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">SyncPolicy</span> <span class="kd">extends</span> <span class="nc">Serializable</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="nf">mark</span><span class="o">(</span><span class="nc">Tuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="kt">long</span> <span class="n">offset</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">reset</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>The <code class="language-plaintext highlighter-rouge">HdfsBolt</code> will call the <code class="language-plaintext highlighter-rouge">mark()</code> method for every tuple it processes. Returning <code class="language-plaintext highlighter-rouge">true</code> will trigger the <code class="language-plaintext highlighter-rouge">HdfsBolt</code>
+to perform a sync/flush, after which it will call the <code class="language-plaintext highlighter-rouge">reset()</code> method.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">org.apache.storm.hdfs.sync.CountSyncPolicy</code> class simply triggers a sync after the specified number of tuples have
+been processed.</p>
+
+<h3 id="file-rotation-policies">File Rotation Policies</h3>
+<p>Similar to sync policies, file rotation policies allow you to control when data files are rotated by providing a
+<code class="language-plaintext highlighter-rouge">org.apache.storm.hdfs.rotation.FileRotation</code> interface:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">FileRotationPolicy</span> <span class="kd">extends</span> <span class="nc">Serializable</span> <span class="o">{</span>
+    <span class="kt">boolean</span> <span class="nf">mark</span><span class="o">(</span><span class="nc">Tuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="kt">long</span> <span class="n">offset</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">reset</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">org.apache.storm.hdfs.rotation.FileSizeRotationPolicy</code> implementation allows you to trigger file rotation when
+data files reach a specific file size:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">FileRotationPolicy</span> <span class="n">rotationPolicy</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileSizeRotationPolicy</span><span class="o">(</span><span class="mf">5.0f</span><span class="o">,</span> <span class="nc">Units</span><span class="o">.</span><span class="na">MB</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="file-rotation-actions">File Rotation Actions</h3>
+<p>Both the HDFS bolt and Trident State implementation allow you to register any number of <code class="language-plaintext highlighter-rouge">RotationAction</code>s.
+What <code class="language-plaintext highlighter-rouge">RotationAction</code>s do is provide a hook to allow you to perform some action right after a file is rotated. For
+example, moving a file to a different location or renaming it.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">RotationAction</span> <span class="kd">extends</span> <span class="nc">Serializable</span> <span class="o">{</span>
+    <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">FileSystem</span> <span class="n">fileSystem</span><span class="o">,</span> <span class="nc">Path</span> <span class="n">filePath</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Storm-HDFS includes a simple action that will move a file after rotation:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MoveFileAction</span> <span class="kd">implements</span> <span class="nc">RotationAction</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Logger</span> <span class="no">LOG</span> <span class="o">=</span> <span class="nc">LoggerFactory</span><span class="o">.</span><span class="na">getLogger</span><span class="o">(</span><span class="nc">MoveFileAction</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">destination</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">MoveFileAction</span> <span class="nf">withDestination</span><span class="o">(</span><span class="nc">String</span> <span class="n">destDir</span><span class="o">){</span>
+        <span class="n">destination</span> <span class="o">=</span> <span class="n">destDir</span><span class="o">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">FileSystem</span> <span class="n">fileSystem</span><span class="o">,</span> <span class="nc">Path</span> <span class="n">filePath</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">Path</span> <span class="n">destPath</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Path</span><span class="o">(</span><span class="n">destination</span><span class="o">,</span> <span class="n">filePath</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+        <span class="no">LOG</span><span class="o">.</span><span class="na">info</span><span class="o">(</span><span class="s">"Moving file {} to {}"</span><span class="o">,</span> <span class="n">filePath</span><span class="o">,</span> <span class="n">destPath</span><span class="o">);</span>
+        <span class="kt">boolean</span> <span class="n">success</span> <span class="o">=</span> <span class="n">fileSystem</span><span class="o">.</span><span class="na">rename</span><span class="o">(</span><span class="n">filePath</span><span class="o">,</span> <span class="n">destPath</span><span class="o">);</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>If you are using Trident and sequence files you can do something like this:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="nc">HdfsState</span><span class="o">.</span><span class="na">Options</span> <span class="n">seqOpts</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HdfsState</span><span class="o">.</span><span class="na">SequenceFileOptions</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withFileNameFormat</span><span class="o">(</span><span class="n">fileNameFormat</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withSequenceFormat</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultSequenceFormat</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"data"</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">withRotationPolicy</span><span class="o">(</span><span class="n">rotationPolicy</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withFsUrl</span><span class="o">(</span><span class="s">"hdfs://localhost:54310"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">addRotationAction</span><span class="o">(</span><span class="k">new</span> <span class="nc">MoveFileAction</span><span class="o">().</span><span class="na">withDestination</span><span class="o">(</span><span class="s">"/dest2/"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<h2 id="support-for-hdfs-sequence-files">Support for HDFS Sequence Files</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">org.apache.storm.hdfs.bolt.SequenceFileBolt</code> class allows you to write storm data to HDFS sequence files:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="c1">// sync the filesystem after every 1k tuples</span>
+        <span class="nc">SyncPolicy</span> <span class="n">syncPolicy</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CountSyncPolicy</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+
+        <span class="c1">// rotate files when they reach 5MB</span>
+        <span class="nc">FileRotationPolicy</span> <span class="n">rotationPolicy</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileSizeRotationPolicy</span><span class="o">(</span><span class="mf">5.0f</span><span class="o">,</span> <span class="nc">Units</span><span class="o">.</span><span class="na">MB</span><span class="o">);</span>
+
+        <span class="nc">FileNameFormat</span> <span class="n">fileNameFormat</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultFileNameFormat</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withExtension</span><span class="o">(</span><span class="s">".seq"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withPath</span><span class="o">(</span><span class="s">"/data/"</span><span class="o">);</span>
+
+        <span class="c1">// create sequence format instance.</span>
+        <span class="nc">DefaultSequenceFormat</span> <span class="n">format</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultSequenceFormat</span><span class="o">(</span><span class="s">"timestamp"</span><span class="o">,</span> <span class="s">"sentence"</span><span class="o">);</span>
+
+        <span class="nc">SequenceFileBolt</span> <span class="n">bolt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SequenceFileBolt</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withFsUrl</span><span class="o">(</span><span class="s">"hdfs://localhost:54310"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withFileNameFormat</span><span class="o">(</span><span class="n">fileNameFormat</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withSequenceFormat</span><span class="o">(</span><span class="n">format</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withRotationPolicy</span><span class="o">(</span><span class="n">rotationPolicy</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withSyncPolicy</span><span class="o">(</span><span class="n">syncPolicy</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withCompressionType</span><span class="o">(</span><span class="nc">SequenceFile</span><span class="o">.</span><span class="na">CompressionType</span><span class="o">.</span><span class="na">RECORD</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withCompressionCodec</span><span class="o">(</span><span class="s">"deflate"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">SequenceFileBolt</code> requires that you provide a <code class="language-plaintext highlighter-rouge">org.apache.storm.hdfs.bolt.format.SequenceFormat</code> that maps tuples to
+key/value pairs:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">SequenceFormat</span> <span class="kd">extends</span> <span class="nc">Serializable</span> <span class="o">{</span>
+    <span class="nc">Class</span> <span class="nf">keyClass</span><span class="o">();</span>
+    <span class="nc">Class</span> <span class="nf">valueClass</span><span class="o">();</span>
+
+    <span class="nc">Writable</span> <span class="nf">key</span><span class="o">(</span><span class="nc">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
+    <span class="nc">Writable</span> <span class="nf">value</span><span class="o">(</span><span class="nc">Tuple</span> <span class="n">tuple</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="trident-api">Trident API</h2>
+<p>storm-hdfs also includes a Trident <code class="language-plaintext highlighter-rouge">state</code> implementation for writing data to HDFS, with an API that closely mirrors
+that of the bolts.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>         <span class="nc">Fields</span> <span class="n">hdfsFields</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="s">"field1"</span><span class="o">,</span> <span class="s">"field2"</span><span class="o">);</span>
+
+         <span class="nc">FileNameFormat</span> <span class="n">fileNameFormat</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultFileNameFormat</span><span class="o">()</span>
+                 <span class="o">.</span><span class="na">withPath</span><span class="o">(</span><span class="s">"/trident"</span><span class="o">)</span>
+                 <span class="o">.</span><span class="na">withPrefix</span><span class="o">(</span><span class="s">"trident"</span><span class="o">)</span>
+                 <span class="o">.</span><span class="na">withExtension</span><span class="o">(</span><span class="s">".txt"</span><span class="o">);</span>
+
+         <span class="nc">RecordFormat</span> <span class="n">recordFormat</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DelimitedRecordFormat</span><span class="o">()</span>
+                 <span class="o">.</span><span class="na">withFields</span><span class="o">(</span><span class="n">hdfsFields</span><span class="o">);</span>
+
+         <span class="nc">FileRotationPolicy</span> <span class="n">rotationPolicy</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FileSizeRotationPolicy</span><span class="o">(</span><span class="mf">5.0f</span><span class="o">,</span> <span class="nc">FileSizeRotationPolicy</span><span class="o">.</span><span class="na">Units</span><span class="o">.</span><span class="na">MB</span><span class="o">);</span>
+
+        <span class="nc">HdfsState</span><span class="o">.</span><span class="na">Options</span> <span class="n">options</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HdfsState</span><span class="o">.</span><span class="na">HdfsFileOptions</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withFileNameFormat</span><span class="o">(</span><span class="n">fileNameFormat</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withRecordFormat</span><span class="o">(</span><span class="n">recordFormat</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withRotationPolicy</span><span class="o">(</span><span class="n">rotationPolicy</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withFsUrl</span><span class="o">(</span><span class="s">"hdfs://localhost:54310"</span><span class="o">);</span>
+
+         <span class="nc">StateFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HdfsStateFactory</span><span class="o">().</span><span class="na">withOptions</span><span class="o">(</span><span class="n">options</span><span class="o">);</span>
+
+         <span class="nc">TridentState</span> <span class="n">state</span> <span class="o">=</span> <span class="n">stream</span>
+                 <span class="o">.</span><span class="na">partitionPersist</span><span class="o">(</span><span class="n">factory</span><span class="o">,</span> <span class="n">hdfsFields</span><span class="o">,</span> <span class="k">new</span> <span class="nc">HdfsUpdater</span><span class="o">(),</span> <span class="k">new</span> <span class="nc">Fields</span><span class="o">());</span>
+</code></pre></div></div>
+
+<p>To use the sequence file <code class="language-plaintext highlighter-rouge">State</code> implementation, use the <code class="language-plaintext highlighter-rouge">HdfsState.SequenceFileOptions</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="nc">HdfsState</span><span class="o">.</span><span class="na">Options</span> <span class="n">seqOpts</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HdfsState</span><span class="o">.</span><span class="na">SequenceFileOptions</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">withFileNameFormat</span><span class="o">(</span><span class="n">fileNameFormat</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withSequenceFormat</span><span class="o">(</span><span class="k">new</span> <span class="nc">DefaultSequenceFormat</span><span class="o">(</span><span class="s">"key"</span><span class="o">,</span> <span class="s">"data"</span><span class="o">))</span>
+                <span class="o">.</span><span class="na">withRotationPolicy</span><span class="o">(</span><span class="n">rotationPolicy</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">withFsUrl</span><span class="o">(</span><span class="s">"hdfs://localhost:54310"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">addRotationAction</span><span class="o">(</span><span class="k">new</span> <span class="nc">MoveFileAction</span><span class="o">().</span><span class="na">toDestination</span><span class="o">(</span><span class="s">"/dest2/"</span><span class="o">));</span>
+</code></pre></div></div>
+
+<p>##Working with Secure HDFS
+If your topology is going to interact with secure HDFS, your bolts/states needs to be authenticated by NameNode. We 
+currently have 2 options to support this:</p>
+
+<h3 id="using-hdfs-delegation-tokens">Using HDFS delegation tokens</h3>
+<p>Your administrator can configure nimbus to automatically get delegation tokens on behalf of the topology submitter user. The nimbus should be started with following configurations:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nimbus.autocredential.plugins.classes : ["org.apache.storm.hdfs.security.AutoHDFS"]
+nimbus.credential.renewers.classes : ["org.apache.storm.hdfs.security.AutoHDFS"]
+hdfs.keytab.file: "/path/to/keytab/on/nimbus" (This is the keytab of hdfs super user that can impersonate other users.)
+hdfs.kerberos.principal: "superuser@EXAMPLE.com" 
+nimbus.credential.renewers.freq.secs : 82800 (23 hours, hdfs tokens needs to be renewed every 24 hours so this value should be less then 24 hours.)
+topology.hdfs.uri:"hdfs://host:port" (This is an optional config, by default we will use value of "fs.defaultFS" property specified in hadoop's core-site.xml)
+</code></pre></div></div>
+
+<p>Your topology configuration should have:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>topology.auto-credentials :["org.apache.storm.hdfs.common.security.AutoHDFS"]
+</code></pre></div></div>
+
+<p>If nimbus did not have the above configuration you need to add and then restart it. Ensure the hadoop configuration 
+files (core-site.xml and hdfs-site.xml) and the storm-hdfs jar with all the dependencies is present in nimbus’s classpath.</p>
+
+<p>As an alternative to adding the configuration files (core-site.xml and hdfs-site.xml) to the classpath, you could specify the configurations
+as a part of the topology configuration. E.g. in you custom storm.yaml (or -c option while submitting the topology),</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hdfsCredentialsConfigKeys : ["cluster1", "cluster2"] (the hdfs clusters you want to fetch the tokens from)
+"cluster1": {"config1": "value1", "config2": "value2", ... } (A map of config key-values specific to cluster1)
+"cluster2": {"config1": "value1", "hdfs.keytab.file": "/path/to/keytab/for/cluster2/on/nimubs", "hdfs.kerberos.principal": "cluster2user@EXAMPLE.com"} (here along with other configs, we have custom keytab and principal for "cluster2" which will override the keytab/principal specified at topology level)
+</code></pre></div></div>
+
+<p>Instead of specifying key values you may also directly specify the resource files for e.g.,</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"cluster1": {"resources": ["/path/to/core-site1.xml", "/path/to/hdfs-site1.xml"]}
+"cluster2": {"resources": ["/path/to/core-site2.xml", "/path/to/hdfs-site2.xml"]}
+</code></pre></div></div>
+
+<p>Storm will download the tokens separately for each of the clusters and populate it into the subject and also renew the tokens periodically. This way it would be possible to run multiple bolts connecting to separate HDFS cluster within the same topology.</p>
+
+<p>Nimbus will use the keytab and principal specified in the config to authenticate with Namenode. From then on for every
+topology submission, nimbus will impersonate the topology submitter user and acquire delegation tokens on behalf of the
+topology submitter user. If topology was started with topology.auto-credentials set to AutoHDFS, nimbus will push the
+delegation tokens to all the workers for your topology and the hdfs bolt/state will authenticate with namenode using 
+these tokens.</p>
+
+<p>As nimbus is impersonating topology submitter user, you need to ensure the user specified in hdfs.kerberos.principal 
+has permissions to acquire tokens on behalf of other users. To achieve this you need to follow configuration directions 
+listed on this link
+http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/Superusers.html</p>
+
+<p>You can read about setting up secure HDFS here: http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/SecureMode.html.</p>
+
+<h3 id="using-keytabs-on-all-worker-hosts">Using keytabs on all worker hosts</h3>
+<p>If you have distributed the keytab files for hdfs user on all potential worker hosts then you can use this method. You should specify a 
+hdfs config key using the method HdfsBolt/State.withconfigKey(“somekey”) and the value map of this key should have following 2 properties:</p>
+
+<p>hdfs.keytab.file: “/path/to/keytab/”
+hdfs.kerberos.principal: “user@EXAMPLE.com”</p>
+
+<p>On worker hosts the bolt/trident-state code will use the keytab file with principal provided in the config to authenticate with 
+Namenode. This method is little dangerous as you need to ensure all workers have the keytab file at the same location and you need
+to remember this as you bring up new hosts in the cluster.</p>
