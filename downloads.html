@@ -26,6 +26,12 @@ older:
 				Downloads for Apache Storm are below. Instructions for how to set up an Apache Storm cluster can be found <a href="/documentation/Setting-up-a-Storm-cluster.html">here</a>.
 				</p>
 
+				<h3>Release Integrity</h3>
+
+				You <b>must</b> <a href="https://www.apache.org/info/verification.html">verify</a> the integrity of the downloaded files. We provide OpenPGP signatures (*.asc files) for every release file.
+				This signature should be matched against <a href="https://downloads.apache.org/storm/KEYS">KEYS</a> file which contains the OpenPGP keys of Storm’s Release Managers.
+				We also provide SHA-512 checksums for every release file. After you download the file, you should calculate a checksum for your download, and make sure it is the same as ours.
+
 				<h3>Current 2.5.x Release</h3>
 				The current 2.5.x release is 2.5.0. Source and binary distributions can be found below.
 
@@ -57,48 +63,58 @@ older:
 				<pre>
 groupId: <a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.storm%22">org.apache.storm</a>
 artifactId: storm-{component}
-version: 2.5.0
-				</pre>
+version: 2.5.0</pre>
 
-				  <h3>Current 1.2.x Release</h3>
-				  The current 1.2.x release is 1.2.4. Source and binary distributions can be found below.
-				  
-				  The list of changes for this release can be found <a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/RELEASE_NOTES.html">here.</a>
-                  
-                  <p><a href="releases/1.2.4/index.html">Documentation</a>
-                  <br/><a href="releases/1.2.4/javadocs/index.html">Javadocs</a></p>
+				<h3>Current 1.2.x Release (Discontinued)</h3>
 
-				  <ul>
-					  <li><a href="https://www.apache.org/dyn/closer.lua/storm/apache-storm-1.2.4/apache-storm-1.2.4.tar.gz">apache-storm-1.2.4.tar.gz</a>
-					     [<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4.tar.gz.asc">PGP</a>]
-					     [<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4.tar.gz.sha512">SHA512</a>] 
-					  </li>
-					  <li><a href="https://www.apache.org/dyn/closer.lua/storm/apache-storm-1.2.4/apache-storm-1.2.4.zip">apache-storm-1.2.4.zip</a>
-					     [<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4.zip.asc">PGP</a>]
-					     [<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4.zip.sha512">SHA512</a>] 
-					  </li>
-					  <li><a href="https://www.apache.org/dyn/closer.lua/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.tar.gz">apache-storm-1.2.4-src.tar.gz</a>
-					     [<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.tar.gz.asc">PGP</a>]
-					     [<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.tar.gz.sha512">SHA512</a>] 
-					  </li>
-					  <li><a href="https://www.apache.org/dyn/closer.lua/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.zip">apache-storm-1.2.4-src.zip</a>
-					     [<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.zip.asc">PGP</a>]
-					     [<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.zip.sha512">SHA512</a>] 
-					  </li>
-				  </ul>
-				  Apache Storm artifacts are hosted in <a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.storm%22">Maven Central</a>. You can add Apache Storm as a dependency with the following coordinates:
+				<h4>Import Note</h4>
+				No upcoming releases are planned for these branches as transitive dependencies reached
+				their end of life, i.e. they might be affected by security vulnerabilities.
+				Current development is focused on Storm 2. People are encouraged to upgrade.
 
-				  <pre>
+				<h4>Release Details</h4>
+
+				The current 1.2.x release is 1.2.4. Source and binary distributions can be found below.
+
+				The list of changes for this release can be found <a
+					href="https://www.apache.org/dist/storm/apache-storm-1.2.4/RELEASE_NOTES.html">here.</a>
+
+				<p><a href="releases/1.2.4/index.html">Documentation</a>
+					<br/><a href="releases/1.2.4/javadocs/index.html">Javadocs</a></p>
+
+				<ul>
+					<li>
+						<a href="https://www.apache.org/dyn/closer.lua/storm/apache-storm-1.2.4/apache-storm-1.2.4.tar.gz">apache-storm-1.2.4.tar.gz</a>
+						[<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4.tar.gz.asc">PGP</a>]
+						[<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4.tar.gz.sha512">SHA512</a>]
+					</li>
+					<li><a href="https://www.apache.org/dyn/closer.lua/storm/apache-storm-1.2.4/apache-storm-1.2.4.zip">apache-storm-1.2.4.zip</a>
+						[<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4.zip.asc">PGP</a>]
+						[<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4.zip.sha512">SHA512</a>]
+					</li>
+					<li>
+						<a href="https://www.apache.org/dyn/closer.lua/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.tar.gz">apache-storm-1.2.4-src.tar.gz</a>
+						[<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.tar.gz.asc">PGP</a>]
+						[<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.tar.gz.sha512">SHA512</a>]
+					</li>
+					<li>
+						<a href="https://www.apache.org/dyn/closer.lua/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.zip">apache-storm-1.2.4-src.zip</a>
+						[<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.zip.asc">PGP</a>]
+						[<a href="https://www.apache.org/dist/storm/apache-storm-1.2.4/apache-storm-1.2.4-src.zip.sha512">SHA512</a>]
+					</li>
+				</ul>
+				Apache Storm artifacts are hosted in <a
+					href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.storm%22">Maven Central</a>. You
+				can add Apache Storm as a dependency with the following coordinates:
+
+				<pre>
 groupId: <a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.storm%22">org.apache.storm</a>
 artifactId: storm-core
-version: 1.2.4</pre>				  
-				  
-                  <h3>Previous Releases</h3>
-				  Archived releases can be found <a href="https://archive.apache.org/dist/storm/">here</a>
+version: 1.2.4</pre>
 
+				<h3>Previous Releases</h3>
+				Archived releases can be found <a href="https://archive.apache.org/dist/storm/">here</a>
 
-				  <h3>How to Verify Downloaded Files</h3>
-				  Signatures in *.asc files and checksums in *.sha512 files are provided along with the releases. You can follow <a href="https://www.apache.org/info/verification.html">the tutorial</a> from The Apache Software Foundation to verify the release using the release-signing <a href="https://downloads.apache.org/storm/KEYS">KEYS</a>.
 			</div>
 		</div>
 	</div>
