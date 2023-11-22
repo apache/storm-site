@@ -5,9 +5,157 @@
     <description></description>
     <link>https://storm.apache.org/</link>
     <atom:link href="https://storm.apache.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 22 Nov 2023 19:39:35 +0100</pubDate>
-    <lastBuildDate>Wed, 22 Nov 2023 19:39:35 +0100</lastBuildDate>
+    <pubDate>Wed, 22 Nov 2023 19:52:26 +0100</pubDate>
+    <lastBuildDate>Wed, 22 Nov 2023 19:52:26 +0100</lastBuildDate>
     <generator>Jekyll v3.9.3</generator>
+    
+      <item>
+        <title>Apache Storm 2.5.0 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that  version 2.6.0 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes a number of code improvements and important bug fixes 
+that improve Apache Storm&amp;#39;s performance, stability and fault tolerance. &lt;/p&gt;
+
+&lt;p&gt;With Storm 2.6.0 we have removed the following external components / modules &lt;strong&gt;without&lt;/strong&gt; a replacement:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;storm-cassandra&lt;/li&gt;
+&lt;li&gt;storm-eventhubs&lt;/li&gt;
+&lt;li&gt;storm-hbase&lt;/li&gt;
+&lt;li&gt;storm-hive&lt;/li&gt;
+&lt;li&gt;storm-kinesis&lt;/li&gt;
+&lt;li&gt;storm-mongodb&lt;/li&gt;
+&lt;li&gt;storm-mqtt&lt;/li&gt;
+&lt;li&gt;storm-openmtsdb&lt;/li&gt;
+&lt;li&gt;storm-pmml&lt;/li&gt;
+&lt;li&gt;storm-pulsar&lt;/li&gt;
+&lt;li&gt;storm-rocketmq&lt;/li&gt;
+&lt;li&gt;storm-solr&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We might consider re-adding specific components, if there is specific need and 
+volunteers to maintain these components. In addition, this release &lt;strong&gt;drops&lt;/strong&gt; Java 8 support. &lt;/p&gt;
+
+&lt;p&gt;We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether 
+through direct code contributions, documentation, bug reports, or helping other 
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-6-0&quot;&gt;Changes in this Release - Storm 2.6.0&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.6.0 release of Storm. Documentation for this
+    release is available at the &lt;a href=&quot;http://storm.apache.org/&quot;&gt;Apache Storm
+    project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;New Feature&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-1241&quot;&gt;STORM-1241&lt;/a&gt;] - port  backtype.storm.security.auth.auto-login-module-test to java&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-1316&quot;&gt;STORM-1316&lt;/a&gt;] - port storm.trident.state-test to java&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3901&quot;&gt;STORM-3901&lt;/a&gt;] - Upgrade Kryo from version 4 to version 5.4.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3958&quot;&gt;STORM-3958&lt;/a&gt;] - Capacity to set Storm UI&apos;s title in conf/storm.yaml&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3762&quot;&gt;STORM-3762&lt;/a&gt;] - Set a default character set in InputStreamReader to solve potential garbled problems&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3764&quot;&gt;STORM-3764&lt;/a&gt;] - Nimbus has internal scheduling errors when backtracking&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3771&quot;&gt;STORM-3771&lt;/a&gt;] - Execute doCleanup in its own timer thread without lock&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3782&quot;&gt;STORM-3782&lt;/a&gt;] - Refactor KafkaOffsetMetric to use V2 metrics&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3792&quot;&gt;STORM-3792&lt;/a&gt;] - Change pom.xml to use more test JVM threads without reuse&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3800&quot;&gt;STORM-3800&lt;/a&gt;] - Fix Resocue leak due to Files.list and Files.walk&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3825&quot;&gt;STORM-3825&lt;/a&gt;] - update libthrift due to security vulnerability&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3845&quot;&gt;STORM-3845&lt;/a&gt;] - Upgrade activemq version from 5.15.3 to 5.18.2&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3888&quot;&gt;STORM-3888&lt;/a&gt;] - HdfsBlobStoreFile set wrong permission for file&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3914&quot;&gt;STORM-3914&lt;/a&gt;] - Several External Modules as not being tested for JDK 11&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3919&quot;&gt;STORM-3919&lt;/a&gt;] - Upgrade Hadoop to version 3 (+ depending frameworks: Hive, HBase)&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3948&quot;&gt;STORM-3948&lt;/a&gt;] - Hive 2.3.9 declares an offline / unmaintained maven repository&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3980&quot;&gt;STORM-3980&lt;/a&gt;] - Updates developer docs and removing obsolete content &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3983&quot;&gt;STORM-3983&lt;/a&gt;] - Refactor File.createTempFile with Files.create(...)&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4003&quot;&gt;STORM-4003&lt;/a&gt;] - storm-kafka-monitor fails with Java 17 runtime, missing jakarta.xml.bind dependency&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3404&quot;&gt;STORM-3404&lt;/a&gt;] - storm v1.2.2 KafkaOffsetLagUtil cant pull the offset correctly&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3924&quot;&gt;STORM-3924&lt;/a&gt;] - Support for declaring WorkerHook in Flux topology definitions&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3944&quot;&gt;STORM-3944&lt;/a&gt;] - ConcurrentModificationException  in MultiCountMetric&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3954&quot;&gt;STORM-3954&lt;/a&gt;] - Remove Logback pulled in by Zookeeper&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3956&quot;&gt;STORM-3956&lt;/a&gt;] - Fix cli monitor component&apos;s argument type &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3984&quot;&gt;STORM-3984&lt;/a&gt;] - Nimbus failover causes unnecessary reassign if 600s are passed after starting Nimbus&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3994&quot;&gt;STORM-3994&lt;/a&gt;] - LocalCluster init fails on Windows because of missing librocksdbjni-win64.dll&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3932&quot;&gt;STORM-3932&lt;/a&gt;] - Fix errors/warnings found while generating javadoc in storm-client&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3933&quot;&gt;STORM-3933&lt;/a&gt;] - Fix errors/warnings found while generating javadoc in storm-server&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3935&quot;&gt;STORM-3935&lt;/a&gt;] - Fix errors/warnings found while generating javadoc in storm-cassandra&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3936&quot;&gt;STORM-3936&lt;/a&gt;] - Fix errors/warnings found while generating javadoc in storm-kafka-client&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3937&quot;&gt;STORM-3937&lt;/a&gt;] - Fix errors/warnings found while generating javadoc in storm-starter&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3939&quot;&gt;STORM-3939&lt;/a&gt;] - Remove JDK 8 support&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3941&quot;&gt;STORM-3941&lt;/a&gt;] - Add .asf.yaml to GitHub repository&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3945&quot;&gt;STORM-3945&lt;/a&gt;] - Upgrade Zookeeper to 3.9.0 / Curator 5&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3953&quot;&gt;STORM-3953&lt;/a&gt;] - Update RELEASING.md&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3955&quot;&gt;STORM-3955&lt;/a&gt;] - Dependabot recommended update to maven-core&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3963&quot;&gt;STORM-3963&lt;/a&gt;] - Import and Build Apache Storm in Eclipse&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3965&quot;&gt;STORM-3965&lt;/a&gt;] - Remove illegal access warning in JDK11 test of storm-sql-core&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3967&quot;&gt;STORM-3967&lt;/a&gt;] - Set generated sources directory for use by IDE like eclipse&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3968&quot;&gt;STORM-3968&lt;/a&gt;] - Add missing groupId in storm-core/pom.xml for maven-dependency-plugin&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3970&quot;&gt;STORM-3970&lt;/a&gt;] - storm-sql-core in fails to build Eclipse for generated java code&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3978&quot;&gt;STORM-3978&lt;/a&gt;] - Rep,ace json-simple with minidev json&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3988&quot;&gt;STORM-3988&lt;/a&gt;] - Removal of modules residing in /external&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3999&quot;&gt;STORM-3999&lt;/a&gt;] - Add Java 21 to Build Matrix&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4001&quot;&gt;STORM-4001&lt;/a&gt;] - log4j2 2.21.1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3884&quot;&gt;STORM-3884&lt;/a&gt;] - Bump calcite-core from 1.14.0 to 1.32.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3885&quot;&gt;STORM-3885&lt;/a&gt;] - Security fix upgrade com.fasterxml.jackson.core:jackson-databind to 2.15.2&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3946&quot;&gt;STORM-3946&lt;/a&gt;] - Upgrade Netty BOM&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3947&quot;&gt;STORM-3947&lt;/a&gt;] - Align Netty with version used in Zookeeper&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3949&quot;&gt;STORM-3949&lt;/a&gt;] - libthrift 0.18.1&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3950&quot;&gt;STORM-3950&lt;/a&gt;] - Modernize storm-jdbc&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3961&quot;&gt;STORM-3961&lt;/a&gt;] - Modernize Storm UI&apos;s 3rd party dependencies&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3972&quot;&gt;STORM-3972&lt;/a&gt;] - commons-lang3 3.13.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3973&quot;&gt;STORM-3973&lt;/a&gt;] - log4j2 2.20.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3974&quot;&gt;STORM-3974&lt;/a&gt;] - Jersey 2.40&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3975&quot;&gt;STORM-3975&lt;/a&gt;] - Dropwizard 1.3.29&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3976&quot;&gt;STORM-3976&lt;/a&gt;] - j2html 1.6.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3977&quot;&gt;STORM-3977&lt;/a&gt;] - Minidev JSON 2.5.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3979&quot;&gt;STORM-3979&lt;/a&gt;] - JUnit 5.10.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3986&quot;&gt;STORM-3986&lt;/a&gt;] - Get rid of BlacklistScheduler timer [INFO] logs&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3987&quot;&gt;STORM-3987&lt;/a&gt;] - Zookeeper 3.9.1&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3989&quot;&gt;STORM-3989&lt;/a&gt;] - Snappy Java 1.1.10.4&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3990&quot;&gt;STORM-3990&lt;/a&gt;] - Hadoop 2.10.2&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3991&quot;&gt;STORM-3991&lt;/a&gt;] - Avro 1.11.3&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3993&quot;&gt;STORM-3993&lt;/a&gt;] - ActiveMQ 5.18.3&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3995&quot;&gt;STORM-3995&lt;/a&gt;] - commons-text 1.11.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3996&quot;&gt;STORM-3996&lt;/a&gt;] - Jetty 9.4.53.v20231009&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3997&quot;&gt;STORM-3997&lt;/a&gt;] - Netty 4.1.100&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3998&quot;&gt;STORM-3998&lt;/a&gt;] - Guava 32.1.3-jre&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3982&quot;&gt;STORM-3982&lt;/a&gt;] - Update README.md, DOAP/RDF and Dev section in POM&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Requirement&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3840&quot;&gt;STORM-3840&lt;/a&gt;] - log4j vulnerability&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 22 Nov 2023 00:00:00 +0100</pubDate>
+        <link>https://storm.apache.org/2023/11/22/storm260-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2023/11/22/storm260-released.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Apache Storm 2.5.0 Released</title>
@@ -882,109 +1030,6 @@ users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
         <pubDate>Thu, 18 Jul 2019 00:00:00 +0200</pubDate>
         <link>https://storm.apache.org/2019/07/18/storm123-released.html</link>
         <guid isPermaLink="true">https://storm.apache.org/2019/07/18/storm123-released.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Apache Storm 2.0.0 Released</title>
-        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.0.0 has been released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;. This release represents a major milestone and accomplishment by the Apache Storm community.&lt;/p&gt;
-
-&lt;p&gt;Apache Storm 2.0.0 includes significant improvements in terms of performance, new features, and integration with external systems. In the coming weeks members will post a series of deep dive articles covering new features improvements. In this post we&amp;#39;ll highlight some of the key features and changes in this release.&lt;/p&gt;
-
-&lt;p&gt;The full list of changes in this release can be found &lt;a href=&quot;https://www.apache.org/dist/storm/apache-storm-2.0.0/RELEASE_NOTES.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-architecture-implemented-in-java&quot;&gt;New Architecture Implemented in Java&lt;/h2&gt;
-
-&lt;p&gt;In previous releases a large part of Apache Storm&amp;#39;s core functionality was implemented in Clojure. Apache Storm 2.0.0 has been rearchitected with it&amp;#39;s core functionality implemented in pure Java. The new Java-based implementation has improved performance significantly, and made Apache Storm&amp;#39;s internal APIs more maintainable and extensible. While Apache Storm&amp;#39;s Clojure implementation served it well for many years, it was often cited as a barrier for entry to new contributors. Apache Storm&amp;#39;s codebase is now more accessible to developers who don&amp;#39;t want to learn Clojure in order to contribute.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-high-performance-core&quot;&gt;New High Performance Core:&lt;/h2&gt;
-
-&lt;p&gt;Apache Storm 2.0.0 introduces a new core featuring a leaner threading model, a blazing fast messaging subsystem and a lightweight back pressure model. It is designed to push boundaries on throughput, latency and energy consumption while maintaining backward compatibility. The design was motivated by the observation that existing hardware remains capable of much more than what the best streaming engines can deliver. Apache Storm 2.0 is the first streaming engine to break the 1 microsecond latency barrier.&lt;/p&gt;
-
-&lt;h2 id=&quot;new-streams-api&quot;&gt;New Streams API&lt;/h2&gt;
-
-&lt;p&gt;Apache Storm 2.0.0 introduces a new typed API for expressing streaming computations more easily using functional style operations. It builds on top of the Apache Storm&amp;#39;s core spouts and bolt APIs and automatically fuses multiple operations together to optimize the pipeline.&lt;/p&gt;
-
-&lt;p&gt;For more details and examples see the &lt;a href=&quot;https://github.com/apache/storm/blob/master/docs/Stream-API.md&quot;&gt;Stream API documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;windowing-enhancements&quot;&gt;Windowing Enhancements&lt;/h2&gt;
-
-&lt;p&gt;Apache Storm 2.0.0&amp;#39;s Windowing API can save/restore the window state to the configured state backend so that larger continuous windows can be supported. The window boundaries can now be accessed via the APIs.&lt;/p&gt;
-
-&lt;p&gt;For more details see &lt;a href=&quot;https://github.com/apache/storm/blob/master/docs/Windowing.md#stateful-windowing&quot;&gt;stateful windowing documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;kafka-integration-changes&quot;&gt;Kafka Integration Changes&lt;/h2&gt;
-
-&lt;h3 id=&quot;removal-of-storm-kafka&quot;&gt;Removal of Storm-Kafka&lt;/h3&gt;
-
-&lt;p&gt;The most significant change to Apache Storm&amp;#39;s Kafka integration since 1.x, is that storm-kafka has been removed. The module was deprecated a while back, due to Kafka&amp;#39;s deprecation of the underlying client library. Users will have to move to the storm-kafka-client module, which uses Kafka&amp;#39;s ´kafka-clients´ library for integration.&lt;/p&gt;
-
-&lt;p&gt;For the most part, the migration to storm-kafka-client is straightforward. The documentation for storm-kafka-client contains a helpful mapping between the old and new spout configurations. If you are using any of the storm-kafka spouts, you will need to migrate offset checkpoints to the new spout, to avoid the new spout starting from scratch on your partitions. Apache Storm provides a helper tool to do this which can be found &lt;a href=&quot;https://github.com/apache/storm/tree/master/external/storm-kafka-migration&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;When performing a migration, you should stop your topology, run the migration tool, then redeploy your topology with the storm-kafka-client spout.&lt;/p&gt;
-
-&lt;h3 id=&quot;move-to-using-the-kafkaconsumer-assign-api&quot;&gt;Move to Using the KafkaConsumer.assign API&lt;/h3&gt;
-
-&lt;p&gt;Storm-kafka-client in Apache Storm 1.x allowed you to use Kafka&amp;#39;s own mechanism to manage which spout tasks were responsible for which partitions. This mechanism was a poor fit for Apache Storm, and was deprecated in 1.2.0. It has been &lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2542&quot;&gt;removed entirely in 2.0&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The storm-kafka-client Subscription interface has also been removed. It offered too limited control over the subscription behavior. It has been replaced with the TopicFilter and ManualPartitioner interfaces. Unless you were using a custom Subscription implementation, this will likely not
-affect you. If you were using a custom Subscription, &lt;a href=&quot;https://github.com/apache/storm/blob/master/docs/storm-kafka-client.md#manual-partition-assigment-advanced&quot;&gt;the storm-kafka-client documentation describes how to customize assignment&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;other-kafka-highlights&quot;&gt;Other Kafka Highlights&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The KafkaBolt now allows you to &lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3175&quot;&gt;specify a callback that will be called when a batch is written to Kafka&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;The FirstPollOffsetStrategy behavior has been made consistent between the non-Trident and Trident spouts. It is now always the case that EARLIEST/LATEST only take effect on topology redeploy, and not when a worker restarts &lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2990&quot;&gt;https://issues.apache.org/jira/browse/STORM-2990&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Storm-kafka-client now has a transactional non-opaque Trident spout &lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2974&quot;&gt;https://issues.apache.org/jira/browse/STORM-2974&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;There are new example modules for storm-kafka-client. You can find them &lt;a href=&quot;https://github.com/apache/storm/tree/master/examples/storm-kafka-client-examples&quot;&gt;here&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Deprecated methods in KafkaSpoutConfig have been removed. If you are using one of the deprecated methods, check the Javadoc for the latest 1.2.x release, which describes the replacement for each method.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;eol-for-1-0-x&quot;&gt;EOL for 1.0.x&lt;/h2&gt;
-
-&lt;p&gt;With the release of 2.0.0 the 1.0.x version line will no longer be maintained. 1.0.x users are strongly encouraged to upgrade to a more recent release.&lt;/p&gt;
-
-&lt;h2 id=&quot;move-to-java-8&quot;&gt;Move to Java 8&lt;/h2&gt;
-
-&lt;p&gt;Java 7 support has been dropped, and Apache Storm 2.0.0 requires Java 8.&lt;/p&gt;
-
-&lt;h2 id=&quot;reorganization-of-apache-storm-maven-artifacts&quot;&gt;Reorganization of Apache Storm Maven artifacts&lt;/h2&gt;
-
-&lt;p&gt;The storm-core artifact has &lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-2441&quot;&gt;been split&lt;/a&gt; into client and server-facing parts. Topology jars should depend on the following artifact as of Apache Storm 2.0.0:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;&amp;lt;groupId&amp;gt;org.apache.storm&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;storm-client&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.0.0&amp;lt;/version&amp;gt;
-&amp;lt;scope&amp;gt;provided&amp;lt;/scope&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Projects using &lt;code&gt;LocalCluster&lt;/code&gt; for testing will additionally need to depend on the Apache Storm server jar:&lt;/p&gt;
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-&quot; data-lang=&quot;&quot;&gt;&amp;lt;groupId&amp;gt;org.apache.storm&amp;lt;/groupId&amp;gt;
-&amp;lt;artifactId&amp;gt;storm-server&amp;lt;/artifactId&amp;gt;
-&amp;lt;version&amp;gt;2.0.0&amp;lt;/version&amp;gt;
-&amp;lt;scope&amp;gt;test&amp;lt;/scope&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&quot;stay-tuned&quot;&gt;Stay Tuned&lt;/h2&gt;
-
-&lt;p&gt;Keep an eye on the Apache Storm blog for additional posts by Apache Storm contributors for more in-depth discussions of new features in Apache Storm 2.0.0 including:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;SQL enhancements&lt;/li&gt;
-&lt;li&gt;Metrics improvements&lt;/li&gt;
-&lt;li&gt;New security features such as nimbus admin groups, delegation tokens, and optional impersonation&lt;/li&gt;
-&lt;li&gt;Module restructuring &amp;amp; dependency resolution improvements&lt;/li&gt;
-&lt;li&gt;API improvements&lt;/li&gt;
-&lt;li&gt;Lambda support&lt;/li&gt;
-&lt;li&gt;Resource Aware Scheduler enhancements&lt;/li&gt;
-&lt;li&gt;New admin commands for debugging cluster state&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
-
-&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether through direct code contributions, documentation, bug reports, or helping other users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 30 May 2019 00:00:00 +0200</pubDate>
-        <link>https://storm.apache.org/2019/05/30/storm200-released.html</link>
-        <guid isPermaLink="true">https://storm.apache.org/2019/05/30/storm200-released.html</guid>
         
         
       </item>
