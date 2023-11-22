@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Apache Storm 2.5.0 Released
-author: Bipin Prasad
+title: Apache Storm 2.6.0 Released
+author: Richard Zowalla
 ---
 
 The Apache Storm community is pleased to announce that  version 2.6.0 has been
