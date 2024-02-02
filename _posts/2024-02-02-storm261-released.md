@@ -9,7 +9,7 @@ released and is available from [the downloads page](/downloads.html).
 
 This release includes a number of code improvements, library updates and important bug fixes.
 We also took over the stewardship over the official Storm docker image located <a href="https://hub.docker.com/_/storm">
-here</a.
+here</a>.
 
 We encourage users of previous versions to upgrade to this latest release.
 
@@ -20,10 +20,9 @@ through direct code contributions, documentation, bug reports, or helping other
 users on the mailing lists. Your efforts are much appreciated.
 
 
-Changes in this Release - Storm 2.6.0
+Changes in this Release - Storm 2.6.1
 ---------
-<p>JIRA issues addressed in the 2.6.1 release of Storm. Documentation for this
-    release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
+<p>JIRA issues addressed in the 2.6.1 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
 
 <h2>New Feature</h2>
 <ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-1836">STORM-1836</a>] - An official Docker image</li>
