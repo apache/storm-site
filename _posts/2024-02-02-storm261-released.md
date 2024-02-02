@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Apache Storm 2.6.0 Released
+title: Apache Storm 2.6.1 Released
 author: Richard Zowalla
 ---
 
