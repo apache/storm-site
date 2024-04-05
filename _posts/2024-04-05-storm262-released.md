@@ -1,16 +1,13 @@
 ---
 layout: post
-title: Apache Storm 2.6.1 Released
+title: Apache Storm 2.6.2 Released
 author: Richard Zowalla
 ---
 
-The Apache Storm community is pleased to announce that version 2.6.1 has been
+The Apache Storm community is pleased to announce that version 2.6.2 has been
 released and is available from [the downloads page](/downloads.html).
 
-This release includes a number of code improvements, library updates and important bug fixes.
-We also took over the stewardship over the official Storm docker image located <a href="https://hub.docker.com/_/storm">
-here</a>.
-
+This release includes a number of code improvements and library updates.
 We encourage users of previous versions to upgrade to this latest release.
 
 Thanks
@@ -20,48 +17,35 @@ through direct code contributions, documentation, bug reports, or helping other
 users on the mailing lists. Your efforts are much appreciated.
 
 
-Changes in this Release - Storm 2.6.1
+Changes in this Release - Storm 2.6.2
 ---------
-<p>JIRA issues addressed in the 2.6.1 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
-
-<h2>New Feature</h2>
-<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-1836">STORM-1836</a>] - An official Docker image</li>
-</ul>
+<p>JIRA issues addressed in the 2.6.2 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
 
 <h2>Improvement</h2>
-<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-3186">STORM-3186</a>] - Customizable configuration for metric reporting interval</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-3565">STORM-3565</a>] - Allow users to add dimensionsfor storm metrics</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-3639">STORM-3639</a>] - Remove asserts from Storm daemon code</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-3680">STORM-3680</a>] - Upgrade Jedis library in storm-jedis module to 3.2.x</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4007">STORM-4007</a>] - Add the getName() method in order to obtain the applied label to the Trident stream.</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4008">STORM-4008</a>] - Implement timed GH actions to publish SNAPSHOTS</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4009">STORM-4009</a>] - Regenerate Thrift Code with current Thrift version used in Storm</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4016">STORM-4016</a>] - Kafka spout: start using poll(Duration)</li>
-</ul>
-
-<h2>Bug</h2>
-<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-3132">STORM-3132</a>] - NPE in Values Constructor</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-3713">STORM-3713</a>] - Possible race condition between zookeeper sync-up and killing topology</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4017">STORM-4017</a>] - isAnyWindowsProcessAlive does not work with multiple pids</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4018">STORM-4018</a>] - Wrong order of the params in Storm API resource</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4023">STORM-4023</a>] - Background periodic Kerberos re-login should use same JAAS configuration as initial login</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4024">STORM-4024</a>] - Bolt Input Stats are blank if topology.acker.executors is null or 0</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4025">STORM-4025</a>] - ClassCastException when changing log level in Storm UI</li>
+<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-4038">STORM-4038</a>] - Cleanup Hadoop Dependencies</li>
 </ul>
 
 <h2>Task</h2>
-<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-4022">STORM-4022</a>] - Avoid flooding nimbus logs with dead topology heatbeat timeout error messages</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4026">STORM-4026</a>] - Thrift 0.19.0</li>
+<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-4030">STORM-4030</a>] - Dependency upgrades</li>
+<li>[<a href="https://issues.apache.org/jira/browse/STORM-4039">STORM-4039</a>] - Bump org.apache.commons:commons-configuration2 from 2.9.0 to 2.10.1</li>
 </ul>
 
 <h2>Dependency upgrade</h2>
-<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-4004">STORM-4004</a>] - Upgrade Kafka Clients to 3.6.0</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4005">STORM-4005</a>] - ElasticSearch 7.17.13</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4011">STORM-4011</a>] - Migrate Storm itself to use Commons Collections 4</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4027">STORM-4027</a>] - Kyro 5.6.0</li>
-<li>[<a href="https://issues.apache.org/jira/browse/STORM-4028">STORM-4028</a>] - Curator 5.6.0</li>
+<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-4029">STORM-4029</a>] - Bump org.apache.commons:commons-compress from 1.21 to 1.26.</li>
+<li>[<a href="https://issues.apache.org/jira/browse/STORM-4041">STORM-4041</a>] - Zookeeper 3.9.2</li>
+<li>[<a href="https://issues.apache.org/jira/browse/STORM-4042">STORM-4042</a>] - Clojure 1.11.2</li>
+<li>[<a href="https://issues.apache.org/jira/browse/STORM-4043">STORM-4043</a>] - commons-io:2.14.0</li>
+<li>[<a href="https://issues.apache.org/jira/browse/STORM-4044">STORM-4044</a>] - commons-lang3:3.14.0</li>
+<li>[<a href="https://issues.apache.org/jira/browse/STORM-4045">STORM-4045</a>] - log4j2 2.23.0 </li>
+<li>[<a href="https://issues.apache.org/jira/browse/STORM-4046">STORM-4046</a>] - caffeine:3.1.8</li>
+<li>[<a href="https://issues.apache.org/jira/browse/STORM-4047">STORM-4047</a>] - jackson 2.16.1</li>
+<li>[<a href="https://issues.apache.org/jira/browse/STORM-4048">STORM-4048</a>] - netty 4.1.107.Final </li>
+<li>[<a href="https://issues.apache.org/jira/browse/STORM-4049">STORM-4049</a>] - snakeyaml:2.2</li>
+<li>[<a href="https://issues.apache.org/jira/browse/STORM-4050">STORM-4050</a>] - rocksdbjni:8.10.0 </li>
 </ul>
 
-<h2>Project</h2>
-<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-4006">STORM-4006</a>] - Implement timed GH actions to publish to nightlies.a.o</li>
+<h2>Documentation</h2>
+<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-4040">STORM-4040</a>] - Nimbus fails to start up on older CPUs (RocksDB v7.x.x onwards)</li>
 </ul>
+</body>
+</html>
