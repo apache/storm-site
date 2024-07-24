@@ -1,0 +1,175 @@
+<p>Hive offers streaming API that allows data to be written continuously into Hive. The incoming data 
+  can be continuously committed in small batches of records into existing Hive partition or table. Once the data
+  is committed its immediately visible to all hive queries. More info on Hive Streaming API 
+  https://cwiki.apache.org/confluence/display/Hive/Streaming+Data+Ingest</p>
+
+<p>With the help of Hive Streaming API, HiveBolt and HiveState allows users to stream data from Storm into Hive directly.
+  To use Hive streaming API users need to create a bucketed table with ORC format.  Example below</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">create</span> <span class="k">table</span> <span class="n">test_table</span> <span class="p">(</span> <span class="n">id</span> <span class="nb">INT</span><span class="p">,</span> <span class="n">name</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">phone</span> <span class="n">STRING</span><span class="p">,</span> <span class="n">street</span> <span class="n">STRING</span><span class="p">)</span> <span class="n">partitioned</span> <span class="k">by</span> <span class="p">(</span><span class="n">city</span> <span class="n">STRING</span><span class="p">,</span> <span class="k">state</span> <span class="n">STRING</span><span class="p">)</span> <span class="n">stored</span> <span class="k">as</span> <span class="n">orc</span> <span class="n">tblproperties</span> <span class="p">(</span><span class="nv">"orc.compress"</span><span class="o">=</span><span class="nv">"NONE"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="hivebolt-orgapachestormhivebolthivebolt">HiveBolt (org.apache.storm.hive.bolt.HiveBolt)</h2>
+
+<p>HiveBolt streams tuples directly into Hive. Tuples are written using Hive Transactions. 
+Partitions to which HiveBolt will stream to can either created or pre-created or optionally
+HiveBolt can create them if they are missing. Fields from Tuples are mapped to table columns.
+User should make sure that Tuple field names are matched to the table column names.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">DelimitedRecordHiveMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DelimitedRecordHiveMapper</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">withColumnFields</span><span class="o">(</span><span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="n">colNames</span><span class="o">));</span>
+<span class="nc">HiveOptions</span> <span class="n">hiveOptions</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HiveOptions</span><span class="o">(</span><span class="n">metaStoreURI</span><span class="o">,</span><span class="n">dbName</span><span class="o">,</span><span class="n">tblName</span><span class="o">,</span><span class="n">mapper</span><span class="o">);</span>
+<span class="nc">HiveBolt</span> <span class="n">hiveBolt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HiveBolt</span><span class="o">(</span><span class="n">hiveOptions</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="recordhivemapper">RecordHiveMapper</h3>
+<p>This class maps Tuple field names to Hive table column names.
+   There are two implementaitons available</p>
+
+<ul>
+  <li>DelimitedRecordHiveMapper (org.apache.storm.hive.bolt.mapper.DelimitedRecordHiveMapper)</li>
+  <li>JsonRecordHiveMapper (org.apache.storm.hive.bolt.mapper.JsonRecordHiveMapper)</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="nc">DelimitedRecordHiveMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DelimitedRecordHiveMapper</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">withColumnFields</span><span class="o">(</span><span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="n">colNames</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">withPartitionFields</span><span class="o">(</span><span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="n">partNames</span><span class="o">));</span>
+    <span class="n">or</span>
+   <span class="nc">DelimitedRecordHiveMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DelimitedRecordHiveMapper</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">withColumnFields</span><span class="o">(</span><span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="n">colNames</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">withTimeAsPartitionField</span><span class="o">(</span><span class="s">"YYYY/MM/DD"</span><span class="o">);</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Arg</th>
+      <th>Description</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>withColumnFields</td>
+      <td>field names in a tuple to be mapped to table column names</td>
+      <td>Fields (required)</td>
+    </tr>
+    <tr>
+      <td>withPartitionFields</td>
+      <td>field names in a tuple can be mapped to hive table partitions</td>
+      <td>Fields</td>
+    </tr>
+    <tr>
+      <td>withTimeAsPartitionField</td>
+      <td>users can select system time as partition in hive table</td>
+      <td>String . Date format</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="hiveoptions-orgapachestormhivecommonhiveoptions">HiveOptions (org.apache.storm.hive.common.HiveOptions)</h3>
+
+<p>HiveBolt takes in HiveOptions as a constructor arg.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nc">HiveOptions</span> <span class="n">hiveOptions</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HiveOptions</span><span class="o">(</span><span class="n">metaStoreURI</span><span class="o">,</span><span class="n">dbName</span><span class="o">,</span><span class="n">tblName</span><span class="o">,</span><span class="n">mapper</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withTxnsPerBatch</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+                				<span class="o">.</span><span class="na">withBatchSize</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span>
+                	     		<span class="o">.</span><span class="na">withIdleTimeout</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>HiveOptions params</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Arg</th>
+      <th>Description</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>metaStoreURI</td>
+      <td>hive meta store URI (can be found in hive-site.xml)</td>
+      <td>String (required)</td>
+    </tr>
+    <tr>
+      <td>dbName</td>
+      <td>database name</td>
+      <td>String (required)</td>
+    </tr>
+    <tr>
+      <td>tblName</td>
+      <td>table name</td>
+      <td>String (required)</td>
+    </tr>
+    <tr>
+      <td>mapper</td>
+      <td>Mapper class to map Tuple field names to Table column names</td>
+      <td>DelimitedRecordHiveMapper or JsonRecordHiveMapper (required)</td>
+    </tr>
+    <tr>
+      <td>withTxnsPerBatch</td>
+      <td>Hive grants a <em>batch of transactions</em> instead of single transactions to streaming clients like HiveBolt.This setting configures the number of desired transactions per Transaction Batch. Data from all transactions in a single batch end up in a single file. Flume will write a maximum of batchSize events in each transaction in the batch. This setting in conjunction with batchSize provides control over the size of each file. Note that eventually Hive will transparently compact these files into larger files.</td>
+      <td>Integer . default 100</td>
+    </tr>
+    <tr>
+      <td>withMaxOpenConnections</td>
+      <td>Allow only this number of open connections. If this number is exceeded, the least recently used connection is closed.</td>
+      <td>Integer . default 100</td>
+    </tr>
+    <tr>
+      <td>withBatchSize</td>
+      <td>Max number of events written to Hive in a single Hive transaction</td>
+      <td>Integer. default 15000</td>
+    </tr>
+    <tr>
+      <td>withCallTimeout</td>
+      <td>(In milliseconds) Timeout for Hive &amp; HDFS I/O operations, such as openTxn, write, commit, abort.</td>
+      <td>Integer. default 10000</td>
+    </tr>
+    <tr>
+      <td>withHeartBeatInterval</td>
+      <td>(In seconds) Interval between consecutive heartbeats sent to Hive to keep unused transactions from expiring. Set this value to 0 to disable heartbeats.</td>
+      <td>Integer. default 240</td>
+    </tr>
+    <tr>
+      <td>withAutoCreatePartitions</td>
+      <td>HiveBolt will automatically create the necessary Hive partitions to stream to.</td>
+      <td>Boolean. default true</td>
+    </tr>
+    <tr>
+      <td>withKerberosPrinicipal</td>
+      <td>Kerberos user principal for accessing secure Hive</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>withKerberosKeytab</td>
+      <td>Kerberos keytab for accessing secure Hive</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>withTickTupleInterval</td>
+      <td>(In seconds) If &gt; 0 then the Hive Bolt will periodically flush transaction batches. Enabling this is recommended to avoid tuple timeouts while waiting for a batch to fill up.</td>
+      <td>Integer. default 0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="hivestate-orgapachestormhivetridenthivetrident">HiveState (org.apache.storm.hive.trident.HiveTrident)</h2>
+
+<p>Hive Trident state also follows similar pattern to HiveBolt it takes in HiveOptions as an arg.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="nc">DelimitedRecordHiveMapper</span> <span class="n">mapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DelimitedRecordHiveMapper</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">withColumnFields</span><span class="o">(</span><span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="n">colNames</span><span class="o">))</span>
+            <span class="o">.</span><span class="na">withTimeAsPartitionField</span><span class="o">(</span><span class="s">"YYYY/MM/DD"</span><span class="o">);</span>
+            
+   <span class="nc">HiveOptions</span> <span class="n">hiveOptions</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HiveOptions</span><span class="o">(</span><span class="n">metaStoreURI</span><span class="o">,</span><span class="n">dbName</span><span class="o">,</span><span class="n">tblName</span><span class="o">,</span><span class="n">mapper</span><span class="o">)</span>
+                                <span class="o">.</span><span class="na">withTxnsPerBatch</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+                				<span class="o">.</span><span class="na">withBatchSize</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span>
+                	     		<span class="o">.</span><span class="na">withIdleTimeout</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+                	     		
+   <span class="nc">StateFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HiveStateFactory</span><span class="o">().</span><span class="na">withOptions</span><span class="o">(</span><span class="n">hiveOptions</span><span class="o">);</span>
+   <span class="nc">TridentState</span> <span class="n">state</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="na">partitionPersist</span><span class="o">(</span><span class="n">factory</span><span class="o">,</span> <span class="n">hiveFields</span><span class="o">,</span> <span class="k">new</span> <span class="nc">HiveUpdater</span><span class="o">(),</span> <span class="k">new</span> <span class="nc">Fields</span><span class="o">());</span>
+</code></pre></div></div>
+

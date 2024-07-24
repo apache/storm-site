@@ -1,0 +1,103 @@
+<h1 id="locality-awareness-in-loadawareshufflegrouping">Locality Awareness In LoadAwareShuffleGrouping</h1>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>Apache Storm has introduced locality awareness to LoadAwareShuffleGrouping based on Bang-Bang control theory. 
+It aims to keep traffic to closer downstream executors to avoid network latency when those executors are not under heavy load. 
+It can also avoid serialization/deserialization overhead if the traffic happens in the same worker.</p>
+
+<h3 id="how-it-works">How it works</h3>
+
+<p>An executor (say <code class="language-plaintext highlighter-rouge">E</code>) which has LoadAwareShuffleGrouping to downstream executors views them in four <code class="language-plaintext highlighter-rouge">scopes</code> based on their locations relative to the executor <code class="language-plaintext highlighter-rouge">E</code> itself. 
+The four scopes are:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">WORKER_LOCAL</code>: every downstream executor located on the same worker as this executor <code class="language-plaintext highlighter-rouge">E</code></li>
+  <li><code class="language-plaintext highlighter-rouge">HOST_LOCAL</code>: every downstream executor located on the same host as this executor <code class="language-plaintext highlighter-rouge">E</code></li>
+  <li><code class="language-plaintext highlighter-rouge">RACK_LOCAL</code>: every downstream executor located on the same rack as this executor <code class="language-plaintext highlighter-rouge">E</code></li>
+  <li><code class="language-plaintext highlighter-rouge">EVERYTHING</code>: every downstream executor of the executor <code class="language-plaintext highlighter-rouge">E</code></li>
+</ul>
+
+<p>It starts with sending tuples to the downstream executors in the scope of <code class="language-plaintext highlighter-rouge">WORKER_LOCAL</code>. 
+The downstream executors in the scope are chosen based on their load. Executors with lower load are more likely to be chosen.
+Once the average load of these <code class="language-plaintext highlighter-rouge">WORKER_LOCAL</code> executors reaches <code class="language-plaintext highlighter-rouge">topology.localityaware.higher.bound</code>, 
+it switches to the higher scope which is <code class="language-plaintext highlighter-rouge">HOST_LOCAL</code> and starts sending tuples in that scope. 
+And if the average load is still higher than the <code class="language-plaintext highlighter-rouge">higher bound</code>, it switches to a higher scope.</p>
+
+<p>On the other hand, it switches to a lower scope if the average load of the lower scope is less than <code class="language-plaintext highlighter-rouge">topology.localityaware.lower.bound</code>.</p>
+
+<h3 id="how-is-load-calculated">How is Load calculated</h3>
+
+<p>The load of an downstream executor is the maximum of the following two:</p>
+
+<ul>
+  <li>The population percentage of the receive queue</li>
+  <li>Math.min(pendingMessages, 1024) / 1024.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">pendingMessages</code>: The upstream executor <code class="language-plaintext highlighter-rouge">E</code> sends messages to the downstream executor through Netty and the <code class="language-plaintext highlighter-rouge">pendingMessages</code> is the number of messages that haven’t got through to the server.</p>
+
+<p>If the downstream executor located on the same worker as the executor <code class="language-plaintext highlighter-rouge">E</code>, the load of that downstream executor is:</p>
+<ul>
+  <li>The population percentage of the receive queue</li>
+</ul>
+
+<h3 id="relationship-between-load-and-capacity">Relationship between Load and Capacity</h3>
+
+<p>The capacity of a bolt executor on Storm UI is calculated as:</p>
+<ul>
+  <li>(number executed * average execute latency) / measurement time</li>
+</ul>
+
+<p>It basically means how busy this executor is. If this is around 1.0, the corresponding Bolt is running as fast as it can. A <code class="language-plaintext highlighter-rouge">__capacity</code> metric exists to track this value for each executor.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">Capacity</code> is not related to the <code class="language-plaintext highlighter-rouge">Load</code>:</p>
+
+<ul>
+  <li>If the <code class="language-plaintext highlighter-rouge">Load</code> of the executor <code class="language-plaintext highlighter-rouge">E1</code> is high,
+    <ul>
+      <li>the <code class="language-plaintext highlighter-rouge">Capacity</code> of <code class="language-plaintext highlighter-rouge">E1</code> could be high: population of the receive queue of <code class="language-plaintext highlighter-rouge">E1</code> could be high and it means the executor <code class="language-plaintext highlighter-rouge">E</code> has more work to do.</li>
+      <li>the <code class="language-plaintext highlighter-rouge">Capacity</code> could also be low: <code class="language-plaintext highlighter-rouge">pendingMessage</code> could be high because other executors share the netty connection between the two workers and they are sending too many messages. 
+  But the actual population of the receive queue of <code class="language-plaintext highlighter-rouge">E1</code> might be low.</li>
+    </ul>
+  </li>
+  <li>If the <code class="language-plaintext highlighter-rouge">Load</code> is low,
+    <ul>
+      <li>the <code class="language-plaintext highlighter-rouge">Capacity</code> could be low: lower <code class="language-plaintext highlighter-rouge">Load</code> means less work to do.</li>
+      <li>the <code class="language-plaintext highlighter-rouge">Capacity</code> could also be high: because the executor could be receiving tuples and executing tuples at the similar average rate.</li>
+    </ul>
+  </li>
+  <li>If the <code class="language-plaintext highlighter-rouge">Capacity</code> is high,
+    <ul>
+      <li>the <code class="language-plaintext highlighter-rouge">Load</code> could be high: high <code class="language-plaintext highlighter-rouge">Capacity</code> means the executor is busy. It could be because it’s receiving too many tuples.</li>
+      <li>the <code class="language-plaintext highlighter-rouge">Load</code> could also be low: because the executor could be receiving tuples and executing tuples at the similar average rate.</li>
+    </ul>
+  </li>
+  <li>If the <code class="language-plaintext highlighter-rouge">Capacity</code> is low,
+    <ul>
+      <li>the <code class="language-plaintext highlighter-rouge">Load</code> could be low: if the <code class="language-plaintext highlighter-rouge">pendingMessage</code> is low</li>
+      <li>the <code class="language-plaintext highlighter-rouge">Load</code> could also be high: because the <code class="language-plaintext highlighter-rouge">pendingMessage</code> might be very high.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="troubleshooting">Troubleshooting</h3>
+
+<h4 id="i-am-seeing-high-capacity-close-to-10-on-some-executors-and-low-capacity-close-to-0-on-other-executors">I am seeing high capacity (close to 1.0) on some executors and low capacity (close to 0) on other executors</h4>
+
+<ol>
+  <li>
+    <p>It could mean that you could reduce parallelism. Your executors are able to keep up and the load never gets to a very high point.</p>
+  </li>
+  <li>
+    <p>You can try to adjust <code class="language-plaintext highlighter-rouge">topology.localityaware.higher.bound</code> and <code class="language-plaintext highlighter-rouge">topology.localityaware.lower.bound</code></p>
+  </li>
+  <li>
+    <p>You can try to enable <code class="language-plaintext highlighter-rouge">topology.ras.order.executors.by.proximity.needs</code>. With this config, unassigned executors will be sorted by topological order 
+with network proximity needs before being scheduled. This is a best-effort to split the topology to slices and allocate executors in each slice to as closest physical location as possible.</p>
+  </li>
+</ol>
+
+<h4 id="i-just-want-the-capacity-on-every-downstream-executor-to-be-even">I just want the capacity on every downstream executor to be even</h4>
+
+<p>You can turn off LoadAwareShuffleGrouping by setting <code class="language-plaintext highlighter-rouge">topology.disable.loadaware.messaging</code> to <code class="language-plaintext highlighter-rouge">true</code>.</p>

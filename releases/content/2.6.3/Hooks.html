@@ -1,0 +1,34 @@
+<h2 id="task-hooks">Task hooks</h2>
+<p>Storm provides hooks with which you can insert custom code to run on any number of events within Storm. You create a hook by extending the <a href="javadocs/org/apache/storm/hooks/BaseTaskHook.html">BaseTaskHook</a> class and overriding the appropriate method for the event you want to catch. There are two ways to register your hook:</p>
+
+<ol>
+  <li>In the open method of your spout or prepare method of your bolt using the <a href="javadocs/org/apache/storm/task/TopologyContext.html#addTaskHook">TopologyContext</a> method.</li>
+  <li>Through the Storm configuration using the <a href="javadocs/org/apache/storm/Config.html#TOPOLOGY_AUTO_TASK_HOOKS">“topology.auto.task.hooks”</a> config. These hooks are automatically registered in every spout or bolt, and are useful for doing things like integrating with a custom monitoring system.</li>
+</ol>
+
+<h2 id="worker-hooks">Worker hooks</h2>
+<p>Storm also provides worker-level hooks that are called during worker startup, before any bolts or spouts are prepared/opened. You can create such a hook by extending <a href="javadocs/org/apache/storm/hooks/BaseWorkerHook">BaseWorkerHook</a> (an implementation of <a href="javadocs/org/apache/storm/hooks/IWorkerHook.html">IWorkerHook</a>) and overriding the methods you want to implement. You can register your hook via <code class="language-plaintext highlighter-rouge">TopologyBuilder.addWorkerHook</code>.<br />
+The <code class="language-plaintext highlighter-rouge">IWorkerHook#start(Map, WorkerUserContext)</code> lifecycle method exposes <a href="javadocs/org/apache/storm/hooks/IWorkerHook.html">WorkerUserContext</a> which provides a way to set application-level common resources via <code class="language-plaintext highlighter-rouge">setResource(String, Object)</code> method. This resource can then be retrieved by tasks, both spouts (via <code class="language-plaintext highlighter-rouge">open(Map, TopologyContext, SpoutOutputCollector</code>) and bolts (via <code class="language-plaintext highlighter-rouge">prepare(Map, TopologyContext, OutputCollector</code>), by calling <code class="language-plaintext highlighter-rouge">TopologyContext#getResource(String)</code>.</p>
+
+<h2 id="shared-state-amongst-components-and-hooks">Shared State amongst components and hooks</h2>
+<p>Storm provides ways to share resources across different components via the following ways:</p>
+<ol>
+  <li>taskData: this pertains to the task level data and can be written and read by task and task hooks in their corresponding lifecycle methods (<code class="language-plaintext highlighter-rouge">open</code> for spout and <code class="language-plaintext highlighter-rouge">prepare</code> for bolt and task hook).
+    <ol>
+      <li>write access: <code class="language-plaintext highlighter-rouge">TopologyContext#setTaskData(String, Object)</code></li>
+      <li>read access: <code class="language-plaintext highlighter-rouge">TopologyContext#getTask(String)</code></li>
+    </ol>
+  </li>
+  <li>executorData: this pertains to executor level data and is shared across tasks and task hooks which are managed by the concerned executor. Similar to above it is accessible to spouts via <code class="language-plaintext highlighter-rouge">open</code> and to bolts and task hooks via <code class="language-plaintext highlighter-rouge">prepare</code> lifecycle method.
+    <ol>
+      <li>write access: <code class="language-plaintext highlighter-rouge">TopologyContext#setExecutorData</code></li>
+      <li>read access: <code class="language-plaintext highlighter-rouge">TopologyContext#getExecutorData(String)</code></li>
+    </ol>
+  </li>
+  <li>userResources: this pertains to worker level data and is shared across executors, tasks, worker hooks and task hooks which are managed by the concerned worker. Unlike others it can only be written by worker hooks.
+    <ol>
+      <li>write access: <code class="language-plaintext highlighter-rouge">WorkerUserContext#setResource(String, Object)</code></li>
+      <li>read access: <code class="language-plaintext highlighter-rouge">WorkerTopologyContext#getResouce(String)</code> or <code class="language-plaintext highlighter-rouge">TopologyContext#getResource(String)</code></li>
+    </ol>
+  </li>
+</ol>

@@ -1,0 +1,53 @@
+<p>This page describes the design and the implementation of the Storm SQL integration.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>SQL is a well-adopted yet complicated standard. Several projects including Drill, Hive, Phoenix and Spark have invested significantly in their SQL layers. One of the main design goal of StormSQL is to leverage the existing investments for these projects. StormSQL leverages <a href="///calcite.apache.org">Apache Calcite</a> to implement the SQL standard. StormSQL focuses on compiling the SQL statements to Storm / Trident topologies so that they can be executed in Storm clusters.</p>
+
+<p>Figure 1 describes the workflow of executing a SQL query in StormSQL. First, users provide a sequence of SQL statements. StormSQL parses the SQL statements and translates them to a Calcite logical plan. A logical plan consists of a sequence of SQL logical operators that describe how the query should be executed irrespective to the underlying execution engines. Some examples of logical operators include <code class="language-plaintext highlighter-rouge">TableScan</code>, <code class="language-plaintext highlighter-rouge">Filter</code>, <code class="language-plaintext highlighter-rouge">Projection</code> and <code class="language-plaintext highlighter-rouge">GroupBy</code>.</p>
+
+<div align="center">
+<img title="Workflow of StormSQL" src="images/storm-sql-internal-workflow.png" style="max-width: 80rem" />
+
+<p>Figure 1: Workflow of StormSQL.</p>
+</div>
+
+<p>The next step is to compile the logical execution plan down to a physical execution plan. A physical plan consists of physical operators that describes how to execute the SQL query in <em>StormSQL</em>. Physical operators such as <code class="language-plaintext highlighter-rouge">Filter</code>, <code class="language-plaintext highlighter-rouge">Projection</code>, and <code class="language-plaintext highlighter-rouge">GroupBy</code> are directly mapped to operations in Trident topologies. StormSQL also compiles expressions in the SQL statements into Java code blocks and plugs them into the Trident functions which will be compiled once and executed in runtime.</p>
+
+<p>Finally, StormSQL submits created Trident topology with empty packaged JAR to the Storm cluster. Storm schedules and executes the Trident topology in the same way of it executes other Storm topologies.</p>
+
+<p>The follow code blocks show an example query that filters and projects results from a Kafka stream.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE EXTERNAL TABLE ORDERS (ID INT PRIMARY KEY, UNIT_PRICE INT, QUANTITY INT) LOCATION 'kafka://localhost:2181/brokers?topic=orders' ...
+
+CREATE EXTERNAL TABLE LARGE_ORDERS (ID INT PRIMARY KEY, TOTAL INT) LOCATION 'kafka://localhost:2181/brokers?topic=large_orders' ...
+
+INSERT INTO LARGE_ORDERS SELECT ID, UNIT_PRICE * QUANTITY AS TOTAL FROM ORDERS WHERE UNIT_PRICE * QUANTITY &gt; 50
+</code></pre></div></div>
+
+<p>The first two SQL statements define the inputs and outputs of external data. Figure 2 describes the processes of how StormSQL takes the last <code class="language-plaintext highlighter-rouge">SELECT</code> query and compiles it down to Trident topology.</p>
+
+<div align="center">
+<img title="Compiling the example query to Trident topology" src="images/storm-sql-internal-example.png" style="max-width: 80rem" />
+
+<p>Figure 2: Compiling the example query to Trident topology.</p>
+</div>
+
+<h2 id="constraints-of-querying-streaming-tables">Constraints of querying streaming tables</h2>
+
+<p>There are several constraints when querying tables that represent a real-time data stream:</p>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">ORDER BY</code> clause cannot be applied to a stream.</li>
+  <li>There is at least one monotonic field in the <code class="language-plaintext highlighter-rouge">GROUP BY</code> clauses to allow StormSQL bounds the size of the buffer.</li>
+</ul>
+
+<p>For more information please refer to http://calcite.apache.org/docs/stream.html.</p>
+
+<h2 id="dependency">Dependency</h2>
+
+<p>Storm takes care about necessary dependencies of Storm SQL except the data source JAR which is used by <code class="language-plaintext highlighter-rouge">EXTERNAL TABLE</code>. 
+You can use <code class="language-plaintext highlighter-rouge">--jars</code> or <code class="language-plaintext highlighter-rouge">--artifacts</code> option to <code class="language-plaintext highlighter-rouge">storm sql</code> so that data source JAR can be included to Storm SQL Runner and also Trident Topology runtime classpath.
+(Use <code class="language-plaintext highlighter-rouge">--artifacts</code> if your data source JARs are available in Maven repository since it handles transitive dependencies.)</p>
+
+<p>Please refer <a href="storm-sql.html">Storm SQL integration</a> page to how to do it.</p>

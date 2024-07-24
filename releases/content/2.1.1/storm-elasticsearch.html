@@ -1,0 +1,116 @@
+<h1 id="storm-elasticsearch-bolt--trident-state">Storm Elasticsearch Bolt &amp; Trident State</h1>
+
+<p>EsIndexBolt, EsPercolateBolt and EsState allows users to stream data from storm into Elasticsearch directly.
+  For detailed description, please refer to the following.</p>
+
+<h2 id="esindexbolt-orgapachestormelasticsearchboltesindexbolt">EsIndexBolt (org.apache.storm.elasticsearch.bolt.EsIndexBolt)</h2>
+
+<p>EsIndexBolt streams tuples directly into Elasticsearch. Tuples are indexed in specified index &amp; type combination. 
+Users should make sure that <code class="language-plaintext highlighter-rouge">EsTupleMapper</code> can extract “source”, “index”, “type”, and “id” from input tuple.
+“index” and “type” are used for identifying target index and type.
+“source” is a document in JSON format string that will be indexed in Elasticsearch.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EsConfig</span><span class="o">(</span><span class="n">clusterName</span><span class="o">,</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"localhost:9300"</span><span class="o">});</span>
+<span class="nc">EsTupleMapper</span> <span class="n">tupleMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultEsTupleMapper</span><span class="o">();</span>
+<span class="nc">EsIndexBolt</span> <span class="n">indexBolt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EsIndexBolt</span><span class="o">(</span><span class="n">esConfig</span><span class="o">,</span> <span class="n">tupleMapper</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="espercolatebolt-orgapachestormelasticsearchboltespercolatebolt">EsPercolateBolt (org.apache.storm.elasticsearch.bolt.EsPercolateBolt)</h2>
+
+<p>EsPercolateBolt streams tuples directly into Elasticsearch. Tuples are used to send percolate request to specified index &amp; type combination. 
+User should make sure <code class="language-plaintext highlighter-rouge">EsTupleMapper</code> can extract “source”, “index”, “type” from input tuple.
+“index” and “type” are used for identifying target index and type.
+“source” is a document in JSON format string that will be sent in percolate request to Elasticsearch.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EsConfig</span><span class="o">(</span><span class="n">clusterName</span><span class="o">,</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"localhost:9300"</span><span class="o">});</span>
+<span class="nc">EsTupleMapper</span> <span class="n">tupleMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultEsTupleMapper</span><span class="o">();</span>
+<span class="nc">EsPercolateBolt</span> <span class="n">percolateBolt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EsPercolateBolt</span><span class="o">(</span><span class="n">esConfig</span><span class="o">,</span> <span class="n">tupleMapper</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>If there exists non-empty percolate response, EsPercolateBolt will emit tuple with original source and Percolate.Match
+for each Percolate.Match in PercolateResponse.</p>
+
+<h2 id="esstate-orgapachestormelasticsearchtridentesstate">EsState (org.apache.storm.elasticsearch.trident.EsState)</h2>
+
+<p>Elasticsearch Trident state also follows similar pattern to EsBolts. It takes in EsConfig and EsTupleMapper as an arg.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EsConfig</span><span class="o">(</span><span class="n">clusterName</span><span class="o">,</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"localhost:9300"</span><span class="o">});</span>
+<span class="nc">EsTupleMapper</span> <span class="n">tupleMapper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultEsTupleMapper</span><span class="o">();</span>
+
+<span class="nc">StateFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EsStateFactory</span><span class="o">(</span><span class="n">esConfig</span><span class="o">,</span> <span class="n">tupleMapper</span><span class="o">);</span>
+<span class="nc">TridentState</span> <span class="n">state</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="na">partitionPersist</span><span class="o">(</span><span class="n">factory</span><span class="o">,</span> <span class="n">esFields</span><span class="o">,</span> <span class="k">new</span> <span class="nc">EsUpdater</span><span class="o">(),</span> <span class="k">new</span> <span class="nc">Fields</span><span class="o">());</span>
+</code></pre></div></div>
+
+<h2 id="eslookupbolt-orgapachestormelasticsearchbolteslookupbolt">EsLookupBolt (org.apache.storm.elasticsearch.bolt.EsLookupBolt)</h2>
+
+<p>EsLookupBolt performs a get request to Elasticsearch. 
+In order to do that, three dependencies need to be satisfied. Apart from usual EsConfig, two other dependencies must be provided:
+    ElasticsearchGetRequest is used to convert the incoming Tuple to the GetRequest that will be executed against Elasticsearch.
+    EsLookupResultOutput is used to declare the output fields and convert the GetResponse to values that are emited by the bolt.</p>
+
+<p>Incoming tuple is passed to provided GetRequest creator and the result of that execution is passed to Elasticsearch client.
+The bolt then uses the provider output adapter (EsLookupResultOutput) to convert the GetResponse to Values to emit.
+The output fields are also specified by the user of the bolt via the output adapter (EsLookupResultOutput).</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="n">createEsConfig</span><span class="o">();</span>
+<span class="nc">ElasticsearchGetRequest</span> <span class="n">getRequestAdapter</span> <span class="o">=</span> <span class="n">createElasticsearchGetRequest</span><span class="o">();</span>
+<span class="nc">EsLookupResultOutput</span> <span class="n">output</span> <span class="o">=</span> <span class="n">createOutput</span><span class="o">();</span>
+<span class="nc">EsLookupBolt</span> <span class="n">lookupBolt</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EsLookupBolt</span><span class="o">(</span><span class="n">esConfig</span><span class="o">,</span> <span class="n">getRequestAdapter</span><span class="o">,</span> <span class="n">output</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h2 id="esconfig-orgapachestormelasticsearchcommonesconfig">EsConfig (org.apache.storm.elasticsearch.common.EsConfig)</h2>
+
+<p>Provided components (Bolt, State) takes in EsConfig as a constructor arg.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EsConfig</span><span class="o">(</span><span class="n">clusterName</span><span class="o">,</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"localhost:9300"</span><span class="o">});</span>
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">additionalParameters</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="n">additionalParameters</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"client.transport.sniff"</span><span class="o">,</span> <span class="s">"true"</span><span class="o">);</span>
+<span class="nc">EsConfig</span> <span class="n">esConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EsConfig</span><span class="o">(</span><span class="n">clusterName</span><span class="o">,</span> <span class="k">new</span> <span class="nc">String</span><span class="o">[]{</span><span class="s">"localhost:9300"</span><span class="o">},</span> <span class="n">additionalParameters</span><span class="o">);</span>
+</code></pre></div></div>
+
+<h3 id="esconfig-params">EsConfig params</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Arg</th>
+      <th>Description</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>clusterName</td>
+      <td>Elasticsearch cluster name</td>
+      <td>String (required)</td>
+    </tr>
+    <tr>
+      <td>nodes</td>
+      <td>Elasticsearch nodes in a String array, each element should follow {host}:{port} pattern</td>
+      <td>String array (required)</td>
+    </tr>
+    <tr>
+      <td>additionalParameters</td>
+      <td>Additional Elasticsearch Transport Client configuration parameters</td>
+      <td>Map&lt;String, String&gt; (optional)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="estuplemapper-orgapachestormelasticsearchcommonestuplemapper">EsTupleMapper (org.apache.storm.elasticsearch.common.EsTupleMapper)</h2>
+
+<p>For storing tuple to Elasticsearch or percolating tuple from Elasticsearch, we need to define which fields are used for.
+Users need to define your own by implementing <code class="language-plaintext highlighter-rouge">EsTupleMapper</code>.
+Storm-elasticsearch presents default mapper <code class="language-plaintext highlighter-rouge">org.apache.storm.elasticsearch.common.DefaultEsTupleMapper</code>, which extracts its source, index, type, id values from identical fields.
+You can refer implementation of DefaultEsTupleMapper to see how to implement your own.</p>
+
+<h2 id="committer-sponsors">Committer Sponsors</h2>
+
+<ul>
+  <li>Sriharsha Chintalapani (<a href="https://github.com/harshach">@harshach</a>)</li>
+  <li>Jungtaek Lim (<a href="https://github.com/HeartSaVioR">@HeartSaVioR</a>)</li>
+</ul>

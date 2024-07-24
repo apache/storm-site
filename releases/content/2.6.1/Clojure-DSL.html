@@ -1,0 +1,254 @@
+<p>Storm offers a Clojure DSL through the storm-clojure package for defining spouts, bolts, and topologies. The Clojure DSL has access to everything the Java API exposes, so if you’re a Clojure user you can code Storm topologies without touching Java at all. The Clojure DSL is defined in the source in the <a href="/storm-clojure/src/clj/org/apache/storm/clojure.clj">org.apache.storm.clojure</a> namespace.</p>
+
+<p>This page outlines all the pieces of the Clojure DSL, including:</p>
+
+<ol>
+  <li>Defining topologies</li>
+  <li><code class="language-plaintext highlighter-rouge">defbolt</code></li>
+  <li><code class="language-plaintext highlighter-rouge">defspout</code></li>
+  <li>Running topologies in local mode or on a cluster</li>
+  <li>Testing topologies</li>
+</ol>
+
+<h3 id="defining-topologies">Defining topologies</h3>
+
+<p>To define a topology, use the <code class="language-plaintext highlighter-rouge">topology</code> function. <code class="language-plaintext highlighter-rouge">topology</code> takes in two arguments: a map of “spout specs” and a map of “bolt specs”. Each spout and bolt spec wires the code for the component into the topology by specifying things like inputs and parallelism.</p>
+
+<p>Let’s take a look at an example topology definition <a href="/examples/storm-starter/src/clj/org/apache/storm/starter/clj/word_count.clj">from the storm-starter project</a>:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">topology</span><span class="w">
+ </span><span class="p">{</span><span class="s">"1"</span><span class="w"> </span><span class="p">(</span><span class="nf">spout-spec</span><span class="w"> </span><span class="n">sentence-spout</span><span class="p">)</span><span class="w">
+  </span><span class="s">"2"</span><span class="w"> </span><span class="p">(</span><span class="nf">spout-spec</span><span class="w"> </span><span class="p">(</span><span class="nf">sentence-spout-parameterized</span><span class="w">
+                   </span><span class="p">[</span><span class="s">"the cat jumped over the door"</span><span class="w">
+                    </span><span class="s">"greetings from a faraway land"</span><span class="p">])</span><span class="w">
+                   </span><span class="no">:p</span><span class="w"> </span><span class="mi">2</span><span class="p">)}</span><span class="w">
+ </span><span class="p">{</span><span class="s">"3"</span><span class="w"> </span><span class="p">(</span><span class="nf">bolt-spec</span><span class="w"> </span><span class="p">{</span><span class="s">"1"</span><span class="w"> </span><span class="no">:shuffle</span><span class="w"> </span><span class="s">"2"</span><span class="w"> </span><span class="no">:shuffle</span><span class="p">}</span><span class="w">
+                 </span><span class="n">split-sentence</span><span class="w">
+                 </span><span class="no">:p</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">
+  </span><span class="s">"4"</span><span class="w"> </span><span class="p">(</span><span class="nf">bolt-spec</span><span class="w"> </span><span class="p">{</span><span class="s">"3"</span><span class="w"> </span><span class="p">[</span><span class="s">"word"</span><span class="p">]}</span><span class="w">
+                 </span><span class="n">word-count</span><span class="w">
+                 </span><span class="no">:p</span><span class="w"> </span><span class="mi">6</span><span class="p">)})</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The maps of spout and bolt specs are maps from the component id to the corresponding spec. The component ids must be unique across the maps. Just like defining topologies in Java, component ids are used when declaring inputs for bolts in the topology.</p>
+
+<h4 id="spout-spec">spout-spec</h4>
+
+<p><code class="language-plaintext highlighter-rouge">spout-spec</code> takes as arguments the spout implementation (an object that implements <a href="javadocs/org/apache/storm/topology/IRichSpout.html">IRichSpout</a>) and optional keyword arguments. The only option that exists currently is the <code class="language-plaintext highlighter-rouge">:p</code> option, which specifies the parallelism for the spout. If you omit <code class="language-plaintext highlighter-rouge">:p</code>, the spout will execute as a single task.</p>
+
+<h4 id="bolt-spec">bolt-spec</h4>
+
+<p><code class="language-plaintext highlighter-rouge">bolt-spec</code> takes as arguments the input declaration for the bolt, the bolt implementation (an object that implements <a href="javadocs/org/apache/storm/topology/IRichBolt.html">IRichBolt</a>), and optional keyword arguments.</p>
+
+<p>The input declaration is a map from stream ids to stream groupings. A stream id can have one of two forms:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">[==component id== ==stream id==]</code>: Subscribes to a specific stream on a component</li>
+  <li><code class="language-plaintext highlighter-rouge">==component id==</code>: Subscribes to the default stream on a component</li>
+</ol>
+
+<p>A stream grouping can be one of the following:</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">:shuffle</code>: subscribes with a shuffle grouping</li>
+  <li>Vector of field names, like <code class="language-plaintext highlighter-rouge">["id" "name"]</code>: subscribes with a fields grouping on the specified fields</li>
+  <li><code class="language-plaintext highlighter-rouge">:global</code>: subscribes with a global grouping</li>
+  <li><code class="language-plaintext highlighter-rouge">:all</code>: subscribes with an all grouping</li>
+  <li><code class="language-plaintext highlighter-rouge">:direct</code>: subscribes with a direct grouping</li>
+</ol>
+
+<p>See <a href="Concepts.html">Concepts</a> for more info on stream groupings. Here’s an example input declaration showcasing the various ways to declare inputs:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{[</span><span class="s">"2"</span><span class="w"> </span><span class="s">"1"</span><span class="p">]</span><span class="w"> </span><span class="no">:shuffle</span><span class="w">
+ </span><span class="s">"3"</span><span class="w"> </span><span class="p">[</span><span class="s">"field1"</span><span class="w"> </span><span class="s">"field2"</span><span class="p">]</span><span class="w">
+ </span><span class="p">[</span><span class="s">"4"</span><span class="w"> </span><span class="s">"2"</span><span class="p">]</span><span class="w"> </span><span class="no">:global</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>This input declaration subscribes to three streams total. It subscribes to stream “1” on component “2” with a shuffle grouping, subscribes to the default stream on component “3” with a fields grouping on the fields “field1” and “field2”, and subscribes to stream “2” on component “4” with a global grouping.</p>
+
+<p>Like <code class="language-plaintext highlighter-rouge">spout-spec</code>, the only current supported keyword argument for <code class="language-plaintext highlighter-rouge">bolt-spec</code> is <code class="language-plaintext highlighter-rouge">:p</code> which specifies the parallelism for the bolt.</p>
+
+<h4 id="shell-bolt-spec">shell-bolt-spec</h4>
+
+<p><code class="language-plaintext highlighter-rouge">shell-bolt-spec</code> is used for defining bolts that are implemented in a non-JVM language. It takes as arguments the input declaration, the command line program to run, the name of the file implementing the bolt, an output specification, and then the same keyword arguments that <code class="language-plaintext highlighter-rouge">bolt-spec</code> accepts.</p>
+
+<p>Here’s an example <code class="language-plaintext highlighter-rouge">shell-bolt-spec</code>:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">shell-bolt-spec</span><span class="w"> </span><span class="p">{</span><span class="s">"1"</span><span class="w"> </span><span class="no">:shuffle</span><span class="w"> </span><span class="s">"2"</span><span class="w"> </span><span class="p">[</span><span class="s">"id"</span><span class="p">]}</span><span class="w">
+                 </span><span class="s">"python3"</span><span class="w">
+                 </span><span class="s">"mybolt.py"</span><span class="w">
+                 </span><span class="p">[</span><span class="s">"outfield1"</span><span class="w"> </span><span class="s">"outfield2"</span><span class="p">]</span><span class="w">
+                 </span><span class="no">:p</span><span class="w"> </span><span class="mi">25</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The syntax of output declarations is described in more detail in the <code class="language-plaintext highlighter-rouge">defbolt</code> section below. See <a href="Using-non-JVM-languages-with-Storm.html">Using non JVM languages with Storm</a> for more details on how multilang works within Storm.</p>
+
+<h3 id="defbolt">defbolt</h3>
+
+<p><code class="language-plaintext highlighter-rouge">defbolt</code> is used for defining bolts in Clojure. Bolts have the constraint that they must be serializable, and this is why you can’t just reify <code class="language-plaintext highlighter-rouge">IRichBolt</code> to implement a bolt (closures aren’t serializable). <code class="language-plaintext highlighter-rouge">defbolt</code> works around this restriction and provides a nicer syntax for defining bolts than just implementing a Java interface.</p>
+
+<p>At its fullest expressiveness, <code class="language-plaintext highlighter-rouge">defbolt</code> supports parameterized bolts and maintaining state in a closure around the bolt implementation. It also provides shortcuts for defining bolts that don’t need this extra functionality. The signature for <code class="language-plaintext highlighter-rouge">defbolt</code> looks like the following:</p>
+
+<p>(defbolt <em>name</em> <em>output-declaration</em> *<em>option-map</em> &amp; <em>impl</em>)</p>
+
+<p>Omitting the option map is equivalent to having an option map of <code class="language-plaintext highlighter-rouge">{:prepare false}</code>.</p>
+
+<h4 id="simple-bolts">Simple bolts</h4>
+
+<p>Let’s start with the simplest form of <code class="language-plaintext highlighter-rouge">defbolt</code>. Here’s an example bolt that splits a tuple containing a sentence into a tuple for each word:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">defbolt</span><span class="w"> </span><span class="n">split-sentence</span><span class="w"> </span><span class="p">[</span><span class="s">"word"</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">tuple</span><span class="w"> </span><span class="n">collector</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">words</span><span class="w"> </span><span class="p">(</span><span class="nf">.split</span><span class="w"> </span><span class="p">(</span><span class="nf">.getString</span><span class="w"> </span><span class="n">tuple</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="s">" "</span><span class="p">)]</span><span class="w">
+    </span><span class="p">(</span><span class="nb">doseq</span><span class="w"> </span><span class="p">[</span><span class="n">w</span><span class="w"> </span><span class="n">words</span><span class="p">]</span><span class="w">
+      </span><span class="p">(</span><span class="nf">emit-bolt!</span><span class="w"> </span><span class="n">collector</span><span class="w"> </span><span class="p">[</span><span class="n">w</span><span class="p">]</span><span class="w"> </span><span class="no">:anchor</span><span class="w"> </span><span class="n">tuple</span><span class="p">))</span><span class="w">
+    </span><span class="p">(</span><span class="nf">ack!</span><span class="w"> </span><span class="n">collector</span><span class="w"> </span><span class="n">tuple</span><span class="p">)</span><span class="w">
+    </span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Since the option map is omitted, this is a non-prepared bolt. The DSL simply expects an implementation for the <code class="language-plaintext highlighter-rouge">execute</code> method of <code class="language-plaintext highlighter-rouge">IRichBolt</code>. The implementation takes two parameters, the tuple and the <code class="language-plaintext highlighter-rouge">OutputCollector</code>, and is followed by the body of the <code class="language-plaintext highlighter-rouge">execute</code> function. The DSL automatically type-hints the parameters for you so you don’t need to worry about reflection if you use Java interop.</p>
+
+<p>This implementation binds <code class="language-plaintext highlighter-rouge">split-sentence</code> to an actual <code class="language-plaintext highlighter-rouge">IRichBolt</code> object that you can use in topologies, like so:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">bolt-spec</span><span class="w"> </span><span class="p">{</span><span class="s">"1"</span><span class="w"> </span><span class="no">:shuffle</span><span class="p">}</span><span class="w">
+           </span><span class="n">split-sentence</span><span class="w">
+           </span><span class="no">:p</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="parameterized-bolts">Parameterized bolts</h4>
+
+<p>Many times you want to parameterize your bolts with other arguments. For example, let’s say you wanted to have a bolt that appends a suffix to every input string it receives, and you want that suffix to be set at runtime. You do this with <code class="language-plaintext highlighter-rouge">defbolt</code> by including a <code class="language-plaintext highlighter-rouge">:params</code> option in the option map, like so:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">defbolt</span><span class="w"> </span><span class="n">suffix-appender</span><span class="w"> </span><span class="p">[</span><span class="s">"word"</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="no">:params</span><span class="w"> </span><span class="p">[</span><span class="n">suffix</span><span class="p">]}</span><span class="w">
+  </span><span class="p">[</span><span class="n">tuple</span><span class="w"> </span><span class="n">collector</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">emit-bolt!</span><span class="w"> </span><span class="n">collector</span><span class="w"> </span><span class="p">[(</span><span class="nb">str</span><span class="w"> </span><span class="p">(</span><span class="nf">.getString</span><span class="w"> </span><span class="n">tuple</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">suffix</span><span class="p">)]</span><span class="w"> </span><span class="no">:anchor</span><span class="w"> </span><span class="n">tuple</span><span class="p">)</span><span class="w">
+  </span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Unlike the previous example, <code class="language-plaintext highlighter-rouge">suffix-appender</code> will be bound to a function that returns an <code class="language-plaintext highlighter-rouge">IRichBolt</code> rather than be an <code class="language-plaintext highlighter-rouge">IRichBolt</code> object directly. This is caused by specifying <code class="language-plaintext highlighter-rouge">:params</code> in its option map. So to use <code class="language-plaintext highlighter-rouge">suffix-appender</code> in a topology, you would do something like:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">bolt-spec</span><span class="w"> </span><span class="p">{</span><span class="s">"1"</span><span class="w"> </span><span class="no">:shuffle</span><span class="p">}</span><span class="w">
+           </span><span class="p">(</span><span class="nf">suffix-appender</span><span class="w"> </span><span class="s">"-suffix"</span><span class="p">)</span><span class="w">
+           </span><span class="no">:p</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="prepared-bolts">Prepared bolts</h4>
+
+<p>To do more complex bolts, such as ones that do joins and streaming aggregations, the bolt needs to store state. You can do this by creating a prepared bolt which is specified by including <code class="language-plaintext highlighter-rouge">{:prepare true}</code> in the option map. Consider, for example, this bolt that implements word counting:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">defbolt</span><span class="w"> </span><span class="n">word-count</span><span class="w"> </span><span class="p">[</span><span class="s">"word"</span><span class="w"> </span><span class="s">"count"</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="no">:prepare</span><span class="w"> </span><span class="n">true</span><span class="p">}</span><span class="w">
+  </span><span class="p">[</span><span class="n">conf</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="n">collector</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">counts</span><span class="w"> </span><span class="p">(</span><span class="nf">atom</span><span class="w"> </span><span class="p">{})]</span><span class="w">
+    </span><span class="p">(</span><span class="nf">bolt</span><span class="w">
+     </span><span class="p">(</span><span class="nf">execute</span><span class="w"> </span><span class="p">[</span><span class="n">tuple</span><span class="p">]</span><span class="w">
+       </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">word</span><span class="w"> </span><span class="p">(</span><span class="nf">.getString</span><span class="w"> </span><span class="n">tuple</span><span class="w"> </span><span class="mi">0</span><span class="p">)]</span><span class="w">
+         </span><span class="p">(</span><span class="nf">swap!</span><span class="w"> </span><span class="n">counts</span><span class="w"> </span><span class="p">(</span><span class="nb">partial</span><span class="w"> </span><span class="nb">merge-with</span><span class="w"> </span><span class="nb">+</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="n">word</span><span class="w"> </span><span class="mi">1</span><span class="p">})</span><span class="w">
+         </span><span class="p">(</span><span class="nf">emit-bolt!</span><span class="w"> </span><span class="n">collector</span><span class="w"> </span><span class="p">[</span><span class="n">word</span><span class="w"> </span><span class="p">(</span><span class="o">@</span><span class="n">counts</span><span class="w"> </span><span class="n">word</span><span class="p">)]</span><span class="w"> </span><span class="no">:anchor</span><span class="w"> </span><span class="n">tuple</span><span class="p">)</span><span class="w">
+         </span><span class="p">(</span><span class="nf">ack!</span><span class="w"> </span><span class="n">collector</span><span class="w"> </span><span class="n">tuple</span><span class="p">)</span><span class="w">
+         </span><span class="p">)))))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The implementation for a prepared bolt is a function that takes as input the topology config, <code class="language-plaintext highlighter-rouge">TopologyContext</code>, and <code class="language-plaintext highlighter-rouge">OutputCollector</code>, and returns an implementation of the <code class="language-plaintext highlighter-rouge">IBolt</code> interface. This design allows you to have a closure around the implementation of <code class="language-plaintext highlighter-rouge">execute</code> and <code class="language-plaintext highlighter-rouge">cleanup</code>.</p>
+
+<p>In this example, the word counts are stored in the closure in a map called <code class="language-plaintext highlighter-rouge">counts</code>. The <code class="language-plaintext highlighter-rouge">bolt</code> macro is used to create the <code class="language-plaintext highlighter-rouge">IBolt</code> implementation. The <code class="language-plaintext highlighter-rouge">bolt</code> macro is a more concise way to implement the interface than reifying, and it automatically type-hints all of the method parameters. This bolt implements the execute method which updates the count in the map and emits the new word count.</p>
+
+<p>Note that the <code class="language-plaintext highlighter-rouge">execute</code> method in prepared bolts only takes as input the tuple since the <code class="language-plaintext highlighter-rouge">OutputCollector</code> is already in the closure of the function (for simple bolts the collector is a second parameter to the <code class="language-plaintext highlighter-rouge">execute</code> function).</p>
+
+<p>Prepared bolts can be parameterized just like simple bolts.</p>
+
+<h4 id="output-declarations">Output declarations</h4>
+
+<p>The Clojure DSL has a concise syntax for declaring the outputs of a bolt. The most general way to declare the outputs is as a map from stream id a stream spec. For example:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="s">"1"</span><span class="w"> </span><span class="p">[</span><span class="s">"field1"</span><span class="w"> </span><span class="s">"field2"</span><span class="p">]</span><span class="w">
+ </span><span class="s">"2"</span><span class="w"> </span><span class="p">(</span><span class="nf">direct-stream</span><span class="w"> </span><span class="p">[</span><span class="s">"f1"</span><span class="w"> </span><span class="s">"f2"</span><span class="w"> </span><span class="s">"f3"</span><span class="p">])</span><span class="w">
+ </span><span class="s">"3"</span><span class="w"> </span><span class="p">[</span><span class="s">"f1"</span><span class="p">]}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The stream id is a string, while the stream spec is either a vector of fields or a vector of fields wrapped by <code class="language-plaintext highlighter-rouge">direct-stream</code>. <code class="language-plaintext highlighter-rouge">direct stream</code> marks the stream as a direct stream (See <a href="Concepts.html">Concepts</a> and <a href="">Direct groupings</a> for more details on direct streams).</p>
+
+<p>If the bolt only has one output stream, you can define the default stream of the bolt by using a vector instead of a map for the output declaration. For example:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="s">"word"</span><span class="w"> </span><span class="s">"count"</span><span class="p">]</span><span class="w">
+</span></code></pre></div></div>
+<p>This declares the output of the bolt as the fields [“word” “count”] on the default stream id.</p>
+
+<h4 id="emitting-acking-and-failing">Emitting, acking, and failing</h4>
+
+<p>Rather than use the Java methods on <code class="language-plaintext highlighter-rouge">OutputCollector</code> directly, the DSL provides a nicer set of functions for using <code class="language-plaintext highlighter-rouge">OutputCollector</code>: <code class="language-plaintext highlighter-rouge">emit-bolt!</code>, <code class="language-plaintext highlighter-rouge">emit-direct-bolt!</code>, <code class="language-plaintext highlighter-rouge">ack!</code>, and <code class="language-plaintext highlighter-rouge">fail!</code>.</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">emit-bolt!</code>: takes as parameters the <code class="language-plaintext highlighter-rouge">OutputCollector</code>, the values to emit (a Clojure sequence), and keyword arguments for <code class="language-plaintext highlighter-rouge">:anchor</code> and <code class="language-plaintext highlighter-rouge">:stream</code>. <code class="language-plaintext highlighter-rouge">:anchor</code> can be a single tuple or a list of tuples, and <code class="language-plaintext highlighter-rouge">:stream</code> is the id of the stream to emit to. Omitting the keyword arguments emits an unanchored tuple to the default stream.</li>
+  <li><code class="language-plaintext highlighter-rouge">emit-direct-bolt!</code>: takes as parameters the <code class="language-plaintext highlighter-rouge">OutputCollector</code>, the task id to send the tuple to, the values to emit, and keyword arguments for <code class="language-plaintext highlighter-rouge">:anchor</code> and <code class="language-plaintext highlighter-rouge">:stream</code>. This function can only emit to streams declared as direct streams.</li>
+  <li><code class="language-plaintext highlighter-rouge">ack!</code>: takes as parameters the <code class="language-plaintext highlighter-rouge">OutputCollector</code> and the tuple to ack.</li>
+  <li><code class="language-plaintext highlighter-rouge">fail!</code>: takes as parameters the <code class="language-plaintext highlighter-rouge">OutputCollector</code> and the tuple to fail.</li>
+</ol>
+
+<p>See <a href="Guaranteeing-message-processing.html">Guaranteeing message processing</a> for more info on acking and anchoring.</p>
+
+<h3 id="defspout">defspout</h3>
+
+<p><code class="language-plaintext highlighter-rouge">defspout</code> is used for defining spouts in Clojure. Like bolts, spouts must be serializable so you can’t just reify <code class="language-plaintext highlighter-rouge">IRichSpout</code> to do spout implementations in Clojure. <code class="language-plaintext highlighter-rouge">defspout</code> works around this restriction and provides a nicer syntax for defining spouts than just implementing a Java interface.</p>
+
+<p>The signature for <code class="language-plaintext highlighter-rouge">defspout</code> looks like the following:</p>
+
+<p>(defspout <em>name</em> <em>output-declaration</em> *<em>option-map</em> &amp; <em>impl</em>)</p>
+
+<p>If you leave out the option map, it defaults to {:prepare true}. The output declaration for <code class="language-plaintext highlighter-rouge">defspout</code> has the same syntax as <code class="language-plaintext highlighter-rouge">defbolt</code>.</p>
+
+<p>Here’s an example <code class="language-plaintext highlighter-rouge">defspout</code> implementation from <a href="/examples/storm-starter/src/clj/org/apache/storm/starter/clj/word_count.clj">storm-starter</a>:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">defspout</span><span class="w"> </span><span class="n">sentence-spout</span><span class="w"> </span><span class="p">[</span><span class="s">"sentence"</span><span class="p">]</span><span class="w">
+  </span><span class="p">[</span><span class="n">conf</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="n">collector</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">sentences</span><span class="w"> </span><span class="p">[</span><span class="s">"a little brown dog"</span><span class="w">
+                   </span><span class="s">"the man petted the dog"</span><span class="w">
+                   </span><span class="s">"four score and seven years ago"</span><span class="w">
+                   </span><span class="s">"an apple a day keeps the doctor away"</span><span class="p">]]</span><span class="w">
+    </span><span class="p">(</span><span class="nf">spout</span><span class="w">
+     </span><span class="p">(</span><span class="nf">nextTuple</span><span class="w"> </span><span class="p">[]</span><span class="w">
+       </span><span class="p">(</span><span class="nf">Thread/sleep</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w">
+       </span><span class="p">(</span><span class="nf">emit-spout!</span><span class="w"> </span><span class="n">collector</span><span class="w"> </span><span class="p">[(</span><span class="nf">rand-nth</span><span class="w"> </span><span class="n">sentences</span><span class="p">)])</span><span class="w">         
+       </span><span class="p">)</span><span class="w">
+     </span><span class="p">(</span><span class="nf">ack</span><span class="w"> </span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w">
+        </span><span class="c1">;; You only need to define this method for reliable spouts</span><span class="w">
+        </span><span class="c1">;; (such as one that reads off of a queue like Kestrel)</span><span class="w">
+        </span><span class="c1">;; This is an unreliable spout, so it does nothing here</span><span class="w">
+        </span><span class="p">))))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The implementation takes in as input the topology config, <code class="language-plaintext highlighter-rouge">TopologyContext</code>, and <code class="language-plaintext highlighter-rouge">SpoutOutputCollector</code>. The implementation returns an <code class="language-plaintext highlighter-rouge">ISpout</code> object. Here, the <code class="language-plaintext highlighter-rouge">nextTuple</code> function emits a random sentence from <code class="language-plaintext highlighter-rouge">sentences</code>.</p>
+
+<p>This spout isn’t reliable, so the <code class="language-plaintext highlighter-rouge">ack</code> and <code class="language-plaintext highlighter-rouge">fail</code> methods will never be called. A reliable spout will add a message id when emitting tuples, and then <code class="language-plaintext highlighter-rouge">ack</code> or <code class="language-plaintext highlighter-rouge">fail</code> will be called when the tuple is completed or failed respectively. See <a href="Guaranteeing-message-processing.html">Guaranteeing message processing</a> for more info on how reliability works within Storm.</p>
+
+<p><code class="language-plaintext highlighter-rouge">emit-spout!</code> takes in as parameters the <code class="language-plaintext highlighter-rouge">SpoutOutputCollector</code> and the new tuple to be emitted, and accepts as keyword arguments <code class="language-plaintext highlighter-rouge">:stream</code> and <code class="language-plaintext highlighter-rouge">:id</code>. <code class="language-plaintext highlighter-rouge">:stream</code> specifies the stream to emit to, and <code class="language-plaintext highlighter-rouge">:id</code> specifies a message id for the tuple (used in the <code class="language-plaintext highlighter-rouge">ack</code> and <code class="language-plaintext highlighter-rouge">fail</code> callbacks). Omitting these arguments emits an unanchored tuple to the default output stream.</p>
+
+<p>There is also a <code class="language-plaintext highlighter-rouge">emit-direct-spout!</code> function that emits a tuple to a direct stream and takes an additional argument as the second parameter of the task id to send the tuple to.</p>
+
+<p>Spouts can be parameterized just like bolts, in which case the symbol is bound to a function returning <code class="language-plaintext highlighter-rouge">IRichSpout</code> instead of the <code class="language-plaintext highlighter-rouge">IRichSpout</code> itself. You can also declare an unprepared spout which only defines the <code class="language-plaintext highlighter-rouge">nextTuple</code> method. Here is an example of an unprepared spout that emits random sentences parameterized at runtime:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">defspout</span><span class="w"> </span><span class="n">sentence-spout-parameterized</span><span class="w"> </span><span class="p">[</span><span class="s">"word"</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="no">:params</span><span class="w"> </span><span class="p">[</span><span class="n">sentences</span><span class="p">]</span><span class="w"> </span><span class="no">:prepare</span><span class="w"> </span><span class="n">false</span><span class="p">}</span><span class="w">
+  </span><span class="p">[</span><span class="n">collector</span><span class="p">]</span><span class="w">
+  </span><span class="p">(</span><span class="nf">Thread/sleep</span><span class="w"> </span><span class="mi">500</span><span class="p">)</span><span class="w">
+  </span><span class="p">(</span><span class="nf">emit-spout!</span><span class="w"> </span><span class="n">collector</span><span class="w"> </span><span class="p">[(</span><span class="nf">rand-nth</span><span class="w"> </span><span class="n">sentences</span><span class="p">)]))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The following example illustrates how to use this spout in a <code class="language-plaintext highlighter-rouge">spout-spec</code>:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nf">spout-spec</span><span class="w"> </span><span class="p">(</span><span class="nf">sentence-spout-parameterized</span><span class="w">
+                   </span><span class="p">[</span><span class="s">"the cat jumped over the door"</span><span class="w">
+                    </span><span class="s">"greetings from a faraway land"</span><span class="p">])</span><span class="w">
+            </span><span class="no">:p</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="running-topologies-in-local-mode-or-on-a-cluster">Running topologies in local mode or on a cluster</h3>
+
+<p>That’s all there is to the Clojure DSL. To submit topologies in remote mode or local mode, just use the <code class="language-plaintext highlighter-rouge">StormSubmitter</code> class just like you would from Java.</p>
+
+<p>To create topology configs, it’s easiest to use the <code class="language-plaintext highlighter-rouge">org.apache.storm.config</code> namespace which defines constants for all of the possible configs. The constants are the same as the static constants in the <code class="language-plaintext highlighter-rouge">Config</code> class, except with dashes instead of underscores. For example, here’s a topology config that sets the number of workers to 15 and configures the topology in debug mode:</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="n">TOPOLOGY-DEBUG</span><span class="w"> </span><span class="n">true</span><span class="w">
+ </span><span class="n">TOPOLOGY-WORKERS</span><span class="w"> </span><span class="mi">15</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="testing-topologies">Testing topologies</h3>
+
+<p><a href="http://www.pixelmachine.org/2011/12/17/Testing-Storm-Topologies.html">This blog post</a> and its <a href="http://www.pixelmachine.org/2011/12/21/Testing-Storm-Topologies-Part-2.html">follow-up</a> give a good overview of Storm’s powerful built-in facilities for testing topologies in Clojure.</p>

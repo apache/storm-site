@@ -1,0 +1,28 @@
+<p>This page guides how to set up environment on Windows for Apache Storm.</p>
+
+<h2 id="symbolic-link">Symbolic Link</h2>
+
+<p>Starting at 1.0.0, Apache Storm utilizes <code class="language-plaintext highlighter-rouge">symbolic link</code> to aggregate log directory and resource directory into worker directory.
+Unfortunately, <code class="language-plaintext highlighter-rouge">creating symbolic link</code> on Windows needs non-default privilege, so users should configure it manually to make sure Storm processes can create symbolic link on runtime.
+Depending on the Windows version (i.e. non-professional), setting symbolic links privilege by a security policy is not possible since the tool is not installed.</p>
+
+<p>When creating a symbolic link is not possible, the Supervisor process will stop as soon as it tries to start workers since the permission exception is considered a fatal error.</p>
+
+<p>Below pages (MS technet) guide how to configure that policy to the account which Storm runs on.</p>
+
+<ul>
+  <li><a href="https://technet.microsoft.com/en-us/library/dn452420.aspx">How to Configure Security Policy Settings</a></li>
+  <li><a href="https://technet.microsoft.com/en-us/library/dn221947.aspx">Create symbolic links</a></li>
+</ul>
+
+<p>One tricky point is, <code class="language-plaintext highlighter-rouge">administrator</code> group already has this privilege, but it’s activated only process is run as <code class="language-plaintext highlighter-rouge">administrator</code> account.
+So if your account belongs to <code class="language-plaintext highlighter-rouge">administrator</code> group (and you don’t want to change it), you may want to open <code class="language-plaintext highlighter-rouge">command prompt</code> with <code class="language-plaintext highlighter-rouge">run as administrator</code> and execute processes within that console.
+If you don’t want to execute Storm processes directly (not on command prompt), please execute processes with <code class="language-plaintext highlighter-rouge">runas /user:administrator</code> to run as administrator account.</p>
+
+<p>Starting with Windows 10 Creators Update, it will be possible to activate a Developer Mode that supports creating symbolic links without <code class="language-plaintext highlighter-rouge">run as administrator</code>
+<a href="https://blogs.windows.com/buildingapps/2016/12/02/symlinks-windows-10/">Symlinks in Windows 10!</a></p>
+
+<p>Alternatively you can disable usage of symbolic links by setting the config <code class="language-plaintext highlighter-rouge">storm.disable.symlinks</code> to <code class="language-plaintext highlighter-rouge">true</code>
+on Nimbus and all of the Supervisor nodes.  This will also disable features that require symlinks.  Currently this is only downloading
+dependent blobs, but may change in the future.  Some topologies may rely on symbolic links to resources in the current working directory of the worker that are
+created as a convienence, so it is not a 100% backwards compatible change.</p>

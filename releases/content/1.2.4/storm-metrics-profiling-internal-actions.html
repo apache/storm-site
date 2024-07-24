@@ -1,0 +1,78 @@
+<p>With the addition of these metrics, Storm users can collect, view, and analyze the performance of various internal actions.  The actions that are profiled include thrift rpc calls and http quests within the storm daemons. For instance, in the Storm Nimbus daemon, the following thrift calls defined in the Nimbus$Iface are profiled:</p>
+
+<ul>
+  <li>submitTopology</li>
+  <li>submitTopologyWithOpts</li>
+  <li>killTopology</li>
+  <li>killTopologyWithOpts</li>
+  <li>activate</li>
+  <li>deactivate</li>
+  <li>rebalance</li>
+  <li>setLogConfig</li>
+  <li>getLogConfig</li>
+</ul>
+
+<p>Various HTTP GET and POST requests are marked for profiling as well such as the GET and POST requests for the Storm UI daemon (ui/core.cj)
+To implement these metrics the following packages are used:</p>
+<ul>
+  <li>io.dropwizard.metrics</li>
+  <li>metrics-clojure</li>
+</ul>
+
+<h2 id="how-it-works">How it works</h2>
+
+<p>By using packages io.dropwizard.metrics and metrics-clojure (clojure wrapper for the metrics Java API), we can mark functions to profile by declaring (defmeter num-some-func-calls) and then adding the (mark! num-some-func-calls) to where the function is invoked. For example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(defmeter num-some-func-calls)
+(defn some-func [args]
+    (mark! num-some-func-calls)
+    (body))
+</code></pre></div></div>
+
+<p>What essentially the mark! API call does is increment a counter that represents how many times a certain action occured.  For instantanous measurements user can use gauges.  For example:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(defgauge nimbus:num-supervisors
+     (fn [] (.size (.supervisors (:storm-cluster-state nimbus) nil))))
+</code></pre></div></div>
+
+<p>The above example will get the number of supervisors in the cluster.  This metric is not accumlative like one previously discussed.</p>
+
+<p>A metrics reporting server needs to also be activated to collect the metrics. You can do this by calling the following function:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(defn start-metrics-reporters []
+    (jmx/start (jmx/reporter {})))
+</code></pre></div></div>
+
+<h2 id="how-to-collect-the-metrics">How to collect the metrics</h2>
+
+<p>Metrics can be reported via JMX or HTTP.  A user can use JConsole or VisualVM to connect to the jvm process and view the stats.</p>
+
+<p>To view the metrics in a GUI use VisualVM or JConsole.  Screenshot of using VisualVm for metrics:</p>
+
+<p><img src="images/viewing_metrics_with_VisualVM.png" alt="Viewing metrics with VisualVM" /></p>
+
+<p>For detailed information regarding how to collect the metrics please reference:</p>
+
+<p>https://dropwizard.github.io/metrics/3.1.0/getting-started/</p>
+
+<p>If you want use JMX and view metrics through JConsole or VisualVM, remember launch JVM processes your want to profile with the correct JMX configurations.  For example in Storm you would add the following to conf/storm.yaml</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nimbus.childopts: "-Xmx1024m -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=3333  -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
+
+ui.childopts: "-Xmx768m -Dcom.sun.management.jmxremote.port=3334 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
+
+logviewer.childopts: "-Xmx128m -Dcom.sun.management.jmxremote.port=3335 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
+
+drpc.childopts: "-Xmx768m -Dcom.sun.management.jmxremote.port=3336 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
+   
+supervisor.childopts: "-Xmx256m -Dcom.sun.management.jmxremote.port=3337 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false"
+</code></pre></div></div>
+
+<h3 id="please-note">Please Note:</h3>
+<p>Since we shade all of the packages we use, additional plugins for collecting metrics might not work at this time.  Currently collecting the metrics via JMX is supported.</p>
+
+<p>For more information about io.dropwizard.metrics and metrics-clojure packages please reference their original documentation:</p>
+<ul>
+  <li>https://dropwizard.github.io/metrics/3.1.0/</li>
+  <li>http://metrics-clojure.readthedocs.org/en/latest/</li>
+</ul>

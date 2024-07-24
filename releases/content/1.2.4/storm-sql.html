@@ -1,0 +1,158 @@
+<p>The Storm SQL integration allows users to run SQL queries over streaming data in Storm. Not only the SQL interface allows faster development cycles on streaming analytics, but also opens up the opportunities to unify batch data processing like <a href="///hive.apache.org">Apache Hive</a> and real-time streaming data analytics.</p>
+
+<p>At a very high level StormSQL compiles the SQL queries to <a href="Trident-API-Overview.html">Trident</a> topologies and executes them in Storm clusters. This document provides information of how to use StormSQL as end users. For people that are interested in more details in the design and the implementation of StormSQL please refer to the <a href="storm-sql-internal.html">this</a> page.</p>
+
+<p>Storm SQL integration is an <code class="language-plaintext highlighter-rouge">experimental</code> feature, so the internal of Storm SQL and supported features are subject to change.
+But small change will not affect the user experience. We will notice/announce the user when breaking UX change is introduced.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Run the <code class="language-plaintext highlighter-rouge">storm sql</code> command to compile SQL statements into Trident topology, and submit it to the Storm cluster</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bin/storm sql &lt;sql-file&gt; &lt;topo-name&gt;
+</code></pre></div></div>
+
+<p>In which <code class="language-plaintext highlighter-rouge">sql-file</code> contains a list of SQL statements to be executed, and <code class="language-plaintext highlighter-rouge">topo-name</code> is the name of the topology.</p>
+
+<p>StormSQL activates <code class="language-plaintext highlighter-rouge">explain mode</code> and shows query plan instead of submitting topology when user specifies <code class="language-plaintext highlighter-rouge">topo-name</code> as <code class="language-plaintext highlighter-rouge">--explain</code>.
+Detailed explanation is available from <code class="language-plaintext highlighter-rouge">Showing Query Plan (explain mode)</code> section.</p>
+
+<h2 id="supported-features">Supported Features</h2>
+
+<p>The following features are supported in the current repository:</p>
+
+<ul>
+  <li>Streaming from and to external data sources</li>
+  <li>Filtering tuples</li>
+  <li>Projections</li>
+  <li>User defined function (scalar)</li>
+</ul>
+
+<p>Aggregations and Join are not supported by intention. When Storm SQL will support native <code class="language-plaintext highlighter-rouge">Streaming SQL</code>, these features will be introduced.</p>
+
+<h2 id="specifying-external-data-sources">Specifying External Data Sources</h2>
+
+<p>In StormSQL data is represented by external tables. Users can specify data sources using the <code class="language-plaintext highlighter-rouge">CREATE EXTERNAL TABLE</code> statement. The syntax of <code class="language-plaintext highlighter-rouge">CREATE EXTERNAL TABLE</code> closely follows the one defined in <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL">Hive Data Definition Language</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE EXTERNAL TABLE table_name field_list
+    [ STORED AS
+      INPUTFORMAT input_format_classname
+      OUTPUTFORMAT output_format_classname
+    ]
+    LOCATION location
+    [ PARALLELISM parallelism ]
+    [ TBLPROPERTIES tbl_properties ]
+    [ AS select_stmt ]
+</code></pre></div></div>
+
+<p>You can find detailed explanations of the properties in <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL">Hive Data Definition Language</a>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">PARALLELISM</code> is StormSQL’s own keyword which describes parallelism hint for input data source. This is same as providing parallelism hint to Trident Spout.
+As same as Trident, downstream operators are executed with same parallelism before repartition (Aggregation triggers repartition).</p>
+
+<p>Default value is 1, and this option is no effect on output data source. (We might change if needed. Normally repartition is the thing to avoid.)</p>
+
+<p>For example, the following statement specifies a Kafka spout and sink:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE EXTERNAL TABLE FOO (ID INT PRIMARY KEY) LOCATION 'kafka://localhost:2181/brokers?topic=test' TBLPROPERTIES '{"producer":{"bootstrap.servers":"localhost:9092","acks":"1","key.serializer":"org.apache.org.apache.storm.kafka.IntSerializer","value.serializer":"org.apache.org.apache.storm.kafka.ByteBufferSerializer"}}'
+</code></pre></div></div>
+
+<h2 id="plugging-in-external-data-sources">Plugging in External Data Sources</h2>
+
+<p>Users plug in external data sources through implementing the <code class="language-plaintext highlighter-rouge">ISqlTridentDataSource</code> interface and registers them using the mechanisms of Java’s service loader. The external data source will be chosen based on the scheme of the URI of the tables. Please refer to the implementation of <code class="language-plaintext highlighter-rouge">storm-sql-kafka</code> for more details.</p>
+
+<h2 id="specifying-user-defined-function-udf">Specifying User Defined Function (UDF)</h2>
+
+<p>Users can define user defined function (scalar or aggregate) using <code class="language-plaintext highlighter-rouge">CREATE FUNCTION</code> statement.
+For example, the following statement defines <code class="language-plaintext highlighter-rouge">MYPLUS</code> function which uses <code class="language-plaintext highlighter-rouge">org.apache.storm.sql.TestUtils$MyPlus</code> class.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE FUNCTION MYPLUS AS 'org.apache.storm.sql.TestUtils$MyPlus'
+</code></pre></div></div>
+
+<p>Storm SQL determines whether the function as scalar or aggregate by checking which methods are defined.
+If the class defines <code class="language-plaintext highlighter-rouge">evaluate</code> method, Storm SQL treats the function as <code class="language-plaintext highlighter-rouge">scalar</code>.</p>
+
+<p>Example of class for scalar function is here:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  public class MyPlus {
+    public static Integer evaluate(Integer x, Integer y) {
+      return x + y;
+    }
+  }
+
+</code></pre></div></div>
+
+<h2 id="example-filtering-kafka-stream">Example: Filtering Kafka Stream</h2>
+
+<p>Let’s say there is a Kafka stream that represents the transactions of orders. Each message in the stream contains the id of the order, the unit price of the product and the quantity of the orders. The goal is to filter orders where the transactions are significant and to insert these orders into another Kafka stream for further analysis.</p>
+
+<p>The user can specify the following SQL statements in the SQL file:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE EXTERNAL TABLE ORDERS (ID INT PRIMARY KEY, UNIT_PRICE INT, QUANTITY INT) LOCATION 'kafka://localhost:2181/brokers?topic=orders'
+CREATE EXTERNAL TABLE LARGE_ORDERS (ID INT PRIMARY KEY, TOTAL INT) LOCATION 'kafka://localhost:2181/brokers?topic=large_orders' TBLPROPERTIES '{"producer":{"bootstrap.servers":"localhost:9092","acks":"1","key.serializer":"org.apache.org.apache.storm.kafka.IntSerializer","value.serializer":"org.apache.org.apache.storm.kafka.ByteBufferSerializer"}}'
+INSERT INTO LARGE_ORDERS SELECT ID, UNIT_PRICE * QUANTITY AS TOTAL FROM ORDERS WHERE UNIT_PRICE * QUANTITY &gt; 50
+</code></pre></div></div>
+
+<p>The first statement defines the table <code class="language-plaintext highlighter-rouge">ORDER</code> which represents the input stream. The <code class="language-plaintext highlighter-rouge">LOCATION</code> clause specifies the ZkHost (<code class="language-plaintext highlighter-rouge">localhost:2181</code>), the path of the brokers in ZooKeeper (<code class="language-plaintext highlighter-rouge">/brokers</code>) and the topic (<code class="language-plaintext highlighter-rouge">orders</code>).</p>
+
+<p>Similarly, the second statement specifies the table <code class="language-plaintext highlighter-rouge">LARGE_ORDERS</code> which represents the output stream. The <code class="language-plaintext highlighter-rouge">TBLPROPERTIES</code> clause specifies the configuration of <a href="http://kafka.apache.org/documentation.html#producerconfigs">KafkaProducer</a> and is required for a Kafka sink table.</p>
+
+<p>The third statement is a <code class="language-plaintext highlighter-rouge">SELECT</code> statement which defines the topology: it instructs StormSQL to filter all orders in the external table <code class="language-plaintext highlighter-rouge">ORDERS</code>, calculates the total price and inserts matching records into the Kafka stream specified by <code class="language-plaintext highlighter-rouge">LARGE_ORDER</code>.</p>
+
+<p>To run this example, users need to include the data sources (<code class="language-plaintext highlighter-rouge">storm-sql-kafka</code> in this case) and its dependency in the
+class path. Dependencies for Storm SQL are automatically handled when users run <code class="language-plaintext highlighter-rouge">storm sql</code>. Users can include data sources at the submission step like below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bin/storm sql order_filtering.sql order_filtering --artifacts "org.apache.storm:storm-sql-kafka:2.0.0-SNAPSHOT,org.apache.storm:storm-kafka:2.0.0-SNAPSHOT,org.apache.kafka:kafka_2.10:0.8.2.2^org.slf4j:slf4j-log4j12,org.apache.kafka:kafka-clients:0.8.2.2"
+</code></pre></div></div>
+
+<p>Above command submits the SQL statements to StormSQL. Users need to modify each artifacts’ version if users are using different version of Storm or Kafka.</p>
+
+<p>By now you should be able to see the <code class="language-plaintext highlighter-rouge">order_filtering</code> topology in the Storm UI.</p>
+
+<h2 id="showing-query-plan-explain-mode">Showing Query Plan (explain mode)</h2>
+
+<p>Like <code class="language-plaintext highlighter-rouge">explain</code> on SQL statement, StormSQL provides <code class="language-plaintext highlighter-rouge">explain mode</code> when running Storm SQL Runner. In explain mode, StormSQL analyzes each query statement (only DML) and show plan instead of submitting topology.</p>
+
+<p>In order to run <code class="language-plaintext highlighter-rouge">explain mode</code>, you need to provide topology name as <code class="language-plaintext highlighter-rouge">--explain</code> and run <code class="language-plaintext highlighter-rouge">storm sql</code> as same as submitting.</p>
+
+<p>For example, when you run the example seen above with explain mode:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bin/storm sql order_filtering.sql --explain --artifacts "org.apache.storm:storm-sql-kafka:2.0.0-SNAPSHOT,org.apache.storm:storm-kafka:2.0.0-SNAPSHOT,org.apache.kafka:kafka_2.10:0.8.2.2\!org.slf4j:slf4j-log4j12,org.apache.kafka:kafka-clients:0.8.2.2"
+</code></pre></div></div>
+
+<p>StormSQL prints out like below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+===========================================================
+query&gt;
+CREATE EXTERNAL TABLE ORDERS (ID INT PRIMARY KEY, UNIT_PRICE INT, QUANTITY INT) LOCATION 'kafka://localhost:2181/brokers?topic=orders' TBLPROPERTIES '{"producer":{"bootstrap.servers":"localhost:9092","acks":"1","key.serializer":"org.apache.storm.kafka.IntSerializer","value.serializer":"org.apache.storm.kafka.ByteBufferSerializer"}}'
+-----------------------------------------------------------
+16:53:43.951 [main] INFO  o.a.s.s.r.DataSourcesRegistry - Registering scheme kafka with org.apache.storm.sql.kafka.KafkaDataSourcesProvider@4d1bf319
+No plan presented on DDL
+===========================================================
+===========================================================
+query&gt;
+CREATE EXTERNAL TABLE LARGE_ORDERS (ID INT PRIMARY KEY, TOTAL INT) LOCATION 'kafka://localhost:2181/brokers?topic=large_orders' TBLPROPERTIES '{"producer":{"bootstrap.servers":"localhost:9092","acks":"1","key.serializer":"org.apache.storm.kafka.IntSerializer","value.serializer":"org.apache.storm.kafka.ByteBufferSerializer"}}'
+-----------------------------------------------------------
+No plan presented on DDL
+===========================================================
+===========================================================
+query&gt;
+INSERT INTO LARGE_ORDERS SELECT ID, UNIT_PRICE * QUANTITY AS TOTAL FROM ORDERS WHERE UNIT_PRICE * QUANTITY &gt; 50
+-----------------------------------------------------------
+plan&gt;
+LogicalTableModify(table=[[LARGE_ORDERS]], operation=[INSERT], updateColumnList=[[]], flattened=[true]), id = 8
+  LogicalProject(ID=[$0], TOTAL=[*($1, $2)]), id = 7
+    LogicalFilter(condition=[&gt;(*($1, $2), 50)]), id = 6
+      EnumerableTableScan(table=[[ORDERS]]), id = 5
+
+===========================================================
+
+</code></pre></div></div>
+
+<h2 id="current-limitations">Current Limitations</h2>
+
+<ul>
+  <li>Windowing is yet to be implemented.</li>
+  <li>Aggregation and join are not supported (waiting for <code class="language-plaintext highlighter-rouge">Streaming SQL</code> to be matured)</li>
+</ul>
