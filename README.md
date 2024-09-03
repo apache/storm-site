@@ -57,6 +57,11 @@ If the release is the latest release, i.e. the release with the highest version 
 ln -f -n -s ${release_name} current
 ```
 
+Compose a new blog post announcement for the new release on the `_posts` folder. You can use the `RELEASE_NOTES.html` file generated on `storm` project to retrieve the specific HTML for this version.
+
+Update the downloads page on `downloads.html` to point to the new version links. 
+
+
 To publish the site, run the following from the storm-site root
 ```
 bundle exec jekyll build -d content
