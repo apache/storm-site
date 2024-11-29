@@ -22,25 +22,21 @@ Changes in this Release - Storm 2.7.1
 <p>JIRA issues addressed in the 2.7.1 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
 
 <h2>Improvement</h2>
-<ul>
-    <li>[<a href="https://issues.apache.org/jira/browse/STORM-4108">STORM-4108</a>] - Remove joda-time </li>
+<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-4108">STORM-4108</a>] - Remove joda-time </li>
 </ul>
 
 <h2>Bug</h2>
-<ul>
-    <li>[<a href="https://issues.apache.org/jira/browse/STORM-4104">STORM-4104</a>] - Pacemaker server stability issues - e.g. shuts down when topology killed</li>
+<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-4104">STORM-4104</a>] - Pacemaker server stability issues - e.g. shuts down when topology killed</li>
     <li>[<a href="https://issues.apache.org/jira/browse/STORM-4106">STORM-4106</a>] - Storm.ps1 does not show stdout\stderr output when launched from Powershell ISE</li>
 </ul>
 
 <h2>Task</h2>
-<ul>
-    <li>[<a href="https://issues.apache.org/jira/browse/STORM-4107">STORM-4107</a>] - Remove ElasticSearch Module</li>
+<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-4107">STORM-4107</a>] - Remove ElasticSearch Module</li>
 	<li>[<a href="https://issues.apache.org/jira/browse/STORM-4128">STORM-4128</a>] - Deprecate "storm-hive"</li>
 </ul>
 
 <h2>Dependency upgrade</h2>
-<ul>
-    <li>[<a href="https://issues.apache.org/jira/browse/STORM-4056">STORM-4056</a>] - Build with -Pnative on MacOS</li>
+<ul><li>[<a href="https://issues.apache.org/jira/browse/STORM-4056">STORM-4056</a>] - Build with -Pnative on MacOS</li>
 	<li>[<a href="https://issues.apache.org/jira/browse/STORM-4081">STORM-4081</a>] - Dropwizard Metrics 4.2.27</li>
 	<li>[<a href="https://issues.apache.org/jira/browse/STORM-4082">STORM-4082</a>] - Prometheus Client 1.3.1</li>
 	<li>[<a href="https://issues.apache.org/jira/browse/STORM-4083">STORM-4083</a>] - Jetty 11.0.23</li>
@@ -83,5 +79,4 @@ Changes in this Release - Storm 2.7.1
 	<li>[<a href="https://issues.apache.org/jira/browse/STORM-4127">STORM-4127</a>] - Netty 4.1.115.Final </li>
 	<li>[<a href="https://issues.apache.org/jira/browse/STORM-4129">STORM-4129</a>] - Hikari 6.2.0</li>
 	<li>[<a href="https://issues.apache.org/jira/browse/STORM-4130">STORM-4130</a>] - commons cli 1.9.0</li>
-</ul>
-</body>   
+</ul>   
