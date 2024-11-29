@@ -44,4 +44,3 @@ Changes in this Release - Storm 2.7.0
 	<li>[<a href="https://issues.apache.org/jira/browse/STORM-4082">STORM-4082</a>] - Prometheus Client 1.3.1</li>
 	<li>[<a href="https://issues.apache.org/jira/browse/STORM-4083">STORM-4083</a>] - Jetty 11.0.23</li>
 </ul>
-</body>
