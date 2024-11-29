@@ -84,4 +84,4 @@ Changes in this Release - Storm 2.7.1
 	<li>[<a href="https://issues.apache.org/jira/browse/STORM-4129">STORM-4129</a>] - Hikari 6.2.0</li>
 	<li>[<a href="https://issues.apache.org/jira/browse/STORM-4130">STORM-4130</a>] - commons cli 1.9.0</li>
 </ul>
- </body>   
+</body>   
