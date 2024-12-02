@@ -10,6 +10,8 @@ released and is available from [the downloads page](/downloads.html).
 This release includes new features as well as a number of code improvements, bug fixes and library updates.
 We encourage users of previous versions to upgrade to this latest release.
 
+Note: This is the last release supporting Java 11. Future releases will require Java 17+ or later (currently under discussion).
+
 Thanks
 ------
 Special thanks are due to all those who have contributed to Apache Storm -- whether
