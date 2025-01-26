@@ -10,7 +10,7 @@ released and is available from [the downloads page](/downloads.html).
 This release includes new features as well as a number of code improvements, bug fixes and library updates.
 We encourage users of previous versions to upgrade to this latest release.
 
-<p><strong><u><font size="3"> Please note that starting from this release, the minimum JRE version to run Apache Storm is 17.</font></u></strong></p>
+<p><strong><u><font size="3"> Please note that starting with this release, the minimum JRE version to run Apache Storm is 17.</font></u></strong></p>
 
 Thanks
 ------
