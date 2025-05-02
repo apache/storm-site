@@ -61,14 +61,9 @@ Compose a new blog post announcement for the new release on the `_posts` folder.
 
 Update the downloads page on `downloads.html` to point to the new version's links. 
 
+##  Build with GitHub actions
 
-To publish the site, run the following from the storm-site root
-```
-bundle exec jekyll build -d content
-git add content
-git commit
-```
-and push the commit to the asf-site branch.
+The website is automatically build on a push to main and any changes are pushed to the asf-site branch. A preview is available via https://storm.staged.apache.org/ if you go to the GitHub Actions tab and trigger a manual staging deploy action.
 
 ## How release specific docs work
 
