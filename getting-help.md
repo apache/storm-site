@@ -20,7 +20,7 @@ You can subscribe to this list by sending an email to [dev-subscribe@storm.apach
 
 You can also [browse the archives of the storm-dev mailing list](https://mail-archives.apache.org/mod_mbox/storm-dev/).
 
-Storm developers who would want to track the JIRA issues should subscribe to [issues@storm.apache.org](mailto:issues@storm.apache.org).
+Storm developers who would want to track the issues should subscribe to [issues@storm.apache.org](mailto:issues@storm.apache.org).
 
 You can subscribe to this list by sending an email to [issues-subscribe@storm.apache.org](mailto:issues-subscribe@storm.apache.org). Likewise, you can cancel a subscription by sending an email to [issues-unsubscribe@storm.apache.org](mailto:issues-unsubscribe@storm.apache.org).
 
