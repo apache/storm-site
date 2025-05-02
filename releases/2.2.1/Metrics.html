@@ -206,11 +206,11 @@ The numbers you see on the UI come from some of these built in metrics, but are 
 <p>You can refer <a href="javadocs/org/apache/storm/Config.html#registerMetricsConsumer-java.lang.Class-">Config#registerMetricsConsumer</a> and overloaded methods from javadoc.</p>
 
 <p>Otherwise edit the storm.yaml config file:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">topology.metrics.consumer.register</span><span class="pi">:</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">topology.metrics.consumer.register</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">class</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.metric.LoggingMetricsConsumer"</span>
-    <span class="s">parallelism.hint</span><span class="pi">:</span> <span class="m">1</span>
+    <span class="na">parallelism.hint</span><span class="pi">:</span> <span class="m">1</span>
   <span class="pi">-</span> <span class="na">class</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.metric.HttpForwardingMetricsConsumer"</span>
-    <span class="s">parallelism.hint</span><span class="pi">:</span> <span class="m">1</span>
+    <span class="na">parallelism.hint</span><span class="pi">:</span> <span class="m">1</span>
     <span class="na">argument</span><span class="pi">:</span> <span class="s2">"</span><span class="s">http://example.com:8080/metrics/my-topology/"</span>
 </code></pre></div>
 <p>Storm adds a MetricsConsumerBolt to your topolology for each class in the <code>topology.metrics.consumer.register</code> list. Each MetricsConsumerBolt subscribes to receive metrics from all tasks in the topology. The parallelism for each Bolt is set to <code>parallelism.hint</code> and <code>component id</code> for that Bolt is set to <code>__metrics_&lt;metrics consumer class name&gt;</code>. If you register the same class name more than once, postfix <code>#&lt;sequence number&gt;</code> is appended to component id.</p>
@@ -262,7 +262,7 @@ The numbers you see on the UI come from some of these built in metrics, but are 
 <p>You can register your own worker level metrics by adding them to <code>Config.WORKER_METRICS</code> for all workers in cluster, or <code>Config.TOPOLOGY_WORKER_METRICS</code> for all workers in specific topology.</p>
 
 <p>For example, we can add <code>worker.metrics</code> to storm.yaml in cluster,</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">worker.metrics</span><span class="pi">:</span> 
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">worker.metrics</span><span class="pi">:</span> 
   <span class="na">metricA</span><span class="pi">:</span> <span class="s2">"</span><span class="s">aaa.bbb.ccc.ddd.MetricA"</span>
   <span class="na">metricB</span><span class="pi">:</span> <span class="s2">"</span><span class="s">aaa.bbb.ccc.ddd.MetricB"</span>
   <span class="s">...</span>

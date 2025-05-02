@@ -239,17 +239,17 @@ Storm SQL doesn&#39;t redefine SQL Grammar and just utilize the parser Calcite p
 <span class="n">query</span><span class="p">:</span>
       <span class="k">values</span>
   <span class="o">|</span>   <span class="k">WITH</span> <span class="n">withItem</span> <span class="p">[</span> <span class="p">,</span> <span class="n">withItem</span> <span class="p">]</span><span class="o">*</span> <span class="n">query</span>
-  <span class="o">|</span>   <span class="err">{</span>
+  <span class="o">|</span>   <span class="p">{</span>
           <span class="k">select</span>
       <span class="o">|</span>   <span class="n">selectWithoutFrom</span>
       <span class="o">|</span>   <span class="n">query</span> <span class="k">UNION</span> <span class="p">[</span> <span class="k">ALL</span> <span class="p">]</span> <span class="n">query</span>
       <span class="o">|</span>   <span class="n">query</span> <span class="k">EXCEPT</span> <span class="n">query</span>
       <span class="o">|</span>   <span class="n">query</span> <span class="k">INTERSECT</span> <span class="n">query</span>
-      <span class="err">}</span>
+      <span class="p">}</span>
       <span class="p">[</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">orderItem</span> <span class="p">[,</span> <span class="n">orderItem</span> <span class="p">]</span><span class="o">*</span> <span class="p">]</span>
-      <span class="p">[</span> <span class="k">LIMIT</span> <span class="err">{</span> <span class="k">count</span> <span class="o">|</span> <span class="k">ALL</span> <span class="err">}</span> <span class="p">]</span>
-      <span class="p">[</span> <span class="k">OFFSET</span> <span class="k">start</span> <span class="err">{</span> <span class="k">ROW</span> <span class="o">|</span> <span class="k">ROWS</span> <span class="err">}</span> <span class="p">]</span>
-      <span class="p">[</span> <span class="k">FETCH</span> <span class="err">{</span> <span class="k">FIRST</span> <span class="o">|</span> <span class="k">NEXT</span> <span class="err">}</span> <span class="p">[</span> <span class="k">count</span> <span class="p">]</span> <span class="err">{</span> <span class="k">ROW</span> <span class="o">|</span> <span class="k">ROWS</span> <span class="err">}</span> <span class="p">]</span>
+      <span class="p">[</span> <span class="k">LIMIT</span> <span class="p">{</span> <span class="k">count</span> <span class="o">|</span> <span class="k">ALL</span> <span class="p">}</span> <span class="p">]</span>
+      <span class="p">[</span> <span class="k">OFFSET</span> <span class="k">start</span> <span class="p">{</span> <span class="k">ROW</span> <span class="o">|</span> <span class="k">ROWS</span> <span class="p">}</span> <span class="p">]</span>
+      <span class="p">[</span> <span class="k">FETCH</span> <span class="p">{</span> <span class="k">FIRST</span> <span class="o">|</span> <span class="k">NEXT</span> <span class="p">}</span> <span class="p">[</span> <span class="k">count</span> <span class="p">]</span> <span class="p">{</span> <span class="k">ROW</span> <span class="o">|</span> <span class="k">ROWS</span> <span class="p">}</span> <span class="p">]</span>
 
 <span class="n">withItem</span><span class="p">:</span>
       <span class="n">name</span>
@@ -261,16 +261,16 @@ Storm SQL doesn&#39;t redefine SQL Grammar and just utilize the parser Calcite p
 
 <span class="k">select</span><span class="p">:</span>
       <span class="k">SELECT</span> <span class="p">[</span> <span class="n">STREAM</span> <span class="p">]</span> <span class="p">[</span> <span class="k">ALL</span> <span class="o">|</span> <span class="k">DISTINCT</span> <span class="p">]</span>
-          <span class="err">{</span> <span class="o">*</span> <span class="o">|</span> <span class="n">projectItem</span> <span class="p">[,</span> <span class="n">projectItem</span> <span class="p">]</span><span class="o">*</span> <span class="err">}</span>
+          <span class="p">{</span> <span class="o">*</span> <span class="o">|</span> <span class="n">projectItem</span> <span class="p">[,</span> <span class="n">projectItem</span> <span class="p">]</span><span class="o">*</span> <span class="p">}</span>
       <span class="k">FROM</span> <span class="n">tableExpression</span>
       <span class="p">[</span> <span class="k">WHERE</span> <span class="n">booleanExpression</span> <span class="p">]</span>
-      <span class="p">[</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="err">{</span> <span class="n">groupItem</span> <span class="p">[,</span> <span class="n">groupItem</span> <span class="p">]</span><span class="o">*</span> <span class="err">}</span> <span class="p">]</span>
+      <span class="p">[</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="p">{</span> <span class="n">groupItem</span> <span class="p">[,</span> <span class="n">groupItem</span> <span class="p">]</span><span class="o">*</span> <span class="p">}</span> <span class="p">]</span>
       <span class="p">[</span> <span class="k">HAVING</span> <span class="n">booleanExpression</span> <span class="p">]</span>
-      <span class="p">[</span> <span class="n">WINDOW</span> <span class="n">windowName</span> <span class="k">AS</span> <span class="n">windowSpec</span> <span class="p">[,</span> <span class="n">windowName</span> <span class="k">AS</span> <span class="n">windowSpec</span> <span class="p">]</span><span class="o">*</span> <span class="p">]</span>
+      <span class="p">[</span> <span class="k">WINDOW</span> <span class="n">windowName</span> <span class="k">AS</span> <span class="n">windowSpec</span> <span class="p">[,</span> <span class="n">windowName</span> <span class="k">AS</span> <span class="n">windowSpec</span> <span class="p">]</span><span class="o">*</span> <span class="p">]</span>
 
 <span class="n">selectWithoutFrom</span><span class="p">:</span>
       <span class="k">SELECT</span> <span class="p">[</span> <span class="k">ALL</span> <span class="o">|</span> <span class="k">DISTINCT</span> <span class="p">]</span>
-          <span class="err">{</span> <span class="o">*</span> <span class="o">|</span> <span class="n">projectItem</span> <span class="p">[,</span> <span class="n">projectItem</span> <span class="p">]</span><span class="o">*</span> <span class="err">}</span>
+          <span class="p">{</span> <span class="o">*</span> <span class="o">|</span> <span class="n">projectItem</span> <span class="p">[,</span> <span class="n">projectItem</span> <span class="p">]</span><span class="o">*</span> <span class="p">}</span>
 
 <span class="n">projectItem</span><span class="p">:</span>
       <span class="n">expression</span> <span class="p">[</span> <span class="p">[</span> <span class="k">AS</span> <span class="p">]</span> <span class="n">columnAlias</span> <span class="p">]</span>
@@ -314,10 +314,10 @@ Storm SQL doesn&#39;t redefine SQL Grammar and just utilize the parser Calcite p
       <span class="p">[</span> <span class="n">windowName</span> <span class="p">]</span>
       <span class="s1">'('</span>
       <span class="p">[</span> <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">orderItem</span> <span class="p">[,</span> <span class="n">orderItem</span> <span class="p">]</span><span class="o">*</span> <span class="p">]</span>
-      <span class="p">[</span> <span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">expression</span> <span class="p">[,</span> <span class="n">expression</span> <span class="p">]</span><span class="o">*</span> <span class="p">]</span>
+      <span class="p">[</span> <span class="k">PARTITION</span> <span class="k">BY</span> <span class="n">expression</span> <span class="p">[,</span> <span class="n">expression</span> <span class="p">]</span><span class="o">*</span> <span class="p">]</span>
       <span class="p">[</span>
-          <span class="n">RANGE</span> <span class="n">numericOrIntervalExpression</span> <span class="err">{</span> <span class="n">PRECEDING</span> <span class="o">|</span> <span class="n">FOLLOWING</span> <span class="err">}</span>
-      <span class="o">|</span>   <span class="k">ROWS</span> <span class="n">numericExpression</span> <span class="err">{</span> <span class="n">PRECEDING</span> <span class="o">|</span> <span class="n">FOLLOWING</span> <span class="err">}</span>
+          <span class="k">RANGE</span> <span class="n">numericOrIntervalExpression</span> <span class="p">{</span> <span class="k">PRECEDING</span> <span class="o">|</span> <span class="k">FOLLOWING</span> <span class="p">}</span>
+      <span class="o">|</span>   <span class="k">ROWS</span> <span class="n">numericExpression</span> <span class="p">{</span> <span class="k">PRECEDING</span> <span class="o">|</span> <span class="k">FOLLOWING</span> <span class="p">}</span>
       <span class="p">]</span>
       <span class="s1">')'</span></code></pre></figure>
 

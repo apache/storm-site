@@ -249,18 +249,18 @@ Exposes metrics via JMX.</li>
  or in topology configuration and configure one or more reporters.</p>
 
 <p>The following example configuration sets up two reporters: a Graphite Reporter and a Console Reporter:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">topology.metrics.reporters</span><span class="pi">:</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">topology.metrics.reporters</span><span class="pi">:</span>
   <span class="c1"># Graphite Reporter</span>
   <span class="pi">-</span> <span class="na">class</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.metrics2.reporters.GraphiteStormReporter"</span>
-    <span class="s">report.period</span><span class="pi">:</span> <span class="m">60</span>
-    <span class="s">report.period.units</span><span class="pi">:</span> <span class="s2">"</span><span class="s">SECONDS"</span>
-    <span class="s">graphite.host</span><span class="pi">:</span> <span class="s2">"</span><span class="s">localhost"</span>
-    <span class="s">graphite.port</span><span class="pi">:</span> <span class="m">2003</span>
+    <span class="na">report.period</span><span class="pi">:</span> <span class="m">60</span>
+    <span class="na">report.period.units</span><span class="pi">:</span> <span class="s2">"</span><span class="s">SECONDS"</span>
+    <span class="na">graphite.host</span><span class="pi">:</span> <span class="s2">"</span><span class="s">localhost"</span>
+    <span class="na">graphite.port</span><span class="pi">:</span> <span class="m">2003</span>
 
   <span class="c1"># Console Reporter</span>
   <span class="pi">-</span> <span class="na">class</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.metrics2.reporters.ConsoleStormReporter"</span>
-    <span class="s">report.period</span><span class="pi">:</span> <span class="m">10</span>
-    <span class="s">report.period.units</span><span class="pi">:</span> <span class="s2">"</span><span class="s">SECONDS"</span>
+    <span class="na">report.period</span><span class="pi">:</span> <span class="m">10</span>
+    <span class="na">report.period.units</span><span class="pi">:</span> <span class="s2">"</span><span class="s">SECONDS"</span>
     <span class="na">filter</span><span class="pi">:</span>
         <span class="na">class</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.metrics2.filters.RegexFilter"</span>
         <span class="na">expression</span><span class="pi">:</span> <span class="s2">"</span><span class="s">.*my_component.*emitted.*"</span>

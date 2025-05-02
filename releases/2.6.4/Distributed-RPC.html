@@ -244,11 +244,11 @@ with LocalDRPC.</p>
 <div class="highlight"><pre><code class="language-" data-lang="">bin/storm drpc
 </code></pre></div>
 <p>Next, you need to configure your Storm cluster to know the locations of the DRPC server(s). This is how <code>DRPCSpout</code> knows from where to read function invocations. This can be done through the <code>storm.yaml</code> file or the topology configurations. You should also specify storm.thrift.transport property to match DRPCClient settings. Configuring this through the <code>storm.yaml</code> looks something like this:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">drpc.servers</span><span class="pi">:</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">drpc.servers</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s2">"</span><span class="s">drpc1.foo.com"</span>
   <span class="pi">-</span> <span class="s2">"</span><span class="s">drpc2.foo.com"</span>
-<span class="s">drpc.http.port</span><span class="pi">:</span> <span class="m">8081</span>
-<span class="s">storm.thrift.transport</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.security.auth.plain.PlainSaslTransportPlugin"</span>
+<span class="na">drpc.http.port</span><span class="pi">:</span> <span class="m">8081</span>
+<span class="na">storm.thrift.transport</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.security.auth.plain.PlainSaslTransportPlugin"</span>
 </code></pre></div>
 <p>Finally, you launch DRPC topologies using <code>StormSubmitter</code> just like you launch any other topology. To run the above example in remote mode, you do something like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">StormSubmitter</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="s">"exclamation-drpc"</span><span class="o">,</span> <span class="n">conf</span><span class="o">,</span> <span class="n">builder</span><span class="o">.</span><span class="na">createRemoteTopology</span><span class="o">());</span>

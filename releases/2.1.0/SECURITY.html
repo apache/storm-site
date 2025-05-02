@@ -260,10 +260,10 @@ doing, but also manipulate running topologies.  In general these processes shoul
 not be exposed except to users of the cluster.</p>
 
 <p>Some form of Authentication is typically required, and can be done using a java servlet filter</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">ui.filter</span><span class="pi">:</span> <span class="s2">"</span><span class="s">filter.class"</span>
-<span class="s">ui.filter.params</span><span class="pi">:</span> <span class="s2">"</span><span class="s">param1":"value1"</span>
-<span class="s">logviewer.filter</span><span class="pi">:</span> <span class="s2">"</span><span class="s">filter.class"</span>
-<span class="s">logviewer.filter.params</span><span class="pi">:</span> <span class="s2">"</span><span class="s">param1":"value1"</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">ui.filter</span><span class="pi">:</span> <span class="s2">"</span><span class="s">filter.class"</span>
+<span class="na">ui.filter.params</span><span class="pi">:</span> <span class="s2">"</span><span class="s">param1":"value1"</span>
+<span class="na">logviewer.filter</span><span class="pi">:</span> <span class="s2">"</span><span class="s">filter.class"</span>
+<span class="na">logviewer.filter.params</span><span class="pi">:</span> <span class="s2">"</span><span class="s">param1":"value1"</span>
 </code></pre></div>
 <p>The <code>ui.filter</code> is an instance of <code>javax.servlet.Filter</code> that is intended to 
 filter all incoming requests to the UI and authenticate the request mapping 
@@ -438,9 +438,9 @@ java.security.auth.login.config: &quot;/path/to/jaas.conf&quot;
 </code></p>
 
 <p>to the childopts of nimbus, ui, and supervisor.  Here is an example given the default childopts settings at the time of writing:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">nimbus.childopts</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-Xmx1024m</span><span class="nv"> </span><span class="s">-Djava.security.auth.login.config=/path/to/jaas.conf"</span>
-<span class="s">ui.childopts</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-Xmx768m</span><span class="nv"> </span><span class="s">-Djava.security.auth.login.config=/path/to/jaas.conf"</span>
-<span class="s">supervisor.childopts</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-Xmx256m</span><span class="nv"> </span><span class="s">-Djava.security.auth.login.config=/path/to/jaas.conf"</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">nimbus.childopts</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-Xmx1024m</span><span class="nv"> </span><span class="s">-Djava.security.auth.login.config=/path/to/jaas.conf"</span>
+<span class="na">ui.childopts</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-Xmx768m</span><span class="nv"> </span><span class="s">-Djava.security.auth.login.config=/path/to/jaas.conf"</span>
+<span class="na">supervisor.childopts</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-Xmx256m</span><span class="nv"> </span><span class="s">-Djava.security.auth.login.config=/path/to/jaas.conf"</span>
 </code></pre></div>
 <p>The jaas.conf file should look something like the following for the storm nodes.
 The StormServer section is used by nimbus and the DRPC Nodes.  It does not need to be included on supervisor nodes.
@@ -560,7 +560,7 @@ kerberos.removeRealmFromPrincipal = true
 <p><em>Authentication</em> does the job of verifying who the user is, but we also need <em>authorization</em> to do the job of enforcing what each user can do.</p>
 
 <p>The preferred authorization plug-in for nimbus is The <em>SimpleACLAuthorizer</em>.  To use the <em>SimpleACLAuthorizer</em>, set the following:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">nimbus.authorizer</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.security.auth.authorizer.SimpleACLAuthorizer"</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">nimbus.authorizer</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.security.auth.authorizer.SimpleACLAuthorizer"</span>
 </code></pre></div>
 <p>DRPC has a separate authorizer configuration for it.  Do not use SimpleACLAuthorizer for DRPC.</p>
 
@@ -594,14 +594,14 @@ Be aware that many of the features of this scheduler rely on storm authenticatio
 <p>There is currently only one config in =multitenant-scheduler.yaml=, =multitenant.scheduler.user.pools= is a map from the user name, to the maximum number of nodes that user is guaranteed to be able to use for their topologies.</p>
 
 <p>For example:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">multitenant.scheduler.user.pools</span><span class="pi">:</span> 
-    <span class="s2">"</span><span class="s">evans"</span><span class="pi">:</span> <span class="m">10</span>
-    <span class="s2">"</span><span class="s">derek"</span><span class="pi">:</span> <span class="m">10</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">multitenant.scheduler.user.pools</span><span class="pi">:</span> 
+    <span class="s2">"</span><span class="s">evans"</span><span class="err">:</span> <span class="m">10</span>
+    <span class="s2">"</span><span class="s">derek"</span><span class="err">:</span> <span class="m">10</span>
 </code></pre></div>
 <h3 id="run-worker-processes-as-user-who-submitted-the-topology">Run worker processes as user who submitted the topology</h3>
 
 <p>By default storm runs workers as the user that is running the supervisor.  This is not ideal for security.  To make storm run the topologies as the user that launched them set.</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">supervisor.run.worker.as.user</span><span class="pi">:</span> <span class="no">true</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">supervisor.run.worker.as.user</span><span class="pi">:</span> <span class="no">true</span>
 </code></pre></div>
 <p>There are several files that go along with this that are needed to be configured properly to make storm secure.</p>
 
@@ -622,8 +622,8 @@ to get a nimbus client as some other user and perform any nimbus action(i.e. kil
 
 <p>Impersonation authorization is disabled by default which means any user can perform impersonation. To ensure only authorized users can perform impersonation you should start nimbus with <code>nimbus.impersonation.authorizer</code> set to <code>org.apache.storm.security.auth.authorizer.ImpersonationAuthorizer</code>.
 The <code>ImpersonationAuthorizer</code> uses <code>nimbus.impersonation.acl</code> as the acl to authorize users. Following is a sample nimbus config for supporting impersonation:</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">nimbus.impersonation.authorizer</span><span class="pi">:</span> <span class="s">org.apache.storm.security.auth.authorizer.ImpersonationAuthorizer</span>
-<span class="s">nimbus.impersonation.acl</span><span class="pi">:</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">nimbus.impersonation.authorizer</span><span class="pi">:</span> <span class="s">org.apache.storm.security.auth.authorizer.ImpersonationAuthorizer</span>
+<span class="na">nimbus.impersonation.acl</span><span class="pi">:</span>
     <span class="na">impersonating_user1</span><span class="pi">:</span>
         <span class="na">hosts</span><span class="pi">:</span>
             <span class="pi">[</span><span class="nv">comma separated list of hosts from which impersonating_user1 is allowed to impersonate other users</span><span class="pi">]</span>
@@ -712,11 +712,11 @@ on all possible worker hosts.</p>
  Similarly nimbus.groups restrict storm cluster access to users who belong to those groups.</p>
 
 <p>To configure specify the following config in storm.yaml</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">nimbus.users</span><span class="pi">:</span> 
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">nimbus.users</span><span class="pi">:</span> 
    <span class="pi">-</span> <span class="s2">"</span><span class="s">testuser"</span>
 </code></pre></div>
 <p>or </p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">nimbus.groups</span><span class="pi">:</span> 
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">nimbus.groups</span><span class="pi">:</span> 
    <span class="pi">-</span> <span class="s2">"</span><span class="s">storm"</span>
 </code></pre></div>
 <h3 id="drpc">DRPC</h3>
@@ -746,12 +746,12 @@ on all possible worker hosts.</p>
 </tbody></table>
 
 <p>The file pointed to by drpc.authorizer.acl.filename will have only one config in it drpc.authorizer.acl this should be of the form</p>
-<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">drpc.authorizer.acl</span><span class="pi">:</span>
-   <span class="s2">"</span><span class="s">functionName1"</span><span class="pi">:</span>
-     <span class="s2">"</span><span class="s">client.users"</span><span class="pi">:</span>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">drpc.authorizer.acl</span><span class="pi">:</span>
+   <span class="s2">"</span><span class="s">functionName1"</span><span class="err">:</span>
+     <span class="s2">"</span><span class="s">client.users"</span><span class="err">:</span>
        <span class="pi">-</span> <span class="s2">"</span><span class="s">alice"</span>
        <span class="pi">-</span> <span class="s2">"</span><span class="s">bob"</span>
-     <span class="s2">"</span><span class="s">invocation.user"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">bob"</span>
+<span class="err">     </span><span class="s2">"</span><span class="s">invocation.user"</span><span class="err">:</span> <span class="s2">"</span><span class="s">bob"</span>
 </code></pre></div>
 <p>In this the users bob and alice as client.users are allowed to run DRPC requests against functionName1, but only bob as the invocation.user is allowed to run the topology that actually processes those requests.</p>
 
