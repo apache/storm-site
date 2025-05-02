@@ -22,7 +22,7 @@ For small patches, feel free to submit pull requests directly for them. For larg
 2. Comment on the issue with your plan for implementing the issue. Explain what pieces of the codebase you're going to touch and how everything is going to fit together.
 3. Storm committers will iterate with you on the design to make sure you're on the right track
 4. Read through the developer documentation on how to build, code style, testing, etc [DEVELOPER.md](https://github.com/apache/storm/blob/master/DEVELOPER.md) 
-5. Implement your issue, submit a pull request prefixed with the JIRA ID (e.g. "STORM-123: add new feature foo"), and iterate from there.
+5. Implement your issue, submit a pull request prefixed with the issue id (e.g. "#123: add new feature foo"), and iterate from there.
 
 ### Contributing documentation
 
