@@ -1,4 +1,0 @@
----
----
-<meta http-equiv="refresh" content="0; url=http://storm.apache.org/releases/current/Storm-multi-language-protocol-(versions-0.7.0-and-below).html">
-<link rel="canonical" href="https://storm.apache.org/releases/current/Storm-multi-language-protocol-(versions-0.7.0-and-below).html" />
