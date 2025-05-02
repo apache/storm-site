@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <title>Running Apache Storm Securely</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/assets/css/owl.theme.css" rel="stylesheet">
+    <link href="/assets/css/owl.carousel.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="/assets/js/storm.js"></script>
+</head>
+
+
+  <body>
+    <header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+                <a href="/index.html"><img src="/images/logo.png" class="logo"/></a>
+            </div>
+            <div class="col-md-5">
+                
+                <h1>Version: 2.0.0</h1>
+                
+            </div>
+            <div class="col-md-2">
+                <a href="/downloads.html" class="btn-std btn-block btn-download">Download</a>
+            </div>
+        </div>
+    </div>
+</header>
+<!--Header End-->
+<!--Navigation Begin-->
+<div class="navbar" role="banner">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li><a href="/index.html" id="home">Home</a></li>
+                <li><a href="/getting-help.html" id="getting-help">Getting Help</a></li>
+                <li><a href="/about/integrates.html" id="project-info">Project Information</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="documentation">Documentation <b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/releases/2.8.0/index.html">2.8.0</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.7.1/index.html">2.7.1</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.7.0/index.html">2.7.0</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.6.4/index.html">2.6.4</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.6.3/index.html">2.6.3</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.6.2/index.html">2.6.2</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.6.1/index.html">2.6.1</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.6.0/index.html">2.6.0</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.5.0/index.html">2.5.0</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.4.0/index.html">2.4.0</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.3.0/index.html">2.3.0</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.2.1/index.html">2.2.1</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.2.0/index.html">2.2.0</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.1.1/index.html">2.1.1</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.1.0/index.html">2.1.0</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/1.2.4/index.html">1.2.4</a></li>
+                        
+                        
+                        
+                        <li><a href="/releases/1.2.3/index.html">1.2.3</a></li>
+                        
+                        
+                    </ul>
+                </li>
+                <li><a href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="contribute">Community <b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a href="/contribute/People.html">People</a></li>
+                        <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
+                        <li><a href="/Powered-By.html">PoweredBy</a></li>
+                    </ul>
+                </li>
+                <li><a href="/2025/01/25/storm280-released.html" id="news">News</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+
+    <div class="container-fluid">
+    <h1 class="page-title">Running Apache Storm Securely</h1>
+          <div class="row">
+           	<div class="col-md-12">
+	             <!-- Documentation -->
+
+<p class="post-meta"></p>
+
+<div class="documentation-content"><h1 id="running-apache-storm-securely">Running Apache Storm Securely</h1>
+
+<p>Apache Storm offers a range of configuration options when trying to secure
+your cluster.  By default all authentication and authorization is disabled but 
+can be turned on as needed.</p>
+
+<h2 id="firewall-os-level-security">Firewall/OS level Security</h2>
+
+<p>You can still have a secure storm cluster without turning on formal
+Authentication and Authorization. But to do so usually requires 
+configuring your Operating System to restrict the operations that can be done.
+This is generally a good idea even if you plan on running your cluster with Auth.</p>
+
+<p>Storm&#39;s OS level security relies on running Storm processes using OS accounts that have only the permissions they need. 
+Note that workers run under the same OS account as the Supervisor daemon by default.</p>
+
+<p>The exact detail of how to setup these precautions varies a lot and is beyond
+the scope of this document.</p>
+
+<p>It is generally a good idea to enable a firewall and restrict incoming network
+connections to only those originating from the cluster itself and from trusted
+hosts and services, a complete list of ports storm uses are below. </p>
+
+<p>If the data your cluster is processing is sensitive it might be best to setup
+IPsec to encrypt all traffic being sent between the hosts in the cluster.</p>
+
+<h3 id="ports">Ports</h3>
+
+<table><thead>
+<tr>
+<th>Default Port</th>
+<th>Storm Config</th>
+<th>Client Hosts/Processes</th>
+<th>Server</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>2181</td>
+<td><code>storm.zookeeper.port</code></td>
+<td>Nimbus, Supervisors, and Worker processes</td>
+<td>Zookeeper</td>
+</tr>
+<tr>
+<td>6627</td>
+<td><code>nimbus.thrift.port</code></td>
+<td>Storm clients, Supervisors, and UI</td>
+<td>Nimbus</td>
+</tr>
+<tr>
+<td>8080</td>
+<td><code>ui.port</code></td>
+<td>Client Web Browsers</td>
+<td>UI</td>
+</tr>
+<tr>
+<td>8000</td>
+<td><code>logviewer.port</code></td>
+<td>Client Web Browsers</td>
+<td>Logviewer</td>
+</tr>
+<tr>
+<td>3772</td>
+<td><code>drpc.port</code></td>
+<td>External DRPC Clients</td>
+<td>DRPC</td>
+</tr>
+<tr>
+<td>3773</td>
+<td><code>drpc.invocations.port</code></td>
+<td>Worker Processes</td>
+<td>DRPC</td>
+</tr>
+<tr>
+<td>3774</td>
+<td><code>drpc.http.port</code></td>
+<td>External HTTP DRPC Clients</td>
+<td>DRPC</td>
+</tr>
+<tr>
+<td>670{0,1,2,3}</td>
+<td><code>supervisor.slots.ports</code></td>
+<td>Worker Processes</td>
+<td>Worker Processes</td>
+</tr>
+</tbody></table>
+
+<h3 id="ui-logviewer">UI/Logviewer</h3>
+
+<p>The UI and logviewer processes provide a way to not only see what a cluster is
+doing, but also manipulate running topologies.  In general these processes should
+not be exposed except to users of the cluster.</p>
+
+<p>Some form of Authentication is typically required, and can be done using a java servlet filter</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">ui.filter</span><span class="pi">:</span> <span class="s2">"</span><span class="s">filter.class"</span>
+<span class="s">ui.filter.params</span><span class="pi">:</span> <span class="s2">"</span><span class="s">param1":"value1"</span>
+<span class="s">logviewer.filter</span><span class="pi">:</span> <span class="s2">"</span><span class="s">filter.class"</span>
+<span class="s">logviewer.filter.params</span><span class="pi">:</span> <span class="s2">"</span><span class="s">param1":"value1"</span>
+</code></pre></div>
+<p>The <code>ui.filter</code> is an instance of <code>javax.servlet.Filter</code> that is intended to 
+filter all incoming requests to the UI and authenticate the request mapping 
+it to a &quot;user&quot;.  Typically this is done by modifying or wrapping the 
+<code>HttpServletRequest</code> to return the user principal through the 
+<code>getUserPrincipal()</code> method or returning the user name through the 
+<code>getRemoteUser()</code> method.  If your filter authenticates in a different way you
+can look at setting <code>ui.http.creds.plugin</code> to point to an instance of <code>IHttpCredentialsPlugin</code>
+that can take the <code>HttpServletRequest</code> and return a user name and populate the needed fields
+in the current <code>ReqContext</code>.  These are advanced features and you may want to look at the 
+<code>DefaultHttpCredentialsPlugin</code> as an example of how to do this.</p>
+
+<p>These same settings apply to the logviewer too.  If you want to have separate control
+over how authentication works in the logviewer you may optionally set <code>logviewer.filter</code>
+instead and it will override any <code>ui.filter</code> settings for the logviewer process.</p>
+
+<p>If the cluster is single tenant you might want to just restrict access to the UI/log
+viewers ports to only accept connections from local hosts, and then front them with
+another web server, like Apache httpd, that can authenticate/authorize incoming connections and
+proxy the connection to the storm process.  To make this work the ui process must have
+logviewer.port set to the port of the proxy in its storm.yaml, while the logviewers
+must have it set to the actual port that they are going to bind to.</p>
+
+<p>The servlet filters are preferred because it allows individual topologies to
+specify who is and who is not allowed to access the pages associated with
+them.  </p>
+
+<p>Storm UI (or logviewer) can be configured to use AuthenticationFilter from hadoop-auth.
+<code>yaml
+ui.filter: &quot;org.apache.hadoop.security.authentication.server.AuthenticationFilter&quot;
+ui.filter.params:
+   &quot;type&quot;: &quot;kerberos&quot;
+   &quot;kerberos.principal&quot;: &quot;HTTP/nimbus.witzend.com&quot;
+   &quot;kerberos.keytab&quot;: &quot;/vagrant/keytabs/http.keytab&quot;
+   &quot;kerberos.name.rules&quot;: &quot;RULE:[2:$1@$0]([jt]t@.*EXAMPLE.COM)s/.*/$MAPRED_USER/ RULE:[2:$1@$0]([nd]n@.*EXAMPLE.COM)s/.*/$HDFS_USER/DEFAULT&quot;
+</code>
+make sure to create a principal &#39;HTTP/{hostname}&#39; (here hostname should be the one where UI daemon runs
+Be aware that the UI user <em>MUST</em> be HTTP.</p>
+
+<p>Once configured users needs to do kinit before accessing UI.
+Ex:
+curl  -i --negotiate -u:anyUser  -b ~/cookiejar.txt -c ~/cookiejar.txt  <a href="http://storm-ui-hostname:8080/api/v1/cluster/summary">http://storm-ui-hostname:8080/api/v1/cluster/summary</a></p>
+
+<ol>
+<li>Firefox: Goto about:config and search for network.negotiate-auth.trusted-uris double-click to  add value &quot;<a href="http://storm-ui-hostname:8080">http://storm-ui-hostname:8080</a>&quot;</li>
+<li>Google-chrome:  start from command line with: google-chrome --auth-server-whitelist=&quot;*storm-ui-hostname&quot; --auth-negotiate-delegate-whitelist=&quot;*storm-ui-hostname&quot;<br></li>
+<li>IE:  Configure trusted websites to include &quot;storm-ui-hostname&quot; and allow negotiation for that website</li>
+</ol>
+
+<p><strong>Note</strong>: For viewing any logs via <code>logviewer</code> in secure mode, all the hosts that runs <code>logviewer</code> should also be added to the above white list. For big clusters you could white list the host&#39;s domain (for e.g. set <code>network.negotiate-auth.trusted-uris</code> to <code>.yourdomain.com</code>).</p>
+
+<p><strong>Caution</strong>: In AD MIT Keberos setup the key size is bigger than the default UI jetty server request header size. Make sure you set ui.header.buffer.bytes to 65536 in storm.yaml. More details are on <a href="https://issues.apache.org/jira/browse/STORM-633">STORM-633</a></p>
+
+<h2 id="drpc-http">DRPC HTTP</h2>
+
+<p>The DRPC server optionally supports a REST endpoint as well, and you can configure authentication
+on that endpoint similar to the ui/logviewer.</p>
+
+<p>The <code>drpc.http.filter</code> and <code>drpc.http.filter.params</code> configs can be used to setup a <code>Filter</code> for the DRPC server.  Unlike the logviewer
+it does not fall back to the UI configs as the DRPC server is intended to be REST only and often will be hit by headless users.</p>
+
+<p>The <code>drpc.http.creds.plugin</code> config can be used in cases where the default plugin is not good enough because of how authentication happens.</p>
+
+<h2 id="ui-drpc-logviewer-ssl">UI / DRPC / LOGVIEWER SSL</h2>
+
+<p>UI,DRPC and LOGVIEWER allows users to configure ssl .</p>
+
+<h3 id="ui">UI</h3>
+
+<p>For UI users needs to set following config in storm.yaml. Generating keystores with proper keys and certs should be taken care by the user before this step.</p>
+
+<ol>
+<li>ui.https.port </li>
+<li>ui.https.keystore.type (example &quot;jks&quot;)</li>
+<li>ui.https.keystore.path (example &quot;/etc/ssl/storm_keystore.jks&quot;)</li>
+<li>ui.https.keystore.password (keystore password)</li>
+<li>ui.https.key.password (private key password)</li>
+</ol>
+
+<p>optional config 
+6. ui.https.truststore.path (example &quot;/etc/ssl/storm_truststore.jks&quot;)
+7. ui.https.truststore.password (truststore password)
+8. ui.https.truststore.type (example &quot;jks&quot;)</p>
+
+<p>If users want to setup 2-way auth
+9. ui.https.want.client.auth (If this set to true server requests for client certificate authentication, but keeps the connection if no authentication provided)
+10. ui.https.need.client.auth (If this set to true server requires client to provide authentication)</p>
+
+<h3 id="drpc">DRPC</h3>
+
+<p>similarly to UI , users need to configure following for DRPC</p>
+
+<ol>
+<li>drpc.https.port </li>
+<li>drpc.https.keystore.type (example &quot;jks&quot;)</li>
+<li>drpc.https.keystore.path (example &quot;/etc/ssl/storm_keystore.jks&quot;)</li>
+<li>drpc.https.keystore.password (keystore password)</li>
+<li>drpc.https.key.password (private key password)</li>
+</ol>
+
+<p>optional config 
+6. drpc.https.truststore.path (example &quot;/etc/ssl/storm_truststore.jks&quot;)
+7. drpc.https.truststore.password (truststore password)
+8. drpc.https.truststore.type (example &quot;jks&quot;)</p>
+
+<p>If users want to setup 2-way auth
+9. drpc.https.want.client.auth (If this set to true server requests for client certificate authentication, but keeps the connection if no authentication provided)
+10. drpc.https.need.client.auth (If this set to true server requires client to provide authentication)</p>
+
+<h3 id="logviewer">LOGVIEWER</h3>
+
+<p>similarly to UI and DRPC , users need to configure following for LOGVIEWER</p>
+
+<ol>
+<li>logviewer.https.port </li>
+<li>logviewer.https.keystore.type (example &quot;jks&quot;)</li>
+<li>logviewer.https.keystore.path (example &quot;/etc/ssl/storm_keystore.jks&quot;)</li>
+<li>logviewer.https.keystore.password (keystore password)</li>
+<li>logviewer.https.key.password (private key password)</li>
+</ol>
+
+<p>optional config 
+6. logviewer.https.truststore.path (example &quot;/etc/ssl/storm_truststore.jks&quot;)
+7. logviewer.https.truststore.password (truststore password)
+8. logviewer.https.truststore.type (example &quot;jks&quot;)</p>
+
+<p>If users want to setup 2-way auth
+9. logviewer.https.want.client.auth (If this set to true server requests for client certificate authentication, but keeps the connection if no authentication provided)
+10. logviewer.https.need.client.auth (If this set to true server requires client to provide authentication)</p>
+
+<h2 id="authentication-kerberos">Authentication (Kerberos)</h2>
+
+<p>Storm offers pluggable authentication support through thrift and SASL.  This
+example only goes off of Kerberos as it is a common setup for most big data
+projects.</p>
+
+<p>Setting up a KDC and configuring kerberos on each node is beyond the scope of
+this document and it is assumed that you have done that already.</p>
+
+<h3 id="create-headless-principals-and-keytabs">Create Headless Principals and keytabs</h3>
+
+<p>Each Zookeeper Server, Nimbus, and DRPC server will need a service principal, which, by convention, includes the FQDN of the host it will run on.  Be aware that the zookeeper user <em>MUST</em> be zookeeper.<br>
+The supervisors and UI also need a principal to run as, but because they are outgoing connections they do not need to be service principals. 
+The following is an example of how to setup kerberos principals, but the
+details may vary depending on your KDC and OS.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Zookeeper (Will need one of these for each box in the Zk ensemble)</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s1">'addprinc zookeeper/zk1.example.com@STORM.EXAMPLE.COM'</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s2">"ktadd -k /tmp/zk.keytab  zookeeper/zk1.example.com@STORM.EXAMPLE.COM"</span>
+<span class="c"># Nimbus and DRPC</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s1">'addprinc storm/storm.example.com@STORM.EXAMPLE.COM'</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s2">"ktadd -k /tmp/storm.keytab storm/storm.example.com@STORM.EXAMPLE.COM"</span>
+<span class="c"># All UI logviewer and Supervisors</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s1">'addprinc storm@STORM.EXAMPLE.COM'</span>
+<span class="nb">sudo </span>kadmin.local <span class="nt">-q</span> <span class="s2">"ktadd -k /tmp/storm.keytab storm@STORM.EXAMPLE.COM"</span>
+</code></pre></div>
+<p>be sure to distribute the keytab(s) to the appropriate boxes and set the FS permissions so that only the headless user running ZK, or storm has access to them.</p>
+
+<h4 id="storm-kerberos-configuration">Storm Kerberos Configuration</h4>
+
+<p>Both storm and Zookeeper use jaas configuration files to log the user in.
+Each jaas file may have multiple sections for different interfaces being used.</p>
+
+<p>To enable Kerberos authentication in storm you need to set the following storm.yaml configs
+<code>yaml
+storm.thrift.transport: &quot;org.apache.storm.security.auth.kerberos.KerberosSaslTransportPlugin&quot;
+java.security.auth.login.config: &quot;/path/to/jaas.conf&quot;
+</code></p>
+
+<p>Nimbus and the supervisor processes will also connect to ZooKeeper(ZK) and we want to configure them to use Kerberos for authentication with ZK. To do this append 
+<code>
+-Djava.security.auth.login.config=/path/to/jaas.conf
+</code></p>
+
+<p>to the childopts of nimbus, ui, and supervisor.  Here is an example given the default childopts settings at the time of writing:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">nimbus.childopts</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-Xmx1024m</span><span class="nv"> </span><span class="s">-Djava.security.auth.login.config=/path/to/jaas.conf"</span>
+<span class="s">ui.childopts</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-Xmx768m</span><span class="nv"> </span><span class="s">-Djava.security.auth.login.config=/path/to/jaas.conf"</span>
+<span class="s">supervisor.childopts</span><span class="pi">:</span> <span class="s2">"</span><span class="s">-Xmx256m</span><span class="nv"> </span><span class="s">-Djava.security.auth.login.config=/path/to/jaas.conf"</span>
+</code></pre></div>
+<p>The jaas.conf file should look something like the following for the storm nodes.
+The StormServer section is used by nimbus and the DRPC Nodes.  It does not need to be included on supervisor nodes.
+The StormClient section is used by all storm clients that want to talk to nimbus, including the ui, logviewer, and supervisor.  We will use this section on the gateways as well but the structure of that will be a bit different.
+The Client section is used by processes wanting to talk to zookeeper and really only needs to be included with nimbus and the supervisors.
+The Server section is used by the zookeeper servers.
+Having unused sections in the jaas is not a problem.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">StormServer {
+   com.sun.security.auth.module.Krb5LoginModule required
+   useKeyTab=true
+   keyTab="$keytab"
+   storeKey=true
+   useTicketCache=false
+   principal="$principal";
+};
+StormClient {
+   com.sun.security.auth.module.Krb5LoginModule required
+   useKeyTab=true
+   keyTab="$keytab"
+   storeKey=true
+   useTicketCache=false
+   serviceName="$nimbus_user"
+   principal="$principal";
+};
+Client {
+   com.sun.security.auth.module.Krb5LoginModule required
+   useKeyTab=true
+   keyTab="$keytab"
+   storeKey=true
+   useTicketCache=false
+   serviceName="zookeeper"
+   principal="$principal";
+};
+Server {
+   com.sun.security.auth.module.Krb5LoginModule required
+   useKeyTab=true
+   keyTab="$keytab"
+   storeKey=true
+   useTicketCache=false
+   principal="$principal";
+};
+</code></pre></div>
+<p>The following is an example based off of the keytabs generated
+<code>
+StormServer {
+   com.sun.security.auth.module.Krb5LoginModule required
+   useKeyTab=true
+   keyTab=&quot;/keytabs/storm.keytab&quot;
+   storeKey=true
+   useTicketCache=false
+   principal=&quot;storm/storm.example.com@STORM.EXAMPLE.COM&quot;;
+};
+StormClient {
+   com.sun.security.auth.module.Krb5LoginModule required
+   useKeyTab=true
+   keyTab=&quot;/keytabs/storm.keytab&quot;
+   storeKey=true
+   useTicketCache=false
+   serviceName=&quot;storm&quot;
+   principal=&quot;storm@STORM.EXAMPLE.COM&quot;;
+};
+Client {
+   com.sun.security.auth.module.Krb5LoginModule required
+   useKeyTab=true
+   keyTab=&quot;/keytabs/storm.keytab&quot;
+   storeKey=true
+   useTicketCache=false
+   serviceName=&quot;zookeeper&quot;
+   principal=&quot;storm@STORM.EXAMPLE.COM&quot;;
+};
+Server {
+   com.sun.security.auth.module.Krb5LoginModule required
+   useKeyTab=true
+   keyTab=&quot;/keytabs/zk.keytab&quot;
+   storeKey=true
+   useTicketCache=false
+   serviceName=&quot;zookeeper&quot;
+   principal=&quot;zookeeper/zk1.example.com@STORM.EXAMPLE.COM&quot;;
+};
+</code></p>
+
+<p>Nimbus also will translate the principal into a local user name, so that other services can use this name.  To configure this for Kerberos authentication set</p>
+<div class="highlight"><pre><code class="language-" data-lang="">storm.principal.tolocal: "org.apache.storm.security.auth.KerberosPrincipalToLocal"
+</code></pre></div>
+<p>This only needs to be done on nimbus, but it will not hurt on any node.
+We also need to inform the topology who the supervisor daemon and the nimbus daemon are running as from a ZooKeeper perspective.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">storm.zookeeper.superACL: "sasl:${nimbus-user}"
+</code></pre></div>
+<p>Here <em>nimbus-user</em> is the Kerberos user that nimbus uses to authenticate with ZooKeeper.  If ZooKeeeper is stripping host and realm then this needs to have host and realm stripped too.</p>
+
+<h4 id="zookeeper-ensemble">ZooKeeper Ensemble</h4>
+
+<p>Complete details of how to setup a secure ZK are beyond the scope of this document.  But in general you want to enable SASL authentication on each server, and optionally strip off host and realm</p>
+<div class="highlight"><pre><code class="language-" data-lang="">authProvider.1 = org.apache.zookeeper.server.auth.SASLAuthenticationProvider
+kerberos.removeHostFromPrincipal = true
+kerberos.removeRealmFromPrincipal = true
+</code></pre></div>
+<p>And you want to include the jaas.conf on the command line when launching the server so it can use it can find the keytab.
+<code>
+-Djava.security.auth.login.config=/jaas/zk_jaas.conf
+</code></p>
+
+<h4 id="gateways">Gateways</h4>
+
+<p>Ideally the end user will only need to run kinit before interacting with storm.  To make this happen seamlessly we need the default jaas.conf on the gateways to be something like</p>
+<div class="highlight"><pre><code class="language-" data-lang="">StormClient {
+   com.sun.security.auth.module.Krb5LoginModule required
+   doNotPrompt=false
+   useTicketCache=true
+   serviceName="$nimbus_user";
+};
+</code></pre></div>
+<p>The end user can override this if they have a headless user that has a keytab.</p>
+
+<h3 id="authorization-setup">Authorization Setup</h3>
+
+<p><em>Authentication</em> does the job of verifying who the user is, but we also need <em>authorization</em> to do the job of enforcing what each user can do.</p>
+
+<p>The preferred authorization plug-in for nimbus is The <em>SimpleACLAuthorizer</em>.  To use the <em>SimpleACLAuthorizer</em>, set the following:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">nimbus.authorizer</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.security.auth.authorizer.SimpleACLAuthorizer"</span>
+</code></pre></div>
+<p>DRPC has a separate authorizer configuration for it.  Do not use SimpleACLAuthorizer for DRPC.</p>
+
+<p>The <em>SimpleACLAuthorizer</em> plug-in needs to know who the supervisor users are, and it needs to know about all of the administrator users, including the user running the ui daemon. </p>
+
+<p>These are set through <em>nimbus.supervisor.users</em> and <em>nimbus.admins</em> respectively.  Each can either be a full Kerberos principal name, or the name of the user with host and realm stripped off.</p>
+
+<p>The Log servers have their own authorization configurations.  These are set through <em>logs.users</em> and <em>logs.groups</em>.  These should be set to the admin users or groups for all of the nodes in the cluster.  </p>
+
+<p>When a topology is submitted, the submitting user can specify users in this list as well.  The users and groups specified-in addition to the users in the cluster-wide setting-will be granted access to the submitted topology&#39;s worker logs in the logviewers.</p>
+
+<h3 id="supervisors-headless-user-and-group-setup">Supervisors headless User and group Setup</h3>
+
+<p>To ensure isolation of users in multi-tenancy, there is need to run supervisors and headless user and group unique to execution on the supervisor nodes.  To enable this follow below steps.
+1. Add headlessuser to all supervisor hosts.
+2. Create unique group and make it the primary group for the headless user on the supervisor nodes.
+3. The set following properties on storm for these supervisor nodes.</p>
+
+<h3 id="multi-tenant-scheduler">Multi-tenant Scheduler</h3>
+
+<p>To support multi-tenancy better we have written a new scheduler.  To enable this scheduler set.
+<code>yaml
+storm.scheduler: &quot;org.apache.storm.scheduler.multitenant.MultitenantScheduler&quot;
+</code>
+Be aware that many of the features of this scheduler rely on storm authentication.  Without them the scheduler will not know what the user is and will not isolate topologies properly.</p>
+
+<p>The goal of the multi-tenant scheduler is to provide a way to isolate topologies from one another, but to also limit the resources that an individual user can have in the cluster.</p>
+
+<p>The scheduler currently has one config that can be set either through =storm.yaml= or through a separate config file called =multitenant-scheduler.yaml= that should be placed in the same directory as =storm.yaml=.  It is preferable to use =multitenant-scheduler.yaml= because it can be updated without needing to restart nimbus.</p>
+
+<p>There is currently only one config in =multitenant-scheduler.yaml=, =multitenant.scheduler.user.pools= is a map from the user name, to the maximum number of nodes that user is guaranteed to be able to use for their topologies.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">multitenant.scheduler.user.pools</span><span class="pi">:</span> 
+    <span class="s2">"</span><span class="s">evans"</span><span class="pi">:</span> <span class="m">10</span>
+    <span class="s2">"</span><span class="s">derek"</span><span class="pi">:</span> <span class="m">10</span>
+</code></pre></div>
+<h3 id="run-worker-processes-as-user-who-submitted-the-topology">Run worker processes as user who submitted the topology</h3>
+
+<p>By default storm runs workers as the user that is running the supervisor.  This is not ideal for security.  To make storm run the topologies as the user that launched them set.</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">supervisor.run.worker.as.user</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div>
+<p>There are several files that go along with this that are needed to be configured properly to make storm secure.</p>
+
+<p>The worker-launcher executable is a special program that allows the supervisor to launch workers as different users.  For this to work it needs to be owned by root, but with the group set to be a group that only the supervisor headless user is a part of.
+It also needs to have 6550 permissions.
+There is also a worker-launcher.cfg file, usually located under /etc/ that should look something like the following</p>
+<div class="highlight"><pre><code class="language-" data-lang="">storm.worker-launcher.group=$(worker_launcher_group)
+min.user.id=$(min_user_id)
+</code></pre></div>
+<p>where worker_launcher_group is the same group the supervisor is a part of, and min.user.id is set to the first real user id on the system.
+This config file also needs to be owned by root and not have world or group write permissions.</p>
+
+<h3 id="impersonating-a-user">Impersonating a user</h3>
+
+<p>A storm client may submit requests on behalf of another user. For example, if a <code>userX</code> submits an oozie workflow and as part of workflow execution if user <code>oozie</code> wants to submit a topology on behalf of <code>userX</code>
+it can do so by leveraging the impersonation feature.In order to submit topology as some other user , you can use <code>StormSubmitter.submitTopologyAs</code> API. Alternatively you can use <code>NimbusClient.getConfiguredClientAs</code> 
+to get a nimbus client as some other user and perform any nimbus action(i.e. kill/rebalance/activate/deactivate) using this client. </p>
+
+<p>Impersonation authorization is disabled by default which means any user can perform impersonation. To ensure only authorized users can perform impersonation you should start nimbus with <code>nimbus.impersonation.authorizer</code> set to <code>org.apache.storm.security.auth.authorizer.ImpersonationAuthorizer</code>.
+The <code>ImpersonationAuthorizer</code> uses <code>nimbus.impersonation.acl</code> as the acl to authorize users. Following is a sample nimbus config for supporting impersonation:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">nimbus.impersonation.authorizer</span><span class="pi">:</span> <span class="s">org.apache.storm.security.auth.authorizer.ImpersonationAuthorizer</span>
+<span class="s">nimbus.impersonation.acl</span><span class="pi">:</span>
+    <span class="na">impersonating_user1</span><span class="pi">:</span>
+        <span class="na">hosts</span><span class="pi">:</span>
+            <span class="pi">[</span><span class="nv">comma separated list of hosts from which impersonating_user1 is allowed to impersonate other users</span><span class="pi">]</span>
+        <span class="na">groups</span><span class="pi">:</span>
+            <span class="pi">[</span><span class="nv">comma separated list of groups whose users impersonating_user1 is allowed to impersonate</span><span class="pi">]</span>
+    <span class="na">impersonating_user2</span><span class="pi">:</span>
+        <span class="na">hosts</span><span class="pi">:</span>
+            <span class="pi">[</span><span class="nv">comma separated list of hosts from which impersonating_user2 is allowed to impersonate other users</span><span class="pi">]</span>
+        <span class="na">groups</span><span class="pi">:</span>
+            <span class="pi">[</span><span class="nv">comma separated list of groups whose users impersonating_user2 is allowed to impersonate</span><span class="pi">]</span>
+</code></pre></div>
+<p>To support the oozie use case following config can be supplied:
+<code>yaml
+nimbus.impersonation.acl:
+    oozie:
+        hosts:
+            [oozie-host1, oozie-host2, 127.0.0.1]
+        groups:
+            [some-group-that-userX-is-part-of]
+</code></p>
+
+<h3 id="automatic-credentials-push-and-renewal">Automatic Credentials Push and Renewal</h3>
+
+<p>Individual topologies have the ability to push credentials (tickets and tokens) to workers so that they can access secure services.  Exposing this to all of the users can be a pain for them.
+To hide this from them in the common case plugins can be used to populate the credentials, unpack them on the other side into a java Subject, and also allow Nimbus to renew the credentials if needed. These are controlled by the following configs.</p>
+
+<p><code>topology.auto-credentials</code> is a list of java plugins, all of which must implement the <code>IAutoCredentials</code> interface, that populate the credentials on gateway 
+and unpack them on the worker side. On a kerberos secure cluster they should be set by default to point to <code>org.apache.storm.security.auth.kerberos.AutoTGT</code></p>
+
+<p><code>nimbus.credential.renewers.classes</code> should also be set to <code>org.apache.storm.security.auth.kerberos.AutoTGT</code> so that nimbus can periodically renew the TGT on behalf of the user.  </p>
+
+<p>All autocredential classes that desire to implement the IMetricsRegistrant interface can register metrics automatically for each topology.  The AutoTGT class currently implements this interface and adds a metric named TGT-TimeToExpiryMsecs showing the remaining time until the TGT needs to be renewed.</p>
+
+<p><code>nimbus.credential.renewers.freq.secs</code> controls how often the renewer will poll to see if anything needs to be renewed, but the default should be fine.</p>
+
+<p>In addition Nimbus itself can be used to get credentials on behalf of the user submitting topologies. This can be configured using <code>nimbus.autocredential.plugins.classes</code> which is a list 
+of fully qualified class names, all of which must implement <code>INimbusCredentialPlugin</code>.  Nimbus will invoke the populateCredentials method of all the configured implementation as part of topology
+submission. You should use this config with <code>topology.auto-credentials</code> and <code>nimbus.credential.renewers.classes</code> so the credentials can be populated on worker side and nimbus can automatically renew
+them. Currently there are 2 examples of using this config, AutoHDFS and AutoHBase which auto populates hdfs and hbase delegation tokens for topology submitter so they don&#39;t have to distribute keytabs
+on all possible worker hosts.</p>
+
+<h3 id="limits">Limits</h3>
+
+<p>By default storm allows any sized topology to be submitted. But ZK and others have limitations on how big a topology can actually be.  The following configs allow you to limit the maximum size a topology can be.</p>
+
+<table><thead>
+<tr>
+<th>YAML Setting</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nimbus.slots.perTopology</td>
+<td>The maximum number of slots/workers a topology can use.</td>
+</tr>
+<tr>
+<td>nimbus.executors.perTopology</td>
+<td>The maximum number of executors/threads a topology can use.</td>
+</tr>
+</tbody></table>
+
+<h3 id="log-cleanup">Log Cleanup</h3>
+
+<p>The Logviewer daemon now is also responsible for cleaning up old log files for dead topologies.</p>
+
+<table><thead>
+<tr>
+<th>YAML Setting</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>logviewer.cleanup.age.mins</td>
+<td>How old (by last modification time) must a worker&#39;s log be before that log is considered for clean-up. (Living workers&#39; logs are never cleaned up by the logviewer: Their logs are rolled via logback.)</td>
+</tr>
+<tr>
+<td>logviewer.cleanup.interval.secs</td>
+<td>Interval of time in seconds that the logviewer cleans up worker logs.</td>
+</tr>
+</tbody></table>
+
+<h3 id="allowing-specific-users-or-groups-to-access-storm">Allowing specific users or groups to access storm</h3>
+
+<p>With SimpleACLAuthorizer any user with valid kerberos ticket can deploy a topology or do further operations such as activate, deactivate , access cluster information.
+ One can restrict this access by specifying nimbus.users or nimbus.groups. If nimbus.users configured only the users in the list can deploy a topology or access cluster.
+ Similarly nimbus.groups restrict storm cluster access to users who belong to those groups.</p>
+
+<p>To configure specify the following config in storm.yaml</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">nimbus.users</span><span class="pi">:</span> 
+   <span class="pi">-</span> <span class="s2">"</span><span class="s">testuser"</span>
+</code></pre></div>
+<p>or </p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">nimbus.groups</span><span class="pi">:</span> 
+   <span class="pi">-</span> <span class="s2">"</span><span class="s">storm"</span>
+</code></pre></div>
+<h3 id="drpc">DRPC</h3>
+
+<p>Storm provides the Access Control List for the DRPC Authorizer.Users can see <a href="javadocs/org/apache/storm/security/auth/authorizer/DRPCSimpleACLAuthorizer.html">org.apache.storm.security.auth.authorizer.DRPCSimpleACLAuthorizer</a> for more details.</p>
+
+<p>There are several DRPC ACL related configurations.</p>
+
+<table><thead>
+<tr>
+<th>YAML Setting</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>drpc.authorizer.acl</td>
+<td>A class that will perform authorization for DRPC operations. Set this to org.apache.storm.security.auth.authorizer.DRPCSimpleACLAuthorizer when using security.</td>
+</tr>
+<tr>
+<td>drpc.authorizer.acl.filename</td>
+<td>This is the name of a file that the ACLs will be loaded from. It is separate from storm.yaml to allow the file to be updated without bringing down a DRPC server. Defaults to drpc-auth-acl.yaml</td>
+</tr>
+<tr>
+<td>drpc.authorizer.acl.strict</td>
+<td>It is useful to set this to false for staging where users may want to experiment, but true for production where you want users to be secure. Defaults to false.</td>
+</tr>
+</tbody></table>
+
+<p>The file pointed to by drpc.authorizer.acl.filename will have only one config in it drpc.authorizer.acl this should be of the form</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">drpc.authorizer.acl</span><span class="pi">:</span>
+   <span class="s2">"</span><span class="s">functionName1"</span><span class="pi">:</span>
+     <span class="s2">"</span><span class="s">client.users"</span><span class="pi">:</span>
+       <span class="pi">-</span> <span class="s2">"</span><span class="s">alice"</span>
+       <span class="pi">-</span> <span class="s2">"</span><span class="s">bob"</span>
+     <span class="s2">"</span><span class="s">invocation.user"</span><span class="pi">:</span> <span class="s2">"</span><span class="s">bob"</span>
+</code></pre></div>
+<p>In this the users bob and alice as client.users are allowed to run DRPC requests against functionName1, but only bob as the invocation.user is allowed to run the topology that actually processes those requests.</p>
+
+<h2 id="cluster-zookeeper-authentication">Cluster Zookeeper Authentication</h2>
+
+<p>Users can implement cluster Zookeeper authentication by setting several configurations are shown below.</p>
+
+<table><thead>
+<tr>
+<th>YAML Setting</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>storm.zookeeper.auth.scheme</td>
+<td>The cluster Zookeeper authentication scheme to use, e.g. &quot;digest&quot;. Defaults to no authentication.</td>
+</tr>
+<tr>
+<td>storm.zookeeper.auth.payload</td>
+<td>A string representing the payload for cluster Zookeeper authentication. It should only be set in the storm-cluster-auth.yaml. Users can see storm-cluster-auth.yaml.example for more details.</td>
+</tr>
+</tbody></table>
+
+<p>Also, there are several configurations for topology Zookeeper authentication:</p>
+
+<table><thead>
+<tr>
+<th>YAML Setting</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>storm.zookeeper.topology.auth.scheme</td>
+<td>The topology Zookeeper authentication scheme to use, e.g. &quot;digest&quot;. It is the internal config and user shouldn&#39;t set it.</td>
+</tr>
+<tr>
+<td>storm.zookeeper.topology.auth.payload</td>
+<td>A string representing the payload for topology Zookeeper authentication.</td>
+</tr>
+</tbody></table>
+
+<p>Note: If storm.zookeeper.topology.auth.payload isn&#39;t set, Storm will generate a ZooKeeper secret payload for MD5-digest with generateZookeeperDigestSecretPayload() method.</p>
+</div>
+
+
+	          </div>
+	       </div>
+	  </div>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="footer-widget">
+                    <h5>Meetups</h5>
+                    <div class="footer-widget">
+                        <a class="acevent" data-format="wide" data-mode="dark"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="footer-widget">
+                    <h5>About Apache Storm</h5>
+                    <p>Apache Storm integrates with any queueing system and any database system. Apache Storm's spout abstraction makes it easy to integrate a new queuing system. Likewise, integrating Apache Storm with database systems is easy.</p>
+               </div>
+            </div>
+            <div class="col-md-2">
+                <div class="footer-widget">
+                    <h5>First Look</h5>
+                    <ul class="footer-list">
+                        <li><a href="/releases/current/Rationale.html">Rationale</a></li>
+                        <li><a href="/releases/current/Tutorial.html">Tutorial</a></li>
+                        <li><a href="/releases/current/Setting-up-development-environment.html">Setting up development environment</a></li>
+                        <li><a href="/releases/current/Creating-a-new-Storm-project.html">Creating a new Apache Storm project</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="footer-widget">
+                    <h5>Documentation</h5>
+                    <ul class="footer-list">
+                        <li><a href="/releases/current/index.html">Index</a></li>
+                        <li><a href="/releases/current/javadocs/index.html">Javadoc</a></li>
+                        <li><a href="/releases/current/FAQ.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="footer-widget">
+                    <h5>Misc</h5>
+                    <ul class="footer-list">
+                        <li><a href="https://www.apache.org/licenses/">Licenses</a></li>
+                        <li><a href="https://www.apache.org/security/">Security</a></li>
+                        <li><a href="https://www.apache.org/foundation/thanks.html">Sponsors</a></li>
+                        <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">   
+            <div class="col-md-12">
+                <p align="center">Copyright © 2024 <a href="https://www.apache.org">Apache Software Foundation</a>
+                    . All Rights Reserved.
+                    <br>Apache Storm, Apache, the Apache feather logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation. 
+                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    /* We explicitly disable cookie tracking to avoid privacy issues */
+    _paq.push(['disableCookies']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//analytics.apache.org/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '38']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+<script src="https://www.apachecon.com/event-images/snippet.js"></script>
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-angle-up"></i></a></span> 
+
+</body>
+
+</html>
+
