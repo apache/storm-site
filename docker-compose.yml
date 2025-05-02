@@ -1,0 +1,20 @@
+services:
+  local:
+    image: jekyll/jekyll:latest
+    profiles: ["local"]
+    volumes:
+      - .:/srv/jekyll
+    ports:
+      - "4000:4000"
+    command: jekyll serve --watch --force_polling -config _config-local.yml
+
+  build:
+    image: jekyll/jekyll:latest
+    profiles: ["build"]
+    volumes:
+      - .:/srv/jekyll
+    command: jekyll build
+
+volumes:
+  jekyll_data:
+    driver: local

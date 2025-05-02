@@ -1,7 +1,21 @@
 # Apache Storm Website and Documentation
 This is the source for the Release specific part of the Apache Storm website and documentation. It is statically generated using [jekyll](https://jekyllrb.com).
 
-## Site Generation
+
+# How to build?
+
+This website is build using Jekyll. Make sure to have it available locally.
+To build and run server locally type 'jekyll serve'. The site can then be accessed at localhost:4000.
+
+## Docker
+
+You can build the website for local testing by running
+
+```bash
+docker compose up local
+```
+
+## Without Docker
 First install jekyll and bundler (assuming you have ruby installed):
 
 ```
@@ -24,7 +38,7 @@ Point your browser to https://localhost:4000
 
 By default, jekyll will generate the site in a `_site` directory.
 
-## Adding a new release to the website
+# Adding a new release to the website
 In order to add a new release, you must have committer access to the storm-site repository at https://github.com/apache/storm-site.
 
 You must first generate Javadoc for the new release. Check out the Storm repository from https://github.com/apache/storm, and check out the version of the code you are releasing.
@@ -60,10 +74,6 @@ ln -f -n -s ${release_name} current
 Compose a new blog post announcement for the new release on the `_posts` folder. You can use the `RELEASE_NOTES.html` file generated on `storm` project to retrieve the specific HTML for this version.
 
 Update the downloads page on `downloads.html` to point to the new version's links. 
-
-##  Build with GitHub actions
-
-The website is automatically build on a push to main and any changes are pushed to the asf-site branch. A preview is available via https://storm.staged.apache.org/ if you go to the GitHub Actions tab and trigger a manual staging deploy action.
 
 ## How release specific docs work
 
@@ -110,3 +120,21 @@ If you want to refer to a javadoc for the current release use a relative path.  
 ```
 [TopologyBuilder](javadocs/org/apache/storm/topology/TopologyBuilder.html)
 ```
+
+# Deployment
+
+This website uses the typical ASF layout. The actual website is found on the branch `asf-site`, any changes need to be pushed there.
+
+You can run
+
+```bash
+docker compose up build
+```
+
+which will create a folder `_site`. This is the content, which needs to be copied after wards to the `asf-site` branch.
+If you wish to see a preview for your branch, you can use `asf-staging` to see a copy hosted under: https://storm.staged.apache.org/
+
+### Build with GitHub actions
+
+The website is automatically build on a push to `main` and any changes are pushed to the `asf-site` branch.
+A preview is available via https://storm.staged.apache.org/ if you go to the GitHub Actions tab and trigger a manual staging deploy action.

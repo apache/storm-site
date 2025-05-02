@@ -51,7 +51,7 @@ jobs:
 
       - name: 'Copy build to site repo'
         run: |
-          rsync -avP --delete --exclude .git --exclude README.md --exclude .asf.yaml _site/. ./asf-site
+          rsync -avP --delete --exclude .git --exclude docker-compose.yml --exclude README.md --exclude .asf.yaml _site/. ./asf-site
         shell: bash
 
       - name: 'commit site'
