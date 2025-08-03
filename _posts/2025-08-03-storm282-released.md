@@ -16,6 +16,10 @@ Special thanks are due to all those who have contributed to Apache Storm -- whet
 through direct code contributions, documentation, bug reports, or helping other
 users on the mailing lists. Your efforts are much appreciated.
 
+## Note
+
+This will be the last release supporting `storm-sql-*` modules, as we currently lack the expertise and active maintainers in this area to continue providing it adequate support.
+
 ## Changes in this Release - Storm 2.8.2
 
 <p>JIRA issues addressed in the 2.8.2 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
