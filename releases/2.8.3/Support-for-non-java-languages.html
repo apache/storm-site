@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <title>The Internals of Storm SQL</title>
+    <title>Support for Non-Java Languages</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -36,7 +36,7 @@
             </div>
             <div class="col-md-5">
                 
-                <h1>Version: 2.8.2</h1>
+                <h1>Version: 2.8.3</h1>
                 
             </div>
             <div class="col-md-2">
@@ -65,6 +65,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="documentation">Documentation <b
                             class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        
+                        
+                        <li><a href="/releases/2.8.3/index.html">2.8.3</a></li>
+                        
                         
                         
                         <li><a href="/releases/2.8.2/index.html">2.8.2</a></li>
@@ -159,7 +163,7 @@
                         <li><a href="/Powered-By.html">PoweredBy</a></li>
                     </ul>
                 </li>
-                <li><a href="/2025/08/03/storm282-released.html" id="news">News</a></li>
+                <li><a href="/2025/11/02/storm283-released.html" id="news">News</a></li>
             </ul>
         </nav>
     </div>
@@ -168,64 +172,19 @@
 
 
     <div class="container-fluid">
-    <h1 class="page-title">The Internals of Storm SQL</h1>
+    <h1 class="page-title">Support for Non-Java Languages</h1>
           <div class="row">
            	<div class="col-md-12">
 	             <!-- Documentation -->
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><p>This page describes the design and the implementation of the Storm SQL integration.</p>
-
-<h2 id="overview">Overview</h2>
-
-<p>SQL is a well-adopted yet complicated standard. Several projects including Drill, Hive, Phoenix and Spark have invested significantly in their SQL layers. One of the main design goal of StormSQL is to leverage the existing investments for these projects. StormSQL leverages <a href="///calcite.apache.org">Apache Calcite</a> to implement the SQL standard. StormSQL focuses on compiling the SQL statements to Storm topologies so that they can be executed in Storm clusters.</p>
-
-<p>Figure 1 describes the workflow of executing a SQL query in StormSQL. First, users provide a sequence of SQL statements. StormSQL parses the SQL statements and translates them to a Calcite logical plan. A logical plan consists of a sequence of SQL logical operators that describe how the query should be executed irrespective to the underlying execution engines. Some examples of logical operators include <code>TableScan</code>, <code>Filter</code>, <code>Projection</code> and <code>GroupBy</code>.</p>
-
-<div align="center">
-<img title="Workflow of StormSQL" src="images/storm-sql-internal-workflow.png" style="max-width: 80rem"/>
-
-<p>Figure 1: Workflow of StormSQL.</p>
-</div>
-
-<p>The next step is to compile the logical execution plan down to a physical execution plan. A physical plan consists of physical operators that describes how to execute the SQL query in <em>StormSQL</em>. Physical operators such as <code>Filter</code>, <code>Projection</code>, and <code>GroupBy</code> are directly mapped to operations in Storm topologies. StormSQL also compiles expressions in the SQL statements into Java code blocks and plugs them into the Storm Streams API functions which will be compiled once and executed in runtime.</p>
-
-<p>Finally, StormSQL submits created Storm topology with empty packaged JAR to the Storm cluster. Storm schedules and executes the Storm topology in the same way it executes other Storm topologies.</p>
-
-<p>The following code block shows an example query that filters and projects results from a Kafka stream.</p>
-<div class="highlight"><pre><code class="language-" data-lang="">CREATE EXTERNAL TABLE ORDERS (ID INT PRIMARY KEY, UNIT_PRICE INT, QUANTITY INT) LOCATION 'kafka://...' ...
-
-CREATE EXTERNAL TABLE LARGE_ORDERS (ID INT PRIMARY KEY, TOTAL INT) 'kafka://...' ...
-
-INSERT INTO LARGE_ORDERS SELECT ID, UNIT_PRICE * QUANTITY AS TOTAL FROM ORDERS WHERE UNIT_PRICE * QUANTITY &gt; 50
-</code></pre></div>
-<p>The first two SQL statements define the inputs and outputs of external data. Figure 2 describes the processes of how StormSQL takes the last <code>SELECT</code> query and compiles it down to Storm topology.</p>
-
-<div align="center">
-<img title="Compiling the example query to Storm topology" src="images/storm-sql-internal-example.png" style="max-width: 80rem"/>
-
-<p>Figure 2: Compiling the example query to Storm topology.</p>
-</div>
-
-<h2 id="constraints-of-querying-streaming-tables">Constraints of querying streaming tables</h2>
-
-<p>There are several constraints when querying tables that represent a real-time data stream:</p>
-
-<ul>
-<li>The <code>ORDER BY</code> clause cannot be applied to a stream.</li>
-<li>There is at least one monotonic field in the <code>GROUP BY</code> clauses to allow StormSQL bounds the size of the buffer.</li>
+<div class="documentation-content"><ul>
+<li><a href="https://github.com/velvia/ScalaStorm">Scala DSL</a></li>
+<li><a href="https://github.com/colinsurprenant/storm-jruby">JRuby DSL</a></li>
+<li><a href="Clojure-DSL.html">Clojure DSL</a></li>
+<li><a href="https://github.com/gphat/io-storm">io-storm</a>: Perl multilang adapter</li>
 </ul>
-
-<p>For more information please refer to <a href="http://calcite.apache.org/docs/stream.html">http://calcite.apache.org/docs/stream.html</a>.</p>
-
-<h2 id="dependency">Dependency</h2>
-
-<p>Storm takes care about necessary dependencies of Storm SQL except the data source JAR which is used by <code>EXTERNAL TABLE</code>. 
-You can use <code>--jars</code> or <code>--artifacts</code> option to <code>storm sql</code> so that data source JAR can be included to Storm SQL Runner and also Storm Topology runtime classpath.
-(Use <code>--artifacts</code> if your data source JARs are available in Maven repository since it handles transitive dependencies.)</p>
-
-<p>Please refer <a href="storm-sql.html">Storm SQL integration</a> page to how to do it.</p>
 </div>
 
 
