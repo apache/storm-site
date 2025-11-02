@@ -32,7 +32,7 @@ Please refer to <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-8
 <p>JIRA issues addressed in the 2.8.3 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
 
 <h2>Dependency upgrade</h2>
-<h2>dependencies</h2>
+<h3>dependencies</h3>
 <ul>
 	<li>[<a href="https://github.com/apache/storm/pull/8290">#8290</a>] - Bump org.codehaus.mojo:exec-maven-plugin from 3.6.1 to 3.6.2</li>
 	<li>[<a href="https://github.com/apache/storm/pull/8289">#8289</a>] - Bump io.netty:netty-bom from 4.2.6.Final to 4.2.7.Final and netty-tcnative.version from 2.0.73.Final to 2.0.74.Final</li>
@@ -100,7 +100,7 @@ Please refer to <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-8
 	<li>[<a href="https://github.com/apache/storm/pull/8137">#8137</a>] - Bump org.apache.maven.plugins:maven-compiler-plugin from 3.11.0 to 3.14.0</li>
 </ul>
 
-<h2>github_actions</h2>
+<h3>Github actions</h3>
 <ul>
 <li>[<a href="https://github.com/apache/storm/pull/8286">#8286</a>] - Bump actions/setup-node from 5.0.0 to 6.0.0</li>
     <li>[<a href="https://github.com/apache/storm/pull/8285">#8285</a>] - Bump ruby/setup-ruby from 1.264.0 to 1.265.0</li>
@@ -119,7 +119,7 @@ Please refer to <a href="https://cwiki.apache.org/confluence/display/KAFKA/KIP-8
     <li>[<a href="https://github.com/apache/storm/pull/8216">#8216</a>] - Bump ruby/setup-ruby from 1.254.0 to 1.255.0</li>
 </ul>
 
-<h2>bug</h2>
+<h2>Bug</h2>
 <ul>
 	<li>[<a href="https://github.com/apache/storm/issues/7978">#7978</a>] - Error on syncing BlobStore: Could not download the blob with key</li>
 </ul>
