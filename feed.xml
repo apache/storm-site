@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="https://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apache Storm</title>
+    <description></description>
+    <link>https://storm.apache.org/</link>
+    <atom:link href="https://storm.apache.org/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 21 Feb 2026 00:54:43 +0000</pubDate>
+    <lastBuildDate>Sat, 21 Feb 2026 00:54:43 +0000</lastBuildDate>
+    <generator>Jekyll v3.10.0</generator>
+    
+      <item>
+        <title>Apache Storm 2.8.3 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.8.3 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes new features as well as a number of code improvements, bug fixes and library updates.
+We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;note&quot;&gt;Note&lt;/h2&gt;
+
+&lt;p&gt;This release upgrades Apache Kafka client to the major version 4. Users should be aware of:&lt;/p&gt;
+
+&lt;blockquote cite=&quot;https://cwiki.apache.org/confluence/display/KAFKA/KIP-896%3A+Remove+old+client+protocol+API+versions+in+Kafka+4.0&quot;&gt;
+(...) users should ensure their brokers are running at least Apache Kafka 2.1 before upgrading their Java clients to Apache Kafka 4.0.
+&lt;/blockquote&gt;
+
+&lt;p&gt;Please refer to &lt;a href=&quot;https://cwiki.apache.org/confluence/display/KAFKA/KIP-896%3A+Remove+old+client+protocol+API+versions+in+Kafka+4.0&quot;&gt;Apache Kafka&amp;#39;s documentation&lt;/a&gt; for more information.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-8-3&quot;&gt;Changes in this Release - Storm 2.8.3&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.8.3 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;h3&gt;dependencies&lt;/h3&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8290&quot;&gt;#8290&lt;/a&gt;] - Bump org.codehaus.mojo:exec-maven-plugin from 3.6.1 to 3.6.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8289&quot;&gt;#8289&lt;/a&gt;] - Bump io.netty:netty-bom from 4.2.6.Final to 4.2.7.Final and netty-tcnative.version from 2.0.73.Final to 2.0.74.Final&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8288&quot;&gt;#8288&lt;/a&gt;] - Bump org.apache.avro:avro from 1.12.0 to 1.12.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8287&quot;&gt;#8287&lt;/a&gt;] - Bump spring.version from 6.2.11 to 6.2.12&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8284&quot;&gt;#8284&lt;/a&gt;] - Bump org.apache.maven.plugins:maven-pmd-plugin from 3.27.0 to 3.28.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8283&quot;&gt;#8283&lt;/a&gt;] - Bump org.jacoco:jacoco-maven-plugin from 0.8.13 to 0.8.14&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8282&quot;&gt;#8282&lt;/a&gt;] - Bump redis.clients:jedis from 5.2.0 to 7.0.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8281&quot;&gt;#8281&lt;/a&gt;] - Bump byte-buddy.version from 1.17.7 to 1.17.8&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8278&quot;&gt;#8278&lt;/a&gt;] - Bump org.codehaus.mojo:exec-maven-plugin from 3.5.1 to 3.6.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8277&quot;&gt;#8277&lt;/a&gt;] - Bump org.apache.maven.plugins:maven-dependency-plugin from 3.8.1 to 3.9.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8276&quot;&gt;#8276&lt;/a&gt;] - Bump org.junit:junit-bom from 5.13.4 to 6.0.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8275&quot;&gt;#8275&lt;/a&gt;] - Bump org.checkerframework:checker-qual from 3.51.0 to 3.51.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8274&quot;&gt;#8274&lt;/a&gt;] - Bump asm.version from 9.8 to 9.9&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8272&quot;&gt;#8272&lt;/a&gt;] - Bump org.apache.commons:commons-lang3 from 3.18.0 to 3.19.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8270&quot;&gt;#8270&lt;/a&gt;] - Bump org.clojure:clojure from 1.12.2 to 1.12.3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8269&quot;&gt;#8269&lt;/a&gt;] - Bump org.codehaus.mojo:license-maven-plugin from 2.6.0 to 2.7.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8268&quot;&gt;#8268&lt;/a&gt;] - Bump org.apache.logging.log4j:log4j-bom from 2.25.1 to 2.25.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8264&quot;&gt;#8264&lt;/a&gt;] - Update Dependencies (Jetty 12.1.1)&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8262&quot;&gt;#8262&lt;/a&gt;] - Bump com.google.guava:guava from 33.4.8-jre to 33.5.0-jre&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8261&quot;&gt;#8261&lt;/a&gt;] - Bump com.google.errorprone:error_prone_annotations from 2.41.0 to 2.42.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8260&quot;&gt;#8260&lt;/a&gt;] - Bump jakarta.xml.bind:jakarta.xml.bind-api from 2.3.2 to 4.0.4&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8259&quot;&gt;#8259&lt;/a&gt;] - Bump org.apache.maven.plugins:maven-javadoc-plugin from 3.11.3 to 3.12.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8258&quot;&gt;#8258&lt;/a&gt;] - Bump org.apache.maven.plugins:maven-compiler-plugin from 3.14.0 to 3.14.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8257&quot;&gt;#8257&lt;/a&gt;] - Bump dropwizard.version from 4.0.16 to 5.0.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8256&quot;&gt;#8256&lt;/a&gt;] - Bump bouncycastle.version from 1.81 to 1.82&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8255&quot;&gt;#8255&lt;/a&gt;] - Bump metrics.version from 4.2.36 to 4.2.37&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8252&quot;&gt;#8252&lt;/a&gt;] - Bump org.springframework:spring-core from 6.2.10 to 6.2.11 in /examples/storm-jms-examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8250&quot;&gt;#8250&lt;/a&gt;] - Bump io.netty:netty-bom from 4.2.5.Final to 4.2.6.Final&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8249&quot;&gt;#8249&lt;/a&gt;] - Bump com.google.code.gson:gson from 2.13.1 to 2.13.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8248&quot;&gt;#8248&lt;/a&gt;] - Bump org.checkerframework:checker-qual from 3.50.0 to 3.51.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8247&quot;&gt;#8247&lt;/a&gt;] - Bump org.apache.maven.plugins:maven-shade-plugin from 3.6.0 to 3.6.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8246&quot;&gt;#8246&lt;/a&gt;] - Bump spring.version from 6.2.10 to 6.2.11&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8245&quot;&gt;#8245&lt;/a&gt;] - Bump surefire.version from 3.5.3 to 3.5.4&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8244&quot;&gt;#8244&lt;/a&gt;] - Bump io.netty:netty-bom from 4.2.4.Final to 4.2.5.Final&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8243&quot;&gt;#8243&lt;/a&gt;] - Bump storm.kafka.client.version from 3.9.0 to 4.1.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8239&quot;&gt;#8239&lt;/a&gt;] - Bump dropwizard.version from 4.0.15 to 4.0.16&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8238&quot;&gt;#8238&lt;/a&gt;] - Bump netty-tcnative.version from 2.0.72.Final to 2.0.73.Final&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8236&quot;&gt;#8236&lt;/a&gt;] - Bump hadoop.version from 3.4.1 to 3.4.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8235&quot;&gt;#8235&lt;/a&gt;] - Bump metrics.version from 4.2.34 to 4.2.36&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8234&quot;&gt;#8234&lt;/a&gt;] - Bump org.clojure:clojure from 1.12.1 to 1.12.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8233&quot;&gt;#8233&lt;/a&gt;] - Bump com.fasterxml.jackson:jackson-bom from 2.19.2 to 2.20.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8232&quot;&gt;#8232&lt;/a&gt;] - Bump zookeeper.version from 3.9.3 to 3.9.4&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8231&quot;&gt;#8231&lt;/a&gt;] - Bump org.checkerframework:checker-qual from 3.49.5 to 3.50.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8230&quot;&gt;#8230&lt;/a&gt;] - Bump com.zaxxer:HikariCP from 7.0.1 to 7.0.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8229&quot;&gt;#8229&lt;/a&gt;] - Bump prometheus.client.version from 1.3.10 to 1.4.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8228&quot;&gt;#8228&lt;/a&gt;] - Bump metrics.version from 4.2.33 to 4.2.34&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8224&quot;&gt;#8224&lt;/a&gt;] - Update Jetty (11.0.26), Netty (4.2.4.Final), Spring (6.2.10)&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8223&quot;&gt;#8223&lt;/a&gt;] - Bump org.apache.maven.plugins:maven-javadoc-plugin from 3.11.2 to 3.11.3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8222&quot;&gt;#8222&lt;/a&gt;] - Bump spring.version from 6.2.9 to 6.2.10&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8221&quot;&gt;#8221&lt;/a&gt;] - Bump io.netty:netty-bom from 4.2.3.Final to 4.2.4.Final&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8220&quot;&gt;#8220&lt;/a&gt;] - Bump byte-buddy.version from 1.17.6 to 1.17.7&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8219&quot;&gt;#8219&lt;/a&gt;] - Bump jetty.version from 11.0.25 to 11.0.26&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8215&quot;&gt;#8215&lt;/a&gt;] -  Update Java dependencies to latest versions&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8213&quot;&gt;#8213&lt;/a&gt;] - Bump org.glassfish.jersey:jersey-bom from 3.1.10 to 3.1.11&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8212&quot;&gt;#8212&lt;/a&gt;] - Bump com.zaxxer:HikariCP from 6.3.1 to 7.0.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8209&quot;&gt;#8209&lt;/a&gt;] - Bump commons-cli:commons-cli from 1.9.0 to 1.10.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8208&quot;&gt;#8208&lt;/a&gt;] - Bump org.apache.commons:commons-compress from 1.27.1 to 1.28.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8207&quot;&gt;#8207&lt;/a&gt;] - Bump net.minidev:json-smart from 2.5.2 to 2.6.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8203&quot;&gt;#8203&lt;/a&gt;] - Bump dropwizard.version from 4.0.14 to 4.0.15&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8202&quot;&gt;#8202&lt;/a&gt;] - Bump curator.version from 5.8.0 to 5.9.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8201&quot;&gt;#8201&lt;/a&gt;] - Bump org.apache.commons:commons-text from 1.13.1 to 1.14.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8200&quot;&gt;#8200&lt;/a&gt;] - Bump com.google.errorprone:error_prone_annotations from 2.40.0 to 2.41.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8199&quot;&gt;#8199&lt;/a&gt;] - Bump commons-codec:commons-codec from 1.18.0 to 1.19.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8137&quot;&gt;#8137&lt;/a&gt;] - Bump org.apache.maven.plugins:maven-compiler-plugin from 3.11.0 to 3.14.0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Github actions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8286&quot;&gt;#8286&lt;/a&gt;] - Bump actions/setup-node from 5.0.0 to 6.0.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8285&quot;&gt;#8285&lt;/a&gt;] - Bump ruby/setup-ruby from 1.264.0 to 1.265.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8279&quot;&gt;#8279&lt;/a&gt;] - Bump ruby/setup-ruby from 1.263.0 to 1.264.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8267&quot;&gt;#8267&lt;/a&gt;] - Bump actions/cache from 4.2.4 to 4.3.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8266&quot;&gt;#8266&lt;/a&gt;] - Bump ruby/setup-ruby from 1.262.0 to 1.263.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8263&quot;&gt;#8263&lt;/a&gt;] - Bump ruby/setup-ruby from 1.259.0 to 1.262.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8254&quot;&gt;#8254&lt;/a&gt;] - Bump ruby/setup-ruby from 1.258.0 to 1.259.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8253&quot;&gt;#8253&lt;/a&gt;] - Bump ruby/setup-ruby from 1.257.0 to 1.258.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8242&quot;&gt;#8242&lt;/a&gt;] - Bump actions/setup-python from 5.6.0 to 6.0.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8241&quot;&gt;#8241&lt;/a&gt;] - Bump actions/setup-node from 4.4.0 to 5.0.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8240&quot;&gt;#8240&lt;/a&gt;] - Bump ruby/setup-ruby from 1.256.0 to 1.257.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8226&quot;&gt;#8226&lt;/a&gt;] - Bump ruby/setup-ruby from 1.255.0 to 1.256.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8225&quot;&gt;#8225&lt;/a&gt;] - Bump actions/setup-java from 4.7.1 to 5.0.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8217&quot;&gt;#8217&lt;/a&gt;] - Bump actions/checkout from 4.2.2 to 5.0.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8216&quot;&gt;#8216&lt;/a&gt;] - Bump ruby/setup-ruby from 1.254.0 to 1.255.0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7978&quot;&gt;#7978&lt;/a&gt;] - Error on syncing BlobStore: Could not download the blob with key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Uncategorized&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8211&quot;&gt;#8211&lt;/a&gt;] - Drop storm-sql*&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8174&quot;&gt;#8174&lt;/a&gt;] - Drop storm-sql-* modules&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 02 Nov 2025 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2025/11/02/storm283-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2025/11/02/storm283-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Apache Storm 2.8.2 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.8.2 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes new features as well as a number of code improvements, bug fixes and library updates.
+We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;note&quot;&gt;Note&lt;/h2&gt;
+
+&lt;p&gt;This will be the last release supporting &lt;code&gt;storm-sql-*&lt;/code&gt; modules, as we currently lack the expertise and active maintainers in this area to continue providing it adequate support.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-8-2&quot;&gt;Changes in this Release - Storm 2.8.2&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.8.2 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8193&quot;&gt;#8193&lt;/a&gt;] - Bump com.fasterxml.woodstox:woodstox-core from 7.1.0 to 7.1.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8190&quot;&gt;#8190&lt;/a&gt;] - Bump org.junit:junit-bom from 5.13.3 to 5.13.4&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8185&quot;&gt;#8185&lt;/a&gt;] - Updates Dependencies (Jackson 2.19.2, Spring 6.2.9, Resolver 2.19.11, Commons IO 2.20.0, Netty 4.2.3.Final, Hbase 2.6.3, Hikari 6.3.1)&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8173&quot;&gt;#8173&lt;/a&gt;] - Bump org.apache.commons:commons-lang3 from 3.17.0 to 3.18.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8172&quot;&gt;#8172&lt;/a&gt;] - Bump prometheus.client.version from 1.3.9 to 1.3.10&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8171&quot;&gt;#8171&lt;/a&gt;] - Bump com.github.ben-manes.caffeine:caffeine from 3.2.1 to 3.2.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8170&quot;&gt;#8170&lt;/a&gt;] - Bump org.apache.logging.log4j:log4j-bom from 2.25.0 to 2.25.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8163&quot;&gt;#8163&lt;/a&gt;] - Bump org.apache.thrift:libthrift from 0.19.0 to 0.22.0 #&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8162&quot;&gt;#8162&lt;/a&gt;] - Bump prometheus.client.version from 1.3.8 to 1.3.9&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8161&quot;&gt;#8161&lt;/a&gt;] - Bump org.checkerframework:checker-qual from 3.49.4 to 3.49.5&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8160&quot;&gt;#8160&lt;/a&gt;] - Bump com.google.errorprone:error_prone_annotations from 2.38.0 to 2.39.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8159&quot;&gt;#8159&lt;/a&gt;] - Bump maven-resolver.version from 1.9.23 to 1.9.24&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8158&quot;&gt;#8158&lt;/a&gt;] - Bump org.apache.maven.plugins:maven-pmd-plugin from 3.26.0 to 3.27.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8157&quot;&gt;#8157&lt;/a&gt;] - Bump testcontainers.version from 1.21.2 to 1.21.3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8156&quot;&gt;#8156&lt;/a&gt;] - Bump org.junit:junit-bom from 5.13.1 to 5.13.3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8145&quot;&gt;#8145&lt;/a&gt;] - Bump metrics.version from 4.2.32 to 4.2.33&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8144&quot;&gt;#8144&lt;/a&gt;] - Bump activemq.version from 6.1.6 to 6.1.7&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8143&quot;&gt;#8143&lt;/a&gt;] - Bump org.apache.logging.log4j:log4j-bom from 2.24.3 to 2.25.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8142&quot;&gt;#8142&lt;/a&gt;] - Bump testcontainers.version from 1.21.1 to 1.21.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8141&quot;&gt;#8141&lt;/a&gt;] - Bump org.codehaus.mojo:license-maven-plugin from 2.5.0 to 2.6.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8140&quot;&gt;#8140&lt;/a&gt;] - Bump byte-buddy.version from 1.17.5 to 1.17.6&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8131&quot;&gt;#8131&lt;/a&gt;] - Bump org.apache:apache from 30 to 35&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8130&quot;&gt;#8130&lt;/a&gt;] - Bump spring.version from 6.2.7 to 6.2.8&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8129&quot;&gt;#8129&lt;/a&gt;] - Bump com.fasterxml.jackson.core:jackson-databind from 2.19.0 to 2.19.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8128&quot;&gt;#8128&lt;/a&gt;] - Bump com.fasterxml.jackson:jackson-bom from 2.19.0 to 2.19.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8122&quot;&gt;#8122&lt;/a&gt;] - Bump commons-fileupload:commons-fileupload from 1.5 to 1.6.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8121&quot;&gt;#8121&lt;/a&gt;] - Bump io.netty:netty-bom from 4.2.1.Final to 4.2.2.Final&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8119&quot;&gt;#8119&lt;/a&gt;] - Bump org.apache.maven:maven-resolver-provider from 3.9.9 to 3.9.10&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8117&quot;&gt;#8117&lt;/a&gt;] - Bump org.clojure:clojure from 1.12.0 to 1.12.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8116&quot;&gt;#8116&lt;/a&gt;] - Bump bouncycastle.version from 1.80 to 1.81&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8115&quot;&gt;#8115&lt;/a&gt;] - Bump org.junit:junit-bom from 5.13.0 to 5.13.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8114&quot;&gt;#8114&lt;/a&gt;] - Bump org.codehaus.mojo:build-helper-maven-plugin from 3.6.0 to 3.6.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8104&quot;&gt;#8104&lt;/a&gt;] - Bump metrics.version from 4.2.30 to 4.2.32&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8103&quot;&gt;#8103&lt;/a&gt;] - Bump dropwizard.version from 4.0.13 to 4.0.14&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8102&quot;&gt;#8102&lt;/a&gt;] - Bump prometheus.client.version from 1.3.7 to 1.3.8&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8100&quot;&gt;#8100&lt;/a&gt;] - Bump org.apache.commons:commons-exec from 1.4.0 to 1.5.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8099&quot;&gt;#8099&lt;/a&gt;] - Bump com.fasterxml.woodstox:woodstox-core from 7.1.0 to 7.1.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8098&quot;&gt;#8098&lt;/a&gt;] - Bump org.apache.maven.plugins:maven-clean-plugin from 3.4.1 to 3.5.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8097&quot;&gt;#8097&lt;/a&gt;] - Bump org.junit:junit-bom from 5.12.2 to 5.13.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8096&quot;&gt;#8096&lt;/a&gt;] - Bump testcontainers.version from 1.21.0 to 1.21.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8095&quot;&gt;#8095&lt;/a&gt;] - Bump org.codehaus.mojo:exec-maven-plugin from 3.5.0 to 3.5.1&lt;/li&gt;
+    &lt;/ul&gt;
+
+&lt;h2&gt;Bug fixing&lt;/h2&gt;
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8188&quot;&gt;#8188&lt;/a&gt;] - [SECURITY] Storm Nimbus exposes Github personal token in Git remote URL&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8019&quot;&gt;#8019&lt;/a&gt;] - Kafka totalSpoutLag does not equal the sum of the partitions&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 03 Aug 2025 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2025/08/03/storm282-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2025/08/03/storm282-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Apache Storm 2.8.1 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.8.1 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes new features as well as a number of code improvements, bug fixes and library updates.
+We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-8-1&quot;&gt;Changes in this Release - Storm 2.8.1&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.8.1 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8070&quot;&gt;#8070&lt;/a&gt;] - Update to Rocksdbjni 10.1.3&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8069&quot;&gt;#8069&lt;/a&gt;] - Update Netty Bom to 4.2.1.Final&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8068&quot;&gt;#8068&lt;/a&gt;] - Update to commons-configuration 2.12.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8067&quot;&gt;#8067&lt;/a&gt;] - Update Netty to 2.0.71&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8066&quot;&gt;#8066&lt;/a&gt;] - Update to Jackson 2.19.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8065&quot;&gt;#8065&lt;/a&gt;] - Update to commons-collection 4.5.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8064&quot;&gt;#8064&lt;/a&gt;] - Update to gson 2.13.1&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8063&quot;&gt;#8063&lt;/a&gt;] - Update to guava 33.4.8&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8062&quot;&gt;#8062&lt;/a&gt;] - Update to commons-io 2.19.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8045&quot;&gt;#8045&lt;/a&gt;] - Upgrade to Spring 6 and JMS 3.1 (Jakarta)&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8036&quot;&gt;#8036&lt;/a&gt;] - commons-text 1.13.1&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8034&quot;&gt;#8034&lt;/a&gt;] - Hikari CP 6.3.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8033&quot;&gt;#8033&lt;/a&gt;] - dropwizard metrics 4.0.13&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8032&quot;&gt;#8032&lt;/a&gt;] - guava 33.4.7-jre&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8031&quot;&gt;#8031&lt;/a&gt;] - ASM 9.8&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8010&quot;&gt;#8010&lt;/a&gt;] - hbase  2.6.2-hadoop3&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8009&quot;&gt;#8009&lt;/a&gt;] - netty 4.1.119.Final&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8008&quot;&gt;#8008&lt;/a&gt;] - curator 5.8.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8007&quot;&gt;#8007&lt;/a&gt;] - guava 33.4.5-jre&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8006&quot;&gt;#8006&lt;/a&gt;] - commons-csv 1.14.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8005&quot;&gt;#8005&lt;/a&gt;] - jetty 11.0.25&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8004&quot;&gt;#8004&lt;/a&gt;] - slf4j2 2.0.17&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8003&quot;&gt;#8003&lt;/a&gt;] - Jackson 2.18.3&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7970&quot;&gt;#7970&lt;/a&gt;] - Bump io.netty:netty-bom from 4.1.117.Final to 4.1.118.Final&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7969&quot;&gt;#7969&lt;/a&gt;] - Bump net.minidev:json-smart from 2.5.1 to 2.5.2&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7968&quot;&gt;#7968&lt;/a&gt;] - Bump org.checkerframework:checker-qual from 3.48.4 to 3.49.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7967&quot;&gt;#7967&lt;/a&gt;] - Bump prometheus.client.version from 1.3.5 to 1.3.6&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7953&quot;&gt;#7953&lt;/a&gt;] - Bump byte-buddy.version from 1.16.1 to 1.17.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7952&quot;&gt;#7952&lt;/a&gt;] - Bump com.google.code.gson:gson from 2.11.0 to 2.12.1&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7951&quot;&gt;#7951&lt;/a&gt;] - Bump commons-codec:commons-codec from 1.17.2 to 1.18.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7945&quot;&gt;#7945&lt;/a&gt;] - Bump metrics.version from 4.2.29 to 4.2.30&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7944&quot;&gt;#7944&lt;/a&gt;] - Bump dropwizard.version from 4.0.11 to 4.0.12&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7943&quot;&gt;#7943&lt;/a&gt;] - Bump com.github.ben-manes.caffeine:caffeine from 3.1.8 to 3.2.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7942&quot;&gt;#7942&lt;/a&gt;] - Bump io.netty:netty-bom from 4.1.116.Final to 4.1.117.Final&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7941&quot;&gt;#7941&lt;/a&gt;] - Bump bouncycastle.version from 1.79 to 1.80&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7940&quot;&gt;#7940&lt;/a&gt;] - Bump org.rocksdb:rocksdbjni from 9.8.4 to 9.10.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7939&quot;&gt;#7939&lt;/a&gt;] - Bump byte-buddy.version from 1.15.11 to 1.16.1&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8082&quot;&gt;#8082&lt;/a&gt;] - Prometheus Client 1.3.7&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8081&quot;&gt;#8081&lt;/a&gt;] - RocksDB 10.2.1&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8080&quot;&gt;#8080&lt;/a&gt;] - spring 6.2.7&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8030&quot;&gt;#8030&lt;/a&gt;] - Netty 4.2.0&lt;/li&gt;
+        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8079&quot;&gt;#8079&lt;/a&gt;] - netty-tcnative 2.0.72.Final&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/7955&quot;&gt;#7955&lt;/a&gt;] - Fix ShellBolt log level&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7954&quot;&gt;#7954&lt;/a&gt;] - o.a.s.t.ShellBolt log level is always INFO&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7935&quot;&gt;#7935&lt;/a&gt;] - [STORM-4155] SecurityManager Issue with JDK 23 in Apache Storm&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Enhancement&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7947&quot;&gt;#7947&lt;/a&gt;] - IWorkerHook default start method calls its self&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Uncategorized&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/7936&quot;&gt;#7936&lt;/a&gt;] - Update Release Note Generation and Docs&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 02 Jun 2025 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2025/06/02/storm281-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2025/06/02/storm281-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Apache Storm 2.8.0 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.8.0 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes new features as well as a number of code improvements, bug fixes and library updates.
+We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;u&gt;&lt;font size=&quot;3&quot;&gt; Please note that starting with this release, the minimum JRE version to run Apache Storm is 17.&lt;/font&gt;&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-8-0&quot;&gt;Changes in this Release - Storm 2.8.0&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.8.0 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3693&quot;&gt;STORM-3693&lt;/a&gt;] - TimeOut ticks should be addressed to Executor instead of being addressed to a task or broadcasted. &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4148&quot;&gt;STORM-4148&lt;/a&gt;] - Storm UI throwing error on Component page&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4149&quot;&gt;STORM-4149&lt;/a&gt;] - Decode ComponentId to avoid UI throwing errors&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4154&quot;&gt;STORM-4154&lt;/a&gt;] - Nimbus down following topology deployment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4131&quot;&gt;STORM-4131&lt;/a&gt;] - Update log4j2 to a non-borked version&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4132&quot;&gt;STORM-4132&lt;/a&gt;] - Remove &quot;storm-hive&quot;&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4133&quot;&gt;STORM-4133&lt;/a&gt;] - Raise Minimum JRE Level to 17&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4134&quot;&gt;STORM-4134&lt;/a&gt;] - log4j2 2.24.3&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4135&quot;&gt;STORM-4135&lt;/a&gt;] - Commons IO 2.18.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4136&quot;&gt;STORM-4136&lt;/a&gt;] - Dropwizard 4.0.11&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4137&quot;&gt;STORM-4137&lt;/a&gt;] - Metrics 4.2.29&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4138&quot;&gt;STORM-4138&lt;/a&gt;] - Jackson 2.18.2&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4139&quot;&gt;STORM-4139&lt;/a&gt;] - Prometheus 1.3.5&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4141&quot;&gt;STORM-4141&lt;/a&gt;] - ByteBuddy 1.15.11 &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4144&quot;&gt;STORM-4144&lt;/a&gt;] - slf4j2 2.0.16&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4145&quot;&gt;STORM-4145&lt;/a&gt;] - netty 4.1.116&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4146&quot;&gt;STORM-4146&lt;/a&gt;] - guava 33.4.0-jre&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4147&quot;&gt;STORM-4147&lt;/a&gt;] - checker-qual  3.48.4 &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4150&quot;&gt;STORM-4150&lt;/a&gt;] - commons codec 1.17.2&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4151&quot;&gt;STORM-4151&lt;/a&gt;] - Jersey 3.1.10&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4152&quot;&gt;STORM-4152&lt;/a&gt;] - commons-csv 1.13.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4153&quot;&gt;STORM-4153&lt;/a&gt;] - rocksdb jni 9.8.4&lt;/li&gt;
+   &lt;/ul&gt;
+</description>
+        <pubDate>Sat, 25 Jan 2025 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2025/01/25/storm280-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2025/01/25/storm280-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Apache Storm 2.7.1 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.7.1 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes new features as well as a number of code improvements, bug fixes and library updates.
+We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;p&gt;Note: This is the last release supporting Java 11. Future releases will require Java 17+ or later (currently under discussion).&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-7-1&quot;&gt;Changes in this Release - Storm 2.7.1&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.7.1 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4108&quot;&gt;STORM-4108&lt;/a&gt;] - Remove joda-time &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4104&quot;&gt;STORM-4104&lt;/a&gt;] - Pacemaker server stability issues - e.g. shuts down when topology killed&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4106&quot;&gt;STORM-4106&lt;/a&gt;] - Storm.ps1 does not show stdout\stderr output when launched from Powershell ISE&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4107&quot;&gt;STORM-4107&lt;/a&gt;] - Remove ElasticSearch Module&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4128&quot;&gt;STORM-4128&lt;/a&gt;] - Deprecate &quot;storm-hive&quot;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4056&quot;&gt;STORM-4056&lt;/a&gt;] - Build with -Pnative on MacOS&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4081&quot;&gt;STORM-4081&lt;/a&gt;] - Dropwizard Metrics 4.2.27&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4082&quot;&gt;STORM-4082&lt;/a&gt;] - Prometheus Client 1.3.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4083&quot;&gt;STORM-4083&lt;/a&gt;] - Jetty 11.0.23&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4084&quot;&gt;STORM-4084&lt;/a&gt;] - Commons Compress 1.27.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4086&quot;&gt;STORM-4086&lt;/a&gt;] - Bump com.fasterxml.jackson:jackson-bom from 2.17.2 to 2.18.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4087&quot;&gt;STORM-4087&lt;/a&gt;] - ASM 9.7.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4088&quot;&gt;STORM-4088&lt;/a&gt;] - Curator 5.7.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4089&quot;&gt;STORM-4089&lt;/a&gt;] - Jersey 3.1.9&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4090&quot;&gt;STORM-4090&lt;/a&gt;] - Kafka Client 3.8.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4091&quot;&gt;STORM-4091&lt;/a&gt;] - commons-io 2.17.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4092&quot;&gt;STORM-4092&lt;/a&gt;] - Prometheus Client 1.3.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4093&quot;&gt;STORM-4093&lt;/a&gt;] - log4j2 2.24.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4094&quot;&gt;STORM-4094&lt;/a&gt;] - JUnit 5.11.3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4095&quot;&gt;STORM-4095&lt;/a&gt;] - Hadoop 3.4.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4096&quot;&gt;STORM-4096&lt;/a&gt;] - Metrics 4.2.28&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4097&quot;&gt;STORM-4097&lt;/a&gt;] - Avro 1.12.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4098&quot;&gt;STORM-4098&lt;/a&gt;] - Prometheus Client 1.3.3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4099&quot;&gt;STORM-4099&lt;/a&gt;] - Kafka Client 3.9.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4100&quot;&gt;STORM-4100&lt;/a&gt;] - Rocksdb 9.7.3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4101&quot;&gt;STORM-4101&lt;/a&gt;] - Dropwizard 4.0.10&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4102&quot;&gt;STORM-4102&lt;/a&gt;] - hbase 2.6.1-hadoop3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4103&quot;&gt;STORM-4103&lt;/a&gt;] - Guava 33.3.1-jre&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4105&quot;&gt;STORM-4105&lt;/a&gt;] - clojure 1.12.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4109&quot;&gt;STORM-4109&lt;/a&gt;] - Netty TCNative 2.0.69.Final&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4110&quot;&gt;STORM-4110&lt;/a&gt;] - Jedis 5.2.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4111&quot;&gt;STORM-4111&lt;/a&gt;] - Zookeeper 3.9.3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4112&quot;&gt;STORM-4112&lt;/a&gt;] - Jetty 11.0.24&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4113&quot;&gt;STORM-4113&lt;/a&gt;] - commons-lang3 3.17.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4114&quot;&gt;STORM-4114&lt;/a&gt;] - jline 2.14.6&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4117&quot;&gt;STORM-4117&lt;/a&gt;] - Snappy 1.1.10.7&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4118&quot;&gt;STORM-4118&lt;/a&gt;] - commons-text 1.12.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4119&quot;&gt;STORM-4119&lt;/a&gt;] - commons-codec 1.17.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4120&quot;&gt;STORM-4120&lt;/a&gt;] - gson 2.11.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4121&quot;&gt;STORM-4121&lt;/a&gt;] - commons-csv:1.12.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4122&quot;&gt;STORM-4122&lt;/a&gt;] - commons-exec 1.4.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4123&quot;&gt;STORM-4123&lt;/a&gt;] - Hikari 6.1.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4124&quot;&gt;STORM-4124&lt;/a&gt;] - Bouncycastle 1.79&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4125&quot;&gt;STORM-4125&lt;/a&gt;] - clojure.logging.tools 1.3.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4126&quot;&gt;STORM-4126&lt;/a&gt;] - Kryo 5.6.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4127&quot;&gt;STORM-4127&lt;/a&gt;] - Netty 4.1.115.Final &lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4129&quot;&gt;STORM-4129&lt;/a&gt;] - Hikari 6.2.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4130&quot;&gt;STORM-4130&lt;/a&gt;] - commons cli 1.9.0&lt;/li&gt;
+&lt;/ul&gt;   
+</description>
+        <pubDate>Thu, 28 Nov 2024 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2024/11/28/storm271-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2024/11/28/storm271-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Apache Storm 2.7.0 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.7.0 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes new features as well as a number of code improvements, bug fixes and library updates.
+We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-7-0&quot;&gt;Changes in this Release - Storm 2.7.0&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.7.0 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;New Feature&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4075&quot;&gt;STORM-4075&lt;/a&gt;] - Supprt mTLS between Storm and ZK&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4076&quot;&gt;STORM-4076&lt;/a&gt;] - KafkaTridentSpoutEmitters can poll all partitions at once instead of one at a time&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4055&quot;&gt;STORM-4055&lt;/a&gt;] - ConcurrentModificationException on KafkaConsumer when running topology with Metrics Reporters&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4077&quot;&gt;STORM-4077&lt;/a&gt;] - Worker being reassigned when Nimbus leadership changes&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4085&quot;&gt;STORM-4085&lt;/a&gt;] - Supervisor Threads being Killed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4031&quot;&gt;STORM-4031&lt;/a&gt;] - Fix broken Talks &amp; Video Webpage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4081&quot;&gt;STORM-4081&lt;/a&gt;] - Dropwizard Metrics 4.2.27&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4082&quot;&gt;STORM-4082&lt;/a&gt;] - Prometheus Client 1.3.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4083&quot;&gt;STORM-4083&lt;/a&gt;] - Jetty 11.0.23&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2024/10/18/storm270-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2024/10/18/storm270-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Apache Storm 2.6.4 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.6.4 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes new features as well as a number of code improvements, bug fixes and library updates.
+We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-6-4&quot;&gt;Changes in this Release - Storm 2.6.4&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.6.4 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;New Feature&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4070&quot;&gt;STORM-4070&lt;/a&gt;] - mTls support&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4069&quot;&gt;STORM-4069&lt;/a&gt;] -  java.lang.ClassCastException for Trident-based Topology&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4071&quot;&gt;STORM-4071&lt;/a&gt;] - Bump com.zaxxer:HikariCP from 5.0.1 to 5.1.0 &lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4072&quot;&gt;STORM-4072&lt;/a&gt;] - Bump org.jctools:jctools-core from 2.0.1 to 4.0.5 &lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4073&quot;&gt;STORM-4073&lt;/a&gt;] - Bump com.fasterxml.jackson:jackson-bom from 2.16.1 to 2.17.2 &lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4074&quot;&gt;STORM-4074&lt;/a&gt;] - Bump joda-time:joda-time from 2.12.5 to 2.12.7&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4078&quot;&gt;STORM-4078&lt;/a&gt;] - Uplift Netty version to 4.1.112&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/body&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2024/09/03/storm264-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2024/09/03/storm264-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Apache Storm 2.6.3 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.6.3 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes new features as well as a number of code improvements, bug fixes and library updates.
+We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-6-3&quot;&gt;Changes in this Release - Storm 2.6.3&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.6.3 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;New Feature&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4058&quot;&gt;STORM-4058&lt;/a&gt;] - Provide ClusterMetrics via a Prometheus Preparable Reporter&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4054&quot;&gt;STORM-4054&lt;/a&gt;] - Add Worker CPU Metric&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4051&quot;&gt;STORM-4051&lt;/a&gt;] - Scheduler needs to include acker memory for topology resources&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4052&quot;&gt;STORM-4052&lt;/a&gt;] - Simplify/Remove double delete/lookup in heartbeat cleanup code&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4057&quot;&gt;STORM-4057&lt;/a&gt;] - Fix Worker Termination in K8S with Security Context&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4060&quot;&gt;STORM-4060&lt;/a&gt;] - Netty client will wait up to 10 minutes to send messages to unreachable worker on close()&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4053&quot;&gt;STORM-4053&lt;/a&gt;] - Add Hadoop client API dependency back to storm-hdfs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3985&quot;&gt;STORM-3985&lt;/a&gt;] - Upgrade dependencies to ones based on Jakarta EE APIs&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4061&quot;&gt;STORM-4061&lt;/a&gt;] - Hadoop 3.4.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4062&quot;&gt;STORM-4062&lt;/a&gt;] - JSON Mini Dev 2.5.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4063&quot;&gt;STORM-4063&lt;/a&gt;] - Curator 5.7.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4065&quot;&gt;STORM-4065&lt;/a&gt;] - Dropwizard Metric 4.2.26&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4066&quot;&gt;STORM-4066&lt;/a&gt;] - Jetty 11.0.21&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4067&quot;&gt;STORM-4067&lt;/a&gt;] - Jersey 3.1.7&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 25 Jul 2024 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2024/07/25/storm263-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2024/07/25/storm263-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Apache Storm 2.6.2 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.6.2 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes a number of code improvements and library updates.
+We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-6-2&quot;&gt;Changes in this Release - Storm 2.6.2&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.6.2 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4038&quot;&gt;STORM-4038&lt;/a&gt;] - Cleanup Hadoop Dependencies&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4030&quot;&gt;STORM-4030&lt;/a&gt;] - Dependency upgrades&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4039&quot;&gt;STORM-4039&lt;/a&gt;] - Bump org.apache.commons:commons-configuration2 from 2.9.0 to 2.10.1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4029&quot;&gt;STORM-4029&lt;/a&gt;] - Bump org.apache.commons:commons-compress from 1.21 to 1.26.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4041&quot;&gt;STORM-4041&lt;/a&gt;] - Zookeeper 3.9.2&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4042&quot;&gt;STORM-4042&lt;/a&gt;] - Clojure 1.11.2&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4043&quot;&gt;STORM-4043&lt;/a&gt;] - commons-io:2.14.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4044&quot;&gt;STORM-4044&lt;/a&gt;] - commons-lang3:3.14.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4045&quot;&gt;STORM-4045&lt;/a&gt;] - log4j2 2.23.0 &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4046&quot;&gt;STORM-4046&lt;/a&gt;] - caffeine:3.1.8&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4047&quot;&gt;STORM-4047&lt;/a&gt;] - jackson 2.16.1&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4048&quot;&gt;STORM-4048&lt;/a&gt;] - netty 4.1.107.Final &lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4049&quot;&gt;STORM-4049&lt;/a&gt;] - snakeyaml:2.2&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4050&quot;&gt;STORM-4050&lt;/a&gt;] - rocksdbjni:8.10.0 &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4040&quot;&gt;STORM-4040&lt;/a&gt;] - Nimbus fails to start up on older CPUs (RocksDB v7.x.x onwards)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 05 Apr 2024 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2024/04/05/storm262-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2024/04/05/storm262-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Apache Storm 2.6.1 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.6.1 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes a number of code improvements, library updates and important bug fixes.
+We also took over the stewardship over the official Storm docker image located &lt;a href=&quot;https://hub.docker.com/_/storm&quot;&gt;
+here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-6-1&quot;&gt;Changes in this Release - Storm 2.6.1&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.6.1 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;New Feature&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-1836&quot;&gt;STORM-1836&lt;/a&gt;] - An official Docker image&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Improvement&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3186&quot;&gt;STORM-3186&lt;/a&gt;] - Customizable configuration for metric reporting interval&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3565&quot;&gt;STORM-3565&lt;/a&gt;] - Allow users to add dimensionsfor storm metrics&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3639&quot;&gt;STORM-3639&lt;/a&gt;] - Remove asserts from Storm daemon code&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3680&quot;&gt;STORM-3680&lt;/a&gt;] - Upgrade Jedis library in storm-jedis module to 3.2.x&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4007&quot;&gt;STORM-4007&lt;/a&gt;] - Add the getName() method in order to obtain the applied label to the Trident stream.&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4008&quot;&gt;STORM-4008&lt;/a&gt;] - Implement timed GH actions to publish SNAPSHOTS&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4009&quot;&gt;STORM-4009&lt;/a&gt;] - Regenerate Thrift Code with current Thrift version used in Storm&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4016&quot;&gt;STORM-4016&lt;/a&gt;] - Kafka spout: start using poll(Duration)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3132&quot;&gt;STORM-3132&lt;/a&gt;] - NPE in Values Constructor&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-3713&quot;&gt;STORM-3713&lt;/a&gt;] - Possible race condition between zookeeper sync-up and killing topology&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4017&quot;&gt;STORM-4017&lt;/a&gt;] - isAnyWindowsProcessAlive does not work with multiple pids&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4018&quot;&gt;STORM-4018&lt;/a&gt;] - Wrong order of the params in Storm API resource&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4023&quot;&gt;STORM-4023&lt;/a&gt;] - Background periodic Kerberos re-login should use same JAAS configuration as initial login&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4024&quot;&gt;STORM-4024&lt;/a&gt;] - Bolt Input Stats are blank if topology.acker.executors is null or 0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4025&quot;&gt;STORM-4025&lt;/a&gt;] - ClassCastException when changing log level in Storm UI&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Task&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4022&quot;&gt;STORM-4022&lt;/a&gt;] - Avoid flooding nimbus logs with dead topology heatbeat timeout error messages&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4026&quot;&gt;STORM-4026&lt;/a&gt;] - Thrift 0.19.0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4004&quot;&gt;STORM-4004&lt;/a&gt;] - Upgrade Kafka Clients to 3.6.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4005&quot;&gt;STORM-4005&lt;/a&gt;] - ElasticSearch 7.17.13&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4011&quot;&gt;STORM-4011&lt;/a&gt;] - Migrate Storm itself to use Commons Collections 4&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4027&quot;&gt;STORM-4027&lt;/a&gt;] - Kyro 5.6.0&lt;/li&gt;
+&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4028&quot;&gt;STORM-4028&lt;/a&gt;] - Curator 5.6.0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Project&lt;/h2&gt;
+
+&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4006&quot;&gt;STORM-4006&lt;/a&gt;] - Implement timed GH actions to publish to nightlies.a.o&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Fri, 02 Feb 2024 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2024/02/02/storm261-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2024/02/02/storm261-released.html</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>
