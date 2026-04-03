@@ -10,6 +10,6 @@ A **bolt** processes any number of input streams and produces any number of new 
 
 A **topology** is a network of spouts and bolts, with each edge in the network representing a bolt subscribing to the output stream of some other spout or bolt. A topology is an arbitrarily complex multi-stage stream computation. Topologies run indefinitely when deployed.
 
-Apache Storm has a "local mode" where a Apache Storm cluster is simulated in-process. This is useful for development and testing. The "storm" command line client is used when ready to submit a topology for execution on an actual cluster.
+Apache Storm has a "local mode" where an Apache Storm cluster is simulated in-process. This is useful for development and testing. The "storm" command line client is used when ready to submit a topology for execution on an actual cluster.
 
 The [storm-starter](https://github.com/apache/storm/tree/master/examples/storm-starter) project contains example topologies for learning the basics of Apache Storm. Learn more about how to use Apache Storm by reading the [tutorial](/releases/current/Tutorial.html) and the [documentation](/releases/current/index.html).

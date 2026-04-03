@@ -6,7 +6,7 @@ documentation: true
 
 ### Getting started with contributing
 
-Some of the issues on the [issue tracker](https://github.com/apache/storm/issues) are marked with the "Newbie" label. If you're interesting in contributing to Storm but don't know where to begin, these are good issues to start with. These issues are a great way to get your feet wet with learning the codebase because they require learning about only an isolated portion of the codebase and are a relatively small amount of work.
+Some of the issues on the [issue tracker](https://github.com/apache/storm/issues) are marked with the "Newbie" label. If you're interested in contributing to Storm but don't know where to begin, these are good issues to start with. These issues are a great way to get your feet wet with learning the codebase because they require learning about only an isolated portion of the codebase and are a relatively small amount of work.
 
 ### Learning the codebase
 
