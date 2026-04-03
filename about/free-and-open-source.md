@@ -8,8 +8,7 @@ Apache Storm is a free and open source project licensed under the [Apache Licens
 Apache Storm has a large and growing ecosystem of libraries and tools to use in conjunction with Apache Storm including everything from:
 
 1. *Spouts*: These spouts integrate with queueing systems such as JMS, Kafka, Redis pub/sub, and more.
-2. *storm-state*: storm-state makes it easy to manage large amounts of in-memory state in your computations reliably by using a distributed filesystem for persistence
-3. *Database integrations*: There are helper bolts for integrating with various databases, such as MongoDB, RDBMS's, Cassandra, and more.
-4. Other miscellaneous utilities
+2. *Database integrations*: There are helper bolts for integrating with various databases, such as JDBC-compatible databases, HBase, Redis, and more.
+3. Other miscellaneous utilities
 
 The [Apache Storm documentation](/documentation.html) has links to notable Apache Storm related projects hosted outside of Apache.

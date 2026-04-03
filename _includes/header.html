@@ -35,11 +35,15 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="documentation">Documentation <b
                             class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        {% assign shown = 0 %}
                         {% for r in site.data.releases %}
-                        {% if r.documented %}
+                        {% if r.documented and shown < 3 %}
                         <li><a href="/releases/{{r.name}}/index.html">{{r.name}}</a></li>
+                        {% assign shown = shown | plus: 1 %}
                         {% endif %}
                         {% endfor %}
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/older-releases.html">Older Versions</a></li>
                     </ul>
                 </li>
                 <li><a href="/talksAndVideos.html">Talks and Slideshows</a></li>
