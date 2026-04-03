@@ -4,8 +4,6 @@ title: Documentation
 ---
 ## Getting help
 
-__NOTE:__ The google groups account storm-user@googlegroups.com is now officially deprecated in favor of the Apache-hosted user/dev mailing lists.
-
 ### Storm Users
 Storm users should send messages and subscribe to [user@storm.apache.org](mailto:user@storm.apache.org).
 
@@ -33,10 +31,3 @@ If you are building storm from source, developing new features, or otherwise hac
 
 If you are committers and/or PMCs, or contributors looking for following up and participating development of Storm, then you would want to also subscribe [issues@storm.apache.org](issues@storm.apache.org) in addition to [dev@storm.apache.org](dev@storm.apache.org).
 
-#### What will happen with storm-user@googlegroups.com?
-All existing messages will remain archived there, and can be accessed/searched [here](https://groups.google.com/forum/#!forum/storm-user).
-
-New messages sent to storm-user@googlegroups.com will either be rejected/bounced or replied to with a message to direct the email to the appropriate Apache-hosted group.
-
-#### IRC
-You can also come to the #storm-user room on [freenode](https://freenode.net/). You can usually find a Storm developer there to help you out.
