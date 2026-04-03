@@ -26,5 +26,5 @@ For small patches, feel free to submit pull requests directly for them. For larg
 
 ### Contributing documentation
 
-Documentation contributions are very welcome! The best way to send contributions is as emails through the mailing list.
+Documentation contributions are very welcome! The best way to send contributions is as pull requests to the [storm](https://github.com/apache/storm) repository.
 

@@ -1,4 +1,4 @@
 ---
 ---
-<meta http-equiv="refresh" content="0; url=http://storm.apache.org/releases/current/Acking-framework-implementation.html">
+<meta http-equiv="refresh" content="0; url=https://storm.apache.org/releases/current/Acking-framework-implementation.html">
 <link rel="canonical" href="https://storm.apache.org/releases/current/Acking-framework-implementation.html" />
