@@ -5,8 +5,8 @@
     <description></description>
     <link>https://storm.apache.org/</link>
     <atom:link href="https://storm.apache.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 12 Apr 2026 18:13:55 +0000</pubDate>
-    <lastBuildDate>Sun, 12 Apr 2026 18:13:55 +0000</lastBuildDate>
+    <pubDate>Sun, 12 Apr 2026 18:20:05 +0000</pubDate>
+    <lastBuildDate>Sun, 12 Apr 2026 18:20:05 +0000</lastBuildDate>
     <generator>Jekyll v3.10.0</generator>
     
       <item>
@@ -37,7 +37,7 @@ users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; 2.x users should upgrade to 2.8.6.&lt;/p&gt;
 
-&lt;p&gt;Users who cannot upgrade immediately should monkey-patch an &lt;code&gt;ObjectInputFilter&lt;/code&gt; allow-list to &lt;code&gt;ClientAuthUtils.deserializeKerberosTicket()&lt;/code&gt; restricting deserialized classes to &lt;code&gt;javax.security.auth.kerberos.KerberosTicket&lt;/code&gt; and its known dependencies.&lt;/p&gt;
+&lt;p&gt;Users who cannot upgrade immediately should monkey-patch an &lt;code&gt;ObjectInputFilter&lt;/code&gt; allow-list to &lt;code&gt;ClientAuthUtils.deserializeKerberosTicket()&lt;/code&gt; restricting deserialized classes to &lt;code&gt;javax.security.auth.kerberos.KerberosTicket&lt;/code&gt; and its known dependencies; see &lt;a href=&quot;https://dist.apache.org/repos/dist/release/storm/apache-storm-2.8.6/RELEASE_NOTES.html&quot;&gt;for details.&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; This issue was discovered by K.&lt;/p&gt;
 
@@ -48,6 +48,8 @@ users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; The Storm UI visualization component interpolates topology metadata including component IDs, stream names, and grouping values directly into HTML via &lt;code&gt;innerHTML&lt;/code&gt; in &lt;code&gt;parseNode()&lt;/code&gt; and &lt;code&gt;parseEdge()&lt;/code&gt; without sanitization at any layer. An authenticated user with topology submission rights could craft a topology containing malicious HTML/JavaScript in component identifiers, resulting in stored cross-site scripting. In multi-tenant deployments, this enables privilege escalation through script execution in an admin&apos;s browser session.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; 2.x users should upgrade to 2.8.6.&lt;/p&gt;
+
+&lt;p&gt;Users wh ocannot upgrade immediately should monkey-patch the related escaping; see &lt;a href=&quot;https://dist.apache.org/repos/dist/release/storm/apache-storm-2.8.6/RELEASE_NOTES.html&quot;&gt;for details.&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; This issue was discovered while investigating another report by K.&lt;/p&gt;
 

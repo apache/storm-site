@@ -323,7 +323,7 @@ users on the mailing lists. Your efforts are much appreciated.</p>
 
 <p><strong>Mitigation:</strong> 2.x users should upgrade to 2.8.6.</p>
 
-<p>Users who cannot upgrade immediately should monkey-patch an <code>ObjectInputFilter</code> allow-list to <code>ClientAuthUtils.deserializeKerberosTicket()</code> restricting deserialized classes to <code>javax.security.auth.kerberos.KerberosTicket</code> and its known dependencies.</p>
+<p>Users who cannot upgrade immediately should monkey-patch an <code>ObjectInputFilter</code> allow-list to <code>ClientAuthUtils.deserializeKerberosTicket()</code> restricting deserialized classes to <code>javax.security.auth.kerberos.KerberosTicket</code> and its known dependencies; see <a href="https://dist.apache.org/repos/dist/release/storm/apache-storm-2.8.6/RELEASE_NOTES.html">for details.</a></p>
 
 <p><strong>Credit:</strong> This issue was discovered by K.</p>
 
@@ -334,6 +334,8 @@ users on the mailing lists. Your efforts are much appreciated.</p>
 <p><strong>Description:</strong> The Storm UI visualization component interpolates topology metadata including component IDs, stream names, and grouping values directly into HTML via <code>innerHTML</code> in <code>parseNode()</code> and <code>parseEdge()</code> without sanitization at any layer. An authenticated user with topology submission rights could craft a topology containing malicious HTML/JavaScript in component identifiers, resulting in stored cross-site scripting. In multi-tenant deployments, this enables privilege escalation through script execution in an admin's browser session.</p>
 
 <p><strong>Mitigation:</strong> 2.x users should upgrade to 2.8.6.</p>
+
+<p>Users wh ocannot upgrade immediately should monkey-patch the related escaping; see <a href="https://dist.apache.org/repos/dist/release/storm/apache-storm-2.8.6/RELEASE_NOTES.html">for details.</a></p>
 
 <p><strong>Credit:</strong> This issue was discovered while investigating another report by K.</p>
 
