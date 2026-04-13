@@ -10,6 +10,8 @@ Apache Storm offers a range of configuration options when trying to secure
 your cluster.  By default all authentication and authorization is disabled but 
 can be turned on as needed.
 
+For the assumptions, trust boundaries, and scope of what Storm considers a security vulnerability, see the [Apache Storm Security Model](/security-model.html). Reading it first is recommended before reporting security issues.
+
 ## Firewall/OS level Security
 
 You can still have a secure storm cluster without turning on formal
