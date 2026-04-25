@@ -5,9 +5,91 @@
     <description></description>
     <link>https://storm.apache.org/</link>
     <atom:link href="https://storm.apache.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 13 Apr 2026 17:49:55 +0000</pubDate>
-    <lastBuildDate>Mon, 13 Apr 2026 17:49:55 +0000</lastBuildDate>
+    <pubDate>Sat, 25 Apr 2026 14:43:54 +0000</pubDate>
+    <lastBuildDate>Sat, 25 Apr 2026 14:43:54 +0000</lastBuildDate>
     <generator>Jekyll v3.10.0</generator>
+    
+      <item>
+        <title>Apache Storm 2.8.7 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.8.7 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This release includes security fixes, new features, bug fixes, and library updates.
+We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-2-8-7&quot;&gt;Changes in this Release - Storm 2.8.7&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues addressed in the 2.8.7 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Security Fixes&lt;/h2&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-40557&quot;&gt;CVE-2026-40557&lt;/a&gt; - Improper Certificate Validation via Global SSL Context Downgrade in Apache Storm Prometheus Reporter&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; from 2.6.3 to 2.8.6.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; In production deployments where an administrator enables &lt;code&gt;storm.daemon.metrics.reporter.plugin.prometheus.skip_tls_validation&lt;/code&gt; (by default it is disabled) intending to affect only the Prometheus reporter, the undocumented global side effect creates an attack surface across every TLS-protected communication channel in the Storm daemon. The PrometheusPreparableReporter class implements an &lt;code&gt;INSECURE_TRUST_MANAGER&lt;/code&gt; that accepts all SSL certificates without validation. When this setting is enabled, it calls &lt;code&gt;SSLContext.setDefault()&lt;/code&gt;, which globally replaces the JVM&apos;s default SSL context, resulting in a JVM-wide TLS security downgrade.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; 2.x users should upgrade to 2.8.7 if the Prometheus Metrics Reporter is used. Users who cannot upgrade immediately should ensure &lt;code&gt;storm.daemon.metrics.reporter.plugin.prometheus.skip_tls_validation&lt;/code&gt; is set to &lt;code&gt;false&lt;/code&gt; (default) and configure a proper truststore.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; This issue was discovered by K.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-41081&quot;&gt;CVE-2026-41081&lt;/a&gt; - Improper Handling of TLS Client Authentication Failure Leading to Anonymous Principal Assignment&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; before 2.8.7.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; When TLS transport is enabled in Apache Storm without requiring client certificate authentication, the &lt;code&gt;TlsTransportPlugin&lt;/code&gt; assigns a fallback principal (&lt;code&gt;CN=ANONYMOUS&lt;/code&gt;) if certificate verification fails, rather than rejecting the connection. This enables unauthenticated clients to establish a TLS connection and potentially bypass authorization if the authorizer does not explicitly deny access to &lt;code&gt;CN=ANONYMOUS&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Users should upgrade to 2.8.7 in which TLS authentication failures are handled in a fail-closed manner. Users who cannot upgrade immediately should enable mandatory client certificate authentication (&lt;code&gt;nimbus.thrift.tls.client.auth.required: true&lt;/code&gt;) and ensure authorization rules explicitly deny access to &lt;code&gt;CN=ANONYMOUS&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; This issue was discovered by K.&lt;/p&gt;
+
+&lt;h2&gt;Enhancements&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8533&quot;&gt;#8533&lt;/a&gt;] - flux: fix &apos;recieveed&apos; -&gt; &apos;received&apos; in LogInfoBolt Javadoc&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8532&quot;&gt;#8532&lt;/a&gt;] - storm-client: fix &apos;accross&apos; -&gt; &apos;across&apos; in Stream.java Javadoc&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8531&quot;&gt;#8531&lt;/a&gt;] - storm-core: fix &apos;seperate&apos; -&gt; &apos;separate&apos; in configuration.h comment&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8530&quot;&gt;#8530&lt;/a&gt;] - docs: fix &apos;occured&apos; -&gt; &apos;occurred&apos; in LocallyCachedBlob Javadoc&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8529&quot;&gt;#8529&lt;/a&gt;] - docs: fix &apos;recieved&apos; -&gt; &apos;received&apos; typo in IAutoCredentials Javadoc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Dependency upgrades&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8526&quot;&gt;#8526&lt;/a&gt;] - Bump com.google.guava:guava from 33.5.0-jre to 33.6.0-jre&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8525&quot;&gt;#8525&lt;/a&gt;] - Bump org.apache.commons:commons-configuration2 from 2.13.0 to 2.14.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8524&quot;&gt;#8524&lt;/a&gt;] - Bump bouncycastle.version from 1.83 to 1.84&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8523&quot;&gt;#8523&lt;/a&gt;] - Bump org.rocksdb:rocksdbjni from 10.10.1 to 10.10.1.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8522&quot;&gt;#8522&lt;/a&gt;] - Bump org.jgrapht:jgrapht-core from 0.9.0 to 1.5.3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8520&quot;&gt;#8520&lt;/a&gt;] - Bump org.apache.hbase:hbase-client from 2.6.4-hadoop3 to 2.6.5-hadoop3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8519&quot;&gt;#8519&lt;/a&gt;] - Bump follow-redirects from 1.15.11 to 1.16.0 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8511&quot;&gt;#8511&lt;/a&gt;] - Bump axios from 1.13.6 to 1.15.0 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8508&quot;&gt;#8508&lt;/a&gt;] - Bump org.apache.activemq:activemq-client from 6.2.3 to 6.2.4&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8507&quot;&gt;#8507&lt;/a&gt;] - Bump org.apache.activemq:activemq-broker from 6.2.3 to 6.2.4&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8506&quot;&gt;#8506&lt;/a&gt;] - Bump org.apache.activemq:activemq-all from 6.2.3 to 6.2.4&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8505&quot;&gt;#8505&lt;/a&gt;] - Bump org.apache.activemq:activemq-mqtt from 6.2.3 to 6.2.4&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug fixing&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8518&quot;&gt;#8518&lt;/a&gt;] - Cache busting is broken - ${packageTimestamp} is never substituted in HTML resources&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8516&quot;&gt;#8516&lt;/a&gt;] - Hardening: clean up TlsTransportPlugin and surface unverified peers&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8515&quot;&gt;#8515&lt;/a&gt;] - Profiling/debugging REST endpoints should use POST instead of GET&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 25 Apr 2026 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2026/04/25/storm287-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2026/04/25/storm287-released.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Apache Storm 2.8.6 Released</title>
@@ -798,53 +880,6 @@ users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
         <pubDate>Fri, 18 Oct 2024 00:00:00 +0000</pubDate>
         <link>https://storm.apache.org/2024/10/18/storm270-released.html</link>
         <guid isPermaLink="true">https://storm.apache.org/2024/10/18/storm270-released.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Apache Storm 2.6.4 Released</title>
-        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.6.4 has been
-released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;This release includes new features as well as a number of code improvements, bug fixes and library updates.
-We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
-
-&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
-
-&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
-through direct code contributions, documentation, bug reports, or helping other
-users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
-
-&lt;h2 id=&quot;changes-in-this-release-storm-2-6-4&quot;&gt;Changes in this Release - Storm 2.6.4&lt;/h2&gt;
-
-&lt;p&gt;JIRA issues addressed in the 2.6.4 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2&gt;New Feature&lt;/h2&gt;
-
-&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4070&quot;&gt;STORM-4070&lt;/a&gt;] - mTls support&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;Bug&lt;/h2&gt;
-
-&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4069&quot;&gt;STORM-4069&lt;/a&gt;] -  java.lang.ClassCastException for Trident-based Topology&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
-
-&lt;ul&gt;
-    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4071&quot;&gt;STORM-4071&lt;/a&gt;] - Bump com.zaxxer:HikariCP from 5.0.1 to 5.1.0 &lt;/li&gt;
-    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4072&quot;&gt;STORM-4072&lt;/a&gt;] - Bump org.jctools:jctools-core from 2.0.1 to 4.0.5 &lt;/li&gt;
-    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4073&quot;&gt;STORM-4073&lt;/a&gt;] - Bump com.fasterxml.jackson:jackson-bom from 2.16.1 to 2.17.2 &lt;/li&gt;
-    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4074&quot;&gt;STORM-4074&lt;/a&gt;] - Bump joda-time:joda-time from 2.12.5 to 2.12.7&lt;/li&gt;
-    &lt;li&gt;[&lt;a href=&quot;https://issues.apache.org/jira/browse/STORM-4078&quot;&gt;STORM-4078&lt;/a&gt;] - Uplift Netty version to 4.1.112&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;/body&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 03 Sep 2024 00:00:00 +0000</pubDate>
-        <link>https://storm.apache.org/2024/09/03/storm264-released.html</link>
-        <guid isPermaLink="true">https://storm.apache.org/2024/09/03/storm264-released.html</guid>
         
         
       </item>
