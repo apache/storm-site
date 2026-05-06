@@ -1,20 +1,24 @@
 services:
   local:
-    image: jekyll/jekyll:latest
+    build: .
     profiles: ["local"]
     volumes:
       - .:/srv/jekyll
+      - bundle_cache:/usr/local/bundle
     ports:
       - "4000:4000"
-    command: jekyll serve --watch --force_polling -config _config-local.yml
+    environment:
+      JEKYLL_ENV: development
+    command: sh -c "bundle install && bundle exec jekyll serve --watch --force_polling --incremental --host 0.0.0.0 --config _config-local.yml"
 
   build:
-    image: jekyll/jekyll:latest
+    build: .
     profiles: ["build"]
     volumes:
       - .:/srv/jekyll
-    command: jekyll build
+      - bundle_cache:/usr/local/bundle
+    command: sh -c "bundle install && bundle exec jekyll build"
 
 volumes:
-  jekyll_data:
+  bundle_cache:
     driver: local

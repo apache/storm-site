@@ -6,7 +6,26 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    {% assign meta_title = page.title | default: site.title %}
+    {% assign meta_description = page.description | default: site.description %}
+    {% assign meta_image = site.url | append: '/images/logo.png' %}
+    {% assign meta_url = site.url | append: page.url %}
+
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_description }}">
+    <link rel="canonical" href="{{ meta_url }}">
+
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ meta_url }}">
+    <meta property="og:image" content="{{ meta_image }}">
+    <meta property="og:site_name" content="{{ site.title }}">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ meta_title }}">
+    <meta name="twitter:description" content="{{ meta_description }}">
+    <meta name="twitter:image" content="{{ meta_image }}">
 
     <!-- Bootstrap core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">

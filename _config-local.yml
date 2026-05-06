@@ -19,9 +19,37 @@ redcarpet:
 
 keep_files:   [".git", ".svn"]
 encoding:     "utf-8"
+
+# Local dev only: skip old release docs so `jekyll serve --watch` stays fast.
+# Production (_config.yml + GitHub Actions) still builds every release.
+# The latest 2.8.x version and the `current` symlink remain buildable.
 exclude:
   - README.md
   - vendor/
+  - releases/1.2.3
+  - releases/1.2.4
+  - releases/2.0.0
+  - releases/2.1.0
+  - releases/2.1.1
+  - releases/2.2.0
+  - releases/2.2.1
+  - releases/2.3.0
+  - releases/2.4.0
+  - releases/2.5.0
+  - releases/2.6.0
+  - releases/2.6.1
+  - releases/2.6.2
+  - releases/2.6.3
+  - releases/2.6.4
+  - releases/2.7.0
+  - releases/2.7.1
+  - releases/2.8.0
+  - releases/2.8.1
+  - releases/2.8.2
+  - releases/2.8.3
+  - releases/2.8.4
+  - releases/2.8.5
+  - releases/2.8.6
 
 
 

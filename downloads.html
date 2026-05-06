@@ -1,29 +1,17 @@
 ---
 layout: default
 title: Apache Storm downloads
-older:
-  - 0.8.1: smesqx9uwa7f0qk
-  - 0.8.0: a6lgds9wbki04d2
-  - 0.7.4: 8245jp6v9eanttq
-  - 0.7.3: k3fmyihazj3b5c5
-  - 0.7.2: rzjaohlfcrx8h7l
-  - 0.7.1: 3pr1rd8fx5kls3w
-  - 0.7.0: pfz2xsy3om6g9eo
-  - 0.6.2: eycmnk50d52fshe
-  - 0.6.1: jowrk06bslsp542
-  - 0.6.0: awr380ytrg9q2tb
-  - 0.5.4: 8ep0oujz1et8sdd
-  - 0.5.3: iqnt220u43wapqw
-  - 0.5.2: ycbts1ljwe27n08
-  - 0.5.1: xlg3j5zy1tbe24t
-  - 0.5.0: m233lpi1pj37e8x
 ---
+{% assign current = site.data.releases | where: "has-download", true | first %}
+{% assign base = current['base-name'] %}
+{% assign cdn = "https://dlcdn.apache.org/storm/" | append: base %}
+{% assign sigs = "https://downloads.apache.org/storm/" | append: base %}
 <div class="content">
 	<div class="container-fluid">
     	<div class="row">
         	<div class="col-md-12">
 				<p>
-				Downloads for Apache Storm are below. Instructions for how to set up an Apache Storm cluster can be found <a href="/documentation/Setting-up-a-Storm-cluster.html">here</a>.
+				Downloads for Apache Storm are below. Instructions for how to set up an Apache Storm cluster can be found <a href="/releases/current/Setting-up-a-Storm-cluster.html">here</a>.
 				</p>
 
 				<h3>Release Integrity</h3>
@@ -35,38 +23,29 @@ older:
 				<h3>Requirements</h3>
 				Apache Storm requires Java 17 or later.
 
-				<h3>Current 2.8.x Release</h3>
-				The current 2.8.x release is 2.8.7. Source and binary distributions can be found below.
+				<h3>Current {{ current.name }} Release</h3>
+				The current release is {{ current.name }}. Source and binary distributions can be found below.
 
-				The list of changes for this release can be found <a href="https://downloads.apache.org/storm/apache-storm-2.8.7/RELEASE_NOTES.html">here.</a>
+				The list of changes for this release can be found <a href="{{ sigs }}/RELEASE_NOTES.html">here.</a>
 
-				<p><a href="releases/2.8.7/index.html">Documentation</a>
-					<br/><a href="releases/2.8.7/javadocs/index.html">Javadocs</a></p>
+				<p><a href="/releases/{{ current.name }}/index.html">Documentation</a>
+					<br/><a href="https://javadoc.io/doc/org.apache.storm/storm-client/{{ current.name }}">Javadocs</a></p>
 
 				<ul>
-					<li><a href="https://dlcdn.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7.tar.gz">apache-storm-2.8.7.tar.gz</a>
-						[<a href="https://downloads.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7.tar.gz.asc">PGP</a>]
-						[<a href="https://downloads.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7.tar.gz.sha512">SHA512</a>]
+					{% assign artifacts = ".tar.gz,.zip,-src.tar.gz,-src.zip" | split: "," %}
+					{% for suffix in artifacts %}
+					<li><a href="{{ cdn }}/{{ base }}{{ suffix }}">{{ base }}{{ suffix }}</a>
+						[<a href="{{ sigs }}/{{ base }}{{ suffix }}.asc">PGP</a>]
+						[<a href="{{ sigs }}/{{ base }}{{ suffix }}.sha512">SHA512</a>]
 					</li>
-					<li><a href="https://dlcdn.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7.zip">apache-storm-2.8.7.zip</a>
-						[<a href="https://downloads.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7.zip.asc">PGP</a>]
-						[<a href="https://downloads.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7.zip.sha512">SHA512</a>]
-					</li>
-					<li><a href="https://dlcdn.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7-src.tar.gz">apache-storm-2.8.7-src.tar.gz</a>
-						[<a href="https://downloads.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7-src.tar.gz.asc">PGP</a>]
-						[<a href="https://downloads.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7-src.tar.gz.sha512">SHA512</a>]
-					</li>
-					<li><a href="https://dlcdn.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7-src.zip">apache-storm-2.8.7-src.zip</a>
-						[<a href="https://downloads.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7-src.zip.asc">PGP</a>]
-						[<a href="https://downloads.apache.org/storm/apache-storm-2.8.7/apache-storm-2.8.7-src.zip.sha512">SHA512</a>]
-					</li>
+					{% endfor %}
 				</ul>
 				Apache Storm artifacts are hosted in <a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.storm%22">Maven Central</a>. You can add Apache Storm as a dependency with the following coordinates:
 
 				<pre>
 groupId: <a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.storm%22">org.apache.storm</a>
 artifactId: storm-{component}
-version: 2.8.7</pre>
+version: {{ current.name }}</pre>
 
 				Apache Storm is also provided as official Docker image via <a href="https://hub.docker.com/_/storm/">Docker Hub</a>.
 
