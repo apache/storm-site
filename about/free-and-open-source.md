@@ -2,7 +2,7 @@
 layout: about
 ---
 
-Apache Storm is a free and open source project licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
+Apache Storm is a free and open source project licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html). It has been used in production at companies including Yahoo, Twitter, Spotify, Alibaba, Baidu, Yelp, Groupon, and The Weather Channel.
 
 
 Apache Storm ships with a set of integrations for common systems:
