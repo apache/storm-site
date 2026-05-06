@@ -21,11 +21,6 @@ $(document).ready(function() {
         }
     });
 
-    //Owl Carousel For CLient List
-	$("#owl-example").owlCarousel({
-		items: 8
-	});	
-
 	$(".navbar li a").each(function() {
 		if(document.URL.indexOf(this.getAttribute('href'))>0)
 		{

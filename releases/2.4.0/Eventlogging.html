@@ -8,7 +8,26 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
+    
+    
+    
+    
+
     <title>Topology event inspector</title>
+    <meta name="description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <link rel="canonical" href="https://storm.apache.org/releases/2.4.0/Eventlogging.html">
+
+    <meta property="og:title" content="Topology event inspector">
+    <meta property="og:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://storm.apache.org/releases/2.4.0/Eventlogging.html">
+    <meta property="og:image" content="https://storm.apache.org/images/logo.png">
+    <meta property="og:site_name" content="Apache Storm">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Topology event inspector">
+    <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
 
     <!-- Bootstrap core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -18,29 +37,24 @@
     <!-- Custom styles for this template -->
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
-    <link href="/assets/css/owl.theme.css" rel="stylesheet">
-    <link href="/assets/css/owl.carousel.css" rel="stylesheet">
     <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/assets/js/owl.carousel.min.js"></script>
     <script type="text/javascript" src="/assets/js/storm.js"></script>
 </head>
 
 
   <body>
+    <a class="github-fork-ribbon" href="https://github.com/apache/storm" target="_blank" rel="noopener" aria-label="Fork Apache Storm on GitHub">Fork me on GitHub</a>
     <header>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-8">
                 <a href="/index.html"><img src="/images/logo.png" class="logo"/></a>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 
                 <h1>Version: 2.4.0</h1>
                 
-            </div>
-            <div class="col-md-2">
-                <a href="/downloads.html" class="btn-std btn-block btn-download">Download</a>
             </div>
         </div>
     </div>
@@ -59,9 +73,6 @@
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
                 <li><a href="/index.html" id="home">Home</a></li>
-                <li><a href="/getting-help.html" id="getting-help">Getting Help</a></li>
-                <li><a href="/security-model.html" id="security-model">Security</a></li>
-                <li><a href="/about/integrates.html" id="project-info">Project Information</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="documentation">Documentation <b
                             class="caret"></b></a>
@@ -131,18 +142,35 @@
                         <li><a href="/older-releases.html">Older Versions</a></li>
                     </ul>
                 </li>
-                <li><a href="/talksAndVideos.html">Talks and Slideshows</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="contribute">Community <b
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="about">About <b
                             class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li><a href="/about/integrates.html">Integrates</a></li>
+                        <li><a href="/about/simple-api.html">Simple API</a></li>
+                        <li><a href="/about/scalable.html">Scalable</a></li>
+                        <li><a href="/about/fault-tolerant.html">Fault tolerant</a></li>
+                        <li><a href="/about/guarantees-data-processing.html">Guarantees data processing</a></li>
+                        <li><a href="/about/multi-language.html">Use with any language</a></li>
+                        <li><a href="/about/deployment.html">Easy to deploy and operate</a></li>
+                        <li><a href="/about/free-and-open-source.html">Free and open source</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="community">Community <b
+                            class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/getting-help.html">Getting Help</a></li>
                         <li><a href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
                         <li><a href="/contribute/People.html">People</a></li>
                         <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
-                        <li><a href="/Powered-By.html">PoweredBy</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/talksAndVideos.html">Talks and Slideshows</a></li>
                     </ul>
                 </li>
-                <li><a href="/2026/04/25/storm287-released.html" id="news">News</a></li>
+                <li><a href="/news.html" id="news">News</a></li>
+                <li><a href="/security-model.html" id="security-model">Security</a></li>
+                <li><a href="/downloads.html" id="download">Download</a></li>
             </ul>
         </nav>
     </div>
@@ -151,7 +179,9 @@
 
 
     <div class="container-fluid">
+    
     <h1 class="page-title">Topology event inspector</h1>
+    
           <div class="row">
            	<div class="col-md-12">
 	             <!-- Documentation -->
@@ -270,7 +300,7 @@ Alternate implementations of the <code>IEventLogger</code> interface can be adde
 <p>To register event logger to your topology, add to your topology&#39;s configuration like:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">conf</span><span class="o">.</span><span class="na">registerEventLogger</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">storm</span><span class="o">.</span><span class="na">metric</span><span class="o">.</span><span class="na">FileBasedEventLogger</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 </code></pre></div>
-<p>You can refer <a href="javadocs/org/apache/storm/Config.html#registerEventLogger-java.lang.Class-">Config#registerEventLogger</a> and overloaded methods from javadoc.</p>
+<p>You can refer <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.4.0/org/apache/storm/Config.html#registerEventLogger-java.lang.Class-">Config#registerEventLogger</a> and overloaded methods from javadoc.</p>
 
 <p>Otherwise edit the storm.yaml config file:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">topology.event.logger.register</span><span class="pi">:</span>
@@ -279,7 +309,7 @@ Alternate implementations of the <code>IEventLogger</code> interface can be adde
     <span class="na">arguments</span><span class="pi">:</span>
       <span class="na">endpoint</span><span class="pi">:</span> <span class="s2">"</span><span class="s">event-logger.mycompany.org"</span>
 </code></pre></div>
-<p>When you implement your own event logger, <code>arguments</code> is passed to Map<String, Object> when <a href="javadocs/org/apache/storm/metric/IEventLogger.html#prepare-java.util.Map-java.lang.Map-org.apache.storm.task.TopologyContext-">IEventLogger#prepare</a> is called.</p>
+<p>When you implement your own event logger, <code>arguments</code> is passed to Map<String, Object> when <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.4.0/org/apache/storm/metric/IEventLogger.html#prepare-java.util.Map-java.lang.Map-org.apache.storm.task.TopologyContext-">IEventLogger#prepare</a> is called.</p>
 
 <p>Please keep in mind that EventLoggerBolt is just a kind of Bolt, so whole throughput of the topology will go down when registered event loggers cannot keep up handling incoming events, so you may want to take care of the Bolt like normal Bolt.
 One of idea to avoid this is making your implementation of IEventLogger as <code>non-blocking</code> fashion.</p>
@@ -322,7 +352,7 @@ One of idea to avoid this is making your implementation of IEventLogger as <code
                     <h5>Documentation</h5>
                     <ul class="footer-list">
                         <li><a href="/releases/current/index.html">Index</a></li>
-                        <li><a href="/releases/current/javadocs/index.html">Javadoc</a></li>
+                        <li><a href="https://javadoc.io/doc/org.apache.storm/storm-client/latest">Javadoc</a></li>
                         <li><a href="/releases/current/FAQ.html">FAQ</a></li>
                     </ul>
                 </div>
@@ -344,7 +374,7 @@ One of idea to avoid this is making your implementation of IEventLogger as <code
             <div class="col-md-12">
                 <p align="center">Copyright © 2026 <a href="https://www.apache.org">Apache Software Foundation</a>
                     . All Rights Reserved.
-                    <br>Apache Storm, Apache, the Apache feather logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation. 
+                    <br>Apache Storm, Apache, the Apache logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation.
                     <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
             </div>
         </div>
