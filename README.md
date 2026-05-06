@@ -41,14 +41,7 @@ By default, jekyll will generate the site in a `_site` directory.
 # Adding a new release to the website
 In order to add a new release, you must have committer access to the storm-site repository at https://github.com/apache/storm-site.
 
-You must first generate Javadoc for the new release. Check out the Storm repository from https://github.com/apache/storm, and check out the version of the code you are releasing.
-
-You must have already installed the storm-shaded-deps module, so please run `mvn clean install -pl storm-shaded-deps -am` if you haven't built Storm already.
-
-In the Storm project root run
-```
-mvn javadoc:aggregate -DreportOutputDirectory=./docs/ -DdestDir=javadocs -Dnotimestamp=true -pl '!storm-shaded-deps'
-```
+Javadocs are no longer kept in this repository — they are served on demand by [javadoc.io](https://javadoc.io/doc/org.apache.storm/storm-client) directly from the artifacts published to Maven Central. There is nothing to generate or copy for javadocs when cutting a new release.
 
 In the storm-site project, release documentation is placed under the releases directory named after the release version. See [below](#how-release-specific-docs-work) for details about release specific documentation.
 
@@ -56,10 +49,9 @@ To add documentation for a new release, run the following from the Storm project
 
 ```
 mkdir ${path_to_storm_site}/releases/${release_name}
-#Copy everything over, and compare checksums, except for things that are part of the site,
-# and are not release specific like the _* directories that are jekyll specific
-# assets/ css/ and README.md
-rsync -ac --delete --exclude _\* --exclude assets --exclude css --exclude README.md ./docs/ ${path_to_storm_site}/releases/${release_name}
+# Copy everything over except things that are part of the site (and not
+# release-specific) and javadocs (which now live on javadoc.io).
+rsync -ac --delete --exclude _\* --exclude assets --exclude css --exclude README.md --exclude javadocs ./docs/ ${path_to_storm_site}/releases/${release_name}
 cd ${path_to_storm_site}
 git add releases/${release_name}
 git commit
@@ -73,7 +65,7 @@ ln -f -n -s ${release_name} current
 
 Compose a new blog post announcement for the new release on the `_posts` folder. You can use the `RELEASE_NOTES.html` file generated on `storm` project to retrieve the specific HTML for this version.
 
-Update the downloads page on `downloads.html` to point to the new version's links. 
+`downloads.html` is templated and reads the latest version from `site.data.releases` automatically — no manual edits are needed for new releases.
 
 ## How release specific docs work
 
@@ -115,10 +107,10 @@ If you wanted to create a maven string to tell people what dependency to use you
 </dependency>
 ```
 
-If you want to refer to a javadoc for the current release use a relative path.  It will be in the javadocs subdirectory.
+If you want to link to a javadoc page from a release doc, use an absolute URL pointing at javadoc.io. The version segment should match `{{page.version}}` so the link stays correct as docs are reused across releases.
 
 ```
-[TopologyBuilder](javadocs/org/apache/storm/topology/TopologyBuilder.html)
+[TopologyBuilder](https://javadoc.io/doc/org.apache.storm/storm-client/{{page.version}}/org/apache/storm/topology/TopologyBuilder.html)
 ```
 
 # Deployment
