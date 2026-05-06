@@ -2,7 +2,7 @@
 layout: about
 ---
 
-Apache Storm integrates with many queueing and database systems. Apache Storm's [spout](/releases/current/javadocs/org/apache/storm/spout/ISpout.html) abstraction makes it easy to integrate a new queuing system.
+Apache Storm integrates with many queueing and database systems. Apache Storm's [spout](https://javadoc.io/doc/org.apache.storm/storm-client/latest/org/apache/storm/spout/ISpout.html) abstraction makes it easy to integrate a new queuing system.
 
 Out of the box, Apache Storm ships with integrations for:
 

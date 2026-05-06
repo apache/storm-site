@@ -650,7 +650,7 @@ nimbus.groups:
 
 ### DRPC
  
-Storm provides the Access Control List for the DRPC Authorizer.Users can see [org.apache.storm.security.auth.authorizer.DRPCSimpleACLAuthorizer](javadocs/org/apache/storm/security/auth/authorizer/DRPCSimpleACLAuthorizer.html) for more details.
+Storm provides the Access Control List for the DRPC Authorizer.Users can see [org.apache.storm.security.auth.authorizer.DRPCSimpleACLAuthorizer](https://javadoc.io/doc/org.apache.storm/storm-client/2.8.5/org/apache/storm/security/auth/authorizer/DRPCSimpleACLAuthorizer.html) for more details.
  
 There are several DRPC ACL related configurations.
  
