@@ -855,10 +855,14 @@ footer hr {
 	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 	gap: 16px;
 }
+.team-legend {
+	margin: 0 0 22px;
+	color: #555;
+	font-size: 13px;
+	line-height: 1.9;
+}
+.team-legend .role-badge { margin-right: 4px; }
 .team-card {
-	display: flex;
-	align-items: center;
-	gap: 14px;
 	padding: 14px 16px;
 	background: #fff;
 	border: 1px solid #e2e6ea;
@@ -869,40 +873,28 @@ footer hr {
 	box-shadow: 0 4px 14px rgba(35, 86, 147, 0.10);
 	border-color: #c8d3df;
 }
-.team-avatar {
-	flex: 0 0 48px;
-	width: 48px;
-	height: 48px;
-	border-radius: 50%;
-	background: linear-gradient(135deg, #328fbf, #235693);
-	color: #fff;
-	font-weight: 700;
-	font-size: 20px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-transform: uppercase;
-}
-.team-card--active .team-avatar { background: linear-gradient(135deg, #32bf61, #235693); }
-.team-meta { min-width: 0; flex: 1; }
 .team-name {
-	margin: 0 0 4px;
+	margin: 0 0 6px;
 	font-weight: 700;
 	font-size: 15px;
+	line-height: 1.3;
 	color: #222;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	overflow-wrap: break-word;
+	word-break: break-word;
+	hyphens: auto;
 }
-.team-roles { margin: 0 0 4px; line-height: 1; }
+.team-roles { margin: 0 0 6px; line-height: 1.6; }
 .role-badge {
 	display: inline-block;
+	min-width: 18px;
 	padding: 2px 7px;
 	margin-right: 4px;
 	font-size: 11px;
 	font-weight: 700;
+	line-height: 1.3;
 	letter-spacing: 0.4px;
 	text-transform: uppercase;
+	text-align: center;
 	border-radius: 3px;
 	color: #fff;
 	vertical-align: middle;
@@ -910,18 +902,16 @@ footer hr {
 .role-chair     { background: #c75a26; }
 .role-pmc       { background: #235693; }
 .role-committer { background: #4a90a4; }
-.role-badge--sm { padding: 1px 5px; font-size: 10px; }
+.role-badge--sm { padding: 1px 5px; font-size: 10px; min-width: 14px; }
 .team-links {
 	margin: 0;
 	font-size: 13px;
 	color: #666;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	overflow-wrap: break-word;
+	word-break: break-word;
 }
 .team-links a { color: #235693; font-weight: 600; }
 .team-links a:hover { color: #328fbf; }
-.team-availid { color: #999; font-size: 12px; }
 
 .team-emeritus-intro {
 	color: #555;
@@ -940,9 +930,8 @@ footer hr {
 .team-emeritus-list li {
 	padding: 4px 0;
 	color: #444;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	overflow-wrap: break-word;
+	word-break: break-word;
 }
 .team-emeritus-list a { color: #235693; }
 .team-emeritus-list a:hover { color: #328fbf; }

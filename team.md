@@ -17,23 +17,28 @@ description: The PMC, committers, and contributors behind Apache Storm.
 
 <section class="team-section">
   <h2 id="active">Active team</h2>
+  <p class="team-legend">
+    <span class="role-badge role-chair">Chair</span> Current PMC chair
+    &nbsp;&middot;&nbsp;
+    <span class="role-badge role-pmc">P</span> PMC member
+    &nbsp;&middot;&nbsp;
+    <span class="role-badge role-committer">C</span> Committer
+  </p>
   {% if site.data.team_active and site.data.team_active.size > 0 %}
   <ul class="team-grid">
     {% for m in site.data.team_active %}
     <li class="team-card team-card--active">
-      <div class="team-avatar" aria-hidden="true">{{ m.name | slice: 0, 1 | upcase }}</div>
-      <div class="team-meta">
-        <p class="team-name">{{ m.name }}</p>
-        <p class="team-roles">
-          {% if m.role == 'chair' %}<span class="role-badge role-chair" title="PMC Chair">Chair</span>{% endif %}
-          {% if m.role == 'pmc' or m.role == 'chair' %}<span class="role-badge role-pmc" title="PMC member">PMC</span>{% endif %}
-          <span class="role-badge role-committer" title="Committer">Committer</span>
-        </p>
-        <p class="team-links">
-          <a href="https://github.com/{{ m.github }}" rel="noopener" target="_blank">@{{ m.github }}</a>
-          <span class="team-availid">·&nbsp;{{ m.apache_id }}@apache.org</span>
-        </p>
-      </div>
+      <p class="team-name">{{ m.name }}</p>
+      <p class="team-roles">
+        {% if m.role == 'chair' %}<span class="role-badge role-chair" title="PMC Chair">Chair</span>{% endif %}
+        {% if m.role == 'pmc' or m.role == 'chair' %}<span class="role-badge role-pmc" title="PMC member">P</span>{% endif %}
+        <span class="role-badge role-committer" title="Committer">C</span>
+      </p>
+      {% if m.github %}
+      <p class="team-links">
+        <a href="https://github.com/{{ m.github }}" rel="noopener" target="_blank">@{{ m.github }}</a>
+      </p>
+      {% endif %}
     </li>
     {% endfor %}
   </ul>
@@ -53,9 +58,9 @@ description: The PMC, committers, and contributors behind Apache Storm.
   <ul class="team-emeritus-list">
     {% for m in site.data.team_emeritus %}
     <li>
-      <a href="https://github.com/{{ m.github }}" rel="noopener" target="_blank">{{ m.name }}</a>
-      {% if m.role == 'pmc' %}<span class="role-badge role-pmc role-badge--sm">PMC</span>{% endif %}
-      <span class="team-availid">({{ m.apache_id }})</span>
+      {% if m.github %}<a href="https://github.com/{{ m.github }}" rel="noopener" target="_blank">{{ m.name }}</a>{% else %}{{ m.name }}{% endif %}
+      {% if m.role == 'pmc' %}<span class="role-badge role-pmc role-badge--sm" title="PMC member">P</span>{% endif %}
+      <span class="role-badge role-committer role-badge--sm" title="Committer">C</span>
     </li>
     {% endfor %}
   </ul>

@@ -64,14 +64,14 @@ module StormTeam
           end
         {
           'apache_id' => aid,
-          'name'      => person['name']   || aid,
-          'github'    => person['github'] || aid,
+          'name'      => person['name'] || aid,
+          'github'    => person['github'],
           'role'      => role,
           'active'    => (aid == chair_id) || active_set.include?(aid),
         }
       end
 
-      site.data['team_active']   = records.select { |r| r['active'] }.sort_by { |r| active_sort_key(r) }
+      site.data['team_active']   = records.select { |r| r['active'] }.sort_by { |r| r['name'].to_s.downcase }
       site.data['team_emeritus'] = records.reject { |r| r['active'] }.sort_by { |r| r['name'].to_s.downcase }
 
       Jekyll.logger.info 'StormTeam:',
@@ -79,11 +79,6 @@ module StormTeam
     end
 
     private
-
-    def active_sort_key(record)
-      rank = { 'chair' => 0, 'pmc' => 1, 'committer' => 2 }[record['role']] || 3
-      [rank, record['name'].to_s.downcase]
-    end
 
     def fetch_committee
       data = fetch_json(WHIMSY_PROJECTS_URL)
