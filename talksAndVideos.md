@@ -8,12 +8,12 @@ documentation: true
 	<div class="col-md-12">	
 		<div class="resources">
 			<ul class="nav nav-tabs" role="tablist">
-		        <li role="presentation" class="active"><a href="#talks" aria-controls="talks" role="tab" data-toggle="tab">Talks</a></li>
-		        <li role="presentation"><a href="#slideshows" aria-controls="slideshows" role="tab" data-toggle="tab">Slideshows</a></li>
+		        <li class="nav-item" role="presentation"><a class="nav-link active" id="talks-tab" href="#talks" aria-controls="talks" role="tab" data-bs-toggle="tab" aria-selected="true">Talks</a></li>
+		        <li class="nav-item" role="presentation"><a class="nav-link" id="slideshows-tab" href="#slideshows" aria-controls="slideshows" role="tab" data-bs-toggle="tab" aria-selected="false">Slideshows</a></li>
 		    </ul>
 		    
 			<div class="tab-content">
-				<div role="tabpanel" class="tab-pane active" id="talks">
+				<div role="tabpanel" class="tab-pane active" id="talks" aria-labelledby="talks-tab" tabindex="0">
 				
                   <table class="table table-striped">
                     <thead>
@@ -104,7 +104,7 @@ documentation: true
 
 				</div>
 
-                <div role="tabpanel" class="tab-pane" id="slideshows">
+                <div role="tabpanel" class="tab-pane" id="slideshows" aria-labelledby="slideshows-tab" tabindex="0">
                   <table class="table table-striped">
                     <thead>
                       <tr>
