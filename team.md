@@ -18,11 +18,9 @@ description: The PMC, committers, and contributors behind Apache Storm.
 <section class="team-section">
   <h2 id="active">Active team</h2>
   <p class="team-legend">
-    <span class="role-badge role-chair">Chair</span> Current PMC chair
-    &nbsp;&middot;&nbsp;
-    <span class="role-badge role-pmc">P</span> PMC member
-    &nbsp;&middot;&nbsp;
-    <span class="role-badge role-committer">C</span> Committer
+    <span class="team-legend-item"><span class="role-badge role-chair">Chair</span>&nbsp;Current PMC chair</span>
+    <span class="team-legend-item"><span class="role-badge role-pmc">P</span>&nbsp;PMC member</span>
+    <span class="team-legend-item"><span class="role-badge role-committer">C</span>&nbsp;Committer</span>
   </p>
   {% if site.data.team_active and site.data.team_active.size > 0 %}
   <ul class="team-grid">
@@ -51,9 +49,12 @@ description: The PMC, committers, and contributors behind Apache Storm.
 <section class="team-section">
   <h2 id="emeritus">Emeritus</h2>
   <p class="team-emeritus-intro">
-    Past contributors who served as Storm PMC members or committers and are
-    no longer actively maintaining the project. Many of them shaped Storm
-    into what it is today &mdash; thank you.
+    Per the <a href="/contribute/BYLAWS.html">project bylaws</a>, PMC members
+    and committers who are no longer actively involved in Storm move to
+    emeritus status. This is not a one-way door &mdash; emeritus members can
+    return to active status at any time by simply dropping a note to
+    <a href="mailto:dev@storm.apache.org">dev@storm.apache.org</a>. Many of
+    these people shaped Storm into what it is today &mdash; thank you.
   </p>
   <ul class="team-emeritus-list">
     {% for m in site.data.team_emeritus %}
