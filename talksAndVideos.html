@@ -29,17 +29,14 @@
     <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
     <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
 
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap 5 core CSS (vendored locally) -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
-    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/assets/js/storm.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js" defer></script>
+    <script type="text/javascript" src="/assets/js/storm.js" defer></script>
 </head>
 
 
@@ -49,7 +46,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
-                <a href="/index.html"><img src="/images/logo.png" class="logo"/></a>
+                <a href="/index.html"><img src="/images/logo.png" class="logo" alt="Apache Storm"/></a>
             </div>
             <div class="col-md-4">
                 
@@ -59,54 +56,49 @@
 </header>
 <!--Header End-->
 <!--Navigation Begin-->
-<div class="navbar" role="banner">
+<nav class="navbar navbar-expand-md" data-bs-theme="dark" role="banner">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-            <ul class="nav navbar-nav">
-                <li><a href="/index.html" id="home">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="about">About <b
-                            class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/about/integrates.html">Integrates</a></li>
-                        <li><a href="/about/simple-api.html">Simple API</a></li>
-                        <li><a href="/about/scalable.html">Scalable</a></li>
-                        <li><a href="/about/fault-tolerant.html">Fault tolerant</a></li>
-                        <li><a href="/about/guarantees-data-processing.html">Guarantees data processing</a></li>
-                        <li><a href="/about/multi-language.html">Use with any language</a></li>
-                        <li><a href="/about/deployment.html">Easy to deploy and operate</a></li>
-                        <li><a href="/about/free-and-open-source.html">Free and open source</a></li>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#stormNavbar"
+                aria-controls="stormNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="stormNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/index.html" id="home">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="about" aria-expanded="false">About</a>
+                    <ul class="dropdown-menu" aria-labelledby="about">
+                        <li><a class="dropdown-item" href="/about/integrates.html">Integrates</a></li>
+                        <li><a class="dropdown-item" href="/about/simple-api.html">Simple API</a></li>
+                        <li><a class="dropdown-item" href="/about/scalable.html">Scalable</a></li>
+                        <li><a class="dropdown-item" href="/about/fault-tolerant.html">Fault tolerant</a></li>
+                        <li><a class="dropdown-item" href="/about/guarantees-data-processing.html">Guarantees data processing</a></li>
+                        <li><a class="dropdown-item" href="/about/multi-language.html">Use with any language</a></li>
+                        <li><a class="dropdown-item" href="/about/deployment.html">Easy to deploy and operate</a></li>
+                        <li><a class="dropdown-item" href="/about/free-and-open-source.html">Free and open source</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="documentation">Documentation <b
-                            class="caret"></b></a>
-                    <ul class="dropdown-menu">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="documentation" aria-expanded="false">Documentation</a>
+                    <ul class="dropdown-menu" aria-labelledby="documentation">
                         
                         
                         
-                        <li><a href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a href="/releases/2.8.6/index.html">2.8.6</a></li>
+                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
                         
                         
                         
                         
-                        <li><a href="/releases/2.8.5/index.html">2.8.5</a></li>
+                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/2.8.5/index.html">2.8.5</a></li>
                         
                         
                         
@@ -150,30 +142,32 @@
                         
                         
                         
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/older-releases.html">Older Versions</a></li>
+                        
+                        
+                        
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/older-releases.html">Older Versions</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="community">Community <b
-                            class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/getting-help.html">Getting Help</a></li>
-                        <li><a href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
-                        <li><a href="/team/">Team</a></li>
-                        <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="community" aria-expanded="false">Community</a>
+                    <ul class="dropdown-menu" aria-labelledby="community">
+                        <li><a class="dropdown-item" href="/getting-help.html">Getting Help</a></li>
+                        <li><a class="dropdown-item" href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a class="dropdown-item" href="/team/">Team</a></li>
+                        <li><a class="dropdown-item" href="/contribute/BYLAWS.html">ByLaws</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/talksAndVideos.html">Talks and Slideshows</a></li>
                     </ul>
                 </li>
-                <li><a href="/news.html" id="news">News</a></li>
-                <li><a href="/downloads.html" id="download">Download</a></li>
+                <li class="nav-item"><a class="nav-link" href="/news.html" id="news">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="/downloads.html" id="download">Download</a></li>
             </ul>
-        </nav>
+        </div>
     </div>
-</div>
-
-
+</nav>
 
     <div class="container-fluid">
     
@@ -189,12 +183,12 @@
     <div class="col-md-12"> 
         <div class="resources">
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#talks" aria-controls="talks" role="tab" data-toggle="tab">Talks</a></li>
-                <li role="presentation"><a href="#slideshows" aria-controls="slideshows" role="tab" data-toggle="tab">Slideshows</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link active" id="talks-tab" href="#talks" aria-controls="talks" role="tab" data-bs-toggle="tab" aria-selected="true">Talks</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" id="slideshows-tab" href="#slideshows" aria-controls="slideshows" role="tab" data-bs-toggle="tab" aria-selected="false">Slideshows</a></li>
             </ul>
             
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="talks">
+                <div role="tabpanel" class="tab-pane active" id="talks" aria-labelledby="talks-tab" tabindex="0">
                 
                   <table class="table table-striped">
                     <thead>
@@ -285,7 +279,7 @@
 
                 </div>
 
-                <div role="tabpanel" class="tab-pane" id="slideshows">
+                <div role="tabpanel" class="tab-pane" id="slideshows" aria-labelledby="slideshows-tab" tabindex="0">
                   <table class="table table-striped">
                     <thead>
                       <tr>
