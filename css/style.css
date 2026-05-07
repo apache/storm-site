@@ -830,9 +830,131 @@ footer hr {
 	.github-fork-ribbon { display: none; }
 }
 
+/* /team/ page */
+.team-page { margin: 0 0 40px; }
+.team-intro {
+	font-size: 16px;
+	line-height: 1.6;
+	max-width: 780px;
+	color: #444;
+	margin: 0 0 30px;
+}
+.team-section { margin: 36px 0; }
+.team-section h2 {
+	font-size: 24px;
+	margin: 0 0 18px;
+	padding-bottom: 8px;
+	border-bottom: 2px solid #e6e6e6;
+	color: #235693;
+}
+.team-grid {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 16px;
+}
+.team-card {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 14px 16px;
+	background: #fff;
+	border: 1px solid #e2e6ea;
+	border-radius: 6px;
+	transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.team-card:hover {
+	box-shadow: 0 4px 14px rgba(35, 86, 147, 0.10);
+	border-color: #c8d3df;
+}
+.team-avatar {
+	flex: 0 0 48px;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #328fbf, #235693);
+	color: #fff;
+	font-weight: 700;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: uppercase;
+}
+.team-card--active .team-avatar { background: linear-gradient(135deg, #32bf61, #235693); }
+.team-meta { min-width: 0; flex: 1; }
+.team-name {
+	margin: 0 0 4px;
+	font-weight: 700;
+	font-size: 15px;
+	color: #222;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.team-roles { margin: 0 0 4px; line-height: 1; }
+.role-badge {
+	display: inline-block;
+	padding: 2px 7px;
+	margin-right: 4px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.4px;
+	text-transform: uppercase;
+	border-radius: 3px;
+	color: #fff;
+	vertical-align: middle;
+}
+.role-chair     { background: #c75a26; }
+.role-pmc       { background: #235693; }
+.role-committer { background: #4a90a4; }
+.role-badge--sm { padding: 1px 5px; font-size: 10px; }
+.team-links {
+	margin: 0;
+	font-size: 13px;
+	color: #666;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.team-links a { color: #235693; font-weight: 600; }
+.team-links a:hover { color: #328fbf; }
+.team-availid { color: #999; font-size: 12px; }
 
+.team-emeritus-intro {
+	color: #555;
+	max-width: 780px;
+	margin: 0 0 16px;
+}
+.team-emeritus-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 6px 18px;
+	font-size: 14px;
+}
+.team-emeritus-list li {
+	padding: 4px 0;
+	color: #444;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.team-emeritus-list a { color: #235693; }
+.team-emeritus-list a:hover { color: #328fbf; }
 
-
+.team-thanks {
+	padding: 14px 18px;
+	background: #f6f9fc;
+	border-left: 4px solid #32bf61;
+	border-radius: 3px;
+	margin: 16px 0;
+}
+.team-empty { color: #888; font-style: italic; }
 
 
 
