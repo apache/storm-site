@@ -8,171 +8,175 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-    <title>Storm DSLs and Multi-Lang Adapters</title>
+    
+    
+    
+    
 
-    <!-- Bootstrap core CSS -->
+    <title>Storm DSLs and Multi-Lang Adapters</title>
+    <meta name="description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <link rel="canonical" href="https://storm.apache.org/releases/2.7.1/DSLs-and-multilang-adapters.html">
+
+    <meta property="og:title" content="Storm DSLs and Multi-Lang Adapters">
+    <meta property="og:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://storm.apache.org/releases/2.7.1/DSLs-and-multilang-adapters.html">
+    <meta property="og:image" content="https://storm.apache.org/images/logo.png">
+    <meta property="og:site_name" content="Apache Storm">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Storm DSLs and Multi-Lang Adapters">
+    <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
+
+    <!-- Bootstrap 5 core CSS (vendored locally) -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap theme -->
-    <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
-    <link href="/assets/css/owl.theme.css" rel="stylesheet">
-    <link href="/assets/css/owl.carousel.css" rel="stylesheet">
-    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/assets/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="/assets/js/storm.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js" defer></script>
+    <script type="text/javascript" src="/assets/js/storm.js" defer></script>
 </head>
 
 
   <body>
+    <a class="github-fork-ribbon" href="https://github.com/apache/storm" target="_blank" rel="noopener" aria-label="Fork Apache Storm on GitHub">Fork me on GitHub</a>
     <header>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-5">
-                <a href="/index.html"><img src="/images/logo.png" class="logo"/></a>
+            <div class="col-md-8">
+                <a href="/index.html"><img src="/images/logo.png" class="logo" alt="Apache Storm"/></a>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 
                 <h1>Version: 2.7.1</h1>
                 
-            </div>
-            <div class="col-md-2">
-                <a href="/downloads.html" class="btn-std btn-block btn-download">Download</a>
             </div>
         </div>
     </div>
 </header>
 <!--Header End-->
 <!--Navigation Begin-->
-<div class="navbar" role="banner">
+<nav class="navbar navbar-expand-md" data-bs-theme="dark" role="banner">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-            <ul class="nav navbar-nav">
-                <li><a href="/index.html" id="home">Home</a></li>
-                <li><a href="/getting-help.html" id="getting-help">Getting Help</a></li>
-                <li><a href="/about/integrates.html" id="project-info">Project Information</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="documentation">Documentation <b
-                            class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        
-                        
-                        <li><a href="/releases/2.8.3/index.html">2.8.3</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.8.2/index.html">2.8.2</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.8.1/index.html">2.8.1</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.8.0/index.html">2.8.0</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.7.1/index.html">2.7.1</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.7.0/index.html">2.7.0</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.6.4/index.html">2.6.4</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.6.3/index.html">2.6.3</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.6.2/index.html">2.6.2</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.6.1/index.html">2.6.1</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.6.0/index.html">2.6.0</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.5.0/index.html">2.5.0</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.4.0/index.html">2.4.0</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.3.0/index.html">2.3.0</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.2.1/index.html">2.2.1</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.2.0/index.html">2.2.0</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.1.1/index.html">2.1.1</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.1.0/index.html">2.1.0</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/2.0.0/index.html">2.0.0</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/1.2.4/index.html">1.2.4</a></li>
-                        
-                        
-                        
-                        <li><a href="/releases/1.2.3/index.html">1.2.3</a></li>
-                        
-                        
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#stormNavbar"
+                aria-controls="stormNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="stormNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/index.html" id="home">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="about" aria-expanded="false">About</a>
+                    <ul class="dropdown-menu" aria-labelledby="about">
+                        <li><a class="dropdown-item" href="/about/integrates.html">Integrates</a></li>
+                        <li><a class="dropdown-item" href="/about/simple-api.html">Simple API</a></li>
+                        <li><a class="dropdown-item" href="/about/scalable.html">Scalable</a></li>
+                        <li><a class="dropdown-item" href="/about/fault-tolerant.html">Fault tolerant</a></li>
+                        <li><a class="dropdown-item" href="/about/guarantees-data-processing.html">Guarantees data processing</a></li>
+                        <li><a class="dropdown-item" href="/about/multi-language.html">Use with any language</a></li>
+                        <li><a class="dropdown-item" href="/about/deployment.html">Easy to deploy and operate</a></li>
+                        <li><a class="dropdown-item" href="/about/free-and-open-source.html">Free and open source</a></li>
                     </ul>
                 </li>
-                <li><a href="/talksAndVideos.html">Talks and Slideshows</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="contribute">Community <b
-                            class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
-                        <li><a href="/contribute/People.html">People</a></li>
-                        <li><a href="/contribute/BYLAWS.html">ByLaws</a></li>
-                        <li><a href="/Powered-By.html">PoweredBy</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="documentation" aria-expanded="false">Documentation</a>
+                    <ul class="dropdown-menu" aria-labelledby="documentation">
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/older-releases.html">Older Versions</a></li>
                     </ul>
                 </li>
-                <li><a href="/2025/11/02/storm283-released.html" id="news">News</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="community" aria-expanded="false">Community</a>
+                    <ul class="dropdown-menu" aria-labelledby="community">
+                        <li><a class="dropdown-item" href="/getting-help.html">Getting Help</a></li>
+                        <li><a class="dropdown-item" href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a class="dropdown-item" href="/team/">Team</a></li>
+                        <li><a class="dropdown-item" href="/contribute/BYLAWS.html">ByLaws</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/news.html" id="news">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="/downloads.html" id="download">Download</a></li>
             </ul>
-        </nav>
+        </div>
     </div>
-</div>
-
-
+</nav>
 
     <div class="container-fluid">
+    
     <h1 class="page-title">Storm DSLs and Multi-Lang Adapters</h1>
+    
           <div class="row">
            	<div class="col-md-12">
 	             <!-- Documentation -->
@@ -196,60 +200,28 @@
 <footer>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2">
-                <div class="footer-widget">
-                    <h5>Meetups</h5>
-                    <div class="footer-widget">
-                        <a class="acevent" data-format="wide" data-mode="dark"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="footer-widget">
-                    <h5>About Apache Storm</h5>
-                    <p>Apache Storm integrates with any queueing system and any database system. Apache Storm's spout abstraction makes it easy to integrate a new queuing system. Likewise, integrating Apache Storm with database systems is easy.</p>
-               </div>
-            </div>
-            <div class="col-md-2">
-                <div class="footer-widget">
-                    <h5>First Look</h5>
-                    <ul class="footer-list">
-                        <li><a href="/releases/current/Rationale.html">Rationale</a></li>
-                        <li><a href="/releases/current/Tutorial.html">Tutorial</a></li>
-                        <li><a href="/releases/current/Setting-up-development-environment.html">Setting up development environment</a></li>
-                        <li><a href="/releases/current/Creating-a-new-Storm-project.html">Creating a new Apache Storm project</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="footer-widget">
-                    <h5>Documentation</h5>
-                    <ul class="footer-list">
-                        <li><a href="/releases/current/index.html">Index</a></li>
-                        <li><a href="/releases/current/javadocs/index.html">Javadoc</a></li>
-                        <li><a href="/releases/current/FAQ.html">FAQ</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="footer-widget">
-                    <h5>Misc</h5>
-                    <ul class="footer-list">
-                        <li><a href="https://www.apache.org/licenses/">Licenses</a></li>
-                        <li><a href="https://www.apache.org/security/">Security</a></li>
-                        <li><a href="https://www.apache.org/foundation/thanks.html">Sponsors</a></li>
-                        <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
-                    </ul>
+            <div class="col-md-12">
+                <div class="footer-meetups">
+                    <a class="acevent" data-format="wide" data-mode="dark"></a>
                 </div>
             </div>
         </div>
         <hr/>
-        <div class="row">   
+        <div class="row">
             <div class="col-md-12">
-                <p align="center">Copyright © 2024 <a href="https://www.apache.org">Apache Software Foundation</a>
-                    . All Rights Reserved.
-                    <br>Apache Storm, Apache, the Apache feather logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation. 
-                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.</p>
+                <ul class="footer-policy-links">
+                    <li><a href="https://www.apache.org/licenses/">License</a></li>
+                    <li><a href="https://www.apache.org/security/">Security</a></li>
+                    <li><a href="/security-model.html">Security Model</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
+                </ul>
+                <p class="footer-legal">
+                    Copyright &copy; 2026 <a href="https://www.apache.org">Apache Software Foundation</a>. All Rights Reserved.
+                    <br>Apache Storm, Apache, the Apache logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation.
+                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+                </p>
             </div>
         </div>
     </div>

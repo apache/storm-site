@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+
+    <title>Security Model</title>
+    <meta name="description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <link rel="canonical" href="https://storm.apache.org/security-model.html">
+
+    <meta property="og:title" content="Security Model">
+    <meta property="og:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://storm.apache.org/security-model.html">
+    <meta property="og:image" content="https://storm.apache.org/images/logo.png">
+    <meta property="og:site_name" content="Apache Storm">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Security Model">
+    <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
+
+    <!-- Bootstrap 5 core CSS (vendored locally) -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js" defer></script>
+    <script type="text/javascript" src="/assets/js/storm.js" defer></script>
+</head>
+
+
+  <body>
+    <a class="github-fork-ribbon" href="https://github.com/apache/storm" target="_blank" rel="noopener" aria-label="Fork Apache Storm on GitHub">Fork me on GitHub</a>
+    <header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <a href="/index.html"><img src="/images/logo.png" class="logo" alt="Apache Storm"/></a>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+    </div>
+</header>
+<!--Header End-->
+<!--Navigation Begin-->
+<nav class="navbar navbar-expand-md" data-bs-theme="dark" role="banner">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#stormNavbar"
+                aria-controls="stormNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="stormNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/index.html" id="home">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="about" aria-expanded="false">About</a>
+                    <ul class="dropdown-menu" aria-labelledby="about">
+                        <li><a class="dropdown-item" href="/about/integrates.html">Integrates</a></li>
+                        <li><a class="dropdown-item" href="/about/simple-api.html">Simple API</a></li>
+                        <li><a class="dropdown-item" href="/about/scalable.html">Scalable</a></li>
+                        <li><a class="dropdown-item" href="/about/fault-tolerant.html">Fault tolerant</a></li>
+                        <li><a class="dropdown-item" href="/about/guarantees-data-processing.html">Guarantees data processing</a></li>
+                        <li><a class="dropdown-item" href="/about/multi-language.html">Use with any language</a></li>
+                        <li><a class="dropdown-item" href="/about/deployment.html">Easy to deploy and operate</a></li>
+                        <li><a class="dropdown-item" href="/about/free-and-open-source.html">Free and open source</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="documentation" aria-expanded="false">Documentation</a>
+                    <ul class="dropdown-menu" aria-labelledby="documentation">
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/older-releases.html">Older Versions</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="community" aria-expanded="false">Community</a>
+                    <ul class="dropdown-menu" aria-labelledby="community">
+                        <li><a class="dropdown-item" href="/getting-help.html">Getting Help</a></li>
+                        <li><a class="dropdown-item" href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a class="dropdown-item" href="/team/">Team</a></li>
+                        <li><a class="dropdown-item" href="/contribute/BYLAWS.html">ByLaws</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/news.html" id="news">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="/downloads.html" id="download">Download</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-fluid">
+    
+    <h1 class="page-title">Security Model</h1>
+    
+          <div class="row">
+           	<div class="col-md-12">
+	             <h1 id="apache-storm-security-model">Apache Storm Security Model</h1>
+
+<p>This document describes the security model of Apache Storm: the assumptions, trust boundaries, and guarantees the project makes with respect to security. It is intended to help operators deploy Storm securely and to help security researchers understand which behaviors are expected and which constitute genuine vulnerabilities.</p>
+
+<p>For instructions on how to configure Storm&#39;s security features, see <a href="https://storm.apache.org/releases/current/SECURITY.html">Running Apache Storm Securely</a>.</p>
+
+<h2 id="reporting-security-vulnerabilities">Reporting Security Vulnerabilities</h2>
+
+<p>The Apache Software Foundation takes a very active stance in eliminating security problems and denial of service attacks against its products. We strongly encourage people to report security problems privately using the security mailing list of the ASF Security Team before disclosing them in a public forum.</p>
+
+<p>Please note that the security mailing list should only be used for reporting undisclosed security vulnerabilities and managing the process of fixing such vulnerabilities. We cannot accept regular bug reports or other queries at this address. All mail sent to this address that does not relate to an undisclosed security problem in our source code will be ignored.</p>
+
+<p>Before reporting vulnerabilities, please read and understand this security model. Some potential issues that are valid for internet-facing applications are expected behavior in Storm&#39;s deployment model. Understanding the security model helps save time for both reporters and the Storm security team.</p>
+
+<p>The private security mailing address is: <a href="mailto:security@apache.org">security@apache.org</a></p>
+
+<h2 id="fundamental-assumption-trusted-deployment-environment">Fundamental Assumption: Trusted Deployment Environment</h2>
+
+<p>Apache Storm is designed to operate within trusted infrastructure. The cluster, including Nimbus, Supervisors, Workers, ZooKeeper, the Storm UI, and the Logviewer, is expected to run on a private network that is not directly accessible from the public internet. All components are intended to be accessed only by authorized operators and applications within the trusted network boundary.</p>
+
+<p>This assumption underpins the entire security model. Many components do not include defenses against attacks that assume public internet exposure, because such exposure falls outside the intended deployment model.</p>
+
+<h2 id="trusted-configuration">Trusted Configuration</h2>
+
+<p>The Storm configuration file (<code>storm.yaml</code>) is treated as a fully trusted input. An actor with write access to <code>storm.yaml</code> has effective administrative control over the entire Storm cluster, including the ability to reconfigure any component, change authentication and authorization settings, alter network bindings, and disable security features entirely.</p>
+
+<p>Protecting <code>storm.yaml</code> through file system permissions and OS-level access controls is an operational responsibility. Modification of this file by an unauthorized party implies a deeper infrastructure compromise and is out of scope for Storm&#39;s runtime security protections.</p>
+
+<p>This applies equally to other configuration files used by Storm, such as <code>multitenant-scheduler.yaml</code>, JAAS configuration files, and DRPC ACL files.</p>
+
+<h2 id="user-types-and-trust-levels">User Types and Trust Levels</h2>
+
+<h3 id="deployment-managers-cluster-administrators">Deployment Managers / Cluster Administrators</h3>
+
+<p>Deployment managers have the highest level of access and control. They install and configure Storm, manage <code>storm.yaml</code>, and make decisions about authentication, authorization, and network topology. They are trusted with full control of the cluster. Their responsibilities include securing the configuration files, setting up appropriate authentication mechanisms, restricting network access to cluster components, and configuring reverse proxies where necessary.</p>
+
+<h3 id="topology-submitters">Topology Submitters</h3>
+
+<p>Users who submit topologies execute arbitrary code on Storm workers. This model inherently trusts topology submitters; they can run any code within the context of the worker process. When multi-tenancy is required, the multi-tenant scheduler and <code>supervisor.run.worker.as.user</code> settings provide OS-level isolation, but topology submitters must still be authorized and trusted users.</p>
+
+<p>Access to topology submission should be restricted to trusted users via Kerberos authentication and the <code>SimpleACLAuthorizer</code> (or equivalent), and further limited through <code>nimbus.users</code> and <code>nimbus.groups</code>.</p>
+
+<h3 id="ui-api-users">UI / API Users</h3>
+
+<p>Users who access the Storm UI or REST API can view cluster state and, depending on authorization, perform state-changing operations such as killing, activating, deactivating, or rebalancing topologies. Authenticated UI users with administrative privileges are trusted to perform these operations. The Storm UI does not guarantee protection against actions initiated by the authenticated user themselves.</p>
+
+<h2 id="storm-ui-logviewer-and-drpc-http">Storm UI, Logviewer, and DRPC HTTP</h2>
+
+<h3 id="not-internet-facing">Not Internet-Facing</h3>
+
+<p>The Storm UI (default port 8080), Logviewer (default port 8000), and DRPC HTTP endpoint are internal cluster services. They must not be exposed to the public internet. Operators should restrict access to these ports using firewall rules, limiting connections to trusted hosts within the cluster network.</p>
+
+<h3 id="reverse-proxy-recommended">Reverse Proxy Recommended</h3>
+
+<p>For production deployments, these services should be placed behind a reverse proxy such as Apache httpd or nginx. The reverse proxy should provide TLS termination with current cipher suites, CSRF token validation or same-origin enforcement, security response headers (<code>X-Frame-Options</code>, <code>X-Content-Type-Options</code>, <code>Content-Security-Policy</code>, <code>Strict-Transport-Security</code>), rate limiting and request filtering, and centralized access logging.</p>
+
+<h3 id="cors-and-same-origin-policy">CORS and Same-Origin Policy</h3>
+
+<p>The Storm UI sets permissive CORS headers (<code>Access-Control-Allow-Origin: *</code>) by default. This is acceptable within the trusted network model where the UI is not internet-accessible. Operators who need stricter origin controls should configure them at the reverse proxy layer. This is documented behavior, not a vulnerability.</p>
+
+<h3 id="csrf-protection">CSRF Protection</h3>
+
+<p>The Storm UI REST API does not include built-in Cross-Site Request Forgery protection. Because the UI is designed to be accessible only from within a trusted network, CSRF risk is mitigated by network-level access controls. Operators requiring additional CSRF protection should configure it via their reverse proxy or a custom servlet filter through <code>ui.filter</code>. We do strive to follow HTTP semantics (using POST for state-changing operations) and welcome hardening reports in this area.</p>
+
+<h3 id="authentication">Authentication</h3>
+
+<p>By default, the Storm UI has no authentication enabled. Operators should configure a servlet filter via <code>ui.filter</code> (for example, using Kerberos/SPNEGO via <code>AuthenticationFilter</code> from hadoop-auth) or rely on their reverse proxy for authentication. The Storm UI is not safe to operate without authentication if any untrusted user can reach it.</p>
+
+<h2 id="logs-and-information-disclosure">Logs and Information Disclosure</h2>
+
+<p>Storm logs may contain sensitive information including stack traces with internal paths and class names, configuration values, topology data, and credentials or tokens if passed through tuple data. Logs are not intended to be safe for exposure to untrusted users. Access to the Logviewer should be restricted to authorized operators through the same mechanisms used for the UI (authentication filters, network restrictions, or reverse proxy controls). The <code>logs.users</code> and <code>logs.groups</code> settings provide additional access control for log viewing.</p>
+
+<h2 id="authentication-and-authorization">Authentication and Authorization</h2>
+
+<p>Storm provides pluggable authentication via Kerberos/SASL and pluggable authorization via <code>SimpleACLAuthorizer</code>. By default, both are disabled. Operating Storm without authentication and authorization is only appropriate in fully trusted, single-tenant environments where all network access is controlled. In multi-tenant or security-sensitive deployments, operators must enable Kerberos authentication, configure <code>SimpleACLAuthorizer</code> on Nimbus, configure <code>ImpersonationAuthorizer</code> if impersonation is used, and enable BlobStore ACL validation (<code>storm.blobstore.acl.validation.enabled: true</code>).</p>
+
+<p>Storm does not protect against brute-force password guessing or account enumeration. These protections should be provided at the infrastructure level (Kerberos KDC configuration, network controls, or reverse proxy rate limiting).</p>
+
+<h2 id="impersonation">Impersonation</h2>
+
+<p>Storm supports user impersonation (submitting requests on behalf of another user). Without <code>nimbus.impersonation.authorizer</code> configured, any authenticated user can impersonate any other user. When deploying a secured cluster, operators must always configure <code>nimbus.impersonation.authorizer</code> alongside <code>nimbus.authorizer</code>.</p>
+
+<h2 id="serialization">Serialization</h2>
+
+<p>Storm uses Kryo for tuple serialization. The setting <code>topology.fall.back.on.java.serialization</code> must not be set to <code>true</code> in production, as Java native deserialization is vulnerable to arbitrary code execution from untrusted data. Storm defaults to requiring explicit class registration, which is the safe configuration.</p>
+
+<h2 id="zookeeper-communication">ZooKeeper Communication</h2>
+
+<p>When ZooKeeper SSL is enabled, hostname verification is disabled by default (<code>storm.zookeeper.ssl.hostnameVerification: false</code>). Without hostname verification, a man-in-the-middle attacker with any valid CA-signed certificate could intercept Storm-to-ZooKeeper communication. Production deployments should enable hostname verification.</p>
+
+<h2 id="network-encryption">Network Encryption</h2>
+
+<p>Storm supports TLS for Thrift RPC communication (Nimbus, Supervisors) and Netty messaging (worker-to-worker) via mTLS. Enabling transport encryption is recommended for deployments where network traffic may traverse untrusted segments. The deprecated <code>BlowfishTupleSerializer</code> should not be used; it employs a 64-bit block cipher vulnerable to birthday attacks.</p>
+
+<h2 id="test-utilities-in-production-jars">Test Utilities in Production JARs</h2>
+
+<p>Storm includes certain classes intended for development and testing (such as <code>TestingFilter</code>) in its production JAR. These classes can be enabled through <code>storm.yaml</code> configuration. Since <code>storm.yaml</code> is a trusted input, the ability to enable test utilities through configuration is not a security vulnerability; it is equivalent to any other configuration change an administrator can make. However, operators should be aware that misconfiguring these settings can weaken security.</p>
+
+<h2 id="what-is-and-is-not-a-security-vulnerability">What Is and Is Not a Security Vulnerability</h2>
+
+<p>Based on this security model, the following are <strong>not</strong> considered security vulnerabilities:</p>
+
+<ul>
+<li>Issues that require write access to <code>storm.yaml</code> or other trusted configuration files.</li>
+<li>Issues that require the Storm UI, Logviewer, or DRPC HTTP endpoints to be exposed to the public internet, contrary to deployment guidance.</li>
+<li>Permissive default CORS headers on internal services that are not intended to be internet-facing.</li>
+<li>Absence of built-in CSRF protection on internal services behind network-level access controls.</li>
+<li>Information disclosure through logs or API endpoints that are restricted to trusted network access.</li>
+<li>Enabling test utilities through configuration (which requires trusted configuration access).</li>
+<li>Version disclosure on internal endpoints.</li>
+</ul>
+
+<p>The following <strong>are</strong> considered security vulnerabilities and should be reported:</p>
+
+<ul>
+<li>Authentication or authorization bypass that does not require trusted configuration access.</li>
+<li>Privilege escalation within the authorization model (for example, a non-admin user gaining admin capabilities without configuration changes).</li>
+<li>Remote code execution through untrusted input processed by Storm components (not topology code submitted by trusted users).</li>
+<li>Issues that compromise the security of a cluster deployed according to our documented recommendations.</li>
+</ul>
+
+<p>We welcome security hardening suggestions even for areas outside the formal vulnerability scope. Reports that improve HTTP semantics compliance, add defense-in-depth measures, or improve the security posture of the default configuration are appreciated and will be addressed as hardening improvements.</p>
+
+<h2 id="questions-about-known-security-problems">Questions About Known Security Problems</h2>
+
+<p>Questions about whether a vulnerability applies to your particular deployment, obtaining further information on a published vulnerability, or availability of patches and new releases should be addressed to the <a href="https://storm.apache.org/community.html">dev mailing list</a>.</p>
+
+	          </div>
+	       </div>
+	  </div>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-meetups">
+                    <a class="acevent" data-format="wide" data-mode="dark"></a>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="footer-policy-links">
+                    <li><a href="https://www.apache.org/licenses/">License</a></li>
+                    <li><a href="https://www.apache.org/security/">Security</a></li>
+                    <li><a href="/security-model.html">Security Model</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
+                </ul>
+                <p class="footer-legal">
+                    Copyright &copy; 2026 <a href="https://www.apache.org">Apache Software Foundation</a>. All Rights Reserved.
+                    <br>Apache Storm, Apache, the Apache logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation.
+                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    /* We explicitly disable cookie tracking to avoid privacy issues */
+    _paq.push(['disableCookies']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//analytics.apache.org/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '38']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+<script src="https://www.apachecon.com/event-images/snippet.js"></script>
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-angle-up"></i></a></span> 
+
+</body>
+
+</html>
+

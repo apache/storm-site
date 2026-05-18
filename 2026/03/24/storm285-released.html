@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+
+    <title>Apache Storm 2.8.5 Released</title>
+    <meta name="description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <link rel="canonical" href="https://storm.apache.org/2026/03/24/storm285-released.html">
+
+    <meta property="og:title" content="Apache Storm 2.8.5 Released">
+    <meta property="og:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://storm.apache.org/2026/03/24/storm285-released.html">
+    <meta property="og:image" content="https://storm.apache.org/images/logo.png">
+    <meta property="og:site_name" content="Apache Storm">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Apache Storm 2.8.5 Released">
+    <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
+
+    <!-- Bootstrap 5 core CSS (vendored locally) -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js" defer></script>
+    <script type="text/javascript" src="/assets/js/storm.js" defer></script>
+</head>
+
+
+
+<body>
+
+    <header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <a href="/index.html"><img src="/images/logo.png" class="logo" alt="Apache Storm"/></a>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+    </div>
+</header>
+<!--Header End-->
+<!--Navigation Begin-->
+<nav class="navbar navbar-expand-md" data-bs-theme="dark" role="banner">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#stormNavbar"
+                aria-controls="stormNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="stormNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/index.html" id="home">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="about" aria-expanded="false">About</a>
+                    <ul class="dropdown-menu" aria-labelledby="about">
+                        <li><a class="dropdown-item" href="/about/integrates.html">Integrates</a></li>
+                        <li><a class="dropdown-item" href="/about/simple-api.html">Simple API</a></li>
+                        <li><a class="dropdown-item" href="/about/scalable.html">Scalable</a></li>
+                        <li><a class="dropdown-item" href="/about/fault-tolerant.html">Fault tolerant</a></li>
+                        <li><a class="dropdown-item" href="/about/guarantees-data-processing.html">Guarantees data processing</a></li>
+                        <li><a class="dropdown-item" href="/about/multi-language.html">Use with any language</a></li>
+                        <li><a class="dropdown-item" href="/about/deployment.html">Easy to deploy and operate</a></li>
+                        <li><a class="dropdown-item" href="/about/free-and-open-source.html">Free and open source</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="documentation" aria-expanded="false">Documentation</a>
+                    <ul class="dropdown-menu" aria-labelledby="documentation">
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/older-releases.html">Older Versions</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="community" aria-expanded="false">Community</a>
+                    <ul class="dropdown-menu" aria-labelledby="community">
+                        <li><a class="dropdown-item" href="/getting-help.html">Getting Help</a></li>
+                        <li><a class="dropdown-item" href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a class="dropdown-item" href="/team/">Team</a></li>
+                        <li><a class="dropdown-item" href="/contribute/BYLAWS.html">ByLaws</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/news.html" id="news">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="/downloads.html" id="download">Download</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="news" id="news-list">
+                            
+                      		<li><a href="/2026/05/18/storm288-released.html">Apache Storm 2.8.8 Released</a></li>
+                    		
+                      		<li><a href="/2026/04/25/storm287-released.html">Apache Storm 2.8.7 Released</a></li>
+                    		
+                      		<li><a href="/2026/04/12/storm286-released.html">Apache Storm 2.8.6 Released</a></li>
+                    		
+                      		<li><a href="/2026/03/24/storm285-released.html">Apache Storm 2.8.5 Released</a></li>
+                    		
+                      		<li><a href="/2026/03/07/storm284-released.html">Apache Storm 2.8.4 Released</a></li>
+                    		
+                      		<li><a href="/2025/11/02/storm283-released.html">Apache Storm 2.8.3 Released</a></li>
+                    		
+                      		<li><a href="/2025/08/03/storm282-released.html">Apache Storm 2.8.2 Released</a></li>
+                    		
+                      		<li><a href="/2025/06/02/storm281-released.html">Apache Storm 2.8.1 Released</a></li>
+                    		
+                      		<li><a href="/2025/01/25/storm280-released.html">Apache Storm 2.8.0 Released</a></li>
+                    		
+                      		<li><a href="/2024/11/28/storm271-released.html">Apache Storm 2.7.1 Released</a></li>
+                    		
+                      		<li><a href="/2024/10/18/storm270-released.html">Apache Storm 2.7.0 Released</a></li>
+                    		
+                      		<li><a href="/2024/09/03/storm264-released.html">Apache Storm 2.6.4 Released</a></li>
+                    		
+                      		<li><a href="/2024/07/25/storm263-released.html">Apache Storm 2.6.3 Released</a></li>
+                    		
+                      		<li><a href="/2024/04/05/storm262-released.html">Apache Storm 2.6.2 Released</a></li>
+                    		
+                      		<li><a href="/2024/02/02/storm261-released.html">Apache Storm 2.6.1 Released</a></li>
+                    		
+                      		<li><a href="/2023/11/22/storm260-released.html">Apache Storm 2.6.0 Released</a></li>
+                    		
+                      		<li><a href="/2023/08/04/storm250-released.html">Apache Storm 2.5.0 Released</a></li>
+                    		
+                      		<li><a href="/2022/03/25/storm240-released.html">Apache Storm 2.4.0 Released</a></li>
+                    		
+                      		<li><a href="/2021/10/14/storm211-released.html">Apache Storm 2.1.1 Released</a></li>
+                    		
+                      		<li><a href="/2021/10/11/storm221-released.html">Apache Storm 2.2.1 Released</a></li>
+                    		
+                      		<li><a href="/2021/10/11/storm124-released.html">Apache Storm 1.2.4 Released</a></li>
+                    		
+                      		<li><a href="/2021/09/27/storm230-released.html">Apache Storm 2.3.0 Released</a></li>
+                    		
+                      		<li><a href="/2020/06/30/storm220-released.html">Apache Storm 2.2.0 Released</a></li>
+                    		
+                      		<li><a href="/2019/10/31/storm210-released.html">Apache Storm 2.1.0 Released</a></li>
+                    		
+                      		<li><a href="/2019/07/18/storm123-released.html">Apache Storm 1.2.3 Released</a></li>
+                    		
+                      		<li><a href="/2019/05/30/storm200-released.html">Apache Storm 2.0.0 Released</a></li>
+                    		
+                      		<li><a href="/2018/06/04/storm122-released.html">Apache Storm 1.2.2 Released</a></li>
+                    		
+                      		<li><a href="/2018/06/04/storm113-released.html">Apache Storm 1.1.3 Released</a></li>
+                    		
+                      		<li><a href="/2018/02/19/storm121-released.html">Apache Storm 1.2.1 Released</a></li>
+                    		
+                      		<li><a href="/2018/02/15/storm120-released.html">Apache Storm 1.2.0 Released</a></li>
+                    		
+                      		<li><a href="/2018/02/15/storm112-released.html">Apache Storm 1.1.2 Released</a></li>
+                    		
+                      		<li><a href="/2018/02/14/storm106-released.html">Apache Storm 1.0.6 Released</a></li>
+                    		
+                      		<li><a href="/2017/09/15/storm105-released.html">Apache Storm 1.0.5 Released</a></li>
+                    		
+                      		<li><a href="/2017/08/01/storm111-released.html">Apache Storm 1.1.1 Released</a></li>
+                    		
+                      		<li><a href="/2017/07/28/storm104-released.html">Apache Storm 1.0.4 Released</a></li>
+                    		
+                      		<li><a href="/2017/03/29/storm110-released.html">Apache Storm 1.1.0 released</a></li>
+                    		
+                      		<li><a href="/2017/02/14/storm103-released.html">Apache Storm 1.0.3 Released</a></li>
+                    		
+                      		<li><a href="/2016/09/14/storm0102-released.html">Apache Storm 0.10.2 Released</a></li>
+                    		
+                      		<li><a href="/2016/09/07/storm097-released.html">Apache Storm 0.9.7 Released</a></li>
+                    		
+                      		<li><a href="/2016/08/10/storm102-released.html">Apache Storm 1.0.2 Released</a></li>
+                    		
+                      		<li><a href="/2016/05/06/storm101-released.html">Apache Storm 1.0.1 Released</a></li>
+                    		
+                      		<li><a href="/2016/05/05/storm0101-released.html">Apache Storm 0.10.1 Released</a></li>
+                    		
+                      		<li><a href="/2016/04/12/storm100-released.html">Apache Storm 1.0.0 released</a></li>
+                    		
+                      		<li><a href="/2015/11/05/storm096-released.html">Apache Storm 0.9.6 released</a></li>
+                    		
+                      		<li><a href="/2015/11/05/storm0100-released.html">Apache Storm 0.10.0 released</a></li>
+                    		
+                      		<li><a href="/2015/06/15/storm0100-beta-released.html">Apache Storm 0.10.0 Beta Released</a></li>
+                    		
+                      		<li><a href="/2015/06/04/storm095-released.html">Apache Storm 0.9.5 released</a></li>
+                    		
+                      		<li><a href="/2015/03/25/storm094-released.html">Apache Storm 0.9.4 released</a></li>
+                    		
+                      		<li><a href="/2014/11/25/storm093-released.html">Apache Storm 0.9.3 released</a></li>
+                    		
+                      		<li><a href="/2014/10/20/storm093-release-candidate.html">Apache Storm 0.9.3 release candidate 1 available</a></li>
+                    		
+                      		<li><a href="/2014/06/25/storm092-released.html">Apache Storm 0.9.2 released</a></li>
+                    		
+                      		<li><a href="/2014/06/17/contest-results.html">Apache Storm Logo Contest Results</a></li>
+                    		
+                      		<li><a href="/2014/05/27/round1-results.html">Logo Contest - Round 1 Results</a></li>
+                    		
+                      		<li><a href="/2014/04/29/logo-jlee3.html">Logo Entry No. 11 - Jennifer Lee</a></li>
+                    		
+                      		<li><a href="/2014/04/29/logo-jlee2.html">Logo Entry No. 10 - Jennifer Lee</a></li>
+                    		
+                      		<li><a href="/2014/04/29/logo-jlee1.html">Logo Entry No. 9 - Jennifer Lee</a></li>
+                    		
+                      		<li><a href="/2014/04/27/logo-sasili.html">Logo Entry No. 8 - Stefano Asili</a></li>
+                    		
+                      		<li><a href="/2014/04/27/logo-cboustead.html">Logo Entry No. 7 - Calum Boustead</a></li>
+                    		
+                      		<li><a href="/2014/04/23/logo-abartos.html">Logo Entry No. 6 - Alec Bartos</a></li>
+                    		
+                      		<li><a href="/2014/04/22/logo-zsayari.html">Logo Entry No. 5 - Ziba Sayari</a></li>
+                    		
+                      		<li><a href="/2014/04/21/logo-rmarshall.html">Logo Entry No. 4 - Richard Brownlie-Marshall</a></li>
+                    		
+                      		<li><a href="/2014/04/19/logo-ssuleman.html">Logo Entry No. 3- Shaan Shiv Suleman</a></li>
+                    		
+                      		<li><a href="/2014/04/17/logo-squinones.html">Logo Entry No. 2 - Samuel Quiñones</a></li>
+                    		
+                      		<li><a href="/2014/04/17/logo-pforrest.html">Logo Entry No. 1 - Patricia Forrest</a></li>
+                    		
+                      		<li><a href="/2014/04/10/storm-logo-contest.html">Apache Storm Logo Contest</a></li>
+                    		
+                      		<li><a href="/2013/12/08/storm090-released.html">Apache Storm 0.9.0 Released</a></li>
+                    		
+                      		<li><a href="/2013/01/11/storm082-released.html">Apache Storm 0.8.2 released</a></li>
+                    		
+                      		<li><a href="/2012/09/06/storm081-released.html">Apache Storm 0.8.1 released</a></li>
+                    		
+                      		<li><a href="/2012/08/02/storm080-released.html">Apache Storm 0.8.0 and Trident released</a></li>
+                    		
+                        </ul>
+                    </div>
+                    <div class="col-md-9" id="news-content">
+                            <h1 class="page-title">
+                               Apache Storm 2.8.5 Released
+                            </h1>
+                                
+                        <div>
+                	        <p>The Apache Storm community is pleased to announce that version 2.8.5 has been
+released and is available from <a href="/downloads.html">the downloads page</a>.</p>
+
+<p>This release includes new features as well as a number of code improvements, bug fixes and library updates.
+We encourage users of previous versions to upgrade to this latest release.</p>
+
+<h2 id="thanks">Thanks</h2>
+
+<p>Special thanks are due to all those who have contributed to Apache Storm -- whether
+through direct code contributions, documentation, bug reports, or helping other
+users on the mailing lists. Your efforts are much appreciated.</p>
+
+<h2 id="changes-in-this-release-storm-2-8-5">Changes in this Release - Storm 2.8.5</h2>
+
+<p>JIRA issues addressed in the 2.8.5 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
+
+<h2>Enhancements</h2>
+
+<ul>
+    <li>[<a href="https://github.com/apache/storm/pull/8434">#8434</a>] - Upgrade Bootstrap to 5.3.8, add dark mode toggle</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8427">#8427</a>] - Use package manager for 3rd party JS in Storm-UI</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8415">#8415</a>] - Implement size-based file rotation for FileBasedEventLogger</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8414">#8414</a>] - [storm-client] Add missing logging to TridentBoltExecutor on tuple count mismatch failures</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8413">#8413</a>] - [storm-client] Replace e.printStackTrace() with SLF4J logging in ConfigurableTopology</li>
+</ul>
+
+<h2>Dependency upgrades</h2>
+
+<ul>
+    <li>[<a href="https://github.com/apache/storm/pull/8424">#8424</a>] - Migrate project from commons-lang to commons-lang3</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8422">#8422</a>] - Bump org.apache.zookeeper:zookeeper from 3.9.4 to 3.9.5</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8412">#8412</a>] - Bump com.google.errorprone:error_prone_annotations from 2.46.0 to 2.48.0</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8411">#8411</a>] - Bump maven-resolver.version from 1.9.25 to 1.9.27</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8410">#8410</a>] - Bump org.apache.maven.plugins:maven-compiler-plugin from 3.14.1 to 3.15.0</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8409">#8409</a>] - Bump org.jctools:jctools-core from 4.0.5 to 4.0.6</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8408">#8408</a>] - Bump org.apache.maven.plugins:maven-dependency-plugin from 3.9.0 to 3.10.0</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8407">#8407</a>] - Bump io.netty:netty-bom from 4.2.9.Final to 4.2.10.Final</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8406">#8406</a>] - Bump org.checkerframework:checker-qual from 3.53.0 to 3.53.1</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8405">#8405</a>] - Bump prometheus.client.version from 1.4.3 to 1.5.0</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8404">#8404</a>] - Bump surefire.version from 3.5.4 to 3.5.5</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8403">#8403</a>] - Bump com.fasterxml.jackson.core:jackson-databind from 2.20.1 to 2.21.1</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8402">#8402</a>] - Bump org.junit:junit-bom from 6.0.2 to 6.0.3</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8401">#8401</a>] - Bump redis.clients:jedis from 7.2.1 to 7.3.0</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8400">#8400</a>] - Bump com.fasterxml.jackson:jackson-bom from 2.21.0 to 2.21.1</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8399">#8399</a>] - Bump netty-tcnative.version from 2.0.74.Final to 2.0.75.Final</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8398">#8398</a>] - Bump jakarta.xml.bind:jakarta.xml.bind-api from 4.0.4 to 4.0.5</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8397">#8397</a>] - Bump hadoop.version from 3.4.2 to 3.4.3</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8396">#8396</a>] - Bump activemq.version from 6.2.0 to 6.2.1</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8395">#8395</a>] - Bump byte-buddy.version from 1.18.4 to 1.18.5</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8394">#8394</a>] - Bump org.apache.maven.plugins:maven-surefire-report-plugin from 3.5.4 to 3.5.5</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8393">#8393</a>] - Bump spring.version from 7.0.3 to 7.0.5</li>
+</ul>
+
+<h2>Bug fixing</h2>
+
+<ul>
+    <li>[<a href="https://github.com/apache/storm/pull/8420">#8420</a>] - fix(HeartbeatCache): Falsely timing out alive executors when heartbeat TIME_SECS does not advance</li>
+    <li>[<a href="https://github.com/apache/storm/issues/8419">#8419</a>] - Nimbus deployment causing Topologies rebalancing</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8416">#8416</a>] - Fix silent exception swallow in LocalFsBlobStore.prepare() leaving stormClusterState null</li>
+</ul>
+
+                	    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-meetups">
+                    <a class="acevent" data-format="wide" data-mode="dark"></a>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="footer-policy-links">
+                    <li><a href="https://www.apache.org/licenses/">License</a></li>
+                    <li><a href="https://www.apache.org/security/">Security</a></li>
+                    <li><a href="/security-model.html">Security Model</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
+                </ul>
+                <p class="footer-legal">
+                    Copyright &copy; 2026 <a href="https://www.apache.org">Apache Software Foundation</a>. All Rights Reserved.
+                    <br>Apache Storm, Apache, the Apache logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation.
+                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    /* We explicitly disable cookie tracking to avoid privacy issues */
+    _paq.push(['disableCookies']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//analytics.apache.org/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '38']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+<script src="https://www.apachecon.com/event-images/snippet.js"></script>
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-angle-up"></i></a></span> 
+
+</body>
+
+</html>
+
