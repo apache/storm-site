@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.7</h1>
+                <h1>Version: 2.8.8</h1>
                 
             </div>
         </div>
@@ -90,6 +90,11 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
                         
                         
@@ -98,9 +103,6 @@
                         <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.5/index.html">2.8.5</a></li>
                         
                         
                         
@@ -199,7 +201,7 @@
 
 <h4 id="creating-a-serializer">Creating a serializer</h4>
 
-<p>Custom serializers implement the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.7/backtype/storm/serialization/ISerialization.html">ISerialization</a> interface. Implementations specify how to serialize and deserialize types into a binary format.</p>
+<p>Custom serializers implement the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/backtype/storm/serialization/ISerialization.html">ISerialization</a> interface. Implementations specify how to serialize and deserialize types into a binary format.</p>
 
 <p>The interface looks like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ISerialization</span><span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="o">{</span>
@@ -222,7 +224,7 @@
 
 <p>Serializer registrations are done through the Config.TOPOLOGY_SERIALIZATIONS config and is simply a list of serialization class names.</p>
 
-<p>Storm provides helpers for registering serializers in a topology config. The <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.7/backtype/storm/Config.html">Config</a> class has a method called <code>addSerialization</code> that takes in a serializer class to add to the config.</p>
+<p>Storm provides helpers for registering serializers in a topology config. The <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/backtype/storm/Config.html">Config</a> class has a method called <code>addSerialization</code> that takes in a serializer class to add to the config.</p>
 
 <p>There&#39;s an advanced config called Config.TOPOLOGY_SKIP_MISSING_SERIALIZATIONS. If you set this to true, Storm will ignore any serializations that are registered but do not have their code available on the classpath. Otherwise, Storm will throw errors when it can&#39;t find a serialization. This is useful if you run many topologies on a cluster that each have different serializations, but you want to declare all the serializations across all topologies in the <code>storm.yaml</code> files.</p>
 </div>

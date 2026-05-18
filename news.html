@@ -88,6 +88,11 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
                         
                         
@@ -96,9 +101,6 @@
                         <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.5/index.html">2.8.5</a></li>
                         
                         
                         
@@ -183,6 +185,8 @@
     <div class="col-md-3">
         <ul class="news" id="news-list">
             
+      		<li><a href="/2026/05/18/storm288-released.html">Apache Storm 2.8.8 Released</a></li>
+    		
       		<li><a href="/2026/04/25/storm287-released.html">Apache Storm 2.8.7 Released</a></li>
     		
       		<li><a href="/2026/04/12/storm286-released.html">Apache Storm 2.8.6 Released</a></li>
@@ -322,7 +326,7 @@
         </ul>
     </div>
         <div class="col-md-9" id="news-content">
-             <p>The Apache Storm community is pleased to announce that version 2.8.7 has been
+             <p>The Apache Storm community is pleased to announce that version 2.8.8 has been
 released and is available from <a href="/downloads.html">the downloads page</a>.</p>
 
 <p>This release includes security fixes, new features, bug fixes, and library updates.
@@ -334,65 +338,57 @@ We encourage users of previous versions to upgrade to this latest release.</p>
 through direct code contributions, documentation, bug reports, or helping other
 users on the mailing lists. Your efforts are much appreciated.</p>
 
-<h2 id="changes-in-this-release-storm-2-8-7">Changes in this Release - Storm 2.8.7</h2>
+<h2 id="changes-in-this-release-storm-2-8-8">Changes in this Release - Storm 2.8.8</h2>
 
-<p>JIRA issues addressed in the 2.8.7 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
+<p>JIRA issues addressed in the 2.8.8 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
 
-<h2>Security Fixes</h2>
+<p>Issues addressed in 2.8.8.</p>
 
-<h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-40557">CVE-2026-40557</a> - Improper Certificate Validation via Global SSL Context Downgrade in Apache Storm Prometheus Reporter</h3>
-
-<p><strong>Versions Affected:</strong> from 2.6.3 to 2.8.6.</p>
-
-<p><strong>Description:</strong> In production deployments where an administrator enables <code>storm.daemon.metrics.reporter.plugin.prometheus.skip_tls_validation</code> (by default it is disabled) intending to affect only the Prometheus reporter, the undocumented global side effect creates an attack surface across every TLS-protected communication channel in the Storm daemon. The PrometheusPreparableReporter class implements an <code>INSECURE_TRUST_MANAGER</code> that accepts all SSL certificates without validation. When this setting is enabled, it calls <code>SSLContext.setDefault()</code>, which globally replaces the JVM's default SSL context, resulting in a JVM-wide TLS security downgrade.</p>
-
-<p><strong>Mitigation:</strong> 2.x users should upgrade to 2.8.7 if the Prometheus Metrics Reporter is used. Users who cannot upgrade immediately should ensure <code>storm.daemon.metrics.reporter.plugin.prometheus.skip_tls_validation</code> is set to <code>false</code> (default) and configure a proper truststore.</p>
-
-<p><strong>Credit:</strong> This issue was discovered by K.</p>
-
-<h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-41081">CVE-2026-41081</a> - Improper Handling of TLS Client Authentication Failure Leading to Anonymous Principal Assignment</h3>
-
-<p><strong>Versions Affected:</strong> before 2.8.7.</p>
-
-<p><strong>Description:</strong> When TLS transport is enabled in Apache Storm without requiring client certificate authentication, the <code>TlsTransportPlugin</code> assigns a fallback principal (<code>CN=ANONYMOUS</code>) if certificate verification fails, rather than rejecting the connection. This enables unauthenticated clients to establish a TLS connection and potentially bypass authorization if the authorizer does not explicitly deny access to <code>CN=ANONYMOUS</code>.</p>
-
-<p><strong>Mitigation:</strong> Users should upgrade to 2.8.7 in which TLS authentication failures are handled in a fail-closed manner. Users who cannot upgrade immediately should enable mandatory client certificate authentication (<code>nimbus.thrift.tls.client.auth.required: true</code>) and ensure authorization rules explicitly deny access to <code>CN=ANONYMOUS</code>.</p>
-
-<p><strong>Credit:</strong> This issue was discovered by K.</p>
-
-<h2>Enhancements</h2>
+<h2>Bug fixing</h2>
 
 <ul>
-    <li>[<a href="https://github.com/apache/storm/pull/8533">#8533</a>] - flux: fix 'recieveed' -> 'received' in LogInfoBolt Javadoc</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8532">#8532</a>] - storm-client: fix 'accross' -> 'across' in Stream.java Javadoc</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8531">#8531</a>] - storm-core: fix 'seperate' -> 'separate' in configuration.h comment</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8530">#8530</a>] - docs: fix 'occured' -> 'occurred' in LocallyCachedBlob Javadoc</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8529">#8529</a>] - docs: fix 'recieved' -> 'received' typo in IAutoCredentials Javadoc</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8591">#8591</a>] - STORM-4041: fix(topology_lag): Kafka Topology Lag breaking when no offsets are committed (Backport #8589)</li>
 </ul>
 
 <h2>Dependency upgrades</h2>
 
 <ul>
-    <li>[<a href="https://github.com/apache/storm/pull/8526">#8526</a>] - Bump com.google.guava:guava from 33.5.0-jre to 33.6.0-jre</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8525">#8525</a>] - Bump org.apache.commons:commons-configuration2 from 2.13.0 to 2.14.0</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8524">#8524</a>] - Bump bouncycastle.version from 1.83 to 1.84</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8523">#8523</a>] - Bump org.rocksdb:rocksdbjni from 10.10.1 to 10.10.1.1</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8522">#8522</a>] - Bump org.jgrapht:jgrapht-core from 0.9.0 to 1.5.3</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8520">#8520</a>] - Bump org.apache.hbase:hbase-client from 2.6.4-hadoop3 to 2.6.5-hadoop3</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8519">#8519</a>] - Bump follow-redirects from 1.15.11 to 1.16.0 in /storm-webapp</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8511">#8511</a>] - Bump axios from 1.13.6 to 1.15.0 in /storm-webapp</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8508">#8508</a>] - Bump org.apache.activemq:activemq-client from 6.2.3 to 6.2.4</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8507">#8507</a>] - Bump org.apache.activemq:activemq-broker from 6.2.3 to 6.2.4</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8506">#8506</a>] - Bump org.apache.activemq:activemq-all from 6.2.3 to 6.2.4</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8505">#8505</a>] - Bump org.apache.activemq:activemq-mqtt from 6.2.3 to 6.2.4</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8643">#8643</a>] - Bump com.fasterxml.jackson.core:jackson-databind from 2.21.2 to 2.21.3</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8642">#8642</a>] - Bump joda-time:joda-time from 2.14.1 to 2.14.2</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8641">#8641</a>] - Bump org.checkerframework:checker-qual from 3.55.1 to 4.1.0</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8640">#8640</a>] - Bump io.netty:netty-bom from 4.2.12.Final to 4.2.13.Final</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8639">#8639</a>] - Bump mockito.version from 4.11.0 to 5.23.0</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8637">#8637</a>] - Bump org.yaml:snakeyaml from 2.2 to 2.6</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8636">#8636</a>] - Bump commons-io:commons-io from 2.21.0 to 2.22.0</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8635">#8635</a>] - Bump activemq.version from 6.2.4 to 6.2.5</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8632">#8632</a>] - Bump org.glassfish.jersey:jersey-bom from 3.1.11 to 4.0.2</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8631">#8631</a>] - Bump org.apache.maven:maven-resolver-provider from 3.9.14 to 3.9.15</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8630">#8630</a>] - Bump com.google.code.gson:gson from 2.13.2 to 2.14.0</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8628">#8628</a>] - Bump netty-tcnative.version from 2.0.75.Final to 2.0.77.Final</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8627">#8627</a>] - Bump com.puppycrawl.tools:checkstyle from 8.2 to 13.4.2</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8626">#8626</a>] - Bump redis.clients:jedis from 7.4.1 to 7.5.0</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8624">#8624</a>] - Bump com.github.ben-manes.caffeine:caffeine from 3.2.3 to 3.2.4</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8622">#8622</a>] - Bump jetty.version from 12.1.8 to 12.1.9</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8621">#8621</a>] - Bump datatables.net-bs5 from 2.3.7 to 2.3.8 in /storm-webapp</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8620">#8620</a>] - Bump start-server-and-test from 3.0.0 to 3.0.4 in /storm-webapp</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8619">#8619</a>] - Bump cytoscape from 3.33.2 to 3.33.3 in /storm-webapp</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8617">#8617</a>] - Bump datatables.net-dt from 2.3.7 to 2.3.8 in /storm-webapp</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8614">#8614</a>] - Bump prometheus.client.version from 1.5.1 to 1.6.1</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8613">#8613</a>] - Bump webpack from 5.105.4 to 5.106.2 in /storm-webapp</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8610">#8610</a>] - Bump terser-webpack-plugin from 5.4.0 to 5.6.0 in /storm-webapp</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8609">#8609</a>] - Bump datatables.net from 2.3.7 to 2.3.8 in /storm-webapp</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8607">#8607</a>] - Bump commons-codec:commons-codec from 1.21.0 to 1.22.0</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8606">#8606</a>] - Bump vis-network from 10.0.2 to 10.0.3 in /storm-webapp</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8604">#8604</a>] - Bump org.apache:apache from 37 to 38</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8602">#8602</a>] - Bump vis-data from 8.0.3 to 8.0.4 in /storm-webapp</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8601">#8601</a>] - Bump spring.version from 7.0.6 to 7.0.7</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8599">#8599</a>] - Bump cypress from 15.13.0 to 15.14.2 in /storm-webapp</li>
 </ul>
 
-<h2>Bug fixing</h2>
+<h2>Enhancements</h2>
 
 <ul>
-    <li>[<a href="https://github.com/apache/storm/issues/8518">#8518</a>] - Cache busting is broken - ${packageTimestamp} is never substituted in HTML resources</li>
-    <li>[<a href="https://github.com/apache/storm/pull/8516">#8516</a>] - Hardening: clean up TlsTransportPlugin and surface unverified peers</li>
-    <li>[<a href="https://github.com/apache/storm/issues/8515">#8515</a>] - Profiling/debugging REST endpoints should use POST instead of GET</li>
+    <li>[<a href="https://github.com/apache/storm/pull/8595">#8595</a>] - Update 2.x documentation links to javadoc.io, fix Jekyll rendering, and optimize CI matrix</li>
 </ul>
 
         </div>

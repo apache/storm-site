@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+
+    <title>Trident Spouts</title>
+    <meta name="description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <link rel="canonical" href="https://storm.apache.org/releases/2.8.8/Trident-spouts.html">
+
+    <meta property="og:title" content="Trident Spouts">
+    <meta property="og:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://storm.apache.org/releases/2.8.8/Trident-spouts.html">
+    <meta property="og:image" content="https://storm.apache.org/images/logo.png">
+    <meta property="og:site_name" content="Apache Storm">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Trident Spouts">
+    <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
+
+    <!-- Bootstrap 5 core CSS (vendored locally) -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js" defer></script>
+    <script type="text/javascript" src="/assets/js/storm.js" defer></script>
+</head>
+
+
+  <body>
+    <a class="github-fork-ribbon" href="https://github.com/apache/storm" target="_blank" rel="noopener" aria-label="Fork Apache Storm on GitHub">Fork me on GitHub</a>
+    <header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <a href="/index.html"><img src="/images/logo.png" class="logo" alt="Apache Storm"/></a>
+            </div>
+            <div class="col-md-4">
+                
+                <h1>Version: 2.8.8</h1>
+                
+            </div>
+        </div>
+    </div>
+</header>
+<!--Header End-->
+<!--Navigation Begin-->
+<nav class="navbar navbar-expand-md" data-bs-theme="dark" role="banner">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#stormNavbar"
+                aria-controls="stormNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="stormNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/index.html" id="home">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="about" aria-expanded="false">About</a>
+                    <ul class="dropdown-menu" aria-labelledby="about">
+                        <li><a class="dropdown-item" href="/about/integrates.html">Integrates</a></li>
+                        <li><a class="dropdown-item" href="/about/simple-api.html">Simple API</a></li>
+                        <li><a class="dropdown-item" href="/about/scalable.html">Scalable</a></li>
+                        <li><a class="dropdown-item" href="/about/fault-tolerant.html">Fault tolerant</a></li>
+                        <li><a class="dropdown-item" href="/about/guarantees-data-processing.html">Guarantees data processing</a></li>
+                        <li><a class="dropdown-item" href="/about/multi-language.html">Use with any language</a></li>
+                        <li><a class="dropdown-item" href="/about/deployment.html">Easy to deploy and operate</a></li>
+                        <li><a class="dropdown-item" href="/about/free-and-open-source.html">Free and open source</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="documentation" aria-expanded="false">Documentation</a>
+                    <ul class="dropdown-menu" aria-labelledby="documentation">
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/older-releases.html">Older Versions</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="community" aria-expanded="false">Community</a>
+                    <ul class="dropdown-menu" aria-labelledby="community">
+                        <li><a class="dropdown-item" href="/getting-help.html">Getting Help</a></li>
+                        <li><a class="dropdown-item" href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a class="dropdown-item" href="/team/">Team</a></li>
+                        <li><a class="dropdown-item" href="/contribute/BYLAWS.html">ByLaws</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/news.html" id="news">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="/downloads.html" id="download">Download</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-fluid">
+    
+    <h1 class="page-title">Trident Spouts</h1>
+    
+          <div class="row">
+           	<div class="col-md-12">
+	             <!-- Documentation -->
+
+<p class="post-meta"></p>
+
+<div class="documentation-content"><h1 id="trident-spouts">Trident spouts</h1>
+
+<p>Like in the vanilla Storm API, spouts are the source of streams in a Trident topology. On top of the vanilla Storm spouts, Trident exposes additional APIs for more sophisticated spouts.</p>
+
+<p>There is an inextricable link between how you source your data streams and how you update state (e.g. databases) based on those data streams. See <a href="Trident-state.html">Trident state doc</a> for an explanation of this – understanding this link is imperative for understanding the spout options available.</p>
+
+<p>Regular Storm spouts will be non-transactional spouts in a Trident topology. To use a regular Storm IRichSpout, create the stream like this in a TridentTopology:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">TridentTopology</span> <span class="n">topology</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TridentTopology</span><span class="o">();</span>
+<span class="n">topology</span><span class="o">.</span><span class="na">newStream</span><span class="o">(</span><span class="s">"myspoutid"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">MyRichSpout</span><span class="o">());</span>
+</code></pre></div>
+<p>All spouts in a Trident topology are required to be given a unique identifier for the stream – this identifier must be unique across all topologies run on the cluster. Trident will use this identifier to store metadata about what the spout has consumed in Zookeeper, including the txid and any metadata associated with the spout.</p>
+
+<p>You can configure the Zookeeper storage of spout metadata via the following configuration options:</p>
+
+<ol>
+<li><code>transactional.zookeeper.servers</code>: A list of Zookeeper hostnames </li>
+<li><code>transactional.zookeeper.port</code>: The port of the Zookeeper cluster</li>
+<li><code>transactional.zookeeper.root</code>: The root dir in Zookeeper where metadata is stored. Metadata will be stored at the path <root path>/<spout id></li>
+</ol>
+
+<h2 id="pipelining">Pipelining</h2>
+
+<p>By default, Trident processes a single batch at a time, waiting for the batch to succeed or fail before trying another batch. You can get significantly higher throughput – and lower latency of processing of each batch – by pipelining the batches. You configure the maximum amount of batches to be processed simultaneously with the &quot;topology.max.spout.pending&quot; property. </p>
+
+<p>Even while processing multiple batches simultaneously, Trident will order any state updates taking place in the topology among batches. For example, suppose you&#39;re doing a global count aggregation into a database. The idea is that while you&#39;re updating the count in the database for batch 1, you can still be computing the partial counts for batches 2 through 10. Trident won&#39;t move on to the state updates for batch 2 until the state updates for batch 1 have succeeded. This is essential for achieving exactly-once processing semantics, as outline in <a href="Trident-state.html">Trident state doc</a>.</p>
+
+<h2 id="trident-spout-types">Trident spout types</h2>
+
+<p>Here are the following spout APIs available:</p>
+
+<ol>
+<li><a href="https://github.com/apache/storm/blob/v2.8.8/storm-client/src/jvm/org/apache/storm/trident/spout/ITridentSpout.java">ITridentSpout</a>: The most general API that can support transactional or opaque transactional semantics. Generally you&#39;ll use one of the partitioned flavors of this API rather than this one directly.</li>
+<li><a href="https://github.com/apache/storm/blob/v2.8.8/storm-client/src/jvm/org/apache/storm/trident/spout/IBatchSpout.java">IBatchSpout</a>: A non-transactional spout that emits batches of tuples at a time</li>
+<li><a href="https://github.com/apache/storm/blob/v2.8.8/storm-client/src/jvm/org/apache/storm/trident/spout/IPartitionedTridentSpout.java">IPartitionedTridentSpout</a>: A transactional spout that reads from a partitioned data source (like a cluster of Kafka servers)</li>
+<li><a href="https://github.com/apache/storm/blob/v2.8.8/storm-client/src/jvm/org/apache/storm/trident/spout/IOpaquePartitionedTridentSpout.java">IOpaquePartitionedTridentSpout</a>: An opaque transactional spout that reads from a partitioned data source</li>
+</ol>
+
+<p>And, like mentioned in the beginning of this tutorial, you can use regular IRichSpout&#39;s as well.</p>
+</div>
+
+
+	          </div>
+	       </div>
+	  </div>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-meetups">
+                    <a class="acevent" data-format="wide" data-mode="dark"></a>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="footer-policy-links">
+                    <li><a href="https://www.apache.org/licenses/">License</a></li>
+                    <li><a href="https://www.apache.org/security/">Security</a></li>
+                    <li><a href="/security-model.html">Security Model</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
+                </ul>
+                <p class="footer-legal">
+                    Copyright &copy; 2026 <a href="https://www.apache.org">Apache Software Foundation</a>. All Rights Reserved.
+                    <br>Apache Storm, Apache, the Apache logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation.
+                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    /* We explicitly disable cookie tracking to avoid privacy issues */
+    _paq.push(['disableCookies']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//analytics.apache.org/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '38']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+<script src="https://www.apachecon.com/event-images/snippet.js"></script>
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-angle-up"></i></a></span> 
+
+</body>
+
+</html>
+

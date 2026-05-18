@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.7</h1>
+                <h1>Version: 2.8.8</h1>
                 
             </div>
         </div>
@@ -90,6 +90,11 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
                         
                         
@@ -98,9 +103,6 @@
                         <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.5/index.html">2.8.5</a></li>
                         
                         
                         
@@ -334,7 +336,7 @@ and you don&#39;t need to set them in the worker-launcher.cfg unless you need to
 <p>You can profile your worker processes by clicking on the profiling buttons (jstack, heap, etc) on storm UI.
 If you have sudo permission, you can also run <code>sudo nsenter --target &lt;container-pid&gt; --pid --mount --setuid &lt;uid&gt; --setgid &lt;gid&gt;</code> to enter the container. 
 Then you can run <code>jstack</code>, <code>jmap</code> etc inside the container. <code>&lt;container-pid&gt;</code> is the pid of the container process on the host.
-<code>&lt;container-pid&gt;</code> can be obtained by running <code>sudo docker inspect --format &#39;&#39; &lt;container-id&gt;</code> command. 
+<code>&lt;container-pid&gt;</code> can be obtained by running <code>sudo docker inspect --format &#39;{{.State.Pid}}&#39; &lt;container-id&gt;</code> command. 
 <code>&lt;uid&gt;</code> and <code>&lt;gid&gt;</code> are the user id and group id of the container owner, respectively.</p>
 
 <h2 id="seccomp-security-profiles">Seccomp security profiles</h2>

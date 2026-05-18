@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.7</h1>
+                <h1>Version: 2.8.8</h1>
                 
             </div>
         </div>
@@ -90,6 +90,11 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
                         
                         
@@ -98,9 +103,6 @@
                         <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.5/index.html">2.8.5</a></li>
                         
                         
                         
@@ -181,7 +183,7 @@
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><p>Storm offers a Clojure DSL through the storm-clojure package for defining spouts, bolts, and topologies. The Clojure DSL has access to everything the Java API exposes, so if you&#39;re a Clojure user you can code Storm topologies without touching Java at all. The Clojure DSL is defined in the source in the <a href="https://github.com/apache/storm/blob/v2.8.7/storm-clojure/src/clj/org/apache/storm/clojure.clj">org.apache.storm.clojure</a> namespace.</p>
+<div class="documentation-content"><p>Storm offers a Clojure DSL through the storm-clojure package for defining spouts, bolts, and topologies. The Clojure DSL has access to everything the Java API exposes, so if you&#39;re a Clojure user you can code Storm topologies without touching Java at all. The Clojure DSL is defined in the source in the <a href="https://github.com/apache/storm/blob/v2.8.8/storm-clojure/src/clj/org/apache/storm/clojure.clj">org.apache.storm.clojure</a> namespace.</p>
 
 <p>This page outlines all the pieces of the Clojure DSL, including:</p>
 
@@ -197,7 +199,7 @@
 
 <p>To define a topology, use the <code>topology</code> function. <code>topology</code> takes in two arguments: a map of &quot;spout specs&quot; and a map of &quot;bolt specs&quot;. Each spout and bolt spec wires the code for the component into the topology by specifying things like inputs and parallelism.</p>
 
-<p>Let&#39;s take a look at an example topology definition <a href="https://github.com/apache/storm/blob/v2.8.7/examples/storm-starter/src/clj/org/apache/storm/starter/clj/word_count.clj">from the storm-starter project</a>:</p>
+<p>Let&#39;s take a look at an example topology definition <a href="https://github.com/apache/storm/blob/v2.8.8/examples/storm-starter/src/clj/org/apache/storm/starter/clj/word_count.clj">from the storm-starter project</a>:</p>
 <div class="highlight"><pre><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="nf">topology</span><span class="w">
  </span><span class="p">{</span><span class="s">"1"</span><span class="w"> </span><span class="p">(</span><span class="nf">spout-spec</span><span class="w"> </span><span class="n">sentence-spout</span><span class="p">)</span><span class="w">
   </span><span class="s">"2"</span><span class="w"> </span><span class="p">(</span><span class="nf">spout-spec</span><span class="w"> </span><span class="p">(</span><span class="nf">sentence-spout-parameterized</span><span class="w">
@@ -215,11 +217,11 @@
 
 <h4 id="spout-spec">spout-spec</h4>
 
-<p><code>spout-spec</code> takes as arguments the spout implementation (an object that implements <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.7/org/apache/storm/topology/IRichSpout.html">IRichSpout</a>) and optional keyword arguments. The only option that exists currently is the <code>:p</code> option, which specifies the parallelism for the spout. If you omit <code>:p</code>, the spout will execute as a single task.</p>
+<p><code>spout-spec</code> takes as arguments the spout implementation (an object that implements <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/topology/IRichSpout.html">IRichSpout</a>) and optional keyword arguments. The only option that exists currently is the <code>:p</code> option, which specifies the parallelism for the spout. If you omit <code>:p</code>, the spout will execute as a single task.</p>
 
 <h4 id="bolt-spec">bolt-spec</h4>
 
-<p><code>bolt-spec</code> takes as arguments the input declaration for the bolt, the bolt implementation (an object that implements <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.7/org/apache/storm/topology/IRichBolt.html">IRichBolt</a>), and optional keyword arguments.</p>
+<p><code>bolt-spec</code> takes as arguments the input declaration for the bolt, the bolt implementation (an object that implements <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/topology/IRichBolt.html">IRichBolt</a>), and optional keyword arguments.</p>
 
 <p>The input declaration is a map from stream ids to stream groupings. A stream id can have one of two forms:</p>
 
@@ -359,7 +361,7 @@
 
 <p>If you leave out the option map, it defaults to {:prepare true}. The output declaration for <code>defspout</code> has the same syntax as <code>defbolt</code>.</p>
 
-<p>Here&#39;s an example <code>defspout</code> implementation from <a href="https://github.com/apache/storm/blob/v2.8.7/examples/storm-starter/src/clj/org/apache/storm/starter/clj/word_count.clj">storm-starter</a>:</p>
+<p>Here&#39;s an example <code>defspout</code> implementation from <a href="https://github.com/apache/storm/blob/v2.8.8/examples/storm-starter/src/clj/org/apache/storm/starter/clj/word_count.clj">storm-starter</a>:</p>
 <div class="highlight"><pre><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="nf">defspout</span><span class="w"> </span><span class="n">sentence-spout</span><span class="w"> </span><span class="p">[</span><span class="s">"sentence"</span><span class="p">]</span><span class="w">
   </span><span class="p">[</span><span class="n">conf</span><span class="w"> </span><span class="n">context</span><span class="w"> </span><span class="n">collector</span><span class="p">]</span><span class="w">
   </span><span class="p">(</span><span class="k">let</span><span class="w"> </span><span class="p">[</span><span class="n">sentences</span><span class="w"> </span><span class="p">[</span><span class="s">"a little brown dog"</span><span class="w">
