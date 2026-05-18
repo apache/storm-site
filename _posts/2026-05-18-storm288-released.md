@@ -21,8 +21,6 @@ users on the mailing lists. Your efforts are much appreciated.
 
 <p>JIRA issues addressed in the 2.8.8 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
 
-<p>Issues addressed in 2.8.8.</p>
-
 <h2>Bug fixing</h2>
 <ul>
 	<li>[<a href="https://github.com/apache/storm/pull/8591">#8591</a>] - STORM-4041: fix(topology_lag): Kafka Topology Lag breaking when no offsets are committed (Backport #8589)</li>
