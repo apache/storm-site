@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -322,9 +326,9 @@ of Java generics.  The deserializers can be specified via the consumer propertie
 <p>There are a few key configs to pay attention to.</p>
 
 <p><code>setFirstPollOffsetStrategy</code> allows you to set where to start consuming data from.  This is used both in case of failure recovery and starting the spout
-for the first time. The allowed values are listed in the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.FirstPollOffsetStrategy.html">FirstPollOffsetStrategy javadocs</a>.</p>
+for the first time. The allowed values are listed in the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.FirstPollOffsetStrategy.html">FirstPollOffsetStrategy javadocs</a>.</p>
 
-<p><code>setProcessingGuarantee</code> lets you configure what processing guarantees the spout will provide. This affects how soon consumed offsets can be committed, and the frequency of commits. See the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html">ProcessingGuarantee javadoc</a> for details.</p>
+<p><code>setProcessingGuarantee</code> lets you configure what processing guarantees the spout will provide. This affects how soon consumed offsets can be committed, and the frequency of commits. See the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html">ProcessingGuarantee javadoc</a> for details.</p>
 
 <p><code>setRecordTranslator</code> allows you to modify how the spout converts a Kafka Consumer Record into a Tuple, and which stream that tuple will be published into.
 By default the &quot;topic&quot;, &quot;partition&quot;, &quot;offset&quot;, &quot;key&quot;, and &quot;value&quot; will be emitted to the &quot;default&quot; stream.  If you want to output entries to different
@@ -433,7 +437,7 @@ e.g. <code>mvn clean install -Dstorm.kafka.client.version=0.10.0.0</code></p>
 
 <h1 id="kafka-spout-performance-tuning">Kafka Spout Performance Tuning</h1>
 
-<p>The Kafka spout provides two internal parameters to control its performance. The parameters can be set using the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setOffsetCommitPeriodMs-long-">setOffsetCommitPeriodMs</a> and <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setMaxUncommittedOffsets-int-">setMaxUncommittedOffsets</a> methods. </p>
+<p>The Kafka spout provides two internal parameters to control its performance. The parameters can be set using the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setOffsetCommitPeriodMs-long-">setOffsetCommitPeriodMs</a> and <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setMaxUncommittedOffsets-int-">setMaxUncommittedOffsets</a> methods. </p>
 
 <ul>
 <li>&quot;offset.commit.period.ms&quot; controls how often the spout commits to Kafka</li>
@@ -446,7 +450,7 @@ e.g. <code>mvn clean install -Dstorm.kafka.client.version=0.10.0.0</code></p>
 <ul>
 <li>“fetch.min.bytes”</li>
 <li>“fetch.max.wait.ms”</li>
-<li><a href="http://kafka.apache.org/090/javadoc/index.html?org/apache/kafka/clients/consumer/KafkaConsumer.html">Kafka Consumer</a> instance poll timeout, which is specified for each Kafka spout using the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setPollTimeoutMs-long-">setPollTimeoutMs</a> method.
+<li><a href="http://kafka.apache.org/090/javadoc/index.html?org/apache/kafka/clients/consumer/KafkaConsumer.html">Kafka Consumer</a> instance poll timeout, which is specified for each Kafka spout using the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setPollTimeoutMs-long-">setPollTimeoutMs</a> method.
 <br/></li>
 </ul>
 
@@ -493,23 +497,23 @@ and Kafka 0.10.1.0 <a href="https://kafka.apache.org/0101/javadoc/index.html?org
 </thead><tbody>
 <tr>
 <td><strong>Setting:</strong> <code>startOffsetTime</code><br><br> <strong>Default:</strong> <code>EarliestTime</code><br>________________________________________________ <br> <strong>Setting:</strong> <code>forceFromStart</code> <br><br> <strong>Default:</strong> <code>false</code> <br><br> <code>startOffsetTime</code> &amp; <code>forceFromStart</code> together determine the starting offset. <code>forceFromStart</code> determines whether the Zookeeper offset is ignored. <code>startOffsetTime</code> sets the timestamp that determines the beginning offset, in case there is no offset in Zookeeper, or the Zookeeper offset is ignored</td>
-<td><strong>Setting:</strong> <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.FirstPollOffsetStrategy.html"><code>FirstPollOffsetStrategy</code></a><br><br> <strong>Default:</strong> <code>UNCOMMITTED_EARLIEST</code> <br><br> <a href="#helper-table-for-setting-firstpolloffsetstrategy">Refer to the helper table</a> for picking <code>FirstPollOffsetStrategy</code> based on your <code>startOffsetTime</code> &amp; <code>forceFromStart</code> settings</td>
-<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setFirstPollOffsetStrategy-org.apache.storm.kafka.spout.KafkaSpoutConfig.FirstPollOffsetStrategy-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setFirstPollOffsetStrategy(&lt;strategy-name&gt;)</code></a></td>
+<td><strong>Setting:</strong> <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.FirstPollOffsetStrategy.html"><code>FirstPollOffsetStrategy</code></a><br><br> <strong>Default:</strong> <code>UNCOMMITTED_EARLIEST</code> <br><br> <a href="#helper-table-for-setting-firstpolloffsetstrategy">Refer to the helper table</a> for picking <code>FirstPollOffsetStrategy</code> based on your <code>startOffsetTime</code> &amp; <code>forceFromStart</code> settings</td>
+<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setFirstPollOffsetStrategy-org.apache.storm.kafka.spout.KafkaSpoutConfig.FirstPollOffsetStrategy-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setFirstPollOffsetStrategy(&lt;strategy-name&gt;)</code></a></td>
 </tr>
 <tr>
 <td><strong>Setting:</strong> <code>scheme</code><br><br> The interface that specifies how a <code>ByteBuffer</code> from a Kafka topic is transformed into Storm tuple <br><strong>Default:</strong> <code>RawMultiScheme</code></td>
 <td><strong>Setting:</strong> <a href="https://kafka.apache.org/11/javadoc/org/apache/kafka/common/serialization/Deserializer.html"><code>Deserializers</code></a></td>
-<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, &lt;deserializer-class&gt;)</code></a><br><br> <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, &lt;deserializer-class&gt;)</code></a></td>
+<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, &lt;deserializer-class&gt;)</code></a><br><br> <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, &lt;deserializer-class&gt;)</code></a></td>
 </tr>
 <tr>
 <td><strong>Setting:</strong> <code>fetchSizeBytes</code><br><br> Message fetch size -- the number of bytes to attempt to fetch in one request to a Kafka server <br> <strong>Default:</strong> <code>1MB</code></td>
 <td><strong>Setting:</strong> <a href="http://kafka.apache.org/10/documentation.html#newconsumerconfigs"><code>max.partition.fetch.bytes</code></a></td>
-<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.MAX_PARTITION_FETCH_BYTES_CONFIG, &lt;int-value&gt;)</code></a></td>
+<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.MAX_PARTITION_FETCH_BYTES_CONFIG, &lt;int-value&gt;)</code></a></td>
 </tr>
 <tr>
 <td><strong>Setting:</strong> <code>bufferSizeBytes</code><br><br> Buffer size (in bytes) for network requests. The buffer size which consumer has for pulling data from producer <br> <strong>Default:</strong> <code>1MB</code></td>
 <td><strong>Setting:</strong> <a href="http://kafka.apache.org/10/documentation.html#newconsumerconfigs"><code>receive.buffer.bytes</code></a></td>
-<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.RECEIVE_BUFFER_CONFIG, &lt;int-value&gt;)</code></a></td>
+<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.RECEIVE_BUFFER_CONFIG, &lt;int-value&gt;)</code></a></td>
 </tr>
 <tr>
 <td><strong>Setting:</strong> <code>socketTimeoutMs</code><br><br> <strong>Default:</strong> <code>10000</code></td>
@@ -518,13 +522,13 @@ and Kafka 0.10.1.0 <a href="https://kafka.apache.org/0101/javadoc/index.html?org
 </tr>
 <tr>
 <td><strong>Setting:</strong> <code>useStartOffsetTimeIfOffsetOutOfRange</code><br><br> <strong>Default:</strong> <code>true</code></td>
-<td><strong>Setting:</strong> <a href="http://kafka.apache.org/10/documentation.html#newconsumerconfigs"><code>auto.offset.reset</code></a> <br><br> <strong>Default:</strong> Note that the default value for <code>auto.offset.reset</code> is <code>earliest</code> if you have <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html"><code>ProcessingGuarantee</code></a> set to <code>AT_LEAST_ONCE</code>, but the default value is <code>latest</code> otherwise.</td>
-<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, &lt;String&gt;)</code></a></td>
+<td><strong>Setting:</strong> <a href="http://kafka.apache.org/10/documentation.html#newconsumerconfigs"><code>auto.offset.reset</code></a> <br><br> <strong>Default:</strong> Note that the default value for <code>auto.offset.reset</code> is <code>earliest</code> if you have <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.ProcessingGuarantee.html"><code>ProcessingGuarantee</code></a> set to <code>AT_LEAST_ONCE</code>, but the default value is <code>latest</code> otherwise.</td>
+<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, &lt;String&gt;)</code></a></td>
 </tr>
 <tr>
 <td><strong>Setting:</strong> <code>fetchMaxWait</code><br><br> Maximum time in ms to wait for the response <br> <strong>Default:</strong> <code>10000</code></td>
 <td><strong>Setting:</strong> <a href="http://kafka.apache.org/10/documentation.html#newconsumerconfigs"><code>fetch.max.wait.ms</code></a></td>
-<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, &lt;value&gt;)</code></a></td>
+<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, &lt;value&gt;)</code></a></td>
 </tr>
 <tr>
 <td><strong>Setting:</strong> <code>maxOffsetBehind</code><br><br> Specifies how long a spout attempts to retry the processing of a failed tuple. One of the scenarios is when a failing tuple&#39;s offset is more than <code>maxOffsetBehind</code> behind the acked offset, the spout stops retrying the tuple.<br><strong>Default:</strong> <code>LONG.MAX_VALUE</code></td>
@@ -534,7 +538,7 @@ and Kafka 0.10.1.0 <a href="https://kafka.apache.org/0101/javadoc/index.html?org
 <tr>
 <td><strong>Setting:</strong> <code>clientId</code></td>
 <td><strong>Setting:</strong> <a href="http://kafka.apache.org/10/documentation.html#newconsumerconfigs"><code>client.id</code></a></td>
-<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.CLIENT_ID_CONFIG, &lt;String&gt;)</code></a></td>
+<td><a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/kafka/spout/KafkaSpoutConfig.Builder.html#setProp-java.lang.String-java.lang.Object-"><code>&lt;KafkaSpoutConfig-Builder&gt;.setProp(ConsumerConfig.CLIENT_ID_CONFIG, &lt;String&gt;)</code></a></td>
 </tr>
 </tbody></table>
 

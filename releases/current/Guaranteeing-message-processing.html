@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -203,11 +207,11 @@ This page describes how Storm can guarantee at least once processing.</p>
 
 <p><img src="images/tuple_tree.png" alt="Tuple tree"></p>
 
-<p>Storm considers a tuple coming off a spout &quot;fully processed&quot; when the tuple tree has been exhausted and every message in the tree has been processed. A tuple is considered failed when its tree of messages fails to be fully processed within a specified timeout. This timeout can be configured on a topology-specific basis using the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/Config.html#TOPOLOGY_MESSAGE_TIMEOUT_SECS">Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS</a> configuration and defaults to 30 seconds.</p>
+<p>Storm considers a tuple coming off a spout &quot;fully processed&quot; when the tuple tree has been exhausted and every message in the tree has been processed. A tuple is considered failed when its tree of messages fails to be fully processed within a specified timeout. This timeout can be configured on a topology-specific basis using the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/Config.html#TOPOLOGY_MESSAGE_TIMEOUT_SECS">Config.TOPOLOGY_MESSAGE_TIMEOUT_SECS</a> configuration and defaults to 30 seconds.</p>
 
 <h3 id="what-happens-if-a-message-is-fully-processed-or-fails-to-be-fully-processed">What happens if a message is fully processed or fails to be fully processed?</h3>
 
-<p>To understand this question, let&#39;s take a look at the lifecycle of a tuple coming off of a spout. For reference, here is the interface that spouts implement (see the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/spout/ISpout.html">Javadoc</a> for more information):</p>
+<p>To understand this question, let&#39;s take a look at the lifecycle of a tuple coming off of a spout. For reference, here is the interface that spouts implement (see the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/spout/ISpout.html">Javadoc</a> for more information):</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ISpout</span> <span class="kd">extends</span> <span class="nc">Serializable</span> <span class="o">{</span>
     <span class="kt">void</span> <span class="nf">open</span><span class="o">(</span><span class="nc">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="nc">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="nc">SpoutOutputCollector</span> <span class="n">collector</span><span class="o">);</span>
     <span class="kt">void</span> <span class="nf">close</span><span class="o">();</span>
@@ -291,11 +295,11 @@ This page describes how Storm can guarantee at least once processing.</p>
 
 <h3 id="how-do-i-make-my-applications-work-correctly-given-that-tuples-can-be-replayed">How do I make my applications work correctly given that tuples can be replayed?</h3>
 
-<p>As always in software design, the answer is &quot;it depends.&quot; If you really want exactly once semantics use the <a href="Trident-tutorial.html">Trident</a> API. In some cases, like with a lot of analytics, dropping data is OK so disabling the fault tolerance by setting the number of acker bolts to 0 <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/Config.html#TOPOLOGY_ACKERS">Config.TOPOLOGY_ACKERS</a>.  But in some cases you want to be sure that everything was processed at least once and nothing was dropped.  This is especially useful if all operations are idenpotent or if deduping can happen aferwards.</p>
+<p>As always in software design, the answer is &quot;it depends.&quot; If you really want exactly once semantics use the <a href="Trident-tutorial.html">Trident</a> API. In some cases, like with a lot of analytics, dropping data is OK so disabling the fault tolerance by setting the number of acker bolts to 0 <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/Config.html#TOPOLOGY_ACKERS">Config.TOPOLOGY_ACKERS</a>.  But in some cases you want to be sure that everything was processed at least once and nothing was dropped.  This is especially useful if all operations are idenpotent or if deduping can happen aferwards.</p>
 
 <h3 id="how-does-storm-implement-reliability-in-an-efficient-way">How does Storm implement reliability in an efficient way?</h3>
 
-<p>A Storm topology has a set of special &quot;acker&quot; tasks that track the DAG of tuples for every spout tuple. When an acker sees that a DAG is complete, it sends a message to the spout task that created the spout tuple to ack the message. You can set the number of acker tasks for a topology in the topology configuration using <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/Config.html#TOPOLOGY_ACKERS">Config.TOPOLOGY_ACKERS</a>. Storm defaults TOPOLOGY_ACKERS to one task per worker.</p>
+<p>A Storm topology has a set of special &quot;acker&quot; tasks that track the DAG of tuples for every spout tuple. When an acker sees that a DAG is complete, it sends a message to the spout task that created the spout tuple to ack the message. You can set the number of acker tasks for a topology in the topology configuration using <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/Config.html#TOPOLOGY_ACKERS">Config.TOPOLOGY_ACKERS</a>. Storm defaults TOPOLOGY_ACKERS to one task per worker.</p>
 
 <p>The best way to understand Storm&#39;s reliability implementation is to look at the lifecycle of tuples and tuple DAGs. When a tuple is created in a topology, whether in a spout or a bolt, it is given a random 64 bit id. These ids are used by ackers to track the tuple DAG for every spout tuple.</p>
 

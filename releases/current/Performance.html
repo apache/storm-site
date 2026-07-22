@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -213,6 +217,31 @@ can affect the asynchronous nature of the processing as the producers are likely
 are large and often full, the messages will end up waiting longer in these queues at each step of the processing, leading to poor latency being
 reported on the Storm UI. Large queues also imply higher memory consumption especially if the queues are typically full.</p>
 
+<h4 id="control-lane-for-system-control-tuples">Control lane for system control tuples</h4>
+
+<p>An executor&#39;s receive queue carries two very different kinds of traffic: the data tuples flowing between components, and low-volume time-driven
+system tuples (flush tuples, tick tuples, metrics ticks, upstream feedback) that keep the topology responsive. Because the queue is FIFO, a control
+tuple enqueued behind a full data backlog waits for the entire backlog to drain first, so data-plane saturation directly degrades control-plane
+latency.</p>
+
+<ul>
+<li><p><code>topology.executor.receive.control.queue.enable</code> (default <code>false</code>) : When enabled, each executor&#39;s receive queue gets a small dedicated <em>control
+lane</em> that is drained before the data queue on every consume pass. The time-driven system streams (<code>__flush</code>, <code>__tick</code>, <code>__metrics_tick</code>,
+<code>__feedback_tick</code>, <code>__feedback</code>) are routed to it at every ingress point (timer-generated tuples, intra-worker transfer, and inter-worker receive),
+insulating them from data-plane buffering, backpressure and overflow so that their delivery latency stays bounded even while the data plane
+saturates. Writes to the control lane are un-batched and never block: if the lane is full the tuple is dropped and counted (see the
+<code>receive-queue-control_dropped_messages</code> metric), which is safe because these signals are periodic and the next one arrives within the signal&#39;s
+period. The ack streams and the <code>__metrics</code> payload stream are volume-proportional to the data plane and stay on the data path, so acking,
+<code>max.spout.pending</code> throttling and at-least-once semantics are unaffected. Note that enabling this delivers control tuples ahead of co-enqueued data
+tuples; the whitelisted streams are wall-clock signals with no ordering contract against data, so this is safe.
+Note also that <code>__tick</code> is one of these control streams, so the drop-when-full behavior applies to user-facing tick tuples too: with the lane
+enabled a <code>__tick</code> tuple may occasionally be dropped under sustained saturation instead of blocking until delivered. Bolts that rely on tick tuples
+for windowing or expiry logic must tolerate an occasional missed tick — it is not only internal signals that can be dropped.</p></li>
+<li><p><code>topology.executor.receive.control.buffer.size</code> (default <code>1024</code>) : The size of the control lane. Control traffic is low-volume, so the default is
+ample; like the other queue sizes it is internally rounded up to the next power of 2. The control lane is excluded from the queue load reported to
+load-aware groupings.</p></li>
+</ul>
+
 <h2 id="2-batch-size">2. Batch Size</h2>
 
 <p>Producers can either write a batch of messages to the consumer&#39;s queue or write each message individually. This batch size can be configured.
@@ -229,7 +258,24 @@ instances are writing to the same downstream bolt instance, each of the spout in
 the <strong>Worker Transfer Queue</strong>. The Worker Transfer Thread is responsible for draining the messages in this queue and send them to the appropriate
 worker process over the network. This setting controls the batch size for writes into the Worker Transfer Queue.  This impacts the communication
 between worker processes.</p></li>
+<li><p><code>topology.producer.batch.dynamic</code> (default <code>false</code>) : When enabled, the receive-queue producer batch size is no longer fixed: it adapts at
+runtime between 1 and <code>topology.producer.batch.size</code> so that the topology gets low latency under light traffic and high throughput under heavy
+traffic, without having to pick a single compromise value. It has no effect unless <code>topology.producer.batch.size</code> is greater than 1. It applies to
+the producer (receive-queue) batch only; the Worker Transfer Queue batch (<code>topology.transfer.batch.size</code>) remains fixed.</p></li>
 </ul>
+
+<p>The effective batch size is adjusted using an AIMD (additive-increase / multiplicative-decrease) policy driven solely by <em>why</em> a batch is
+  flushed, so it requires no extra metrics:</p>
+
+<ul>
+<li>a batch flushed because it filled up to the current effective size is read as heavy load, and the effective size is increased by 1 (up to the
+configured maximum);</li>
+<li>a partially-filled batch flushed by a <em>flush tuple</em> (see <a href="#3-flush-tuple-frequency">Flush Tuple Frequency</a>) is read as light load, and the
+effective size is halved (down to a minimum of 1).</li>
+</ul>
+
+<p>Under sustained heavy traffic the effective size climbs to <code>topology.producer.batch.size</code> and behaves like a fixed batch; under light traffic it
+  shrinks toward 1 so that each message is published immediately instead of waiting for the batch to fill or for the next flush tuple.</p>
 
 <h4 id="guidance">Guidance</h4>
 
@@ -241,7 +287,9 @@ Beyond a certain point the throughput is likely to get worse.</p>
 
 <p><strong>Varying throughput:</strong> Topologies often experience fluctuating amounts of incoming traffic over the day. Other topos may experience higher traffic in some
 paths and lower throughput in other paths simultaneously. If latency is not a concern, a small bach size (e.g. 10) and in conjunction with the right flush
-frequency may provide a reasonable compromise for such scenarios. For meeting stricter latency SLAs, consider setting it to 1.</p>
+frequency may provide a reasonable compromise for such scenarios. For meeting stricter latency SLAs, consider setting it to 1. Alternatively, set
+<code>topology.producer.batch.size</code> to the throughput-optimal value and enable <code>topology.producer.batch.dynamic</code>: the batch will automatically shrink toward 1
+during quiet periods (for latency) and grow back toward the configured size during bursts (for throughput), instead of committing to one compromise value.</p>
 
 <h2 id="3-flush-tuple-frequency">3. Flush Tuple Frequency</h2>
 

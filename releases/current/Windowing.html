@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -343,7 +347,16 @@ just logged in the worker log files at INFO level.</p>
 
 </code></pre></div>
 <p>This behaviour can be changed by specifying the above <code>streamId</code>. In this case late tuples are going to be emitted on the specified stream and accessible
-via the field <code>WindowedBoltExecutor.LATE_TUPLE_FIELD</code>.</p>
+via the field <code>WindowedBoltExecutor.LATE_TUPLE_FIELD</code>. The value of this field is a <code>org.apache.storm.tuple.DetachedTuple</code>, a serializable copy of the
+original tuple (source component, task, stream, fields and values) detached from the topology context, so that the late tuple stream can also be
+consumed by bolts running in different workers.</p>
+
+<blockquote>
+<p><strong>Behavior change:</strong> previously the value in <code>LATE_TUPLE_FIELD</code> was the original input tuple (<code>TupleImpl</code>), which could not be serialized and therefore
+only worked when the late tuple stream was consumed in the same worker. It is now a <code>DetachedTuple</code>. Read it through the <code>Tuple</code> interface as before;
+however the detached tuple is unanchored and carries no topology context, so <code>getContext()</code> throws <code>UnsupportedOperationException</code> and the value can no
+longer be cast to <code>TupleImpl</code>.</p>
+</blockquote>
 
 <h3 id="watermarks">Watermarks</h3>
 

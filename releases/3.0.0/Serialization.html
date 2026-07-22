@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+
+    <title>Serialization</title>
+    <meta name="description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <link rel="canonical" href="https://storm.apache.org/releases/3.0.0/Serialization.html">
+
+    <meta property="og:title" content="Serialization">
+    <meta property="og:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://storm.apache.org/releases/3.0.0/Serialization.html">
+    <meta property="og:image" content="https://storm.apache.org/images/logo.png">
+    <meta property="og:site_name" content="Apache Storm">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Serialization">
+    <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
+
+    <!-- Bootstrap 5 core CSS (vendored locally) -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js" defer></script>
+    <script type="text/javascript" src="/assets/js/storm.js" defer></script>
+</head>
+
+
+  <body>
+    <a class="github-fork-ribbon" href="https://github.com/apache/storm" target="_blank" rel="noopener" aria-label="Fork Apache Storm on GitHub">Fork me on GitHub</a>
+    <header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <a href="/index.html"><img src="/images/logo.png" class="logo" alt="Apache Storm"/></a>
+            </div>
+            <div class="col-md-4">
+                
+                <h1>Version: 3.0.0</h1>
+                
+            </div>
+        </div>
+    </div>
+</header>
+<!--Header End-->
+<!--Navigation Begin-->
+<nav class="navbar navbar-expand-md" data-bs-theme="dark" role="banner">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#stormNavbar"
+                aria-controls="stormNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="stormNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/index.html" id="home">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="about" aria-expanded="false">About</a>
+                    <ul class="dropdown-menu" aria-labelledby="about">
+                        <li><a class="dropdown-item" href="/about/integrates.html">Integrates</a></li>
+                        <li><a class="dropdown-item" href="/about/simple-api.html">Simple API</a></li>
+                        <li><a class="dropdown-item" href="/about/scalable.html">Scalable</a></li>
+                        <li><a class="dropdown-item" href="/about/fault-tolerant.html">Fault tolerant</a></li>
+                        <li><a class="dropdown-item" href="/about/guarantees-data-processing.html">Guarantees data processing</a></li>
+                        <li><a class="dropdown-item" href="/about/multi-language.html">Use with any language</a></li>
+                        <li><a class="dropdown-item" href="/about/deployment.html">Easy to deploy and operate</a></li>
+                        <li><a class="dropdown-item" href="/about/free-and-open-source.html">Free and open source</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="documentation" aria-expanded="false">Documentation</a>
+                    <ul class="dropdown-menu" aria-labelledby="documentation">
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/older-releases.html">Older Versions</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="community" aria-expanded="false">Community</a>
+                    <ul class="dropdown-menu" aria-labelledby="community">
+                        <li><a class="dropdown-item" href="/getting-help.html">Getting Help</a></li>
+                        <li><a class="dropdown-item" href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a class="dropdown-item" href="/team/">Team</a></li>
+                        <li><a class="dropdown-item" href="/contribute/BYLAWS.html">ByLaws</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/news.html" id="news">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="/downloads.html" id="download">Download</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-fluid">
+    
+    <h1 class="page-title">Serialization</h1>
+    
+          <div class="row">
+           	<div class="col-md-12">
+	             <!-- Documentation -->
+
+<p class="post-meta"></p>
+
+<div class="documentation-content"><p>This page is about how the serialization system in Storm works for versions 0.6.0 and onwards. Storm used a different serialization system prior to 0.6.0 which is documented on <a href="Serialization-(prior-to-0.6.0).html">Serialization (prior to 0.6.0)</a>. </p>
+
+<blockquote>
+<p>This page covers <strong>tuple</strong> serialization (data flowing between spouts and bolts). For how Storm serializes the meta state it persists in ZooKeeper and related configuration, see <a href="Cluster-State-Serialization.html">Cluster State Serialization</a>.</p>
+</blockquote>
+
+<p>Tuples can be comprised of objects of any types. Since Storm is a distributed system, it needs to know how to serialize and deserialize objects when they&#39;re passed between tasks.</p>
+
+<p>Storm uses <a href="https://github.com/EsotericSoftware/kryo">Kryo</a> for serialization. Kryo is a flexible and fast serialization library that produces small serializations.</p>
+
+<p>By default, Storm can serialize primitive types, strings, byte arrays, ArrayList, HashMap, and HashSet. If you want to use another type in your tuples, you&#39;ll need to register a custom serializer.</p>
+
+<h3 id="dynamic-typing">Dynamic typing</h3>
+
+<p>There are no type declarations for fields in a Tuple. You put objects in fields and Storm figures out the serialization dynamically. Before we get to the interface for serialization, let&#39;s spend a moment understanding why Storm&#39;s tuples are dynamically typed.</p>
+
+<p>Adding static typing to tuple fields would add large amount of complexity to Storm&#39;s API. Hadoop, for example, statically types its keys and values but requires a huge amount of annotations on the part of the user. Hadoop&#39;s API is a burden to use and the &quot;type safety&quot; isn&#39;t worth it. Dynamic typing is simply easier to use.</p>
+
+<p>Further than that, it&#39;s not possible to statically type Storm&#39;s tuples in any reasonable way. Suppose a Bolt subscribes to multiple streams. The tuples from all those streams may have different types across the fields. When a Bolt receives a <code>Tuple</code> in <code>execute</code>, that tuple could have come from any stream and so could have any combination of types. There might be some reflection magic you can do to declare a different method for every tuple stream a bolt subscribes to, but Storm opts for the simpler, straightforward approach of dynamic typing.</p>
+
+<p>Finally, another reason for using dynamic typing is so Storm can be used in a straightforward manner from dynamically typed languages like JRuby.</p>
+
+<h3 id="custom-serialization">Custom serialization</h3>
+
+<p>As mentioned, Storm uses Kryo for serialization. To implement custom serializers, you need to register new serializers with Kryo. It&#39;s highly recommended that you read over <a href="https://github.com/EsotericSoftware/kryo">Kryo&#39;s home page</a> to understand how it handles custom serialization.</p>
+
+<p>Adding custom serializers is done through the &quot;topology.kryo.register&quot; property in your topology config or through a ServiceLoader described later. The config takes a list of registrations, where each registration can take one of two forms:</p>
+
+<ol>
+<li>The name of a class to register. In this case, Storm will use Kryo&#39;s <code>FieldsSerializer</code> to serialize the class. This may or may not be optimal for the class -- see the Kryo docs for more details.</li>
+<li>A map from the name of a class to register to an implementation of <a href="https://github.com/EsotericSoftware/kryo/blob/master/src/com/esotericsoftware/kryo/Serializer.java">com.esotericsoftware.kryo.Serializer</a>.</li>
+</ol>
+
+<p>Let&#39;s look at an example.</p>
+<div class="highlight"><pre><code class="language-" data-lang="">topology.kryo.register:
+  - com.mycompany.CustomType1
+  - com.mycompany.CustomType2: com.mycompany.serializer.CustomType2Serializer
+  - com.mycompany.CustomType3
+</code></pre></div>
+<p><code>com.mycompany.CustomType1</code> and <code>com.mycompany.CustomType3</code> will use the <code>FieldsSerializer</code>, whereas <code>com.mycompany.CustomType2</code> will use <code>com.mycompany.serializer.CustomType2Serializer</code> for serialization.</p>
+
+<p>Storm provides helpers for registering serializers in a topology config. The <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/Config.html">Config</a> class has a method called <code>registerSerialization</code> that takes in a registration to add to the config.</p>
+
+<p>There&#39;s an advanced config called <code>Config.TOPOLOGY_SKIP_MISSING_KRYO_REGISTRATIONS</code>. If you set this to true, Storm will ignore any serializations that are registered but do not have their code available on the classpath. Otherwise, Storm will throw errors when it can&#39;t find a serialization. This is useful if you run many topologies on a cluster that each have different serializations, but you want to declare all the serializations across all topologies in the <code>storm.yaml</code> files.</p>
+
+<h4 id="serializationregister-service-loader">SerializationRegister Service Loader</h4>
+
+<p>If you want to provide language bindings to storm, have a library that you want to interact cleanly with storm or have some other reason to provide serialization bindings and don&#39;t want to force the user to update their configs you can use the org.apache.storm.serialization.SerializationRegister service loader.</p>
+
+<p>You may use this like any other service loader and storm will register the bindings without forceing users to update their configs.</p>
+
+<h3 id="java-serialization">Java serialization</h3>
+
+<p>When <code>Config.TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION</code> is set true, if Storm encounters a type for which it doesn&#39;t have a serialization registered, it will use Java serialization if possible. If the object can&#39;t be serialized with Java serialization, then Storm will throw an error.</p>
+
+<p>Beware that Java serialization is extremely expensive, both in terms of CPU cost as well as the size of the serialized object. It is highly recommended that you register custom serializers when you put the topology in production. The Java serialization behavior is there so that it&#39;s easy to prototype new topologies.</p>
+
+<p>You can turn on/off the behavior to fall back on Java serialization by setting the <code>Config.TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION</code> config to true/false. The default value is false for security reasons.</p>
+
+<h3 id="tuple-compression">Tuple compression</h3>
+
+<p>For inter-worker (remote) traffic, Storm can optionally compress serialized tuples with <a href="https://facebook.github.io/zstd/">Zstandard</a> before they are sent over the network. This is intended for one specific scenario: components that emit <strong>large</strong> payloads to a remote worker, where the bytes saved on the wire outweigh the CPU cost of compression. A good example is a spout that emits entire lines of text to a downstream bolt running on a different worker.</p>
+
+<p>Compression is <strong>disabled by default</strong> and follows the serialization lifecycle exactly:</p>
+
+<ul>
+<li><strong>Intra-worker (local) traffic</strong> bypasses <code>KryoTupleSerializer</code> altogether, so it is never compressed regardless of configuration. You do not pay any CPU cost for tuples that stay inside a worker process.</li>
+<li><strong>Inter-worker (remote) traffic</strong> is compressed only when compression is enabled for the source component <em>and</em> the serialized tuple is larger than the configured threshold. Small tuples (single words, IDs, etc.) are left uncompressed, since the framing overhead of a compressed payload can exceed the original size.</li>
+</ul>
+
+<h4 id="enabling-compression-per-component">Enabling compression per component</h4>
+
+<p>Compression is controlled by the component-specific configuration <code>topology.tuple.compression.enable</code>. Because Storm merges component-specific configuration over the topology configuration, you can enable it for just the components that emit large tuples, leaving the rest of the topology untouched:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">TopologyBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TopologyBuilder</span><span class="o">();</span>
+
+<span class="n">builder</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="no">SPOUT_ID</span><span class="o">,</span> <span class="k">new</span> <span class="nc">FileReadSpout</span><span class="o">(</span><span class="n">inputFile</span><span class="o">),</span> <span class="n">spoutNum</span><span class="o">)</span>
+       <span class="o">.</span><span class="na">addConfiguration</span><span class="o">(</span><span class="nc">Config</span><span class="o">.</span><span class="na">TOPOLOGY_TUPLE_COMPRESSION_ENABLE</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+
+<span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="no">SPLIT_ID</span><span class="o">,</span> <span class="k">new</span> <span class="nc">SplitSentenceBolt</span><span class="o">(),</span> <span class="n">spBoltNum</span><span class="o">)</span>
+       <span class="o">.</span><span class="na">localOrShuffleGrouping</span><span class="o">(</span><span class="no">SPOUT_ID</span><span class="o">);</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="no">COUNT_ID</span><span class="o">,</span> <span class="k">new</span> <span class="nc">CountBolt</span><span class="o">(),</span> <span class="n">cntBoltNum</span><span class="o">)</span>
+       <span class="o">.</span><span class="na">fieldsGrouping</span><span class="o">(</span><span class="no">SPLIT_ID</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="nc">SplitSentenceBolt</span><span class="o">.</span><span class="na">FIELDS</span><span class="o">));</span>
+</code></pre></div>
+<p>You can also enable it topology-wide (or cluster-wide via <code>storm.yaml</code>) by setting <code>topology.tuple.compression.enable: true</code>, but enabling it only where large tuples are actually emitted is recommended.</p>
+
+<h4 id="flux">Flux</h4>
+
+<p><a href="flux.html">Flux</a> supports per-component configuration. In addition to parallelism, number of tasks, memory/CPU load, and groupings, each spout and bolt definition accepts a <code>config:</code> block that <code>FluxBuilder</code> applies to the underlying declarer via <code>addConfigurations(...)</code>. This is the Flux equivalent of <code>declarer.addConfiguration(...)</code>, so you can enable compression for just the components that emit large tuples:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">spouts</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">file-read-spout"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.perf.spout.FileReadSpout"</span>
+    <span class="na">parallelism</span><span class="pi">:</span> <span class="m">1</span>
+    <span class="c1"># enable compression for this spout only</span>
+    <span class="na">config</span><span class="pi">:</span>
+      <span class="na">topology.tuple.compression.enable</span><span class="pi">:</span> <span class="no">true</span>
+
+<span class="na">bolts</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">split"</span>
+    <span class="na">className</span><span class="pi">:</span> <span class="s2">"</span><span class="s">org.apache.storm.perf.bolt.SplitSentenceBolt"</span>
+    <span class="na">parallelism</span><span class="pi">:</span> <span class="m">1</span>
+</code></pre></div>
+<p>You can also enable it topology-wide by setting it in the topology-level <code>config:</code></p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">config</span><span class="pi">:</span>
+  <span class="na">topology.tuple.compression.enable</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">topology.tuple.compression.threshold</span><span class="pi">:</span> <span class="m">1460</span>
+</code></pre></div>
+<p>Be aware that the topology-wide form enables compression for <em>every</em> remote-bound tuple in the topology that exceeds the threshold.</p>
+
+<h4 id="configuration-reference">Configuration reference</h4>
+
+<table><thead>
+<tr>
+<th>Config</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>topology.tuple.compression.enable</code></td>
+<td><code>false</code></td>
+<td>Enables Zstd compression of serialized tuples before remote transfer. Best set per component via <code>addConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>topology.tuple.compression.threshold</code></td>
+<td><code>1460</code></td>
+<td>Minimum serialized tuple size, in bytes, before compression is attempted. Tuples at or below this size are sent uncompressed. The default matches the typical Ethernet TCP MSS, so payloads that already fit in a single network frame are never compressed.</td>
+</tr>
+<tr>
+<td><code>storm.compression.zstd.level</code></td>
+<td><code>3</code></td>
+<td>Zstd compression level. Supported range is 1–19; levels 20–22 (ultra mode) are prohibited because of their memory requirements.</td>
+</tr>
+<tr>
+<td><code>topology.tuple.compression.max.decompressed.bytes</code></td>
+<td><code>10485760</code> (10 MB)</td>
+<td>Upper bound on the decompressed size of a single tuple. Decompression that would exceed this limit fails, guarding against malicious or corrupt payloads.</td>
+</tr>
+</tbody></table>
+
+<h4 id="how-decompression-works">How decompression works</h4>
+
+<p>Compression is self-describing on the wire, so <strong>no extra configuration is required on the receiving side</strong>. The deserializer inspects the leading bytes of each incoming payload: if they match the Zstd magic header it decompresses the payload (bounded by <code>topology.tuple.compression.max.decompressed.bytes</code>) before deserializing, otherwise it deserializes the bytes directly. A single deserializer therefore transparently handles a mix of compressed and uncompressed tuples.</p>
+
+<p>As an optimization, the deserializer determines once — when the worker starts — whether <em>any</em> component in the topology enables compression (by scanning the merged per-component configurations). If none does, the magic-header check is skipped entirely and the Zstd code path is never touched, so topologies that do not use the feature pay no per-tuple cost. The corollary is that compression must be enabled somewhere in the topology config for compressed tuples to be decompressed on receipt; since the setting is part of the topology configuration shared by all of its workers, this is always the case for tuples produced within the same topology.</p>
+
+<h4 id="indicative-benchmark">Indicative benchmark</h4>
+
+<blockquote>
+<p><strong>Disclaimer:</strong> These numbers were gathered in a limited capacity while developing this feature and should be treated as a rough guide only, not as a performance guarantee. They were produced on a specific, deliberately favourable setup and your results will vary with topology shape, tuple size, network characteristics, and hardware.</p>
+</blockquote>
+
+<p>The benchmark ran two equivalent word-count topologies defined in <code>storm-perf</code> — one with tuple compression enabled in Spout component (<code>FileReadWordCountSpoutCompressionTopo</code>) and one without (<code>FileReadWordCountTopo</code>) — across workers connected by a simulated network with <strong>10 ms latency</strong> and <strong>0.5 ms jitter</strong>. This does not represent a typical intra-datacenter network; it deliberately emphasizes the maximum advantage the feature can offer when configured well. The tuple size used is the smallest that still yields a real benefit from compression (~1.5 KB).</p>
+
+<p>Sample round-trip ping between two supervisors on the Docker network:
+<code>
+--- cluster-supervisor2-1 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4004ms
+rtt min/avg/max/mdev = 18.767/24.353/42.486/9.083 ms
+</code></p>
+
+<p>Results (compression vs. no compression):</p>
+
+<table><thead>
+<tr>
+<th>Metric</th>
+<th>Compression</th>
+<th>No compression</th>
+<th>Difference</th>
+<th>Better</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Avg transfer rate (msg/s)</td>
+<td>776,389</td>
+<td>744,544</td>
+<td>+31,845 (+4.3%)</td>
+<td>Compression</td>
+</tr>
+<tr>
+<td>Peak transfer rate (msg/s)</td>
+<td>805,700</td>
+<td>790,300</td>
+<td>+15,400</td>
+<td>Compression</td>
+</tr>
+<tr>
+<td>Avg spout throughput (acks/s)</td>
+<td>98,167</td>
+<td>92,844</td>
+<td>+5,323 (+5.8%)</td>
+<td>Compression</td>
+</tr>
+<tr>
+<td>Peak spout throughput (acks/s)</td>
+<td>100,300</td>
+<td>98,666</td>
+<td>+1,634</td>
+<td>Compression</td>
+</tr>
+<tr>
+<td>Avg complete latency (ms)</td>
+<td>362.48</td>
+<td>376.73</td>
+<td>-14.25 (-3.8%)</td>
+<td>Compression</td>
+</tr>
+<tr>
+<td>Max complete latency (ms)</td>
+<td>366.44</td>
+<td>385.72</td>
+<td>-19.28</td>
+<td>Compression</td>
+</tr>
+<tr>
+<td>Runtime stability</td>
+<td>More consistent</td>
+<td>More fluctuation</td>
+<td>—</td>
+<td>Compression</td>
+</tr>
+</tbody></table>
+
+<p>In this configuration, compression improved transfer rate and spout throughput by roughly 4–6% and reduced complete latency by a few percent, while also producing more consistent per-task behaviour (less jitter across tasks). The takeaway is qualitative: when large tuples cross a high-latency link, trading CPU for fewer bytes on the wire can pay off — but you should measure with your own workload before enabling it broadly.</p>
+
+<h3 id="component-specific-serialization-registrations">Component-specific serialization registrations</h3>
+
+<p>Storm 0.7.0 lets you set component-specific configurations (read more about this at <a href="Configuration.html">Configuration</a>). Of course, if one component defines a serialization that serialization will need to be available to other bolts -- otherwise they won&#39;t be able to receive messages from that component!</p>
+
+<p>When a topology is submitted, a single set of serializations is chosen to be used by all components in the topology for sending messages. This is done by merging the component-specific serializer registrations with the regular set of serialization registrations. If two components define serializers for the same class, one of the serializers is chosen arbitrarily.</p>
+
+<p>To force a serializer for a particular class if there&#39;s a conflict between two component-specific registrations, just define the serializer you want to use in the topology-specific configuration. The topology-specific configuration has precedence over component-specific configurations for serialization registrations.</p>
+</div>
+
+
+	          </div>
+	       </div>
+	  </div>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-meetups">
+                    <a class="acevent" data-format="wide" data-mode="dark"></a>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="footer-policy-links">
+                    <li><a href="https://www.apache.org/licenses/">License</a></li>
+                    <li><a href="https://www.apache.org/security/">Security</a></li>
+                    <li><a href="/security-model.html">Security Model</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
+                </ul>
+                <p class="footer-legal">
+                    Copyright &copy; 2026 <a href="https://www.apache.org">Apache Software Foundation</a>. All Rights Reserved.
+                    <br>Apache Storm, Apache, the Apache logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation.
+                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    /* We explicitly disable cookie tracking to avoid privacy issues */
+    _paq.push(['disableCookies']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//analytics.apache.org/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '38']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+<script src="https://www.apachecon.com/event-images/snippet.js"></script>
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-angle-up"></i></a></span> 
+
+</body>
+
+</html>
+

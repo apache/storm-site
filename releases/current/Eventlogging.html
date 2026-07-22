@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -295,7 +299,7 @@ Alternate implementations of the <code>IEventLogger</code> interface can be adde
 <p>To register event logger to your topology, add to your topology&#39;s configuration like:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">conf</span><span class="o">.</span><span class="na">registerEventLogger</span><span class="o">(</span><span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">storm</span><span class="o">.</span><span class="na">metric</span><span class="o">.</span><span class="na">FileBasedEventLogger</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
 </code></pre></div>
-<p>You can refer <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/Config.html#registerEventLogger-java.lang.Class-">Config#registerEventLogger</a> and overloaded methods from javadoc.</p>
+<p>You can refer <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/Config.html#registerEventLogger-java.lang.Class-">Config#registerEventLogger</a> and overloaded methods from javadoc.</p>
 
 <p>Otherwise edit the storm.yaml config file:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">topology.event.logger.register</span><span class="pi">:</span>
@@ -304,7 +308,7 @@ Alternate implementations of the <code>IEventLogger</code> interface can be adde
     <span class="na">arguments</span><span class="pi">:</span>
       <span class="na">endpoint</span><span class="pi">:</span> <span class="s2">"</span><span class="s">event-logger.mycompany.org"</span>
 </code></pre></div>
-<p>When you implement your own event logger, <code>arguments</code> is passed to Map<String, Object> when <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/metric/IEventLogger.html#prepare-java.util.Map-java.lang.Map-org.apache.storm.task.TopologyContext-">IEventLogger#prepare</a> is called.</p>
+<p>When you implement your own event logger, <code>arguments</code> is passed to Map<String, Object> when <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/metric/IEventLogger.html#prepare-java.util.Map-java.lang.Map-org.apache.storm.task.TopologyContext-">IEventLogger#prepare</a> is called.</p>
 
 <p>Please keep in mind that EventLoggerBolt is just a kind of Bolt, so whole throughput of the topology will go down when registered event loggers cannot keep up handling incoming events, so you may want to take care of the Bolt like normal Bolt.
 One of idea to avoid this is making your implementation of IEventLogger as <code>non-blocking</code> fashion.</p>

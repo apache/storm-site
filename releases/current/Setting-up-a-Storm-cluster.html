@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -214,7 +218,7 @@
 <p>Next you need to install Storm&#39;s dependencies on Nimbus and the worker machines. These are:</p>
 
 <ol>
-<li>Java 11+ (Apache Storm 2.x is tested through GitHub actions against Java 11, Java 17 and Java 21)</li>
+<li>Java 21+ (Apache Storm 3.x is tested through GitHub actions against Java 21 and Java 25)</li>
 <li>Python 3.x</li>
 </ol>
 
@@ -226,7 +230,7 @@
 
 <h3 id="fill-in-mandatory-configurations-into-storm-yaml">Fill in mandatory configurations into storm.yaml</h3>
 
-<p>The Storm release contains a file at <code>conf/storm.yaml</code> that configures the Storm daemons. You can see the default configuration values <a href="https://github.com/apache/storm/blob/v2.8.8/conf/defaults.yaml">here</a>. storm.yaml overrides anything in defaults.yaml. There&#39;s a few configurations that are mandatory to get a working cluster:</p>
+<p>The Storm release contains a file at <code>conf/storm.yaml</code> that configures the Storm daemons. You can see the default configuration values <a href="https://github.com/apache/storm/blob/v3.0.0/conf/defaults.yaml">here</a>. storm.yaml overrides anything in defaults.yaml. There&#39;s a few configurations that are mandatory to get a working cluster:</p>
 
 <p>1) <strong>storm.zookeeper.servers</strong>: This is a list of the hosts in the Zookeeper cluster for your Storm cluster. It should look something like:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="na">storm.zookeeper.servers</span><span class="pi">:</span>
@@ -262,7 +266,7 @@ You can leave it empty with default value <code>$STORM_HOME/storm-local</code></
 </code></pre></div>
 <h3 id="monitoring-health-of-supervisors">Monitoring Health of Supervisors</h3>
 
-<p>Storm provides a mechanism by which administrators can configure the supervisor to run administrator supplied scripts periodically to determine if a node is healthy or not. Administrators can have the supervisor determine if the node is in a healthy state by performing any checks of their choice in scripts located in storm.health.check.dir. If a script detects the node to be in an unhealthy state, it must return a non-zero exit code. In pre-Storm 2.x releases, a bug considered a script exit value of 0 to be a failure.  This has now been fixed.  The supervisor will periodically run the scripts in the health check dir and check the output. If the script’s output contains the string ERROR, as described above, the supervisor will shut down any workers and exit.</p>
+<p>Storm provides a mechanism by which administrators can configure the supervisor to run administrator supplied scripts periodically to determine if a node is healthy or not. Administrators can have the supervisor determine if the node is in a healthy state by performing any checks of their choice in scripts located in storm.health.check.dir. If a script detects the node to be in an unhealthy state, it must return a non-zero exit code. In pre-Storm 3.x releases, a bug considered a script exit value of 0 to be a failure.  This has now been fixed.  The supervisor will periodically run the scripts in the health check dir and check the output. If the script’s output contains the string ERROR, as described above, the supervisor will shut down any workers and exit.</p>
 
 <p>If the supervisor is running with supervision &quot;/bin/storm node-health-check&quot; can be called to determine if the supervisor should be launched or if the node is unhealthy.</p>
 

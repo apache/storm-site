@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -264,11 +268,11 @@
 
 <h3 id="how-often-is-the-emitbatchnew-function-called">How often is the &#39;emitBatchNew&#39; function called?</h3>
 
-<p>Since the MBC is the actual spout, all the tuples in a batch are just members of its tupletree. That means storm&#39;s &quot;max spout pending&quot; config effectively defines the number of concurrent batches trident runs. The MBC emits a new batch if it has fewer than max-spending tuples pending and if at least one <a href="https://github.com/apache/storm/blob/v2.8.8/conf/defaults.yaml#L115">trident batch interval</a>&#39;s worth of seconds has passed since the last batch.</p>
+<p>Since the MBC is the actual spout, all the tuples in a batch are just members of its tupletree. That means storm&#39;s &quot;max spout pending&quot; config effectively defines the number of concurrent batches trident runs. The MBC emits a new batch if it has fewer than max-spending tuples pending and if at least one <a href="https://github.com/apache/storm/blob/v3.0.0/conf/defaults.yaml#L115">trident batch interval</a>&#39;s worth of seconds has passed since the last batch.</p>
 
 <h3 id="if-nothing-was-emitted-does-trident-slow-down-the-calls">If nothing was emitted does Trident slow down the calls?</h3>
 
-<p>Yes, there&#39;s a pluggable &quot;spout wait strategy&quot;; the default is to sleep for a <a href="https://github.com/apache/storm/blob/v2.8.8/conf/defaults.yaml#L110">configurable amount of time</a></p>
+<p>Yes, there&#39;s a pluggable &quot;spout wait strategy&quot;; the default is to sleep for a <a href="https://github.com/apache/storm/blob/v3.0.0/conf/defaults.yaml#L110">configurable amount of time</a></p>
 
 <h3 id="ok-then-what-is-the-trident-batch-interval-for">OK, then what is the trident batch interval for?</h3>
 

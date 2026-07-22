@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -183,17 +187,17 @@
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><p>A metric store (<a href="https://github.com/apache/storm/blob/v2.8.8/storm-server/src/main/java/org/apache/storm/metricstore/MetricStore.java"><code>MetricStore</code></a>) interface was added 
-to Nimbus to allow storing metric information (<a href="https://github.com/apache/storm/blob/v2.8.8/storm-server/src/main/java/org/apache/storm/metricstore/Metric.java"><code>Metric</code></a>) 
+<div class="documentation-content"><p>A metric store (<a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/metricstore/MetricStore.java"><code>MetricStore</code></a>) interface was added 
+to Nimbus to allow storing metric information (<a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/metricstore/Metric.java"><code>Metric</code></a>) 
 to a database.  The default implementation 
-(<a href="https://github.com/apache/storm/blob/v2.8.8/storm-server/src/main/java/org/apache/storm/metricstore/rocksdb/RocksDbStore.java"><code>RocksDbStore</code></a>) is using RocksDB, 
+(<a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/metricstore/rocksdb/RocksDbStore.java"><code>RocksDbStore</code></a>) is using RocksDB, 
 a key-value store.</p>
 
 <p>As metrics are stored in RocksDB, their string values (for topology ID and executor ID, etc.) are converted to unique integer IDs, and these strings 
 are also stored to the database as metadata indexed by the integer ID. When a metric is stored, it is also aggregated with any existing metric 
 within the same 1, 10, and 60 minute timeframe.  </p>
 
-<p>The <a href="https://github.com/apache/storm/blob/v2.8.8/storm-server/src/main/java/org/apache/storm/metricstore/FilterOptions.java"><code>FilterOptions</code></a> class provides an interface
+<p>The <a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/metricstore/FilterOptions.java"><code>FilterOptions</code></a> class provides an interface
 to select which options can be used to scan the metrics.</p>
 
 <h3 id="configuration">Configuration</h3>
@@ -208,9 +212,9 @@ to select which options can be used to scan the metrics.</p>
 </code></pre></div>
 <ul>
 <li>storm.metricstore.class is the class that implements the 
-(<a href="https://github.com/apache/storm/blob/v2.8.8/storm-server/src/main/java/org/apache/storm/metricstore/MetricStore.java"><code>MetricStore</code></a>).</li>
+(<a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/metricstore/MetricStore.java"><code>MetricStore</code></a>).</li>
 <li>storm.metricprocessor.class is the class that implements the 
-(<a href="https://github.com/apache/storm/blob/v2.8.8/storm-server/src/main/java/org/apache/storm/metricstore/WorkerMetricsProcessor.java"><code>WorkerMetricsProcessor</code></a>).</li>
+(<a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/metricstore/WorkerMetricsProcessor.java"><code>WorkerMetricsProcessor</code></a>).</li>
 <li>storm.metricstore.rocksdb.location provides to location of the RocksDB database on Nimbus</li>
 <li>storm.metricstore.rocksdb.create_if_missing permits creating a RocksDB database if missing</li>
 <li>storm.metricstore.rocksdb.metadata_string_cache_capacity controls the number of metadata strings cached in memory.</li>
@@ -219,7 +223,7 @@ to select which options can be used to scan the metrics.</p>
 
 <h3 id="rocksdb-schema">RocksDB Schema</h3>
 
-<p>The RocksDB Key (represented by <a href="https://github.com/apache/storm/blob/v2.8.8/storm-server/src/main/java/org/apache/storm/metricstore/rocksdb/RocksDbKey.java"><code>RocksDbKey</code></a>)
+<p>The RocksDB Key (represented by <a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/metricstore/rocksdb/RocksDbKey.java"><code>RocksDbKey</code></a>)
 fields are as follows:</p>
 
 <table><thead>
@@ -293,7 +297,7 @@ fields are as follows:</p>
 </tbody></table>
 
 <p>The RocksDB Value fields for metadata strings (represented by 
-<a href="https://github.com/apache/storm/blob/v2.8.8/storm-server/src/main/java/org/apache/storm/metricstore/rocksdb/RocksDbValue.java"><code>RocksDbValue</code></a>) are as follows:</p>
+<a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/metricstore/rocksdb/RocksDbValue.java"><code>RocksDbValue</code></a>) are as follows:</p>
 
 <table><thead>
 <tr>

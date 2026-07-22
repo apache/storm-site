@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -183,7 +187,7 @@
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><p><a href="https://github.com/apache/storm/blob/v2.8.8/storm-client/src/jvm/org/apache/storm/daemon/Acker.java">Storm&#39;s acker</a> tracks completion of each tupletree with a checksum hash: each time a tuple is sent, its value is XORed into the checksum, and each time a tuple is acked its value is XORed in again. If all tuples have been successfully acked, the checksum will be zero (the odds that the checksum will be zero otherwise are vanishingly small).</p>
+<div class="documentation-content"><p><a href="https://github.com/apache/storm/blob/v3.0.0/storm-client/src/jvm/org/apache/storm/daemon/Acker.java">Storm&#39;s acker</a> tracks completion of each tupletree with a checksum hash: each time a tuple is sent, its value is XORed into the checksum, and each time a tuple is acked its value is XORed in again. If all tuples have been successfully acked, the checksum will be zero (the odds that the checksum will be zero otherwise are vanishingly small).</p>
 
 <p>You can read a bit more about the <a href="Guaranteeing-message-processing.html#what-is-storms-reliability-api">reliability mechanism</a> elsewhere on the wiki -- this explains the internal details.</p>
 
@@ -212,7 +216,7 @@
 
 <h3 id="pending-tuples-and-the-rotatingmap">Pending tuples and the <code>RotatingMap</code></h3>
 
-<p>The acker stores pending tuples in a <a href="https://github.com/apache/storm/blob/v2.8.8/storm-client/src/jvm/org/apache/storm/utils/RotatingMap.java"><code>RotatingMap</code></a>, a simple device used in several places within Storm to efficiently time-expire a process.</p>
+<p>The acker stores pending tuples in a <a href="https://github.com/apache/storm/blob/v3.0.0/storm-client/src/jvm/org/apache/storm/utils/RotatingMap.java"><code>RotatingMap</code></a>, a simple device used in several places within Storm to efficiently time-expire a process.</p>
 
 <p>The RotatingMap behaves as a HashMap, and offers the same O(1) access guarantees.</p>
 

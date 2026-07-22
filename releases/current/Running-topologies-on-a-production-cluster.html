@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -185,9 +189,9 @@
 
 <div class="documentation-content"><p>Running topologies on a production cluster is similar to running in <a href="Local-mode.html">Local mode</a>. Here are the steps:</p>
 
-<p>1) Define the topology (Use <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/topology/TopologyBuilder.html">TopologyBuilder</a> if defining using Java)</p>
+<p>1) Define the topology (Use <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/topology/TopologyBuilder.html">TopologyBuilder</a> if defining using Java)</p>
 
-<p>2) Use <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/StormSubmitter.html">StormSubmitter</a> to submit the topology to the cluster. <code>StormSubmitter</code> takes as input the name of the topology, a configuration for the topology, and the topology itself. For example:</p>
+<p>2) Use <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/StormSubmitter.html">StormSubmitter</a> to submit the topology to the cluster. <code>StormSubmitter</code> takes as input the name of the topology, a configuration for the topology, and the topology itself. For example:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Config</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Config</span><span class="o">();</span>
 <span class="n">conf</span><span class="o">.</span><span class="na">setNumWorkers</span><span class="o">(</span><span class="mi">20</span><span class="o">);</span>
 <span class="n">conf</span><span class="o">.</span><span class="na">setMaxSpoutPending</span><span class="o">(</span><span class="mi">5000</span><span class="o">);</span>
@@ -222,7 +226,7 @@
 
 <h3 id="common-configurations">Common configurations</h3>
 
-<p>There are a variety of configurations you can set per topology. A list of all the configurations you can set can be found <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/Config.html">here</a>. The ones prefixed with &quot;TOPOLOGY&quot; can be overridden on a topology-specific basis (the other ones are cluster configurations and cannot be overridden). Here are some common ones that are set for a topology:</p>
+<p>There are a variety of configurations you can set per topology. A list of all the configurations you can set can be found <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/Config.html">here</a>. The ones prefixed with &quot;TOPOLOGY&quot; can be overridden on a topology-specific basis (the other ones are cluster configurations and cannot be overridden). Here are some common ones that are set for a topology:</p>
 
 <ol>
 <li><strong>Config.TOPOLOGY_WORKERS</strong>: This sets the number of worker processes to use to execute the topology. For example, if you set this to 25, there will be 25 Java processes across the cluster executing all the tasks. If you had a combined 150 parallelism across all components in the topology, each worker process will have 6 tasks running within it as threads.</li>

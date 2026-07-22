@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -251,7 +255,7 @@ topology map configuration. The configuration holds two keys “key1” and “k
 key “key1” having a local file name mapping named “blob_file” and it is not compressed.
 Workers will restart when the key1 file is updated on the supervisors.</p>
 <div class="highlight"><pre><code class="language-" data-lang="">storm jar /home/y/lib/storm-starter/current/storm-starter-jar-with-dependencies.jar 
-org.apache.storm.starter.clj.word_count test_topo -c topology.blobstore.map='{"key1":{"localname":"blob_file", "uncompress":false, "workerRestart":true},"key2":{}}'
+org.apache.storm.starter.WordCountTopology test_topo -c topology.blobstore.map='{"key1":{"localname":"blob_file", "uncompress":false, "workerRestart":true},"key2":{}}'
 </code></pre></div>
 <h3 id="blob-creation-process">Blob Creation Process</h3>
 
@@ -282,7 +286,7 @@ seamlessly by storing the state in the zookeeper about the running topologies an
 end, the supervisor and localizer talks to HdfsBlobStore through “HdfsClientBlobStore” implementation.</p>
 
 <h2 id="additional-features-and-documentation">Additional Features and Documentation</h2>
-<div class="highlight"><pre><code class="language-" data-lang="">storm jar /home/y/lib/storm-starter/current/storm-starter-jar-with-dependencies.jar org.apache.storm.starter.clj.word_count test_topo 
+<div class="highlight"><pre><code class="language-" data-lang="">storm jar /home/y/lib/storm-starter/current/storm-starter-jar-with-dependencies.jar org.apache.storm.starter.WordCountTopology test_topo 
 -c topology.blobstore.map='{"key1":{"localname":"blob_file", "uncompress":false},"key2":{}}'
 </code></pre></div>
 <h3 id="compression">Compression</h3>
@@ -583,7 +587,7 @@ be uncompressed.  Note that the key string needs to have the appropriate
 file-name-like format and extension, so it can be uncompressed correctly.</p>
 
 <h6 id="example">Example:</h6>
-<div class="highlight"><pre><code class="language-" data-lang="">storm jar /home/y/lib/storm-starter/current/storm-starter-jar-with-dependencies.jar org.apache.storm.starter.clj.word_count test_topo -c topology.blobstore.map='{"key1":{"localname":"blob_file", "uncompress":false},"key2":{}}'
+<div class="highlight"><pre><code class="language-" data-lang="">storm jar /home/y/lib/storm-starter/current/storm-starter-jar-with-dependencies.jar org.apache.storm.starter.WordCountTopology test_topo -c topology.blobstore.map='{"key1":{"localname":"blob_file", "uncompress":false},"key2":{}}'
 </code></pre></div>
 <p>Note: Please take care of the quotes.</p>
 

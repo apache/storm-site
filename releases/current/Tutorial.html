@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 2.8.8</h1>
+                <h1>Version: 3.0.0</h1>
                 
             </div>
         </div>
@@ -90,17 +90,21 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/2.8.8/index.html">2.8.8</a></li>
                         
                         
                         
                         
-                        <li><a class="dropdown-item" href="/releases/2.8.7/index.html">2.8.7</a></li>
-                        
-                        
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.6/index.html">2.8.6</a></li>
                         
                         
                         
@@ -187,7 +191,7 @@
 
 <h2 id="preliminaries">Preliminaries</h2>
 
-<p>This tutorial uses examples from the <a href="https://github.com/apache/storm/blob/v2.8.8/examples/storm-starter">storm-starter</a> project. It&#39;s recommended that you clone the project and follow along with the examples. Read <a href="Setting-up-development-environment.html">Setting up a development environment</a> and <a href="Creating-a-new-Storm-project.html">Creating a new Storm project</a> to get your machine set up.</p>
+<p>This tutorial uses examples from the <a href="https://github.com/apache/storm/blob/v3.0.0/examples/storm-starter">storm-starter</a> project. It&#39;s recommended that you clone the project and follow along with the examples. Read <a href="Setting-up-development-environment.html">Setting up a development environment</a> and <a href="Creating-a-new-Storm-project.html">Creating a new Storm project</a> to get your machine set up.</p>
 
 <h2 id="components-of-a-storm-cluster">Components of a Storm cluster</h2>
 
@@ -274,11 +278,11 @@
 
 <p>This code defines the nodes using the <code>setSpout</code> and <code>setBolt</code> methods. These methods take as input a user-specified id, an object containing the processing logic, and the amount of parallelism you want for the node. In this example, the spout is given id &quot;words&quot; and the bolts are given ids &quot;exclaim1&quot; and &quot;exclaim2&quot;. </p>
 
-<p>The object containing the processing logic implements the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/topology/IRichSpout.html">IRichSpout</a> interface for spouts and the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/topology/IRichBolt.html">IRichBolt</a> interface for bolts.</p>
+<p>The object containing the processing logic implements the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/topology/IRichSpout.html">IRichSpout</a> interface for spouts and the <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/topology/IRichBolt.html">IRichBolt</a> interface for bolts.</p>
 
 <p>The last parameter, how much parallelism you want for the node, is optional. It indicates how many threads should execute that component across the cluster. If you omit it, Storm will only allocate one thread for that node.</p>
 
-<p><code>setBolt</code> returns an <a href="https://javadoc.io/doc/org.apache.storm/storm-client/2.8.8/org/apache/storm/topology/InputDeclarer.html">InputDeclarer</a> object that is used to define the inputs to the Bolt. Here, component &quot;exclaim1&quot; declares that it wants to read all the tuples emitted by component &quot;words&quot; using a shuffle grouping, and component &quot;exclaim2&quot; declares that it wants to read all the tuples emitted by component &quot;exclaim1&quot; using a shuffle grouping. &quot;shuffle grouping&quot; means that tuples should be randomly distributed from the input tasks to the bolt&#39;s tasks. There are many ways to group data between components. These will be explained in a few sections.</p>
+<p><code>setBolt</code> returns an <a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0/org/apache/storm/topology/InputDeclarer.html">InputDeclarer</a> object that is used to define the inputs to the Bolt. Here, component &quot;exclaim1&quot; declares that it wants to read all the tuples emitted by component &quot;words&quot; using a shuffle grouping, and component &quot;exclaim2&quot; declares that it wants to read all the tuples emitted by component &quot;exclaim1&quot; using a shuffle grouping. &quot;shuffle grouping&quot; means that tuples should be randomly distributed from the input tasks to the bolt&#39;s tasks. There are many ways to group data between components. These will be explained in a few sections.</p>
 
 <p>If you wanted component &quot;exclaim2&quot; to read all the tuples emitted by both component &quot;words&quot; and component &quot;exclaim1&quot;, you would write component &quot;exclaim2&quot;&#39;s definition like this:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"exclaim2"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">ExclamationBolt</span><span class="o">(),</span> <span class="mi">5</span><span class="o">)</span>
@@ -377,7 +381,7 @@
 
 <p>When a task for Bolt A emits a tuple to Bolt B, which task should it send the tuple to?</p>
 
-<p>A &quot;stream grouping&quot; answers this question by telling Storm how to send tuples between sets of tasks. Before we dig into the different kinds of stream groupings, let&#39;s take a look at another topology from <a href="https://github.com/apache/storm/blob/v2.8.8/examples/storm-starter">storm-starter</a>. This <a href="https://github.com/apache/storm/blob/v2.8.8/examples/storm-starter/src/jvm/org/apache/storm/starter/WordCountTopology.java">WordCountTopology</a> reads sentences off of a spout and streams out of <code>WordCountBolt</code> the total number of times it has seen that word before:</p>
+<p>A &quot;stream grouping&quot; answers this question by telling Storm how to send tuples between sets of tasks. Before we dig into the different kinds of stream groupings, let&#39;s take a look at another topology from <a href="https://github.com/apache/storm/blob/v3.0.0/examples/storm-starter">storm-starter</a>. This <a href="https://github.com/apache/storm/blob/v3.0.0/examples/storm-starter/src/jvm/org/apache/storm/starter/WordCountTopology.java">WordCountTopology</a> reads sentences off of a spout and streams out of <code>WordCountBolt</code> the total number of times it has seen that word before:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">TopologyBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TopologyBuilder</span><span class="o">();</span>
 
 <span class="n">builder</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">RandomSentenceSpout</span><span class="o">(),</span> <span class="mi">5</span><span class="o">);</span>        
