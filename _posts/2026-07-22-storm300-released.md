@@ -40,7 +40,8 @@ to learn about the new features and changes in this release.
 
 If you have questions, run into issues, or want to share feedback, please reach out
 to the community via the [Apache Storm mailing lists](https://storm.apache.org/contribute/Contributing-to-Storm.html).
-The community is happy to help!
+To report bugs or request features, please open an issue on
+[GitHub](https://github.com/apache/storm/issues). The community is happy to help!
 
 ## Changes in this Release - Storm 3.0.0
 
@@ -294,5 +295,5 @@ The community is happy to help!
 	<li>[<a href="https://github.com/apache/storm/pull/8544">#8544</a>] - Bump prometheus.client.version from 1.5.1 to 1.6.1</li>
 	<li>[<a href="https://github.com/apache/storm/pull/8543">#8543</a>] - Bump activemq.version from 6.2.4 to 6.2.5</li>
 	<li>[<a href="https://github.com/apache/storm/pull/8540">#8540</a>] - build: replace storm-maven-plugins with git-commit-id-maven-plugin</li>
-	<li>[<a href="https://github.com/apache/storm/pull/8538">#8538</a>] - [Automated] Update license files after dependency changes</li>
+
 </ul>

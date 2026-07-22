@@ -35,11 +35,12 @@ and the [Apache Storm documentation](https://storm.apache.org/documentation.html
 
 If you have questions or need help with the migration to Storm 3.x, please reach out
 to the community via the [Apache Storm mailing lists](https://storm.apache.org/contribute/Contributing-to-Storm.html).
-The community is happy to help!
+To report bugs or request features, please open an issue on
+[GitHub](https://github.com/apache/storm/issues). The community is happy to help!
 
 ## Changes in this Release - Storm 2.8.9
 
-<p>JIRA issues addressed in the 2.8.9 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
+<p>Issues addressed in the 2.8.9 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
 
 <h2>Enhancements</h2>
 <ul>
