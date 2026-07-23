@@ -26,22 +26,45 @@ All community efforts will be focused on the Storm 3.x release stream.</p>
 details on the end-of-life of the 2.x series.</p>
 </div>
 
+## Two Distribution Flavours
+
+Starting with Storm 3.0.0, the binary distribution is available in two flavours
+([#8819](https://github.com/apache/storm/pull/8819)):
+
+<div style="display: flex; gap: 16px; margin: 16px 0; flex-wrap: wrap;">
+<div style="flex: 1; min-width: 260px; border: 1px solid #0066cc; border-radius: 4px; padding: 14px 18px;">
+<h4 style="margin-top: 0;">apache-storm-3.0.0-lite</h4>
+<p>A leaner package with optional integrations removed from the bundle.
+Add only what your topology needs via Maven or by dropping jars into the
+<code>lib-worker</code> directory.</p>
+<p><strong>Removed:</strong></p>
+<ul>
+<li>Optional Hadoop integration jars</li>
+<li>Optional Kafka integration jars</li>
+<li>Duplicated shared jars</li>
+</ul>
+<p><strong>Gains:</strong></p>
+<ul>
+<li>Significantly smaller distribution size</li>
+<li>Faster downloads and deploys</li>
+
+</ul>
+</div>
+<div style="flex: 1; min-width: 260px; border: 1px solid #555; border-radius: 4px; padding: 14px 18px;">
+<h4 style="margin-top: 0;">apache-storm-3.0.0</h4>
+<p>The full distribution, bundling all optional integrations as in previous
+releases. Drop-in replacement for users upgrading from Storm 2.x who want
+to keep their existing setup unchanged.</p>
+</div>
+</div>
+
+Both flavours are available on the [downloads page](/downloads.html).
+
 ## Thanks
 
 Special thanks are due to all those who have contributed to Apache Storm -- whether
 through direct code contributions, documentation, bug reports, or helping other
 users on the mailing lists. Your efforts are much appreciated.
-
-## Getting Started
-
-We encourage all users to read the [release notes](/2026/07/22/storm300-released.html)
-and the [Apache Storm documentation](https://storm.apache.org/documentation.html)
-to learn about the new features and changes in this release.
-
-If you have questions, run into issues, or want to share feedback, please reach out
-to the community via the [Apache Storm mailing lists](https://storm.apache.org/contribute/Contributing-to-Storm.html).
-To report bugs or request features, please open an issue on
-[GitHub](https://github.com/apache/storm/issues). The community is happy to help!
 
 ## Changes in this Release - Storm 3.0.0
 

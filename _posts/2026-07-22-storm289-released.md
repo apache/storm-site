@@ -28,16 +28,6 @@ Special thanks are due to all those who have contributed to Apache Storm -- whet
 through direct code contributions, documentation, bug reports, or helping other
 users on the mailing lists. Your efforts are much appreciated.
 
-## Getting Started
-
-We encourage all users to read the [release notes](/2026/07/22/storm289-released.html)
-and the [Apache Storm documentation](https://storm.apache.org/documentation.html).
-
-If you have questions or need help with the migration to Storm 3.x, please reach out
-to the community via the [Apache Storm mailing lists](https://storm.apache.org/contribute/Contributing-to-Storm.html).
-To report bugs or request features, please open an issue on
-[GitHub](https://github.com/apache/storm/issues). The community is happy to help!
-
 ## Changes in this Release - Storm 2.8.9
 
 <p>Issues addressed in the 2.8.9 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>

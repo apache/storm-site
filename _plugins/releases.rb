@@ -23,11 +23,21 @@ module Releases
     def generate(site)
       releases = Hash.new
 
+      # Load overrides from _data/releases.yml (array of hashes keyed by 'name')
+      overrides = {}
+      if site.data['releases'].is_a?(Array)
+        site.data['releases'].each do |r|
+          overrides[r['name']] = r if r['name']
+        end
+      end
+
       # Find the releases/ subdirectories, their names are the current releases
       for page in site.pages do
         release_name = dir_to_releasename(page.dir)
         if (release_name != nil)
           releases[release_name] = {'name' => release_name};
+          # Merge any custom fields from _data/releases.yml
+          overrides[release_name]&.each { |k, v| releases[release_name][k] = v }
           releases[release_name]['documented'] = true
         end
       end

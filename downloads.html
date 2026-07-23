@@ -20,8 +20,10 @@ title: Apache Storm downloads
 				This signature should be matched against <a href="https://downloads.apache.org/storm/KEYS">KEYS</a> file which contains the OpenPGP keys of Storm’s Release Managers.
 				We also provide SHA-512 checksums for every release file. After you download the file, you should calculate a checksum for your download, and make sure it is the same as ours.
 
+				{% if current['java-requirement'] %}
 				<h3>Requirements</h3>
-				Apache Storm requires Java 17 or later.
+				Apache Storm {{ current.name }} requires Java {{ current['java-requirement'] }} or later.
+				{% endif %}
 
 				<h3>Current {{ current.name }} Release</h3>
 				The current release is {{ current.name }}. Source and binary distributions can be found below.
@@ -31,6 +33,58 @@ title: Apache Storm downloads
 				<p><a href="/releases/{{ current.name }}/index.html">Documentation</a>
 					<br/><a href="https://javadoc.io/doc/org.apache.storm/storm-client/{{ current.name }}">Javadocs</a></p>
 
+				{% if current['has-lite'] %}
+				<h4>Binary Distribution (Lite)</h4>
+				<ul>
+					{% assign lite_base = base | append: "-lite" %}
+					{% assign lite_artifacts = ".tar.gz,.zip" | split: "," %}
+					{% for suffix in lite_artifacts %}
+					<li><a href="{{ cdn }}/{{ lite_base }}{{ suffix }}">{{ lite_base }}{{ suffix }}</a>
+						[<a href="{{ sigs }}/{{ lite_base }}{{ suffix }}.asc">PGP</a>]
+						[<a href="{{ sigs }}/{{ lite_base }}{{ suffix }}.sha512">SHA512</a>]
+					</li>
+					{% endfor %}
+				</ul>
+				<p>The lite distribution ships without optional integrations. Two helper scripts
+				are included to fetch them on demand via Maven when needed:</p>
+				<ul>
+					<li><code>bin/storm-kafka-monitor-fetch</code> — fetches
+					<code>storm-kafka-monitor</code> and its Kafka client dependencies into
+					<code>lib-tools/storm-kafka-monitor</code>, enabling Kafka spout lag
+					display in the Storm UI and the <code>bin/storm-kafka-monitor</code> command.</li>
+					<li><code>bin/storm-autocreds-fetch</code> — fetches
+					<code>storm-autocreds</code> and its Hadoop/HBase dependencies into
+					<code>extlib-daemon</code>, required for Kerberos delegation token support
+					on secure clusters.</li>
+				</ul>
+				<p>Both scripts require Apache Maven and read the Storm version automatically
+				from <code>$STORM_HOME/RELEASE</code>. Run either script with <code>--help</code>
+				for full usage.</p>
+
+				<h4>Binary Distribution (Full)</h4>
+				<p>The full distribution bundles all optional Hadoop and Kafka integrations.</p>
+				<ul>
+					{% assign full_artifacts = ".tar.gz,.zip" | split: "," %}
+					{% for suffix in full_artifacts %}
+					<li><a href="{{ cdn }}/{{ base }}{{ suffix }}">{{ base }}{{ suffix }}</a>
+						[<a href="{{ sigs }}/{{ base }}{{ suffix }}.asc">PGP</a>]
+						[<a href="{{ sigs }}/{{ base }}{{ suffix }}.sha512">SHA512</a>]
+					</li>
+					{% endfor %}
+				</ul>
+
+				<h4>Source</h4>
+				<ul>
+					{% assign src_artifacts = "-src.tar.gz,-src.zip" | split: "," %}
+					{% for suffix in src_artifacts %}
+					<li><a href="{{ cdn }}/{{ base }}{{ suffix }}">{{ base }}{{ suffix }}</a>
+						[<a href="{{ sigs }}/{{ base }}{{ suffix }}.asc">PGP</a>]
+						[<a href="{{ sigs }}/{{ base }}{{ suffix }}.sha512">SHA512</a>]
+					</li>
+					{% endfor %}
+				</ul>
+
+				{% else %}
 				<ul>
 					{% assign artifacts = ".tar.gz,.zip,-src.tar.gz,-src.zip" | split: "," %}
 					{% for suffix in artifacts %}
@@ -40,6 +94,7 @@ title: Apache Storm downloads
 					</li>
 					{% endfor %}
 				</ul>
+				{% endif %}
 				Apache Storm artifacts are hosted in <a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.storm%22">Maven Central</a>. You can add Apache Storm as a dependency with the following coordinates:
 
 				<pre>
