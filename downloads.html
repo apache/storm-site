@@ -199,8 +199,10 @@
 				This signature should be matched against <a href="https://downloads.apache.org/storm/KEYS">KEYS</a> file which contains the OpenPGP keys of Storm’s Release Managers.
 				We also provide SHA-512 checksums for every release file. After you download the file, you should calculate a checksum for your download, and make sure it is the same as ours.
 
+				
 				<h3>Requirements</h3>
-				Apache Storm requires Java 17 or later.
+				Apache Storm 3.0.0 requires Java 25 or later.
+				
 
 				<h3>Current 3.0.0 Release</h3>
 				The current release is 3.0.0. Source and binary distributions can be found below.
@@ -210,6 +212,41 @@
 				<p><a href="/releases/3.0.0/index.html">Documentation</a>
 					<br/><a href="https://javadoc.io/doc/org.apache.storm/storm-client/3.0.0">Javadocs</a></p>
 
+				
+				<h4>Binary Distribution (Lite)</h4>
+				<ul>
+					
+					
+					
+					<li><a href="https://dlcdn.apache.org/storm/apache-storm-3.0.0/apache-storm-3.0.0-lite.tar.gz">apache-storm-3.0.0-lite.tar.gz</a>
+						[<a href="https://downloads.apache.org/storm/apache-storm-3.0.0/apache-storm-3.0.0-lite.tar.gz.asc">PGP</a>]
+						[<a href="https://downloads.apache.org/storm/apache-storm-3.0.0/apache-storm-3.0.0-lite.tar.gz.sha512">SHA512</a>]
+					</li>
+					
+					<li><a href="https://dlcdn.apache.org/storm/apache-storm-3.0.0/apache-storm-3.0.0-lite.zip">apache-storm-3.0.0-lite.zip</a>
+						[<a href="https://downloads.apache.org/storm/apache-storm-3.0.0/apache-storm-3.0.0-lite.zip.asc">PGP</a>]
+						[<a href="https://downloads.apache.org/storm/apache-storm-3.0.0/apache-storm-3.0.0-lite.zip.sha512">SHA512</a>]
+					</li>
+					
+				</ul>
+				<p>The lite distribution ships without optional integrations. Two helper scripts
+				are included to fetch them on demand via Maven when needed:</p>
+				<ul>
+					<li><code>bin/storm-kafka-monitor-fetch</code> — fetches
+					<code>storm-kafka-monitor</code> and its Kafka client dependencies into
+					<code>lib-tools/storm-kafka-monitor</code>, enabling Kafka spout lag
+					display in the Storm UI and the <code>bin/storm-kafka-monitor</code> command.</li>
+					<li><code>bin/storm-autocreds-fetch</code> — fetches
+					<code>storm-autocreds</code> and its Hadoop/HBase dependencies into
+					<code>extlib-daemon</code>, required for Kerberos delegation token support
+					on secure clusters.</li>
+				</ul>
+				<p>Both scripts require Apache Maven and read the Storm version automatically
+				from <code>$STORM_HOME/RELEASE</code>. Run either script with <code>--help</code>
+				for full usage.</p>
+
+				<h4>Binary Distribution (Full)</h4>
+				<p>The full distribution bundles all optional Hadoop and Kafka integrations.</p>
 				<ul>
 					
 					
@@ -223,6 +260,12 @@
 						[<a href="https://downloads.apache.org/storm/apache-storm-3.0.0/apache-storm-3.0.0.zip.sha512">SHA512</a>]
 					</li>
 					
+				</ul>
+
+				<h4>Source</h4>
+				<ul>
+					
+					
 					<li><a href="https://dlcdn.apache.org/storm/apache-storm-3.0.0/apache-storm-3.0.0-src.tar.gz">apache-storm-3.0.0-src.tar.gz</a>
 						[<a href="https://downloads.apache.org/storm/apache-storm-3.0.0/apache-storm-3.0.0-src.tar.gz.asc">PGP</a>]
 						[<a href="https://downloads.apache.org/storm/apache-storm-3.0.0/apache-storm-3.0.0-src.tar.gz.sha512">SHA512</a>]
@@ -234,6 +277,8 @@
 					</li>
 					
 				</ul>
+
+				
 				Apache Storm artifacts are hosted in <a href="https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.apache.storm%22">Maven Central</a>. You can add Apache Storm as a dependency with the following coordinates:
 
 				<pre>

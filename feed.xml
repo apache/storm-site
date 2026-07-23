@@ -5,8 +5,8 @@
     <description>Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.</description>
     <link>https://storm.apache.org/</link>
     <atom:link href="https://storm.apache.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 22 Jul 2026 23:36:08 +0000</pubDate>
-    <lastBuildDate>Wed, 22 Jul 2026 23:36:08 +0000</lastBuildDate>
+    <pubDate>Thu, 23 Jul 2026 00:56:59 +0000</pubDate>
+    <lastBuildDate>Thu, 23 Jul 2026 00:56:59 +0000</lastBuildDate>
     <generator>Jekyll v3.10.0</generator>
     
       <item>
@@ -33,22 +33,47 @@ All community efforts will be focused on the Storm 3.x release stream.&lt;/p&gt;
 details on the end-of-life of the 2.x series.&lt;/p&gt;
 &lt;/div&gt;
 
+&lt;h2 id=&quot;two-distribution-flavours&quot;&gt;Two Distribution Flavours&lt;/h2&gt;
+
+&lt;p&gt;Starting with Storm 3.0.0, the binary distribution is available in two flavours
+(&lt;a href=&quot;https://github.com/apache/storm/pull/8819&quot;&gt;#8819&lt;/a&gt;):&lt;/p&gt;
+
+&lt;div style=&quot;display: flex; gap: 16px; margin: 16px 0; flex-wrap: wrap;&quot;&gt;
+&lt;div style=&quot;flex: 1; min-width: 260px; border: 1px solid #0066cc; border-radius: 4px; padding: 14px 18px;&quot;&gt;
+&lt;h4 style=&quot;margin-top: 0;&quot;&gt;apache-storm-3.0.0-lite&lt;/h4&gt;
+&lt;p&gt;A leaner package with optional integrations removed from the bundle.
+Add only what your topology needs via Maven or by dropping jars into the
+&lt;code&gt;lib-worker&lt;/code&gt; directory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Removed:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Optional Hadoop integration jars&lt;/li&gt;
+&lt;li&gt;Optional Kafka integration jars&lt;/li&gt;
+&lt;li&gt;Duplicated shared jars&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Gains:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Significantly smaller distribution size&lt;/li&gt;
+&lt;li&gt;Faster downloads and deploys&lt;/li&gt;
+
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;flex: 1; min-width: 260px; border: 1px solid #555; border-radius: 4px; padding: 14px 18px;&quot;&gt;
+&lt;h4 style=&quot;margin-top: 0;&quot;&gt;apache-storm-3.0.0&lt;/h4&gt;
+&lt;p&gt;The full distribution, bundling all optional integrations as in previous
+releases. Drop-in replacement for users upgrading from Storm 2.x who want
+to keep their existing setup unchanged.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;Both flavours are available on the &lt;a href=&quot;/downloads.html&quot;&gt;downloads page&lt;/a&gt;.&lt;/p&gt;
+
 &lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
 
 &lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
 through direct code contributions, documentation, bug reports, or helping other
 users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
-
-&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
-
-&lt;p&gt;We encourage all users to read the &lt;a href=&quot;/2026/07/22/storm300-released.html&quot;&gt;release notes&lt;/a&gt;
-and the &lt;a href=&quot;https://storm.apache.org/documentation.html&quot;&gt;Apache Storm documentation&lt;/a&gt;
-to learn about the new features and changes in this release.&lt;/p&gt;
-
-&lt;p&gt;If you have questions, run into issues, or want to share feedback, please reach out
-to the community via the &lt;a href=&quot;https://storm.apache.org/contribute/Contributing-to-Storm.html&quot;&gt;Apache Storm mailing lists&lt;/a&gt;.
-To report bugs or request features, please open an issue on
-&lt;a href=&quot;https://github.com/apache/storm/issues&quot;&gt;GitHub&lt;/a&gt;. The community is happy to help!&lt;/p&gt;
 
 &lt;h2 id=&quot;changes-in-this-release-storm-3-0-0&quot;&gt;Changes in this Release - Storm 3.0.0&lt;/h2&gt;
 
@@ -352,16 +377,6 @@ stable 2.x baseline before migrating.&lt;/p&gt;
 &lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
 through direct code contributions, documentation, bug reports, or helping other
 users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
-
-&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
-
-&lt;p&gt;We encourage all users to read the &lt;a href=&quot;/2026/07/22/storm289-released.html&quot;&gt;release notes&lt;/a&gt;
-and the &lt;a href=&quot;https://storm.apache.org/documentation.html&quot;&gt;Apache Storm documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you have questions or need help with the migration to Storm 3.x, please reach out
-to the community via the &lt;a href=&quot;https://storm.apache.org/contribute/Contributing-to-Storm.html&quot;&gt;Apache Storm mailing lists&lt;/a&gt;.
-To report bugs or request features, please open an issue on
-&lt;a href=&quot;https://github.com/apache/storm/issues&quot;&gt;GitHub&lt;/a&gt;. The community is happy to help!&lt;/p&gt;
 
 &lt;h2 id=&quot;changes-in-this-release-storm-2-8-9&quot;&gt;Changes in this Release - Storm 2.8.9&lt;/h2&gt;
 
