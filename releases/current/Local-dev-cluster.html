@@ -13,19 +13,19 @@
     
     
 
-    <title>Scheduler</title>
+    <title>Local Development Cluster</title>
     <meta name="description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
-    <link rel="canonical" href="https://storm.apache.org/releases/current/Storm-Scheduler.html">
+    <link rel="canonical" href="https://storm.apache.org/releases/current/Local-dev-cluster.html">
 
-    <meta property="og:title" content="Scheduler">
+    <meta property="og:title" content="Local Development Cluster">
     <meta property="og:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://storm.apache.org/releases/current/Storm-Scheduler.html">
+    <meta property="og:url" content="https://storm.apache.org/releases/current/Local-dev-cluster.html">
     <meta property="og:image" content="https://storm.apache.org/images/logo.png">
     <meta property="og:site_name" content="Apache Storm">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Scheduler">
+    <meta name="twitter:title" content="Local Development Cluster">
     <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
     <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
 
@@ -179,7 +179,7 @@
 
     <div class="container-fluid">
     
-    <h1 class="page-title">Scheduler</h1>
+    <h1 class="page-title">Local Development Cluster</h1>
     
           <div class="row">
            	<div class="col-md-12">
@@ -187,75 +187,54 @@
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><p>Storm now has 4 kinds of built-in schedulers: <a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/scheduler/DefaultScheduler.java">DefaultScheduler</a>, <a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/scheduler/IsolationScheduler.java">IsolationScheduler</a>, <a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/scheduler/multitenant/MultitenantScheduler.java">MultitenantScheduler</a>, <a href="Resource_Aware_Scheduler_overview.html">ResourceAwareScheduler</a>. </p>
+<div class="documentation-content"><p>Storm ships a Docker Compose configuration under <code>docker/</code> that provisions a fully distributed cluster on a single machine. Unlike <a href="Local-mode.html">local mode</a>, this setup forces inter-worker traffic across real sockets, making it suitable for benchmarking serialization, compression, and network-sensitive behaviours that only appear with genuine inter-process communication.</p>
 
-<h2 id="pluggable-scheduler">Pluggable scheduler</h2>
+<h2 id="whats-included">What&#39;s included</h2>
 
-<p>You can implement your own scheduler to replace the default scheduler to assign executors to workers. You configure the class to use the &quot;storm.scheduler&quot; config in your storm.yaml, and your scheduler must implement the <a href="https://github.com/apache/storm/blob/v3.0.0/storm-client/src/jvm/org/apache/storm/scheduler/IScheduler.java">IScheduler</a> interface.</p>
+<ul>
+<li><strong>Nimbus</strong>, <strong>ZooKeeper</strong>, and two <strong>Supervisors</strong> on an isolated Docker network</li>
+<li><strong>Prometheus</strong> scraping Storm&#39;s Metrics V2 endpoint</li>
+<li><strong>Grafana</strong> with a pre-built per-task dashboard covering throughput, latency, and jitter</li>
+<li><strong><code>netsim.sh</code></strong> — a utility that injects controlled latency and jitter between Supervisors using <code>tc netem</code></li>
+</ul>
 
-<h2 id="isolation-scheduler">Isolation Scheduler</h2>
-
-<p>The isolation scheduler makes it easy and safe to share a cluster among many topologies. The isolation scheduler lets you specify which topologies should be &quot;isolated&quot;, meaning that they run on a dedicated set of machines within the cluster where no other topologies will be running. These isolated topologies are given priority on the cluster, so resources will be allocated to isolated topologies if there&#39;s competition with non-isolated topologies, and resources will be taken away from non-isolated topologies if necessary to get resources for an isolated topology. Once all isolated topologies are allocated, the remaining machines on the cluster are shared among all non-isolated topologies.</p>
-
-<p>You can configure the isolation scheduler in the Nimbus configuration by setting &quot;storm.scheduler&quot; to &quot;org.apache.storm.scheduler.IsolationScheduler&quot;. Then, use the &quot;isolation.scheduler.machines&quot; config to specify how many machines each topology should get. This configuration is a map from topology name to the number of isolated machines allocated to this topology. For example:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">isolation.scheduler.machines: 
-    "my-topology": 8
-    "tiny-topology": 1
-    "some-other-topology": 3
+<h2 id="starting-the-cluster">Starting the cluster</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">cd docker/
+docker compose up -d
 </code></pre></div>
-<p>Any topologies submitted to the cluster not listed there will not be isolated. Note that there is no way for a user of Storm to affect their isolation settings – this is only allowed by the administrator of the cluster (this is very much intentional).</p>
+<p>Once healthy, Grafana is available at <code>http://localhost:3000</code> (default credentials: <code>admin</code> / <code>admin</code>). The Storm UI is at <code>http://localhost:8080</code>.</p>
 
-<p>The isolation scheduler solves the multi-tenancy problem – avoiding resource contention between topologies – by providing full isolation between topologies. The intention is that &quot;productionized&quot; topologies should be listed in the isolation config, and test or in-development topologies should not. The remaining machines on the cluster serve the dual role of failover for isolated topologies and for running the non-isolated topologies.</p>
+<h2 id="submitting-a-topology">Submitting a topology</h2>
 
-<p>When choosing which hosts to assign an isolated topology to, the scheduler sorts eligible hosts by three criteria in order:</p>
+<p>The <code>storm-perf</code> module contains topologies designed for this environment:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">storm jar storm-perf/target/storm-perf-*.jar \
+  org.apache.storm.perf.FileReadWordCountTopo \
+  -c nimbus.seeds='["nimbus"]' \
+  -c storm.zookeeper.servers='["zookeeper"]'
+</code></pre></div>
+<p>Any topology JAR works. Point <code>nimbus.seeds</code> and <code>storm.zookeeper.servers</code> at the Docker hostnames as shown above.</p>
 
-<ol>
-<li><strong>Assignable slots (descending)</strong> — prefer hosts with greater total slot capacity.</li>
-<li><strong>Free slots (descending)</strong> — among hosts of equal capacity, prefer the one with more currently free slots, minimising the number of worker evictions needed.</li>
-<li><strong>Hostname (ascending)</strong> — alphabetical tiebreaker for deterministic assignments.</li>
-</ol>
+<h2 id="network-simulation">Network simulation</h2>
 
-<p>The secondary and tertiary sorts were added in Storm 3.0.0. Previously only the primary sort applied, which could cause unnecessary evictions when two hosts had the same total capacity but different numbers of occupied slots.</p>
+<p><code>netsim.sh</code> wraps <code>tc netem</code> to shape traffic between the two Supervisor containers:</p>
+<div class="highlight"><pre><code class="language-" data-lang=""># Add 3 ms latency and 1 ms jitter (typical intra-datacenter profile)
+./netsim.sh apply 3ms 1ms
 
-<h2 id="evenscheduler">EvenScheduler</h2>
+# Remove all shaping
+./netsim.sh reset
 
-<p><code>EvenScheduler</code> (used directly or via <code>DefaultScheduler</code>) distributes workers as evenly as possible across available supervisors. It is the default when no custom scheduler is configured and <code>IsolationScheduler</code> is not in use.</p>
+# Show current tc settings on both supervisors
+./netsim.sh status
 
-<h3 id="idle-supervisor-rebalance">Idle supervisor rebalance</h3>
+# Round-trip ping between supervisors
+./netsim.sh ping
+</code></pre></div>
+<p>Changes take effect immediately and are visible in the Grafana latency panels in real time.</p>
 
-<p><em>Available since Storm 3.0.0. Disabled by default.</em></p>
-
-<p>When a supervisor returns from maintenance, its slots are normally left idle: each topology&#39;s desired worker count is already satisfied on the surviving supervisors, so <code>needsScheduling</code> reports nothing to do. Workers only migrate back if an operator manually rebalances or restarts every affected topology.</p>
-
-<p>Setting <code>nimbus.even.rebalance.idle.supervisor.enabled: true</code> adds an opt-in pass that relocates workers onto the returned supervisor automatically in a single scheduling round, distributed across topologies in round-robin order.</p>
-
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>nimbus.even.rebalance.idle.supervisor.enabled</code></td>
-<td><code>false</code></td>
-<td>Master switch. When false the pass never runs.</td>
-</tr>
-<tr>
-<td><code>nimbus.even.rebalance.max.free.per.topology</code></td>
-<td><code>0</code></td>
-<td>Per-topology cap on workers relocated per round. <code>0</code> means no additional cap beyond the even-distribution budget.</td>
-</tr>
-<tr>
-<td><code>nimbus.even.rebalance.idle.supervisor.min.stable.rounds</code></td>
-<td><code>3</code></td>
-<td>Number of consecutive monitoring rounds a supervisor must be seen as stable before it is eligible as a relocation target. Set to <code>0</code> to disable the flap guard.</td>
-</tr>
-</tbody></table>
-
-<p>A relocation is a worker JVM restart, involving brief tuple replay, JIT re-warmup, and possible windowed or stateful bolt state restore. Keep this off for topologies with stateful or windowed bolts that have a non-trivial restore cost, latency-sensitive topologies sensitive to JIT re-warmup, and clusters where supervisors are prone to flapping.</p>
-
-<p><strong>Scope:</strong> <code>EvenScheduler</code> and <code>DefaultScheduler</code> only. <code>ResourceAwareScheduler</code> is unaffected.</p>
+<h2 id="teardown">Teardown</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">docker compose down
+</code></pre></div>
+<p>Persistent volumes are not configured; all topology data and metrics are lost on teardown. This cluster is intended for development and benchmarking, not production use.</p>
 </div>
 
 

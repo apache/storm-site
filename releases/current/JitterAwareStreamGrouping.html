@@ -13,19 +13,19 @@
     
     
 
-    <title>Scheduler</title>
+    <title>JitterAwareStreamGrouping</title>
     <meta name="description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
-    <link rel="canonical" href="https://storm.apache.org/releases/current/Storm-Scheduler.html">
+    <link rel="canonical" href="https://storm.apache.org/releases/current/JitterAwareStreamGrouping.html">
 
-    <meta property="og:title" content="Scheduler">
+    <meta property="og:title" content="JitterAwareStreamGrouping">
     <meta property="og:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://storm.apache.org/releases/current/Storm-Scheduler.html">
+    <meta property="og:url" content="https://storm.apache.org/releases/current/JitterAwareStreamGrouping.html">
     <meta property="og:image" content="https://storm.apache.org/images/logo.png">
     <meta property="og:site_name" content="Apache Storm">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Scheduler">
+    <meta name="twitter:title" content="JitterAwareStreamGrouping">
     <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
     <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
 
@@ -179,7 +179,7 @@
 
     <div class="container-fluid">
     
-    <h1 class="page-title">Scheduler</h1>
+    <h1 class="page-title">JitterAwareStreamGrouping</h1>
     
           <div class="row">
            	<div class="col-md-12">
@@ -187,75 +187,52 @@
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><p>Storm now has 4 kinds of built-in schedulers: <a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/scheduler/DefaultScheduler.java">DefaultScheduler</a>, <a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/scheduler/IsolationScheduler.java">IsolationScheduler</a>, <a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/scheduler/multitenant/MultitenantScheduler.java">MultitenantScheduler</a>, <a href="Resource_Aware_Scheduler_overview.html">ResourceAwareScheduler</a>. </p>
+<div class="documentation-content"><p><code>JitterAwareStreamGrouping</code> is a stream grouping that selects downstream tasks based on observed per-task execution jitter. It steers traffic away from tasks experiencing backpressure or execution variance, producing a more even distribution of work over time.</p>
 
-<h2 id="pluggable-scheduler">Pluggable scheduler</h2>
+<h2 id="background-the-jitter-metric">Background: the jitter metric</h2>
 
-<p>You can implement your own scheduler to replace the default scheduler to assign executors to workers. You configure the class to use the &quot;storm.scheduler&quot; config in your storm.yaml, and your scheduler must implement the <a href="https://github.com/apache/storm/blob/v3.0.0/storm-client/src/jvm/org/apache/storm/scheduler/IScheduler.java">IScheduler</a> interface.</p>
+<p>Storm 3.0.0 introduces a per-task jitter metric based on the EWMA algorithm in <a href="https://www.rfc-editor.org/rfc/rfc1889#appendix-A">RFC 1889 Appendix A</a>. The metric tracks inter-arrival time variance in each task&#39;s processing loop. A lightweight control loop propagates these measurements to upstream components at regular intervals without touching the data path.</p>
 
-<h2 id="isolation-scheduler">Isolation Scheduler</h2>
+<p>A task with a steady processing rate accumulates near-zero jitter. A task that stalls, GC-pauses, or falls behind its input queue accumulates a rising jitter estimate, which the grouping uses as a signal to route tuples elsewhere.</p>
 
-<p>The isolation scheduler makes it easy and safe to share a cluster among many topologies. The isolation scheduler lets you specify which topologies should be &quot;isolated&quot;, meaning that they run on a dedicated set of machines within the cluster where no other topologies will be running. These isolated topologies are given priority on the cluster, so resources will be allocated to isolated topologies if there&#39;s competition with non-isolated topologies, and resources will be taken away from non-isolated topologies if necessary to get resources for an isolated topology. Once all isolated topologies are allocated, the remaining machines on the cluster are shared among all non-isolated topologies.</p>
+<h2 id="usage">Usage</h2>
 
-<p>You can configure the isolation scheduler in the Nimbus configuration by setting &quot;storm.scheduler&quot; to &quot;org.apache.storm.scheduler.IsolationScheduler&quot;. Then, use the &quot;isolation.scheduler.machines&quot; config to specify how many machines each topology should get. This configuration is a map from topology name to the number of isolated machines allocated to this topology. For example:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">isolation.scheduler.machines: 
-    "my-topology": 8
-    "tiny-topology": 1
-    "some-other-topology": 3
+<p>Use <code>customGrouping</code> with a <code>JitterAwareStreamGrouping</code> instance in place of <code>shuffleGrouping</code>:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.apache.storm.grouping.JitterAwareStreamGrouping</span><span class="o">;</span>
+
+<span class="nc">TopologyBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TopologyBuilder</span><span class="o">();</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="s">"spout"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">MySpout</span><span class="o">(),</span> <span class="mi">1</span><span class="o">);</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"bolt"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">MyBolt</span><span class="o">(),</span> <span class="mi">4</span><span class="o">)</span>
+       <span class="o">.</span><span class="na">customGrouping</span><span class="o">(</span><span class="s">"spout"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">JitterAwareStreamGrouping</span><span class="o">());</span>
 </code></pre></div>
-<p>Any topologies submitted to the cluster not listed there will not be isolated. Note that there is no way for a user of Storm to affect their isolation settings – this is only allowed by the administrator of the cluster (this is very much intentional).</p>
+<p><code>JitterAwareStreamGrouping</code> is serializable and safe across workers. Before any jitter data arrives (e.g., at topology startup) it falls back to random task selection.</p>
 
-<p>The isolation scheduler solves the multi-tenancy problem – avoiding resource contention between topologies – by providing full isolation between topologies. The intention is that &quot;productionized&quot; topologies should be listed in the isolation config, and test or in-development topologies should not. The remaining machines on the cluster serve the dual role of failover for isolated topologies and for running the non-isolated topologies.</p>
+<h2 id="benchmarking">Benchmarking</h2>
 
-<p>When choosing which hosts to assign an isolated topology to, the scheduler sorts eligible hosts by three criteria in order:</p>
+<p>The <code>storm-perf</code> module includes a dedicated benchmark topology:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">storm jar storm-perf/target/storm-perf-*.jar \
+  org.apache.storm.perf.JitterAwareGroupingTopology
+</code></pre></div>
+<p>Run it alongside the equivalent shuffle-grouping topology to measure the effect in your cluster. The <a href="Local-dev-cluster.html">local development cluster</a> provides Grafana dashboards with per-task jitter visibility.</p>
 
-<ol>
-<li><strong>Assignable slots (descending)</strong> — prefer hosts with greater total slot capacity.</li>
-<li><strong>Free slots (descending)</strong> — among hosts of equal capacity, prefer the one with more currently free slots, minimising the number of worker evictions needed.</li>
-<li><strong>Hostname (ascending)</strong> — alphabetical tiebreaker for deterministic assignments.</li>
-</ol>
+<h2 id="when-to-use-it">When to use it</h2>
 
-<p>The secondary and tertiary sorts were added in Storm 3.0.0. Previously only the primary sort applied, which could cause unnecessary evictions when two hosts had the same total capacity but different numbers of occupied slots.</p>
+<ul>
+<li>Bolts with variable execution time (external I/O, cache misses, non-uniform key distributions) where a subset of tasks may consistently lag.</li>
+<li>Topologies where a single hot task creates cascading backpressure upstream.</li>
+<li>As a drop-in replacement for <code>shuffleGrouping</code> on any stream where tasks are interchangeable and execution uniformity matters.</li>
+</ul>
 
-<h2 id="evenscheduler">EvenScheduler</h2>
+<h2 id="when-not-to-use-it">When not to use it</h2>
 
-<p><code>EvenScheduler</code> (used directly or via <code>DefaultScheduler</code>) distributes workers as evenly as possible across available supervisors. It is the default when no custom scheduler is configured and <code>IsolationScheduler</code> is not in use.</p>
+<ul>
+<li><strong>Data-locality requirements</strong>: use <code>fieldsGrouping</code> where tuples must reach a specific task.</li>
+<li><strong>Low parallelism</strong> (2 tasks): the grouping has fewer candidates to choose between and the benefit diminishes.</li>
+<li><strong>Order-sensitive streams</strong>: like any non-deterministic grouping, this does not preserve tuple order across tasks.</li>
+<li><strong>Intra-worker traffic</strong>: for streams where both components run in the same worker, <code>localOrShuffleGrouping</code> avoids serialization entirely and is preferable.</li>
+</ul>
 
-<h3 id="idle-supervisor-rebalance">Idle supervisor rebalance</h3>
-
-<p><em>Available since Storm 3.0.0. Disabled by default.</em></p>
-
-<p>When a supervisor returns from maintenance, its slots are normally left idle: each topology&#39;s desired worker count is already satisfied on the surviving supervisors, so <code>needsScheduling</code> reports nothing to do. Workers only migrate back if an operator manually rebalances or restarts every affected topology.</p>
-
-<p>Setting <code>nimbus.even.rebalance.idle.supervisor.enabled: true</code> adds an opt-in pass that relocates workers onto the returned supervisor automatically in a single scheduling round, distributed across topologies in round-robin order.</p>
-
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>nimbus.even.rebalance.idle.supervisor.enabled</code></td>
-<td><code>false</code></td>
-<td>Master switch. When false the pass never runs.</td>
-</tr>
-<tr>
-<td><code>nimbus.even.rebalance.max.free.per.topology</code></td>
-<td><code>0</code></td>
-<td>Per-topology cap on workers relocated per round. <code>0</code> means no additional cap beyond the even-distribution budget.</td>
-</tr>
-<tr>
-<td><code>nimbus.even.rebalance.idle.supervisor.min.stable.rounds</code></td>
-<td><code>3</code></td>
-<td>Number of consecutive monitoring rounds a supervisor must be seen as stable before it is eligible as a relocation target. Set to <code>0</code> to disable the flap guard.</td>
-</tr>
-</tbody></table>
-
-<p>A relocation is a worker JVM restart, involving brief tuple replay, JIT re-warmup, and possible windowed or stateful bolt state restore. Keep this off for topologies with stateful or windowed bolts that have a non-trivial restore cost, latency-sensitive topologies sensitive to JIT re-warmup, and clusters where supervisors are prone to flapping.</p>
-
-<p><strong>Scope:</strong> <code>EvenScheduler</code> and <code>DefaultScheduler</code> only. <code>ResourceAwareScheduler</code> is unaffected.</p>
+<p>The jitter control loop runs on all topologies regardless of whether <code>JitterAwareStreamGrouping</code> is in use. The grouping simply reads measurements the loop already produces; enabling it carries no additional overhead on the data path.</p>
 </div>
 
 

@@ -206,6 +206,56 @@
 <p>Any topologies submitted to the cluster not listed there will not be isolated. Note that there is no way for a user of Storm to affect their isolation settings – this is only allowed by the administrator of the cluster (this is very much intentional).</p>
 
 <p>The isolation scheduler solves the multi-tenancy problem – avoiding resource contention between topologies – by providing full isolation between topologies. The intention is that &quot;productionized&quot; topologies should be listed in the isolation config, and test or in-development topologies should not. The remaining machines on the cluster serve the dual role of failover for isolated topologies and for running the non-isolated topologies.</p>
+
+<p>When choosing which hosts to assign an isolated topology to, the scheduler sorts eligible hosts by three criteria in order:</p>
+
+<ol>
+<li><strong>Assignable slots (descending)</strong> — prefer hosts with greater total slot capacity.</li>
+<li><strong>Free slots (descending)</strong> — among hosts of equal capacity, prefer the one with more currently free slots, minimising the number of worker evictions needed.</li>
+<li><strong>Hostname (ascending)</strong> — alphabetical tiebreaker for deterministic assignments.</li>
+</ol>
+
+<p>The secondary and tertiary sorts were added in Storm 3.0.0. Previously only the primary sort applied, which could cause unnecessary evictions when two hosts had the same total capacity but different numbers of occupied slots.</p>
+
+<h2 id="evenscheduler">EvenScheduler</h2>
+
+<p><code>EvenScheduler</code> (used directly or via <code>DefaultScheduler</code>) distributes workers as evenly as possible across available supervisors. It is the default when no custom scheduler is configured and <code>IsolationScheduler</code> is not in use.</p>
+
+<h3 id="idle-supervisor-rebalance">Idle supervisor rebalance</h3>
+
+<p><em>Available since Storm 3.0.0. Disabled by default.</em></p>
+
+<p>When a supervisor returns from maintenance, its slots are normally left idle: each topology&#39;s desired worker count is already satisfied on the surviving supervisors, so <code>needsScheduling</code> reports nothing to do. Workers only migrate back if an operator manually rebalances or restarts every affected topology.</p>
+
+<p>Setting <code>nimbus.even.rebalance.idle.supervisor.enabled: true</code> adds an opt-in pass that relocates workers onto the returned supervisor automatically in a single scheduling round, distributed across topologies in round-robin order.</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>nimbus.even.rebalance.idle.supervisor.enabled</code></td>
+<td><code>false</code></td>
+<td>Master switch. When false the pass never runs.</td>
+</tr>
+<tr>
+<td><code>nimbus.even.rebalance.max.free.per.topology</code></td>
+<td><code>0</code></td>
+<td>Per-topology cap on workers relocated per round. <code>0</code> means no additional cap beyond the even-distribution budget.</td>
+</tr>
+<tr>
+<td><code>nimbus.even.rebalance.idle.supervisor.min.stable.rounds</code></td>
+<td><code>3</code></td>
+<td>Number of consecutive monitoring rounds a supervisor must be seen as stable before it is eligible as a relocation target. Set to <code>0</code> to disable the flap guard.</td>
+</tr>
+</tbody></table>
+
+<p>A relocation is a worker JVM restart, involving brief tuple replay, JIT re-warmup, and possible windowed or stateful bolt state restore. Keep this off for topologies with stateful or windowed bolts that have a non-trivial restore cost, latency-sensitive topologies sensitive to JIT re-warmup, and clusters where supervisors are prone to flapping.</p>
+
+<p><strong>Scope:</strong> <code>EvenScheduler</code> and <code>DefaultScheduler</code> only. <code>ResourceAwareScheduler</code> is unaffected.</p>
 </div>
 
 

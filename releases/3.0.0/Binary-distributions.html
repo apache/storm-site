@@ -13,19 +13,19 @@
     
     
 
-    <title>Scheduler</title>
+    <title>Binary Distributions</title>
     <meta name="description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
-    <link rel="canonical" href="https://storm.apache.org/releases/current/Storm-Scheduler.html">
+    <link rel="canonical" href="https://storm.apache.org/releases/3.0.0/Binary-distributions.html">
 
-    <meta property="og:title" content="Scheduler">
+    <meta property="og:title" content="Binary Distributions">
     <meta property="og:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://storm.apache.org/releases/current/Storm-Scheduler.html">
+    <meta property="og:url" content="https://storm.apache.org/releases/3.0.0/Binary-distributions.html">
     <meta property="og:image" content="https://storm.apache.org/images/logo.png">
     <meta property="og:site_name" content="Apache Storm">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Scheduler">
+    <meta name="twitter:title" content="Binary Distributions">
     <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
     <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
 
@@ -179,7 +179,7 @@
 
     <div class="container-fluid">
     
-    <h1 class="page-title">Scheduler</h1>
+    <h1 class="page-title">Binary Distributions</h1>
     
           <div class="row">
            	<div class="col-md-12">
@@ -187,75 +187,67 @@
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><p>Storm now has 4 kinds of built-in schedulers: <a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/scheduler/DefaultScheduler.java">DefaultScheduler</a>, <a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/scheduler/IsolationScheduler.java">IsolationScheduler</a>, <a href="https://github.com/apache/storm/blob/v3.0.0/storm-server/src/main/java/org/apache/storm/scheduler/multitenant/MultitenantScheduler.java">MultitenantScheduler</a>, <a href="Resource_Aware_Scheduler_overview.html">ResourceAwareScheduler</a>. </p>
-
-<h2 id="pluggable-scheduler">Pluggable scheduler</h2>
-
-<p>You can implement your own scheduler to replace the default scheduler to assign executors to workers. You configure the class to use the &quot;storm.scheduler&quot; config in your storm.yaml, and your scheduler must implement the <a href="https://github.com/apache/storm/blob/v3.0.0/storm-client/src/jvm/org/apache/storm/scheduler/IScheduler.java">IScheduler</a> interface.</p>
-
-<h2 id="isolation-scheduler">Isolation Scheduler</h2>
-
-<p>The isolation scheduler makes it easy and safe to share a cluster among many topologies. The isolation scheduler lets you specify which topologies should be &quot;isolated&quot;, meaning that they run on a dedicated set of machines within the cluster where no other topologies will be running. These isolated topologies are given priority on the cluster, so resources will be allocated to isolated topologies if there&#39;s competition with non-isolated topologies, and resources will be taken away from non-isolated topologies if necessary to get resources for an isolated topology. Once all isolated topologies are allocated, the remaining machines on the cluster are shared among all non-isolated topologies.</p>
-
-<p>You can configure the isolation scheduler in the Nimbus configuration by setting &quot;storm.scheduler&quot; to &quot;org.apache.storm.scheduler.IsolationScheduler&quot;. Then, use the &quot;isolation.scheduler.machines&quot; config to specify how many machines each topology should get. This configuration is a map from topology name to the number of isolated machines allocated to this topology. For example:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">isolation.scheduler.machines: 
-    "my-topology": 8
-    "tiny-topology": 1
-    "some-other-topology": 3
-</code></pre></div>
-<p>Any topologies submitted to the cluster not listed there will not be isolated. Note that there is no way for a user of Storm to affect their isolation settings – this is only allowed by the administrator of the cluster (this is very much intentional).</p>
-
-<p>The isolation scheduler solves the multi-tenancy problem – avoiding resource contention between topologies – by providing full isolation between topologies. The intention is that &quot;productionized&quot; topologies should be listed in the isolation config, and test or in-development topologies should not. The remaining machines on the cluster serve the dual role of failover for isolated topologies and for running the non-isolated topologies.</p>
-
-<p>When choosing which hosts to assign an isolated topology to, the scheduler sorts eligible hosts by three criteria in order:</p>
-
-<ol>
-<li><strong>Assignable slots (descending)</strong> — prefer hosts with greater total slot capacity.</li>
-<li><strong>Free slots (descending)</strong> — among hosts of equal capacity, prefer the one with more currently free slots, minimising the number of worker evictions needed.</li>
-<li><strong>Hostname (ascending)</strong> — alphabetical tiebreaker for deterministic assignments.</li>
-</ol>
-
-<p>The secondary and tertiary sorts were added in Storm 3.0.0. Previously only the primary sort applied, which could cause unnecessary evictions when two hosts had the same total capacity but different numbers of occupied slots.</p>
-
-<h2 id="evenscheduler">EvenScheduler</h2>
-
-<p><code>EvenScheduler</code> (used directly or via <code>DefaultScheduler</code>) distributes workers as evenly as possible across available supervisors. It is the default when no custom scheduler is configured and <code>IsolationScheduler</code> is not in use.</p>
-
-<h3 id="idle-supervisor-rebalance">Idle supervisor rebalance</h3>
-
-<p><em>Available since Storm 3.0.0. Disabled by default.</em></p>
-
-<p>When a supervisor returns from maintenance, its slots are normally left idle: each topology&#39;s desired worker count is already satisfied on the surviving supervisors, so <code>needsScheduling</code> reports nothing to do. Workers only migrate back if an operator manually rebalances or restarts every affected topology.</p>
-
-<p>Setting <code>nimbus.even.rebalance.idle.supervisor.enabled: true</code> adds an opt-in pass that relocates workers onto the returned supervisor automatically in a single scheduling round, distributed across topologies in round-robin order.</p>
+<div class="documentation-content"><p>Storm 3.0.0 ships two binary distributions. Both contain identical core functionality; they differ only in which optional plugins are bundled.</p>
 
 <table><thead>
 <tr>
-<th>Key</th>
-<th>Default</th>
-<th>Description</th>
+<th>Distribution</th>
+<th>Filename</th>
+<th>Approx. size</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>nimbus.even.rebalance.idle.supervisor.enabled</code></td>
-<td><code>false</code></td>
-<td>Master switch. When false the pass never runs.</td>
+<td><strong>Full</strong></td>
+<td><code>apache-storm-&lt;version&gt;.tar.gz</code></td>
+<td>~395 MB of jars</td>
 </tr>
 <tr>
-<td><code>nimbus.even.rebalance.max.free.per.topology</code></td>
-<td><code>0</code></td>
-<td>Per-topology cap on workers relocated per round. <code>0</code> means no additional cap beyond the even-distribution budget.</td>
-</tr>
-<tr>
-<td><code>nimbus.even.rebalance.idle.supervisor.min.stable.rounds</code></td>
-<td><code>3</code></td>
-<td>Number of consecutive monitoring rounds a supervisor must be seen as stable before it is eligible as a relocation target. Set to <code>0</code> to disable the flap guard.</td>
+<td><strong>Lite</strong></td>
+<td><code>apache-storm-&lt;version&gt;-lite.tar.gz</code></td>
+<td>~207 MB of jars (~47% smaller)</td>
 </tr>
 </tbody></table>
 
-<p>A relocation is a worker JVM restart, involving brief tuple replay, JIT re-warmup, and possible windowed or stateful bolt state restore. Keep this off for topologies with stateful or windowed bolts that have a non-trivial restore cost, latency-sensitive topologies sensitive to JIT re-warmup, and clusters where supervisors are prone to flapping.</p>
+<h2 id="what-the-lite-distribution-omits">What the lite distribution omits</h2>
 
-<p><strong>Scope:</strong> <code>EvenScheduler</code> and <code>DefaultScheduler</code> only. <code>ResourceAwareScheduler</code> is unaffected.</p>
+<h3 id="storm-autocreds-79-mb">storm-autocreds (−79 MB)</h3>
+
+<p><code>storm-autocreds</code> provides Nimbus and Supervisor with the ability to populate and renew HDFS and HBase delegation tokens on <strong>Kerberos-secured clusters</strong>. It pulls in the full Hadoop and HBase client trees. The plugin is off by default and is only needed on secure Hadoop deployments.</p>
+
+<p>In the lite distribution, only the <code>external/storm-autocreds/README</code> ships. To install the plugin on demand, run:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">bin/storm-autocreds-fetch
+</code></pre></div>
+<p>This uses Maven to resolve <code>org.apache.storm:storm-autocreds</code> and its runtime dependencies from Maven Central and copies them into <code>extlib-daemon/</code>. Restart Nimbus and Supervisor afterwards.</p>
+
+<p>Pass <code>--version</code> and <code>--dest</code> to override the detected Storm version or target directory. Pass <code>--</code> to forward arguments to Maven (e.g. to use an internal mirror or an offline local repository):</p>
+<div class="highlight"><pre><code class="language-" data-lang="">bin/storm-autocreds-fetch -- -s /path/to/settings.xml
+bin/storm-autocreds-fetch -- -Dmaven.repo.local=/path/to/offline-repo -o
+</code></pre></div>
+<h3 id="storm-kafka-monitor-38-mb">storm-kafka-monitor (−38 MB)</h3>
+
+<p><code>storm-kafka-monitor</code> displays Kafka spout consumer lag in the Storm UI and powers the <code>bin/storm-kafka-monitor</code> command. It pulls in the Kafka client library and is only needed when running Kafka spouts and wanting lag metrics. When it is absent, the UI degrades gracefully: the lag column shows an actionable message rather than failing, and the <code>bin/storm-kafka-monitor</code> wrapper prints a hint to run the fetch command.</p>
+
+<p>In the lite distribution, only the <code>external/storm-kafka-monitor/README</code> ships. To install it on demand, run:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">bin/storm-kafka-monitor-fetch
+</code></pre></div>
+<p>This resolves <code>org.apache.storm:storm-kafka-monitor</code> and its runtime dependencies into <code>lib-tools/storm-kafka-monitor/</code>. No daemon restart is required; the UI picks it up on the next request.</p>
+
+<p>The same <code>--version</code>, <code>--dest</code>, and <code>--</code> passthrough options are available as for <code>storm-autocreds-fetch</code>.</p>
+
+<h2 id="lib-common-shared-jar-de-duplication">lib-common: shared jar de-duplication</h2>
+
+<p>Both distributions include a structural change that is transparent to users: jars that were previously duplicated across the daemon classpath (<code>lib/</code>) and the worker classpath (<code>lib-worker/</code>) are now kept in a single <code>lib-common/</code> directory. <code>bin/storm.py</code> adds <code>lib-common</code> to both classpaths, so the runtime behaviour is unchanged. Only byte-identical jars (same filename and SHA-256) were de-duplicated; no version was silently merged. This accounts for approximately 71 MB of the reduction.</p>
+
+<h2 id="which-distribution-should-i-use">Which distribution should I use?</h2>
+
+<p>Use the <strong>lite distribution</strong> unless you specifically need one of the unbundled plugins:</p>
+
+<ul>
+<li>If you run topologies on a <strong>Kerberos-secured Hadoop or HBase cluster</strong>, run <code>bin/storm-autocreds-fetch</code> after installing from the lite distribution, or use the full distribution.</li>
+<li>If you want <strong>Kafka spout lag</strong> in the Storm UI or the <code>storm-kafka-monitor</code> command, run <code>bin/storm-kafka-monitor-fetch</code> after installing from the lite distribution, or use the full distribution.</li>
+</ul>
+
+<p>For all other use cases — including running Kafka spout topologies without the lag UI feature — the lite distribution is sufficient and carries no functional difference from the full distribution.</p>
 </div>
 
 
