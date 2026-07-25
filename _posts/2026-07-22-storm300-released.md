@@ -17,13 +17,23 @@ significant scheduler improvements, a leaner binary distribution, and much more.
 ⚠️ <strong>Java 25 is required</strong> to run Apache Storm 3.0.0. Please ensure your environment
 is upgraded before migrating.
 </p>
-<p><strong>The API is fully backwards-compatible with Storm 2.x.</strong> Existing topologies and
-client code should migrate seamlessly — no API changes are required.</p>
+<p><strong>The Java API is fully backwards-compatible with Storm 2.x.</strong> Existing Java topologies and
+client code should migrate seamlessly — no API changes are required. The one exception is the
+Clojure DSL, which has been removed; see the section below.</p>
 <p>Simultaneously with this release, <strong>Apache Storm 2.8.9</strong> has been published as the
 <strong>final release of the 2.x line</strong>. The Storm 2.x branch will no longer be maintained.
 All community efforts will be focused on the Storm 3.x release stream.</p>
 <p>See the <a href="/2026/07/22/storm289-released.html">Storm 2.8.9 release announcement</a> for
 details on the end-of-life of the 2.x series.</p>
+</div>
+
+## Clojure support removed
+
+<div style="border: 3px solid #cc0000; background-color: #fff5f5; padding: 16px 20px; margin: 20px 0; border-radius: 4px;">
+<h3 style="color: #cc0000; margin-top: 0;">⚠️ Breaking change for Clojure topology users</h3>
+<p>Storm 3.0.0 removes Clojure support. The Clojure DSL and the <code>storm-clojure</code> module are <strong>no longer available</strong>.</p>
+<p>If your topology is written using the Clojure API (<code>backtype.storm.clojure</code> or <code>org.apache.storm.clojure</code>), you must rewrite it using the Java API before upgrading to Storm 3.0.0. The Java API covers all the same primitives and the migration is straightforward for most topologies.</p>
+<p>Clojure is no longer a transitive dependency of any Storm module. Clusters running only Java topologies are unaffected.</p>
 </div>
 
 ## Two Distribution Flavours
