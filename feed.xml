@@ -5,8 +5,8 @@
     <description>Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.</description>
     <link>https://storm.apache.org/</link>
     <atom:link href="https://storm.apache.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 23 Jul 2026 00:56:59 +0000</pubDate>
-    <lastBuildDate>Thu, 23 Jul 2026 00:56:59 +0000</lastBuildDate>
+    <pubDate>Sat, 25 Jul 2026 14:41:47 +0000</pubDate>
+    <lastBuildDate>Sat, 25 Jul 2026 14:41:47 +0000</lastBuildDate>
     <generator>Jekyll v3.10.0</generator>
     
       <item>
@@ -24,13 +24,23 @@ significant scheduler improvements, a leaner binary distribution, and much more.
 ⚠️ &lt;strong&gt;Java 25 is required&lt;/strong&gt; to run Apache Storm 3.0.0. Please ensure your environment
 is upgraded before migrating.
 &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;The API is fully backwards-compatible with Storm 2.x.&lt;/strong&gt; Existing topologies and
-client code should migrate seamlessly — no API changes are required.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Java API is fully backwards-compatible with Storm 2.x.&lt;/strong&gt; Existing Java topologies and
+client code should migrate seamlessly — no API changes are required. The one exception is the
+Clojure DSL, which has been removed; see the section below.&lt;/p&gt;
 &lt;p&gt;Simultaneously with this release, &lt;strong&gt;Apache Storm 2.8.9&lt;/strong&gt; has been published as the
 &lt;strong&gt;final release of the 2.x line&lt;/strong&gt;. The Storm 2.x branch will no longer be maintained.
 All community efforts will be focused on the Storm 3.x release stream.&lt;/p&gt;
 &lt;p&gt;See the &lt;a href=&quot;/2026/07/22/storm289-released.html&quot;&gt;Storm 2.8.9 release announcement&lt;/a&gt; for
 details on the end-of-life of the 2.x series.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;clojure-support-removed&quot;&gt;Clojure support removed&lt;/h2&gt;
+
+&lt;div style=&quot;border: 3px solid #cc0000; background-color: #fff5f5; padding: 16px 20px; margin: 20px 0; border-radius: 4px;&quot;&gt;
+&lt;h3 style=&quot;color: #cc0000; margin-top: 0;&quot;&gt;⚠️ Breaking change for Clojure topology users&lt;/h3&gt;
+&lt;p&gt;Storm 3.0.0 removes Clojure support. The Clojure DSL and the &lt;code&gt;storm-clojure&lt;/code&gt; module are &lt;strong&gt;no longer available&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;If your topology is written using the Clojure API (&lt;code&gt;backtype.storm.clojure&lt;/code&gt; or &lt;code&gt;org.apache.storm.clojure&lt;/code&gt;), you must rewrite it using the Java API before upgrading to Storm 3.0.0. The Java API covers all the same primitives and the migration is straightforward for most topologies.&lt;/p&gt;
+&lt;p&gt;Clojure is no longer a transitive dependency of any Storm module. Clusters running only Java topologies are unaffected.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h2 id=&quot;two-distribution-flavours&quot;&gt;Two Distribution Flavours&lt;/h2&gt;
