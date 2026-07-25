@@ -402,6 +402,75 @@ to keep their existing setup unchanged.</p>
 
 <p>Both flavours are available on the <a href="/downloads.html">downloads page</a>.</p>
 
+<h2 id="more-highlights">More highlights</h2>
+
+<div style="display: flex; flex-direction: column; gap: 12px; margin: 16px 0;">
+
+<div style="border: 1px solid #ccc; border-radius: 4px; padding: 14px 18px;">
+<div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px;">
+<strong>🗜️ Zstd compression</strong>
+<span style="font-size: 0.8em; background: #e8f4e8; color: #2a6b2a; border-radius: 3px; padding: 1px 7px;">opt-in</span>
+<span style="font-size: 0.8em; margin-left: auto;"><a href="https://github.com/apache/storm/pull/8707">#8707</a> <a href="https://github.com/apache/storm/pull/8653">#8653</a></span>
+</div>
+
+<p style="margin: 0; font-size: 0.92em;">Inter-worker tuple traffic and ZooKeeper cluster state can now be compressed with Zstd, reducing network bandwidth and coordination-layer load. Enabled per-topology or cluster-wide via configuration.</p>
+
+<p></div></p>
+
+<div style="border: 1px solid #ccc; border-radius: 4px; padding: 14px 18px;">
+<div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px;">
+<strong>〰️ JitterAwareStreamGrouping</strong>
+<span style="font-size: 0.8em; background: #e8f4e8; color: #2a6b2a; border-radius: 3px; padding: 1px 7px;">opt-in</span>
+<span style="font-size: 0.8em; margin-left: auto;"><a href="https://github.com/apache/storm/pull/8593">#8593</a></span>
+</div>
+
+<p style="margin: 0; font-size: 0.92em;">A new stream grouping that routes tuples away from high-jitter tasks using an RFC 1889 EWMA jitter metric. Opt in per stream by replacing <code>shuffleGrouping</code> with <code>customGrouping("stream", new JitterAwareStreamGrouping())</code>.</p>
+
+<p></div></p>
+
+<div style="border: 1px solid #ccc; border-radius: 4px; padding: 14px 18px;">
+<div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px;">
+<strong>📈 AIMD batch sizing</strong>
+<span style="font-size: 0.8em; background: #e8f4e8; color: #2a6b2a; border-radius: 3px; padding: 1px 7px;">opt-in</span>
+<span style="font-size: 0.8em; margin-left: auto;"><a href="https://github.com/apache/storm/pull/8796">#8796</a></span>
+</div>
+
+<p style="margin: 0; font-size: 0.92em;">Producer batch sizes in <code>JCQueue</code> can now adapt dynamically under backpressure using additive-increase / multiplicative-decrease, improving throughput without manual tuning. Enable with <code>topology.producer.batch.dynamic: true</code>.</p>
+
+<p></div></p>
+
+<div style="border: 1px solid #ccc; border-radius: 4px; padding: 14px 18px;">
+<div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px;">
+<strong>📅 Scheduler improvements</strong>
+<span style="font-size: 0.8em; margin-left: auto;"><a href="https://github.com/apache/storm/pull/8709">#8709</a> <a href="https://github.com/apache/storm/pull/8778">#8778</a></span>
+</div>
+
+<p style="margin: 0; font-size: 0.92em;">IsolationScheduler now sorts candidate hosts by free slots as a secondary criterion (after total capacity), reducing unnecessary worker evictions — this applies automatically. EvenScheduler gains an opt-in pass that redistributes workers onto supervisors returning from maintenance (<code>nimbus.even.rebalance.idle.supervisor.enabled: true</code>).</p>
+
+<p></div></p>
+
+<div style="border: 1px solid #ccc; border-radius: 4px; padding: 14px 18px;">
+<div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px;">
+<strong>🐳 Local dev cluster</strong>
+<span style="font-size: 0.8em; margin-left: auto;"><a href="https://github.com/apache/storm/pull/8706">#8706</a></span>
+</div>
+
+<p style="margin: 0; font-size: 0.92em;">A Docker Compose cluster under <code>docker/</code> with Nimbus, ZooKeeper, two Supervisors, Prometheus, and Grafana. Includes <code>netsim.sh</code> for injecting network latency and packet loss between nodes without modifying the host network.</p>
+
+<p></div></p>
+
+<div style="border: 1px solid #ccc; border-radius: 4px; padding: 14px 18px;">
+<div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px;">
+<strong>🔧 Y2038 fix</strong>
+<span style="font-size: 0.8em; margin-left: auto;"><a href="https://github.com/apache/storm/pull/8788">#8788</a></span>
+</div>
+
+<p style="margin: 0; font-size: 0.92em;">Worker heartbeat timestamps migrated from 32-bit to 64-bit integers, eliminating the overflow that would have caused heartbeat failures on clusters running past January 2038.</p>
+
+<p></div></p>
+
+<p></div></p>
+
 <h2 id="thanks">Thanks</h2>
 
 <p>Special thanks are due to all those who have contributed to Apache Storm -- whether
