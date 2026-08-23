@@ -227,7 +227,11 @@
 <ul>
 <li>Jars and configs are kept on local filesystem because they&#39;re too big for Zookeeper. The jar and configs are copied into the path {nimbus local dir}/stormdist/{topology id}</li>
 <li><code>setup-storm-static</code> writes task -&gt; component mapping into ZK</li>
-<li><code>setup-heartbeats</code> creates a ZK &quot;directory&quot; in which tasks can heartbeat</li>
+<li><code>setup-heartbeats</code> creates a ZK &quot;directory&quot; in which tasks can heartbeat
+
+<ul>
+<li>(<strong>Since 2.0, STORM-2693</strong>: workers no longer heartbeat directly into ZooKeeper. A worker now writes liveness heartbeats to local disk, and its supervisor relays them to Nimbus over Thrift. See <a href="Daemon-Fault-Tolerance.html">Daemon Fault Tolerance</a> for the current mechanism.)</li>
+</ul></li>
 </ul></li>
 <li><p>Nimbus calls <code>mk-assignment</code> to assign tasks to machines <a href="https://github.com/apache/storm/blob/0.7.1/src/clj/org/apache/storm/daemon/nimbus.clj#L458">code</a></p>
 
