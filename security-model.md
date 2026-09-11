@@ -96,6 +96,14 @@ When ZooKeeper SSL is enabled, hostname verification is disabled by default (`st
 
 Storm supports TLS for Thrift RPC communication (Nimbus, Supervisors) and Netty messaging (worker-to-worker) via mTLS. Enabling transport encryption is recommended for deployments where network traffic may traverse untrusted segments. The deprecated `BlowfishTupleSerializer` should not be used; it employs a 64-bit block cipher vulnerable to birthday attacks.
 
+## Availability and Denial of Service
+
+Storm daemons are internal services and do not include defenses against denial of service by clients that can reach their ports. This covers the Nimbus and Supervisor Thrift ports, the worker messaging port, Pacemaker, and the HTTP services listed above. A client with network access to these ports can exhaust their resources, send malformed or oversized requests, or otherwise disrupt them. Protecting the availability of the cluster relies on keeping these ports reachable only from within the trusted network boundary. We do accept robustness improvements in this area, such as handling malformed input without terminating a daemon, and treat them as hardening.
+
+### Pacemaker
+
+Pacemaker is deprecated and only kept for backward compatibility. It is disabled by default. Its authentication (`pacemaker.auth.method`) only protects reads of heartbeat data; as documented in [Pacemaker](https://storm.apache.org/releases/current/Pacemaker.html), writes may be performed by any client that can reach the Pacemaker port. Operators who still run Pacemaker must restrict its port to cluster hosts.
+
 ## Test Utilities in Production JARs
 
 Storm includes certain classes intended for development and testing (such as `TestingFilter`) in its production JAR. These classes can be enabled through `storm.yaml` configuration. Since `storm.yaml` is a trusted input, the ability to enable test utilities through configuration is not a security vulnerability; it is equivalent to any other configuration change an administrator can make. However, operators should be aware that misconfiguring these settings can weaken security.
@@ -111,6 +119,8 @@ Based on this security model, the following are **not** considered security vuln
 - Information disclosure through logs or API endpoints that are restricted to trusted network access.
 - Enabling test utilities through configuration (which requires trusted configuration access).
 - Version disclosure on internal endpoints.
+- Denial of service by clients with network access to internal daemon ports (Nimbus, Supervisor, worker messaging, Pacemaker, UI, Logviewer, DRPC), including crashing or exhausting a daemon with malformed or excessive requests.
+- Unauthenticated writes to Pacemaker, which are documented behavior.
 
 The following **are** considered security vulnerabilities and should be reported:
 
