@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 3.0.0</h1>
+                <h1>Version: 3.1.0</h1>
                 
             </div>
         </div>
@@ -387,6 +387,32 @@ a <code>StateProvider</code> implementation which can load and return the state 
 The namespace is typically unique per task so that each task can have its own state. The StateProvider and the corresponding
 State implementation should be available in the class path of Storm (by placing them in the extlib directory).</p>
 
+<h3 id="kryo-class-registration-for-state">Kryo class registration for state</h3>
+
+<p>State values are serialized with Kryo before being written to an external backend. When those bytes
+are read back, the serializer constructs only classes the topology has registered, so what a worker
+builds from the stored bytes is bounded by its own configuration.</p>
+
+<p>The classes Storm itself persists are registered automatically. Register your own key and value
+types in one of these ways:</p>
+
+<ul>
+<li><code>keyClass</code> / <code>valueClass</code> in <code>topology.state.provider.config</code> (see the backend sections below), or</li>
+<li><code>topology.state.kryo.register</code>, a list of fully qualified class names.</li>
+</ul>
+
+<p>Types handled by Kryo out of the box, such as <code>String</code>, boxed primitives and the common collections,
+need no registration. A value whose class is not registered fails with
+<code>IllegalArgumentException: Class is not registered</code>.</p>
+
+<p>Setting <code>topology.fall.back.on.java.serialization: true</code> restores the previous behaviour, in which
+any class named in the stored bytes is constructed.</p>
+
+<p><strong>Upgrading with an existing state store.</strong> State written before this behaviour was introduced is
+still readable, including checkpoint state, as long as every type it contains is registered. If a
+topology stored values of a custom class and does not register it, reads of that state fail after
+the upgrade. Either register the class or clear the state namespace before starting the topology.</p>
+
 <h3 id="supported-state-backends">Supported State Backends</h3>
 
 <h4 id="redis">Redis</h4>
@@ -420,52 +446,9 @@ State implementation should be available in the class path of Storm (by placing 
 
 <p><code>org.apache.storm:storm-redis:&lt;storm-version&gt;</code></p>
 
-<h4 id="hbase">HBase</h4>
-
-<p>In order to make state scalable, HBaseKeyValueState stores state KV to a row. This introduces <code>non-atomic</code> commit phase and guarantee 
-eventual consistency on HBase side. It doesn&#39;t matter in point of state&#39;s view because HBaseKeyValueState can still provide not-yet-committed value.
-Even if worker crashes at commit phase, after restart it will read pending-commit states (stored atomically) from HBase and states will be stored eventually. </p>
-
-<p>NOTE: HBase state provider uses pre-created table and column family, so users need to create and provide one to the provider config.</p>
-
-<p>You can simply create table via <code>create &#39;state&#39;, &#39;cf&#39;</code> in <code>hbase shell</code> but in production you may want to give some more properties.</p>
-
-<ul>
-<li>State provider class name (<code>topology.state.provider</code>)</li>
-</ul>
-
-<p><code>org.apache.storm.hbase.state.HBaseKeyValueStateProvider</code></p>
-
-<ul>
-<li>Provider config (<code>topology.state.provider.config</code>)</li>
-</ul>
-<div class="highlight"><pre><code class="language-" data-lang=""> {
-   "keyClass": "Optional fully qualified class name of the Key type.",
-   "valueClass": "Optional fully qualified class name of the Value type.",
-   "keySerializerClass": "Optional Key serializer implementation class.",
-   "valueSerializerClass": "Optional Value Serializer implementation class.",
-   "hbaseConfigKey": "config key to load hbase configuration from storm root configuration. (similar to storm-hbase)",
-   "tableName": "Pre-created table name for state.",
-   "columnFamily": "Pre-created column family for state."
- }
-</code></pre></div>
-<p>If you want to initialize HBase state provider from codebase, please see below example:</p>
-<div class="highlight"><pre><code class="language-" data-lang="">Config conf = new Config();
-    Map&lt;String, Object&gt; hbConf = new HashMap&lt;String, Object&gt;();
-    hbConf.put("hbase.rootdir", "file:///tmp/hbase");
-    conf.put("hbase.conf", hbConf);
-    conf.put("topology.state.provider",  "org.apache.storm.hbase.state.HBaseKeyValueStateProvider");
-    conf.put("topology.state.provider.config", "{" +
-            "   \"hbaseConfigKey\": \"hbase.conf\"," +
-            "   \"tableName\": \"state\"," +
-            "   \"columnFamily\": \"cf\"" +
-            " }");
-</code></pre></div>
-<ul>
-<li>Artifacts to add (<code>--artifacts</code>)</li>
-</ul>
-
-<p><code>org.apache.storm:storm-hbase:&lt;storm-version&gt;</code></p>
+<p>The HBase state backend was removed in Storm 3.0.0 along with the <code>storm-hbase</code> module (STORM-3988).
+Topologies that used <code>HBaseKeyValueStateProvider</code> need to move to another backend; there is no
+in-place migration, since the stored state is not portable between providers.</p>
 </div>
 
 

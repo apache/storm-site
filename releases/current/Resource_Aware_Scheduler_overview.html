@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 3.0.0</h1>
+                <h1>Version: 3.1.0</h1>
                 
             </div>
         </div>
@@ -430,6 +430,8 @@ Parameters:
 </code>
 Parameters:
 * clazz – The strategy class that implements the IStrategy interface</p>
+
+<p>Only the strategies that ship with Storm may be selected by default.  They are listed under <code>nimbus.scheduler.strategy.class.whitelist</code> in <em>conf/defaults.yaml</em>, and the same set applies when that config is not set at all.  This differs from earlier releases, where leaving <code>nimbus.scheduler.strategy.class.whitelist</code> unset allowed any strategy class on the nimbus classpath, so a cluster upgrading from such a release has to add its own strategies to the list.  A strategy of your own has to be added to <code>nimbus.scheduler.strategy.class.whitelist</code> in the nimbus configuration, otherwise nimbus refuses to schedule the topology and reports which class was refused.</p>
 
 <p>Example Usage:
 <code>

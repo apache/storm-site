@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 3.0.0</h1>
+                <h1>Version: 3.1.0</h1>
                 
             </div>
         </div>
@@ -193,7 +193,7 @@
 
 <h2 id="preliminaries">Preliminaries</h2>
 
-<p>This tutorial uses examples from the <a href="https://github.com/apache/storm/blob/v3.0.0/examples/storm-starter">storm-starter</a> project. It&#39;s recommended that you clone the project and follow along with the examples. Read <a href="Setting-up-development-environment.html">Setting up a development environment</a> and <a href="Creating-a-new-Storm-project.html">Creating a new Storm project</a> to get your machine set up.</p>
+<p>This tutorial uses examples from the <a href="https://github.com/apache/storm/blob/v3.1.0/examples/storm-starter">storm-starter</a> project. It&#39;s recommended that you clone the project and follow along with the examples. Read <a href="Setting-up-development-environment.html">Setting up a development environment</a> and <a href="Creating-a-new-Storm-project.html">Creating a new Storm project</a> to get your machine set up.</p>
 
 <h2 id="components-of-a-storm-cluster">Components of a Storm cluster</h2>
 
@@ -383,7 +383,7 @@
 
 <p>When a task for Bolt A emits a tuple to Bolt B, which task should it send the tuple to?</p>
 
-<p>A &quot;stream grouping&quot; answers this question by telling Storm how to send tuples between sets of tasks. Before we dig into the different kinds of stream groupings, let&#39;s take a look at another topology from <a href="https://github.com/apache/storm/blob/v3.0.0/examples/storm-starter">storm-starter</a>. This <a href="https://github.com/apache/storm/blob/v3.0.0/examples/storm-starter/src/jvm/org/apache/storm/starter/WordCountTopology.java">WordCountTopology</a> reads sentences off of a spout and streams out of <code>WordCountBolt</code> the total number of times it has seen that word before:</p>
+<p>A &quot;stream grouping&quot; answers this question by telling Storm how to send tuples between sets of tasks. Before we dig into the different kinds of stream groupings, let&#39;s take a look at another topology from <a href="https://github.com/apache/storm/blob/v3.1.0/examples/storm-starter">storm-starter</a>. This <a href="https://github.com/apache/storm/blob/v3.1.0/examples/storm-starter/src/jvm/org/apache/storm/starter/WordCountTopology.java">WordCountTopology</a> reads sentences off of a spout and streams out of <code>WordCountBolt</code> the total number of times it has seen that word before:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">TopologyBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TopologyBuilder</span><span class="o">();</span>
 
 <span class="n">builder</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">RandomSentenceSpout</span><span class="o">(),</span> <span class="mi">5</span><span class="o">);</span>        

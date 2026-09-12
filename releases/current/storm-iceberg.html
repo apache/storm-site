@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+
+    <title>Storm Apache Iceberg Integration</title>
+    <meta name="description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <link rel="canonical" href="https://storm.apache.org/releases/current/storm-iceberg.html">
+
+    <meta property="og:title" content="Storm Apache Iceberg Integration">
+    <meta property="og:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://storm.apache.org/releases/current/storm-iceberg.html">
+    <meta property="og:image" content="https://storm.apache.org/images/logo.png">
+    <meta property="og:site_name" content="Apache Storm">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Storm Apache Iceberg Integration">
+    <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
+
+    <!-- Bootstrap 5 core CSS (vendored locally) -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js" defer></script>
+    <script type="text/javascript" src="/assets/js/storm.js" defer></script>
+</head>
+
+
+  <body>
+    <a class="github-fork-ribbon" href="https://github.com/apache/storm" target="_blank" rel="noopener" aria-label="Fork Apache Storm on GitHub">Fork me on GitHub</a>
+    <header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <a href="/index.html"><img src="/images/logo.png" class="logo" alt="Apache Storm"/></a>
+            </div>
+            <div class="col-md-4">
+                
+                <h1>Version: 3.1.0</h1>
+                
+            </div>
+        </div>
+    </div>
+</header>
+<!--Header End-->
+<!--Navigation Begin-->
+<nav class="navbar navbar-expand-md" data-bs-theme="dark" role="banner">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#stormNavbar"
+                aria-controls="stormNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="stormNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/index.html" id="home">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="about" aria-expanded="false">About</a>
+                    <ul class="dropdown-menu" aria-labelledby="about">
+                        <li><a class="dropdown-item" href="/about/integrates.html">Integrates</a></li>
+                        <li><a class="dropdown-item" href="/about/simple-api.html">Simple API</a></li>
+                        <li><a class="dropdown-item" href="/about/scalable.html">Scalable</a></li>
+                        <li><a class="dropdown-item" href="/about/fault-tolerant.html">Fault tolerant</a></li>
+                        <li><a class="dropdown-item" href="/about/guarantees-data-processing.html">Guarantees data processing</a></li>
+                        <li><a class="dropdown-item" href="/about/multi-language.html">Use with any language</a></li>
+                        <li><a class="dropdown-item" href="/about/deployment.html">Easy to deploy and operate</a></li>
+                        <li><a class="dropdown-item" href="/about/free-and-open-source.html">Free and open source</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="documentation" aria-expanded="false">Documentation</a>
+                    <ul class="dropdown-menu" aria-labelledby="documentation">
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/3.1.0/index.html">3.1.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/older-releases.html">Older Versions</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="community" aria-expanded="false">Community</a>
+                    <ul class="dropdown-menu" aria-labelledby="community">
+                        <li><a class="dropdown-item" href="/getting-help.html">Getting Help</a></li>
+                        <li><a class="dropdown-item" href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a class="dropdown-item" href="/team/">Team</a></li>
+                        <li><a class="dropdown-item" href="/contribute/BYLAWS.html">ByLaws</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/news.html" id="news">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="/downloads.html" id="download">Download</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-fluid">
+    
+    <h1 class="page-title">Storm Apache Iceberg Integration</h1>
+    
+          <div class="row">
+           	<div class="col-md-12">
+	             <!-- Documentation -->
+
+<p class="post-meta"></p>
+
+<div class="documentation-content"><p>Bolt for writing data to <a href="https://iceberg.apache.org/">Apache Iceberg</a> tables directly from a
+Storm topology — no Kafka Connect or Spark job in between — with <strong>atomic commits and
+at-least-once delivery</strong>.</p>
+
+<h2 id="guarantees">Guarantees</h2>
+
+<p>Read this before anything else; it is the part that decides whether this module fits.</p>
+
+<ul>
+<li><strong>Atomic commits.</strong> A batch becomes visible in one Iceberg append, or not at all. Readers never
+see part of a batch, and a crash costs orphan data files rather than a broken table.</li>
+<li><strong>At-least-once delivery.</strong> Tuples are acked only after the commit containing them has landed,
+so nothing is silently lost. A batch that fails is replayed by the source and written again.</li>
+<li><strong>Duplicates are possible and are not removed.</strong> The sink appends; it writes no equality
+deletes. Rows from a replayed batch stay visible until something downstream deduplicates them.</li>
+</ul>
+
+<p>This module does <strong>not</strong> promise exactly-once. Exactly-once would need a deterministic identity of
+the input — the same batch content under the same identifier on replay — and that comes from the
+source, not from the sink. A general-purpose module cannot assume every user has a replayable,
+deterministically addressed source, so the claim is not made. An extractor SPI for sources that
+can do better is a possible future addition, not a current guarantee.</p>
+
+<p>The target must be an <strong>append-only, format-version-2</strong> Iceberg table. Row-level deletes,
+upserts, and merge-on-read are out of scope.</p>
+
+<h2 id="usage">Usage</h2>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">catalogProps</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="n">catalogProps</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"type"</span><span class="o">,</span> <span class="s">"rest"</span><span class="o">);</span>
+<span class="n">catalogProps</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">"uri"</span><span class="o">,</span> <span class="s">"http://rest-catalog:8181"</span><span class="o">);</span>
+
+<span class="nc">IcebergOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IcebergOptions</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">withCatalogProperties</span><span class="o">(</span><span class="n">catalogProps</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">withTable</span><span class="o">(</span><span class="s">"db.events"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">withCommitIntervalBytes</span><span class="o">(</span><span class="mi">128L</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+<span class="nc">TopologyBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TopologyBuilder</span><span class="o">();</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="s">"events"</span><span class="o">,</span> <span class="n">spout</span><span class="o">,</span> <span class="mi">2</span><span class="o">);</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"iceberg"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">IcebergBolt</span><span class="o">(</span><span class="n">options</span><span class="o">),</span> <span class="mi">4</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">shuffleGrouping</span><span class="o">(</span><span class="s">"events"</span><span class="o">);</span>
+
+<span class="nc">Config</span> <span class="n">conf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Config</span><span class="o">();</span>
+<span class="c1">// Bounds how long a partial batch waits when the stream goes quiet.</span>
+<span class="n">conf</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="nc">Config</span><span class="o">.</span><span class="na">TOPOLOGY_TICK_TUPLE_FREQ_SECS</span><span class="o">,</span> <span class="mi">30</span><span class="o">);</span>
+</code></pre></div>
+<p>The catalog properties are passed verbatim to Iceberg&#39;s <code>CatalogUtil.buildIcebergCatalog(...)</code>,
+so every Iceberg catalog works with its standard configuration keys: <code>type</code> = <code>hive</code>, <code>hadoop</code>,
+<code>rest</code>, or <code>catalog-impl</code> for Glue, Nessie, JDBC, etc. The catalog implementations themselves are
+<strong>not</strong> pulled in transitively — see <a href="#dependencies">Dependencies</a>.</p>
+
+<h3 id="options">Options</h3>
+
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>withCatalogProperties(Map)</code></td>
+<td>required</td>
+<td>Iceberg catalog configuration</td>
+</tr>
+<tr>
+<td><code>withTable(String)</code></td>
+<td>required</td>
+<td>Target table identifier, e.g. <code>db.events</code></td>
+</tr>
+<tr>
+<td><code>withRecordMapper(RecordMapper)</code></td>
+<td><code>FieldNameRecordMapper</code></td>
+<td>Tuple → <code>Record</code> conversion</td>
+</tr>
+<tr>
+<td><code>withFileFormat(FileFormat)</code></td>
+<td><code>PARQUET</code></td>
+<td>Data file format</td>
+</tr>
+<tr>
+<td><code>withTargetFileSizeBytes(long)</code></td>
+<td>table property <code>write.target-file-size-bytes</code></td>
+<td>Rolling file size</td>
+</tr>
+<tr>
+<td><code>withAutoCreate(Schema, PartitionSpec)</code></td>
+<td>disabled</td>
+<td>Create the table on first use if missing</td>
+</tr>
+<tr>
+<td><code>withCommitIntervalRecords(int)</code></td>
+<td>1000, when no other threshold is set</td>
+<td>Close the batch after this many tuples</td>
+</tr>
+<tr>
+<td><code>withCommitIntervalBytes(long)</code></td>
+<td>disabled</td>
+<td>Close the batch after roughly this many bytes</td>
+</tr>
+<tr>
+<td><code>withCommitIntervalMillis(long)</code></td>
+<td>disabled</td>
+<td>Close the batch once it has been open this long</td>
+</tr>
+<tr>
+<td><code>withGroupCommitIntervalMillis(long)</code></td>
+<td>5000</td>
+<td><code>IcebergCommitterBolt</code> only: commit once the oldest accumulated batch is this old</td>
+</tr>
+<tr>
+<td><code>withGroupCommitMaxDataFiles(int)</code></td>
+<td>1000</td>
+<td><code>IcebergCommitterBolt</code> only: commit once this many data files have accumulated</td>
+</tr>
+<tr>
+<td><code>withTickIntervalSecs(int)</code></td>
+<td>none — inherits <code>topology.tick.tuple.freq.secs</code></td>
+<td>Per-component tick frequency</td>
+</tr>
+<tr>
+<td><code>withWalNamespace(String)</code></td>
+<td>none</td>
+<td>Separates the commit WAL of deployments sharing one table</td>
+</tr>
+</tbody></table>
+
+<h3 id="batch-sizing">Batch sizing</h3>
+
+<p>Committing every tuple would mean one snapshot and one small file per tuple, which degrades
+catalog and reader planning quickly. The bolt therefore accumulates tuples and commits them
+together, closing the batch when the first configured threshold is crossed. If you configure none,
+it falls back to <code>withCommitIntervalRecords(1000)</code> so a batch can never wait indefinitely.</p>
+
+<p><strong>Buffering costs latency and replay volume, not durability.</strong> Buffered tuples are not acked, so a
+worker that dies mid-batch has them replayed rather than losing them. The trade-off to weigh is
+how much work a crash repeats, and how long rows wait before becoming visible — not whether they
+survive.</p>
+
+<p>Configure <code>Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS</code> as well. <code>withCommitIntervalMillis</code> is evaluated
+when the next tuple arrives, so on a stream that stops entirely only a tick tuple can close the
+final partial batch.</p>
+
+<p>Set <code>topology.max.spout.pending</code> comfortably above the number of tuples one batch accumulates: a
+batch&#39;s tuples stay un-acked until it commits, so too low a value stalls the topology.</p>
+
+<h3 id="tuple-mapping">Tuple mapping</h3>
+
+<p>By default tuple fields are matched to table columns <strong>by name</strong> (<code>FieldNameRecordMapper</code>):
+numeric values are widened to the column type, <code>Instant</code> / <code>java.util.Date</code> / epoch-millis
+<code>Long</code> values are converted for timestamp columns, <code>byte[]</code> becomes <code>ByteBuffer</code>. A required
+column with no tuple value fails the topology loudly. For anything custom (structs, lists,
+renames), implement <code>RecordMapper</code>:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">RecordMapper</span> <span class="kd">extends</span> <span class="nc">Serializable</span> <span class="o">{</span>
+    <span class="nc">Record</span> <span class="nf">map</span><span class="o">(</span><span class="nc">ITuple</span> <span class="n">tuple</span><span class="o">,</span> <span class="nc">Schema</span> <span class="n">schema</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>The mapper takes <code>ITuple</code>, which both a bolt&#39;s <code>Tuple</code> and a <code>TridentTuple</code> satisfy, so a mapper
+can be shared if you also write to Iceberg from elsewhere.</p>
+
+<h3 id="partitioned-tables">Partitioned tables</h3>
+
+<p>Partitioned tables need no extra configuration: the writer derives each record&#39;s partition from
+the table&#39;s current <code>PartitionSpec</code> and keeps one open data file per partition (Iceberg&#39;s fanout
+writer), so a single batch can span any number of partitions.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="nc">Schema</span> <span class="n">schema</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Schema</span><span class="o">(</span>
+    <span class="nc">Types</span><span class="o">.</span><span class="na">NestedField</span><span class="o">.</span><span class="na">required</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="s">"id"</span><span class="o">,</span> <span class="nc">Types</span><span class="o">.</span><span class="na">LongType</span><span class="o">.</span><span class="na">get</span><span class="o">()),</span>
+    <span class="nc">Types</span><span class="o">.</span><span class="na">NestedField</span><span class="o">.</span><span class="na">required</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="s">"region"</span><span class="o">,</span> <span class="nc">Types</span><span class="o">.</span><span class="na">StringType</span><span class="o">.</span><span class="na">get</span><span class="o">()),</span>
+    <span class="nc">Types</span><span class="o">.</span><span class="na">NestedField</span><span class="o">.</span><span class="na">required</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="s">"event_time"</span><span class="o">,</span> <span class="nc">Types</span><span class="o">.</span><span class="na">TimestampType</span><span class="o">.</span><span class="na">withZone</span><span class="o">()));</span>
+
+<span class="nc">PartitionSpec</span> <span class="n">spec</span> <span class="o">=</span> <span class="nc">PartitionSpec</span><span class="o">.</span><span class="na">builderFor</span><span class="o">(</span><span class="n">schema</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">identity</span><span class="o">(</span><span class="s">"region"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">day</span><span class="o">(</span><span class="s">"event_time"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+<span class="nc">IcebergOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IcebergOptions</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">withCatalogProperties</span><span class="o">(</span><span class="n">catalogProps</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">withTable</span><span class="o">(</span><span class="s">"db.events"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">withAutoCreate</span><span class="o">(</span><span class="n">schema</span><span class="o">,</span> <span class="n">spec</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</code></pre></div>
+<p>The <code>PartitionSpec</code> above is only used when the table is auto-created; for an existing table the
+spec stored in the catalog wins. A batch spread over many partitions opens many files at once —
+group the stream by the partition columns (<code>fieldsGrouping</code>) to keep file counts down.</p>
+
+<h2 id="splitting-the-sink-writer-and-committer">Splitting the sink: writer and committer</h2>
+
+<p><code>IcebergBolt</code> writes and commits in the same task, so a sink at parallelism N committing every T
+seconds produces <code>N/T</code> snapshots per second — each a metadata rewrite plus a compare-and-swap on
+the catalog. Past a certain parallelism the only way to keep that load down is to commit less
+often, which is to say to accept more latency.</p>
+
+<p><code>IcebergWriterBolt</code> and <code>IcebergCommitterBolt</code> break that coupling. Writers seal batches on the
+same thresholds <code>IcebergBolt</code> uses, but instead of committing they emit one descriptor tuple
+carrying the batch&#39;s data files, <strong>anchored to every tuple of the batch</strong>, and then ack those
+tuples. Anchoring is what preserves the guarantee: acking an input after emitting an anchored child
+does not close the spout tuple&#39;s ack tree, so the source still advances only once the descriptor
+itself is acked. A single committer accumulates descriptors from every writer, appends them all in
+one Iceberg commit, and acks. Commit cost stops scaling with the sink&#39;s parallelism.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"iceberg-writer"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">IcebergWriterBolt</span><span class="o">(</span><span class="n">writerOptions</span><span class="o">),</span> <span class="mi">8</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">fieldsGrouping</span><span class="o">(</span><span class="s">"events"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Fields</span><span class="o">(</span><span class="s">"region"</span><span class="o">));</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">"iceberg-committer"</span><span class="o">,</span> <span class="k">new</span> <span class="nc">IcebergCommitterBolt</span><span class="o">(</span><span class="n">committerOptions</span><span class="o">),</span> <span class="mi">1</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">globalGrouping</span><span class="o">(</span><span class="s">"iceberg-writer"</span><span class="o">);</span>
+</code></pre></div>
+<p>The committer must run at a parallelism of one behind a <code>globalGrouping</code>. It logs a warning if it
+finds more than one task of its own component, because each task would commit independently — the
+cost the split exists to remove.</p>
+
+<p>The trade-offs against the monolithic bolt:</p>
+
+<ul>
+<li><strong>Wider failure blast radius.</strong> A failed append fails every writer&#39;s batch in the group, not one
+task&#39;s. The delivery guarantee is unchanged — at-least-once, atomic commits — but a single
+catalog hiccup replays more work.</li>
+<li><strong>The committer is a single point of throughput.</strong> It handles one tuple per writer seal, carrying
+file metadata rather than data, so this is rarely the constraint; liveness is what to watch, via
+<code>iceberg-oldest-pending-age-ms</code>.</li>
+<li><strong>Descriptors are not small.</strong> They serialize each data file through Iceberg&#39;s
+<code>ContentFileParser</code>, per-column metrics included, so a wide schema sealing many partitions at once
+puts hundreds of KB on the wire per seal. <code>withGroupCommitMaxDataFiles</code> bounds what the committer
+accumulates; nothing bounds a single writer&#39;s seal but its own commit thresholds.</li>
+</ul>
+
+<p><strong>The committer needs a tick tuple.</strong> <code>withGroupCommitIntervalMillis</code> is evaluated only when a
+descriptor arrives, so after a lull one accumulated descriptor sits uncommitted indefinitely, its
+tuples un-acked with it, until either another descriptor or a tick arrives. Configure
+<code>Config.TOPOLOGY_TICK_TUPLE_FREQ_SECS</code> for the topology, or <code>withTickIntervalSecs</code> on the
+committer&#39;s own options. The same applies to the writers&#39; <code>withCommitIntervalMillis</code> and to
+<code>IcebergBolt</code>&#39;s; each of the three bolts declares whatever <code>withTickIntervalSecs</code> it was given.</p>
+
+<h2 id="how-a-commit-is-made-recoverable">How a commit is made recoverable</h2>
+
+<p>The window between &quot;the data files are durable&quot; and &quot;the table references them&quot; is the only place
+a crash can do damage, and a write-ahead log closes it.</p>
+
+<ol>
+<li>The batch&#39;s data files are closed and become durable. Nothing is visible to readers yet.</li>
+<li>A WAL entry naming those files is written under
+<code>&lt;table location&gt;/metadata/_storm_wal/&lt;topologyName&gt;/&lt;componentId&gt;/&lt;taskIndex&gt;/</code>, through the
+table&#39;s own <code>FileIO</code>, carrying a freshly minted commit id. It lives with the table, not on
+worker-local disk, so a task relaunched on another host still finds it.</li>
+<li>The files are appended in a single Iceberg operation that stamps that commit id on the
+resulting snapshot&#39;s summary (<code>storm.iceberg.commit-id</code>).</li>
+<li>The WAL entry is deleted, and only then are the tuples acked.</li>
+</ol>
+
+<p>The WAL belongs to whichever component commits: <code>IcebergBolt</code>, or <code>IcebergCommitterBolt</code> in the
+split sink. <code>IcebergWriterBolt</code> writes no WAL entries, because it makes nothing visible.</p>
+
+<p>On startup, before writing anything new, each committing task clears whatever its previous
+incarnation left behind. Every pending entry is dropped and its data files are left as orphans. An
+entry only survives to startup if the task died before its commit resolved, and in that case the
+batch was never acked, so the source replays it: appending the entry&#39;s files here would add a
+second copy of the rows that replay writes. For a reliable source this path can only add
+duplicates, never prevent loss — which is why a failed commit is settled while the batch is still
+in hand instead.</p>
+
+<h3 id="when-a-commit-fails">When a commit fails</h3>
+
+<p>A failed commit is resolved immediately, while the batch is still in hand, rather than left to the
+next startup. The sink asks the table whether the commit landed:</p>
+
+<ul>
+<li><strong>A snapshot carries the commit id</strong> — the append reported an error but reached the table, the
+classic <code>CommitStateUnknownException</code>. The batch is visible, so its tuples are acked and nothing
+is replayed.</li>
+<li><strong>No snapshot carries it</strong> — the tuples are failed, the source replays them, and the abandoned
+data files become orphans.</li>
+<li><strong>The table cannot be reached</strong> — the outcome stays unknown, and the tuples are failed.</li>
+</ul>
+
+<p>The second answer is one sample, not a verdict. A REST catalog maps HTTP 500, 502, 503 and 504 to
+<code>CommitStateUnknownException</code>, and <code>SnapshotProducer.commit()</code> retries only <code>CommitFailedException</code>,
+so a commit the backend applies <em>after</em> the sink has looked reads as absent. The replay then writes
+those rows a second time. Waiting longer narrows that window without closing it, so the sink does
+not wait: duplicates are inside the contract this module offers.</p>
+
+<p>Note what the WAL does and does not protect. It protects the <em>reference</em> to durable data, which is
+why atomic commits survive a crash. It does not give exactly-once: a batch that failed before its
+WAL entry existed is replayed from the source and written afresh, duplicates included.</p>
+
+<p>A crash before step 2 leaves orphan data files. They are invisible to readers, and cleaned up by
+Iceberg&#39;s standard <code>remove_orphan_files</code> maintenance.</p>
+
+<h2 id="table-maintenance-is-still-your-job">Table maintenance is still your job</h2>
+
+<p>This module writes; it does not maintain. A production table needs, on a schedule and from
+outside the topology:</p>
+
+<ul>
+<li><strong><code>remove_orphan_files</code></strong> — reclaims files left by crashes and failed batches.</li>
+<li><strong><code>rewrite_data_files</code></strong> (compaction) — streaming ingestion produces more, smaller files than
+batch ingestion, whatever the commit interval.</li>
+<li><strong><code>expire_snapshots</code></strong> — one snapshot per commit adds up quickly.</li>
+</ul>
+
+<p>Skipping these degrades read planning and grows storage cost over time. Iceberg ships these as
+catalog procedures and as Spark actions; use whichever your platform already runs.</p>
+
+<h2 id="metrics">Metrics</h2>
+
+<p>The bolt registers these metrics-v2 metrics per task, so they show up in whatever reporter the
+cluster is configured with:</p>
+
+<table><thead>
+<tr>
+<th>Metric</th>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>iceberg-records-written</code></td>
+<td>counter</td>
+<td>Records handed to the Iceberg writer</td>
+</tr>
+<tr>
+<td><code>iceberg-data-files-committed</code></td>
+<td>counter</td>
+<td>Data files made visible by commits</td>
+</tr>
+<tr>
+<td><code>iceberg-bytes-committed</code></td>
+<td>counter</td>
+<td>Bytes in those data files</td>
+</tr>
+<tr>
+<td><code>iceberg-commit-latency</code></td>
+<td>timer</td>
+<td>Duration of the Iceberg commit</td>
+</tr>
+<tr>
+<td><code>iceberg-commit-failures</code></td>
+<td>counter</td>
+<td>Commits that did <strong>not</strong> become visible</td>
+</tr>
+<tr>
+<td><code>iceberg-data-files-sealed</code></td>
+<td>counter</td>
+<td>Data files closed and handed downstream (<code>IcebergWriterBolt</code>)</td>
+</tr>
+<tr>
+<td><code>iceberg-seal-latency</code></td>
+<td>timer</td>
+<td>Duration of closing a batch&#39;s files (<code>IcebergWriterBolt</code>)</td>
+</tr>
+<tr>
+<td><code>iceberg-pending-data-files</code></td>
+<td>gauge</td>
+<td>Files accumulated but not yet committed (<code>IcebergCommitterBolt</code>)</td>
+</tr>
+<tr>
+<td><code>iceberg-oldest-pending-age-ms</code></td>
+<td>gauge</td>
+<td>Age of the oldest batch waiting to commit (<code>IcebergCommitterBolt</code>)</td>
+</tr>
+</tbody></table>
+
+<p><code>iceberg-oldest-pending-age-ms</code> is the one to alert on: a committer that has stopped making
+progress shows up there long before its upstream tuples start timing out. Both gauges keep
+reporting for the duration of an in-flight commit, which is when a stalled catalog shows up.</p>
+
+<p>The counters follow the outcome, not the exception: an append that reported an error but whose
+data is visible counts under <code>iceberg-data-files-committed</code>, not <code>iceberg-commit-failures</code>. Every
+increment of <code>iceberg-commit-failures</code> therefore corresponds to tuples that were failed and
+replayed.</p>
+
+<p>A steadily rising <code>iceberg-data-files-committed</code> with a flat <code>iceberg-bytes-committed</code> is the
+small-files signature: raise the commit interval, or schedule compaction.</p>
+
+<h2 id="table-refresh">Table refresh</h2>
+
+<p>The table metadata is refreshed between batches, so schema and partition spec evolution performed
+outside the topology is picked up without restarting the workers. Every file within one commit is
+written against the same metadata.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p><code>storm-iceberg</code> is <strong>not bundled in the binary distributions</strong>, in line with the direction of
+<a href="https://github.com/apache/storm/pull/8819">#8819</a>: it is a topology-side library, and the
+distribution&#39;s <code>external/</code> directory is on no classpath.</p>
+
+<p>It depends on the Iceberg core and format artifacts only. <strong>Catalog implementations are not pulled
+in transitively</strong> — a topology writing through Glue, Nessie, or JDBC adds that catalog itself, and
+one writing to S3 adds <code>iceberg-aws</code> and the AWS SDK. This keeps the dependency footprint of the
+module small and puts the choice of object-store and catalog bindings where it belongs.</p>
+
+<p>The Iceberg version is pinned explicitly rather than tracking the newest release, so the module
+stays buildable against Storm&#39;s Java baseline.</p>
+
+<h2 id="examples">Examples</h2>
+
+<p><code>examples/storm-iceberg-examples</code> contains three runnable topologies writing to a local Hadoop
+catalog: <code>IcebergBoltExampleTopology</code> (unpartitioned), <code>IcebergPartitionedBoltExampleTopology</code>
+(partitioned by <code>identity(region)</code> and <code>days(event_time)</code>), and <code>IcebergSplitSinkExampleTopology</code>
+(the writer/committer split).</p>
+
+<h2 id="caveats">Caveats</h2>
+
+<ul>
+<li>The commit WAL needs a <code>FileIO</code> that supports prefix listing. Iceberg&#39;s <code>HadoopFileIO</code>,
+<code>S3FileIO</code> and <code>ResolvingFileIO</code> all do; an exotic custom <code>FileIO</code> may not.</li>
+<li>With <code>IcebergBolt</code>, each task commits independently. Iceberg resolves concurrent append commits
+with optimistic retries (tune with the table property <code>commit.retry.num-retries</code>), but beyond
+roughly 10–20 concurrent writers consider reducing the bolt&#39;s parallelism or moving to the
+writer/committer split.</li>
+<li>A commit whose outcome the catalog leaves unknown is settled by a single look at the table. A
+backend that applies the commit after that look — an HTTP 504 in front of a REST catalog, say —
+leaves the replay to write those rows a second time.</li>
+<li>The WAL lives under the table, keyed by topology name, component id and task index. Two clusters
+running a same-named topology against one table would share a WAL path and clear each other&#39;s
+entries, so give each deployment its own <code>withWalNamespace(...)</code>.</li>
+</ul>
+</div>
+
+
+	          </div>
+	       </div>
+	  </div>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-meetups">
+                    <a class="acevent" data-format="wide" data-mode="dark"></a>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="footer-policy-links">
+                    <li><a href="https://www.apache.org/licenses/">License</a></li>
+                    <li><a href="https://www.apache.org/security/">Security</a></li>
+                    <li><a href="/security-model.html">Security Model</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
+                </ul>
+                <p class="footer-legal">
+                    Copyright &copy; 2026 <a href="https://www.apache.org">Apache Software Foundation</a>. All Rights Reserved.
+                    <br>Apache Storm, Apache, the Apache logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation.
+                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    /* We explicitly disable cookie tracking to avoid privacy issues */
+    _paq.push(['disableCookies']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//analytics.apache.org/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '38']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+<script src="https://www.apachecon.com/event-images/snippet.js"></script>
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-angle-up"></i></a></span> 
+
+</body>
+
+</html>
+

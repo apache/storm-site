@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 3.0.0</h1>
+                <h1>Version: 3.1.0</h1>
                 
             </div>
         </div>
@@ -247,6 +247,12 @@
 <p>Beware that Java serialization is extremely expensive, both in terms of CPU cost as well as the size of the serialized object. It is highly recommended that you register custom serializers when you put the topology in production. The Java serialization behavior is there so that it&#39;s easy to prototype new topologies.</p>
 
 <p>You can turn on/off the behavior to fall back on Java serialization by setting the <code>Config.TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION</code> config to true/false. The default value is false for security reasons.</p>
+
+<p>When the fallback is enabled, the bridge can be constrained with <code>Config.TOPOLOGY_FALL_BACK_ON_JAVA_SERIALIZATION_FILTER</code>, a <a href="https://openjdk.org/jeps/290">JEP-290</a> serial-filter pattern (e.g. <code>!org.apache.commons.collections4.functors.*;maxbytes=10485760</code>) applied to every <code>ObjectInputStream</code> the bridge uses for deserialization. An invalid pattern is refused when the topology is submitted, and if one reaches a worker anyway its setup fails with the config key in the error. Unlike a JVM-wide <code>-Djdk.serialFilter</code>, this filter is topology-scoped and also applies when the deserializer is constructed programmatically, e.g. in local mode. When both are present, the two filters are merged, so both apply.</p>
+
+<p>This only filters the fallback path of the default kryo factory. A custom <code>topology.kryo.factory</code> gets no filter from Storm and must set its own; <code>DefaultStateSerializer</code>, used for worker state before kryo is set up, is unfiltered as well.</p>
+
+<p>There is no default value; see <code>docs/SECURITY.md</code> for a sample pattern. <code>maxbytes</code> is a per-object budget (one <code>ObjectInputStream</code> per value, not per tuple) and can be overshot by a single large array, since the array is measured before its contents are read. On buffered input the bridge rejects a declared length that exceeds the bytes remaining in the frame before allocating; streaming programmatic use is not covered. An empty or unset value leaves the bridge unfiltered, as before.</p>
 
 <h3 id="tuple-compression">Tuple compression</h3>
 

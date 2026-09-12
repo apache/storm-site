@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 3.0.0</h1>
+                <h1>Version: 3.1.0</h1>
                 
             </div>
         </div>
@@ -561,6 +561,27 @@ storm/rhel7:dev_current:26fd443859325d5911f3be5c5e231dddca88ee0d526456c0c92dd794
 </tr>
 </tbody></table>
 
+<h3 id="allowed-oci-bind-mount-sources">Allowed OCI bind-mount sources</h3>
+
+<p>Bind-mount sources for OCI/runc workers are restricted to a configured set of directories, set in the root-owned <code>worker-launcher.cfg</code>:</p>
+
+<table><thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>worker.launcher.oci.allowed.mount.source.dirs</code></td>
+<td>Comma-separated list of directories from which OCI bind-mount sources may come. A mount source is permitted only if it (resolved with <code>realpath</code>) is one of these directories or a path underneath one of them.</td>
+</tr>
+</tbody></table>
+
+<p>If <code>worker.launcher.oci.allowed.mount.source.dirs</code> is not set, no bind mounts are permitted and OCI/runc workers will not start. When enabling the OCI/runc manager, set it to the directories the supervisor mounts — this includes the paths in <code>storm.oci.readonly.bindmounts</code> and <code>storm.oci.readwrite.bindmounts</code>, and the system paths the runtime needs (for example <code>/etc/resolv.conf</code>, <code>/etc/hostname</code>, <code>/etc/hosts</code>, the nscd directory, the Storm home directory, and the cgroup root).</p>
+
+<p>List only directories that the container (topology) user cannot write to. A source is resolved with <code>realpath</code> before it is matched, but runc resolves it again at mount time, so a directory that the topology user can write to — such as the supervisor local directory or the worker/artifacts/tmp roots — could have a symlink planted in it that points outside the allowed set. Point bind mounts at specific, non-writable paths (for example the exact files under <code>storm.oci.readonly.bindmounts</code>) rather than at a directory the topology user owns. List specific directories: the root directory <code>/</code> is not a usable entry, since a path is only accepted when it equals or sits under a listed directory as a whole component. For example, in <code>worker-launcher.cfg</code>:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">worker.launcher.oci.allowed.mount.source.dirs=/etc/resolv.conf,/etc/hostname,/etc/hosts,/var/run/nscd,/usr/lib/storm,/sys/fs/cgroup
+</code></pre></div>
 <p>For example, 
 ```bash
 storm.resource.isolation.plugin: &quot;org.apache.storm.container.oci.RuncLibContainerManager&quot;</p>
