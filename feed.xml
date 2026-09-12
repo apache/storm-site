@@ -5,9 +5,393 @@
     <description>Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.</description>
     <link>https://storm.apache.org/</link>
     <atom:link href="https://storm.apache.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 11 Sep 2026 17:21:56 +0000</pubDate>
-    <lastBuildDate>Fri, 11 Sep 2026 17:21:56 +0000</lastBuildDate>
+    <pubDate>Sat, 12 Sep 2026 22:54:30 +0000</pubDate>
+    <lastBuildDate>Sat, 12 Sep 2026 22:54:30 +0000</lastBuildDate>
     <generator>Jekyll v3.10.0</generator>
+    
+      <item>
+        <title>Apache Storm 3.1.0 Released</title>
+        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 3.1.0 has been
+released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is primarily a security and hardening release. It resolves a coordinated set
+of security issues (see the Security Fixes below), along with bug fixes,
+dependency upgrades, documentation improvements and a new Apache Iceberg sink.
+&lt;strong&gt;All users of Apache Storm 3.0.0 are strongly encouraged to upgrade.&lt;/strong&gt; As with
+3.0.0, Java 25 is required to run Apache Storm 3.x, and the Java API remains
+backwards-compatible with Storm 2.x.&lt;/p&gt;
+
+&lt;p&gt;The Storm 2.x line, including 2.8.9, has reached end of life and no longer
+receives security fixes. Users still on 2.x should treat the issues below as
+unpatched there and migrate to 3.x, where they are fixed in 3.1.0.&lt;/p&gt;
+
+&lt;p&gt;Several of the security fixes change default behaviour (for example, the
+scheduler-strategy allowlist, JSONP wrapping, the state serializer and
+&lt;code&gt;nimbus.groups&lt;/code&gt; evaluation); please read the mitigations below before upgrading.&lt;/p&gt;
+
+&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
+
+&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm --
+whether through direct code contributions, documentation, bug reports, security
+reports, or helping other users on the mailing lists. Your efforts are much
+appreciated.&lt;/p&gt;
+
+&lt;h2 id=&quot;changes-in-this-release-storm-3-1-0&quot;&gt;Changes in this Release - Storm 3.1.0&lt;/h2&gt;
+
+&lt;p&gt;JIRA issues and pull requests addressed in the 3.1.0 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2&gt;Security Fixes&lt;/h2&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82426&quot;&gt;CVE-2026-82426&lt;/a&gt; - Apache Storm Nimbus: Arbitrary File Read on Nimbus via Unvalidated Uploaded Jar Location&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; Nimbus accepted the &lt;code&gt;uploadedJarLocation&lt;/code&gt; argument of &lt;code&gt;submitTopology&lt;/code&gt; / &lt;code&gt;submitTopologyWithOpts&lt;/code&gt; as a server-side path and opened it directly, without checking that it referred to a file the caller had actually uploaded via &lt;code&gt;beginFileUpload&lt;/code&gt;. An authenticated user with submission rights could therefore submit any path readable by the Nimbus daemon user as their topology jar; Nimbus copied it into the topology&apos;s jar blob, whose ACL grants the submitter read access, so the contents could be retrieved with the ordinary blob download RPCs. Candidate targets include the Nimbus Kerberos keytab, Thrift/UI TLS private keys and &lt;code&gt;storm.yaml&lt;/code&gt; with the ZooKeeper authentication payload. Where &lt;code&gt;nimbus.users&lt;/code&gt; is unset, submission is available to every authenticated principal, so no elevated privilege is required.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where the submitted location is canonicalised and must resolve inside the Nimbus inbox. Users who cannot upgrade immediately should restrict submission via &lt;code&gt;nimbus.users&lt;/code&gt;/&lt;code&gt;nimbus.groups&lt;/code&gt; and rotate the Nimbus keytab and any TLS private keys or ZooKeeper credentials readable by the Nimbus daemon user. Local mode is unaffected.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; Independently reported to the Apache Storm PMC by n0mi1k, with a proof of concept. Also found by the ASF using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82427&quot;&gt;CVE-2026-82427&lt;/a&gt; - Apache Storm Nimbus: Path Traversal as the Supervisor User via Unsanitised Blobstore Map Local Name&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; A topology&apos;s &lt;code&gt;topology.blobstore.map&lt;/code&gt; lets the submitter choose a local name for each localised blob. That name was used to build a path under the topology&apos;s working directory without normalisation, in both &lt;code&gt;AsyncLocalizer&lt;/code&gt; and &lt;code&gt;Container.createBlobstoreLinks&lt;/code&gt;, and the symlink helper force-deletes whatever already exists at the target before creating the link. A submitter could use &lt;code&gt;../&lt;/code&gt; segments to direct that delete-and-symlink at an arbitrary path, as the supervisor user, on every node the topology is scheduled onto -- enabling recursive deletion of supervisor-owned content and planting a symlink that causes a later worker launch to execute attacker-chosen code as another tenant&apos;s OS user, defeating &lt;code&gt;supervisor.run.worker.as.user&lt;/code&gt; isolation.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where the resolved target must lie inside the expected root at both call sites. Users who cannot upgrade immediately should restrict submission to trusted principals and may reject &lt;code&gt;topology.blobstore.map&lt;/code&gt; entries containing path separators or &lt;code&gt;..&lt;/code&gt; before they reach Nimbus.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82428&quot;&gt;CVE-2026-82428&lt;/a&gt; - Apache Storm Client: Cross-Tenant Dependency Jar Substitution via Predictable Blob Keys&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; Dependency artifacts uploaded with &lt;code&gt;storm jar --artifacts&lt;/code&gt; were stored under a blob key derived only from the Maven coordinate, identical for every user and predictable in advance. When the blob already existed the uploader caught &lt;code&gt;KeyAlreadyExistsException&lt;/code&gt; and silently reused it, with no check that the existing blob&apos;s content or owner matched. A user who uploaded a blob under such a key first therefore controlled the bytes every later submitter of the same coordinate received on the worker classpath, resulting in code execution inside another tenant&apos;s topology. Affects multi-tenant clusters that use the &lt;code&gt;--artifacts&lt;/code&gt; feature.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where each uploaded artifact receives a key carrying a freshly generated UUID and a pre-existing blob is no longer silently reused. The corrected key generation is on the submitting client, so every client running &lt;code&gt;storm jar --artifacts&lt;/code&gt; must also be upgraded; upgrading the cluster alone does not close it. Operators should audit existing &lt;code&gt;dep-&lt;/code&gt; blobs for unexpected owners.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82429&quot;&gt;CVE-2026-82429&lt;/a&gt; - Apache Storm Worker Launcher: Local Privilege Escalation to Root via a Time-of-Check Race in the Worker Launcher&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; The setuid-root &lt;code&gt;worker-launcher&lt;/code&gt; adjusts ownership and permissions of worker directories by walking the tree with FTS and calling &lt;code&gt;lchown&lt;/code&gt; and &lt;code&gt;chmod&lt;/code&gt; on each entry&apos;s full pathname while effective uid 0. Both syscalls re-resolve the path at call time, after FTS has classified the entry, and the trees are owned and writable by the untrusted topology user. A tenant could replace an intermediate directory component with a symlink between classification and the privileged operation, redirecting the root-owned &lt;code&gt;lchown&lt;/code&gt;/&lt;code&gt;chmod&lt;/code&gt; at an arbitrary host file. The operation is repeatable at will. This is the same defect class as the Hadoop container-executor issues from which the code derives.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where the privileged walk operates on file descriptors it has already stat&apos;d rather than on pathnames re-resolved at call time. The launcher must be rebuilt and reinstalled after upgrading; replacing the Java artifacts alone is not sufficient. Users who cannot upgrade should not run untrusted topology code on supervisors configured with &lt;code&gt;supervisor.run.worker.as.user&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82430&quot;&gt;CVE-2026-82430&lt;/a&gt; - Apache Storm Worker Launcher: Local Privilege Escalation to Root via Container Command Files Chowned to the Tenant&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; When launching a Docker or OCI worker, the setuid-root &lt;code&gt;worker-launcher&lt;/code&gt; first changes ownership of the entire worker directory to the untrusted topology user, and only afterwards reads and acts on the command file the supervisor wrote there. The file is opened without &lt;code&gt;O_NOFOLLOW&lt;/code&gt; and without re-verifying its owner, so the tenant can replace its contents in the window between. On the Docker path the parsed command runs with real uid 0 and the sanitiser is not a privilege boundary (it admits &lt;code&gt;-v&lt;/code&gt; with an arbitrary source, &lt;code&gt;--device&lt;/code&gt;, &lt;code&gt;--cap-add&lt;/code&gt;, &lt;code&gt;--security-opt&lt;/code&gt;, &lt;code&gt;--user&lt;/code&gt;, &lt;code&gt;--net&lt;/code&gt;), yielding an attacker-authored root-equivalent container with the host filesystem available. On the OCI path the same window applies, mount validation is structural only (no source/destination allow-list), and the attacker-settable &lt;code&gt;username&lt;/code&gt; field permits running as another tenant&apos;s uid.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where the command file is validated before the ownership change and re-verified on open, and mount sources and destinations are constrained by configuration. The launcher must be rebuilt and reinstalled after upgrading. Users who cannot upgrade should disable Docker/OCI worker isolation or restrict submission on affected supervisors to trusted principals.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82431&quot;&gt;CVE-2026-82431&lt;/a&gt; - Apache Storm Client: Authorization Bypass When nimbus.groups Is Configured Without nimbus.users&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; &lt;code&gt;SimpleACLAuthorizer&lt;/code&gt; evaluated the user-level command set by returning early when &lt;code&gt;nimbus.users&lt;/code&gt; was empty, before &lt;code&gt;nimbus.groups&lt;/code&gt; was considered. An operator who restricted access by group alone, leaving &lt;code&gt;nimbus.users&lt;/code&gt; unset, therefore received no restriction at all: every authenticated principal was permitted every user-level operation, including &lt;code&gt;submitTopology&lt;/code&gt;, &lt;code&gt;beginFileUpload&lt;/code&gt; and &lt;code&gt;getNimbusConf&lt;/code&gt;. &lt;code&gt;docs/SECURITY.md&lt;/code&gt; presents &lt;code&gt;nimbus.groups&lt;/code&gt; as a supported lock-down mechanism, so a deployment following the documentation could believe it was restricted while it was not. The failure was silent.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where &lt;code&gt;nimbus.groups&lt;/code&gt; is evaluated whether or not &lt;code&gt;nimbus.users&lt;/code&gt; is set. Users who cannot upgrade should also populate &lt;code&gt;nimbus.users&lt;/code&gt;, since a non-empty user list causes the group list to be evaluated on affected versions, and review Nimbus access logs. Note: after upgrading, a cluster configured with &lt;code&gt;nimbus.groups&lt;/code&gt; alone becomes restrictive for the first time -- clients outside the configured groups (including &lt;code&gt;NimbusClient&lt;/code&gt;, which calls &lt;code&gt;getLeader&lt;/code&gt; on every connection) will begin to be refused.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82432&quot;&gt;CVE-2026-82432&lt;/a&gt; - Apache Storm Nimbus: Blobstore Authorization Bypass via Rebalance Configuration Overrides&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; Nimbus validated &lt;code&gt;topology.blobstore.map&lt;/code&gt; against the calling subject at submission time only. The rebalance operation accepts configuration overrides but never re-ran that validation, so a caller authorised to rebalance a topology could introduce a blobstore-map entry naming a blob whose ACL does not grant them access; supervisors localise whatever key the map names. The same advisory covers &lt;code&gt;listBlobs&lt;/code&gt;, which performed no authorization check and returned every key in the blobstore to any caller able to reach the Nimbus Thrift port -- the key names that make the above practical. On its own the disclosure is metadata only.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where rebalance overrides are validated exactly as submission-time configuration is, against the rebalancing caller, and &lt;code&gt;listBlobs&lt;/code&gt; applies the configured authorization. Users who cannot upgrade should restrict rebalance rights to trusted principals, noting that membership of a topology&apos;s &lt;code&gt;topology.users&lt;/code&gt;/&lt;code&gt;topology.groups&lt;/code&gt; confers them.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82433&quot;&gt;CVE-2026-82433&lt;/a&gt; - Apache Storm Nimbus, Apache Storm UI: Disclosure of Unredacted Daemon Configuration via Nimbus and the UI&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; &lt;code&gt;getNimbusConf&lt;/code&gt; returned the complete daemon configuration without redaction after only a user-level authorization check; where configured, that includes &lt;code&gt;storm.zookeeper.auth.payload&lt;/code&gt; and the Thrift/Netty/ZooKeeper TLS keystore and truststore passwords. The UI endpoint &lt;code&gt;/api/v1/cluster/configuration&lt;/code&gt; compounded this: it carried no &lt;code&gt;@AuthNimbusOp&lt;/code&gt; annotation, the authorization filter treated a missing annotation as &quot;no gate required&quot;, and it proxied the request under the UI daemon&apos;s own principal, so any user able to pass &lt;code&gt;ui.filter&lt;/code&gt; received the full configuration.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where credential-bearing values are masked before the configuration is served and every UI API endpoint must declare its authorization explicitly. Users who cannot upgrade should place the UI behind an authenticating reverse proxy restricting &lt;code&gt;/api/v1/cluster/configuration&lt;/code&gt;, and rotate the ZooKeeper authentication payload and any TLS keystore/truststore passwords reachable through it.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82434&quot;&gt;CVE-2026-82434&lt;/a&gt; - Apache Storm Nimbus, Apache Storm Client: Disclosure of the Topology ZooKeeper Credential to Read-Only Users and to Logs&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; When ZooKeeper authentication is configured, Storm deliberately retains &lt;code&gt;storm.zookeeper.topology.auth.payload&lt;/code&gt; in the topology configuration because workers need it. Nimbus then served that configuration verbatim to any caller holding read-only topology permissions, so a user whose only grant was the ability to view a topology received its ZooKeeper credential. That credential is not read-only: the cluster-state implementation uses write-capable ACLs for worker heartbeats, backpressure and error state, so a recipient can forge or remove that state for the topology. The same advisory covers the submission client, which logged the generated payload at INFO on every submission, and the SASL handlers, which logged it at DEBUG, so the credential also reached log aggregation and support bundles.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where the payload is removed from the configuration served to read-only callers and is no longer written to logs. Users who cannot upgrade immediately should rotate &lt;code&gt;storm.zookeeper.topology.auth.payload&lt;/code&gt; for existing topologies, review retained logs and support bundles for the value, and restrict read-only topology permissions to trusted principals.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82435&quot;&gt;CVE-2026-82435&lt;/a&gt; - Apache Storm Worker: Unauthenticated Remote Memory Exhaustion in the Worker Messaging Decoder&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; The worker&apos;s Netty message decoder is installed ahead of the SASL authentication handlers and acts on frames before authentication. It allocated buffers sized from a length field carried in the frame, so a single frame from an unauthenticated peer able to reach a worker slot port could drive a large allocation. &lt;code&gt;storm.messaging.netty.authentication&lt;/code&gt; defaults to false and the decoder runs before the handler that enforces it in any case, so the attacker needs only TCP reachability to a worker port. The precise effect at the default 768 MB worker heap was not measured; the assigned severity reflects the conservative reading.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where frames are decoded only after the handshake completes. Users who cannot upgrade should ensure worker slot ports are reachable only from within the cluster and enable &lt;code&gt;storm.messaging.netty.authentication&lt;/code&gt; where the deployment permits.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82436&quot;&gt;CVE-2026-82436&lt;/a&gt; - Apache Storm Client: Deserialization of Untrusted Data from the State Store&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; &lt;code&gt;DefaultStateSerializer&lt;/code&gt;, used to persist and restore stateful bolt checkpoints, configured Kryo with class registration disabled and an instantiation strategy that constructs objects without invoking their constructors, then deserialized whatever bytes the state store returned. A party able to write to the topology&apos;s keyspace in the state store -- for example a co-tenant of a shared Redis instance, or anyone with network access to it -- could place a serialized object graph that executes code inside the worker JVM when state is restored. This requires the Redis-backed state provider, which is not the default. Write access to a state-store key is a data-plane privilege; code execution in the worker JVM is not, so the two are not equivalent.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where the state serializer requires registered classes. Note this is a behaviour change for existing state: checkpoints written by an affected version may fail to restore and a migration step may be required. Users who cannot upgrade should restrict network and credential access to the state store to the cluster itself.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82437&quot;&gt;CVE-2026-82437&lt;/a&gt; - Apache Storm Logviewer: Log Access Controls Not Enforced by Logviewer&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; The Logviewer offers &lt;code&gt;logs.users&lt;/code&gt; and &lt;code&gt;logs.groups&lt;/code&gt; to control who may read log content, but for daemon logs those settings were not applied: the access decision discarded the authorizer&apos;s answer whenever the &quot;daemon log&quot; flag was set, and the daemon log page and download endpoints reached the handler without consulting an authorizer at all. Any user able to pass the configured servlet filter could read &lt;code&gt;nimbus.log&lt;/code&gt;, &lt;code&gt;supervisor.log&lt;/code&gt; and other daemon logs on every reachable node, which contain other tenants&apos; topology names, owners and configuration fragments. The same advisory covers &lt;code&gt;/listLogs&lt;/code&gt; and &lt;code&gt;/searchLogs&lt;/code&gt;, which accepted a user argument and never applied it, returning every tenant&apos;s log file names (metadata only). No configuration closed either behaviour.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where the daemon log paths evaluate the same configured user/group lists the worker log paths already used, and the listing endpoints filter by the requesting user. Users who cannot upgrade should place the Logviewer behind a reverse proxy that restricts the daemon log endpoints.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82438&quot;&gt;CVE-2026-82438&lt;/a&gt; - Apache Storm Webapp: Authenticated API Responses Exposed to Arbitrary Web Origins&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; Three mechanisms allowed a web page on an unrelated origin to read responses served to an authenticated user. The Logviewer reflected the request&apos;s &lt;code&gt;Origin&lt;/code&gt; back in &lt;code&gt;Access-Control-Allow-Origin&lt;/code&gt; while also sending &lt;code&gt;Access-Control-Allow-Credentials: true&lt;/code&gt;, removing the protection that makes the documented &lt;code&gt;*&lt;/code&gt; posture safe. The shared CORS filter used by the UI, Logviewer and DRPC was configured with a response header name where an init parameter name was expected, so the container applied its own credential-allowing defaults. And the UI and Logviewer wrapped every GET response in a caller-supplied JSONP callback, which any origin&apos;s script element can load, bypassing the same-origin policy entirely, with no way to turn it off.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where the Logviewer no longer reflects the request origin in a credentialed response, the CORS filter is configured explicitly, and JSONP wrapping is governed by &lt;code&gt;ui.enable.jsonp&lt;/code&gt; (default false). Disabling JSONP is a behaviour change for tooling that passes a &lt;code&gt;callback&lt;/code&gt; parameter. Users who cannot upgrade should front these endpoints with a reverse proxy that strips the CORS headers and rejects &lt;code&gt;callback&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82439&quot;&gt;CVE-2026-82439&lt;/a&gt; - Apache Storm DRPC: Unauthenticated Unbounded Memory Growth in DRPC&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; The DRPC server kept a map from function name to request queue and created an entry the first time a function name was seen; no code path ever removed an entry. Function names come from the client and are not constrained to registered functions, so the number of retained entries is bounded only by the distinct names an attacker sends. &lt;code&gt;drpc.authorizer&lt;/code&gt; is unset by default, so no credentials are required. The retained state is permanent rather than a transient load spike, so it accumulates until the DRPC server exhausts its heap.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where a function&apos;s queue is removed once nothing is waiting in it. Users who cannot upgrade should configure &lt;code&gt;drpc.authorizer&lt;/code&gt; so only trusted principals can reach the DRPC endpoints and ensure the DRPC ports are not reachable from untrusted networks.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82440&quot;&gt;CVE-2026-82440&lt;/a&gt; - Apache Storm Nimbus: Submitter-Controlled Class Instantiation in Nimbus via a Fail-Open Scheduler Strategy Allowlist&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; Nimbus instantiates the class named by a topology&apos;s &lt;code&gt;topology.scheduler.strategy&lt;/code&gt;. The allowlist meant to constrain that choice, &lt;code&gt;nimbus.scheduler.strategy.class.whitelist&lt;/code&gt;, was treated as &quot;allow any class&quot; when unset and had no entry in the shipped &lt;code&gt;defaults.yaml&lt;/code&gt;, so unset was the shipped state. An authenticated submitter could cause Nimbus to instantiate any class on its classpath with a no-argument constructor; Storm&apos;s own artifacts contain classes with side effects (e.g. &lt;code&gt;org.apache.storm.testing.InProcessZookeeper&lt;/code&gt;, &lt;code&gt;org.apache.storm.LocalCluster&lt;/code&gt;), so repeated submissions consume threads, sockets and memory in the most privileged daemon.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where an unset allowlist means the strategies shipped with Storm rather than any class. This is a behaviour change: a cluster running an out-of-tree strategy without an explicit allowlist will have those topologies refused until the class is added to &lt;code&gt;nimbus.scheduler.strategy.class.whitelist&lt;/code&gt;. Users who cannot upgrade should set that key explicitly.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-82441&quot;&gt;CVE-2026-82441&lt;/a&gt; - Apache Storm Nimbus: Cross-Tenant Blob Deletion and Cluster Denial of Service via Unvalidated Topology Dependency Keys&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; A submitted topology carries &lt;code&gt;dependency_jars&lt;/code&gt; and &lt;code&gt;dependency_artifacts&lt;/code&gt; lists of blobstore keys, which Nimbus did not validate on submission yet acted on in two places. During cleanup Nimbus deletes the keys named in those lists as the Nimbus subject, for which the blobstore short-circuits its ACL check, so a submitter who listed another topology&apos;s key (such as its &lt;code&gt;-stormjar.jar&lt;/code&gt;) could cause that blob to be deleted. Separately, on acquiring leadership a Nimbus surrenders leadership if any listed dependency key is missing, so a single non-existent key on one active topology makes every Nimbus acquire, surrender and requeue leadership indefinitely, leaving the cluster without a leader.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where a submission is refused unless every entry in both lists is a dependency blob key that exists in the blobstore. This validates new submissions only; an operator whose cluster is failing to retain a leader should inspect the Nimbus log for the missing dependency keys and remove or resubmit the topology naming them. Users who cannot upgrade should restrict topology submission to trusted principals.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; This issue was discovered by rzo1 while investigating an unrelated blobstore defect.&lt;/p&gt;
+
+&lt;h3&gt;&lt;a href=&quot;https://www.cve.org/CVERecord?id=CVE-2026-84179&quot;&gt;CVE-2026-84179&lt;/a&gt; - Apache Storm Nimbus, Apache Storm UI: Disclosure of Unredacted Merged Daemon Configuration via the Topology Page&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Versions Affected:&lt;/strong&gt; 3.0.0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; &lt;code&gt;getTopologyPageInfo&lt;/code&gt; merged the Nimbus daemon configuration with the topology&apos;s own configuration and returned the result without redaction in the &lt;code&gt;topology_conf&lt;/code&gt; field of &lt;code&gt;TopologyPageInfo&lt;/code&gt;; the UI copied it verbatim into the &lt;code&gt;configuration&lt;/code&gt; field of &lt;code&gt;GET /api/v1/topology/{id}&lt;/code&gt; and the corresponding metrics endpoint. Where configured, the merged map includes &lt;code&gt;storm.zookeeper.auth.payload&lt;/code&gt; and the Thrift/Netty/ZooKeeper TLS keystore and truststore passwords. Because this is a topology read-only operation, under &lt;code&gt;SimpleACLAuthorizer&lt;/code&gt; a principal in &lt;code&gt;topology.readonly.users&lt;/code&gt;/&lt;code&gt;topology.readonly.groups&lt;/code&gt; could read daemon credentials that the dedicated &lt;code&gt;getNimbusConf&lt;/code&gt; API redacts and gates on &lt;code&gt;nimbus.users&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mitigation:&lt;/strong&gt; Upgrade to 3.1.0, where credential-bearing values are masked before any configuration is served over the Nimbus API. Users who cannot upgrade should remove any principal not trusted with cluster credentials from &lt;code&gt;topology.readonly.users&lt;/code&gt;, &lt;code&gt;topology.readonly.groups&lt;/code&gt;, &lt;code&gt;topology.users&lt;/code&gt; and &lt;code&gt;topology.groups&lt;/code&gt;, and rotate the ZooKeeper authentication payload and any TLS keystore/truststore passwords reachable through the topology page.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Credit:&lt;/strong&gt; Wanxin Yin (yaklang.io) reported this issue to the Apache Security Team.&lt;/p&gt;
+
+&lt;h3&gt;Additional acknowledgements&lt;/h3&gt;
+
+&lt;p&gt;We also thank n0mi1k for reporting the &lt;code&gt;getTopologyHistory&lt;/code&gt; authorization gap addressed in this release by &lt;a href=&quot;https://github.com/apache/storm/pull/9003&quot;&gt;#9003&lt;/a&gt;. It is handled as a hardening improvement and is not covered by a separate advisory.&lt;/p&gt;
+
+&lt;h2&gt;Enhancements&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8977&quot;&gt;#8977&lt;/a&gt;] - Add ui.enable.jsonp to control JSONP callback wrapping in UI and Logviewer API responses&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8969&quot;&gt;#8969&lt;/a&gt;] - Sync checkstyle config with upstream google_checks.xml&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8950&quot;&gt;#8950&lt;/a&gt;] - Add storm-iceberg module: an Apache Iceberg sink bolt&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7569&quot;&gt;#7569&lt;/a&gt;] - [STORM-3787] Add error messages in worker-launcher code where it is missing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8995&quot;&gt;#8995&lt;/a&gt;] - Document that an unset scheduler strategy whitelist no longer allows every strategy class&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8984&quot;&gt;#8984&lt;/a&gt;] - Clarify worker/supervisor heartbeat docs and deprecate unused nimbus.supervisor.timeout.secs&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8949&quot;&gt;#8949&lt;/a&gt;] - docs: add missing 3.0.0 feature documentation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Bug fixing&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9082&quot;&gt;#9082&lt;/a&gt;] - STORM-3871: sweep dependency blobs that outlive their topology&apos;s cleanup&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9076&quot;&gt;#9076&lt;/a&gt;] - Drop malformed tuple payloads instead of killing the receiving worker&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9075&quot;&gt;#9075&lt;/a&gt;] - Harden the java serialization fallback bridge with a JEP-290 serial filter&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9069&quot;&gt;#9069&lt;/a&gt;] - Apply one redaction rule to configuration served and logged by Storm&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9014&quot;&gt;#9014&lt;/a&gt;] - Test the OCI launch-command username and mount-source enforcement&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9013&quot;&gt;#9013&lt;/a&gt;] - Return independently owned value arrays from get_values&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9012&quot;&gt;#9012&lt;/a&gt;] - Reject a topology submission that lists a blob key which is not a dependency blob key&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9011&quot;&gt;#9011&lt;/a&gt;] - STORM-3871: remove a topology&apos;s dependency artifact blobs when it is cleaned up&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9010&quot;&gt;#9010&lt;/a&gt;] - Restrict OCI bind-mount sources to configured directories and check the launch command username&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9009&quot;&gt;#9009&lt;/a&gt;] - Validate the worker id in profile-docker-container&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9008&quot;&gt;#9008&lt;/a&gt;] - Validate the container id and invoke runc without a shell in reap-oci-container&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9007&quot;&gt;#9007&lt;/a&gt;] - Read and check the docker command file before changing worker directory ownership&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9006&quot;&gt;#9006&lt;/a&gt;] - Apply worker file ownership and mode via an open descriptor&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9005&quot;&gt;#9005&lt;/a&gt;] - Evaluate authorization for requests that carry no principal&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9004&quot;&gt;#9004&lt;/a&gt;] - Require every UI API endpoint to declare its authorization&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9003&quot;&gt;#9003&lt;/a&gt;] - Filter the topology history by the authenticated caller rather than the requested user name&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9002&quot;&gt;#9002&lt;/a&gt;] - Authorize createStateInZookeeper requests like the other blob operations&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9001&quot;&gt;#9001&lt;/a&gt;] - Check the calling principal against the topology owner in uploadNewCredentials&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9000&quot;&gt;#9000&lt;/a&gt;] - Apply the nimbus ACLs to listBlobs so callers only see blobs they may read&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8999&quot;&gt;#8999&lt;/a&gt;] - Validate topology.blobstore.map in rebalance conf overrides against the calling user&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8998&quot;&gt;#8998&lt;/a&gt;] - Evaluate nimbus.groups when nimbus.users is empty&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8993&quot;&gt;#8993&lt;/a&gt;] - Decode netty server frames only after the handshake completes&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8992&quot;&gt;#8992&lt;/a&gt;] - Update StormSubmitter logging behavior&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8991&quot;&gt;#8991&lt;/a&gt;] - Return a normalized copy of the topology conf from Nimbus&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8990&quot;&gt;#8990&lt;/a&gt;] - Require Kryo class registration in the state serializer&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8989&quot;&gt;#8989&lt;/a&gt;] - Generate tuple tree ids from a key stream instead of a recoverable linear congruential generator&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8988&quot;&gt;#8988&lt;/a&gt;] - Pass only the required Kafka consumer properties to the spout lag monitor&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8987&quot;&gt;#8987&lt;/a&gt;] - Verify the peer identity of the Netty TLS server the worker client connects to&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8986&quot;&gt;#8986&lt;/a&gt;] - Restrict topology scheduler strategies to the shipped strategies when no allowlist is configured&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8985&quot;&gt;#8985&lt;/a&gt;] - Remove DRPC per-function request queues once they are empty&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8983&quot;&gt;#8983&lt;/a&gt;] - Reject image tags that are neither mapped nor valid image hashes before building the manifest path&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8982&quot;&gt;#8982&lt;/a&gt;] - Give each uploaded dependency artifact its own blob key instead of reusing a pre-existing blob&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8981&quot;&gt;#8981&lt;/a&gt;] - Reject blobstore map local names that resolve outside the topology and worker directories&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8980&quot;&gt;#8980&lt;/a&gt;] - Reject submitted jar locations that are not inside the Nimbus inbox&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8979&quot;&gt;#8979&lt;/a&gt;] - Add to instead of replace Jetty&apos;s default TLS exclusions on HTTPS connectors&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8978&quot;&gt;#8978&lt;/a&gt;] - Change the worker log file permission only for download requests that are served&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8976&quot;&gt;#8976&lt;/a&gt;] - Set the CORS filter credentials parameter explicitly instead of a header name the filter ignores&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8975&quot;&gt;#8975&lt;/a&gt;] - Stop echoing the request Origin with allow-credentials in logviewer JSON responses&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8974&quot;&gt;#8974&lt;/a&gt;] - Return only the log files the requesting user may access from the log file listing&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8973&quot;&gt;#8973&lt;/a&gt;] - Apply the configured log user and group lists to daemon log requests&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8972&quot;&gt;#8972&lt;/a&gt;] - BugFix Utils.java&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7653&quot;&gt;#7653&lt;/a&gt;] - [STORM-3871] Storm blobstore leak space&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Dependency upgrades&lt;/h2&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9080&quot;&gt;#9080&lt;/a&gt;] - build(deps-dev): bump svgo from 4.0.2 to 4.1.0 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9072&quot;&gt;#9072&lt;/a&gt;] - build(deps-dev): bump fast-uri from 3.1.5 to 3.1.7 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9071&quot;&gt;#9071&lt;/a&gt;] - build(deps-dev): bump browserslist from 4.28.1 to 4.28.8 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9070&quot;&gt;#9070&lt;/a&gt;] - build(deps): bump postcss-selector-parser from 7.1.1 to 7.1.5 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9067&quot;&gt;#9067&lt;/a&gt;] - build(deps): batch open Dependabot version updates&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9066&quot;&gt;#9066&lt;/a&gt;] - build(deps-dev): bump start-server-and-test from 3.0.11 to 3.0.12 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9065&quot;&gt;#9065&lt;/a&gt;] - build(deps-dev): bump css-loader from 7.1.4 to 7.1.5 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9064&quot;&gt;#9064&lt;/a&gt;] - build(deps-dev): bump webpack-cli from 7.2.2 to 7.2.3 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9063&quot;&gt;#9063&lt;/a&gt;] - build(deps): bump cytoscape from 3.34.0 to 3.34.2 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9062&quot;&gt;#9062&lt;/a&gt;] - build(deps-dev): bump webpack from 5.109.2 to 5.110.1 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9061&quot;&gt;#9061&lt;/a&gt;] - build(deps): bump vis-data from 8.0.4 to 8.0.5 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9060&quot;&gt;#9060&lt;/a&gt;] - build(deps): bump datatables.net from 3.0.0 to 3.0.2 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9059&quot;&gt;#9059&lt;/a&gt;] - build(deps): bump js-yaml from 5.2.2 to 5.4.1 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9058&quot;&gt;#9058&lt;/a&gt;] - build(deps): bump cytoscape-dagre from 4.0.0 to 4.0.1 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9057&quot;&gt;#9057&lt;/a&gt;] - build(deps): bump datatables.net-bs5 from 3.0.0 to 3.0.2 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9056&quot;&gt;#9056&lt;/a&gt;] - build(deps): bump vis-network from 10.1.0 to 10.1.2 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9055&quot;&gt;#9055&lt;/a&gt;] - build(deps): bump datatables.net-dt from 3.0.0 to 3.0.2 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9054&quot;&gt;#9054&lt;/a&gt;] - build(deps-dev): bump cypress from 15.19.0 to 15.21.1 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9053&quot;&gt;#9053&lt;/a&gt;] - build(deps): bump org.apache.xbean:xbean-spring from 4.31 to 5.0.0 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9052&quot;&gt;#9052&lt;/a&gt;] - build(deps): bump com.google.guava:guava from 33.6.0-jre to 33.7.1-jre in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9051&quot;&gt;#9051&lt;/a&gt;] - build(deps): bump org.junit:junit-bom from 6.1.2 to 6.1.3 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9050&quot;&gt;#9050&lt;/a&gt;] - build(deps): bump com.fasterxml.woodstox:woodstox-core from 7.2.1 to 7.2.2 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9049&quot;&gt;#9049&lt;/a&gt;] - build(deps): bump org.objenesis:objenesis from 3.5 to 3.6 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9048&quot;&gt;#9048&lt;/a&gt;] - build(deps): bump com.github.luben:zstd-jni from 1.5.7-12 to 1.5.7-15 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9047&quot;&gt;#9047&lt;/a&gt;] - build(deps): bump io.netty:netty-bom from 4.2.16.Final to 4.2.17.Final in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9046&quot;&gt;#9046&lt;/a&gt;] - build(deps): bump com.fasterxml.jackson:jackson-bom from 2.22.1 to 2.22.2 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9045&quot;&gt;#9045&lt;/a&gt;] - build(deps): bump activemq.version from 6.3.0 to 6.3.1 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9044&quot;&gt;#9044&lt;/a&gt;] - build(deps): bump org.apache.avro:avro from 1.12.1 to 1.12.2 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9043&quot;&gt;#9043&lt;/a&gt;] - build(deps): bump spring.version from 7.0.8 to 7.0.9 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9042&quot;&gt;#9042&lt;/a&gt;] - build(deps): bump org.apache.commons:commons-collections4 from 4.5.0 to 4.6.0 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9041&quot;&gt;#9041&lt;/a&gt;] - build(deps): bump byte-buddy.version from 1.18.11 to 1.18.12 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9040&quot;&gt;#9040&lt;/a&gt;] - build(deps): bump metrics.version from 4.2.39 to 4.2.40 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9039&quot;&gt;#9039&lt;/a&gt;] - build(deps): bump com.puppycrawl.tools:checkstyle from 13.9.0 to 14.0.0 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9038&quot;&gt;#9038&lt;/a&gt;] - build(deps): bump org.apache.xbean:xbean-spring from 4.31 to 5.0.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9037&quot;&gt;#9037&lt;/a&gt;] - build(deps): bump org.jctools:jctools-core from 4.0.6 to 4.0.7 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9036&quot;&gt;#9036&lt;/a&gt;] - build(deps): bump com.google.guava:guava from 33.6.0-jre to 33.7.1-jre&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9035&quot;&gt;#9035&lt;/a&gt;] - build(deps): bump jetty.version from 12.1.11 to 12.1.12 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9034&quot;&gt;#9034&lt;/a&gt;] - build(deps): bump com.github.luben:zstd-jni from 1.5.7-12 to 1.5.7-15&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9033&quot;&gt;#9033&lt;/a&gt;] - build(deps): bump redis.clients:jedis from 7.5.3 to 8.0.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9032&quot;&gt;#9032&lt;/a&gt;] - build(deps): bump com.fasterxml.jackson:jackson-bom from 2.22.1 to 2.22.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9031&quot;&gt;#9031&lt;/a&gt;] - build(deps): bump org.junit:junit-bom from 6.1.2 to 6.1.3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9030&quot;&gt;#9030&lt;/a&gt;] - build(deps): bump org.apache.commons:commons-collections4 from 4.5.0 to 4.6.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9029&quot;&gt;#9029&lt;/a&gt;] - build(deps): bump spring.version from 7.0.8 to 7.0.9&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9028&quot;&gt;#9028&lt;/a&gt;] - build(deps): bump com.fasterxml.woodstox:woodstox-core from 7.2.1 to 7.2.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9027&quot;&gt;#9027&lt;/a&gt;] - build(deps): bump netty-tcnative.version from 2.0.81.Final to 2.0.82.Final&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9026&quot;&gt;#9026&lt;/a&gt;] - build(deps): bump com.fasterxml.jackson.core:jackson-databind from 2.22.1 to 2.22.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9025&quot;&gt;#9025&lt;/a&gt;] - build(deps): bump org.objenesis:objenesis from 3.5 to 3.6&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9024&quot;&gt;#9024&lt;/a&gt;] - build(deps): bump activemq.version from 6.3.0 to 6.3.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9023&quot;&gt;#9023&lt;/a&gt;] - build(deps): bump org.jctools:jctools-core from 4.0.6 to 4.0.7&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9022&quot;&gt;#9022&lt;/a&gt;] - build(deps): bump io.netty:netty-bom from 4.2.16.Final to 4.2.17.Final&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9021&quot;&gt;#9021&lt;/a&gt;] - build(deps): bump metrics.version from 4.2.39 to 4.2.40&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9020&quot;&gt;#9020&lt;/a&gt;] - build(deps): bump org.apache.avro:avro from 1.12.1 to 1.12.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9019&quot;&gt;#9019&lt;/a&gt;] - build(deps): bump jetty.version from 12.1.11 to 12.1.12&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/9018&quot;&gt;#9018&lt;/a&gt;] - build(deps): bump byte-buddy.version from 1.18.11 to 1.18.12&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8970&quot;&gt;#8970&lt;/a&gt;] - build(deps-dev): bump fast-uri from 3.1.4 to 3.1.5 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8965&quot;&gt;#8965&lt;/a&gt;] - build(deps): bump datatables.net-dt from 2.3.8 to 3.0.0 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8964&quot;&gt;#8964&lt;/a&gt;] - build(deps): bump datatables.net-bs5 from 2.3.8 to 3.0.0 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8963&quot;&gt;#8963&lt;/a&gt;] - build(deps): bump datatables.net from 2.3.8 to 3.0.0 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8962&quot;&gt;#8962&lt;/a&gt;] - build(deps-dev): bump webpack from 5.108.4 to 5.109.2 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8961&quot;&gt;#8961&lt;/a&gt;] - build(deps-dev): bump webpack-cli from 7.2.1 to 7.2.2 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8960&quot;&gt;#8960&lt;/a&gt;] - build(deps): bump com.github.luben:zstd-jni from 1.5.7-11 to 1.5.7-12 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8959&quot;&gt;#8959&lt;/a&gt;] - build(deps): bump commons-codec:commons-codec from 1.22.0 to 1.22.1 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8958&quot;&gt;#8958&lt;/a&gt;] - build(deps): bump com.puppycrawl.tools:checkstyle from 13.8.0 to 13.9.0 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8957&quot;&gt;#8957&lt;/a&gt;] - build(deps): bump com.github.luben:zstd-jni from 1.5.7-11 to 1.5.7-12&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8956&quot;&gt;#8956&lt;/a&gt;] - build(deps): bump activemq.version from 6.2.7 to 6.3.0 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8955&quot;&gt;#8955&lt;/a&gt;] - build(deps): bump activemq.version from 6.2.7 to 6.3.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8954&quot;&gt;#8954&lt;/a&gt;] - build(deps-dev): bump com.github.eirslett:frontend-maven-plugin from 2.0.1 to 2.0.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8953&quot;&gt;#8953&lt;/a&gt;] - build(deps): bump commons-codec:commons-codec from 1.22.0 to 1.22.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8952&quot;&gt;#8952&lt;/a&gt;] - build(deps): bump postcss from 8.5.10 to 8.5.24 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8951&quot;&gt;#8951&lt;/a&gt;] - build(deps): bump js-yaml from 5.2.1 to 5.2.2 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8945&quot;&gt;#8945&lt;/a&gt;] - build(deps-dev): bump svgo from 4.0.1 to 4.0.2 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8944&quot;&gt;#8944&lt;/a&gt;] - build(deps-dev): bump fast-uri from 3.1.2 to 3.1.4 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8943&quot;&gt;#8943&lt;/a&gt;] - build(deps): bump org.apache.xbean:xbean-spring from 4.30 to 4.31&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8942&quot;&gt;#8942&lt;/a&gt;] - build(deps): bump org.apache.logging.log4j:log4j-bom from 2.26.0 to 2.26.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8941&quot;&gt;#8941&lt;/a&gt;] - build(deps): bump com.fasterxml.jackson:jackson-bom from 2.21.3 to 2.22.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8940&quot;&gt;#8940&lt;/a&gt;] - build(deps): bump bouncycastle.version from 1.84 to 1.85&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8939&quot;&gt;#8939&lt;/a&gt;] - build(deps): bump org.apache.thrift:libthrift from 0.23.0 to 0.24.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8938&quot;&gt;#8938&lt;/a&gt;] - build(deps): bump org.junit:junit-bom from 6.1.1 to 6.1.2&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8937&quot;&gt;#8937&lt;/a&gt;] - build(deps): bump redis.clients:jedis from 7.5.2 to 7.5.3&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8936&quot;&gt;#8936&lt;/a&gt;] - build(deps): bump byte-buddy.version from 1.18.10 to 1.18.11&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8935&quot;&gt;#8935&lt;/a&gt;] - build(deps): bump com.fasterxml.jackson:jackson-bom from 2.21.3 to 2.22.1 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8934&quot;&gt;#8934&lt;/a&gt;] - build(deps): bump netty-tcnative.version from 2.0.80.Final to 2.0.81.Final&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8933&quot;&gt;#8933&lt;/a&gt;] - build(deps): bump io.netty:netty-bom from 4.2.15.Final to 4.2.16.Final&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8932&quot;&gt;#8932&lt;/a&gt;] - build(deps): bump byte-buddy.version from 1.18.10 to 1.18.11 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8931&quot;&gt;#8931&lt;/a&gt;] - build(deps): bump org.apache.thrift:libthrift from 0.23.0 to 0.24.0 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8930&quot;&gt;#8930&lt;/a&gt;] - build(deps): bump com.fasterxml.jackson.core:jackson-databind from 2.22.0 to 2.22.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8929&quot;&gt;#8929&lt;/a&gt;] - build(deps): bump org.apache.logging.log4j:log4j-bom from 2.26.0 to 2.26.1 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8928&quot;&gt;#8928&lt;/a&gt;] - build(deps): bump jakarta-activation-version from 1.2.1 to 2.0.1&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8927&quot;&gt;#8927&lt;/a&gt;] - build(deps): bump io.netty:netty-bom from 4.2.15.Final to 4.2.16.Final in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8926&quot;&gt;#8926&lt;/a&gt;] - build(deps): bump jakarta.ws.rs:jakarta.ws.rs-api from 3.1.0 to 4.0.0&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8925&quot;&gt;#8925&lt;/a&gt;] - build(deps): bump org.apache.xbean:xbean-spring from 4.30 to 4.31 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8924&quot;&gt;#8924&lt;/a&gt;] - build(deps): bump com.puppycrawl.tools:checkstyle from 13.7.0 to 13.8.0 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8923&quot;&gt;#8923&lt;/a&gt;] - build(deps-dev): bump webpack from 5.108.3 to 5.108.4 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8922&quot;&gt;#8922&lt;/a&gt;] - build(deps): bump jetty.version from 12.1.10 to 12.1.11 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8921&quot;&gt;#8921&lt;/a&gt;] - build(deps-dev): bump cypress from 15.18.0 to 15.19.0 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8920&quot;&gt;#8920&lt;/a&gt;] - build(deps): bump jetty.version from 12.1.10 to 12.1.11&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8919&quot;&gt;#8919&lt;/a&gt;] - build(deps-dev): bump webpack-cli from 7.1.0 to 7.2.1 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8918&quot;&gt;#8918&lt;/a&gt;] - build(deps): bump org.junit:junit-bom from 6.1.1 to 6.1.2 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8917&quot;&gt;#8917&lt;/a&gt;] - build(deps): bump bouncycastle.version from 1.84 to 1.85 in /examples&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8910&quot;&gt;#8910&lt;/a&gt;] - build(deps): bump js-yaml from 5.2.0 to 5.2.1 in /storm-webapp&lt;/li&gt;
+    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/8909&quot;&gt;#8909&lt;/a&gt;] - build(deps-dev): bump axios from 1.16.1 to 1.18.1 in /storm-webapp&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sat, 12 Sep 2026 00:00:00 +0000</pubDate>
+        <link>https://storm.apache.org/2026/09/12/storm310-released.html</link>
+        <guid isPermaLink="true">https://storm.apache.org/2026/09/12/storm310-released.html</guid>
+        
+        
+      </item>
     
       <item>
         <title>Apache Storm 3.0.0 Released</title>
@@ -1191,95 +1575,6 @@ users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
         <pubDate>Sun, 03 Aug 2025 00:00:00 +0000</pubDate>
         <link>https://storm.apache.org/2025/08/03/storm282-released.html</link>
         <guid isPermaLink="true">https://storm.apache.org/2025/08/03/storm282-released.html</guid>
-        
-        
-      </item>
-    
-      <item>
-        <title>Apache Storm 2.8.1 Released</title>
-        <description>&lt;p&gt;The Apache Storm community is pleased to announce that version 2.8.1 has been
-released and is available from &lt;a href=&quot;/downloads.html&quot;&gt;the downloads page&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;This release includes new features as well as a number of code improvements, bug fixes and library updates.
-We encourage users of previous versions to upgrade to this latest release.&lt;/p&gt;
-
-&lt;h2 id=&quot;thanks&quot;&gt;Thanks&lt;/h2&gt;
-
-&lt;p&gt;Special thanks are due to all those who have contributed to Apache Storm -- whether
-through direct code contributions, documentation, bug reports, or helping other
-users on the mailing lists. Your efforts are much appreciated.&lt;/p&gt;
-
-&lt;h2 id=&quot;changes-in-this-release-storm-2-8-1&quot;&gt;Changes in this Release - Storm 2.8.1&lt;/h2&gt;
-
-&lt;p&gt;JIRA issues addressed in the 2.8.1 release of Storm. Documentation for this release is available at the &lt;a href=&quot;https://storm.apache.org/&quot;&gt;Apache Storm project site&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2&gt;Dependency upgrade&lt;/h2&gt;
-
-&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8070&quot;&gt;#8070&lt;/a&gt;] - Update to Rocksdbjni 10.1.3&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8069&quot;&gt;#8069&lt;/a&gt;] - Update Netty Bom to 4.2.1.Final&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8068&quot;&gt;#8068&lt;/a&gt;] - Update to commons-configuration 2.12.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8067&quot;&gt;#8067&lt;/a&gt;] - Update Netty to 2.0.71&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8066&quot;&gt;#8066&lt;/a&gt;] - Update to Jackson 2.19.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8065&quot;&gt;#8065&lt;/a&gt;] - Update to commons-collection 4.5.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8064&quot;&gt;#8064&lt;/a&gt;] - Update to gson 2.13.1&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8063&quot;&gt;#8063&lt;/a&gt;] - Update to guava 33.4.8&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8062&quot;&gt;#8062&lt;/a&gt;] - Update to commons-io 2.19.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8045&quot;&gt;#8045&lt;/a&gt;] - Upgrade to Spring 6 and JMS 3.1 (Jakarta)&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8036&quot;&gt;#8036&lt;/a&gt;] - commons-text 1.13.1&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8034&quot;&gt;#8034&lt;/a&gt;] - Hikari CP 6.3.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8033&quot;&gt;#8033&lt;/a&gt;] - dropwizard metrics 4.0.13&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8032&quot;&gt;#8032&lt;/a&gt;] - guava 33.4.7-jre&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8031&quot;&gt;#8031&lt;/a&gt;] - ASM 9.8&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8010&quot;&gt;#8010&lt;/a&gt;] - hbase  2.6.2-hadoop3&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8009&quot;&gt;#8009&lt;/a&gt;] - netty 4.1.119.Final&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8008&quot;&gt;#8008&lt;/a&gt;] - curator 5.8.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8007&quot;&gt;#8007&lt;/a&gt;] - guava 33.4.5-jre&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8006&quot;&gt;#8006&lt;/a&gt;] - commons-csv 1.14.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8005&quot;&gt;#8005&lt;/a&gt;] - jetty 11.0.25&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8004&quot;&gt;#8004&lt;/a&gt;] - slf4j2 2.0.17&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8003&quot;&gt;#8003&lt;/a&gt;] - Jackson 2.18.3&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7970&quot;&gt;#7970&lt;/a&gt;] - Bump io.netty:netty-bom from 4.1.117.Final to 4.1.118.Final&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7969&quot;&gt;#7969&lt;/a&gt;] - Bump net.minidev:json-smart from 2.5.1 to 2.5.2&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7968&quot;&gt;#7968&lt;/a&gt;] - Bump org.checkerframework:checker-qual from 3.48.4 to 3.49.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7967&quot;&gt;#7967&lt;/a&gt;] - Bump prometheus.client.version from 1.3.5 to 1.3.6&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7953&quot;&gt;#7953&lt;/a&gt;] - Bump byte-buddy.version from 1.16.1 to 1.17.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7952&quot;&gt;#7952&lt;/a&gt;] - Bump com.google.code.gson:gson from 2.11.0 to 2.12.1&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7951&quot;&gt;#7951&lt;/a&gt;] - Bump commons-codec:commons-codec from 1.17.2 to 1.18.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7945&quot;&gt;#7945&lt;/a&gt;] - Bump metrics.version from 4.2.29 to 4.2.30&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7944&quot;&gt;#7944&lt;/a&gt;] - Bump dropwizard.version from 4.0.11 to 4.0.12&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7943&quot;&gt;#7943&lt;/a&gt;] - Bump com.github.ben-manes.caffeine:caffeine from 3.1.8 to 3.2.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7942&quot;&gt;#7942&lt;/a&gt;] - Bump io.netty:netty-bom from 4.1.116.Final to 4.1.117.Final&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7941&quot;&gt;#7941&lt;/a&gt;] - Bump bouncycastle.version from 1.79 to 1.80&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7940&quot;&gt;#7940&lt;/a&gt;] - Bump org.rocksdb:rocksdbjni from 9.8.4 to 9.10.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7939&quot;&gt;#7939&lt;/a&gt;] - Bump byte-buddy.version from 1.15.11 to 1.16.1&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8082&quot;&gt;#8082&lt;/a&gt;] - Prometheus Client 1.3.7&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8081&quot;&gt;#8081&lt;/a&gt;] - RocksDB 10.2.1&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8080&quot;&gt;#8080&lt;/a&gt;] - spring 6.2.7&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8030&quot;&gt;#8030&lt;/a&gt;] - Netty 4.2.0&lt;/li&gt;
-        &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/8079&quot;&gt;#8079&lt;/a&gt;] - netty-tcnative 2.0.72.Final&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;Bug&lt;/h2&gt;
-
-&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/7955&quot;&gt;#7955&lt;/a&gt;] - Fix ShellBolt log level&lt;/li&gt;
-    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7954&quot;&gt;#7954&lt;/a&gt;] - o.a.s.t.ShellBolt log level is always INFO&lt;/li&gt;
-    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7935&quot;&gt;#7935&lt;/a&gt;] - [STORM-4155] SecurityManager Issue with JDK 23 in Apache Storm&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;Enhancement&lt;/h2&gt;
-
-&lt;ul&gt;&lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/issues/7947&quot;&gt;#7947&lt;/a&gt;] - IWorkerHook default start method calls its self&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;Uncategorized&lt;/h2&gt;
-
-&lt;ul&gt;
-    &lt;li&gt;[&lt;a href=&quot;https://github.com/apache/storm/pull/7936&quot;&gt;#7936&lt;/a&gt;] - Update Release Note Generation and Docs&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 02 Jun 2025 00:00:00 +0000</pubDate>
-        <link>https://storm.apache.org/2025/06/02/storm281-released.html</link>
-        <guid isPermaLink="true">https://storm.apache.org/2025/06/02/storm281-released.html</guid>
         
         
       </item>
