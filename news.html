@@ -356,18 +356,29 @@ unpatched there and migrate to 3.x, where they are fixed in 3.1.0.</p>
 scheduler-strategy allowlist, JSONP wrapping, the state serializer and
 <code>nimbus.groups</code> evaluation); please read the mitigations below before upgrading.</p>
 
-<h2 id="thanks">Thanks</h2>
+<h2 id="thanks">🙏 Thanks</h2>
 
 <p>Special thanks are due to all those who have contributed to Apache Storm --
 whether through direct code contributions, documentation, bug reports, security
 reports, or helping other users on the mailing lists. Your efforts are much
 appreciated.</p>
 
-<h2 id="changes-in-this-release-storm-3-1-0">Changes in this Release - Storm 3.1.0</h2>
+<h2 id="changes-in-this-release-storm-3-1-0">📋 Changes in this Release - Storm 3.1.0</h2>
 
 <p>JIRA issues and pull requests addressed in the 3.1.0 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
 
-<h2>Security Fixes</h2>
+<style>
+.cve-credit {
+    margin: 0.4em 0 1.8em;
+    padding: 0.55em 0.9em;
+    border-left: 4px solid #0066cc;
+    background: #eef4ff;
+    border-radius: 4px;
+}
+.cve-credit strong { color: #0066cc; }
+</style>
+
+<h2>🔒 Security Fixes</h2>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82426">CVE-2026-82426</a> - Apache Storm Nimbus: Arbitrary File Read on Nimbus via Unvalidated Uploaded Jar Location</h3>
 
@@ -377,7 +388,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where the submitted location is canonicalised and must resolve inside the Nimbus inbox. Users who cannot upgrade immediately should restrict submission via <code>nimbus.users</code>/<code>nimbus.groups</code> and rotate the Nimbus keytab and any TLS private keys or ZooKeeper credentials readable by the Nimbus daemon user. Local mode is unaffected.</p>
 
-<p><strong>Credit:</strong> Independently reported to the Apache Storm PMC by n0mi1k, with a proof of concept. Also found by the ASF using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> Independently reported to the Apache Storm PMC by n0mi1k, with a proof of concept. Also found by the ASF using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82427">CVE-2026-82427</a> - Apache Storm Nimbus: Path Traversal as the Supervisor User via Unsanitised Blobstore Map Local Name</h3>
 
@@ -387,7 +398,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where the resolved target must lie inside the expected root at both call sites. Users who cannot upgrade immediately should restrict submission to trusted principals and may reject <code>topology.blobstore.map</code> entries containing path separators or <code>..</code> before they reach Nimbus.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82428">CVE-2026-82428</a> - Apache Storm Client: Cross-Tenant Dependency Jar Substitution via Predictable Blob Keys</h3>
 
@@ -397,7 +408,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where each uploaded artifact receives a key carrying a freshly generated UUID and a pre-existing blob is no longer silently reused. The corrected key generation is on the submitting client, so every client running <code>storm jar --artifacts</code> must also be upgraded; upgrading the cluster alone does not close it. Operators should audit existing <code>dep-</code> blobs for unexpected owners.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82429">CVE-2026-82429</a> - Apache Storm Worker Launcher: Local Privilege Escalation to Root via a Time-of-Check Race in the Worker Launcher</h3>
 
@@ -407,7 +418,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where the privileged walk operates on file descriptors it has already stat'd rather than on pathnames re-resolved at call time. The launcher must be rebuilt and reinstalled after upgrading; replacing the Java artifacts alone is not sufficient. Users who cannot upgrade should not run untrusted topology code on supervisors configured with <code>supervisor.run.worker.as.user</code>.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82430">CVE-2026-82430</a> - Apache Storm Worker Launcher: Local Privilege Escalation to Root via Container Command Files Chowned to the Tenant</h3>
 
@@ -417,7 +428,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where the command file is validated before the ownership change and re-verified on open, and mount sources and destinations are constrained by configuration. The launcher must be rebuilt and reinstalled after upgrading. Users who cannot upgrade should disable Docker/OCI worker isolation or restrict submission on affected supervisors to trusted principals.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82431">CVE-2026-82431</a> - Apache Storm Client: Authorization Bypass When nimbus.groups Is Configured Without nimbus.users</h3>
 
@@ -427,7 +438,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where <code>nimbus.groups</code> is evaluated whether or not <code>nimbus.users</code> is set. Users who cannot upgrade should also populate <code>nimbus.users</code>, since a non-empty user list causes the group list to be evaluated on affected versions, and review Nimbus access logs. Note: after upgrading, a cluster configured with <code>nimbus.groups</code> alone becomes restrictive for the first time -- clients outside the configured groups (including <code>NimbusClient</code>, which calls <code>getLeader</code> on every connection) will begin to be refused.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82432">CVE-2026-82432</a> - Apache Storm Nimbus: Blobstore Authorization Bypass via Rebalance Configuration Overrides</h3>
 
@@ -437,7 +448,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where rebalance overrides are validated exactly as submission-time configuration is, against the rebalancing caller, and <code>listBlobs</code> applies the configured authorization. Users who cannot upgrade should restrict rebalance rights to trusted principals, noting that membership of a topology's <code>topology.users</code>/<code>topology.groups</code> confers them.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82433">CVE-2026-82433</a> - Apache Storm Nimbus, Apache Storm UI: Disclosure of Unredacted Daemon Configuration via Nimbus and the UI</h3>
 
@@ -447,7 +458,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where credential-bearing values are masked before the configuration is served and every UI API endpoint must declare its authorization explicitly. Users who cannot upgrade should place the UI behind an authenticating reverse proxy restricting <code>/api/v1/cluster/configuration</code>, and rotate the ZooKeeper authentication payload and any TLS keystore/truststore passwords reachable through it.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82434">CVE-2026-82434</a> - Apache Storm Nimbus, Apache Storm Client: Disclosure of the Topology ZooKeeper Credential to Read-Only Users and to Logs</h3>
 
@@ -457,7 +468,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where the payload is removed from the configuration served to read-only callers and is no longer written to logs. Users who cannot upgrade immediately should rotate <code>storm.zookeeper.topology.auth.payload</code> for existing topologies, review retained logs and support bundles for the value, and restrict read-only topology permissions to trusted principals.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82435">CVE-2026-82435</a> - Apache Storm Worker: Unauthenticated Remote Memory Exhaustion in the Worker Messaging Decoder</h3>
 
@@ -467,7 +478,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where frames are decoded only after the handshake completes. Users who cannot upgrade should ensure worker slot ports are reachable only from within the cluster and enable <code>storm.messaging.netty.authentication</code> where the deployment permits.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82436">CVE-2026-82436</a> - Apache Storm Client: Deserialization of Untrusted Data from the State Store</h3>
 
@@ -477,7 +488,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where the state serializer requires registered classes. Note this is a behaviour change for existing state: checkpoints written by an affected version may fail to restore and a migration step may be required. Users who cannot upgrade should restrict network and credential access to the state store to the cluster itself.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82437">CVE-2026-82437</a> - Apache Storm Logviewer: Log Access Controls Not Enforced by Logviewer</h3>
 
@@ -487,7 +498,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where the daemon log paths evaluate the same configured user/group lists the worker log paths already used, and the listing endpoints filter by the requesting user. Users who cannot upgrade should place the Logviewer behind a reverse proxy that restricts the daemon log endpoints.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82438">CVE-2026-82438</a> - Apache Storm Webapp: Authenticated API Responses Exposed to Arbitrary Web Origins</h3>
 
@@ -497,7 +508,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where the Logviewer no longer reflects the request origin in a credentialed response, the CORS filter is configured explicitly, and JSONP wrapping is governed by <code>ui.enable.jsonp</code> (default false). Disabling JSONP is a behaviour change for tooling that passes a <code>callback</code> parameter. Users who cannot upgrade should front these endpoints with a reverse proxy that strips the CORS headers and rejects <code>callback</code>.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82439">CVE-2026-82439</a> - Apache Storm DRPC: Unauthenticated Unbounded Memory Growth in DRPC</h3>
 
@@ -507,7 +518,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where a function's queue is removed once nothing is waiting in it. Users who cannot upgrade should configure <code>drpc.authorizer</code> so only trusted principals can reach the DRPC endpoints and ensure the DRPC ports are not reachable from untrusted networks.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82440">CVE-2026-82440</a> - Apache Storm Nimbus: Submitter-Controlled Class Instantiation in Nimbus via a Fail-Open Scheduler Strategy Allowlist</h3>
 
@@ -517,7 +528,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where an unset allowlist means the strategies shipped with Storm rather than any class. This is a behaviour change: a cluster running an out-of-tree strategy without an explicit allowlist will have those topologies refused until the class is added to <code>nimbus.scheduler.strategy.class.whitelist</code>. Users who cannot upgrade should set that key explicitly.</p>
 
-<p><strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> The ASF -- found using Claude agents to study the security of open-source projects, validated and reported by Apache Storm.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-82441">CVE-2026-82441</a> - Apache Storm Nimbus: Cross-Tenant Blob Deletion and Cluster Denial of Service via Unvalidated Topology Dependency Keys</h3>
 
@@ -527,7 +538,7 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where a submission is refused unless every entry in both lists is a dependency blob key that exists in the blobstore. This validates new submissions only; an operator whose cluster is failing to retain a leader should inspect the Nimbus log for the missing dependency keys and remove or resubmit the topology naming them. Users who cannot upgrade should restrict topology submission to trusted principals.</p>
 
-<p><strong>Credit:</strong> This issue was discovered by rzo1 while investigating an unrelated blobstore defect.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> This issue was discovered by rzo1 while investigating an unrelated blobstore defect.</p>
 
 <h3><a href="https://www.cve.org/CVERecord?id=CVE-2026-84179">CVE-2026-84179</a> - Apache Storm Nimbus, Apache Storm UI: Disclosure of Unredacted Merged Daemon Configuration via the Topology Page</h3>
 
@@ -537,13 +548,13 @@ appreciated.</p>
 
 <p><strong>Mitigation:</strong> Upgrade to 3.1.0, where credential-bearing values are masked before any configuration is served over the Nimbus API. Users who cannot upgrade should remove any principal not trusted with cluster credentials from <code>topology.readonly.users</code>, <code>topology.readonly.groups</code>, <code>topology.users</code> and <code>topology.groups</code>, and rotate the ZooKeeper authentication payload and any TLS keystore/truststore passwords reachable through the topology page.</p>
 
-<p><strong>Credit:</strong> Wanxin Yin (yaklang.io) reported this issue to the Apache Security Team.</p>
+<p class="cve-credit">🏅 <strong>Credit:</strong> Wanxin Yin (yaklang.io) reported this issue to the Apache Security Team.</p>
 
 <h3>Additional acknowledgements</h3>
 
 <p>We also thank n0mi1k for reporting the <code>getTopologyHistory</code> authorization gap addressed in this release by <a href="https://github.com/apache/storm/pull/9003">#9003</a>. It is handled as a hardening improvement and is not covered by a separate advisory.</p>
 
-<h2>Enhancements</h2>
+<h2>✨ Enhancements</h2>
 
 <ul>
     <li>[<a href="https://github.com/apache/storm/pull/8977">#8977</a>] - Add ui.enable.jsonp to control JSONP callback wrapping in UI and Logviewer API responses</li>
@@ -552,7 +563,7 @@ appreciated.</p>
     <li>[<a href="https://github.com/apache/storm/issues/7569">#7569</a>] - [STORM-3787] Add error messages in worker-launcher code where it is missing</li>
 </ul>
 
-<h2>Documentation</h2>
+<h2>📖 Documentation</h2>
 
 <ul>
     <li>[<a href="https://github.com/apache/storm/pull/8995">#8995</a>] - Document that an unset scheduler strategy whitelist no longer allows every strategy class</li>
@@ -560,7 +571,7 @@ appreciated.</p>
     <li>[<a href="https://github.com/apache/storm/pull/8949">#8949</a>] - docs: add missing 3.0.0 feature documentation</li>
 </ul>
 
-<h2>Bug fixing</h2>
+<h2>🐛 Bug fixing</h2>
 
 <ul>
     <li>[<a href="https://github.com/apache/storm/pull/9082">#9082</a>] - STORM-3871: sweep dependency blobs that outlive their topology's cleanup</li>
@@ -607,7 +618,7 @@ appreciated.</p>
     <li>[<a href="https://github.com/apache/storm/issues/7653">#7653</a>] - [STORM-3871] Storm blobstore leak space</li>
 </ul>
 
-<h2>Dependency upgrades</h2>
+<h2>📦 Dependency upgrades</h2>
 
 <ul>
     <li>[<a href="https://github.com/apache/storm/pull/9080">#9080</a>] - build(deps-dev): bump svgo from 4.0.2 to 4.1.0 in /storm-webapp</li>
