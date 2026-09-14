@@ -31,7 +31,7 @@ appreciated.
 
 ## 📋 Changes in this Release - Storm 3.1.0
 
-<p>JIRA issues and pull requests addressed in the 3.1.0 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
+<p>GitHub issues and pull requests addressed in the 3.1.0 release of Storm. Documentation for this release is available at the <a href="https://storm.apache.org/">Apache Storm project site</a>.</p>
 
 <style>
 .cve-credit {
