@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 3.1.0</h1>
+                <h1>Version: 3.2.0</h1>
                 
             </div>
         </div>
@@ -90,6 +90,11 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.2.0/index.html">3.2.0</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/3.1.0/index.html">3.1.0</a></li>
                         
                         
@@ -98,9 +103,6 @@
                         <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
                         
                         
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
                         
                         
                         
@@ -189,7 +191,17 @@
 
 <p class="post-meta"></p>
 
-<div class="documentation-content"><h3 id="introduction">Introduction</h3>
+<div class="documentation-content"><blockquote>
+<p><strong>Deprecated:</strong> Pacemaker is deprecated and only kept for backward compatibility; it will be removed in a future release.
+Since Storm 2.0 (<a href="https://issues.apache.org/jira/browse/STORM-2693">STORM-2693</a>) workers no longer heartbeat directly into
+ZooKeeper: each worker writes its heartbeats to local disk and its supervisor reports them to Nimbus over Thrift (see
+<a href="Daemon-Fault-Tolerance.html">Daemon Fault Tolerance</a>). This removes the ZooKeeper write load Pacemaker was built to avoid.
+New clusters should keep the default <code>storm.cluster.state.store: &quot;org.apache.storm.cluster.ZKStateStorageFactory&quot;</code> and
+not run Pacemaker; existing deployments should plan to migrate away from Pacemaker back to the default
+ZooKeeper-based state store.</p>
+</blockquote>
+
+<h3 id="introduction">Introduction</h3>
 
 <p>Pacemaker is a storm daemon designed to process heartbeats from workers. As Storm is scaled up, ZooKeeper begins to become a bottleneck due to high volumes of writes from workers doing heartbeats. Lots of writes to disk and too much traffic across the network is generated as ZooKeeper tries to maintain consistency.</p>
 

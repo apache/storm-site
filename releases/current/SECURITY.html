@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 3.1.0</h1>
+                <h1>Version: 3.2.0</h1>
                 
             </div>
         </div>
@@ -90,6 +90,11 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.2.0/index.html">3.2.0</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/3.1.0/index.html">3.1.0</a></li>
                         
                         
@@ -98,9 +103,6 @@
                         <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
                         
                         
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
                         
                         
                         
@@ -917,6 +919,9 @@ The <code>ImpersonationAuthorizer</code> uses <code>nimbus.impersonation.acl</co
         <span class="na">groups</span><span class="pi">:</span>
             <span class="pi">[</span><span class="nv">comma separated list of groups whose users impersonating_user2 is allowed to impersonate</span><span class="pi">]</span>
 </code></pre></div>
+<p>The DRPC server applies the same <code>nimbus.impersonation.authorizer</code> and <code>nimbus.impersonation.acl</code> to requests that impersonate another user (for example through the <code>doAsUser</code> HTTP header or query parameter), so the DRPC server should be configured with the same settings (including <code>storm.group.mapping.service</code>). A request that sets <code>doAsUser</code> without an authenticated user is rejected, whether or not an impersonation authorizer is configured.
+For HTTP requests the host is the address the DRPC server sees the connection come from, so when the DRPC HTTP endpoint is behind a reverse proxy, the hosts listed in <code>nimbus.impersonation.acl</code> match the proxy rather than the original client.</p>
+
 <p>To support the oozie use case following config can be supplied:
 <code>yaml
 nimbus.impersonation.acl:
@@ -984,7 +989,7 @@ on all possible worker hosts.</p>
 
 <p>An invalid pattern is rejected when the topology is submitted, and otherwise fails worker startup.</p>
 
-<p>For tuple encryption, use TLS-based transport encryption (<code>storm.messaging.netty.tls.enable</code>) instead of the deprecated <code>BlowfishTupleSerializer</code>, which uses a 64-bit block cipher vulnerable to birthday attacks.</p>
+<p>For tuple encryption, use TLS-based transport encryption (<code>storm.messaging.netty.tls.enable</code>). The legacy <code>BlowfishTupleSerializer</code> has been removed because it uses a 64-bit block cipher vulnerable to birthday attacks.</p>
 
 <h3 id="log-cleanup">Log Cleanup</h3>
 

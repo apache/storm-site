@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+
+    <title>Tracing</title>
+    <meta name="description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <link rel="canonical" href="https://storm.apache.org/releases/3.2.0/Tracing.html">
+
+    <meta property="og:title" content="Tracing">
+    <meta property="og:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://storm.apache.org/releases/3.2.0/Tracing.html">
+    <meta property="og:image" content="https://storm.apache.org/images/logo.png">
+    <meta property="og:site_name" content="Apache Storm">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Tracing">
+    <meta name="twitter:description" content="Apache Storm is a free and open source distributed realtime computation system. Storm makes it easy to reliably process unbounded streams of data, doing for realtime processing what Hadoop did for batch processing.">
+    <meta name="twitter:image" content="https://storm.apache.org/images/logo.png">
+
+    <!-- Bootstrap 5 core CSS (vendored locally) -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="/assets/js/bootstrap.bundle.min.js" defer></script>
+    <script type="text/javascript" src="/assets/js/storm.js" defer></script>
+</head>
+
+
+  <body>
+    <a class="github-fork-ribbon" href="https://github.com/apache/storm" target="_blank" rel="noopener" aria-label="Fork Apache Storm on GitHub">Fork me on GitHub</a>
+    <header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <a href="/index.html"><img src="/images/logo.png" class="logo" alt="Apache Storm"/></a>
+            </div>
+            <div class="col-md-4">
+                
+                <h1>Version: 3.2.0</h1>
+                
+            </div>
+        </div>
+    </div>
+</header>
+<!--Header End-->
+<!--Navigation Begin-->
+<nav class="navbar navbar-expand-md" data-bs-theme="dark" role="banner">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#stormNavbar"
+                aria-controls="stormNavbar" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="stormNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/index.html" id="home">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="about" aria-expanded="false">About</a>
+                    <ul class="dropdown-menu" aria-labelledby="about">
+                        <li><a class="dropdown-item" href="/about/integrates.html">Integrates</a></li>
+                        <li><a class="dropdown-item" href="/about/simple-api.html">Simple API</a></li>
+                        <li><a class="dropdown-item" href="/about/scalable.html">Scalable</a></li>
+                        <li><a class="dropdown-item" href="/about/fault-tolerant.html">Fault tolerant</a></li>
+                        <li><a class="dropdown-item" href="/about/guarantees-data-processing.html">Guarantees data processing</a></li>
+                        <li><a class="dropdown-item" href="/about/multi-language.html">Use with any language</a></li>
+                        <li><a class="dropdown-item" href="/about/deployment.html">Easy to deploy and operate</a></li>
+                        <li><a class="dropdown-item" href="/about/free-and-open-source.html">Free and open source</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="documentation" aria-expanded="false">Documentation</a>
+                    <ul class="dropdown-menu" aria-labelledby="documentation">
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/3.2.0/index.html">3.2.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/3.1.0/index.html">3.1.0</a></li>
+                        
+                        
+                        
+                        
+                        <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/older-releases.html">Older Versions</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" role="button"
+                       data-bs-toggle="dropdown" id="community" aria-expanded="false">Community</a>
+                    <ul class="dropdown-menu" aria-labelledby="community">
+                        <li><a class="dropdown-item" href="/getting-help.html">Getting Help</a></li>
+                        <li><a class="dropdown-item" href="/contribute/Contributing-to-Storm.html">Contributing</a></li>
+                        <li><a class="dropdown-item" href="/team/">Team</a></li>
+                        <li><a class="dropdown-item" href="/contribute/BYLAWS.html">ByLaws</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/talksAndVideos.html">Talks and Slideshows</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/news.html" id="news">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="/downloads.html" id="download">Download</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <div class="container-fluid">
+    
+    <h1 class="page-title">Tracing</h1>
+    
+          <div class="row">
+           	<div class="col-md-12">
+	             <!-- Documentation -->
+
+<p class="post-meta"></p>
+
+<div class="documentation-content"><p>Storm can carry a trace context with every tuple. A trace then follows a
+<a href="Guaranteeing-message-processing.html">tuple tree</a> across bolts and workers: the spout emit and each bolt <code>execute()</code>
+it caused. For reliable spouts, the trace also shows how the tree ended.</p>
+
+<p>The tracer is pluggable: the class named in <code>topology.tracing.tracer</code> decides what a context is, how it is encoded
+for other workers and what is recorded. Storm provides one tracer, for <a href="https://opentelemetry.io/">OpenTelemetry</a>, in
+the <code>storm-opentelemetry</code> module. With it, spans that the application creates during <code>execute()</code>, and spans of
+instrumented clients called there, join the tuple&#39;s trace. The rest of this page describes that tracer.</p>
+
+<h2 id="enabling-tracing">Enabling tracing</h2>
+
+<p>Tracing is off by default. To turn it on:</p>
+
+<ol>
+<li>Put <code>storm-opentelemetry</code> and its dependencies (<code>opentelemetry-api</code>, <code>opentelemetry-context</code> and
+<code>opentelemetry-common</code>) on the worker classpath: either in the <code>lib-worker</code> directory of each Storm installation, or
+in the topology jar:</li>
+</ol>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml">   <span class="nt">&lt;dependency&gt;</span>
+       <span class="nt">&lt;groupId&gt;</span>org.apache.storm<span class="nt">&lt;/groupId&gt;</span>
+       <span class="nt">&lt;artifactId&gt;</span>storm-opentelemetry<span class="nt">&lt;/artifactId&gt;</span>
+       <span class="nt">&lt;version&gt;</span>${storm.version}<span class="nt">&lt;/version&gt;</span>
+   <span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<ol>
+<li>Set <code>topology.tracing.tracer</code> to <code>org.apache.storm.opentelemetry.OpenTelemetryTupleTracer</code>.</li>
+<li>Register an OpenTelemetry SDK as the global instance on the workers. The
+<a href="https://opentelemetry.io/docs/zero-code/java/agent/">OpenTelemetry Java agent</a>, version 2.23.0 or later, is one
+way to do it:</li>
+</ol>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml">   <span class="na">topology.tracing.tracer</span><span class="pi">:</span> <span class="s">org.apache.storm.opentelemetry.OpenTelemetryTupleTracer</span>
+   <span class="na">topology.worker.childopts</span><span class="pi">:</span> <span class="pi">&gt;-</span>
+     <span class="s">-javaagent:/opt/otel/opentelemetry-javaagent.jar</span>
+     <span class="s">-Dotel.service.name=my-topology</span>
+     <span class="s">-Dotel.exporter.otlp.endpoint=http://collector:4318</span>
+     <span class="s">-Dotel.traces.sampler=parentbased_traceidratio</span>
+     <span class="s">-Dotel.traces.sampler.arg=0.01</span>
+</code></pre></div>
+<p>The tracer only calls the OpenTelemetry API; the SDK samples the spans and exports them to the backend it is
+configured for, such as an OpenTelemetry Collector or any service that accepts OTLP. An SDK that the application
+registers as the global instance works as well; the tracer starts recording once it is registered. Until then, the
+tracer starts no traces and records no spans, and the worker logs one warning.</p>
+
+<p>Workers put <code>lib-worker</code> before the topology jar on one classpath, so when both carry <code>opentelemetry-api</code>, the copy in
+<code>lib-worker</code> is the one loaded. The agent bridges the API from either place, but not a copy relocated to another
+package: when shading the topology jar, do not relocate <code>io.opentelemetry</code>.</p>
+
+<h2 id="what-is-recorded">What is recorded</h2>
+
+<table><thead>
+<tr>
+<th>Span</th>
+<th>Parent</th>
+<th>Recorded when</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>&lt;spout&gt; emit</code></td>
+<td>none, it starts a trace</td>
+<td>a spout emits a tuple, except checkpoint tuples of stateful bolts</td>
+</tr>
+<tr>
+<td><code>&lt;bolt&gt; execute</code></td>
+<td>the context of the input tuple</td>
+<td><code>execute()</code> runs for a tuple that carries a context; the span is current on the executor thread during the call</td>
+</tr>
+<tr>
+<td><code>&lt;bolt&gt; emit</code></td>
+<td>the first traced anchor&#39;s span when all traced anchors belong to one trace, linked to the others&#39; spans; otherwise none, linked to each anchor&#39;s span</td>
+<td>a bolt emits a tuple whose anchors carry different spans</td>
+</tr>
+<tr>
+<td><code>&lt;spout&gt; ack</code>, <code>&lt;spout&gt; fail</code>, <code>&lt;spout&gt; timeout</code></td>
+<td>the <code>&lt;spout&gt; emit</code> span</td>
+<td>the tuple tree is acked, fails or times out; only for emits with a message id when the topology has ackers; fail and timeout have status ERROR</td>
+</tr>
+<tr>
+<td><code>&lt;bolt&gt; fail</code></td>
+<td>the execute span of the tuple</td>
+<td>a bolt calls <code>fail()</code>; status ERROR</td>
+</tr>
+</tbody></table>
+
+<p>A recording execute span has these attributes: <code>storm.topology.name</code>, <code>storm.topology.id</code>, <code>storm.component.id</code>,
+<code>storm.task.id</code>, <code>storm.source.component.id</code>, <code>storm.source.stream.id</code>, <code>storm.worker.port</code> and, when the host name
+resolves, <code>storm.worker.host</code>.</p>
+
+<p>The spout&#39;s ack, fail and timeout spans start at the emit and end when the spout executor handles the outcome, before
+the spout&#39;s <code>ack()</code> or <code>fail()</code> runs; their <code>storm.tuple.latency_ms</code> attribute holds that duration in milliseconds. The
+emit spans and the bolt fail span are started and ended at once.</p>
+
+<h2 id="how-the-context-moves">How the context moves</h2>
+
+<p>An emitted tuple takes its context from its <a href="Guaranteeing-message-processing.html">anchors</a>, on whatever thread the
+emit runs. When the traced anchors carry one span, the tuple carries that span as parent. When they carry different
+spans of one trace, the tuple carries a new span that is a child of the first traced anchor&#39;s span and linked to the
+others, so the trace continues. When the anchors belong to different traces, the tuple carries a new root span linked
+to each of them, so the spans of such a tree fall into several linked traces. An unanchored emit carries no context,
+and the work downstream of it is not traced. Tick and other system tuples carry no context.</p>
+
+<p>Between workers, the context travels in the serialized tuple, after the values. Workers of one topology run the same
+Storm version; a worker of an earlier version would read such a tuple and ignore the extra bytes. Tuples that stateful
+bolts save in their state do not keep their context.</p>
+
+<h2 id="sampling">Sampling</h2>
+
+<p>The SDK&#39;s sampler decides whether the trace that a spout emit starts is sampled. When it drops the root span, the
+emitted tuple carries no context, so the rest of its tree is not traced: no execute, emit or outcome spans are started
+for it. A root span that the sampler records but does not sample (<code>RECORD_ONLY</code>) passes its context on. With a
+parent-based sampler (the default), every span of a tuple tree follows whether its root is sampled, including the emit
+span of an emit whose anchors belong to one trace. The root sampler alone decides whether the new root of an emit with
+anchors from different traces is sampled, because the built-in samplers ignore links; that root passes its context on
+even when the sampler drops it.</p>
+
+<p>A tree whose root span the sampler dropped is untraced, and its tuples carry no context:</p>
+
+<ul>
+<li>an instrumented client called in <code>execute()</code> for such a tuple starts its own trace, which the root sampler decides
+and which is not linked to the tuple tree;</li>
+<li>an emit anchored to a tuple of a traced tree and to a tuple of an untraced one continues the traced tree, with no
+link to the untraced tuple.</li>
+</ul>
+
+<h2 id="continuing-a-trace-on-other-threads">Continuing a trace on other threads</h2>
+
+<p><code>StormTracing.context(tuple)</code>, in <code>org.apache.storm.opentelemetry</code>, returns the context to run work for a tuple under,
+or an empty context (<code>Context.root()</code>) when the tuple carries none. Make it current where work for the tuple runs
+outside <code>execute()</code>:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">io.opentelemetry.context.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.apache.storm.opentelemetry.StormTracing</span><span class="o">;</span>
+
+<span class="nc">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="nc">StormTracing</span><span class="o">.</span><span class="na">context</span><span class="o">(</span><span class="n">input</span><span class="o">);</span>
+<span class="n">pool</span><span class="o">.</span><span class="na">submit</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="na">wrap</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="o">{</span>
+    <span class="nc">Object</span> <span class="n">page</span> <span class="o">=</span> <span class="n">fetch</span><span class="o">(</span><span class="n">input</span><span class="o">);</span> <span class="c1">// an instrumented HTTP client called here joins the input's trace</span>
+    <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="n">input</span><span class="o">,</span> <span class="k">new</span> <span class="nc">Values</span><span class="o">(</span><span class="n">page</span><span class="o">));</span>
+    <span class="n">collector</span><span class="o">.</span><span class="na">ack</span><span class="o">(</span><span class="n">input</span><span class="o">);</span>
+<span class="o">}));</span>
+</code></pre></div>
+<p>Emits themselves do not need this: an anchored emit takes its parent from the anchor on any thread.</p>
+
+<h2 id="costs-and-limits">Costs and limits</h2>
+
+<ul>
+<li>Configuring a tracer can reduce throughput even at a sampling ratio of 0, because Storm still calls it for every
+spout emit and every bolt emit. To turn tracing off, leave <code>topology.tracing.tracer</code> unset.</li>
+<li>The Java agent carries the current context into tasks submitted to <code>java.util.concurrent</code> executors, so while an
+execute span is current it wraps each task the bolt submits. When no code on those threads needs the context (spans,
+instrumented clients, correlated logs, baggage), or that code makes the context current itself,
+<code>-Dotel.instrumentation.executors.enabled=false</code> turns this off for the whole JVM.</li>
+<li>An execute span covers the <code>execute()</code> call only. In a bolt that processes the tuple on another thread, the span can
+end before that processing does.</li>
+<li>At high tuple rates with a high sampling ratio, the SDK&#39;s batch span processor drops spans once its queue is full and
+logs how many it dropped. Lower the sampling ratio, or tune the processor with the <code>otel.bsp.*</code> settings.</li>
+<li>Execute span attributes are set after the span starts, so a sampler cannot use them in its decision.</li>
+<li>An emit anchored to many tuples, as in windowed bolts, collects the context of each anchor and adds a link for each
+different span, so its tracing cost grows with the number of anchors. A span keeps up to 128 links by default, so
+such an emit keeps only part of them.</li>
+<li>On a worker without an SDK, a tuple with one traced anchor passes its context on, but an emit whose anchors carry
+different spans carries none.</li>
+<li>Each spout emit starts a new trace, so a spout cannot continue a trace that arrives with its messages, for example
+in Kafka or JMS headers. Baggage does not travel with tuples.</li>
+<li>In Trident topologies, the master batch coordinator&#39;s emits on the <code>$batch</code>, <code>$commit</code> and <code>$success</code> streams are
+spout emits, so each starts its own trace.</li>
+<li>The trace shows how a tuple tree ended, not which bolt held a tuple that timed out.</li>
+<li>An exception thrown by <code>execute()</code> is not recorded on the span.</li>
+<li>If a tracer method throws a runtime exception or a linkage error, Storm logs a warning and carries on without that
+call&#39;s result. A tuple whose context is lost that way is not traced further. Storm logs at most one warning a minute
+for each method.</li>
+<li>If Storm cannot create the class named in <code>topology.tracing.tracer</code>, or its <code>prepare()</code> throws, the worker exits
+during startup and the supervisor keeps restarting it. The exception is in the worker log.</li>
+</ul>
+
+<h2 id="writing-another-tracer">Writing another tracer</h2>
+
+<p><code>topology.tracing.tracer</code> accepts any implementation of <code>org.apache.storm.tracing.TupleTracer</code> with a zero-arg
+constructor. Each worker creates one instance and shares it between its executors and the threads that serialize and
+deserialize tuples. The interface&#39;s Javadoc says when Storm calls each method and what it expects back.</p>
+</div>
+
+
+	          </div>
+	       </div>
+	  </div>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="footer-meetups">
+                    <a class="acevent" data-format="wide" data-mode="dark"></a>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="footer-policy-links">
+                    <li><a href="https://www.apache.org/licenses/">License</a></li>
+                    <li><a href="https://www.apache.org/security/">Security</a></li>
+                    <li><a href="/security-model.html">Security Model</a></li>
+                    <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                    <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                    <li><a href="https://privacy.apache.org/policies/privacy-policy-public.html">Privacy</a></li>
+                </ul>
+                <p class="footer-legal">
+                    Copyright &copy; 2026 <a href="https://www.apache.org">Apache Software Foundation</a>. All Rights Reserved.
+                    <br>Apache Storm, Apache, the Apache logo, and the Apache Storm project logos are trademarks of The Apache Software Foundation.
+                    <br>All other marks mentioned may be trademarks or registered trademarks of their respective owners.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--Footer End-->
+<!-- Matomo -->
+<script>
+    var _paq = window._paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    /* We explicitly disable cookie tracking to avoid privacy issues */
+    _paq.push(['disableCookies']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//analytics.apache.org/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '38']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
+<script src="https://www.apachecon.com/event-images/snippet.js"></script>
+<!-- Scroll to top -->
+<span class="totop"><a href="#"><i class="fa fa-angle-up"></i></a></span> 
+
+</body>
+
+</html>
+

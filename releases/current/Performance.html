@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 3.1.0</h1>
+                <h1>Version: 3.2.0</h1>
                 
             </div>
         </div>
@@ -90,6 +90,11 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.2.0/index.html">3.2.0</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/3.1.0/index.html">3.1.0</a></li>
                         
                         
@@ -98,9 +103,6 @@
                         <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
                         
                         
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
                         
                         
                         
@@ -381,6 +383,20 @@ is expected to typically increase with higher and higher values for this.</p>
 Impact of this on performance is dependent on the topology and its deployment footprint (i.e. distribution over process and machines).
 Consequently it is useful to assess the impact of setting <code>topology.disable.loadaware.messaging</code> to <code>true</code> or <code>false</code> for your
 specific case.</p>
+
+<h3 id="jitter-aware-messaging">Jitter-aware messaging</h3>
+
+<p><code>org.apache.storm.grouping.JitterAwareStreamGrouping</code> is an opt-in grouping that favors downstream
+tasks reporting lower jitter, falling back to load-aware shuffle when jitter feedback cannot
+distinguish the candidates. It requires both <code>topology.stats.ewma.enable=true</code> and
+<code>topology.upstream.feedback.enable=true</code> (both default to <code>false</code>). Enabling feedback alone
+does not select this grouping.</p>
+
+<p>Enabling upstream feedback increases inter-worker connection fan-in: each worker hosting a user
+bolt establishes an outbound Netty client connection to every remote worker hosting any task of
+that bolt&#39;s immediate upstream components (spouts or bolts), regardless of stream grouping.
+Connections are shared across tasks targeting the same worker, and existing outbound connections
+are reused. Same-worker feedback does not require a network connection.</p>
 
 <h2 id="7-sampling-rate">7. Sampling Rate</h2>
 

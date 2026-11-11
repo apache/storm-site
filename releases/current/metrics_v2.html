@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 
-                <h1>Version: 3.1.0</h1>
+                <h1>Version: 3.2.0</h1>
                 
             </div>
         </div>
@@ -90,6 +90,11 @@
                         
                         
                         
+                        <li><a class="dropdown-item" href="/releases/3.2.0/index.html">3.2.0</a></li>
+                        
+                        
+                        
+                        
                         <li><a class="dropdown-item" href="/releases/3.1.0/index.html">3.1.0</a></li>
                         
                         
@@ -98,9 +103,6 @@
                         <li><a class="dropdown-item" href="/releases/3.0.0/index.html">3.0.0</a></li>
                         
                         
-                        
-                        
-                        <li><a class="dropdown-item" href="/releases/2.8.9/index.html">2.8.9</a></li>
                         
                         
                         
@@ -261,6 +263,8 @@ Reports metrics to a CSV file.</li>
 Reports metrics to a <a href="https://graphiteapp.org">Graphite</a> server.</li>
 <li>JMX Reporter (<code>org.apache.storm.metrics2.reporters.JmxStormReporter</code>):
 Exposes metrics via JMX.</li>
+<li>Prometheus Reporter (<code>org.apache.storm.metrics.prometheus.PrometheusStormReporter</code>, in the <code>storm-metrics-prometheus</code> module):
+Serves the metrics of each worker over HTTP for <a href="https://prometheus.io">Prometheus</a> to scrape, with the task dimensions as labels.</li>
 </ul>
 
 <p>Custom metrics reporters can be created by implementing <code>org.apache.storm.metrics2.reporters.StormReporter</code> interface 
@@ -295,7 +299,7 @@ is determined by the <code>report.period</code> and <code>report.period.units</c
 
 <p>Reporters can also be configured with an optional filter that determines which metrics get reported. Storm includes the
 <code>org.apache.storm.metrics2.filters.RegexFilter</code> filter which uses a regular expression to determine which metrics get
-reported. Custom filters can be created by implementing the <code>org.apache.storm.metrics2.filters.StormMetricFilter</code>
+reported. Custom filters can be created by implementing the <code>org.apache.storm.metrics2.filters.StormMetricsFilter</code>
 interface:</p>
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">StormMetricsFilter</span> <span class="kd">extends</span> <span class="nc">MetricFilter</span> <span class="o">{</span>
 
@@ -321,10 +325,10 @@ to using the long metric name, but can report the short name by configuring repo
 <ol>
 <li><p>V2 metrics can also be reported to the Metrics Consumers registered with <code>topology.metrics.consumer.register</code> by enabling the <code>topology.enable.v2.metrics.tick</code> configuration.
 The rate that they will reported to Metric Consumers is controlled by <code>topology.v2.metrics.tick.interval.seconds</code>, defaulting to every 60 seconds.</p></li>
-<li><p>Starting from storm 2.3, the config <code>storm.metrics.reporters</code> is deprecated in favor of <code>topology.metrics.reporters</code>.</p></li>
-<li><p>Starting from storm 2.3, the <code>daemons</code> section is removed from <code>topology.metrics.reporters</code> (or <code>storm.metrics.reporters</code>).
+<li><p>The configuration key <code>storm.metrics.reporters</code> was deprecated in 2.3.0 and has been removed. Use <code>topology.metrics.reporters</code> instead.</p></li>
+<li><p>Starting from storm 2.3, the <code>daemons</code> section is removed from <code>topology.metrics.reporters</code>.
 Before storm 2.3, a <code>daemons</code> section is required in the reporter conf to determine which daemons the reporters will apply to. 
-However, the reporters configured with <code>topology.metrics.reporters</code> (or <code>storm.metrics.reporters</code>) actually only apply to workers. They are never really used in daemons like nimbus, supervisor and etc. 
+However, the reporters configured with <code>topology.metrics.reporters</code> actually only apply to workers. They are never really used in daemons like nimbus, supervisor and etc. 
 For daemon metrics, please refer to <a href="ClusterMetrics.html">Cluster Metrics</a>.</p></li>
 <li><p><strong>Backwards Compatibility Breakage</strong>: starting from storm 2.3, the following configs no longer apply to <code>topology.metrics.reporters</code>:
 <code>yaml
